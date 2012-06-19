@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - Core Elements</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="layout.html">Page Layout</a></li>
+						<li><a href="core.html" class="active">Core Elements</a></li>
+						<li><a href="ui.html">UI Elements</a></li>
+						<li><a href="plugins.html">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<h1 class="pageTitle">Core Elements</h1>
+				<h2 class="title">Typography</h2>
+				<p>Typography is an often-overlooked but absolutely essential part to your design. Below are the styled 
+					typographic elements that are found in VM UI Framework.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h3>Flexible Font Sizing</h3>
+				<p>The typography and many of the elements in VM UI Framework are em-based, meaning that they will 
+					scale according to the base font size you assign to the <code>&lt;body&gt;</code>. The default base 
+					font size is 16 pixels, but you can change everything with a single CSS declaration.
+				</p>
+				<h3>Typographic Elements</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Example</th>
+							<th>Tags</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>bold</strong> text</td>
+							<td><code>&lt;strong&gt;</code>, <code>&lt;b&gt;</code></td>
+						</tr>
+						<tr>
+							<td><em>italic</em> text</td>
+							<td><code>&lt;em&gt;</code>, <code>&lt;i&gt;</code></td>
+						</tr>
+						<tr>
+							<td><abbr title="abbreviation">abbr.</abbr> text</td>
+							<td><code>&lt;abbr&gt;</code></td>
+						</tr>
+						<tr>
+							<td><acronym title="as soon as possible">ASAP</acronym> (acronym text)</td>
+							<td><code>&lt;acronym&gt;</code></td>
+						</tr>
+						<tr>
+							<td><del>deleted</del> text</td>
+							<td><code>&lt;del&gt;</code></td>
+						</tr>
+						<tr>
+							<td><ins>inserted</ins> text</td>
+							<td><code>&lt;ins&gt;</code></td>
+						</tr>
+						<tr>
+							<td><a href="#">link</a> text</td>
+							<td><code>&lt;a&gt;</code></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col6">
+				<h3>Headings</h3>
+				<p>Headings can be combined with a byline, which is done simply by inserting the 
+					<code>&lt;small&gt;</code> element into your heading tag. If you'd like to have your heading
+					underlined as a title, just give it the class <code>title</code>. For an extra large page title, 
+					give an	<code>&lt;h1&gt;</code>	tag a class of <code>pageTitle</code>.</p>
+				<h1>Heading 1 <small>This is a byline</small></h1>
+				<h2>Heading 2 <small>This is a byline</small></h2>
+				<h3>Heading 3 <small>This is a byline</small></h3>
+				<h4>Heading 4 <small>This is a byline</small></h4>
+				<h5>Heading 5 <small>This is a byline</small></h5>
+				<h6>Heading 6 <small>This is a byline</small></h6>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Vertical Rhythm</h2>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col6">
+				<p>Vertical rhythm is essential for layout and typographical design elements. VM UI Framework has taken 
+					the guesswork out of vertical rhythm, handling it all for you in a responsive, flexible way. The 
+					base line-height is <code>1.75em</code>, meaning that for a base font-size of 16px, the line-height 
+					will be 28px. Each element will also have a bottom-margin of 28px as well.</p>
+				<p>Remember, however, that because VM UI Framework is responsive, the text size changes depending on 
+					the size of the browser, as does the base line-height. See the table to the right for reference.</p>
+				<p>In practical terms, this means that any new elements you introduce to the layout should have heights 
+					in multiples of the base line-height. If possible, make them responsive as well to maintain the 
+					vertical rhythm.</p>					
+			</div>
+			<div class="col6">
+				<h6>Vertical Sizing Reference</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Font Size</th>
+							<th>Line Height</th>
+							<th>Bottom Margin</th>
+							<th>Multiples</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>14px</td>
+							<td>24px</td>
+							<td>24px</td>
+							<td>24, 48, 72, 96, ...</td>
+						</tr>
+						<tr>
+							<td>15px</td>
+							<td>26px</td>
+							<td>26px</td>
+							<td>26, 52, 78, 104, ...</td>
+						</tr>
+						<tr>
+							<td><strong>16px*</strong></td>
+							<td>28px</td>
+							<td>28px</td>
+							<td>28, 56, 84, 112, ...</td>
+						</tr>												
+					</tbody>
+				</table>
+				<p><strong>*denotes default</strong></p>
+				<p><span class="markerInfo">Note</span> Although the values above are given in pixels, you should give preference to 
+					<em>em</em>-based measurements in order to maintain maximum flexibility. If you add borders to an 
+					element, be sure to subtract the border height from the bottom margin.</p>								
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h3 class="title">Lists</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col3">
+				<p>Lists come in three varieties, ordered, unordered, and definition or <code>&lt;ol&gt;</code>, 
+					<code>&lt;ul&gt;</code>, and <code>&lt;dl&gt;</code> respectively. Ordered and unordered lists have 
+					an automatic margin-left of 40px and a margin-bottom of 20px, so keep that in mind if you need to 
+					style a list for other purposes.</p>
+				<h6>Unlisted</h6>
+				<p>If you don't want to bullets or numbers on ordered or unordered lists, just add the class
+					<code>unlisted</code> to the <code>&lt;ol&gt;</code> or	<code>&lt;ul&gt;</code> tags.</p>
+			</div>
+			<div class="col3">
+				<h6>Ordered Lists</h6>
+				<p>Use ordered lists for items that can be numbered. No extra markup is needed to make the numbers 
+					bold.</p>
+				<ol>
+					<li>Item One</li>
+					<li>Item Two</li>
+					<li>Item Three
+						<ol>
+							<li>Item 3.1</li>
+							<li>Item 3.2
+								<ol>
+									<li>Item 3.2.1</li>
+									<li>Item 3.2.2</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>Item Four</li>
+				</ol>
+			</div>
+			<div class="col3">
+				<h6>Unordered Lists</h6>
+				<p>Use ordered lists for items that don't need to be numbered or organized in any particular order.</p>
+				<ul>
+					<li>Item One</li>
+					<li>Item Two</li>
+					<li>Item Three
+						<ul>
+							<li>Item 3.1</li>
+							<li>Item 3.2</li>
+						</ul>
+					</li>
+					<li>Item Four</li>
+				</ul>
+			</div>
+			<div class="col3">
+				<h6>Definition Lists</h6>
+				<p>Use definition lists to define terms or associate one or more items that have a direct 
+					relationship.</p>
+				<dl>
+					<dt>HTML</dt>
+					<dd>HyperText Markup Language</dd>
+					<dt>XHTML</dt>
+					<dd>eXtensible HyperText Markup Language</dd>
+					<dd>Second definition would go here</dd>
+					<dt>CSS</dt>
+					<dd>Cascading Style Sheets</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 class="title">Quotations</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<p>You can add quotations to your content. Use <code>&lt;q&gt;</code> and <code>&lt;cite&gt;</code>	for 
+					short inline quotations <q>like this text</q> and <code>&lt;blockquote&gt;</code> for longer 
+					quotations.</p>
+				<blockquote class="right">
+					<p>The essence of software development is being able to break any seemingly complex problem into 
+						bite-sized chunks, solving them	one-by-one. The ability to make a profitable piece of software
+						lies in solving the right problem for the right people in such a way that they can quickly see 
+						the benefit.</p>
+				</blockquote>
+				<p>A <code>&lt;blockquote&gt;</code> is 300px by default for column widths of 6 and above. For column
+					widths of 5 and below, the blockquote will be displayed at 100%	width. If you want to float it, 
+					simply add a utility class of either <code>left</code> or <code>right</code>. Keep in mind that 
+					blockquotes that are displayed at 100% width will have their float removed. If you use a
+					<code>&lt;p&gt;</code> tag inside your <code>&lt;blockquote&gt;</code>, the first letter of the 
+					first paragraph will feature a dropcap.
+				</p>
+			</div>
+			<div class="col6">
+				<p>Blockquotes that are floated to the left will have the divider on the right rather than the left.</p>
+				<blockquote class="left">
+					<p>Why would I bother reinventing the wheel? I want my cars to fly!</p>
+					<small>- Benjamin Kuker</small>
+				</blockquote>
+				<p>If you would like to add an author name or credit a source as a visible citation, just include it in 
+					the blockquote, wrapped in the <code>&lt;small&gt;</code> tag. If you have a URL to point to for a 
+					citation, be sure to use the blockquote's <code>cite</code>	attribute.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Code</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col8">
+				<h6>Default Code Block</h6>
+				<pre>
+/**
+ * This is a CSS comment block
+ */
+p {
+	color: red;
+ 	font-weight: bold;
+}			
+</pre>
+			</div>
+			<div class="col4">
+				<p>For small snippets of code, wrap them in the	<code>&lt;code&gt;</code> tag. For longer snippets, 
+					wrap them inside a <code>&lt;pre&gt;</code>	tag.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Tables</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>Table styling is handled automatically, no extra markup is needed. Just use semantically-proper 
+					markup for the table, with an optional table header and footer. At no time should a table ever be
+					used to achieve a layout effect.</p>
+			</div>
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Hometown</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="3">Options could go here.</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="4">Users Table</th>
+						</tr>
+						<tr>
+							<td>ID</td>
+							<td>Username</td>
+							<td>Email</td>
+							<td>Hometown</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col4">
+				<p>If you want a table with a title bar and subheadings, simply use a <code>&lt;th&gt;</code> tag for 
+					the title and a	<code>&lt;td&gt;</code>	tag for the column-headings in the 
+					<code>&lt;thead&gt;</code>.</p>
+			</div>
+		</div>					
+	</div>
+</body>
+</html>

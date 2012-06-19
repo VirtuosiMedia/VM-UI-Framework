@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - Page Layout</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="layout.html" class="active">Page Layout</a></li>
+						<li><a href="core.html">Core Elements</a></li>
+						<li><a href="ui.html">UI Elements</a></li>
+						<li><a href="plugins.html">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<h1 class="pageTitle">Page Layout</h1>
+				<h2 class="title">Responsive Grid System</h2>
+				<p>The response grid system contains 12 columns and is based on a 960 pixel width with 20px margins in 
+					its default size. A grid is	constructed with 3 main parts: a container, a row, and a column. 
+					Containers and rows are given classes of <code>container</code> and <code>row</code>, respectively. 
+					Columns are given the class	<code>col</code> followed by a number, 1-12. For example, a column that 
+					takes up the full width of the container would be given the class <code>col12</code>.
+				</p>
+			</div>
+		</div>
+		<div class="gridContainer showGrid">
+			<div class="row">
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+				<div class="col1">1</div>
+			</div>
+			<div class="row">
+				<div class="col2">2</div>
+				<div class="col2">2</div>
+				<div class="col2">2</div>
+				<div class="col2">2</div>
+				<div class="col2">2</div>
+				<div class="col2">2</div>
+			</div>
+			<div class="row">
+				<div class="col3">3</div>
+				<div class="col3">3</div>
+				<div class="col3">3</div>
+				<div class="col3">3</div>
+			</div>
+			<div class="row">
+				<div class="col4">4</div>
+				<div class="col4">4</div>
+				<div class="col4">4</div>
+			</div>
+			<div class="row">
+				<div class="col12">12</div>
+			</div>
+			<div class="row">
+				<div class="col11">11</div>
+				<div class="col1">1</div>
+			</div>
+			<div class="row">
+				<div class="col10">10</div>
+				<div class="col2">2</div>
+			</div>
+			<div class="row">
+				<div class="col9">9</div>
+				<div class="col3">3</div>
+			</div>
+			<div class="row">
+				<div class="col8">8</div>
+				<div class="col4">4</div>
+			</div>
+			<div class="row">
+				<div class="col7">7</div>
+				<div class="col5">5</div>
+			</div>
+			<div class="row">
+				<div class="col6">6</div>
+				<div class="col6">6</div>
+			</div>
+			<div class="row">
+				<div class="col3">3</div>
+				<div class="col4">4</div>
+				<div class="col5">5</div>
+			</div>
+			<div class="row">
+				<div class="col2">2</div>
+				<div class="col3">3</div>
+				<div class="col4">4</div>
+				<div class="col2">2</div>
+				<div class="col1">1</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Utility Classes</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col5">
+				<p>VM UI Framework offers a lot of flexibility, but sometimes you'll want to add to, adjust, or 
+					override some of the default CSS declarations. This set of utility classes will allow you to do 
+					exactly that. Most of the classes should be able to be applied to any element safely.</p>
+			</div>
+			<div class="col7">
+				<table>
+					<thead>
+						<tr>
+							<th>CSS Class</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>left</code></td>
+							<td>Floats the element to the left.</td>
+						</tr>
+						<tr>
+							<td><code>right</code></td>
+							<td>Floats the element to the right.</td>
+						</tr>
+						<tr>
+							<td><code>skipBottom</code></td>
+							<td>Removes the bottom margin. (Useful for rows).</td>
+						</tr>												
+					</tbody>
+				</table>
+			</div>			
+		</div>					
+	</div>
+</body>
+</html>
