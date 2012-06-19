@@ -149,7 +149,6 @@ body {
 	line-height: 1.75em;
 }
 blockquote, h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.75em;}
-p:last-child {margin-bottom: 0em;}
 h1, h2, h3, h4, h5, h6 {
 	font-family: Arial Black, Arial, sans-serif;
 	position: relative;
@@ -448,7 +447,60 @@ div.noticeError {
 }
 
 /**
+ * Navigation, Navbar
+ */
+.navbarContainer {
+	background: #333333; 
+	background: -moz-linear-gradient(top, #333333 0%, #222222 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#222222)); 
+	background: -webkit-linear-gradient(top, #333333 0%,#222222 100%); 
+	background: -o-linear-gradient(top, #333333 0%,#222222 100%); 
+	background: -ms-linear-gradient(top, #333333 0%,#222222 100%); 
+	background: linear-gradient(top, #333333 0%,#222222 100%);
+	border-bottom: 1px solid #000; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);
+	height: 50px;	
+	width: 100%;
+}
+.navbarContainer ul {
+	line-height: 50px;
+	list-style: none;
+	margin: 0;
+}
+.navbarContainer ul li {
+	float: left;
+	margin-right: 0.8em;
+}
+.navbarContainer a {
+	color: #FFF;
+	text-decoration: none;
+	text-shadow: -1px -1px 1px #000;
+}
+.navbarContainer a:hover, .navbarContainer a.active {color: #09C;}
+
+/**
+ * Markers
+ */
+span[class^="marker"] {
+	background: #999;
+	border-radius: 4px;
+	color: #FFF;
+	font-size: 0.875em;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 0.8em;
+	padding: 0.0em 0.375em 0.2em;
+	vertical-align: 10%;
+}
+span.markerInfo {background: #069;}
+span.markerSuccess {background: #4D9E0C;}
+span.markerWarning {background: #FB9702;}
+span.markerError {background: #FF6A6A;}
+
+
+/**
  * Utilities
  */
 .right {float: right;}
 .left {float: left;}
+body .skipBottom {margin-bottom: 0;}
