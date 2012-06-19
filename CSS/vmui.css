@@ -457,9 +457,10 @@ div.noticeError {
 	background: -o-linear-gradient(top, #333333 0%,#222222 100%); 
 	background: -ms-linear-gradient(top, #333333 0%,#222222 100%); 
 	background: linear-gradient(top, #333333 0%,#222222 100%);
-	border-bottom: 1px solid #000; 
+	border-bottom: 0.1em solid #000; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);
-	height: 50px;	
+	height: 3.45em;
+	line-height: 3.5em;	
 	width: 100%;
 }
 .navbarContainer ul {
