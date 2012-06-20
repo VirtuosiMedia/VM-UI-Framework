@@ -215,6 +215,9 @@ p {
 			<div class="col4">
 				<p>For small snippets of code, wrap them in the	<code>&lt;code&gt;</code> tag. For longer snippets, 
 					wrap them inside a <code>&lt;pre&gt;</code>	tag.</p>
+				<h6>Syntax Highlighting</h6>
+				<p>Code syntax highlighting can be accomplished by including the 
+					<a href="plugins.html#lighter">Lighter JavaScript plugin</a>.</p> 					
 			</div>
 		</div>
 		<div class="row">
@@ -325,7 +328,60 @@ p {
 					the title and a	<code>&lt;td&gt;</code>	tag for the column-headings in the 
 					<code>&lt;thead&gt;</code>.</p>
 			</div>
-		</div>					
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Forms</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>Creating forms is simple; for most elements, no added classes are necessary for default styling. 
+					However, if you want a form field to be a specific width, give it a class of <code>col1</code>, 
+					<code>col2</code>, etc.</p>
+				<h6>Checkboxes and Radios</h6>
+				<p>Checkboxes and radios are special cases when it comes to styling. They should always be wrapped in a
+					<code>&lt;div&gt;</code> container that has a class of <code>formContainer</code>. This applies 
+					even for checkboxes that appear by themselves.</p>
+				<p>In order to align checkbox and radio labels with the inputs, each checkbox or radio input should be 
+					wrapped with its <code>&lt;label&gt;</code>. The label text should appear either before or after the 
+					<code>&lt;input&gt;</code> element, depending on which side you want it to appear.</p>
+				<h6>Additional Styling</h6>
+				<p>Selects, checkboxes, and radios can be custom-styled using several of our 
+					<a href="plugins.html">JavaScript plugins</a>.</p> 
+			</div>
+			<div class="col8">
+				<form>
+					<h6>Sample Form</h6>
+					<label>Text input</label>
+					<input type="text" class="col6" />
+					<label>Password input</label>
+					<input type="password" class="col6" />
+					<label>File input</label>
+					<input type="file" class="col6" />
+					<label>Textarea</label>
+					<textarea class="col6"></textarea>
+					<label>Select box</label>
+					<select class="col6">
+						<option>Option 1</option>
+						<option>Option 2</option>
+						<option>Option 3</option>
+					</select>
+					<div class="formContainer">
+						<label>Checkboxes</label>
+						<label><input type="checkbox" />Option 1</label>
+						<label><input type="checkbox" />Option 2</label>
+						<label><input type="checkbox" />Option 3</label>
+					</div>
+					<div class="formContainer">
+						<label>Radio buttons</label>
+						<label><input type="radio" name="radio" />Option 1</label>
+						<label><input type="radio" name="radio" />Option 2</label>
+						<label><input type="radio" name="radio" />Option 3</label>
+					</div>
+				</form>
+			</div>
+		</div>									
 	</div>
 </body>
 </html>
