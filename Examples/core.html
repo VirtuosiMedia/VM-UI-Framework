@@ -202,23 +202,6 @@
 					any <code>&lt;ul&gt;</code> element. You will also need to wrap the content of each node, excluding 
 					any child <code>&lt;ul&gt;</code> elements, with a <code>&lt;span&gt;</code> tag and the node list 
 					will be	created automatically.</p>
-				<p><span class="markerWarning">Warning</span> Node lists have a few caveats to using them, so they 
-					won't be suitable for all use cases:</p>
-				<ul>
-					<li>The width of the column must be wide enough to properly display the node hierarchy. A node list 
-						is partially responsive, but still requires a proper amount of space otherwise it may 
-						break.</li>
-					<li>Because of the way node lists create the connecting lines between nodes, you'll want to stick 
-						with solid backgrounds. If you want to change background color from white, you'll have to make 
-						a few adjustments to multiple <code>before</code> and <code>after</code> pseudo-elements.</li>
-					<li>Using multiple parents on the top level works, but it may take a little extra work to make them 
-						look right on sub-levels.</li>
-					<li>On smaller screen sizes, a node list will automatically turn into a tree list.</li> 
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col12">
 				<ul class="node">
 					<li><span>Unrelated</span></li>
 					<li><span>Parent</span><span>Parent</span>
@@ -244,7 +227,20 @@
 							<li><span>Only Child</span></li>
 						</ul>					
 					</li>
-				</ul>			
+				</ul>
+				<p><span class="markerWarning">Warning</span> Node lists have a few caveats to using them, so they 
+					won't be suitable for all use cases:</p>
+				<ul>
+					<li>The width of the column must be wide enough to properly display the node hierarchy. A node list 
+						is partially responsive, but still requires a proper amount of space otherwise it may 
+						break.</li>
+					<li>Because of the way node lists create the connecting lines between nodes, you'll want to stick 
+						with solid backgrounds. If you want to change background color from white, you'll have to make 
+						a few adjustments to multiple <code>before</code> and <code>after</code> pseudo-elements.</li>
+					<li>Using multiple parents on the top level works, but it may take a little extra work to make them 
+						look right on sub-levels.</li>
+					<li>On smaller screen sizes, a node list will automatically turn into a tree list.</li> 
+				</ul>				
 			</div>
 		</div>		
 		<div class="row">
@@ -469,7 +465,101 @@ p {
 					</div>
 				</form>
 			</div>
-		</div>									
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Buttons</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>There are several styles of buttons, each with a specific semantic meaning. You should endeavor to 
+					make consistent use of the button type throughout your application or website. To create a button, 
+					simply add the appropriate button class to the element.</p>
+			</div>
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th>Example</th>
+							<th>Classes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="#" class="button">Button</a></td>
+							<td><code>button</code>, <code>buttonSecondary</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="buttonInfo">Button</a></td>
+							<td><code>buttonInfo</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="buttonSuccess">Button</a></td>
+							<td><code>buttonSuccess</code>, <code>buttonPrimary</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="buttonWarning">Button</a></td>
+							<td><code>buttonWarning</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="buttonError">Button</a></td>
+							<td><code>buttonError</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="buttonInverted">Button</a></td>
+							<td><code>buttonInverted</code></td>
+						</tr>																													
+					</tbody>
+				</table>
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>There are three button sizes: small, medium, and large. To make your button either medium or large, 
+					append the size to your button class. For example, <code>infoButtonLarge</code> or 
+					<code>successButtonMedium</code>. Small buttons are	the default size, so there is no need to append 
+					anything to the end of the class.</p>
+			</div>
+			<div class="col4">
+				<ul class="unlisted">
+					<li>
+						<a href="#" class="button">Button</a> 
+						<a href="#" class="buttonMedium">Button</a> 
+						<a href="#" class="buttonLarge">Button</a>
+					</li>
+					<li>
+						<a href="#" class="buttonInfo">Button</a>
+						<a href="#" class="buttonInfoMedium">Button</a>
+						<a href="#" class="buttonInfoLarge">Button</a>
+					</li>
+					<li>
+						<a href="#" class="buttonSuccess">Button</a> 
+						<a href="#" class="buttonSuccessMedium">Button</a> 
+						<a href="#" class="buttonSuccessLarge">Button</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col3">
+				<ul class="unlisted">
+					<li>
+						<a href="#" class="buttonWarning">Button</a>
+						<a href="#" class="buttonWarningMedium">Button</a>
+						<a href="#" class="buttonWarningLarge">Button</a>
+					</li>
+					<li>
+						<a href="#" class="buttonError">Button</a> 
+						<a href="#" class="buttonErrorMedium">Button</a> 
+						<a href="#" class="buttonErrorLarge">Button</a>
+					</li>
+					<li>
+						<a href="#" class="buttonInverted">Button</a>
+						<a href="#" class="buttonInvertedMedium">Button</a> 
+						<a href="#" class="buttonInvertedLarge">Button</a>
+					</li>																									
+				</ul>
+			</div>			
+		</div>
 	</div>
 </body>
 </html>
