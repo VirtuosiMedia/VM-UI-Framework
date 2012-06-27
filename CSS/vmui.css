@@ -43,6 +43,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	width: 100%;
 }
 .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11 {float: left;}
+[class*="col"] .row [class*="col"]:first-child, [class*="col"] .row {
+	margin-left: 0px;
+	overflow: auto;
+}
 
 /**
  * Grid-system - 100% columns based on less than 768 pixel width, assuming 20px margins (smartphones and tablets)
@@ -233,8 +237,13 @@ a:hover, a:visited {color: #069;}
 /**
  * Lists
  */
-.unlisted {list-style: none;}
+.unlisted, .horizontal {list-style: none;}
 ul, ol {margin: 0em 0em 1.75em 2.5em;}
+.flush, .horizontal {margin-left: 0;}
+.horizontal li {
+	float: left;
+	margin-right: 1em;
+}
 ul ul, ol ol {margin-bottom: 0em;}
 dl {margin-bottom: 1.75em;}
 dt {
