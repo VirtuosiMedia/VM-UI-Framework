@@ -41,9 +41,11 @@ var CheckboxReplace = new Class({
 				'name':box.get('name'),
 				'tabindex':box.get('tabindex'),
 				events: {
-					'click': function(){
+					'click': function(){ 
 						box.checked = (box.checked) ? true : false;
-						$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+						if (box.getParent('label')){
+							$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+						}
 						box.fireEvent('change');
 					},
 					'focus': function(){
