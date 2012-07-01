@@ -878,3 +878,34 @@ span.markerError {background: #FF6A6A;}
 .right {float: right;}
 .left {float: left;}
 body .skipBottom {margin-bottom: 0;}
+
+/**
+ * JavaScript Plugins
+ */
+ 
+/**
+ * Checkbox Replace
+ */
+.checked, .unchecked {
+	border: #222 solid 0.15em;
+	border-radius: 2px;
+	bottom: -0.15em;
+	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
+	box-shadow: inset 2px 2px 3px #E9E9E9;	
+	display: inline-block;
+	height: 0.8em;
+	position: relative;
+	width: 0.8em;
+}
+.checked.active, .unchecked.active {
+	border-left-color: #CCC;
+	outline: none;
+}
+.checked::before {
+	color: #4D9E0C;
+	content: '\2713';
+	font-size: 1.3em;
+	font-weight: bold;
+	position: absolute;
+	top: -0.5em;
+}
