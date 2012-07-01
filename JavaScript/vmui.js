@@ -12,8 +12,8 @@ var VMUI = new Class({
 
 	options: {
 		assets: [
-		         {source: 'Form/Replace/Checkbox.js', selectors: 'input[type=checkbox]'},
-		         {source: 'Form/Replace/Select.js', selectors: 'select'}
+		         {name: 'CheckboxReplace', source: 'Form/Replace/Checkbox.js', selectors: 'input[type=checkbox]'},
+		         {name: 'SelectReplace', source: 'Form/Replace/Select.js', selectors: 'select'}
 		],
 		relativePath: '../JavaScript'
 		
@@ -31,7 +31,11 @@ var VMUI = new Class({
 		var self = this;
 		Array.each(this.options.assets, function(script){
 			if ($$(script.selectors).length){
-				 Asset.javascript(self.options.relativePath+'/'+script.source);
+				 Asset.javascript(self.options.relativePath+'/'+script.source, {
+					 onLoad: function(){
+						 var plugin = new window[script.name](script.selectors);						 
+					 }
+				 });
 			}
 		});
 	}
