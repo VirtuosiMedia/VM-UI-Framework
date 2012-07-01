@@ -42,7 +42,8 @@ var CheckboxReplace = new Class({
 				'tabindex':box.get('tabindex'),
 				events: {
 					'click': function(){
-						box.checked = (box.checked) ? false : true;
+						box.checked = (box.checked) ? true : false;
+						$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 						box.fireEvent('change');
 					},
 					'focus': function(){
