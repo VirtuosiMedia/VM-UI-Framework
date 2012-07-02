@@ -13,6 +13,7 @@ var VMUI = new Class({
 	options: {
 		assets: [
 		         {name: 'CheckboxReplace', source: 'Form/Replace/Checkbox.js', selectors: 'input[type=checkbox]'},
+		         {name: 'RadioReplace', source: 'Form/Replace/Radio.js', selectors: 'input[type=radio]'},
 		         {name: 'SelectReplace', source: 'Form/Replace/Select.js', selectors: 'select'}
 		],
 		relativePath: '../JavaScript'
