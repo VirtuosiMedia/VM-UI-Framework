@@ -884,7 +884,7 @@ body .skipBottom {margin-bottom: 0;}
  */
  
 /**
- * Checkbox Replace
+ * Checkbox, Radio Replace
  */
 .checked, .unchecked {
 	border: #222 solid 0.15em;
@@ -909,3 +909,4 @@ body .skipBottom {margin-bottom: 0;}
 	position: absolute;
 	top: -0.5em;
 }
+input[type=radio] + .checked, input[type=radio] + .unchecked {border-radius: 0.6em;}
