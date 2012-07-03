@@ -8,7 +8,7 @@
 * Documentation: http://www.virtuosimedia.com
 * Requirements: MooTools 1.4 Core - See http://mootools.net
 */
-var FormReplaceSelect = new Class({
+var SelectReplace = new Class({
 
 	Implements: [Events, Options],
 
@@ -204,14 +204,14 @@ var FormReplaceSelect = new Class({
 
 	expandList: function(index){
 		var dimensions = this.triggers[index].getCoordinates();
-		this.lists[index].setStyles({'display':'block', 'left':dimensions.left, 'min-width':(dimensions.width - 2)});
+		this.lists[index].setStyles({'display':'block', 'left':dimensions.left, 'min-width':(dimensions.width - 4)});
 		var listBottom = dimensions.bottom + this.lists[index].getSize().y;
 		var listTop = dimensions.top - this.lists[index].getSize().y;
 		if ((listBottom > (window.innerHeight + window.getScroll().y))&&(listTop > window.getScroll().y)){
-			this.lists[index].setStyle('top', dimensions.top - this.lists[index].getSize().y).removeClass('down').addClass('up');
+			this.lists[index].setStyle('top', dimensions.top - this.lists[index].getSize().y +2).removeClass('down').addClass('up');
 			var direction = 'up';
 		} else {
-			this.lists[index].setStyle('top', dimensions.bottom).removeClass('up').addClass('down');
+			this.lists[index].setStyle('top', dimensions.bottom -2).removeClass('up').addClass('down');
 			var direction = 'down';
 		}
 		this.triggers[index].getElement('.'+this.options.triggerClass).set('html', this.options.triggerActiveHtml);
