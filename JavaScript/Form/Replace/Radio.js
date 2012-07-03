@@ -25,13 +25,13 @@ var RadioReplace = new Class({
 	 */
 	initialize: function(selector, options){
 		this.setOptions(options);
-		this.checkboxes = $$(selector);
-		this.replaceCheckboxes();
+		this.radios = $$(selector);
+		this.replaceRadios();
 	},
 
-	replaceCheckboxes: function(){
+	replaceRadios: function(){
 		var self = this;
-		Array.each(this.checkboxes, function(box){
+		Array.each(this.radios, function(box){
 			var replaceId = (box.get('id')) ? box.get('id')+'Replace' : box.get('name')+'Replace';
 			var replaceClass = (box.checked) ? self.options.checkedClass : self.options.uncheckedClass;
 			replaceClass = (self.options.cloneClasses) ? replaceClass+' '+box.get('class') : replaceClass;
@@ -63,8 +63,9 @@ var RadioReplace = new Class({
 				}
 			}).inject(box, 'after');
 			box.addEvent('change', function(e){
-				$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
-			}).setStyle('display', 'block');
+				$$('input[name='+this.get('name')+'] + .checked').set('class', self.options.uncheckedClass);
+				$$('input[value='+this.get('value')+'] + .unchecked').set('class', self.options.checkedClass);
+			}).setStyle('display', 'none');
 		});
 	}
 });
