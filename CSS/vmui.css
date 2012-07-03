@@ -909,4 +909,58 @@ body .skipBottom {margin-bottom: 0;}
 	position: absolute;
 	top: -0.5em;
 }
-input[type=radio] + .checked, input[type=radio] + .unchecked {border-radius: 0.6em;}
+input[type=radio] + .checked, input[type=radio] + .unchecked {
+	border-radius: 0.6em;
+	outline: none;
+}
+
+/**
+ * Select Replace
+ */
+.selectContainer, .checkboxGroupContainer {
+	clear: left;
+	color: #333;
+	cursor: pointer;
+	background: #FFF;
+	border: 0.15em solid #222;
+	border-radius: 2px;
+	float:left;
+	height: 2.2em;
+	line-height: 2.2em;
+	padding: 0 0.5em 0 0em;
+	text-indent: 0.5em;
+	width:auto; 
+}
+.selectContainer.active {
+	border-color-left: #CCC;
+	outline: none;
+}
+.selectContainer .display, .checkboxGroupContainer .display {float: left;}
+.trigger {
+	clear: none;
+	display: block;
+	float: left;
+	width: 17px;	
+}
+.selectContainer.expanded.down {border-radius: 2px 2px 0px 0px;}
+.selectContainer.expanded.up {border-radius: 0px 0px 2px 2px;}
+.selectList, .checkSelectList, .content .selectList {
+	background: #FFF;
+	border: 0.15em solid #222;
+	list-style: none;
+	margin-left: 0px;
+	z-index: 100;
+}
+.selectList.up, .checkSelectList.up {border-radius: 2px 2px 0px 0px;}
+.selectList.down, .checkSelectList.down {border-radius: 0px 0px 2px 2px;}
+.selectList li, .checkSelectList li {
+	cursor: pointer;
+	height: 2.2em;
+	line-height: 2.2em;
+	text-indent: 0.5em;	
+}
+.selectList li:hover, li.activeLi, .checkSelectList li:hover, .checkSelectList li:hover label {
+	background:#09F;
+	color:#FFF;
+	text-shadow:none;
+}
