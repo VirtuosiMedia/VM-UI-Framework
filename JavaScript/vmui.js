@@ -34,6 +34,7 @@ var VMUI = new Class({
 			if ($$(script.selectors).length){
 				 Asset.javascript(self.options.relativePath+'/'+script.source, {
 					 onLoad: function(){
+						 console.log(script.name);
 						 var plugin = new window[script.name](script.selectors);						 
 					 }
 				 });
