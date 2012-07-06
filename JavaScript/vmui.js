@@ -14,7 +14,8 @@ var VMUI = new Class({
 		assets: [
 		         {name: 'CheckboxReplace', source: 'Form/Replace/Checkbox.js', selectors: 'input[type=checkbox]'},
 		         {name: 'RadioReplace', source: 'Form/Replace/Radio.js', selectors: 'input[type=radio]'},
-		         {name: 'SelectReplace', source: 'Form/Replace/Select.js', selectors: 'select'}
+		         {name: 'SelectReplace', source: 'Form/Replace/Select.js', selectors: 'select'},
+		         //{name: 'Lighter', source: 'Lighter/Lighter.js', selectors: 'pre'},
 		],
 		relativePath: '../JavaScript'
 		
@@ -31,11 +32,15 @@ var VMUI = new Class({
 	loadScripts: function(){
 		var self = this;
 		Array.each(this.options.assets, function(script){
-			if ($$(script.selectors).length){
-				 Asset.javascript(self.options.relativePath+'/'+script.source, {
+			if ($$(script.selectors).length){		
+				Asset.javascript(self.options.relativePath+'/'+script.source, {
 					 onLoad: function(){
-						 console.log(script.name);
-						 var plugin = new window[script.name](script.selectors);						 
+						 if (script.name == 'Lighter'){
+							Asset.javascript(self.options.relativePath+'/Lighter/Loader.js');			
+							$$('pre').light();
+						 } else {
+							 var plugin = new window[script.name](script.selectors);
+						 }
 					 }
 				 });
 			}
@@ -45,4 +50,18 @@ var VMUI = new Class({
 
 window.addEvent('domready', function() {
 	var loader = new VMUI();
+
+	var lighter = new Lighter({
+		loader:   new Loader({
+			stylesheets: '../JavaScript/Lighter/',
+//			scripts:     '../Build/Fuels/'
+		}),
+		parser:   new Parser.Smart({ strict: true }),
+		compiler: new Compiler.List(),
+		mode: 'ol'
+	});
+
+	$$('pre').each(function(el) {
+		lighter.light(el);
+	});
 });

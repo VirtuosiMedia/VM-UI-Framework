@@ -6,7 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
 	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Lighter.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Loader.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Parser.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Parser/Smart.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Parser/Lazy.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Compiler.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Compiler/List.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Fuel.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Wick.js" type="text/javascript"></script>
+	<script src="../JavaScript/Lighter/Fuel/Html.js" type="text/javascript"></script>
 	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	
 </head>
 <body>
 	<div class="navbarContainer">
@@ -28,7 +39,7 @@
 		<div class="row">
 			<div class="col12">
 				<h1 class="pageTitle">JavaScript Plugins</h1>
-				<h2>Form Element Replacements</h2>
+				<h2 class="title">Form Element Replacements</h2>
 				<p>VM UI Framework offers automatic replacements for all of the tough-to-style form elements, allowing 
 					for a consistent and stylable interface across all browsers. All are completely keyboard 
 					accessible and should work as drop-in replacements for their regular form element counterparts.</p>
@@ -56,6 +67,37 @@
 				</select>			
 			</div>						
 		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Code Syntax Highlighting</h2>
+				<p>There are two types of syntax highlighting available: static and dynamic. Static will convert any 
+					<code>&lt;pre&gt;</code> elements into highlighted source code, while dynamic highlighting will 
+					convert a textarea into a live editor.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h6>Static Syntax Highlighting</h6>
+<pre class="html">
+&lt;h1&gt;Title goes here&lt;/h1&gt;
+&lt;p&gt;Hello World&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;One&lt;/li&gt;
+	&lt;li&gt;Two&lt;/li&gt;
+	&lt;li&gt;Three&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<pre class="html">
+<h1>Title</h1>
+<p>Hello World</p>
+<ul class="list">
+	<li>One</li>
+	<li>Two</li>
+	<li>Three</li>
+</ul>
+</pre>
+			</div>
+		</div>		
 	</div>
 </body>
 </html>
