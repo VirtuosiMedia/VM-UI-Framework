@@ -15,6 +15,7 @@ var VMUI = new Class({
 		         {name: 'CheckboxReplace', source: 'Form/Replace/Checkbox.js', selectors: 'input[type=checkbox]'},
 		         {name: 'RadioReplace', source: 'Form/Replace/Radio.js', selectors: 'input[type=radio]'},
 		         {name: 'SelectReplace', source: 'Form/Replace/Select.js', selectors: 'select'},
+		         {name: 'Highlighter', source: 'Code/Highlighter.js', selectors: 'pre'},
 		         //{name: 'Lighter', source: 'Lighter/Lighter.js', selectors: 'pre'},
 		],
 		relativePath: '../JavaScript'
@@ -50,7 +51,7 @@ var VMUI = new Class({
 
 window.addEvent('domready', function() {
 	var loader = new VMUI();
-
+/*
 	var lighter = new Lighter({
 		loader:   new Loader({
 			stylesheets: '../JavaScript/Lighter/',
@@ -64,4 +65,5 @@ window.addEvent('domready', function() {
 	$$('pre').each(function(el) {
 		lighter.light(el);
 	});
+//*/
 });
