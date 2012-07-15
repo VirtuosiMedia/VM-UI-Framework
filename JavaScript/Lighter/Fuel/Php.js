@@ -54,8 +54,8 @@ Fuel.php = new Class({
             'functions':     { pattern: this.common.functionCalls, alias: 'me1' },
             'constants':     { pattern: /\b[A-Za-z_][\w]*\b/g,     alias: 'kw4' },
             'methods':       { pattern: /->([\w]+)/gim,            alias: 'kw3' },
-            'brackets':      { pattern: this.common.brackets,      alias: 'br0' }
-            //'symbols':     { pattern: /!|@|%|&|\||\/|<|>|=|-|\+|\*|\.|:|,|;/g, alias: 'sy0' }
+            'brackets':      { pattern: this.common.brackets,      alias: 'br0' },
+            'symbols':     { pattern: /!|@|%|&|\||\/|<|>|=|-|\+|\*|\.|:|,|;/g, alias: 'sy0' }
         };
         
         // Delimiters

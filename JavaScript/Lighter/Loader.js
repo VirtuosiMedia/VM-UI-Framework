@@ -50,14 +50,6 @@ var Loader = this.Loader = new Class({
         return this;
     },
     
-    loadFlame: function(flame)
-    {
-        var fileName = 'Flame/' + flame + '.css?' + Date.now();
-        this.loadStylesheet(fileName, flame);
-        
-        return this;
-    },
-
     loadFuel: function(fuel, onLoad, onError)
     {
         if (typeof(Fuel[fuel]) == 'function' && typeof(Fuel[fuel].prototype) == 'object') {

@@ -118,16 +118,10 @@ var Lighter = this.Lighter = new Class({
         }
 
         // Load fuel/flame to and build lighter when ready.
-        this.loader.loadFlame(flame);
         this.loader.loadFuel(fuel, function() {
             
-        	if (fuel == 'html'){
-        		console.log(code)
-        		fuel = new Fuel[fuel](code, {});
-        	} else {
-        		fuel = new Fuel[fuel]({});
-        	}
-            
+        	fuel = new Fuel[fuel]({});
+         
             var wicks   = this.parser.parse(fuel, code),
                 lighter = this.compiler.compile(fuel, flame, wicks);
             
