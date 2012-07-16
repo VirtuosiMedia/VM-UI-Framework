@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col12">
+			<div class="col6">
 				<h6>Plugin Loader Customization</h6>
 				<p>Since VM UI Framework uses MooTools, it follows a one class per file convention. Once a file 
 					is loaded, its class is also automatically instantiated and passed the CSS selectors it 
@@ -63,6 +63,17 @@
 					need to edit the relative path to indicate the path of your Javscript files relative to the page 
 					calling them. If your JavaScript files aren't in the <code>../JavaScript</code> directory, just 
 					edit the <code>relativePath</code> option in <code>vmui.js</code>.</p>
+			</div>
+			<div class="col6">
+				<h6>Increasing Plugin Performance</h6>
+				<p>Because each plugin is loaded dynamically after the page is loaded, there may be a slight delay 
+					between the page load and when the plugin is activated. For plugins that manipulate visible page 
+					elements, this could cause a slight flicker before the plugin activates, depending on connection 
+					and download speeds.</p>
+				<p>To minimize or avoid the visible flicker, you can manually load the plugin file in the document 
+					<code>&lt;head&gt;</code> before loading <code>vmui.js</code>. There shouldn't be any need to 
+					activate the plugin, it will still be instantiated automatically. Again, no file will be 
+					double-loaded.</p> 
 			</div>
 		</div>
 		<div class="row">
