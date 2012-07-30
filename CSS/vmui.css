@@ -521,6 +521,7 @@ th, tfoot {
 }
 thead td {background: #CCC;}
 th, td {padding: 0px 8px;}
+th[class^=col], td[class^=col] {margin-left: 0;} 
 tbody tr {
 	transition: all .2s linear;
    	-moz-transition: all .2s linear;
@@ -621,7 +622,7 @@ select {
 	background: #0077AA;
 	color: #FFF;
 }
-[class^="buttonSuccess"] {
+[class^="buttonSuccess"], [class^="buttonPrimary"] {
 	background: #56AF08; 
 	background: -moz-linear-gradient(top, #56AF08 0%, #4D9E0C 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#56AF08), color-stop(100%,#4D9E0C)); 
@@ -635,7 +636,7 @@ select {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56AF08', endColorstr='#4D9E0C',GradientType=0);
 	text-shadow: -1px -1px 1px #235003; 
 }
-[class^="buttonSuccess"]:hover {
+[class^="buttonSuccess"]:hover, [class^="buttonPrimary"]:hover {
 	background: #4D9E0C;
 	color: #FFF; 
 }
@@ -754,6 +755,104 @@ img {
 	height: auto;
 	width: 100%;
 }
+
+/**
+ * Icon Font
+ */
+@font-face {
+	font-family: 'VM-UI-Icons';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../Fonts/VM-UI-Icons.eot');
+	src: url('../Fonts/VM-UI-Icons.eot?#iefix') format('embedded-opentype'),
+		url('../Fonts/VM-UI-Icons.svg#VM-UI-Icons') format('svg'),
+		url('../Fonts/VM-UI-Icons.woff') format('woff'),
+		url('../Fonts/VM-UI-Icons.ttf') format('truetype');	
+} 
+
+/**
+ * Icons, Types
+ */
+[class^="icon"]:before, [class^="iconMedium"]:before, [class^="iconLarge"]:before {
+	font-family: 'VM-UI-Icons';
+	font-style: normal;
+	speak: none;
+}
+[class^="iconMedium"]:before {font-size: 1.25em;}
+[class^="iconLarge"]:before {font-size: 1.5em;}
+
+/**
+ * Icons, Alphabetical
+ */
+[class$="ArrowDiagonalBackward"]:before {content: "\e13e";}
+[class$="ArrowDiagonalForward"]:before {content: "\e13d" !important;}
+[class$="ArrowDown"]:before {content: "\e13c";}
+[class$="ArrowEW"]:before {content: "\e13b";}
+[class$="ArrowLeft"]:before {content: "\e13a";}
+[class$="ArrowMulti"]:before {content: "\e139";}
+[class$="ArrowMultiDiagonal"]:before {content: "\e138";}
+[class$="ArrowNS"]:before {content: "\e137";}
+[class$="ArrowRight"]:before {content: "\e136";}
+[class$="ArrowUp"]:before {content: "\e135";}
+[class$="BarAsc1"]:before {content: "\e133";}
+[class$="BarAsc2"]:before {content: "\e132";}
+[class$="BarDesc1"]:before {content: "\e131";}
+[class$="BarDesc2"]:before {content: "\e130";}
+[class$="ChevronDown"]:before {content: "\e117";}
+[class$="ChevronLeft"]:before {content: "\e116";}
+[class$="ChevronRight"]:before {content: "\e115";}
+[class$="ChevronUp"]:before {content: "\e114";}
+[class$="Chrome"]:before {content: "\e113";}
+[class$="Circle"]:before {content: "\e112";}
+[class$="CircleHalfLeft"]:before {content: "\e111";}
+[class$="CircleHalfRight"]:before {content: "\e110";}
+[class$="CircleOpen"]:before {content: "\e10f";}
+[class$="CircleOpenQuarterLeft"]:before {content: "\e10e";}
+[class$="CircleOpenQuarterRight"]:before {content: "\e10d";}
+[class$="CircleQuarterLeft"]:before {content: "\e10c";}
+[class$="CircleQuarterRight"]:before {content: "\e10b";}
+[class$="CloudDown"]:before {content: "\e107";}
+[class$="CloudUp"]:before {content: "\e106";}
+[class$="Compass"]:before {content: "\e0fd";}
+[class$="Cursor"]:before {content: "\e0f6";}
+[class$="Download"]:before {content: "\e0e9";}
+[class$="End"]:before {content: "\e0e1";}
+[class$="Firefox"]:before {content: "\e0ae";}
+[class$="Forward"]:before {content: "\e0a4";}
+[class$="FullScreen"]:before {content: "\e0a3";}
+[class$="Gps"]:before {content: "\e09d";}
+[class$="GraphDown"]:before {content: "\e09c";}
+[class$="GraphUp"]:before {content: "\e09b";}
+[class$="Ie"]:before {content: "\e094";}
+[class$="LinkExternal"]:before {content: "\e081";}
+[class$="MinimizeScreen"]:before {content: "\e077";}
+[class$="Opera"]:before {content: "\e06b";}
+[class$="PieChart"]:before {content: "\e062";}
+[class$="Reconnect"]:before {content: "\e055";}
+[class$="Redo"]:before {content: "\e053";}
+[class$="Refresh"]:before {content: "\e052";}
+[class$="Reload"]:before {content: "\e051";}
+[class$="Rewind"]:before {content: "\e04f";}
+[class$="Rss"]:before {content: "\e04b";}
+[class$="Safari"]:before {content: "\e049";}
+[class$="Settings1"]:before {content: "\e045";}
+[class$="Settings2"]:before {content: "\e044";}
+[class$="Signal1"]:before {content: "\e040";}
+[class$="Signal2"]:before {content: "\e03f";}
+[class$="Signal3"]:before {content: "\e03e";}
+[class$="Signal4"]:before {content: "\e03d";}
+[class$="Shuffle"]:before {content: "\e041";}
+[class$="Star"]:before {content: "\e036";}
+[class$="StarEmpty"]:before {content: "\e035";}
+[class$="Start"]:before {content: "\e033";}
+[class$="TriangleUp"]:before {content: "\e01f";}
+[class$="TriangleDown"]:before {content: "\e022";}
+[class$="TriangleLeft"]:before {content: "\e021";}
+[class$="TriangleRight"]:before {content: "\e020";}
+[class$="Undo"]:before {content: "\e017";}
+[class$="Upload"]:before {content: "\e014";}
+[class$="World"]:before {content: "\e004";}
+[class$="Wrench"]:before {content: "\e003";}
 
 /**
  * Featured Content
