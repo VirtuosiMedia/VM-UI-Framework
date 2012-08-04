@@ -35,7 +35,9 @@
 				<ol>
 					<li>Icons can be scaled to any size without sacrificing image quality.</li>
 					<li>Text effects including color, text-shadow, font-size, etc. can be applied to font icons.</li>
-					<li>One download for all icons can minimize the total page size.</li> 
+					<li>One download for all icons can minimize the total page size and reduce the number of resources 
+						loaded.</li> 
+					<li>Icon fonts can be compressed, whereas images cannot.</li>
 				</ol> 
 				<h2>Usage</h2>
 			</div>
@@ -78,6 +80,13 @@
 						</tr>												
 					</tbody>
 				</table>
+				<h6>Font Compression</h6>
+				<p>All font files can and should be compressed using Gzip compression, with the exception of files in 
+					the WOFF format. File size savings can be up to 40-70%. See Stoyan Stefanov's article, 
+					<a href="http://www.phpied.com/gzip-your-font-face-files/">Gzip your @font-face files</a>, and 
+					Steve Souder's article,
+					<a href="http://www.stevesouders.com/blog/2009/10/13/font-face-and-performance/">@font-face and 
+					performance</a>, for more information.</p>
 			</div>
 			<div class="col6">
 				<h6>Example</h6>
