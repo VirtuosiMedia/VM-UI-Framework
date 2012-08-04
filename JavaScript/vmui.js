@@ -33,7 +33,7 @@ var VMUI = new Class({
 		var self = this;
 		Array.each(this.options.assets, function(script){
 			if ($$(script.selectors).length){
-				if (self.checkLoaded(script.source)){
+				if (self.checkExists(script.name)){
 					Asset.javascript(self.options.relativePath+'/'+script.source, {
 						 onLoad: function(){
 							 if (script.name == 'Lighter'){
@@ -50,8 +50,8 @@ var VMUI = new Class({
 		});
 	},
 
-	checkLoaded: function(script){
-		return ($$('script[src='+this.options.relativePath+'/'+script+']').length == 0);
+	checkExists: function(name){
+		return (typeof name !== 'undefined');
 	},
 	
 	loadLighter: function(selectors){
@@ -71,7 +71,7 @@ var VMUI = new Class({
 		var self = this;
 		var last = assets.length;
 		if (index != last){		
-			if (self.checkLoaded(assets[index])){
+			if (self.checkExists(assets[index])){
 				Asset.javascript(self.options.relativePath+'/'+assets[index], {
 					onLoad: function(){
 						index++;
