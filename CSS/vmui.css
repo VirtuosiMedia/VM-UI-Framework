@@ -1306,6 +1306,7 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	border: 0.15em solid #222;
 	list-style: none;
 	margin-left: 0px;
+	max-height: 8em;
 	z-index: 100;
 }
 .selectList.up, .checkSelectList.up {border-radius: 2px 2px 0px 0px;}
@@ -1321,6 +1322,24 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	color:#FFF;
 	text-shadow:none;
 }
+.selectList li.selectOptgroup {height: auto;}
+.selectList li.selectOptgroup:hover {
+	background: none;
+	color: #000;
+	cursor: default;
+}
+.selectOptgroup span {
+	color: #999;
+	font-style: italic; 
+	font-weight: bold; 
+}
+.selectOptgroup ul {
+	list-style: none; 
+	margin: 0px; 
+	padding: 0px;
+}
+.selectList .selectOptgroup li {text-indent: 1em;}
+
 
 /**
  * Syntax Highligher
