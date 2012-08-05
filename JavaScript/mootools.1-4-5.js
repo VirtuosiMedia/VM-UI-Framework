@@ -691,3 +691,53 @@ for(var i in d){h[d[i]]=f.page[i]+this.options.offset[i];if(h[d[i]]<0){e[i]=true
 e[i+"2"]=true;}}this.fireEvent("bound",e);this.tip.setStyles(h);},fill:function(b,c){if(typeof c=="string"){b.set("html",c);}else{b.adopt(c);}},show:function(b){if(!this.tip){document.id(this);
 }if(!this.tip.getParent()){this.tip.inject(document.body);}this.fireEvent("show",[this.tip,b]);},hide:function(b){if(!this.tip){document.id(this);}this.fireEvent("hide",[this.tip,b]);
 }});})();
+
+/**
+ * Element Data functions are meant to interact with data attributes of an element 
+ * Copyright Virtuosi Media, Inc. 2012
+ * MIT License
+ */
+Element.implement({
+	
+	/**
+	 * @param string attribute - The name of the data attribute, without the preceding "data-", for which a value should 
+	 * 	be retrieved
+	 * @returns string - The value of the data attribute 
+	 */
+	getData: function(attribute){
+		return this.get('data-'+attribute);
+	},	
+	
+	/**
+	 * @returns object - An object with the shortened attribute name (without "data-") as the key, the attribute value 
+	 * 	as the value for all data attributes
+	 */
+	getDataAll: function(){
+		data = {};
+		Array.each(this.attributes, function(attr){
+			if (attr.nodeName.test(/^data-/)){
+				data[attr.nodeName.substring(5)] = attr.nodeValue;
+			}
+		});
+		return data;
+	},
+
+	/**
+	 * @param string attribute - The name of the data attribute to set, minus the "data-"
+	 * @param mixed - The value of the data attribute
+	 */
+	setData: function(attribute, value){
+		this.set('data-'+attribute, value);
+	},	
+	
+	/**
+	 * @param object - An object with the shortened attribute name (without "data-") as the key, the attribute value 
+	 * 	as the value for multiple data attributes
+	 */
+	setDataMultiple: function(data){
+		var self = this;
+		Object.each(data, function(value, attribute){
+			self.set('data-'+attribute, value);
+		});
+	}
+});
