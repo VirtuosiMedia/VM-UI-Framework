@@ -1340,6 +1340,68 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 }
 .selectList .selectOptgroup li {text-indent: 1em;}
 
+/**
+ * Tabs
+ */
+.tabs, .tabsVertical {
+	float: left;
+	list-style: none;
+	margin: 0;
+}
+.tabs li {
+	float: left; 
+	position: relative;
+}
+.tabs a, .tabsVertical a {
+	background: #FFF;
+	border-left: 0.15em solid #000;
+	border-top: 0.15em solid #000;
+	padding: 0.3em 1em;
+	text-decoration: none;
+}
+.tabs a.active {
+	color: #666;
+	padding-bottom: 0.45em;
+}
+.tabs li:first-child a, .tabsVertical li:first-child a {border-top-left-radius: 4px;}
+.tabs li:last-child a {
+	border-right: 0.15em solid #000;
+	border-top-right-radius: 4px;
+}
+.tabContent {
+	border: 0.15em solid #000;
+	border-radius: 0px 4px 4px 4px;
+	box-sizing: border-box;
+	clear: both;
+	margin-bottom: 1.75em;
+	padding: 1em;
+}
+.tabContent > div {display: none;}
+.tabContent .active  {display: block;}
+.tabsVertical {
+	display: block;
+	width: 20%;
+}
+.tabsVertical li {position: relative;}
+.tabsVertical a {
+	box-sizing: border-box;	
+	display: block;
+	width: 100%;
+}
+.tabsVertical a.active {
+	box-sizing: content-box;
+	padding-right: 0em; 
+	width: 95%;
+}
+.tabsVertical + .tabContent {
+	clear: none;
+	float: left;
+	width: 80%;
+}
+.tabsVertical li:last-child a {
+	border-bottom: 0.15em solid #000;
+	border-bottom-left-radius: 4px;
+}
 
 /**
  * Syntax Highligher
