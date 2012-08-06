@@ -32,21 +32,26 @@ var Tabs = new Class({
 			if (!history) { e.stop(); }
 			links.removeClass('active');
 			this.set('class', 'active');
-			self.loadTab(this.get('href').substring(1), this.getData('targetUrl'));
+			self.loadTab(this);
 		});
 	},
 	
-	loadTab: function(tabId, targetUrl){
+	loadTab: function(tab){
+		var tabId = tab.get('href').substring(1);
 		$(tabId).getSiblings().removeClass('active');
 		$(tabId).addClass('active');
-		if (targetUrl){
+		this.loadAjaxTab(tab, tabId);
+	},
+	
+	loadAjaxTab: function(tab, tabId){
+		var targetUrl = tab.getData('targetUrl');
+		if (targetUrl.test(/^[^http]/)){
 			$(tabId).set('load', {
 				evalScripts: true,
 				onRequest: function(){
-					console.log(targetUrl);
 					$(tabId).set('html', '<p>Loading...</p>');
 				},
-				onSuccess: function(responseText, a, responseHTML){
+				onSuccess: function(responseText, responseElements, responseHTML){
 					$(tabId).set('html', responseHTML);
 				},
 				onFailure: function(){
@@ -54,6 +59,11 @@ var Tabs = new Class({
 				}
 			});
 			$(tabId).load(targetUrl);
-		}
+		} else if (targetUrl.test(/^http/)){
+			var content = new Element('iframe', {
+				'src': targetUrl
+			});
+			$(tabId).empty().adopt(content);
+		}		
 	}
 });
