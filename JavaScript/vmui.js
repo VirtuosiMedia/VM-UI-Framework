@@ -15,7 +15,8 @@ var VMUI = new Class({
 		         {name:'CheckboxReplace', source:'Form/Replace/Checkbox.js', selectors:'input[type=checkbox]'},
 		         {name:'RadioReplace', source:'Form/Replace/Radio.js', selectors:'input[type=radio]'},
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
-		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'}
+		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
+		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
 		],
 		relativePath: '../JavaScript'
 		
@@ -53,7 +54,7 @@ var VMUI = new Class({
 	checkExists: function(name){
 		return (typeof name !== 'undefined');
 	},
-	
+
 	loadLighter: function(selectors){
 		var self = this;
 		var assets = [
