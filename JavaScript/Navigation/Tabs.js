@@ -17,20 +17,20 @@ var Tabs = new Class({
 	 */
 	initialize: function(selectors){
 		var self = this;
+		this.cachedTabs = [];
 		Array.each($$(selectors), function(tabMenu){
-			self.triggerTabMenu(tabMenu);
+			self.triggerTabMenu(tabMenu, selectors);
 		});
 	},
 	
-	triggerTabMenu: function(tabMenu){
+	triggerTabMenu: function(tabMenu, selectors){
 		var trigger = (tabMenu.getData('trigger')) ? tabMenu.getData('trigger') : 'click';
 		var history = (tabMenu.getData('history')) ? tabMenu.getData('history') : false;
-		var links = tabMenu.getChildren('li a');
 		var self = this;
 
-		links.addEvent(trigger, function(e){
+		$$(selectors).addEvent(trigger+':relay(li a)', function(e){
 			if (!history) { e.stop(); }
-			links.removeClass('active');
+			this.getParent('ul').getChildren('li a').removeClass('active');
 			this.set('class', 'active');
 			self.loadTab(this);
 		});
@@ -40,12 +40,13 @@ var Tabs = new Class({
 		var tabId = tab.get('href').substring(1);
 		$(tabId).getSiblings().removeClass('active');
 		$(tabId).addClass('active');
-		this.loadAjaxTab(tab, tabId);
+		if (!this.cachedTabs.contains(tabId)){
+			this.loadAjaxTab(tab, tabId, tab.getData('targetUrl'));
+		}
 	},
 	
-	loadAjaxTab: function(tab, tabId){
-		var targetUrl = tab.getData('targetUrl');
-		if (targetUrl.test(/^[^http]/)){
+	loadAjaxTab: function(tab, tabId, targetUrl){
+		if ((targetUrl)&&(targetUrl.test(/^[^http]/))){
 			$(tabId).set('load', {
 				evalScripts: true,
 				onRequest: function(){
@@ -59,11 +60,13 @@ var Tabs = new Class({
 				}
 			});
 			$(tabId).load(targetUrl);
-		} else if (targetUrl.test(/^http/)){
+			this.cachedTabs.push(tabId);
+		} else if ((targetUrl)&&(targetUrl.test(/^http/))){
 			var content = new Element('iframe', {
 				'src': targetUrl
 			});
 			$(tabId).empty().adopt(content);
+			this.cachedTabs.push(tabId);
 		}		
 	}
 });
