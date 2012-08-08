@@ -1388,10 +1388,16 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	display: block;
 	width: 100%;
 }
-.tabsVertical a.active {
-	box-sizing: content-box;
-	padding-right: 0em; 
-	width: 95%;
+.tabsVertical a.active {position: relative;}
+.tabsVertical a.active:after {
+	background: #FFF;
+	content: '';
+	display: block;
+	height: 2.35em;
+	position: absolute;
+	right: -0.3em;
+	top: 0px;
+	width: 0.5em;
 }
 .tabsVertical + .tabContent {
 	clear: none;
