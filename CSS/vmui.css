@@ -1415,7 +1415,31 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 }
 
 /**
- * Syntax Highligher
+ * Charts
+ */
+.chart, .chart > svg {
+	height: 65%;
+    width: 100%;
+}
+.chart > svg {border: 0.1em solid black;}
+.chartAxis {
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
+	height: 65%;
+}
+.dataPoint:hover {
+	cursor: pointer;
+	fill: red;
+	r: 7;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-webkit-transition: all 500ms ease;
+	transition: all 500ms ease;	
+}
+
+/**
+ * Syntax Highlighter
  */
 .standardLighter {
 	border: 0.15em solid #222;
