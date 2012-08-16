@@ -12,8 +12,7 @@ var Tabs = new Class({
 	Implements: [Events, Options],
 
 	/**
-	 * @param string - selector - The selector for the checkbox element(s) to be replaced
-	 * @param object - options - The options object
+	 * @param string - selectors - The selectors for the tab menu list
 	 */
 	initialize: function(selectors){
 		var self = this;
