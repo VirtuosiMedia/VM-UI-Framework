@@ -741,3 +741,97 @@ Element.implement({
 		});
 	}
 });
+
+/**
+ * Utility class for dealing with SVG elements 
+ * Copyright Virtuosi Media, Inc. 2012
+ * MIT License
+ */
+var SVG = new Class({
+
+	/**
+	 * @param string - el - The type of SVG element
+	 * @param object - options - The attributes and values for the SVG element, stored in a hash
+	 * @return object - The Svg object, for chaining
+	 */
+	initialize: function(el, options){
+		this.namespace = "http://www.w3.org/2000/svg";
+		this.el = document.createElementNS(this.namespace, el);
+		Object.each(options, function(value, attribute){
+			this.set(attribute, value);
+		}, this);
+		return this;
+	},
+
+	/**
+	 * @param string - attribute - The attribute to set
+	 * @param string - value - The value of the attribute
+	 * @return object - The SvgElement object, for chaining
+	 */
+	set: function(attribute, value){
+		this.el.setAttributeNS(null, attribute, value);
+		return this;
+	},
+	
+	/**
+	 * @param string - attribute - The attribute for which a value should be retrieved
+	 * @return string - The value of the attribute
+	 */
+	get: function(attribute){
+		return this.el.get(attribute);
+	},
+
+	/**
+	 * @param string - content - The content that should be adopted by the element
+	 * @return string - The value of the attribute
+	 */	
+	adopt: function(content){
+		this.el.adopt(content);
+		return this;
+	},
+	
+	/**
+	 * @param string - content - The content that should be grabbed by the element
+	 * @return string - The value of the attribute
+	 */	
+	grab: function(content){
+		this.el.grab(content);
+		return this;
+	},
+	
+	/**
+	 * @param mixed - el - el can be the id of an element or an element.
+	 * @param string - where - (optional: defaults to 'bottom') The place to inject this Element. Can be 'top', 
+	 * 	'bottom', 'after', or 'before'.
+	 */
+	inject: function(el, where){
+		this.el.inject(el, where);
+		return this;
+	},
+	
+	/**
+	 * @return object - The SVG element
+	 */
+	render: function(){return this.el;},
+	toElement: function(){return this.el}
+});
+
+SVG.Circle = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('circle', options);}	
+});
+
+SVG.Polyline = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('polyline', options);}	
+});
+
+SVG.Path = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('path', options);}	
+});
+
+Element.Events.visible = {
+		//Maybe DomNodeInsterted can help here. The goal is to detect when an element has either been injected into the 
+		//document or has been made visible
+}
