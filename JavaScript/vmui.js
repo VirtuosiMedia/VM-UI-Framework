@@ -17,6 +17,7 @@ var VMUI = new Class({
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
+		         {name:'Charts', source:'Data/Charts.js', selectors:'.chart'},
 		],
 		relativePath: '../JavaScript'
 		
@@ -103,5 +104,5 @@ var VMUI = new Class({
 });
 
 window.addEvent('domready', function() {
-	var loader = new VMUI();
+	var loader = new VMUI();	
 });
