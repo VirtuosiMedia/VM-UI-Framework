@@ -244,16 +244,20 @@
 					</div>
 					<div id="tab6">
 						<h2>Tab Content 6</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada laoreet facilisis. 
-							Aenean sit amet felis eu mi porttitor interdum. Fusce et neque metus, in eleifend velit. In 
-							hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia 
-							nostra, per inceptos himenaeos. Nunc accumsan mi ac mauris posuere dignissim. Cras nec ante 
-							mi. Nam sem purus, fringilla in aliquam in, facilisis at orci. Maecenas cursus ligula 
-							laoreet nisl eleifend eget ullamcorper dui semper. Etiam non dolor vitae mi tristique 
-							lacinia. Duis at tempor justo. Nulla aliquam egestas volutpat. Pellentesque a elementum 
-							felis. Quisque consectetur leo in turpis lacinia nec vulputate dui semper. Nullam hendrerit 
-							ante sed neque tincidunt quis elementum risus suscipit. In pulvinar eros quis dolor 
-							tempus posuere.</p>
+<pre class="html">
+&lt;ul class="tabsVertical"&gt;
+	&lt;li&gt;&lt;a href="#tab5" class="active"&gt;Tab 5&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab6"&gt;Tab 6&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab7"&gt;Tab 7&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab8"&gt;Tab 8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab5" class="active"&gt;Tab Content 5&lt;/div&gt;
+	&lt;div id="tab6"&gt;Tab Content 6&lt;/div&gt;
+	&lt;div id="tab7"&gt;Tab Content 7&lt;/div&gt;
+	&lt;div id="tab8"&gt;Tab Content 8&lt;/div&gt;
+&lt;/div&gt;
+</pre>	
 					</div>
 					<div id="tab7">
 						<h2>Tab Content 7</h2>
@@ -270,20 +274,82 @@
 					</div>
 					<div id="tab8">
 						<h2>Tab Content 8</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada laoreet facilisis. 
-							Aenean sit amet felis eu mi porttitor interdum. Fusce et neque metus, in eleifend velit. In 
-							hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia 
-							nostra, per inceptos himenaeos. Nunc accumsan mi ac mauris posuere dignissim. Cras nec ante 
-							mi. Nam sem purus, fringilla in aliquam in, facilisis at orci. Maecenas cursus ligula 
-							laoreet nisl eleifend eget ullamcorper dui semper. Etiam non dolor vitae mi tristique 
-							lacinia. Duis at tempor justo. Nulla aliquam egestas volutpat. Pellentesque a elementum 
-							felis. Quisque consectetur leo in turpis lacinia nec vulputate dui semper. Nullam hendrerit 
-							ante sed neque tincidunt quis elementum risus suscipit. In pulvinar eros quis dolor 
-							tempus posuere.</p>				
+						<div class="chart" data-type="line" data-height="300" data-width="500" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,95,98,90]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
+							}										
+						
+						]"></div>			
 					</div>
 				</div>				
 			</div>
-		</div>				
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Charts</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<div class="chart" data-type="line" data-height="300" data-width="300" data-chartData="[
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,95,98,90]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
+					}										
+				
+				]"></div>
+			</div>
+			<div class="col6">
+				<div class="chart" data-type="line" data-height="300" data-width="500" data-chartData="[
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,95,98,90]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
+					}										
+				
+				]"></div>			
+<!-- 				
+				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="550">
+				    <polyline points="12 12, 50 150, 100 25" stroke="#09F" fill="transparent" stroke-width="3"/>
+
+				    <circle class="dataPoint" cx="12" cy="12" r="5" fill="#09F" />
+				    <circle class="dataPoint" cx="50" cy="150" r="5" fill="#09F" />
+				    <circle id="10025" class="dataPoint" cx="100" cy="25" r="5" fill="#09F">
+				    	<set attributeName="fill" from="#09F" to="#06C" begin="mouseover" end="mouseout"/>
+				    	<set attributeName="r" from="5" to="7" begin="mouseover" end="mouseout" begin="10s"/>
+				    </circle>
+<!-- 				    
+					<text x="100" y="25" font-size="30" fill="black" visibility="hidden">Change me
+					  <set attributeName="visibility" from="hidden" to="visible" begin="10025.mouseover" end="10025.mouseout"/>	  
+					</text>
+ -->					
+				</svg>
+			</div>
+		</div>						
 		<div class="row">
 			<div class="col12">
 				<h2 class="title">Code Syntax Highlighting</h2>
