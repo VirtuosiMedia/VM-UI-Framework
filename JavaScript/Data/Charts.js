@@ -11,6 +11,30 @@ var Charts = new Class({
 
 	Implements: [Events, Options],
 
+	defaultOptions: {
+		axisColor: '#000',									//The hex color of the axis lines and tick marks
+		colors: ['#09F', "#F00", "#636", "#690"],			//The chart hex colors for lines, bars, and pie segments
+		keyPosition: 'right',								//Where to show the key: left, right, top, bottom
+		lineLabels: [],										//Labels for each of the lines, will also show in the key
+		showAxis: true,										//Whether or not to show the axis lines
+		showAxisLabels: true,								//Whether or not to show the axis labels
+		showKey: true,										//Whether or not to show the key
+		showLabels: true,									//Whether or not to show interval labels
+		showLineFill: true,									//Whether or not to create a fill between the x-axis and line
+		showPoints: true,									//Whether or not to show line points
+		showTicks: true,									//Whether or not to show tick marks
+		showTips: true,										//Whether or not to show tips on hover
+		showTitle: true,									//Whether or not to show the chart title
+		textColor: "#000",									//The hex code for the text color
+		title: 'Untitled',									//The title of the chart
+		xAxisLabel: 'x-axis',								//The x-axis label
+		xInterval: 10,										//The interval between ticks on the x-axis
+		xLabels: [],										//Labels for the x-axis, defaults to numbers. Should match tick count		
+		yAxisLabel: 'y-axis',								//The y-axis label		
+		yInterval: 10,										//The interval between ticks on the y-axis
+		yLabels: []											//Labels for the x-axis, defaults to numbers. Should match tick count
+	},
+	
 	/**
 	 * @param string - selectors - The selectors for chart containers
 	 */
@@ -24,44 +48,78 @@ var Charts = new Class({
 	
 	createChart: function(chart, selectors){
 		var self = this;
-		var data = JSON.decode(chart.getData('chartData'));
 		var type = 'render'+chart.getData('type').capitalize();
-		var colors = ['#09F', "#F00", "#CCC"];
-		var svg = new SVG('svg', {viewBox:"0 0 160 160", preserveAspectRatio:"none"});
+		this.data = JSON.decode(chart.getData('chartData'));
+		this.options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
+		this.svg = new SVG('svg', {viewBox:"0 0 160 160", preserveAspectRatio:"none"});
+
 		this.xOffset = 30;
 		this.yOffset = 30;
 		
 		//If not pie chart
-		this.setMaxes(data);
+		this.setMaxes();
 		
-		Array.each(data, function(dataObject, index){
-			svg.adopt(self.renderLine(dataObject, colors[index]));
+		Array.each(this.data, function(dataObject, index){
+			self.renderLine(dataObject, index);
 		});
-		svg.adopt(this.renderAxis(data));
+		if (this.options.showAxis){
+			this.renderAxis();
+		}
 		
-		chart.adopt(svg.render());
+		chart.adopt(this.svg.render());
 	},
 
-	setMaxes: function(data){
+	setMaxes: function(){
 		var xValues = [], yValues = [];
-		Array.each(data, function(dataObject, index){
+		Array.each(this.data, function(dataObject, index){
 			xValues.combine(dataObject.x);
 			yValues.combine(dataObject.y);
 		});
 		this.maxX = Math.max.apply(Math, xValues);
 		this.maxY = Math.max.apply(Math, yValues);
-		console.log(this.maxY)
 	},
 	
-	renderAxis: function(data){
+	renderAxis: function(){
 		var xOffset = this.xOffset, yOffset = this.yOffset;	
 		var line = new SVG.Path({
 			d: 'M '+xOffset+' '+yOffset+', '+xOffset+' '+(100+yOffset)+', '+(100+xOffset)+' '+(100+yOffset),
-			stroke: "#333",
+			stroke: this.options.axisColor,
 			fill: "transparent",
-			"stroke-width": 1
+			"stroke-width": 0.5
 		});
-		return line.render();		
+		if (this.options.showTicks){
+			this.renderTicks();
+		}
+		
+		this.svg.adopt(line.render());		
+	},
+
+	renderTicks: function(){
+		var ticks = [], 
+			xOffset = this.xOffset, 
+			yOffset = this.yOffset,
+			xInterval = this.options.xInterval,
+			yInterval = this.options.yInterval
+			yStart = yOffset + 100 + .5 - yInterval,
+			xStart = xOffset + xInterval;
+
+		for (var x = xStart; x < (xStart + 100); x+=xInterval){
+			ticks.push('M ' + x + ' ' + (yStart + 4 + yInterval) + ', ' + x + ' ' + (yStart + yInterval - 0.5));
+		}		
+		
+		for (var y = yStart; y >= yOffset; y-=yInterval){
+			ticks.push('M ' + (xOffset - 3) + ' ' + y + ', ' + xOffset + ' ' + y);
+		}
+			
+		Array.each(ticks, function(tickPath){
+			var tick = new SVG.Path({
+				d: tickPath,
+				stroke: this.options.axisColor,
+				fill: "transparent",
+				"stroke-width": 0.5
+			});
+			this.svg.adopt(tick.render());
+		}, this);
 	},
 	
 	/**
@@ -104,7 +162,7 @@ var Charts = new Class({
 	 * Use: 	Analyze trends, patterns, and exceptions
 	 * 			 
 	 */
-	renderLine: function(data, color){
+	renderLine: function(data, index){
 		var self = this;
 		var numPoints = data.x.length - 1;
 		var points = [];
@@ -115,12 +173,12 @@ var Charts = new Class({
 		
 		var line = new SVG.Path({
 			d: 'M ' + self.normalize(data.x[0], 'x') +' '+ self.normalize(data.y[0], 'y') + ' ' + points.join(', '),
-			stroke: color,
+			stroke: this.options.colors[index],
 			fill: "transparent",
 			"stroke-width": 1
 		});
 
-		return line.render();	
+		this.svg.adopt(line.render());	
 	},
 
 	/**
