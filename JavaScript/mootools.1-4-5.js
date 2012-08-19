@@ -782,6 +782,26 @@ var SVG = new Class({
 	},
 
 	/**
+	 * @param string - event - The event trigger
+	 * @param function - fn - The function to execute once the event is triggered
+	 * @return object - The SvgElement object, for chaining
+	 */
+	addEvent: function(event, fn){
+		this.el.addEvent(event, fn);
+		return this;
+	},
+
+	/**
+	 * @param object - events -  An object with key/value representing: key the event name, and value the function that 
+	 * 	is called when the Event occurs.
+	 * @return object - The SvgElement object, for chaining
+	 */
+	addEvents: function(events){
+		this.el.addEvents(events);
+		return this;
+	},	
+	
+	/**
 	 * @param string - content - The content that should be adopted by the element
 	 * @return string - The value of the attribute
 	 */	
@@ -829,6 +849,15 @@ SVG.Polyline = new Class({
 SVG.Path = new Class({
 	Extends: SVG,
 	initialize: function(options){this.parent('path', options);}	
+});
+
+SVG.Text = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('text', options);},
+	setText: function(text){
+		this.el.textContent = text;
+		return this;
+	}
 });
 
 Element.Events.visible = {
