@@ -17,7 +17,10 @@ var VMUI = new Class({
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
-		         {name:'Charts', source:'Data/Charts.js', selectors:'.chart'},
+		         {
+		        	 name:'Charts', 
+		        	 source:'Data/Charts.js', 
+		        	 selectors:'.chartLine, .chartScatter, .chartArea, .chartBar, .chartPie'},
 		],
 		relativePath: '../JavaScript'
 		
