@@ -274,21 +274,16 @@
 					</div>
 					<div id="tab8">
 						<h2>Tab Content 8</h2>
-						<div class="chart" data-type="line" data-height="300" data-width="500" data-chartData="[
-							{
-								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-								y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20]
-							},
-							{
-								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,95,98,90]
-							},
-							{
-								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-								y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
-							}										
-						
-						]"></div>			
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada laoreet facilisis. 
+							Aenean sit amet felis eu mi porttitor interdum. Fusce et neque metus, in eleifend velit. In 
+							hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia 
+							nostra, per inceptos himenaeos. Nunc accumsan mi ac mauris posuere dignissim. Cras nec ante 
+							mi. Nam sem purus, fringilla in aliquam in, facilisis at orci. Maecenas cursus ligula 
+							laoreet nisl eleifend eget ullamcorper dui semper. Etiam non dolor vitae mi tristique 
+							lacinia. Duis at tempor justo. Nulla aliquam egestas volutpat. Pellentesque a elementum 
+							felis. Quisque consectetur leo in turpis lacinia nec vulputate dui semper. Nullam hendrerit 
+							ante sed neque tincidunt quis elementum risus suscipit. In pulvinar eros quis dolor 
+							tempus posuere.</p>			
 					</div>
 				</div>				
 			</div>
@@ -296,10 +291,28 @@
 		<div class="row">
 			<div class="col12">
 				<h2 class="title">Charts</h2>
+				<div class="chartArea" data-chartData="[
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,99,34,20]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
+					}										
+				
+				]" data-chartOptions="{
+					title: 'My Chart Title'
+				}"></div>				
 			</div>
 		</div>
 		<div class="row">
 			<div class="col6">
+				<!-- 
 				<div class="chart" data-type="line" data-height="300" data-width="300" data-chartData="[
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
@@ -307,7 +320,7 @@
 					},
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,95,98,90]
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,88,101,98,90]
 					},
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
@@ -319,8 +332,8 @@
 			<div class="col6">
 				<div class="chart" data-type="line" data-height="300" data-width="500" data-chartData="[
 					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20]
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130], 
+						y:[0,1,6,3,17,12,34,36,25,87,75,45,23,12,73,17,45,87,96,34,20,14,64,78,55,91,100]
 					},
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
@@ -331,8 +344,6 @@
 						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
 					}										
 				]" data-chartOptions="{
-					axisColor: '#F00',
-					colors: ['#555', '#111', '#999'],
 					title: 'My Chart Title',
 					showTitle: true,
 					showAxis: true,
