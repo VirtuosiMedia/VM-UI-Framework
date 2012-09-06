@@ -102,7 +102,7 @@ var Lighter = this.Lighter = new Class({
             lighter   = codeblock.retrieve('lighter'),
             code      = this.getCode(codeblock),
             ff        = this.parseClass(codeblock.get('class')),
-            fuel      = ff.fuel  || this.options.fuel,
+            fuelType  = ff.fuel  || this.options.fuel,
             flame     = ff.flame || this.options.flame;
         
         // Lighting is in progress.
@@ -118,9 +118,9 @@ var Lighter = this.Lighter = new Class({
         }
 
         // Load fuel/flame to and build lighter when ready.
-        this.loader.loadFuel(fuel, function() {
+        this.loader.loadFuel(fuelType, function() {
             
-        	fuel = new Fuel[fuel]({});
+        	var fuel = new Fuel[fuelType]({});
          
             var wicks   = this.parser.parse(fuel, code),
                 lighter = this.compiler.compile(fuel, flame, wicks);
