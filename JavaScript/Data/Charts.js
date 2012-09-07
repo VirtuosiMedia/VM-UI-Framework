@@ -12,12 +12,14 @@ var Charts = new Class({
 	Implements: [Events, Options],
 
 	defaultOptions: {
+		animate: true,										//Whether or not to animate the graph, defaults true
+		animationDuration: 1,								//The total animation duration in seconds
 		axisColor: '#333',									//The hex color of the axis lines
-		colors: ['#09F', "#F00", "#636", "#690"],			//The chart hex colors for lines, bars, and pie segments
+		colors: ['#058DC7', "#A006C7", "#C7062D", "#06C740", "#C7A006"],			//The chart hex colors for lines, bars, and pie segments
+		dataLabels: [],										//Labels for each of the data sets, will also show in the key
 		gridColor: '#DDD',									//The hex color of the grid lines
 		keyPosition: 'right',								//Where to show the key: left, right, top, bottom
-		lineLabels: [],										//Labels for each of the lines, will also show in the key
-		showAreaLines: false,								//Whether or not to show lines on an area chart
+		showAreaLines: true,								//Whether or not to show lines on an area chart
 		showAxisLabels: true,								//Whether or not to show the axis labels
 		showAxisLines: true,								//Whether or not to show the axis lines		
 		showGridX: true,									//Whether or not to show the x-axis grid lines
@@ -25,7 +27,7 @@ var Charts = new Class({
 		showIntervalLabels: true,							//Whether or not to show interval labels
 		showKey: true,										//Whether or not to show the key
 		showLineFill: false,								//Whether or not to create a fill between the x-axis and line
-		showPoints: false,									//Whether or not to show line points
+		showPoints: true,									//Whether or not to show line points
 		showTicksX: true,									//Whether or not to show tick marks along the x-axis
 		showTicksY: true,									//Whether or not to show tick marks along the y-axis		
 		showTips: true,										//Whether or not to show tips on hover
@@ -33,6 +35,8 @@ var Charts = new Class({
 		textColor: "#000",									//The hex code for the text color
 		title: 'Untitled Chart',							//The title of the chart
 		tickColor: '#333',									//The hex color of the tick marks
+		tipText: [],										//The HTML text for the tip, where values inside of {} are replaced by coordinates
+															//Options include {x}, {y}, {xAxis}, {yAxis}, and {label}
 		xAxisLabel: 'x-axis',								//The x-axis label
 		xInterval: 25,										//The interval between ticks on the x-axis
 		xLabels: [],										//Labels for the x-axis, defaults to numbers. Should match tick count		
@@ -47,7 +51,8 @@ var Charts = new Class({
 	initialize: function(selectors){
 		var self = this;
 		this.namespace = "http://www.w3.org/2000/svg";
-		Array.each($$(selectors), function(chart){
+		Array.each($$(selectors), function(chart, index){	
+			self.chartIndex = index;			
 			self.createChart(chart, selectors);
 		});
 	},
@@ -58,7 +63,12 @@ var Charts = new Class({
 		this.data = JSON.decode(chart.getData('chartData'));
 		this.options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
 		this.points = [];
-		this.svg = new SVG('svg', {viewBox:"0 0 300 195"});
+		this.svg = new SVG('svg', {viewBox:"0 0 300 195", id: 'chart-' + self.chartIndex});
+
+		this.setChartHeight(chart);
+		window.addEvent('resize', function(){
+			self.setChartHeight(chart);
+		});
 
 		this.xOffset = 30;
 		this.yOffset = 30;
@@ -66,19 +76,31 @@ var Charts = new Class({
 		//If not pie chart
 		this.parseData();
 		
-		if (this.options.showTitle){
-			this.setTitle();
-		}
-
+		//This fixes a bug that renders the chart in full and then animates it.
+		if ((this.options.animate) && (!Browser.ie)){
+			this.svg.set('opacity', 0).addEvent('load', function(){
+				this.set('opacity', 1);
+			});
+		} else {
+			this.options.animate = false; //IE can't do declarative animations, but future versions may rework the animation type 
+		}		
+		
 		this[chartType]();		
-						
+				
 		chart.adopt(this.svg.render());
 	},
 
+	setChartHeight: function(chart){
+		var height = (chart.getSize()['x']/4) * 3;
+		chart.setStyle('height', height);		
+	},
+	
 	createChartLine: function(){
+		if (this.options.showTitle){this.setTitle();}
 		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
 		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
 		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
+		if (this.options.showAxisLabels){this.renderAxisLabels();}
 		
 		Array.each(this.data, function(data, index){
 			this.renderLine(index);
@@ -95,14 +117,22 @@ var Charts = new Class({
 	},
 	
 	createChartArea: function(){
+		this.renderMask();
+		
+		if (this.options.showTitle){this.setTitle();}
 		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
 		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
 		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
+		if (this.options.showAxisLabels){this.renderAxisLabels();}
+		
+		var group = new SVG('g', {'clip-path': 'url(#chartCanvas)'});
 		
 		Array.each(this.data, function(data, index){
 			if (this.options.showAreaLines){this.renderLine(index)};
-			this.renderLineFill(index);			
+			group.adopt(this.renderLineFill(index));			
 		}, this);
+		
+		this.svg.adopt(group.render());
 		
 		if (this.options.showAxisLines){this.renderAxisLines();}
 		
@@ -114,9 +144,11 @@ var Charts = new Class({
 	},
 	
 	createChartScatter: function(){
+		if (this.options.showTitle){this.setTitle();}
 		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
 		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
 		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
+		if (this.options.showAxisLabels){this.renderAxisLabels();}
 		if (this.options.showAxisLines){this.renderAxisLines();}
 				
 		Array.each(this.data, function(data, index){
@@ -152,7 +184,8 @@ var Charts = new Class({
 				linePoints.push(normalizedX + ' ' + normalizedY);
 			}
 			
-			this.points[index].line = 'M ' + linePoints.join(', '); 
+			this.points[index].line = 'M ' + linePoints.join(', ');
+			this.setDataLabels(index);
 		}, this);
 	},
 	
@@ -173,6 +206,7 @@ var Charts = new Class({
 		} else {
 			this.maxY = maxY + yInterval;		
 		}
+		
 	},
 
 	setTitle: function(){
@@ -182,6 +216,27 @@ var Charts = new Class({
 			y: 20,
 		});
 		this.svg.adopt(title.setText(this.options.title).render());
+	},
+
+	setDataLabels: function(index){
+		this.options.dataLabels[index] = (this.options.dataLabels[index]) 
+			? this.options.dataLabels[index] 
+			: 'Data Set ' + (index + 1);
+		this.options.tipText[index] = (this.options.tipText[index]) 
+			? this.options.tipText[index] 
+			: '{xAxis}: {x}, {yAxis}: {y}';
+	},
+	
+	renderMask: function(){
+		var mask = new SVG.Rect({
+			x: this.normalize(0, 'x'),
+			y: this.normalize(this.maxY, 'y'),
+			height: (this.normalize(0, 'y') - this.normalize(this.maxY, 'y')),
+			width: this.normalize(this.maxX, 'x') - this.normalize(0, 'x')
+		});
+		var chartCanvas = new SVG.ClipPath({id: 'chartCanvas'}).adopt(mask.render());
+		var defs = new SVG('defs').adopt(chartCanvas.render());
+		this.svg.adopt(defs.render());
 	},
 	
 	renderAxisLines: function(){
@@ -277,7 +332,7 @@ var Charts = new Class({
 		var xCounter = this.xOffset;
 		Array.each(xLabels, function(value, index){
 			var label = new SVG.Text({
-				'class': 'chartAxisLabel',
+				'class': 'chartIntervalLabel',
 				x: xCounter,
 				y: (self.yOffset + 140),
 				'text-anchor': 'middle'
@@ -299,7 +354,7 @@ var Charts = new Class({
 		var yCounter = this.yOffset + 2;
 		Array.each(yLabels, function(value, index){
 			var label = new SVG.Text({
-				'class': 'chartAxisLabel',
+				'class': 'chartIntervalLabel',
 				x: (self.xOffset - 5),
 				y: yCounter, 
 				'text-anchor': 'end'
@@ -307,6 +362,25 @@ var Charts = new Class({
 			self.svg.adopt(label.setText(value).render());
 			yCounter += yInterval;
 		});		
+	},
+
+	renderAxisLabels: function(){
+		var xLabel = new SVG.Text({
+			'class': 'chartAxisLabel',
+			x: this.normalize(50, 'x'),
+			y: (this.yOffset + 150), 
+			'text-anchor': 'middle'
+		});
+		this.svg.adopt(xLabel.setText(this.options.xAxisLabel).render());
+		
+		var yLabel = new SVG.Text({
+			'class': 'chartAxisLabel',
+			x: 5,
+			y: 97.5, 
+			'text-anchor': 'middle',
+			transform: "rotate(270 5 97.5)" 
+		});
+		this.svg.adopt(yLabel.setText(this.options.yAxisLabel).render());		
 	},
 	
 	/**
@@ -351,15 +425,27 @@ var Charts = new Class({
 	 */
 	renderLine: function(index){
 		var line = new SVG.Path({
+			id: "dataLine"+index,
 			"class":"dataLine",
 			d: this.points[index].line,
 			stroke: this.options.colors[index],
 			fill: "transparent",
 			"shape-rendering": "geometric-precision",
-			"stroke-width": 1,
+			"stroke-width": 1.25,
 			"stroke-linecap": "round"
 		}, this);
 		
+		if (this.options.animate){
+			var lineLength = line.render().getTotalLength();
+			var animation = new SVG.Animate({
+				attributeName: "stroke-dashoffset",
+				from: lineLength,
+				to: 0,
+				dur: this.options.animationDuration + (index/4) + 's',
+				fill: 'freeze'
+			});
+			line.set('stroke-dasharray', lineLength + ' ' + lineLength).adopt(animation.render());
+		}
 		this.svg.adopt(line.render());	
 	},
 
@@ -367,37 +453,136 @@ var Charts = new Class({
 		var yVal = this.yOffset + 130;
 		var linePath = this.points[index].line + ', ' + this.normalize(this.maxX, 'x') + ' ' + yVal + ', ' + this.xOffset + ' ' + yVal;
 		var lineFill = new SVG.Path({
-			"class":"dataFill",
+			"class": "dataFill",
 			stroke: "transparent",
 			d: linePath,
 			fill: this.options.colors[index],
-			"shape-rendering": "geometric-precision"			
-		});		
-		this.svg.adopt(lineFill.render());
+			"shape-rendering": "geometric-precision"
+		});
+
+		if (this.options.animate){
+			var animation = new SVG.AnimateTransform({
+				attributeName: "transform",
+				type: "skewY",
+				from: 50,
+				to: 0,
+				dur: this.options.animationDuration + (index/4) + 's',
+				fill: 'freeze'
+			});
+			lineFill.adopt(animation.render());
+		}
+		return lineFill.render();
 	},
 	
 	renderPoints: function(index){
 		var self = this;
-		Array.each(this.points[index].data, function(data){
+		var numPoints = this.points[index].data.length;
+		var animationLength = this.options.animationDuration / numPoints;
+		
+		Array.each(this.points[index].data, function(data, animationIndex){
+			var id = 'dataPoint-' + index + '-' + animationIndex;
+			
+			var mouseoverEffect = new SVG.Animate({
+				attributeName: "r",
+				from: 1.5,
+				to: 1.85,
+				begin: 'mouseover',
+				dur: '0.1s',
+				fill: 'freeze'
+			});
+
+			var mouseoutEffect = new SVG.Animate({
+				attributeName: "r",
+				from: 1.85,
+				to: 1.5,
+				begin: 'mouseout',
+				dur: '0.3s',
+				fill: 'freeze'
+			});			
+			
 			var point = new SVG.Circle({
+				id: id,
 				"class":"dataPoint",
 				stroke: "#FFF",
 				"stroke-width": 0.25,
 				cx: data.xPoint,
 				cy: data.yPoint,
-				r: 1.25,
+				r: 1.5,
 				fill: self.options.colors[index],
-				"shape-rendering": "geometric-precision"			
+				"shape-rendering": "geometric-precision"
 			}).addEvents({
 				mouseover: function(){
-					this.set('r', 1.75);
+					self.renderTip(id, data.xVal, data.yVal, index);
 				},
 				mouseout: function(){
-					this.set('r', 1.25);
+					self.removeTip(id);
 				}
-			}, this);		
+			}, this).adopt(mouseoverEffect.render()).adopt(mouseoutEffect.render());
+			
+			
+			if (self.options.animate){
+				var startTime = animationIndex * animationLength
+				var animation = new SVG.Animate({
+					attributeName: "r",
+					from: 0,
+					to: 1.5,
+					begin: startTime + 's',
+					dur: (self.options.animationDuration - startTime) + (index/4) + 's',
+					fill: 'freeze'
+				});
+				point.set('r', 0).adopt(animation);
+			}
+			
 			self.svg.adopt(point.render());
 		});
+	},
+
+	getTipLocation: function(id, chart){
+		var pos = $(id).getPosition(chart);
+		var location = $(id).getCoordinates(chart);
+		var dimensions = chart.getCoordinates();
+		var left = ((dimensions.width/2) < pos.x) ? (location.left - 200) : (location.left + 20);
+		var top = ((dimensions.height/2) < pos.y) ? (location.top - 100) : (location.top);
+		return {y: top, x: left};
+	},
+	
+	renderTip: function(id, x, y, index){
+		if ($$('.chartTip').length > 0){ $$('.chartTip').dispose(); }
+		var self = this;
+		var chart = $('chart-' + this.chartIndex);
+		var pos = $(id).getCoordinates(chart);
+		var title = this.options.dataLabels[index];
+		var content = this.options.tipText[index].substitute({
+			x: x, 
+			y: y, 
+			xAxis: this.options.xAxisLabel,
+			yAxis: this.options.yAxisLabel,
+			label: title
+		});
+		
+		var titleEl = new Element('span', {
+			'class': 'chartTipTitle',
+			html: title,
+			styles: {color: self.options.colors[index]}
+		});
+		var contentEl = new Element('span', {'class': 'chartTipContent', html: content});
+		var location = this.getTipLocation(id, chart);
+		console.log(location)
+		var tip = new Element('div', {
+			id: id + 'ChartTip',
+			'class': 'chartTip',
+			styles: {
+				top: location.y + 'px',
+				left: location.x + 'px'
+			}
+		}).adopt(titleEl, contentEl).inject(chart, 'after');
+	},
+	
+	removeTip: function(id){
+			var removeTip = function() {
+				if ($(id + 'ChartTip')){ $(id + 'ChartTip').dispose(); }
+			};
+			removeTip.delay(300);
 	},
 	
 	/**

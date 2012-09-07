@@ -760,6 +760,12 @@ var SVG = new Class({
 		Object.each(options, function(value, attribute){
 			this.set(attribute, value);
 		}, this);
+		
+		if (el === 'svg'){
+			this.el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
+			this.el.setAttribute('version', '1.1');
+		}
+		
 		return this;
 	},
 
@@ -800,7 +806,7 @@ var SVG = new Class({
 		this.el.addEvents(events);
 		return this;
 	},	
-	
+
 	/**
 	 * @param string - content - The content that should be adopted by the element
 	 * @return string - The value of the attribute
@@ -836,6 +842,16 @@ var SVG = new Class({
 	toElement: function(){return this.el}
 });
 
+SVG.G = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('g', options);}	
+});
+
+SVG.Rect = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('rect', options);}	
+});
+
 SVG.Circle = new Class({
 	Extends: SVG,
 	initialize: function(options){this.parent('circle', options);}	
@@ -858,6 +874,21 @@ SVG.Text = new Class({
 		this.el.textContent = text;
 		return this;
 	}
+});
+
+SVG.ClipPath = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('clipPath', options);}	
+});
+
+SVG.Animate = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('animate', options);}	
+});
+
+SVG.AnimateTransform = new Class({
+	Extends: SVG,
+	initialize: function(options){this.parent('animateTransform', options);}	
 });
 
 Element.Events.visible = {
