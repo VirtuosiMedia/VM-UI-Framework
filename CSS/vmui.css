@@ -1417,12 +1417,14 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 /**
  * Charts
  */
-.chart, .chart > svg {
+[class^="chart"], [class^="chart"] > svg {
+	display: block;
 	height: 100%;
+	position: relative;
     width: 100%;
 }
 .dataLine, .dataPoint {opacity: 0.7;}
-.dataFill {opacity: 0.4;}
+.dataFill {opacity: 0.2;}
 .dataPoint:hover {
 	cursor: pointer;
 	opacity: 1;
@@ -1434,6 +1436,23 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 }
 .chartAxisLabel {
 	font-size: 0.4em;
+	font-weight: bold;
+}
+.chartIntervalLabel {
+	font-size: 0.4em;
+}
+.chartTip {
+	background: #FFF;
+	border: 0.2em solid #000;
+	border-radius: 4px;
+	display: block;
+	height: auto;
+	max-width: 10em;
+	opacity: 0.9;
+	overflow: hidden;
+	padding: 0.5em;
+	position: absolute;
+	width: auto;
 }
 
 /**
