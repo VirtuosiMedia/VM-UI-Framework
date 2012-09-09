@@ -302,10 +302,14 @@
 					}
 				
 				]" data-chartOptions="{
-					title: 'My Chart Title',
+					title: 'Visits & Page Views',
 					dataLabels: ['Visits', 'Page Views'],
-					tipText: ['You had <b>{y} {label}</b> after {x} {xAxis}', 'You had {y} {label} after {x} {xAxis}'],
-					xAxisLabel: 'Days'
+					tipText: ['You had <b>{y} {label}</b> on {x}', 'You had {y} {label} on {x}'],
+					xAxisLabel: 'Month',
+					dateFormat: '%Y',
+					dateIntervalUnit: 'year',		
+					dateIntervalValue: 5,	
+					dateStart: '3/1/1992'					
 				}"></div>				
 			</div>
 <!-- 			
@@ -328,7 +332,21 @@
 						y:[24,12,6,3,0,4,16,4,0,5,25,64,16,0,3,6,12,24,48,96,48]
 					}										
 //*/
- -->			
+ -->
+ 			<h6>Chart Limitations</h6>
+ 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may fix these 
+ 				issues.</p>
+ 			<ul>
+ 				<li>No animation in IE.</li>
+ 				<li>No negative numbers.</li>
+ 				<li>Data sets need to be the full-width of the graph.</li>
+ 				<li>Dates can only be on the x-axis.</li>
+ 				<li>X-values are necessary when not working with dates.</li>
+ 				<li>Updating the graph requires refreshing the canvas.</li>
+ 				<li>Large numbers may not look good on the axises.</li>
+ 				<li>Charts must be displayed at 100% of the container size.</li>
+ 				<li>Decimals?</li>
+ 			</ul>			
 		</div>
 		<div class="row">
 			<div class="col6">
