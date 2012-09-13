@@ -5,6 +5,13 @@
 	<title>VM UI Framework - UI Elements</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../JavaScript'});	
+		});
+	</script>	
 </head>
 <body>
 	<div class="navbarContainer">
@@ -111,7 +118,35 @@
 					</tbody>
 				</table>
 			</div>			
-		</div>					
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title">Breadcrumbs</h2>
+				<p>Breadcrumbs in VM UI Framework are simply lists with a class of <code>breadcrumb</code>. Any links 
+					in the breadcrumb will be followed by the breadcrumb separator.</p>
+				<div class="row">
+					<div class="col6">
+<pre class="html">
+&lt;ul class="breadcrumb"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;Current Item&lt;/li&gt;
+&lt;/ul&gt;
+</pre>				
+					</div>
+					<div class="col6">
+						<h6>Breadcrumb Example</h6>
+						<ul class="breadcrumb">
+							<li><a href="#">Link 1</a></li>
+							<li><a href="#">Link 2</a></li>
+							<li><a href="#">Link 3</a></li>
+							<li>Current Item</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>							
 	</div>
 </body>
 </html>
