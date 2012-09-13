@@ -1170,6 +1170,26 @@ img {
 .navbarContainer a:hover, .navbarContainer a.active {color: #09C;}
 
 /**
+ * Navigation, Breadcrumbs
+ */
+.breadcrumb {
+	list-style: none;
+	margin: 0px;
+	overflow: auto;
+}
+.breadcrumb li {
+	float:left;
+	margin-right: 2em;
+}
+.breadcrumb a {position: relative;}
+.breadcrumb a:after {
+	color: #000;
+	content: '\25b6';
+	margin-left: 0.75em;
+	position: absolute;
+}
+
+/**
  * Notice Bars
  */
 div[class^="notice"] {
@@ -1228,13 +1248,14 @@ span.markerSuccess {background: #4D9E0C;}
 span.markerWarning {background: #FB9702;}
 span.markerError {background: #FF6A6A;}
 
-
 /**
  * Utilities
  */
 .right {float: right;}
 .left {float: left;}
 body .skipBottom {margin-bottom: 0;}
+.topMargin {margin-top: 1.75em;}
+.bottomMargin {margin-bottom: 1.75em;}
 
 /**
  * JavaScript Plugins
