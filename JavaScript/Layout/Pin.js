@@ -12,7 +12,7 @@ var Pin = new Class({
 	Implements: [Events, Options],
 
 	/**
-	 * @param string - selectors - The selectors for the tab menu list
+	 * @param string - selectors - The selectors for the pinned elements
 	 */
 	initialize: function(selectors){
 		this.coordinates = [];
