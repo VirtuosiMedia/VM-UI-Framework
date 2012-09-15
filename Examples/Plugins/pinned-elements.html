@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Pinned Elements</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Pinned Elements</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col3 pinContainer showCol">
+				<div class="pin">
+					<h6>Pinned Example</h6>
+					<ul>
+						<li><a href="#description">Description</a></li>
+						<li><a href="#code">Code Example</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col9" style="height: 2000px; display: block;">
+				<h6 id="description">Description</h6>
+				<p>Pinned elements will remain in place when the page is scrolled until they reach the bottom boundary 
+					of their parent element. To create a pin, just add the class <code>pin</code> to any element. The 
+					pinned element will respect any top or bottom margins already applied to it.</p>
+				<p><span class="markerInfo">Note</span> Only one pinned element can exist per container element. If you 
+					have multiple items in the same area that you want pinned, wrap them in a container and pin the 
+					container.</p>
+				<h6 id="code">Code Example</h6>
+				<p>Below is the code for the pinned list to the left. The <code>pinContainer</code> and 
+					<code>showCol</code> classes aren't necessary to create a pin, they're just used to create the 
+					demo.</p>
+<pre class="html">
+&lt;div class="col3 pinContainer showCol"&gt;
+	&lt;div class="pin"&gt;
+		&lt;h6&gt;Pinned Example&lt;/h6&gt;
+		&lt;ul&gt;
+			&lt;li&gt;Item 1&lt;/li&gt;
+			&lt;li&gt;Item 2&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

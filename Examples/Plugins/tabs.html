@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Tabs</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Tabs</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<p>Tabs can be either horizontal or	vertical.</p>
+				<ul class="tabs">
+					<li><a href="#tab1" class="active">Tab 1</a></li>
+					<li><a href="#tab2" data-targetUrl="http://www.cnn.com">Tab 2</a></li>
+					<li><a href="#tab3" data-targetUrl="index.html">Tab 3</a></li>
+					<li><a href="#tab4">Tab 4</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="tab1" class="active">Tab Content 1</div>
+					<div id="tab2">Tab Content 2</div>
+					<div id="tab3">Tab Content 3</div>
+					<div id="tab4">Tab Content 4</div>
+				</div>
+				
+				<ul class="tabsVertical">
+					<li><a href="#tab5" class="active">Tab 5</a></li>
+					<li><a href="#tab6">Tab 6</a></li>
+					<li><a href="#tab7">Tab 7</a></li>
+					<li><a href="#tab8">Tab 8</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="tab5" class="active">
+						<h3>Vertical Tabs</h3>
+<pre class="html">
+&lt;ul class="tabsVertical"&gt;
+	&lt;li&gt;&lt;a href="#tab5" class="active"&gt;Tab 5&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab6"&gt;Tab 6&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab7"&gt;Tab 7&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab8"&gt;Tab 8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab5" class="active"&gt;Tab Content 5&lt;/div&gt;
+	&lt;div id="tab6"&gt;Tab Content 6&lt;/div&gt;
+	&lt;div id="tab7"&gt;Tab Content 7&lt;/div&gt;
+	&lt;div id="tab8"&gt;Tab Content 8&lt;/div&gt;
+&lt;/div&gt;
+</pre>						
+					</div>
+					<div id="tab6">
+						<h2>Tab Content 6</h2>
+<pre class="html">
+&lt;ul class="tabsVertical"&gt;
+	&lt;li&gt;&lt;a href="#tab5" class="active"&gt;Tab 5&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab6"&gt;Tab 6&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab7"&gt;Tab 7&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab8"&gt;Tab 8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab5" class="active"&gt;Tab Content 5&lt;/div&gt;
+	&lt;div id="tab6"&gt;Tab Content 6&lt;/div&gt;
+	&lt;div id="tab7"&gt;Tab Content 7&lt;/div&gt;
+	&lt;div id="tab8"&gt;Tab Content 8&lt;/div&gt;
+&lt;/div&gt;
+</pre>	
+					</div>
+					<div id="tab7">
+						<h2>Tab Content 7</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada laoreet facilisis. 
+							Aenean sit amet felis eu mi porttitor interdum. Fusce et neque metus, in eleifend velit. In 
+							hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia 
+							nostra, per inceptos himenaeos. Nunc accumsan mi ac mauris posuere dignissim. Cras nec ante 
+							mi. Nam sem purus, fringilla in aliquam in, facilisis at orci. Maecenas cursus ligula 
+							laoreet nisl eleifend eget ullamcorper dui semper. Etiam non dolor vitae mi tristique 
+							lacinia. Duis at tempor justo. Nulla aliquam egestas volutpat. Pellentesque a elementum 
+							felis. Quisque consectetur leo in turpis lacinia nec vulputate dui semper. Nullam hendrerit 
+							ante sed neque tincidunt quis elementum risus suscipit. In pulvinar eros quis dolor 
+							tempus posuere.</p>
+					</div>
+					<div id="tab8">
+						<h2>Tab Content 8</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada laoreet facilisis. 
+							Aenean sit amet felis eu mi porttitor interdum. Fusce et neque metus, in eleifend velit. In 
+							hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia 
+							nostra, per inceptos himenaeos. Nunc accumsan mi ac mauris posuere dignissim. Cras nec ante 
+							mi. Nam sem purus, fringilla in aliquam in, facilisis at orci. Maecenas cursus ligula 
+							laoreet nisl eleifend eget ullamcorper dui semper. Etiam non dolor vitae mi tristique 
+							lacinia. Duis at tempor justo. Nulla aliquam egestas volutpat. Pellentesque a elementum 
+							felis. Quisque consectetur leo in turpis lacinia nec vulputate dui semper. Nullam hendrerit 
+							ante sed neque tincidunt quis elementum risus suscipit. In pulvinar eros quis dolor 
+							tempus posuere.</p>			
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

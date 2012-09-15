@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Code Syntax Highlighting</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>
+				<h1 class="pageTitle">Code Syntax Highlighting</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<p>There are two types of syntax highlighting available: static and dynamic. Static will convert any 
+					<code>&lt;pre&gt;</code> elements into highlighted source code, while dynamic highlighting will 
+					convert a textarea into a live editor.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h6>Static Syntax Highlighting</h6>
+				<p>Static syntax highlighting uses a modified version of Jose Prado's 
+					<a href="http://mootools.net/forge/p/lighter">Lighter MooTools Plugin</a>. It works automatically 
+					with all <code>&lt;pre&gt;</code> and supports HTML, CSS, Java, JavaScript, PHP, Python, Ruby, 
+					Markdown, Shell, and SQL. To specify a particular language, just add the language name as the CSS 
+					class for the <code>&lt;pre&gt;</code> element. Omitting any class altogether will result in just 
+					the code and line numbers being rendered, without any highlighting.</p>
+				<p><span class="markerInfo">Note</span> When creating a code snippet for JavaScript, use the class 
+					<code>js</code> rather than <code>javascript</code>.</p>
+				<p>When creating code snippets for HTML, be sure to use HTML entities for characters like 
+					<code><</code> and <code>></code> in order to have them display properly. Also, any whitespace is 
+					automatically detected and rendered, so start any <code>&lt;pre&gt;</code> element content fully 
+					justified to the left of your code.</p>
+				<h6>Highlighting Example</h6>
+<pre class="html">
+&lt;!-- An example of how to use Lighter for HTML --&gt;
+&lt;pre class="html"&gt;
+&amp;lt;p&amp;gt;Hello World&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre>
+			</div>
+			<div class="col6">
+		
+			</div>
+		</div>
+	</div>
+</body>
+</html>
