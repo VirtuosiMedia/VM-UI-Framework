@@ -7,3 +7,9 @@
 	line-height:30px;
 	text-align:center;
 }
+
+/**
+ * Create the pin container
+ */
+.pinContainer {height: 50em;}
+.pinContainer .pin {margin: 1.75em;}

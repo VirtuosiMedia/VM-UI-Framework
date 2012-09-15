@@ -33,7 +33,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * Grid-system - common declarations
  */
-.showGrid [class*="col"] {
+.showGrid [class*="col"], .showCol, .showRow {
 	background: #EEE;
 	border-radius: 4px;
 	display: block;

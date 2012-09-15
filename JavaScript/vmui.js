@@ -20,7 +20,9 @@ var VMUI = new Class({
 		         {
 		        	 name:'Charts', 
 		        	 source:'Data/Charts.js', 
-		        	 selectors:'.chartLine, .chartScatter, .chartArea, .chartBar, .chartPie'},
+		        	 selectors:'.chartLine, .chartScatter, .chartArea, .chartBar, .chartPie'
+		         },
+		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'}
 		],
 		relativePath: '../JavaScript'
 		
@@ -104,8 +106,4 @@ var VMUI = new Class({
 			lighter.light(el);
 		});	
 	}
-});
-
-window.addEvent('domready', function() {
-	var loader = new VMUI();	
 });
