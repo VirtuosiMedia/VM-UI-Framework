@@ -71,7 +71,8 @@ var Charts = new Class({
 		this.options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
 		this.points = [];
 		this.svg = new SVG('svg', {viewBox:"0 0 300 195", id: 'chart-' + self.chartIndex});
-
+		
+		//Internet explorer didn't play well with resizing
 		this.setChartHeight(chart);
 		window.addEvent('resize', function(){
 			self.setChartHeight(chart);
@@ -232,6 +233,10 @@ var Charts = new Class({
 		
 		this.parseData();
 	},
+
+	setCanvasSize: function(){
+		
+	},
 	
 	setMaxes: function(){
 		var xValues = [], yValues = [];
@@ -249,8 +254,7 @@ var Charts = new Class({
 			this.maxY = ((Math.round(maxY/yInterval) + 1) * yInterval);
 		} else {
 			this.maxY = maxY + yInterval;		
-		}
-		
+		}		
 	},
 
 	setTitle: function(){
