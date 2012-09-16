@@ -16,6 +16,7 @@ var VMUI = new Class({
 		         {name:'RadioReplace', source:'Form/Replace/Radio.js', selectors:'input[type=radio]'},
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
+		         {name:'Modal', source:'Layout/Modal.js', selectors:'.modalTrigger'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
 		         {
 		        	 name:'Charts', 
@@ -64,7 +65,7 @@ var VMUI = new Class({
 	loadLighter: function(selectors){
 		var self = this;
 		var assets = [
-		     'Lighter/Lighter.js', 'Lighter/Loader.js', 'Lighter/Parser.js', 'Lighter/Parser/Smart.js',
+		     'Lighter/Loader.js', 'Lighter/Parser.js', 'Lighter/Parser/Smart.js',
 		     'Lighter/Compiler.js', 'Lighter/Compiler/List.js', 'Lighter/Compiler/Inline.js', 'Lighter/Fuel.js',
 		     'Lighter/Wick.js',
 		];
