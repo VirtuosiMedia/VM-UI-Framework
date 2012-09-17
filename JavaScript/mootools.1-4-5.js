@@ -763,6 +763,22 @@ Locale.addEvent("change",function(s){if(Locale.get("Date")){b(s);}}).fireEvent("
 Element.implement({
 	
 	/**
+	 * @param string - attribute - The name of the attribute to check for in the current element
+	 * @return boolean - True if the attribute exists, false otherwise
+	 */
+	has: function(attribute){
+		return this.hasOwnProperty(attribute);
+	},
+
+	/**
+	 * @param string - attribute - The name of the data attribute to check for in the current element
+	 * @return boolean - True if the data attribute exists, false otherwise
+	 */	
+	hasData: function(attribute){
+		return this.hasOwnProperty('data-'+attribute);
+	},	
+	
+	/**
 	 * @param string attribute - The name of the data attribute, without the preceding "data-", for which a value should 
 	 * 	be retrieved
 	 * @returns string - The value of the data attribute 
