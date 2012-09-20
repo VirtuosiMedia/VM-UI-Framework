@@ -17,6 +17,7 @@ var VMUI = new Class({
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
 		         {name:'Modal', source:'Layout/Modal.js', selectors:'.modalTrigger'},
+		         {name:'Social', source:'Widgets/Social.js', selectors:'.socialShare'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
 		         {
 		        	 name:'Charts', 
