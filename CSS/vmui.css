@@ -1199,7 +1199,8 @@ div[class^="notice"] {
 	border: 0.15em solid;
 	border-radius: 4px;
 	margin-bottom: 1.5em;
-	padding: 0% 1%;	
+	padding: 0% 1%;
+	position: relative;
 	width: 98%;
 }
 div[class^="notice"] p {
@@ -1231,6 +1232,46 @@ div.noticeError {
 	border-color: #FF6A6A;
 	color: #FF6A6A;
 }
+div[class^="notice"] .close {
+	position: absolute;
+	right: 1em;
+	text-decoration: none;
+}
+div.notice .close {color: #999;}
+div.noticeInfo .close {color: #069;}
+div.noticeSuccess .close {color: #4D9E0C;}
+div.noticeWarning .close {color: #FB9702;}
+div.noticeError .close {color: #FF6A6A;}
+div[class^="notice"] .close:hover {
+	border-radius: 0.5em;
+	display: block;
+	height: 1em;
+	line-height: 0.8em;
+	right: 0.8em;
+	text-align: center;
+	top: 0.525em;
+	width: 1em;
+}
+div.notice .close:hover {
+	background: #999;
+	color: #EEE;
+}
+div.noticeInfo .close:hover {
+	background: #069;
+	color: #D5F1FF;
+}
+div.noticeSuccess .close:hover {
+	background: #4D9E0C;
+	color: #E2FBCE;
+}
+div.noticeWarning .close:hover {
+	background: #FB9702;
+	color: #FEEACB;
+}
+div.noticeError .close:hover {
+	background: #FF6A6A;
+	color: #FFE6E6;
+}
 
 /**
  * Markers
@@ -1259,6 +1300,7 @@ span.markerError {background: #FF6A6A;}
 body .skipBottom {margin-bottom: 0;}
 .topMargin {margin-top: 1.75em;}
 .bottomMargin {margin-bottom: 1.75em;}
+.hidden {display: none;}
 
 /**
  * JavaScript Plugins
