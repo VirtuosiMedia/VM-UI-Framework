@@ -1485,8 +1485,15 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
  */
 #overlay {
 	background: #333;
+	background: -moz-radial-gradient(center, ellipse cover,  #777777 0%, #000000 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#777777), color-stop(100%,#000000));
+	background: -webkit-radial-gradient(center, ellipse cover,  #777777 0%,#000000 100%);
+	background: -o-radial-gradient(center, ellipse cover,  #777777 0%,#000000 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  #777777 0%,#000000 100%);
+	background: radial-gradient(ellipse at center,  #777777 0%,#000000 100%);
 	display: block;
-	opacity: 0.3;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#777777', endColorstr='#000000',GradientType=1 );
+	opacity: 0.7;
 	position: fixed;
 	top: 0px;
 	width: 100%;
