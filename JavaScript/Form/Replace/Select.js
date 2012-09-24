@@ -76,9 +76,11 @@ var SelectReplace = new Class({
 				},
 				'focus': function(){
 					this.addClass(self.options.activeClass);
+					select.fireEvent('focus');
 				},
 				'blur': function(){
 					this.removeClass(self.options.activeClass);
+					select.fireEvent('blur');
 				}
 			}
 		}).adopt(display, trigger).inject(select, 'after');

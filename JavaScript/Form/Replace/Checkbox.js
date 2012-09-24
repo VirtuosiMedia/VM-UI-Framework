@@ -50,9 +50,11 @@ var CheckboxReplace = new Class({
 					},
 					'focus': function(){
 						this.toggleClass(self.options.activeClass);
+						box.fireEvent('focus');
 					},
 					'blur': function(){
 						this.toggleClass(self.options.activeClass);
+						box.fireEvent('blur');
 					}, 
 					'keydown': function(e){
 						if (e.key == 'space'){
