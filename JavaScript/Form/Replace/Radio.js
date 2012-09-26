@@ -37,7 +37,7 @@ var RadioReplace = new Class({
 			replaceClass = (self.options.cloneClasses) ? replaceClass+' '+box.get('class') : replaceClass;
 			var replacement = new Element('a', {
 				'id':replaceId,
-				'class':replaceClass,
+				'class':replaceClass + ' radioReplace',
 				'name':box.get('name'),
 				'tabindex':box.get('tabindex'),
 				events: {
@@ -47,6 +47,7 @@ var RadioReplace = new Class({
 							$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 						}
 						box.fireEvent('change');
+						this.fireEvent('focus');
 					},
 					'focus': function(){
 						this.toggleClass(self.options.activeClass);
@@ -65,9 +66,10 @@ var RadioReplace = new Class({
 				}
 			}).inject(box, 'after');
 			box.addEvent('change', function(e){
-				$$('input[name='+this.get('name')+'] + .checked').set('class', self.options.uncheckedClass);
-				$$('input[value='+this.get('value')+'] + .unchecked').set('class', self.options.checkedClass);
+				$$('input[name='+this.get('name')+'] + .checked').set('class', self.options.uncheckedClass + ' radioReplace');
+				$$('input[value='+this.get('value')+'] + .unchecked').set('class', self.options.checkedClass + ' radioReplace');
 			}).setStyle('display', 'none');
+			box.getParent('label').addEvent('click', function(){replacement.focus().fireEvent('focus');});
 		});
 	}
 });

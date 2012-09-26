@@ -37,16 +37,18 @@ var CheckboxReplace = new Class({
 			replaceClass = (self.options.cloneClasses) ? replaceClass+' '+box.get('class') : replaceClass;
 			var replacement = new Element('a', {
 				'id':replaceId,
-				'class':replaceClass,
+				'class':replaceClass + ' checkboxReplace',
 				'name':box.get('name'),
 				'tabindex':box.get('tabindex'),
 				events: {
 					'click': function(){ 
-						box.checked = (!box.checked);
 						if (box.getParent('label')){
 							$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+						} else {
+							box.checked = (!box.checked);
 						}
 						box.fireEvent('change');
+						this.fireEvent('focus');
 					},
 					'focus': function(){
 						this.toggleClass(self.options.activeClass);
@@ -67,6 +69,14 @@ var CheckboxReplace = new Class({
 			box.addEvent('change', function(e){
 				$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 			}).setStyle('display', 'none');
+			$$('label[for=' + box.get('name') + ']').addEvent('click', function(){
+				if (box.checked) {
+					box.set('checked', false).fireEvent('change').fireEvent('focus');
+				} else {
+					box.set('checked', true).fireEvent('change').fireEvent('focus');
+				}
+				this.getElement('.checkboxReplace').focus();
+			});
 		});
 	}
 });
