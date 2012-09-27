@@ -69,7 +69,7 @@ var RadioReplace = new Class({
 				$$('input[name='+this.get('name')+'] + .checked').set('class', self.options.uncheckedClass + ' radioReplace');
 				$$('input[value='+this.get('value')+'] + .unchecked').set('class', self.options.checkedClass + ' radioReplace');
 			}).setStyle('display', 'none');
-			box.getParent('label').addEvent('click', function(){replacement.focus().fireEvent('focus');});
+			box.getParent('label').addEvent('click', function(){replacement.fireEvent('focus').focus();});
 		});
 	}
 });
