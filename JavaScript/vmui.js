@@ -19,13 +19,14 @@ var VMUI = new Class({
 		         {name:'Modal', source:'Layout/Modal.js', selectors:'.modalTrigger'},
 		         {name:'Notice', source:'Layout/Notice.js', selectors:'div[class^="notice"]'},
 		         {name:'Social', source:'Widgets/Social.js', selectors:'.socialShare'},
-		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical'},
+		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical, .pillTabs, .pillTabsVertical'},
 		         {
 		        	 name:'Charts', 
 		        	 source:'Data/Charts.js', 
 		        	 selectors:'.chartLine, .chartScatter, .chartArea, .chartBar, .chartPie'
 		         },
-		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'}
+		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'},
+		         {name:'Validate', source:'Form/Validate.js', selectors:'form'}
 		],
 		relativePath: '../JavaScript'
 		
