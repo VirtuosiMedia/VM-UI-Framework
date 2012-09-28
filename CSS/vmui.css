@@ -423,7 +423,6 @@ ol ol ol li:before {
 }
 .node li span:hover, .node li span:hover ~ ul li span {background: #EEE;}
 
-
 /**
  * Quotations
  */
@@ -561,6 +560,7 @@ input[type=text], input[type=password], input[type=file] {
 	line-height: 2.2em;
 	text-indent: 0.5em; 
 }
+input[type=file] {text-indent: 0em;}
 textarea {
 	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
 	box-shadow: inset 2px 2px 3px #E9E9E9;	
@@ -575,6 +575,10 @@ select {
 	float: left;
 	margin-bottom: 1.75em;
 	overflow: hidden;
+}
+input[type=submit] {
+	clear: both;
+	float: left;
 }
 
 /**
@@ -607,6 +611,12 @@ select {
 	background: #CCC;
 	color: #222;
 }
+[class^="button"].disabled, [class^="buttonSecondary"].disabled, [class^="button"][disabled], 
+[class^="button"][disabled] {
+	background: #BBB;
+	color: #666;
+	pointer: default;
+}
 [class^="buttonInfo"] {
 	background: #09C; 
 	background: -moz-linear-gradient(top, #0099CC 0%, #006699 100%); 
@@ -624,6 +634,11 @@ select {
 [class^="buttonInfo"]:hover {
 	background: #0077AA;
 	color: #FFF;
+}
+[class^="buttonInfo"].disabled, [class^="buttonInfo"][disabled] {
+	background: #07A;
+	color: #0AD;
+	pointer: default;
 }
 [class^="buttonSuccess"], [class^="buttonPrimary"] {
 	background: #56AF08; 
@@ -643,6 +658,11 @@ select {
 	background: #4D9E0C;
 	color: #FFF; 
 }
+[class^="buttonSuccess"].disabled, [class^="buttonSuccess"][disabled] {
+	background: #4D9E0C;
+	color: #67BF17;
+	pointer: default;
+}
 [class^="buttonWarning"] {
 	background: #FEC912; 
 	background: -moz-linear-gradient(top, #FFB111 0%, #FF9900 100%); 
@@ -660,6 +680,11 @@ select {
 [class^="buttonWarning"]:hover {
 	background: #FF9900;
 	color: #FFF; 
+}
+[class^="buttonWarning"].disabled, [class^="buttonWarning"][disabled] {
+	background: #FF9900;
+	color: #FEC912;
+	pointer: default;
 }
 [class^="buttonError"] {
 	background: #FB0000; 
@@ -679,6 +704,11 @@ select {
 	background: #D50000;
 	color: #FFF; 
 }
+[class^="buttonError"].disabled, [class^="buttonError"][disabled] {
+	background: #E61111;
+	color: #F66;
+	pointer: default;
+}
 [class^="buttonInverted"] {
 	background: #333; 
 	background: -moz-linear-gradient(top, #333333 0%, #111111 100%); 
@@ -696,6 +726,11 @@ select {
 [class^="buttonInverted"]:hover {
 	background: #222;
 	color: #FFF; 
+}
+[class^="buttonInverted"].disabled, [class^="buttonInverted"][disabled] {
+	background: #111;
+	color: #555;
+	pointer: default;
 }
 [class^="button"][class$="Medium"] {
 	display: inline-block;
@@ -1407,53 +1442,87 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 .selectList .selectOptgroup li {text-indent: 1em;}
 
 /**
+ * Form Validation
+ */
+.errorMessage, .successMessage {
+	float: left;
+	margin-left: 0.5em;
+}
+input.error {border-color: #C00;}
+.errorMessage {color: #C00;}
+input.success {border-color: #5D8B30;}
+.successMessage {color: #5D8B30;}
+
+/**
  * Tabs
  */
-.tabs, .tabsVertical {
+.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
 	float: left;
 	list-style: none;
 	margin: 0;
 }
-.tabs li {
+.tabs li, .pillTabs li {
 	float: left; 
 	position: relative;
 }
+.pillTabs li {margin-right: 0.5em;}
 .tabs a, .tabsVertical a {
 	background: #FFF;
-	border-left: 0.15em solid #000;
-	border-top: 0.15em solid #000;
+	border-left: 0.15em solid #222;
+	border-top: 0.15em solid #222;
 	padding: 0.3em 1em;
 	text-decoration: none;
+}
+.pillTabs a, .pillTabsVertical a {
+	border: 0.15em solid transparent;
+	border-radius: 4px;
+	padding: 0.3em 1em;
+	text-decoration: none;	
 }
 .tabs a.active {
 	color: #666;
 	padding-bottom: 0.45em;
 }
+.pillTabs a.active, .pillTabsVertical a.active {
+	background: #222;
+	color: #FFF;
+}
+.pillTabs a:hover, .pillTabsVertical a:hover {border-color: #222;}
 .tabs li:first-child a, .tabsVertical li:first-child a {border-top-left-radius: 4px;}
 .tabs li:last-child a {
-	border-right: 0.15em solid #000;
+	border-right: 0.15em solid #222;
 	border-top-right-radius: 4px;
 }
 .tabContent {
-	border: 0.15em solid #000;
+	border: 0.15em solid #222;
 	border-radius: 0px 4px 4px 4px;
 	box-sizing: border-box;
 	clear: both;
 	margin-bottom: 1.75em;
 	padding: 1em;
 }
-.tabContent > div {display: none;}
-.tabContent .active  {display: block;}
-.tabsVertical {
+.pillTabContent {
+	box-sizing: border-box;
+	clear: both;
+	padding: 1.75em 0;
+}
+.tabContent > div, .pillTabContent > div {display: none;}
+.tabContent .active, .pillTabContent .active  {display: block;}
+.tabsVertical, .pillTabsVertical {
 	display: block;
 	width: 20%;
 }
 .tabsVertical li {position: relative;}
-.tabsVertical a {
+.tabsVertical a, .pillTabsVertical a {
 	box-sizing: border-box;	
 	display: block;
 	width: 100%;
 }
+.pillTabsVertical a {
+	margin-right: 10%;
+	width: 90%;
+}
+.pillTabsVertical a {margin-bottom: 0.5em}
 .tabsVertical a.active {position: relative;}
 .tabsVertical a.active:after {
 	background: #FFF;
@@ -1465,16 +1534,17 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	top: 0px;
 	width: 0.5em;
 }
-.tabsVertical + .tabContent {
+.tabsVertical + .tabContent, .pillTabsVertical + .pillTabContent {
 	clear: none;
 	float: left;
 	width: 80%;
 }
+.pillTabsVertical + .pillTabContent {padding-top: 0;}
 .tabsVertical li:last-child a {
-	border-bottom: 0.15em solid #000;
+	border-bottom: 0.15em solid #222;
 	border-bottom-left-radius: 4px;
 }
-.tabContent iframe {
+.tabContent iframe, .pillTabContent iframe {
 	border: none;
 	height: 35em;
 	width: 100%;
