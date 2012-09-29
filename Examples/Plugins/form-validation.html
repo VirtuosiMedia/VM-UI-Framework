@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Form Validation</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Summary</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Form Validation</h1>
+				<div class="row skipBottom">
+					<div class="col3">
+						<h6>Code</h6>
+						<ul>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#usage">Usage</a></li>
+							<li><a href="#validators">Validators Reference</a></li>
+						</ul>
+					</div>
+					<div class="col9">
+						<h6>Demos & Examples</h6>
+						<div class="row skipBottom">
+							<div class="col3">
+								<ul>
+									<li><a href="#required">Required Elements</a></li>
+									<li><a href="#regex">Custom Regex</a></li>
+									<li><a href="#length">Input Length</a></li>
+									<li><a href="#matching">Matching</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#lists">List Comparison</a></li>
+									<li><a href="#alphanumeric">Alphanumeric</a></li>
+									<li><a href="#common">Common Validations</a></li>
+									<li><a href="#postal">Postal Codes</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#dates">Dates</a></li>
+									<li><a href="#image">Image Files</a></li>
+								</ul>
+							</div>						
+						</div>
+					</div>															
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col5">
+				<h3 id="overview">Overview</h3>
+				<p>VM UI Framework provides form validation for almost every type of form element with over <strong>20 
+					unique validators</strong>, plus the ability to create your own using regular expressions. The form 
+					validation is live and is activated on either the <code>blur</code> event for individual form 
+					elements or on the <code>submit</code> event for the form. If a field validates, it will turn green, 
+					with either the	default <i class="iconCheck1"></i> or a customized success message.</p>
+				<h3 id="usage">Usage</h3>
+				<p><strong>Each form element must have a unique id</strong>. Validations are added to a field using the 
+					data attribute <code>data-validate</code>, which takes a JSON object as a value. The JSON object 
+					should have the validator names as keys. Each key should have the value of another object, with two 
+					possible keys: <code>error</code> and <code>params</code>.</p>
+				<p>Each validator has a default error, which you can override with your own error message. However, if 
+					you want to use the default error message, simply omit the <code>error</code> key.</p>
+				<p>Some validators will need you to pass in parameters in order to function. For those validators, the 
+					<code>params</code> key is required. If the validator doesn't require parameters, omit the  
+					<code>params</code> key. You will need to pay special attention to what type of parameter value is 
+					required for each validator as they vary.</p>
+				<p>If you want to use the default error message and the validator doesn't have parameters, simply pass 
+					in an empty object as the value for the validator key.</p>			
+			</div>
+			<div class="col7">
+				<h6>Custom Success Messages</h6>
+				<p>If you would like to pass in a custom message to displayed on successful validation, use the 
+					<code>data-success</code> attribute. Since there is only one success message per form field, the 
+					value of <code>data-success</code> is simply a string.</p>			
+<pre class="html">
+&lt;!-- A simple required validator with a custom success message --&gt;
+&lt;label for="required"&gt;Required Input&lt;/label&gt;
+&lt;input type="text" data-validate="{required:{}}" data-success="Awesome!" name="required"/&gt;									
+</pre> 
+				<h6>Validation Examples</h6>
+<pre class="html">
+&lt;!-- A simple required validator with no customization --&gt;
+&lt;label for="required"&gt;Required Input&lt;/label&gt;
+&lt;input type="text" data-validate="{required:{}}" name="required"/&gt;
+
+&lt;!-- A required validator with a custom error --&gt;
+&lt;label for="custom"&gt;Required Input&lt;/label&gt;
+&lt;input type="text" data-validate="{required:{error: 'This is a custom error'}}" name="custom"/&gt;
+
+&lt;!-- A minLength validator with a parameter --&gt;
+&lt;label for="min"&gt;MinLength: 5&lt;/label&gt;
+&lt;input type="text" data-validate="{minLength:{params:5}}" name="min"/&gt;
+
+&lt;!-- Multiple validators with a range validator with an array parameter --&gt;
+&lt;label for="range"&gt;Required Input, Range: 3,8&lt;/label&gt;
+&lt;input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/&gt;									
+</pre> 
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h3 id="validators">Validators</h3>
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Validator Name</th>
+							<th class="col6">Description</th>
+							<th>Required Parameters</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>required</code></td>
+							<td>Makes the field required.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>regex</code></td>
+							<td>A custom regular expression to be evaluted. <span class="markerInfo">Note</span> If you 
+								use <code>regex</code>, be sure to pass in a custom error message as the default 
+								message won't be very helpful to users.</td>
+							<td><em>regex string</em> <code>regex</code></td>
+						</tr>						
+						<tr>
+							<td><code>minLength</code></td>
+							<td>Enforces a minimum length on the input value.</td>
+							<td><em>integer</em> <code>minValue</code></td>
+						</tr>
+						<tr>
+							<td><code>maxLength</code></td>
+							<td>Enforces a maximum length on the input value.</td>
+							<td><em>integer</em> <code>maxValue</code></td>
+						</tr>
+						<tr>
+							<td><code>range</code></td>
+							<td>Enforces a both a minimum and a maximum length on the input value.</td>
+							<td><em>array</em> [<code>minValue</code>, <code>maxValue</code>]</td>
+						</tr>
+						<tr>
+							<td><code>matches</code></td>
+							<td>The field value must match the value of the field name passed in as a parameter. Useful 
+								for password matching fields.</td>
+							<td><em>string</em> <code>matchName</code></td>
+						</tr>
+						<tr>
+							<td><code>differs</code></td>
+							<td>The opposite of <code>matches</code>. Ensures two fields do not have the same value.</td>
+							<td><em>string</em> <code>differName</code></td>
+						</tr>
+						<tr>
+							<td><code>includes</code></td>
+							<td>The field must contain one of the passed in values.</td>
+							<td><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
+						</tr>
+						<tr>
+							<td><code>excludes</code></td>
+							<td>The field cannot contain one of the passed in values.</td>
+							<td><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
+						</tr>
+						<tr>
+							<td><code>alpha</code></td>
+							<td>Only alphabetic character are accepted.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>numeric</code></td>
+							<td>Only numeric character are accepted.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>alphanumeric</code></td>
+							<td>Only alphanumeric character are accepted.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>email</code></td>
+							<td>Requires a valid email address.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>url</code></td>
+							<td>Requires a valid URL.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>password</code></td>
+							<td>Password must contain one lowercase letter, one uppercase letter, one number, and be at 
+								least 6 characters long.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>usZip</code></td>
+							<td>Validates US ZIP codes.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>canadaPostal</code></td>
+							<td>Validates Canadian postal codes.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>credit</code></td>
+							<td>Validates all major credit cards.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>dateMDY</code></td>
+							<td>Tests a date for a M/D/Y format.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>dateYMD</code></td>
+							<td>Tests a date for a Y/M/D format.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>imageFile</code></td>
+							<td>For use with file inputs. Tests to see if the selected file is an image.</td>
+							<td>None</td>
+						</tr>
+						<tr>
+							<td><code>phone</code></td>
+							<td>Validates North American phone number formats.</td>
+							<td>None</td>
+						</tr>																																																																																																																																			
+					</tbody>
+				</table>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h3 id="required">Required Elements</h3>
+				<ul class="tabsVertical">
+					<li><a href="#requiredDemo" class="active">Demo</a></li>
+					<li><a href="#requiredCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="requiredDemo" class="active">
+						<h6>Required Elements Demo</h6>
+						<form id="requiredForm">
+							<label for="required">Required Input</label>
+							<input type="text" data-validate="{required:{}}" name="required"/>																							
+							<label for="options">Options</label>
+							<select name="options" data-validate="{required:{}}">
+								<option value="">Select An Option</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+							</select>
+							<label for="message">Message</label>
+							<textarea name="message" class="col4" data-validate="{required:{}}"></textarea>
+							<label for="file">File</label>
+							<input type="file" data-validate="{required:{}}" name="file"/>
+							<label for="checkbox"><input type="checkbox" data-validate="{required:{}}" name="checkbox" /> Required Checkbox</label>
+							<label for="radio">Required Radio</label>
+							<label><input type="radio" data-validate="{required:{}}" value="1" name="radio" /> Option 1</label>
+							<label><input type="radio" data-validate="{required:{}}" value="2" name="radio" /> Option 2</label>
+							<label><input type="radio" data-validate="{required:{}}" value="3" name="radio" /> Option 3</label>		
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="requiredCode">
+						<h6>Required Elements Code Example</h6>
+<pre class="html">
+&lt;form id="requiredForm"&gt;
+	&lt;label for="required"&gt;Required Input&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}}" name="required"/&gt;																							
+	&lt;label for="options"&gt;Options&lt;/label&gt;
+	&lt;select name="options" data-validate="{required:{}}"&gt;
+		&lt;option value=""&gt;Select An Option&lt;/option&gt;
+		&lt;option value="1"&gt;Option 1&lt;/option&gt;
+		&lt;option value="2"&gt;Option 2&lt;/option&gt;
+		&lt;option value="3"&gt;Option 3&lt;/option&gt;
+	&lt;/select&gt;
+	&lt;label for="message"&gt;Message&lt;/label&gt;
+	&lt;textarea name="message" class="col4" data-validate="{required:{}}"&gt;&lt;/textarea&gt;
+	&lt;label for="file"&gt;File&lt;/label&gt;
+	&lt;input type="file" data-validate="{required:{}}" name="file"/&gt;
+	&lt;label for="checkbox"&gt;&lt;input type="checkbox" data-validate="{required:{}}" name="checkbox" /&gt; Required Checkbox&lt;/label&gt;
+	&lt;label for="radio"&gt;Required Radio&lt;/label&gt;
+	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="1" name="radio" /&gt; Option 1&lt;/label&gt;
+	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="2" name="radio" /&gt; Option 2&lt;/label&gt;
+	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="3" name="radio" /&gt; Option 3&lt;/label&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="regex">Custom Regex</h3>
+				<ul class="tabsVertical">
+					<li><a href="#regexDemo" class="active">Demo</a></li>
+					<li><a href="#regexCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="regexDemo" class="active">
+						<h6>Custom Regex Demo</h6>
+						<form id="regexForm">
+							<label for="regex">Custom Regex: (Must contain 'pizza')</label>
+							<input type="text" data-validate="{regex:{params:'pizza'}}" name="regex"/>		
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="regexCode">
+						<h6>Custom Regex Code Example</h6>
+<pre class="html">
+&lt;form id="regexForm"&gt;
+	&lt;label for="regex"&gt;Custom Regex: (Must contain 'pizza')&lt;/label&gt;
+	&lt;input type="text" data-validate="{regex:{params:'pizza'}}" name="regex"/&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="length">Input Length</h3>
+				<ul class="tabsVertical">
+					<li><a href="#lengthDemo" class="active">Demo</a></li>
+					<li><a href="#lengthCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="lengthDemo" class="active">
+						<h6>Input Length Demo</h6>
+						<form id="lengthForm">
+							<label for="min">MinLength: 5</label>
+							<input type="text" data-validate="{minLength:{params:5}}" name="min"/>
+							<label for="max">Required Input, MaxLength: 5</label>
+							<input type="text" data-validate="{required:{}, maxLength:{params:5}}" name="max"/>
+							<label for="range">Required Input, Range: 3,8</label>
+							<input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/>		
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="lengthCode">
+						<h6>Input Length Code Example</h6>
+<pre class="html">
+&lt;form id="lengthForm"&gt;
+	&lt;label for="min"&gt;MinLength: 5&lt;/label&gt;
+	&lt;input type="text" data-validate="{minLength:{params:5}}" name="min"/&gt;
+	&lt;label for="max"&gt;Required Input, MaxLength: 5&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}, maxLength:{params:5}}" name="max"/&gt;
+	&lt;label for="range"&gt;Required Input, Range: 3,8&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h3 id="matching">Matching</h3>
+				<ul class="tabsVertical">
+					<li><a href="#matchingDemo" class="active">Demo</a></li>
+					<li><a href="#matchingCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="matchingDemo" class="active">
+						<h6>Matching Demo</h6>
+						<form id="matchingForm">
+							<label for="test">Test Field To Match</label>
+							<input type="text" data-validate="{required:{}}" name="test"/>
+							<label for="matches">Matches Test Field</label>
+							<input type="text" data-validate="{required:{}, matches:{params:'test'}}" name="matches"/>
+							<label for="differs">Differs From Test Field</label>
+							<input type="text" data-validate="{required:{}, differs:{params:'test'}}" name="differs"/>
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="matchingCode">
+						<h6>Matching Code Example</h6>
+<pre class="html">
+&lt;form id="matchingForm"&gt;
+	&lt;label for="test"&gt;Test Field To Match&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}}" name="test"/&gt;
+	&lt;label for="matches"&gt;Matches Test Field&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}, matches:{params:'test'}}" name="matches"/&gt;
+	&lt;label for="differs"&gt;Differs From Test Field&lt;/label&gt;
+	&lt;input type="text" data-validate="{required:{}, differs:{params:'test'}}" name="differs"/&gt;	
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h3 id="lists">List Comparison</h3>
+				<ul class="tabsVertical">
+					<li><a href="#listDemo" class="active">Demo</a></li>
+					<li><a href="#listCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="listDemo" class="active">
+						<h6>List Comparison Demo</h6>
+						<form id="listForm">
+							<label for="includes">Includes: (Must contain 'pizza', 'steak', or 'fries')</label>
+							<input type="text" data-validate="{includes:{params:['pizza', 'steak', 'fries']}}" name="includes"/>
+							<label for="excludes">Excludes: (Cannot contain 'onions', 'salad', or 'mayo')</label>
+							<input type="text" data-validate="{excludes:{params:['onions', 'salad', 'mayo']}}" name="excludes"/>
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="listCode">
+						<h6>List Comparison Code Example</h6>
+<pre class="html">
+&lt;form id="listForm"&gt;
+	&lt;label for="includes"&gt;Includes: (Must contain 'pizza', 'steak', or 'fries')&lt;/label&gt;
+	&lt;input type="text" data-validate="{includes:{params:['pizza', 'steak', 'fries']}}" name="includes"/&gt;
+	&lt;label for="excludes"&gt;Excludes: (Cannot contain 'onions', 'salad', or 'mayo')&lt;/label&gt;
+	&lt;input type="text" data-validate="{excludes:{params:['onions', 'salad', 'mayo']}}" name="excludes"/&gt;	
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="alphanumeric">Alphanumeric</h3>
+				<ul class="tabsVertical">
+					<li><a href="#alphaDemo" class="active">Demo</a></li>
+					<li><a href="#alphaCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="alphaDemo" class="active">
+						<h6>Alphanumeric Demo</h6>
+						<form id="alphanumericForm">
+							<label for="alpha">Alpha Only</label>
+							<input type="text" data-validate="{alpha:{}}" name="alpha"/>
+							<label for="numeric">Numeric Only</label>
+							<input type="text" data-validate="{numeric:{}}" name="numeric"/>
+							<label for="alphanumeric">Alphanumeric Only</label>
+							<input type="text" data-validate="{alphanumeric:{}}" name="alphanumeric"/>							
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="alphaCode">
+						<h6>Alphanumeric Code Example</h6>
+<pre class="html">
+&lt;form id="alphanumericForm"&gt;
+	&lt;label for="alpha"&gt;Alpha Only&lt;/label&gt;
+	&lt;input type="text" data-validate="{alpha:{}}" name="alpha"/&gt;
+	&lt;label for="numeric"&gt;Numeric Only&lt;/label&gt;
+	&lt;input type="text" data-validate="{numeric:{}}" name="numeric"/&gt;
+	&lt;label for="alphanumeric"&gt;Alphanumeric Only&lt;/label&gt;
+	&lt;input type="text" data-validate="{alphanumeric:{}}" name="alphanumeric"/&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="common">Common Validations</h3>
+				<ul class="tabsVertical">
+					<li><a href="#commonDemo" class="active">Demo</a></li>
+					<li><a href="#commonCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="commonDemo" class="active">
+						<h6>Common Validations Demo</h6>
+						<form id="commonForm">
+							<label for="email">Email</label>
+							<input type="text" data-validate="{email:{}}" name="email"/>
+							<label for="url">URL</label>
+							<input type="text" data-validate="{url:{}}" name="url"/>
+							<label for="password">Password</label>
+							<input type="text" data-validate="{password:{}}" name="password"/>
+							<label for="phone">Phone</label>
+							<input type="text" data-validate="{phone:{}}" name="phone"/>
+							<label for="credit">Credit Card</label>
+							<input type="text" data-validate="{credit:{}}" name="credit"/>																						
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="commonCode">
+						<h6>Common Validations Code Example</h6>
+<pre class="html">
+&lt;form id="commonForm"&gt;
+	&lt;label for="email"&gt;Email&lt;/label&gt;
+	&lt;input type="text" data-validate="{email:{}}" name="email"/&gt;
+	&lt;label for="url"&gt;URL&lt;/label&gt;
+	&lt;input type="text" data-validate="{url:{}}" name="url"/&gt;
+	&lt;label for="password"&gt;Password&lt;/label&gt;
+	&lt;input type="text" data-validate="{password:{}}" name="password"/&gt;
+	&lt;label for="phone"&gt;Phone&lt;/label&gt;
+	&lt;input type="text" data-validate="{phone:{}}" name="phone"/&gt;
+	&lt;label for="credit"&gt;Credit Card&lt;/label&gt;
+	&lt;input type="text" data-validate="{credit:{}}" name="credit"/&gt;	
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="postal">Postal Codes</h3>
+				<ul class="tabsVertical">
+					<li><a href="#postalDemo" class="active">Demo</a></li>
+					<li><a href="#postalCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="postalDemo" class="active">
+						<h6>Postal Codes Demo</h6>
+						<form id="postalForm">
+							<label for="zip">US ZIP Code</label>
+							<input type="text" data-validate="{usZip:{}}" name="zip"/>
+							<label for="canada">Canadian Postal Code</label>
+							<input type="text" data-validate="{canadaPostal:{}}" name="canada"/>					
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="postalCode">
+						<h6>Postal Codes Code Example</h6>
+<pre class="html">
+&lt;form id="postalForm"&gt;
+	&gt;label for="zip"&lt;US ZIP Code&gt;/label&lt;
+	&gt;input type="text" data-validate="{usZip:{}}" name="zip"/&lt;
+	&gt;label for="canada"&lt;Canadian Postal Code&gt;/label&lt;
+	&gt;input type="text" data-validate="{canadaPostal:{}}" name="canada"/&lt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="dates">Dates</h3>
+				<ul class="tabsVertical">
+					<li><a href="#datesDemo" class="active">Demo</a></li>
+					<li><a href="#datesCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="datesDemo" class="active">
+						<h6>Dates Demo</h6>
+						<form id="datesForm">
+							<label for="mdy">Date: M/D/Y</label>
+							<input type="text" data-validate="{dateMDY:{}}" name="mdy"/>
+							<label for="ymd">Date: Y/M/D</label>
+							<input type="text" data-validate="{dateYMD:{}}" name="ymd"/>					
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="datesCode">
+						<h6>Dates Code Example</h6>
+<pre class="html">
+&lt;form id="dates"&gt;
+	&lt;label for="mdy"&gt;Date: M/D/Y&lt;/label&gt;
+	&lt;input type="text" data-validate="{dateMDY:{}}" name="mdy"/&gt;
+	&lt;label for="ymd"&gt;Date: Y/M/D&lt;/label&gt;
+	&lt;input type="text" data-validate="{dateYMD:{}}" name="ymd"/&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="image">Image Files</h3>
+				<ul class="tabsVertical">
+					<li><a href="#imageDemo" class="active">Demo</a></li>
+					<li><a href="#imageCode">Code Example</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="imageDemo" class="active">
+						<h6>Image Files Demo</h6>
+						<form id="imageForm">
+							<label for="image">Upload an image file</label>
+							<input type="file" data-validate="{imageFile:{}}" name="image"/>					
+							<input type="submit" class="buttonInfoLarge" value="Submit" />
+						</form>						
+					</div>
+					<div id="imageCode">
+						<h6>Image Files Code Example</h6>
+<pre class="html">
+&lt;form id="imageForm"&gt;
+	&lt;label for="image"&gt;Upload an image file&lt;/label&gt;
+	&lt;input type="file" data-validate="{imageFile:{}}" name="image"/&gt;		
+	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>									
+	</div>
+</body>
+</html>

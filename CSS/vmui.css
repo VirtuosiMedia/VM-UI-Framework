@@ -1448,9 +1448,9 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	float: left;
 	margin-left: 0.5em;
 }
-input.error {border-color: #C00;}
+input.error, textarea.error, .selectContainer.error {border-color: #C00;}
 .errorMessage {color: #C00;}
-input.success {border-color: #5D8B30;}
+input.success, textarea.success, .selectContainer.success {border-color: #5D8B30;}
 .successMessage {color: #5D8B30;}
 
 /**
