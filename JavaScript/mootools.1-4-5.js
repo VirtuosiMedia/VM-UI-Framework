@@ -814,14 +814,14 @@ Element.implement({
 
 	/**
 	 * @param string attribute - The name of the data attribute to set, minus the "data-"
-	 * @param mixed - The value of the data attribute
+	 * @param mixed value - The value of the data attribute
 	 */
 	setData: function(attribute, value){
 		this.set('data-'+attribute, value);
 	},	
 	
 	/**
-	 * @param object - An object with the shortened attribute name (without "data-") as the key, the attribute value 
+	 * @param object data - An object with the shortened attribute name (without "data-") as the key, the attribute value 
 	 * 	as the value for multiple data attributes
 	 */
 	setDataMultiple: function(data){
@@ -829,6 +829,22 @@ Element.implement({
 		Object.each(data, function(value, attribute){
 			self.set('data-'+attribute, value);
 		});
+	},
+	
+	/**
+	 * Inspired by Neil Craig's code at https://groups.google.com/forum/?fromgroups=#!topic/mootools-users/aGDcj1WirQc
+	 * @param string selector - The ancestor selector to be matched for the current element
+	 */
+	getAncestor: function(selector){
+		if (this.tagName != 'html'){
+			var collection = $$(selector);
+			var ancestor = this.getParent();
+			while(!collection.contains(ancestor)){
+				ancestor = ancestor.getParent();
+			}
+			return ancestor;
+		}
+		return null;
 	}
 });
 
