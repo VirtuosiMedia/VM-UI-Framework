@@ -28,6 +28,6 @@ var Notice = new Class({
 		
 		if (options.closetime){closeNotice.delay(options.closetime);}
 		if (options.opentime){openNotice.delay(options.opentime);}
-		notice.getChildren('.close').addEvent('click', function(e){e.stop(); closeNotice();})
+		notice.getChildren('.close').addEvent('click', function(e){e.stop(); closeNotice();});
 	}
 });
