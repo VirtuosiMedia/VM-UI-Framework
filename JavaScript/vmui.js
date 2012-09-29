@@ -12,6 +12,7 @@ var VMUI = new Class({
 
 	options: {
 		assets: [
+		         {name:'Accordion', source:'Navigation/Accordion.js', selectors:'.accordion'},
 		         {name:'CheckboxReplace', source:'Form/Replace/Checkbox.js', selectors:'input[type=checkbox]'},
 		         {name:'RadioReplace', source:'Form/Replace/Radio.js', selectors:'input[type=radio]'},
 		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
