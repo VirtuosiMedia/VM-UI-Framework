@@ -60,6 +60,10 @@
 				<p>By default, icons come in 3 sizes: default, medium, and large. The default size doesn't need any 
 					special treatment, but to use either medium or large, simply add the size after "icon" but before 
 					the icon name in the CSS class. A size can be applied to any icon.</p>
+				<p><span class="markerInfo">Note</span> If you want to use hover effects on an icon in a link where the 
+					icon is the only content, you must apply <code>display: inline-block</code> on the <code>a</code> 
+					tag. This is necessary because the icon is injected via a pseudo-element, which doesn't have hover 
+					interactions by default.</p>
 				<table>
 					<thead>
 						<tr><th>Icon</th><th>Class</th><th>Size (em)</th><th>Size (px)</th></tr>
