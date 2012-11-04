@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Slideshow Carousel</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="../">Summary</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html">JavaScript Plugins</a></li>												
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Slideshow Carousel</h1>
+				<div class="row skipBottom">
+					<div class="col6">
+						<h6>Code</h6>
+						<div class="row skipBottom">
+							<div class="col3">
+								<ul>
+									<li><a href="#overview">Overview</a></li>
+									<li><a href="#usage">Usage</a></li>
+									<li><a href="#carousel-options">Carousel Options</a></li>
+									<li><a href="#slide-options">Slide Options</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#controls">Carousel Controls</a></li>
+									<li><a href="#previews">Slide Previews</a></li>
+									<li><a href="#captions">Slide Captions</a></li>									
+								</ul>
+							</div>							
+						</div>
+					</div>
+					<div class="col6">
+						<h6>Demos & Examples</h6>
+						<div class="row skipBottom">
+							<div class="col3">
+								<ul>
+									<li><a href="#standard">Standard Carousel w/ Captions</a></li>
+									<li><a href="#fade">Manual Fade Slideshow</a></li>
+									<li><a href="#ajax">AJAX Carousel</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#thumb-gallery">Thumb Gallery</a></li>								
+									<li><a href="#zoomPan">Zoom & Pan Slideshow</a></li>
+									<li><a href="#clean">Clean Carousel</a></li>
+								</ul>
+							</div>						
+						</div>
+					</div>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="overview">Overview</h3>
+				<p>The carousel plugin can function as a rotating content widget, a slideshow, or a filmstrip gallery. 
+					It's fully responsive, can use images or HTML, and slides can even be loaded via AJAX. There are 7 
+					different slide transitions and there are multiple styles for controls.</p>
+				<h3 id="usage">Usage</h3>
+				<div class="row skipBottom">
+					<div class="col6">
+						<p>Each carousel has at minimum a container with a class of either <code>carousel</code> or
+							<code>carouselClean</code> and an unordered list of slides with the class of 
+							<code>slides</code>. The starting slide <code>li</code> should be given a class of 
+							<code>active</code>.</p>
+						<p>Various <a href="#carousel-options">options</a> controlling the type and duration of 
+							transitions for each carousel can be passed in by setting data attributes in the container 
+							element.</p>
+						<p>Slide content can include anything that you would like, including HTML, images, videos, 
+							<a href ="#slide-options">AJAX content, or even external websites</a>. Image-based slides 
+							can also have <a href="#captions">captions</a> and 
+							<a href="previews">thumbnail previews</a>.</p>
+						<p>Multiple carousel <a href="#controls">control variations</a> are possible, which will allow 
+							you to make each carousel unique, giving as much control to the user as you'd like.</p> 							  
+					</div>
+					<div class="col6">
+						<h6>Minimal Demo</h6>
+						<div class="carousel">
+							<ul class="slides">
+								<li class="active"><h3>Slide 1</h3></li>
+								<li><h3>Slide 2</h3></li>
+								<li><h3>Slide 3</h3></li>
+								<li><h3>Slide 4</h3></li>
+							</ul>										
+						</div>
+						<h6>Code</h6>					
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;&lt;h3&gt;Slide 1&lt;/h3&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;h3&gt;Slide 2&lt;/h3&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;h3&gt;Slide 3&lt;/h3&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;h3&gt;Slide 4&lt;/h3&gt;&lt;/li&gt;
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>					
+					</div>
+				</div>
+				<h3 id="carousel-options">Carousel Options</h3>
+				<p>The carousel options are data attributes that should be applied to the carousel container element 
+					with the <code>carousel</code> class.</p>
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Option</th>
+							<th>Description</th>
+							<th>Default</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>data-autoplay</code></td>
+							<td>Whether or not the slides automatically play.</td>
+							<td><em>true</em></td>
+							<td><em>true</em> | <em>false</em></td>
+						</tr>
+						<tr>
+							<td><code>data-duration</code></td>
+							<td>The delay in milli-seconds between each slide change.</td>
+							<td><em>4000</em></td>
+							<td><em>integer</em></td>
+						</tr>
+						<tr>
+							<td><code>data-transition</code></td>
+							<td>The type of transition between slides. Note that the <em>zoomPan</em> option will only 
+								work for image based slideshows.</td>
+							<td><em>standard</em></td>
+							<td><em>standard</em> | <em>fade</em> | <em>slideLeft</em> | <em>slideRight</em> | 
+								<em>slideTop</em> | <em>slideBottom</em> | <em>zoomPan</em></td>
+						</tr>												
+					</tbody>
+				</table>
+				<h3 id="slide-options">Slide Options</h3>
+				<p>The slide options are data attributes that should be applied to the slide <code>li</code> container 
+					element.</p>				
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Option</th>
+							<th>Description</th>
+							<th>Default</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>data-targetUrl</code></td>
+							<td>The URL with which the slide's content should be populated. Any current slide content 
+								will be replaced with the AJAX content.</td>
+							<td><em>none</em></td>
+							<td><em>relative URL</em> (no iframe) | <em>full URL</em> (iframe)</td>
+						</tr>												
+					</tbody>
+				</table>
+				<h3 id="controls">Carousel Controls</h3>
+				<div class="row">
+					<div class="col6">
+						<p>There are multiple ways to control the carousel with	standard controls like play, pause, 
+							next, previous, first and last. There is also a counter	element that keeps track of the 
+							current slide number.</p>
+						<p>All of the controls are optional. If you don't want the user to be able to control the 
+							carousel, you can omit all controls. <span class="markerInfo">Note</span> Clicking on any 
+							of the controls or slide navigation will automatically stop autoplay if it is currently 
+							enabled. The only way for autoplay to be re-initiated is to include the <code>play</code> 
+							control.</p>						 
+					</div>
+					<div class="col6">
+						<table>
+							<thead>
+								<tr>
+									<th class="col2">Control Class</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>next</code></td>
+									<td>Advances the carousel to the next slide.</td>
+								</tr>
+								<tr>
+									<td><code>previous</code></td>
+									<td>Reverses the carousel to the previous slide.</td>
+								</tr>
+								<tr>
+									<td><code>play</code></td>
+									<td>Initiates autoplay. If autoplay is already enabled, it will automatically 
+										change to <code>pause</code>.</td>
+								</tr>										
+								<tr>
+									<td><code>pause</code></td>
+									<td>Stops autoplay. If autoplay is not enabled, it will automatically change to 
+										<code>play</code>.</td>
+								</tr>
+								<tr>
+									<td><code>first</code></td>
+									<td>Sets the carousel to the first slide.</td>
+								</tr>													
+								<tr>
+									<td><code>last</code></td>
+									<td>Sets the carousel to the last slide.</td>
+								</tr>
+								<tr>
+									<td><code>counter</code></td>
+									<td>Displays the current slide number in relation to the number of slides.</td>
+								</tr>																		
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Placing Controls</h6>
+						<p>There are three configuration options for placing the controls within the carousel container. 
+							The simplest configuration method uses only the next and previous controls. In this case, 
+							the controls will be placed at either side of the carousel (see the 
+							<a href="#fade">demo</a>). In this case, the controls do not need to be wrapped in a list; 
+							they can simply	be inserted into the container element.</p>
+						<p>The remaining types of control configurations need to be wrapped in an unordered list. The 
+							next controls type simply applies a class of <code>controls</code> to the list. In this 
+							setup, the controls appear below the carousel slides in the lower-right corner of the 
+							carousel container (<a href="#standard">demo</a>).</p>
+						<p>The final control type is also wrapped in a list like above, but with a class of 
+							<code>controlsTop</code>. This configuration will appear in the upper right, overlayed on 
+							top of the slide (<a href="#thumb-gallery">demo</a>). It will be semi-transparent by default, 
+							but will become fully opaque when hovered over. <span class="markerInfo">Note</span> The 
+							transparency will need to be adjusted if heavy mobile or touchscreen usage is expected as 
+							there is no hover equivalent for those devices.</p>		
+					</div>
+					<div class="col8">
+						<h6>Next/Previous Only</h6>
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;!-- Slides would go here --&gt;
+	&lt;/ul&gt;
+	&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconChevronLeft"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconChevronRight"&gt;&lt;/i&gt;&lt;/a&gt;										
+&lt;/div&gt;
+</pre>
+<h6>Control Lists</h6>
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;!-- Slides would go here --&gt;
+	&lt;/ul&gt;
+	&lt;ul class="controlsTop"&gt;
+		&lt;li&gt;&lt;span class="counter"&gt;&lt;/span&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="first" title="First"&gt;&lt;i class="iconStart"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconRewind"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="play" title="Play"&gt;&lt;i class="iconTriangleRight"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconForward"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="last" title="Last"&gt;&lt;i class="iconEnd"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>
+					</div>
+				</div>
+				<h3 id="previews">Slide Previews</h3>
+				<div class="row">
+					<div class="col4">												
+						<p>The individual slide navigation is contained in an unordered list with a class of 
+							<code>previews</code>. Each <code>li</code> element should contain a link, with the 
+							starting preview link having a class of <code>active</code>. The slide navigation will 
+							always appear beneath the slides, but within the carousel container element. Clicking on a 
+							preview link will stop autoplay.</p>
+						<p>The slide previews can contain text (<a href="#standard">demo</a>), images 
+							(<a href="#thumb-gallery">demo</a>), or even be empty (<a href="#clean">demo</a>).</p>
+						<p>If thumbnails are used, add the class <code>thumbs</code> to the preview list. The carousel 
+							will automatically add a slider if necessary depending on the width of the carousel and the 
+							number and size of the thumbnails. The active thumbnail is fully opaque while non-active 
+							thumbnails will be slightly transparent.</p>
+						<p>If you prefer to leave the preview links empty, add an <code>empty</code> class to the 
+							preview list and the links will appear as circles.</p>				
+					</div>
+					<div class="col8">
+<h6>Numerical Previews</h6>
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;!-- Slides would go here --&gt;
+	&lt;/ul&gt;
+	&lt;ul class="previews"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;1&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>
+<h6>Thumbnail Previews</h6>
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;!-- Slides would go here --&gt;
+	&lt;/ul&gt;
+	&lt;ul class="previews thumbs"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;&lt;img src="thumb1.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="thumb2.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="thumb3.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="thumb4.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>					
+					</div>					
+				</div>
+				<h3 id="captions">Slide Captions</h3>
+				<div class="row">
+					<div class="col4">
+						<p>For image-based slides, interactive HTML captions can be added after the image using a 
+							<code>div</code> element with a class of <code>caption</code>. The caption can contain 
+							links, images, or whatever content you would like to include.</p>
+						<p>By default, captions are hidden and appear when the slide is hovered over. However, in some 
+							cases, you may want the captions to be visibile by default. To make captions always visible, 
+							add a <code>persist</code> class to the caption container.</p>
+					</div>
+					<div class="col8">
+<pre class="html">
+&lt;div class="carousel"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="slide1.jpg"/&gt;
+			&lt;div class="caption persist"&gt;This caption will always be visible.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="slide2.jpg"/&gt;
+			&lt;div class="caption"&gt;This caption will appear on hover.&lt;/div&gt;
+		&lt;/li&gt;		
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>					
+					</div>
+				</div>
+				<h1 id="demos" class="pageTitle">Demos</h1>																
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col8">				
+						<div class="carousel" data-autoplay="true" data-duration="5000">
+							<ul class="slides">
+								<li class="active">
+									<img src="../Images/Slides/paris-1.jpg"/>
+									<div class="caption persist">A church near Sacre Couer, in Paris, France.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/paris-2.jpg"/>
+									<div class="caption persist">Sacre Couer in Paris, France.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/paris-3.jpg"/>
+									<div class="caption persist">The Eiffel Tower in Paris, France.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/paris-4.jpg"/>
+									<div class="caption persist">Notre Dame in Paris, France.</div>
+								</li>
+							</ul>
+							<ul class="controls">
+								<li><a href="#" class="previous" title="Previous"><i class="iconRewind"></i></a></li>
+								<li><a href="#" class="play" title="Play"><i class="iconTriangleRight"></i></a></li>
+								<li><a href="#" class="next" title="Next"><i class="iconForward"></i></a></li>
+							</ul>					
+							<ul class="previews">
+								<li><a href="#" class="active">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+							</ul>					
+						</div>							
+					</div>
+					<div class="col4">
+						<h3 id="standard">Standard Carousel w/ Captions</h3>
+						<p>A standard carousel with text-based slide previews, persistent captions, and a minimal control 
+							set. It also has a custom slide duration of 5 seconds.</p>
+					</div>
+				</div>
+<pre class="html">
+&lt;div class="carousel" data-autoplay="true" data-duration="5000"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="../Images/Slides/paris-1.jpg"/&gt;
+			&lt;div class="caption persist"&gt;A church near Sacre Couer, in Paris, France.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/paris-2.jpg"/&gt;
+			&lt;div class="caption persist"&gt;Sacre Couer in Paris, France.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/paris-3.jpg"/&gt;
+			&lt;div class="caption persist"&gt;The Eiffel Tower in Paris, France.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/paris-4.jpg"/&gt;
+			&lt;div class="caption persist"&gt;Notre Dame in Paris, France.&lt;/div&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;ul class="controls"&gt;
+		&lt;li&gt;&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconRewind"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="play" title="Play"&gt;&lt;i class="iconTriangleRight"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconForward"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;					
+	&lt;ul class="previews"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;1&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;					
+&lt;/div&gt;
+</pre>					
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col4">
+						<h3 id="fade">Manual Fade Slideshow</h3>
+						<p>A minimal carousel with a fade transition, no previews, hover captions, and next and 
+							previous buttons. Autoplay has been disabled.</p>						
+					</div>
+					<div class="col8">
+						<div class="carousel" data-autoplay="false" data-transition="fade">
+							<ul class="slides">
+								<li class="active">
+									<img src="../Images/Slides/mexico-1.jpg"/>
+									<div class="caption">Sunset at Cancun, Mexico.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/mexico-2.jpg"/>
+									<div class="caption">Mayan ruins near Cancun, Mexico.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/mexico-3.jpg"/>
+									<div class="caption">The beach at Cancun, Mexico.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/mexico-4.jpg"/>
+									<div class="caption">Resort in Cancun, Mexico.</div>
+								</li>
+							</ul>
+							<a href="#" class="previous" title="Previous"><i class="iconChevronLeft"></i></a>
+							<a href="#" class="next" title="Next"><i class="iconChevronRight"></i></a>										
+						</div>			
+					</div>
+				</div>
+<pre class="html">
+&lt;div class="carousel" data-autoplay="false" data-transition="fade"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="../Images/Slides/mexico-1.jpg"/&gt;
+			&lt;div class="caption"&gt;Sunset at Cancun, Mexico.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/mexico-2.jpg"/&gt;
+			&lt;div class="caption"&gt;Mayan ruins near Cancun, Mexico.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/mexico-3.jpg"/&gt;
+			&lt;div class="caption"&gt;The beach at Cancun, Mexico.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/mexico-4.jpg"/&gt;
+			&lt;div class="caption"&gt;Resort in Cancun, Mexico.&lt;/div&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconChevronLeft"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconChevronRight"&gt;&lt;/i&gt;&lt;/a&gt;										
+&lt;/div&gt;
+</pre>
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col8">
+						<div class="carousel" data-autoplay="false">
+							<ul class="slides">
+								<li class="active">
+									<h3>Slide 1</h3>
+								</li>
+								<li>
+									<h3>Slide 2</h3>
+								</li>
+								<li>
+									<h3>Slide 3</h3>
+								</li>
+								<li data-targetUrl="../AJAX/slide.html">
+									<h3>Slide 4</h3>
+								</li>
+							</ul>
+							<ul class="previews">
+								<li><a href="#" class="active">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+							</ul>					
+							<ul class="controls">
+								<li><a href="#" class="previous" title="Previous"><i class="iconRewind"></i></a></li>
+								<li><a href="#" class="play" title="Play"><i class="iconTriangleRight"></i></a></li>
+								<li><a href="#" class="next" title="Next"><i class="iconForward"></i></a></li>
+							</ul>										
+						</div>
+					</div>
+					<div class="col4">
+						<h3 id="ajax">AJAX Carousel</h3>
+						<p>This carousel illustrates how to load AJAX content (slide 4) and how non-image-based HTML 
+							content can be used. Autoplay has been disabled.</p>						
+					</div>					
+				</div>
+<pre class="html">
+&lt;div class="carousel" data-autoplay="false"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;h3&gt;Slide 1&lt;/h3&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;h3&gt;Slide 2&lt;/h3&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;h3&gt;Slide 3&lt;/h3&gt;
+		&lt;/li&gt;
+		&lt;li data-targetUrl="../AJAX/slide.html"&gt;
+			&lt;h3&gt;Slide 4&lt;/h3&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;ul class="previews"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;1&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;					
+	&lt;ul class="controls"&gt;
+		&lt;li&gt;&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconRewind"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="play" title="Play"&gt;&lt;i class="iconTriangleRight"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconForward"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col4">
+						<h3 id="thumb-gallery">Thumb Gallery</h3>
+						<p>This version of the carousel has thumbnail previews in a filmstrip form, as well as the 
+							top-right control bar with all controls and a counter. When the browser is resized, a slider 
+							for the thumbnails automatically appears when needed. The transition is 
+							<code>slideLeft</code>, but notice that it reverses itself if the previous button is 
+							clicked.</p> 
+					</div>
+					<div class="col8">
+						<div class="carousel" data-autoplay="true" data-duration="5000" data-transition="slideLeft">
+							<ul class="slides">
+								<li class="active">
+									<img src="../Images/Slides/rome-1.jpg"/>
+									<div class="caption">A bride poses outside the Coloseum in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-2.jpg"/>
+									<div class="caption">The inside of the Coloseum in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-3.jpg"/>
+									<div class="caption">The Trevi Fountain in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-4.jpg"/>
+									<div class="caption">A Vatican sculpture in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-5.jpg"/>
+									<div class="caption">The Arch of Constantine in Rome, Italy.</div>
+								</li>
+								<li id="slide6">
+									<img src="../Images/Slides/rome-6.jpg"/>
+									<div class="caption">A view of the Tomb of the Unknown Solider in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-7.jpg"/>
+									<div class="caption">A view of the Coloseum in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-8.jpg"/>
+									<div class="caption">A courtyard in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-9.jpg"/>
+									<div class="caption">St. Peter's Basilica in Rome, Italy.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/rome-10.jpg"/>
+									<div class="caption">A roman villa in Rome, Italy.</div>
+								</li>																																				
+							</ul>
+							<ul class="controlsTop">
+								<li><span class="counter"></span></li>
+								<li><a href="#" class="first" title="First"><i class="iconStart"></i></a></li>
+								<li><a href="#" class="previous" title="Previous"><i class="iconRewind"></i></a></li>
+								<li><a href="#" class="play" title="Play"><i class="iconTriangleRight"></i></a></li>
+								<li><a href="#" class="next" title="Next"><i class="iconForward"></i></a></li>
+								<li><a href="#" class="last" title="Last"><i class="iconEnd"></i></a></li>
+							</ul>					
+							<ul class="previews thumbs">
+								<li><a href="#" class="active"><img src="../Images/Slides/rome-1-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-2-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-3-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-4-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-5-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-6-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-7-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-8-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-9-thumb.jpg"/></a></li>
+								<li><a href="#"><img src="../Images/Slides/rome-10-thumb.jpg"/></a></li>												
+							</ul>					
+						</div>			
+					</div>
+				</div>
+<pre class="html">
+&lt;div class="carousel" data-autoplay="true" data-duration="5000" data-transition="slideLeft"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="../Images/Slides/rome-1.jpg"/&gt;
+			&lt;div class="caption"&gt;A bride poses outside the Coloseum in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-2.jpg"/&gt;
+			&lt;div class="caption"&gt;The inside of the Coloseum in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-3.jpg"/&gt;
+			&lt;div class="caption"&gt;The Trevi Fountain in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-4.jpg"/&gt;
+			&lt;div class="caption"&gt;A Vatican sculpture in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-5.jpg"/&gt;
+			&lt;div class="caption"&gt;The Arch of Constantine in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li id="slide6"&gt;
+			&lt;img src="../Images/Slides/rome-6.jpg"/&gt;
+			&lt;div class="caption"&gt;A view of the Tomb of the Unknown Solider in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-7.jpg"/&gt;
+			&lt;div class="caption"&gt;A view of the Coloseum in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-8.jpg"/&gt;
+			&lt;div class="caption"&gt;A courtyard in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-9.jpg"/&gt;
+			&lt;div class="caption"&gt;St. Peter's Basilica in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/rome-10.jpg"/&gt;
+			&lt;div class="caption"&gt;A roman villa in Rome, Italy.&lt;/div&gt;
+		&lt;/li&gt;																																				
+	&lt;/ul&gt;
+	&lt;ul class="controlsTop"&gt;
+		&lt;li&gt;&lt;span class="counter"&gt;&lt;/span&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="first" title="First"&gt;&lt;i class="iconStart"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="previous" title="Previous"&gt;&lt;i class="iconRewind"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="play" title="Play"&gt;&lt;i class="iconTriangleRight"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconForward"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#" class="last" title="Last"&gt;&lt;i class="iconEnd"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;					
+	&lt;ul class="previews thumbs"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;&lt;img src="../Images/Slides/rome-1-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-2-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-3-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-4-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-5-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-6-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-7-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-8-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-9-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;img src="../Images/Slides/rome-10-thumb.jpg"/&gt;&lt;/a&gt;&lt;/li&gt;												
+	&lt;/ul&gt;					
+&lt;/div&gt;
+</pre>
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col8">
+						<div class="carousel" data-transition="zoomPan" data-duration="5000">
+							<ul class="slides">
+								<li class="active">
+									<img src="../Images/Slides/thailand-1.jpg"/>
+									<div class="caption">A private beach in Phuket, Thailand.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/thailand-2.jpg"/>
+									<div class="caption">A fishing boat off the coast of Phuket, Thailand.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/thailand-3.jpg"/>
+									<div class="caption">Water taxis lined up on shore at Koh Pi Pi Leh, Thailand.</div>
+								</li>
+								<li>
+									<img src="../Images/Slides/thailand-4.jpg"/>
+									<div class="caption">The beach at Koh Pi Pi Leh, Thailand.</div>
+								</li>												
+							</ul>										
+						</div>			
+					</div>
+					<div class="col4">
+						<h3 id="zoomPan">Zoom & Pan Slideshow</h3>
+						<p>This carousel example is a true slideshow, with autoplay and no controls. It features 
+							the <code>zoomPan</code> transition, which is excellent for adding emotion and dramatic 
+							qualities for images. This transition will only work with images and captions, but not with 
+							other HTML content.</p>			  
+					</div>
+				</div>
+<pre class="html">
+&lt;div class="carousel" data-transition="zoomPan" data-duration="5000"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;
+			&lt;img src="../Images/Slides/thailand-1.jpg"/&gt;
+			&lt;div class="caption"&gt;A private beach in Phuket, Thailand.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/thailand-2.jpg"/&gt;
+			&lt;div class="caption"&gt;A fishing boat off the coast of Phuket, Thailand.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/thailand-3.jpg"/&gt;
+			&lt;div class="caption"&gt;Water taxis lined up on shore at Koh Pi Pi Leh, Thailand.&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;img src="../Images/Slides/thailand-4.jpg"/&gt;
+			&lt;div class="caption"&gt;The beach at Koh Pi Pi Leh, Thailand.&lt;/div&gt;
+		&lt;/li&gt;												
+	&lt;/ul&gt;										
+&lt;/div&gt;
+</pre>				
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="row">
+					<div class="col4">
+						<h3 id="clean">Clean Carousel</h3>
+						<p>The clean carousel is meant for when borders and background colors are undesired and simply 
+							uses a <code>carouselClean</code> class in place of <code>carousel</code>. This example 
+							also features the <code>empty</code> style of the preview links.</p> 
+					</div>
+					<div class="col8">
+						<div class="carouselClean" data-duration="5000">
+							<ul class="slides">
+								<li class="active"><img src="../Images/Slides/comic-1.png"/></li>
+								<li><img src="../Images/Slides/comic-2.png"/></li>
+								<li><img src="../Images/Slides/comic-3.png"/></li>
+								<li><img src="../Images/Slides/comic-4.png"/></li>												
+							</ul>				
+							<ul class="previews empty">
+								<li><a href="#" class="active"></a></li>
+								<li><a href="#"></a></li>
+								<li><a href="#"></a></li>
+								<li><a href="#"></a></li>																						
+							</ul>															
+						</div>			
+					</div>
+				</div>
+<pre class="html">
+&lt;div class="carouselClean" data-duration="5000"&gt;
+	&lt;ul class="slides"&gt;
+		&lt;li class="active"&gt;&lt;img src="../Images/Slides/comic-1.png"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;img src="../Images/Slides/comic-2.png"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;img src="../Images/Slides/comic-3.png"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;img src="../Images/Slides/comic-4.png"/&gt;&lt;/li&gt;												
+	&lt;/ul&gt;				
+	&lt;ul class="previews empty"&gt;
+		&lt;li&gt;&lt;a href="#" class="active"&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;																						
+	&lt;/ul&gt;															
+&lt;/div&gt;
+</pre>
+			</div>			
+		</div>						
+	</div>
+</body>
+</html>

@@ -811,6 +811,7 @@ img {
 /**
  * Icons, Types
  */
+[class^="icon"] {display: inline-block;}
 [class^="icon"]:before, [class^="iconMedium"]:before, [class^="iconLarge"]:before {
 	font-family: 'VM-UI-Icons';
 	font-style: normal;
@@ -1950,3 +1951,168 @@ ol.standardLighter li:before {content: none;}
 .standardLighter .me0, .standardLighter .me1 {color: #666666;}
 .standardLighter .br0, .standardLighter .sy0, .standardLighter .es0 { color: #444444;}
 .standardLighter .re0 { color: #784e0c;}
+
+/**
+ * Slideshow Carousel
+ */
+[class^=carousel] {
+	background: #111;
+	border-radius: 4px;
+	margin-bottom: 1.75em;
+	position: relative;
+	overflow: auto;
+	width: 100%;
+}
+[class^=carousel] .slides {
+	background: #FFF;
+	border: 0.15em solid #111;
+	border-radius: 4px;
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+}
+[class^=carousel] .slides li {
+	clear: none;
+	display: none;
+	float: left;
+	position: absolute;
+	width: 100%;
+}
+[class^=carousel] .slides li.active {
+	display: block;
+	position: relative;
+}
+[class^=carousel] .slides li>img {display: block;}
+[class^=carousel] .slides li iframe {
+	border: none;
+	display: block;
+	max-height: 35em;
+	width: 100%;
+}
+[class^=carousel] .slides .caption {
+	background: #111;
+	border-top: 1px solid #333;
+	bottom: -1px;
+	color: #FFF;
+	font-size: 0.8em;
+	opacity: 0;
+	overflow: hidden;
+	padding: 1em;
+	position: absolute;
+	transition: all 300ms ease-in;	
+	-ms-transition: all 300ms ease-in;
+	-moz-transition: all 300ms ease-in;
+	-o-transition: all 300ms ease-in;
+	-webkit-transition: all 300ms ease-in;
+	width: 100%;
+}
+[class^=carousel] .slides li>img:hover + .caption, [class^=carousel] .slides .caption:hover, 
+[class^=carousel] .slides .caption.persist {opacity: 0.7;}
+[class^=carousel] .slides .caption p:last-child {margin-bottom: 0;}
+[class^=carousel] .previews {
+	float: left;
+	list-style: none;
+	margin: 0;
+}
+[class^=carousel] .previews li {
+	float: left;
+	line-height: 1.25em;
+	margin-left: 1em;
+}
+[class^=carousel] .previews a {
+	color: #FFF;
+	opacity: 0.5;
+	text-decoration: none;
+}
+[class^=carousel] .previews a.active, [class^=carousel] .previews.thumbs .active img {opacity: 1;}
+[class^=carousel] .previews a:hover, [class^=carousel] .previews.thumbs a:hover img {opacity: 0.8;}
+[class^=carousel] .previews.thumbs img {
+	border: 1px solid #000;
+	border-radius: 4px;
+	display: block;
+	margin: 0.875em 0;
+	opacity: 0.5;
+	width: auto;
+}
+[class^=carousel] .thumbContainer {position: relative;}
+[class^=carousel] .thumbContainer .scrollLeft, .carousel .thumbContainer .scrollRight {
+	background: #111;
+	box-sizing: border-box; 
+	color: #FFF;
+	cursor: pointer;
+	display: block;
+	opacity: 0.4;
+	padding: 0 0.3em;
+	position: absolute;
+	top: 0;
+	width: 1.5em;
+}
+[class^=carousel] .thumbContainer .scrollLeft:hover, [class^=carousel] .thumbContainer .scrollRight:hover {opacity: 1;}
+[class^=carousel] .thumbContainer .scrollLeft {
+	border-radius: 0 0 0 4px;
+	left: 0;
+}
+[class^=carousel] .thumbContainer .scrollRight {
+	border-radius: 0 0 4px 0;
+	right: 0;
+}
+[class^=carousel] [class^="controls"] {
+	float: right;
+	font-size: 0.8em;
+	list-style: none;
+	margin: 0;
+}
+[class^=carousel] .controlsTop {
+	background: #111;
+	border-radius: 0 4px 0 4px;
+	opacity: 0.3;
+	padding-left: 1em;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+[class^=carousel] .controlsTop:hover {opacity: 1;}
+[class^=carousel] .counter {color: #FFF;}
+[class^=carousel] [class^="controls"] li {
+	float: left;
+	margin-right: 1em;
+}
+[class^=carousel] [class^="controls"] a {
+	color: #FFF;
+	text-decoration: none;
+	text-shadow: -1px -1px 1px #000;
+}
+[class^=carousel] [class^="controls"] a:hover {color: #999;}
+[class^=carousel]>.next, [class^=carousel]>.previous {
+	color: #FFF;
+	font-size: 3em;
+	opacity: 0.2;
+	position: absolute;
+	text-shadow: 1px 1px 2px #111, -1px -1px 2px #111;
+	top: 40%;	
+}
+[class^=carousel]>.next:hover, [class^=carousel]>.previous:hover {opacity: 0.8;}
+[class^=carousel]>.next {right: 0.3em;}
+[class^=carousel]>.previous {left: 0.3em;}
+[class^=carousel] .previews.empty a {
+	border: 0.15em solid #FFF;
+	background: none;
+	border-radius: 0.8em;
+	display: inline-block;
+	height: 0.8em;
+	margin-top: 0.2em;
+	width: 0.8em;
+}
+[class^=carousel] .previews.empty a.active {background: #FFF;}
+[class^=carousel] .previews.empty a:hover {background: #777;}
+.carouselClean .slides {border: none;}
+.carouselClean {background: none;}
+.carouselClean .previews a, .carouselClean .controls a {
+	color: #111;
+	text-shadow: none;
+}
+.carouselClean .previews a:hover, .carouselClean .controls a:hover {color:#777;}
+.carouselClean .previews.empty a {border: 0.15em solid #000;}
+[class^=carousel] .previews.empty a.active {background: #111;}
+[class^=carousel] .previews.empty a:hover {background: #777;}

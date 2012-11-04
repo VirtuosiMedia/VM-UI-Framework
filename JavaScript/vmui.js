@@ -20,6 +20,7 @@ var VMUI = new Class({
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
 		         {name:'Modal', source:'Layout/Modal.js', selectors:'.modalTrigger'},
 		         {name:'Notice', source:'Layout/Notice.js', selectors:'div[class^="notice"]'},
+		         {name:'Carousel', source:'Layout/Carousel.js', selectors:'.carousel, .carouselClean, .carouselVertical'},
 		         {name:'Social', source:'Widgets/Social.js', selectors:'.socialShare'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical, .pillTabs, .pillTabsVertical'},
 		         {
