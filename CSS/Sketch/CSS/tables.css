@@ -1,0 +1,37 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Tables
+ */
+table {
+	border: 0.15em solid #222;
+	border-collapse: separate;
+	border-radius: 4px;
+	border-spacing: 0;
+	margin-bottom: 1.5em;
+	width: 100%;
+	word-wrap: break-word;
+}
+th, tfoot {
+	background: #222;
+	color: #FFF;
+	text-align: left;
+}
+thead td {background: #CCC;}
+th, td {padding: 0px 8px;}
+th[class^=col], td[class^=col] {
+	float: none;
+	margin-left: 0;
+} 
+tbody tr {
+	transition: all .2s linear;
+   	-moz-transition: all .2s linear;
+   	-o-transition: all .2s linear;
+   	-webkit-transition: all .2s linear;	
+}
+tbody tr:hover {background: #F2F2F2;}

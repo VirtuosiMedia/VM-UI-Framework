@@ -1,0 +1,128 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Social Share
+ */
+.socialShare ul {
+	list-style: none;
+	margin-left: 0;
+}
+.socialShare .horizontal li {
+	float: left;
+	margin-right: 0.4em;
+}
+.socialShare .vertical li {
+	clear: left;
+	float: left;
+}
+.socialShare ul li .button {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	height: 1.25em;
+	line-height: 1.2em;
+	width: 5.5em;
+}
+.socialShare .small .counter {
+	border: 0.075em solid #999;
+	border-radius: 4px;
+	display: inline-block;
+	height: 1.2em;
+	line-height: 1.3em;
+	margin-left: 0.5em;
+	padding: 0.05em 0.5em;
+	position: relative;
+	top: -0.05em;
+}
+.socialShare .vertical.small .counter {width: 3em;}
+.socialShare .small .counter:before {
+	border-style: solid;
+	border-width: 5px 5px 5px 0;
+	border-color: transparent #999 transparent transparent;
+	content: '';
+	height: 0;
+	left: -5px;
+	position: absolute;
+	top: 0.3em;
+	width: 0;
+}
+.socialShare .small .counter:after {
+	border-style: solid;
+	border-width: 5px 5px 5px 0;
+	border-color: transparent #FFF transparent transparent;
+	content: '';
+	height: 0;
+	left: -4px;
+	position: absolute;
+	top: 0.3em;
+	width: 0;
+}
+.socialShare .large li {width: 5.5em;}
+.socialShare .large a.button {
+	border-radius: 0px 0px 4px 4px;
+	position: relative;
+	top: -0.45em;
+}
+.socialShare .large .counter {
+	border: 0.075em solid #999;
+	border-bottom-color: transparent;
+	border-radius: 4px 4px 0px 0px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	height: 1.4em;
+	line-height: 1.3em;
+	padding: 0.05em 0em;
+	text-align: center;
+	width: 5.65em;
+}
+.socialShare .count {
+	position: relative;
+	top: -0.15em;
+}
+.socialShare .small a.facebookShare, .socialShare .small a.redditShare {
+	position: relative; 
+	top: -0.05em;
+}
+.socialShare .large a.facebookShare, .socialShare .large a.redditShare {
+	position: relative; 
+	top: -0.485em;
+}
+.socialShare .large.horizontal a.linkedinShare, .socialShare .large.horizontal a.redditShare {
+	width: 5.55em;
+}
+.socialShare .facebookShare i {
+	background: #3b5998;
+	color: #FFF;
+	display: inline-block;
+	font-size: 0.8em;
+	height: 1.1em;
+	line-height: 1.2em;
+	margin-right: 0.2em;
+	text-shadow: none;
+	width: 1.1em;
+}
+.socialShare .twitterShare i, .socialShare .linkedinShare i, .socialShare .pinterestShare i, .socialShare .redditShare i {
+	position: relative;
+	top: 0.05em;	
+}
+.socialShare .twitterShare i {color: #00A0D1;}
+.socialShare .linkedinShare i {color: #005A8A;}
+.socialShare .pinterestShare i {color: #D5373A;}
+.socialShare .redditShare i {
+	background: #FFF;
+	border-radius: 0.8em;
+	display: inline-block;
+	height: 0.5em;
+	left: -0.1em;
+	line-height: 0.3em;
+	margin: 0 0.2em 0 0.1em;
+	text-indent: -0.1em;
+	top: 0.06em;
+	width: 0.7em;
+}

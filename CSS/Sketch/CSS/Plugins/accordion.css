@@ -1,0 +1,29 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Accordion Menu
+ */
+.accordion {
+	border: #222 solid 0.15em;
+	border-radius: 4px;
+	box-sizing: border-box;
+	list-style: none;
+	margin-left: 0;
+	padding: 0.875em;
+}
+.accordion li a {
+	display: inline-block;
+	text-indent: 0.5em;
+	width: 100%;	
+}
+.accordion li a:hover {
+	background: #222;
+	border-radius: 4px;
+	color: #FFF;
+	text-decoration: none;
+}

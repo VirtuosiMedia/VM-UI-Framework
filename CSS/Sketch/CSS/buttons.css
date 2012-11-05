@@ -1,0 +1,211 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Buttons
+ */
+[class^="button"] {
+	border: 0.1em solid #999;
+	border-radius: 2px;
+	margin-left: 1px;
+	padding: 0em 0.5em;
+	text-decoration: none;
+}
+[class^="button"]:hover, [class^="button"]:visited {color: #FFF;}
+.button, .button:visited, [class^="button"], [class^="buttonSecondary"], .buttonMedium:visited, .buttonLarge:visited, 
+[class^="buttonSecondary"]:visited {
+	background: #EEE; 
+	background: -moz-linear-gradient(top, #EEEEEE 0%, #BBBBBB 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#BBBBBB)); 
+	background: -webkit-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
+	background: -o-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
+	background: -ms-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
+	background: linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%);
+	border-color: #EEE;
+	box-shadow: 0 0 0 1px #999, 0 0 0 1px #999;
+	color: #222; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB',GradientType=0);
+	text-shadow: 1px 1px 1px #FFF;
+}
+.button:hover, [class^="button"]:hover, [class^="buttonSecondary"]:hover {
+	background: #CCC;
+	color: #222;
+}
+[class^="button"].disabled, [class^="buttonSecondary"].disabled, [class^="button"][disabled], 
+[class^="button"][disabled] {
+	background: #BBB;
+	color: #666;
+	pointer: default;
+}
+[class^="buttonInfo"] {
+	background: #09C; 
+	background: -moz-linear-gradient(top, #0099CC 0%, #006699 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0099CC), color-stop(100%,#006699)); 
+	background: -webkit-linear-gradient(top, #0099CC 0%,#006699 100%); 
+	background: -o-linear-gradient(top, #0099CC 0%,#006699 100%); 
+	background: -ms-linear-gradient(top, #0099CC 0%,#006699 100%); 
+	background: linear-gradient(top, #0099CC 0%,#006699 100%);
+	border-color: #0099CC;
+	box-shadow: 0 0 0 1px #004477, 0 0 0 1px #004477;
+	color: #FFF; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#006699',GradientType=0);
+	text-shadow: -1px -1px 1px #069;
+}
+[class^="buttonInfo"]:hover {
+	background: #0077AA;
+	color: #FFF;
+}
+[class^="buttonInfo"].disabled, [class^="buttonInfo"][disabled] {
+	background: #07A;
+	color: #0AD;
+	pointer: default;
+}
+[class^="buttonSuccess"], [class^="buttonPrimary"] {
+	background: #56AF08; 
+	background: -moz-linear-gradient(top, #56AF08 0%, #4D9E0C 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#56AF08), color-stop(100%,#4D9E0C)); 
+	background: -webkit-linear-gradient(top, #56AF08 0%,#4D9E0C 100%); 
+	background: -o-linear-gradient(top, #56AF08 0%,#4D9E0C 100%); 
+	background: -ms-linear-gradient(top, #56AF08 0%,#4D9E0C 100%); 
+	background: linear-gradient(top, #56AF08 0%,#4D9E0C 100%);
+	border-color: #86C64E;
+	box-shadow: 0 0 0 1px #235003, 0 0 0 1px #235003;
+	color: #FFF; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56AF08', endColorstr='#4D9E0C',GradientType=0);
+	text-shadow: -1px -1px 1px #235003; 
+}
+[class^="buttonSuccess"]:hover, [class^="buttonPrimary"]:hover {
+	background: #4D9E0C;
+	color: #FFF; 
+}
+[class^="buttonSuccess"].disabled, [class^="buttonSuccess"][disabled] {
+	background: #4D9E0C;
+	color: #67BF17;
+	pointer: default;
+}
+[class^="buttonWarning"] {
+	background: #FEC912; 
+	background: -moz-linear-gradient(top, #FFB111 0%, #FF9900 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFB111), color-stop(100%,#FF9900)); 
+	background: -webkit-linear-gradient(top, #FFB111 0%,#FF9900 100%); 
+	background: -o-linear-gradient(top, #FFB111 0%,#FF9900 100%); 
+	background: -ms-linear-gradient(top, #FFB111 0%,#FF9900 100%); 
+	background: linear-gradient(top, #FFB111 0%,#FF9900 100%);
+	border-color: #FFBB55;
+	box-shadow: 0 0 0 1px #F49300, 0 0 0 1px #F49300;
+	color: #FFF; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB111', endColorstr='#FF9900',GradientType=0);
+	text-shadow: -1px -1px 1px #F49300; 
+}
+[class^="buttonWarning"]:hover {
+	background: #FF9900;
+	color: #FFF; 
+}
+[class^="buttonWarning"].disabled, [class^="buttonWarning"][disabled] {
+	background: #FF9900;
+	color: #FEC912;
+	pointer: default;
+}
+[class^="buttonError"] {
+	background: #FB0000; 
+	background: -moz-linear-gradient(top, #FB0000 0%, #D50000 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FB0000), color-stop(100%,#D50000)); 
+	background: -webkit-linear-gradient(top, #FB0000 0%,#D50000 100%); 
+	background: -o-linear-gradient(top, #FB0000 0%,#D50000 100%); 
+	background: -ms-linear-gradient(top, #FB0000 0%,#D50000 100%); 
+	background: linear-gradient(top, #FB0000 0%,#D50000 100%);
+	border-color: #FF4040;
+	box-shadow: 0 0 0 1px #CE0000, 0 0 0 1px #CE0000;
+	color: #FFF; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FB0000', endColorstr='#D50000',GradientType=0);
+	text-shadow: -1px -1px 1px #CE0000; 
+}
+[class^="buttonError"]:hover {
+	background: #D50000;
+	color: #FFF; 
+}
+[class^="buttonError"].disabled, [class^="buttonError"][disabled] {
+	background: #E61111;
+	color: #F66;
+	pointer: default;
+}
+[class^="buttonInverted"] {
+	background: #333; 
+	background: -moz-linear-gradient(top, #333333 0%, #111111 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#111111)); 
+	background: -webkit-linear-gradient(top, #333333 0%,#111111 100%); 
+	background: -o-linear-gradient(top, #333333 0%,#111111 100%); 
+	background: -ms-linear-gradient(top, #333333 0%,#111111 100%); 
+	background: linear-gradient(top, #333333 0%,#111111 100%);
+	border-color: #555;
+	box-shadow: 0 0 0 1px #000, 0 0 0 1px #000;
+	color: #FFF; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#111111',GradientType=0);
+	text-shadow: -1px -1px 1px #000; 
+}
+[class^="buttonInverted"]:hover {
+	background: #222;
+	color: #FFF; 
+}
+[class^="buttonInverted"].disabled, [class^="buttonInverted"][disabled] {
+	background: #111;
+	color: #555;
+	pointer: default;
+}
+[class^="button"][class$="Medium"] {
+	display: inline-block;
+	height: 1.75em;
+	margin: 1.70em 0em 1.70em 0.1em;
+}
+[class^="button"][class$="Large"] {
+	display: inline-block;
+	height: 2.25em;
+	line-height: 2.2em;
+	margin: 1.45em 0em 1.45em 0.1em;
+}
+[class^="button"][class$="Multi"] {
+	display: inline-block;
+	height: 4em;
+	line-height: 2.2em;
+	margin: 1.45em 0em 1.45em 0.1em;
+	overflow: hidden;
+	padding: 0em 1em;
+}
+[class^="button"][class$="Multi"] span:first-child {
+	float: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	height: 1em;
+	margin-bottom: 0.3em;
+	text-align: center;
+	width: 100%;	
+}
+[class^="button"][class$="Multi"] span:last-child {
+	clear: left;
+	float: left;
+	height: 1em;
+	text-align: center;
+	width: 100%;
+}
+body .row .buttonMulti, body .row .buttonSecondaryMulti {color: #222;}
+body .row ul.buttonGroup {
+	background: none;
+	border: none;
+	box-shadow: none;
+	list-style: none;
+	margin: 0px;
+	overflow: auto;
+	padding: 0;
+	width: auto;
+}
+.buttonGroup li {
+	float: left;
+	margin-right: 0px;
+}
+.buttonGroup [class^="button"] {border-radius: 0px;}
+.buttonGroup li:first-child [class^="button"] {border-radius: 2px 0px 0px 2px;}
+.buttonGroup li:last-child [class^="button"] {border-radius: 0px 2px 2px 0px;}

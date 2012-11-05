@@ -1,0 +1,21 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ *
+ * Reset styles using Eric Meyer's CSS reset as inspiration (http://meyerweb.com/eric/tools/css/reset/) 
+ */
+a, abbr, address, article, aside, audio, b, bdi, bdo, blockquote, body, br, button, canvas, caption, cite, code, col, 
+colgroup, command, datalist, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form,
+h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, keygen, kbd, label, legend, li, map, mark, menu, 
+meter, nav, object, ol, optgroup, option, output, p, param, pre, progress, q, rp, rt, ruby, s, samp, section, select, 
+small, source, span, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, track, u, ul, 
+var, video, wbr {
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}

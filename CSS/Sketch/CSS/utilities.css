@@ -1,0 +1,16 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Utilities
+ */
+.right {float: right;}
+.left {float: left;}
+body .skipBottom {margin-bottom: 0;}
+.topMargin {margin-top: 1.75em;}
+.bottomMargin {margin-bottom: 1.75em;}
+.hidden {display: none;}

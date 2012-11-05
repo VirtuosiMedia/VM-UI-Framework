@@ -1,0 +1,103 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Tabs
+ */
+.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
+	float: left;
+	list-style: none;
+	margin: 0;
+}
+.tabs li, .pillTabs li {
+	float: left; 
+	position: relative;
+}
+.pillTabs li {margin-right: 0.5em;}
+.tabs a, .tabsVertical a {
+	background: #FFF;
+	border-left: 0.15em solid #222;
+	border-top: 0.15em solid #222;
+	padding: 0.3em 1em;
+	text-decoration: none;
+}
+.pillTabs a, .pillTabsVertical a {
+	border: 0.15em solid transparent;
+	border-radius: 4px;
+	padding: 0.3em 1em;
+	text-decoration: none;	
+}
+.tabs a.active {
+	color: #666;
+	padding-bottom: 0.45em;
+}
+.pillTabs a.active, .pillTabsVertical a.active {
+	background: #222;
+	color: #FFF;
+}
+.pillTabs a:hover, .pillTabsVertical a:hover {border-color: #222;}
+.tabs li:first-child a, .tabsVertical li:first-child a {border-top-left-radius: 4px;}
+.tabs li:last-child a {
+	border-right: 0.15em solid #222;
+	border-top-right-radius: 4px;
+}
+.tabContent {
+	border: 0.15em solid #222;
+	border-radius: 0px 4px 4px 4px;
+	box-sizing: border-box;
+	clear: both;
+	margin-bottom: 1.75em;
+	padding: 1em;
+}
+.pillTabContent {
+	box-sizing: border-box;
+	clear: both;
+	padding: 1.75em 0;
+}
+.tabContent > div, .pillTabContent > div {display: none;}
+.tabContent .active, .pillTabContent .active  {display: block;}
+.tabsVertical, .pillTabsVertical {
+	display: block;
+	width: 20%;
+}
+.tabsVertical li {position: relative;}
+.tabsVertical a, .pillTabsVertical a {
+	box-sizing: border-box;	
+	display: block;
+	width: 100%;
+}
+.pillTabsVertical a {
+	margin-right: 10%;
+	width: 90%;
+}
+.pillTabsVertical a {margin-bottom: 0.5em}
+.tabsVertical a.active {position: relative;}
+.tabsVertical a.active:after {
+	background: #FFF;
+	content: '';
+	display: block;
+	height: 2.35em;
+	position: absolute;
+	right: -0.3em;
+	top: 0px;
+	width: 0.5em;
+}
+.tabsVertical + .tabContent, .pillTabsVertical + .pillTabContent {
+	clear: none;
+	float: left;
+	width: 80%;
+}
+.pillTabsVertical + .pillTabContent {padding-top: 0;}
+.tabsVertical li:last-child a {
+	border-bottom: 0.15em solid #222;
+	border-bottom-left-radius: 4px;
+}
+.tabContent iframe, .pillTabContent iframe {
+	border: none;
+	height: 35em;
+	width: 100%;
+}

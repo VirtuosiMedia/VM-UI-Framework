@@ -1,0 +1,59 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Quotations
+ */
+blockquote {
+	border-left: 10px solid #222;
+	color: #444;
+	padding-left: 20px;
+	margin-bottom: 1.3em;
+	width: 50%;
+}
+blockquote p:first-child:first-letter {
+	color: #222;
+	font-size: 1.6em;
+	font-style: italic;
+	font-weight: bold;
+	line-height: 0.4em;
+}
+blockquote.left {
+	border-left: none;
+	border-right: 0.6em solid #222;
+	margin: 0em 1.8em 1.8em 0em;
+	padding: 0 1.3em 0 0;
+}
+blockquote.right {margin: 0 0 1.3em 1.3em;}
+.col5 blockquote, .col4 blockquote, .col3 blockquote, .col2 blockquote, .col1 blockquote {
+	float: none;
+	margin: 0px 0px 20px 0px;
+	width: 100%;
+}
+blockquote small {
+	color: #777;
+	font-size: 0.875em;
+	font-style: italic;
+}
+q, cite {
+	color: #777;
+	font-style: italic;
+}
+
+/**
+ * Blockquote - (smartphones and tablets)
+ */
+@media (max-width: 768px) {
+	body blockquote.left, body blockquote.right {
+		border-right: none;
+		border-left: solid #222;
+		float: none;
+		margin-left: 0;
+		padding: 0 0 0 3%;
+		width: 95%;
+	}
+}

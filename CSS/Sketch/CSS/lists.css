@@ -1,0 +1,195 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Lists
+ */
+.unlisted, .horizontal {list-style: none;}
+ul, ol {margin: 0em 0em 1.75em 2.5em;}
+.flush, .horizontal {margin-left: 0;}
+.horizontal li {
+	float: left;
+	margin-right: 1em;
+}
+ul ul, ol ol {margin-bottom: 0em;}
+dl {margin-bottom: 1.75em;}
+dt {
+	background: #222;
+	border: 0.2em solid #222;
+	border-radius: 4px 4px 0px 0px;
+	color: #FFF;
+	font-size: 0.875em;
+	font-weight: bold;
+	line-height: 1.75em;
+	margin-top: 2em;
+	position: relative;
+	text-indent: 5px;
+}
+dd {
+	border-left: 0.2em solid #222;
+	border-right: 0.2em solid #222;
+	font-size: 0.875em;
+	font-style: italic;
+	padding: 0px 8px;
+}
+dd:before {content: "- ";}
+dd+dt:before {
+	border-bottom: 0.2em solid #222;
+	border-left: 0.2em solid #222;
+	border-radius: 0px 0px 4px 4px;
+	border-right: 0.2em solid #222;
+	content: "";	
+	display: block;
+	height: 1em;
+	left: -2px;
+	position: absolute;
+	top: -3em;
+	width: 100%;
+}
+dd:last-child {
+	border-bottom: 0.2em solid #222;
+	border-radius: 0px 0px 4px 4px;
+	margin-bottom: -0.2em;
+}
+/* Make ordered lists with bold, decimal numbers without adding extra markup. To get rid of bold, delete below here */ 
+ol {
+	counter-reset: item;
+	list-style: none;
+	*list-style: decimal; /*Hack for IE7*/
+}
+ol li {position: relative;}
+ol li:before {
+	content: counter(item)"."; /* If you want a different type of numerical placeholder, counter takes a second param */
+	counter-increment: item;
+	font-weight: bold;
+	left: -21px;
+	position: absolute;
+}
+ol ol {counter-reset: childItem;}
+ol ol li:before {
+	content: counter(item)"."counter(childItem)"."; 
+	counter-increment: childItem;
+	left: -36px;
+}
+ol ol ol {counter-reset: grandchildItem;}
+ol ol ol li:before {
+	content: counter(item)"."counter(childItem)"."counter(grandchildItem)"."; 
+	counter-increment: grandchildItem;
+	left: -56px;
+}
+/*Tree lists*/
+.tree, .tree ul {list-style: none;}
+.tree ul li {position: relative;}
+.tree ul li::before {
+	background: #222;
+	content: '';
+	height: 0.2em;
+	left: -1.5em;
+	position: absolute;
+	top: 0.9em;
+	width: 1em;
+}
+.tree ul li::after {
+	background: #222;
+	content: '';
+	height: 100%;
+	left: -1.5em;
+	position: absolute;
+	top: 0;
+	width: 0.2em;
+}
+.tree ul li:last-child::after {height: 1em;}
+/* Node lists*/
+.node {
+	background: #FFF;
+	border: 0.2em solid #222;
+	border-radius: 4px;
+	list-style: none;
+	margin-left: 0px;
+	padding: 0 0.35em 1.75em;
+	overflow: hidden;
+}
+.node li {
+	float: left;
+	margin-right: 20px;
+	position: relative;
+	text-align: center;
+}
+.node > li {margin-top: 1.75em;}
+.node li:last-child {margin-right: 0px;}
+.node li:only-child {width: 100%;}
+.node li:only-child span {width: auto;}
+.node li:only-child::after {
+	background: #FFF;
+	content: '';
+	display: block;
+	height: 1.75em;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 900;
+}
+.node li:first-child::before {
+	background: #FFF;
+	content: '';
+	display: block;
+	height: 1.75em;
+	position: absolute;
+	top: 0;
+	width: 50%;
+	z-index: 900;
+}
+.node li span {
+	background: #FFF;
+	border: 0.1em solid #222;
+	border-radius: 4px;
+	display: inline-block;
+	left: 0px;
+	padding: 0 0.5em;
+	position: relative;
+	z-index: 1000;
+}
+.node li span+span {margin-left: 20px;}
+.node li span+span::before {
+	background: #222;
+	content: '';
+	display: block;
+	height: 2px;
+	left: -21px;
+	top: 0.9em;
+	position: absolute;
+	width: 20px;
+	z-index: 110000;
+}
+.node ul {
+	display: block;
+	list-style: none;
+	margin: 1.75em 0 0;
+	position: relative;
+	width: 100%;
+}
+.node ul:after {
+	background: #222;
+	content: '';
+	display: block;
+	height: 3.5em;
+	left: 50%;
+	position: absolute;
+	top: -2.65em;
+	width: 2px;
+}
+.node ul::before {
+	background: #222;
+	content: '';
+	display: block;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	top: .8em;
+	width: 100%;
+}
+.node li span:hover, .node li span:hover ~ ul li span {background: #EEE;}

@@ -1,0 +1,90 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Typography
+ */
+body {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 16px;
+	line-height: 1.75em;
+}
+blockquote, h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.75em;}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial Black, Arial, sans-serif;
+	position: relative;
+}
+h1 {
+	font-size: 1.75em;
+	line-height: 1em;
+	margin-bottom: 1em;
+}
+h2 {
+	font-size: 1.625em;
+	line-height: 1.1em;
+	margin-bottom: 1.1em;	
+}
+h3 {
+	font-size: 1.5em;
+	line-height: 1.2em;
+	margin-bottom: 1.2em;
+}
+h4 {
+	font-size: 1.375em;
+	line-height: 1.3em;
+	margin-bottom: 1.3em;
+}
+h5 {
+	font-size: 1.25em;
+	margin-bottom: 1.4em; 
+}
+h6 {
+	font-size: 1.125em;
+	line-height: 1.6em;
+	margin-bottom: 1.6em;
+}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+	bottom: -0.3em;
+	color: #777;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 0.6em;
+	position: absolute;
+	text-indent: 0.5em
+}
+.title:after, .pageTitle:after {
+	border-bottom: 1px solid #CCC;
+	bottom: -0.3em;
+	content: '';
+	display: block;
+	height: 1px;
+	padding-bottom: 0.5em;
+	position: absolute;
+	width: 100%;
+}
+.pageTitle {
+	font-size: 2.625em;
+	line-height: 1.35em;
+	margin: 0.67em 0em 1.35em;
+}
+code, em, i {font-style: italic;}
+strong, b {font-weight: bold;}
+abbr, acronym {border-bottom: 1px dotted #222;}
+del, ins {
+	border: 1px solid;
+	border-radius: 2px;
+}
+del {
+	background: #FFE6E6;
+	border-color: #FF6A6A;
+	color: #FF6A6A;
+}
+ins {
+	background: #E2FBCE;
+	border-color: #4D9E0C;
+	color: #4D9E0C;
+	text-decoration: none;
+}

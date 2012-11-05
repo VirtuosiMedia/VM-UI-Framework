@@ -1,0 +1,56 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Syntax Highlighter
+ */
+.standardLighter {
+	border: 0.15em solid #222;
+	border-radius: 2px;
+	overflow: hidden;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	white-space: -pre-wrap;
+	word-wrap: break-word;
+}
+.standardLighter span {color: black;}
+.standardLighter .standardnum {
+	background-color: #CCC;
+	color: #939393;
+	text-align: center;
+	width: 30px;
+}
+.standardLighter .standardline {
+	background-color: #fff;
+	border-left: 0.2em solid #222;
+	padding: 0 3px 0 10px;
+	padding-left: 15px;
+	padding-right: 5px;
+}
+.standardLighter .standardline:hover {background: #F9F9F9;}
+.standardLighter .standardfirst {margin-top: -0.15em;}
+.standardLighter .standardlast  {margin-bottom: -0.15em;}
+ol.standardLighter {
+	background: #222;
+	color: #FFF;
+	list-style: decimal-leading-zero;
+	margin: 0 0 1.75em 0;
+}
+ol.standardLighter li {margin-left: 40px;}
+ol.standardLighter li:before {content: none;}
+.standardLighter .de1, .standardLighter .de2 {color: #F00;}
+.standardLighter .kw1 {color: #1b609a;}
+.standardLighter .kw2 {color: #9a6f1b;}
+.standardLighter .kw3 {color: #784e0c;}
+.standardLighter .kw4 {color: #9a6f1b;}
+.standardLighter .co1, .standardLighter .co2 {color: #888888;}
+.standardLighter .st0, .standardLighter .st1, .standardLighter .st2 {color: #489a1b;}
+.standardLighter .nu0 {color: #70483d;}
+.standardLighter .me0, .standardLighter .me1 {color: #666666;}
+.standardLighter .br0, .standardLighter .sy0, .standardLighter .es0 { color: #444444;}
+.standardLighter .re0 { color: #784e0c;}

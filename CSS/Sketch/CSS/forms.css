@@ -1,0 +1,55 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Forms
+ */
+form [class*="col"] {margin-left: 0px;}
+
+label {
+	clear: both;
+	float: left;
+}
+input[type=text], input[type=password], input[type=file], textarea, select {
+	border: 0.15em solid #222;
+	border-radius: 4px;
+	clear: both;
+	float: left;
+	margin-bottom: 1.1em;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=file]:focus, textarea:focus, select:focus {
+	border-left-color: #CCC;
+	outline: none;
+}
+input[type=text], input[type=password], input[type=file] {
+	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
+	box-shadow: inset 2px 2px 3px #E9E9E9;
+	font-size: 1em;
+	height: 2.2em;
+	line-height: 2.2em;
+	text-indent: 0.5em; 
+}
+input[type=file] {text-indent: 0em;}
+textarea {
+	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
+	box-shadow: inset 2px 2px 3px #E9E9E9;	
+	min-height: 6em;
+	text-indent: 0.5em; 	
+}
+select {
+	height: 2.2em;
+}
+.formContainer {
+	clear: both;
+	float: left;
+	margin-bottom: 1.75em;
+	overflow: hidden;
+}
+input[type=submit] {
+	clear: both;
+	float: left;
+}
