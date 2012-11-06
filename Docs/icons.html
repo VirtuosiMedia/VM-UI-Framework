@@ -1,0 +1,6772 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - Icons</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../JavaScript'});	
+		});
+	</script>	
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="./">Overview</a></li>
+						<li><a href="examples.html">Examples</a></li>
+						<li><a href="layout.html">Page Layout</a></li>
+						<li><a href="core.html">Core Elements</a></li>
+						<li><a href="icons.html" class="active">Icons</a></li>
+						<li><a href="ui.html">UI Elements</a></li>
+						<li><a href="plugins.html">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row skipBottom">
+			<div class="col12">
+				<h1 class="pageTitle">Icons</h1>
+				<p>VM UI Framework features an extensive icon font of 326 unique icons. The icons are all original and 
+					the font was compiled using the <a href="http://keyamoon.com/icomoon/app/">IcoMoon font 
+					generator</a>. An icon font has several advantages over traditional images:</p>
+				<ol>
+					<li>Icons can be scaled to any size without sacrificing image quality.</li>
+					<li>Text effects including color, text-shadow, font-size, etc. can be applied to font icons.</li>
+					<li>One download for all icons can minimize the total page size and reduce the number of resources 
+						loaded.</li> 
+					<li>Icon fonts can be compressed, whereas images cannot.</li>
+				</ol> 
+				<h2>Usage</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<p>The VM UI Icons are class-based, meaning that by assigning the proper class to an element, it will 
+					be prepended by an icon using the CSS <code>:before</code> pseudo-element. Every icon class starts 
+					with <code>icon</code> and is followed by the icon name. For example, to create the 
+					<i class="iconWorld"></i> icon, the class name for the icon would be <code>iconWorld</code>.</p>
+				<p>Just like the rest of VM UI Framework, the class names follow camel-cased capitalization, meaning 
+					that the class name starts lower case, but the first letter of each word after that is capitalized. 
+					No hyphens or spaces are necessary.</p>
+				<h6>Icon Sizes</h6>
+				<p>By default, icons come in 3 sizes: default, medium, and large. The default size doesn't need any 
+					special treatment, but to use either medium or large, simply add the size after "icon" but before 
+					the icon name in the CSS class. A size can be applied to any icon.</p>
+				<table>
+					<thead>
+						<tr><th>Icon</th><th>Class</th><th>Size (em)</th><th>Size (px)</th></tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><i class="iconWorld"></i></td>
+							<td><code>iconWorld</code></td>
+							<td>1em</td>
+							<td>16px</td>
+						</tr>
+						<tr>
+							<td><i class="iconMediumWorld"></i></td>
+							<td><code>iconMediumWorld</code></td>
+							<td>1.25em</td>
+							<td>20px</td>
+						</tr>
+						<tr>
+							<td><i class="iconLargeWorld"></i></td>
+							<td><code>iconLargeWorld</code></td>
+							<td>1.5em</td>
+							<td>24px</td>
+						</tr>												
+					</tbody>
+				</table>
+				<h6>Font Compression</h6>
+				<p>All font files can and should be compressed using Gzip compression, with the exception of files in 
+					the WOFF format. File size savings can be up to 40-70%. See Stoyan Stefanov's article, 
+					<a href="http://www.phpied.com/gzip-your-font-face-files/">Gzip your @font-face files</a>, and 
+					Steve Souder's article,
+					<a href="http://www.stevesouders.com/blog/2009/10/13/font-face-and-performance/">@font-face and 
+					performance</a>, for more information.</p>
+			</div>
+			<div class="col6">
+				<h6>Example</h6>
+<pre class="html">
+&lt!-- Default Size --&gt;
+&lt;i class="iconWorld"&gt;&lt;/i&gt;
+
+&lt!-- Medium Size --&gt;
+&lt;i class="iconMediumWorld"&gt;&lt;/i&gt;
+
+&lt!-- Large Size --&gt;
+&lt;i class="iconLargeWorld"&gt;&lt;/i&gt;
+
+&lt!-- You can use any HTML element --&gt;
+&lt;span class="iconPieChart"&gt;&lt;/span&gt;
+</pre>			
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h2>Custom Font Sizes</h2>
+				<p>If you would like to create a custom icon size, simply create a new class using the CSS attribute 
+					selector. The class name should start with <code>icon</code>, followed by the name of your custom 
+					size, as detailed in the example below. You will also have to use the <code>:before</code> 
+					pseudo-selector. The only property that needs to be set is the font size, which should have an 
+					<code>em</code> based value.</p>
+<pre class="css">
+[class^="iconHuge"]:before {font-size: 10.25em;}
+[class^="iconTiny"]:before {font-size: 0.5em;}
+</pre>
+			</div>
+			<div class="col6">
+				<h2>Create Your Own Font</h2>
+				<p>All of the SVG images used to create the font are stored in the <em>Images/SVG</em> folder. You can 
+					use or edit the images to create your own fonts.</p>
+					<p>You can also import the font into the <a href="http://keyamoon.com/icomoon/app/">IcoMoon font	
+					generator</a> and add or subtract icons as you need them. Note that if you want to reuse VM UI 
+					Framework's CSS code for the icons, you will need to pay close attention to the encoding for each 
+					icon and only add icons after <code>U+e145</code>. You will also need to select the Private Use Area 
+					(PUA) in the "Reset Encoding" dropdown.</p>
+			</div>			
+		</div>				
+		<div class="row skipBottom">
+			<div class="col12">				
+				<h2>Icon Categories</h2>
+				<p>The icons have been sorted into groups below so that you can quickly find the icons you need. Icons 
+					that may fall under multiple groups will be listed more than once for convenience.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<ul>
+					<li><a href="#arrows">Arrows</a> (38)</li>
+					<li><a href="#browsers">Browsers</a> (25)</li>
+					<li><a href="#charts">Charts &amp; Graphs</a> (19)</li>
+					<li><a href="#computer-hardware">Computer Hardware</a> (10)</li>
+					<li><a href="#ecommerce">Ecommerce</a> (9)</li>
+					<li><a href="#file-formats">File Formats</a> (45)</li>
+					<li><a href="#folders">Folders</a> (6)</li>
+				</ul>
+			</div>
+			<div class="col4">
+				<ul>
+					<li><a href="#location">Location</a> (7)</li>
+					<li><a href="#logos">Logos</a> (37)</li>
+					<li><a href="#media">Media</a> (36)</li>
+					<li><a href="#mobile">Mobile</a> (51)</li>
+					<li><a href="#operating-systems">Operating Systems</a> (30)</li>
+					<li><a href="#productivity">Productivity</a> (39)</li>
+					<li><a href="#programming">Programming</a> (24)</li>
+				</ul>			
+			</div>
+			<div class="col4">
+				<ul>
+					<li><a href="#science">Science</a> (27)</li>
+					<li><a href="#security">Security</a> (13)</li>
+					<li><a href="#social">Social</a> (38)</li>
+					<li><a href="#software">Software</a> (95)</li>
+					<li><a href="#text-editor">Text Editor</a> (48)</li>
+					<li><a href="#users">Users</a> (10)</li>
+					<li><a href="#web">Web</a> (16)</li>
+				</ul>			
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col12">
+				
+				<!-- Arrows -->
+			
+				<h2 id="arrows">Arrows</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconArrowUp"></i> 
+								<i class="iconMediumArrowUp"></i> 
+								<i class="iconLargeArrowUp"></i>
+							</td>
+							<td><code>iconArrowUp</code></td>
+							<td>&amp;#xe135;</td>
+							<td>\e135</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDown"></i> 
+								<i class="iconMediumArrowDown"></i> 
+								<i class="iconLargeArrowDown"></i>
+							</td>
+							<td><code>iconArrowDown</code></td>
+							<td>&amp;#xe13c;</td>
+							<td>\e13c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowLeft"></i> 
+								<i class="iconMediumArrowLeft"></i> 
+								<i class="iconLargeArrowLeft"></i>
+							</td>
+							<td><code>iconArrowLeft</code></td>
+							<td>&amp;#xe13a;</td>
+							<td>\e13a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowRight"></i> 
+								<i class="iconMediumArrowRight"></i> 
+								<i class="iconLargeArrowRight"></i>
+							</td>
+							<td><code>iconArrowRight</code></td>
+							<td>&amp;#xe136;</td>
+							<td>\e136</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowNS"></i> 
+								<i class="iconMediumArrowNS"></i> 
+								<i class="iconLargeArrowNS"></i>
+							</td>
+							<td><code>iconArrowNS</code></td>
+							<td>&amp;#xe137;</td>
+							<td>\e137</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowEW"></i> 
+								<i class="iconMediumArrowEW"></i> 
+								<i class="iconLargeArrowEW"></i>
+							</td>
+							<td><code>iconArrowEW</code></td>
+							<td>&amp;#xe13b;</td>
+							<td>\e13b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDiagonalForward"></i> 
+								<i class="iconMediumArrowDiagonalForward"></i> 
+								<i class="iconLargeArrowDiagonalForward"></i>
+							</td>
+							<td><code>iconArrowDiagonalForward</code></td>
+							<td>&amp;#xe13d;</td>
+							<td>\e13d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDiagonalBackward"></i> 
+								<i class="iconMediumArrowDiagonalBackward"></i> 
+								<i class="iconLargeArrowDiagonalBackward"></i>
+							</td>
+							<td><code>iconArrowDiagonalBackward</code></td>
+							<td>&amp;#xe13e;</td>
+							<td>\e13e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowMulti"></i> 
+								<i class="iconMediumArrowMulti"></i> 
+								<i class="iconLargeArrowMulti"></i>
+							</td>
+							<td><code>iconArrowMulti</code></td>
+							<td>&amp;#xe139;</td>
+							<td>\e139</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowMultiDiagonal"></i> 
+								<i class="iconMediumArrowMultiDiagonal"></i> 
+								<i class="iconLargeArrowMultiDiagonal"></i>
+							</td>
+							<td><code>iconArrowMultiDiagonal</code></td>
+							<td>&amp;#xe138;</td>
+							<td>\e138</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronUp"></i> 
+								<i class="iconMediumChevronUp"></i> 
+								<i class="iconLargeChevronUp"></i>
+							</td>
+							<td><code>iconChevronUp</code></td>
+							<td>&amp;#xe114;</td>
+							<td>\e114</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronDown"></i> 
+								<i class="iconMediumChevronDown"></i> 
+								<i class="iconLargeChevronDown"></i>
+							</td>
+							<td><code>iconChevronDown</code></td>
+							<td>&amp;#xe117;</td>
+							<td>\e117</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronLeft"></i> 
+								<i class="iconMediumChevronLeft"></i> 
+								<i class="iconLargeChevronLeft"></i>
+							</td>
+							<td><code>iconChevronLeft</code></td>
+							<td>&amp;#xe116;</td>
+							<td>\e116</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronRight"></i> 
+								<i class="iconMediumChevronRight"></i> 
+								<i class="iconLargeChevronRight"></i>
+							</td>
+							<td><code>iconChevronRight</code></td>
+							<td>&amp;#xe115;</td>
+							<td>\e115</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleUp"></i> 
+								<i class="iconMediumTriangleUp"></i> 
+								<i class="iconLargeTriangleUp"></i>
+							</td>
+							<td><code>iconTriangleUp</code></td>
+							<td>&amp;#xe01f;</td>
+							<td>\e01f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleDown"></i> 
+								<i class="iconMediumTriangleDown"></i> 
+								<i class="iconLargeTriangleDown"></i>
+							</td>
+							<td><code>iconTriangleDown</code></td>
+							<td>&amp;#xe022;</td>
+							<td>\e022</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleLeft"></i> 
+								<i class="iconMediumTriangleLeft"></i> 
+								<i class="iconLargeTriangleLeft"></i>
+							</td>
+							<td><code>iconTriangleLeft</code></td>
+							<td>&amp;#xe021;</td>
+							<td>\e021</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleRight"></i> 
+								<i class="iconMediumTriangleRight"></i> 
+								<i class="iconLargeTriangleRight"></i>
+							</td>
+							<td><code>iconTriangleRight</code></td>
+							<td>&amp;#xe020;</td>
+							<td>\e020</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconCursor"></i> 
+								<i class="iconMediumCursor"></i> 
+								<i class="iconLargeCursor"></i>
+							</td>
+							<td><code>iconCursor</code></td>
+							<td>&amp;#xe115;</td>
+							<td>\e115</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFullScreen"></i> 
+								<i class="iconMediumFullScreen"></i> 
+								<i class="iconLargeFullScreen"></i>
+							</td>
+							<td><code>iconFullScreen</code></td>
+							<td>&amp;#xe0a3;</td>
+							<td>\e0a3</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMinimizeScreen"></i> 
+								<i class="iconMediumMinimizeScreen"></i> 
+								<i class="iconLargeMinimizeScreen"></i>
+							</td>
+							<td><code>iconMinimizeScreen</code></td>
+							<td>&amp;#xe077;</td>
+							<td>\e077</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkExternal"></i> 
+								<i class="iconMediumLinkExternal"></i> 
+								<i class="iconLargeLinkExternal"></i>
+							</td>
+							<td><code>iconLinkExternal</code></td>
+							<td>&amp;#xe081;</td>
+							<td>\e081</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCompass"></i> 
+								<i class="iconMediumCompass"></i> 
+								<i class="iconLargeCompass"></i>
+							</td>
+							<td><code>iconCompass</code></td>
+							<td>&amp;#xe0fd;</td>
+							<td>\e0fd</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGps"></i> 
+								<i class="iconMediumGps"></i> 
+								<i class="iconLargeGps"></i>
+							</td>
+							<td><code>iconGps</code></td>
+							<td>&amp;#xe09d;</td>
+							<td>\e09d</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUpload"></i> 
+								<i class="iconMediumUpload"></i> 
+								<i class="iconLargeUpload"></i>
+							</td>
+							<td><code>iconUpload</code></td>
+							<td>&amp;#xe014;</td>
+							<td>\e014</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconDownload"></i> 
+								<i class="iconMediumDownload"></i> 
+								<i class="iconLargeDownload"></i>
+							</td>
+							<td><code>iconDownload</code></td>
+							<td>&amp;#xe0e9;</td>
+							<td>\e0e9</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconCloudUp"></i> 
+								<i class="iconMediumCloudUp"></i> 
+								<i class="iconLargeCloudUp"></i>
+							</td>
+							<td><code>iconCloudUp</code></td>
+							<td>&amp;#xe106;</td>
+							<td>\e106</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudDown"></i> 
+								<i class="iconMediumCloudDown"></i> 
+								<i class="iconLargeCloudDown"></i>
+							</td>
+							<td><code>iconCloudDown</code></td>
+							<td>&amp;#xe107;</td>
+							<td>\e107</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUndo"></i> 
+								<i class="iconMediumUndo"></i> 
+								<i class="iconLargeUndo"></i>
+							</td>
+							<td><code>iconUndo</code></td>
+							<td>&amp;#xe017;</td>
+							<td>\e017</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRedo"></i> 
+								<i class="iconMediumRedo"></i> 
+								<i class="iconLargeRedo"></i>
+							</td>
+							<td><code>iconRedo</code></td>
+							<td>&amp;#xe053;</td>
+							<td>\e053</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStart"></i> 
+								<i class="iconMediumStart"></i> 
+								<i class="iconLargeStart"></i>
+							</td>
+							<td><code>iconStart</code></td>
+							<td>&amp;#xe033;</td>
+							<td>\e033</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRewind"></i> 
+								<i class="iconMediumRewind"></i> 
+								<i class="iconLargeRewind"></i>
+							</td>
+							<td><code>iconRewind</code></td>
+							<td>&amp;#xe04f;</td>
+							<td>\e04f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconForward"></i> 
+								<i class="iconMediumForward"></i> 
+								<i class="iconLargeForward"></i>
+							</td>
+							<td><code>iconForward</code></td>
+							<td>&amp;#xe0a4;</td>
+							<td>\e0a4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEnd"></i> 
+								<i class="iconMediumEnd"></i> 
+								<i class="iconLargeEnd"></i>
+							</td>
+							<td><code>iconEnd</code></td>
+							<td>&amp;#xe0e1;</td>
+							<td>\e0e1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRefresh"></i> 
+								<i class="iconMediumRefresh"></i> 
+								<i class="iconLargeRefresh"></i>
+							</td>
+							<td><code>iconRefresh</code></td>
+							<td>&amp;#xe052;</td>
+							<td>\e052</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReload"></i> 
+								<i class="iconMediumReload"></i> 
+								<i class="iconLargeReload"></i>
+							</td>
+							<td><code>iconReload</code></td>
+							<td>&amp;#xe051;</td>
+							<td>\e051</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReconnect"></i> 
+								<i class="iconMediumReconnect"></i> 
+								<i class="iconLargeReconnect"></i>
+							</td>
+							<td><code>iconReconnect</code></td>
+							<td>&amp;#xe055;</td>
+							<td>\e055</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconShuffle"></i> 
+								<i class="iconMediumShuffle"></i> 
+								<i class="iconLargeShuffle"></i>
+							</td>
+							<td><code>iconShuffle</code></td>
+							<td>&amp;#xe041;</td>
+							<td>\e041</td>
+						</tr>																																																																																																																																																									
+					</tbody>
+				</table>
+				
+				<!-- Browsers -->
+				
+				<h2 id="browsers">Browsers</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconChrome"></i> 
+								<i class="iconMediumChrome"></i> 
+								<i class="iconLargeChrome"></i>
+							</td>
+							<td><code>iconChrome</code></td>
+							<td>&amp;#xe113;</td>
+							<td>\e113</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFirefox"></i> 
+								<i class="iconMediumFirefox"></i> 
+								<i class="iconLargeFirefox"></i>
+							</td>
+							<td><code>iconFirefox</code></td>
+							<td>&amp;#xe0ae;</td>
+							<td>\e0ae</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIe"></i> 
+								<i class="iconMediumIe"></i> 
+								<i class="iconLargeIe"></i>
+							</td>
+							<td><code>iconIe</code></td>
+							<td>&amp;#xe094;</td>
+							<td>\e094</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconOpera"></i> 
+								<i class="iconMediumOpera"></i> 
+								<i class="iconLargeOpera"></i>
+							</td>
+							<td><code>iconOpera</code></td>
+							<td>&amp;#xe06b;</td>
+							<td>\e06b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSafari"></i> 
+								<i class="iconMediumSafari"></i> 
+								<i class="iconLargeSafari"></i>
+							</td>
+							<td><code>iconSafari</code></td>
+							<td>&amp;#xe049;</td>
+							<td>\e049</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWorld"></i> 
+								<i class="iconMediumWorld"></i> 
+								<i class="iconLargeWorld"></i>
+							</td>
+							<td><code>iconWorld</code></td>
+							<td>&amp;#xe004;</td>
+							<td>\e004</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHome"></i> 
+								<i class="iconMediumHome"></i> 
+								<i class="iconLargeHome"></i>
+							</td>
+							<td><code>iconHome</code></td>
+							<td>&amp;#xe096;</td>
+							<td>\e096</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconArrowLeft"></i> 
+								<i class="iconMediumArrowLeft"></i> 
+								<i class="iconLargeArrowLeft"></i>
+							</td>
+							<td><code>iconArrowLeft</code></td>
+							<td>&amp;#xe13a;</td>
+							<td>\e13a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowRight"></i> 
+								<i class="iconMediumArrowRight"></i> 
+								<i class="iconLargeArrowRight"></i>
+							</td>
+							<td><code>iconArrowRight</code></td>
+							<td>&amp;#xe136;</td>
+							<td>\e136</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleLeft"></i> 
+								<i class="iconMediumTriangleLeft"></i> 
+								<i class="iconLargeTriangleLeft"></i>
+							</td>
+							<td><code>iconTriangleLeft</code></td>
+							<td>&amp;#xe021;</td>
+							<td>\e021</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleRight"></i> 
+								<i class="iconMediumTriangleRight"></i> 
+								<i class="iconLargeTriangleRight"></i>
+							</td>
+							<td><code>iconTriangleRight</code></td>
+							<td>&amp;#xe020;</td>
+							<td>\e020</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUndo"></i> 
+								<i class="iconMediumUndo"></i> 
+								<i class="iconLargeUndo"></i>
+							</td>
+							<td><code>iconUndo</code></td>
+							<td>&amp;#xe017;</td>
+							<td>\e017</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRedo"></i> 
+								<i class="iconMediumRedo"></i> 
+								<i class="iconLargeRedo"></i>
+							</td>
+							<td><code>iconRedo</code></td>
+							<td>&amp;#xe053;</td>
+							<td>\e053</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRewind"></i> 
+								<i class="iconMediumRewind"></i> 
+								<i class="iconLargeRewind"></i>
+							</td>
+							<td><code>iconRewind</code></td>
+							<td>&amp;#xe04f;</td>
+							<td>\e04f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconForward"></i> 
+								<i class="iconMediumForward"></i> 
+								<i class="iconLargeForward"></i>
+							</td>
+							<td><code>iconForward</code></td>
+							<td>&amp;#xe0a4;</td>
+							<td>\e0a4</td>
+						</tr>																								
+						<tr>
+							<td>
+								<i class="iconRefresh"></i> 
+								<i class="iconMediumRefresh"></i> 
+								<i class="iconLargeRefresh"></i>
+							</td>
+							<td><code>iconRefresh</code></td>
+							<td>&amp;#xe052;</td>
+							<td>\e052</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReload"></i> 
+								<i class="iconMediumReload"></i> 
+								<i class="iconLargeReload"></i>
+							</td>
+							<td><code>iconReload</code></td>
+							<td>&amp;#xe051;</td>
+							<td>\e051</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWrench"></i> 
+								<i class="iconMediumWrench"></i> 
+								<i class="iconLargeWrench"></i>
+							</td>
+							<td><code>iconWrench</code></td>
+							<td>&amp;#xe003;</td>
+							<td>\e003</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStar"></i> 
+								<i class="iconMediumStar"></i> 
+								<i class="iconLargeStar"></i>
+							</td>
+							<td><code>iconStar</code></td>
+							<td>&amp;#xe036;</td>
+							<td>\e036</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStarEmpty"></i> 
+								<i class="iconMediumStarEmpty"></i> 
+								<i class="iconLargeStarEmpty"></i>
+							</td>
+							<td><code>iconStarEmpty</code></td>
+							<td>&amp;#xe035;</td>
+							<td>\e035</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSettings1"></i> 
+								<i class="iconMediumSettings1"></i> 
+								<i class="iconLargeSettings1"></i>
+							</td>
+							<td><code>iconSettings1</code></td>
+							<td>&amp;#xe045;</td>
+							<td>\e045</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSettings2"></i> 
+								<i class="iconMediumSettings2"></i> 
+								<i class="iconLargeSettings2"></i>
+							</td>
+							<td><code>iconSettings2</code></td>
+							<td>&amp;#xe044;</td>
+							<td>\e044</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRss"></i> 
+								<i class="iconMediumRss"></i> 
+								<i class="iconLargeRss"></i>
+							</td>
+							<td><code>iconRss</code></td>
+							<td>&amp;#xe04b;</td>
+							<td>\e04b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCursor"></i> 
+								<i class="iconMediumCursor"></i> 
+								<i class="iconLargeCursor"></i>
+							</td>
+							<td><code>iconCursor</code></td>
+							<td>&amp;#xe115;</td>
+							<td>\e115</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBookmark"></i> 
+								<i class="iconMediumBookmark"></i> 
+								<i class="iconLargeBookmark"></i>
+							</td>
+							<td><code>iconBookmark</code></td>
+							<td>&amp;#xe125;</td>
+							<td>\e125</td>
+						</tr>																																																																																				
+					</tbody>
+				</table>
+				
+				<!-- Charts and Graphs -->				
+				
+				<h2 id="charts">Charts &amp; Graphs</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconGraphUp"></i> 
+								<i class="iconMediumGraphUp"></i> 
+								<i class="iconLargeGraphUp"></i>
+							</td>
+							<td><code>iconGraphUp</code></td>
+							<td>&amp;#xe09c;</td>
+							<td>\e09c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphDown"></i> 
+								<i class="iconMediumGraphDown"></i> 
+								<i class="iconLargeGraphDown"></i>
+							</td>
+							<td><code>iconGraphDown</code></td>
+							<td>&amp;#xe09b;</td>
+							<td>\e09b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPieChart"></i> 
+								<i class="iconMediumPieChart"></i> 
+								<i class="iconLargePieChart"></i>
+							</td>
+							<td><code>iconPieChart</code></td>
+							<td>&amp;#xe062;</td>
+							<td>\e062</td>
+						</tr>																	
+						<tr>
+							<td>
+								<i class="iconBarAsc1"></i> 
+								<i class="iconMediumBarAsc1"></i> 
+								<i class="iconLargeBarAsc1"></i>
+							</td>
+							<td><code>iconBarAsc1</code></td>
+							<td>&amp;#xe133;</td>
+							<td>\e133</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarAsc2"></i> 
+								<i class="iconMediumBarAsc2"></i> 
+								<i class="iconLargeBarAsc2"></i>
+							</td>
+							<td><code>iconBarAsc2</code></td>
+							<td>&amp;#xe132;</td>
+							<td>\e132</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarDesc1"></i> 
+								<i class="iconMediumBarDesc1"></i> 
+								<i class="iconLargeBarDesc1"></i>
+							</td>
+							<td><code>iconBarDesc1</code></td>
+							<td>&amp;#xe131;</td>
+							<td>\e131</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarDesc2"></i> 
+								<i class="iconMediumBarDesc2"></i> 
+								<i class="iconLargeBarDesc2"></i>
+							</td>
+							<td><code>iconBarDesc2</code></td>
+							<td>&amp;#xe130;</td>
+							<td>\e130</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircle"></i> 
+								<i class="iconMediumCircle"></i> 
+								<i class="iconLargeCircle"></i>
+							</td>
+							<td><code>iconCircle</code></td>
+							<td>&amp;#xe112;</td>
+							<td>\e112</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleHalfLeft"></i> 
+								<i class="iconMediumCircleHalfLeft"></i> 
+								<i class="iconLargeCircleHalfLeft"></i>
+							</td>
+							<td><code>iconCircleHalfLeft</code></td>
+							<td>&amp;#xe111;</td>
+							<td>\e111</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleHalfRight"></i> 
+								<i class="iconMediumCircleHalfRight"></i> 
+								<i class="iconLargeCircleHalfRight"></i>
+							</td>
+							<td><code>iconCircleHalfRight</code></td>
+							<td>&amp;#xe110;</td>
+							<td>\e110</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleOpen"></i> 
+								<i class="iconMediumCircleOpen"></i> 
+								<i class="iconLargeCircleOpen"></i>
+							</td>
+							<td><code>iconCircleOpen</code></td>
+							<td>&amp;#xe10f;</td>
+							<td>\e10f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleOpenQuarterLeft"></i> 
+								<i class="iconMediumCircleOpenQuarterLeft"></i> 
+								<i class="iconLargeCircleOpenQuarterLeft"></i>
+							</td>
+							<td><code>iconCircleOpenQuarterLeft</code></td>
+							<td>&amp;#xe10e;</td>
+							<td>\e10e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleOpenQuarterRight"></i> 
+								<i class="iconMediumCircleOpenQuarterRight"></i> 
+								<i class="iconLargeCircleOpenQuarterRight"></i>
+							</td>
+							<td><code>iconCircleOpenQuarterRight</code></td>
+							<td>&amp;#xe10d;</td>
+							<td>\e10d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleQuarterLeft"></i> 
+								<i class="iconMediumCircleQuarterLeft"></i> 
+								<i class="iconLargeCircleQuarterLeft"></i>
+							</td>
+							<td><code>iconCircleQuarterLeft</code></td>
+							<td>&amp;#xe10c;</td>
+							<td>\e10c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircleQuarterRight"></i> 
+								<i class="iconMediumCircleQuarterRight"></i> 
+								<i class="iconLargeCircleQuarterRight"></i>
+							</td>
+							<td><code>iconCircleQuarterRight</code></td>
+							<td>&amp;#xe10b;</td>
+							<td>\e10b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal1"></i> 
+								<i class="iconMediumSignal1"></i> 
+								<i class="iconLargeSignal1"></i>
+							</td>
+							<td><code>iconSignal1</code></td>
+							<td>&amp;#xe040;</td>
+							<td>\e040</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal2"></i> 
+								<i class="iconMediumSignal2"></i> 
+								<i class="iconLargeSignal2"></i>
+							</td>
+							<td><code>iconSignal2</code></td>
+							<td>&amp;#xe03f;</td>
+							<td>\e03f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal3"></i> 
+								<i class="iconMediumSignal3"></i> 
+								<i class="iconLargeSignal3"></i>
+							</td>
+							<td><code>iconSignal3</code></td>
+							<td>&amp;#xe03e;</td>
+							<td>\e03e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal4"></i> 
+								<i class="iconMediumSignal4"></i> 
+								<i class="iconLargeSignal4"></i>
+							</td>
+							<td><code>iconSignal4</code></td>
+							<td>&amp;#xe03d;</td>
+							<td>\e03d</td>
+						</tr>																																																																														
+					</tbody>
+				</table>
+				
+				<!-- Computer Hardware -->				
+				
+				<h2 id="computer-hardware">Computer Hardware</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconMonitor"></i> 
+								<i class="iconMediumMonitor"></i> 
+								<i class="iconLargeMonitor"></i>
+							</td>
+							<td><code>iconMonitor</code></td>
+							<td>&amp;#xe074;</td>
+							<td>\e074</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMouse1"></i> 
+								<i class="iconMediumMouse1"></i> 
+								<i class="iconLargeMouse1"></i>
+							</td>
+							<td><code>iconMouse1</code></td>
+							<td>&amp;#xe072;</td>
+							<td>\e072</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMouse2"></i> 
+								<i class="iconMediumMouse2"></i> 
+								<i class="iconLargeMouse2"></i>
+							</td>
+							<td><code>iconMouse2</code></td>
+							<td>&amp;#xe071;</td>
+							<td>\e071</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLeftClick"></i> 
+								<i class="iconMediumLeftClick"></i> 
+								<i class="iconLargeLeftClick"></i>
+							</td>
+							<td><code>iconLeftClick</code></td>
+							<td>&amp;#xe089;</td>
+							<td>\e089</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconRightClick"></i> 
+								<i class="iconMediumRightClick"></i> 
+								<i class="iconLargeRightClick"></i>
+							</td>
+							<td><code>iconRightClick</code></td>
+							<td>&amp;#xe04e;</td>
+							<td>\e04e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconKeyboard"></i> 
+								<i class="iconMediumKeyboard"></i> 
+								<i class="iconLargeKeyboard"></i>
+							</td>
+							<td><code>iconKeyboard</code></td>
+							<td>&amp;#xe08a;</td>
+							<td>\e08a</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconMic"></i> 
+								<i class="iconMediumMic"></i> 
+								<i class="iconLargeMic"></i>
+							</td>
+							<td><code>iconMic</code></td>
+							<td>&amp;#xe079;</td>
+							<td>\e079</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPrinter"></i> 
+								<i class="iconMediumPrinter"></i> 
+								<i class="iconLargePrinter"></i>
+							</td>
+							<td><code>iconPrinter</code></td>
+							<td>&amp;#xe05c;</td>
+							<td>\e05c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHeadphones"></i> 
+								<i class="iconMediumHeadphones"></i> 
+								<i class="iconLargeHeadphones"></i>
+							</td>
+							<td><code>iconHeadphones</code></td>
+							<td>&amp;#xe099;</td>
+							<td>\e099</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIphone"></i> 
+								<i class="iconMediumIphone"></i> 
+								<i class="iconLargeIphone"></i>
+							</td>
+							<td><code>iconIphone</code></td>
+							<td>&amp;#xe090;</td>
+							<td>\e090</td>
+						</tr>																																																																																																																	
+					</tbody>
+				</table>
+
+				<!-- Ecommerce -->				
+				
+				<h2 id="ecommerce">Ecommerce</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconCart"></i> 
+								<i class="iconMediumCart"></i> 
+								<i class="iconLargeCart"></i>
+							</td>
+							<td><code>iconCart</code></td>
+							<td>&amp;#xe11d;</td>
+							<td>\e11d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCartAdd"></i> 
+								<i class="iconMediumCartAdd"></i> 
+								<i class="iconLargeCartAdd"></i>
+							</td>
+							<td><code>iconCartAdd</code></td>
+							<td>&amp;#xe11c;</td>
+							<td>\e11c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCartRemove"></i> 
+								<i class="iconMediumCartRemove"></i> 
+								<i class="iconLargeCartRemove"></i>
+							</td>
+							<td><code>iconCartRemove</code></td>
+							<td>&amp;#xe11b;</td>
+							<td>\e11b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCredit"></i> 
+								<i class="iconMediumCredit"></i> 
+								<i class="iconLargeCredit"></i>
+							</td>
+							<td><code>iconCredit</code></td>
+							<td>&amp;#xe0f8;</td>
+							<td>\e0f8</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconGift"></i> 
+								<i class="iconMediumGift"></i> 
+								<i class="iconLargeGift"></i>
+							</td>
+							<td><code>iconGift</code></td>
+							<td>&amp;#xe0a2;</td>
+							<td>\e0a2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphDown"></i> 
+								<i class="iconMediumGraphDown"></i> 
+								<i class="iconLargeGraphDown"></i>
+							</td>
+							<td><code>iconGraphDown</code></td>
+							<td>&amp;#xe09b;</td>
+							<td>\e09b</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconGraphUp"></i> 
+								<i class="iconMediumGraphUp"></i> 
+								<i class="iconLargeGraphUp"></i>
+							</td>
+							<td><code>iconGraphUp</code></td>
+							<td>&amp;#xe09c;</td>
+							<td>\e09c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStamp"></i> 
+								<i class="iconMediumStamp"></i> 
+								<i class="iconLargeStamp"></i>
+							</td>
+							<td><code>iconStamp</code></td>
+							<td>&amp;#xe037;</td>
+							<td>\e037</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconTruck"></i> 
+								<i class="iconMediumTruck"></i> 
+								<i class="iconLargeTruck"></i>
+							</td>
+							<td><code>iconTruck</code></td>
+							<td>&amp;#xe01e;</td>
+							<td>\e01e</td>
+						</tr>																			
+					</tbody>
+				</table>
+				
+				<!-- File Formats -->				
+				
+				<h2 id="file-formats">File Formats</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconFileAi"></i> 
+								<i class="iconMediumFileAi"></i> 
+								<i class="iconLargeFileAi"></i>
+							</td>
+							<td><code>iconFileAi</code></td>
+							<td>&amp;#xe0dc;</td>
+							<td>\e0dc</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileAsp"></i> 
+								<i class="iconMediumFileAsp"></i> 
+								<i class="iconLargeFileAsp"></i>
+							</td>
+							<td><code>iconFileAsp</code></td>
+							<td>&amp;#xe0db;</td>
+							<td>\e0db</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileAudio"></i> 
+								<i class="iconMediumFileAudio"></i> 
+								<i class="iconLargeFileAudio"></i>
+							</td>
+							<td><code>iconFileAudio</code></td>
+							<td>&amp;#xe0da;</td>
+							<td>\e0da</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileCfm"></i> 
+								<i class="iconMediumFileCfm"></i> 
+								<i class="iconLargeFileCfm"></i>
+							</td>
+							<td><code>iconFileCfm</code></td>
+							<td>&amp;#xe0d9;</td>
+							<td>\e0d9</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileCode"></i> 
+								<i class="iconMediumFileCode"></i> 
+								<i class="iconLargeFileCode"></i>
+							</td>
+							<td><code>iconFileCode</code></td>
+							<td>&amp;#xe0d8;</td>
+							<td>\e0d8</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileCss"></i> 
+								<i class="iconMediumFileCss"></i> 
+								<i class="iconLargeFileCss"></i>
+							</td>
+							<td><code>iconFileCss</code></td>
+							<td>&amp;#xe0d7;</td>
+							<td>\e0d7</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileCsv"></i> 
+								<i class="iconMediumFileCsv"></i> 
+								<i class="iconLargeFileCsv"></i>
+							</td>
+							<td><code>iconFileCsv</code></td>
+							<td>&amp;#xe0d6;</td>
+							<td>\e0d6</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileDoc"></i> 
+								<i class="iconMediumFileDoc"></i> 
+								<i class="iconLargeFileDoc"></i>
+							</td>
+							<td><code>iconFileDoc</code></td>
+							<td>&amp;#xe0d5;</td>
+							<td>\e0d5</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileDtd"></i> 
+								<i class="iconMediumFileDtd"></i> 
+								<i class="iconLargeFileDtd"></i>
+							</td>
+							<td><code>iconFileDtd</code></td>
+							<td>&amp;#xe0d4;</td>
+							<td>\e0d4</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileEps"></i> 
+								<i class="iconMediumFileEps"></i> 
+								<i class="iconLargeFileEps"></i>
+							</td>
+							<td><code>iconFileEps</code></td>
+							<td>&amp;#xe0d3;</td>
+							<td>\e0d3</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileErb"></i> 
+								<i class="iconMediumFileErb"></i> 
+								<i class="iconLargeFileErb"></i>
+							</td>
+							<td><code>iconFileErb</code></td>
+							<td>&amp;#xe0d2;</td>
+							<td>\e0d2</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileExe"></i> 
+								<i class="iconMediumFileExe"></i> 
+								<i class="iconLargeFileExe"></i>
+							</td>
+							<td><code>iconFileExe</code></td>
+							<td>&amp;#xe0d1;</td>
+							<td>\e0d1</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileFla"></i> 
+								<i class="iconMediumFileFla"></i> 
+								<i class="iconLargeFileFla"></i>
+							</td>
+							<td><code>iconFileFla</code></td>
+							<td>&amp;#xe0d0;</td>
+							<td>\e0d0</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileGif"></i> 
+								<i class="iconMediumFileGif"></i> 
+								<i class="iconLargeFileGif"></i>
+							</td>
+							<td><code>iconFileGif</code></td>
+							<td>&amp;#xe0cf;</td>
+							<td>\e0cf</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileGz"></i> 
+								<i class="iconMediumFileGz"></i> 
+								<i class="iconLargeFileGz"></i>
+							</td>
+							<td><code>iconFileGz</code></td>
+							<td>&amp;#xe0ce;</td>
+							<td>\e0ce</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileHtm"></i> 
+								<i class="iconMediumFileHtm"></i> 
+								<i class="iconLargeFileHtm"></i>
+							</td>
+							<td><code>iconFileHtm</code></td>
+							<td>&amp;#xe0cd;</td>
+							<td>\e0cd</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileHtml"></i> 
+								<i class="iconMediumFileHtml"></i> 
+								<i class="iconLargeFileHtml"></i>
+							</td>
+							<td><code>iconFileHtml</code></td>
+							<td>&amp;#xe0cc;</td>
+							<td>\e0cc</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileIco"></i> 
+								<i class="iconMediumFileIco"></i> 
+								<i class="iconLargeFileIco"></i>
+							</td>
+							<td><code>iconFileIco</code></td>
+							<td>&amp;#xe0cb;</td>
+							<td>\e0cb</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileImage"></i> 
+								<i class="iconMediumFileImage"></i> 
+								<i class="iconLargeFileImage"></i>
+							</td>
+							<td><code>iconFileImage</code></td>
+							<td>&amp;#xe0ca;</td>
+							<td>\e0ca</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileJpg"></i> 
+								<i class="iconMediumFileJpg"></i> 
+								<i class="iconLargeFileJpg"></i>
+							</td>
+							<td><code>iconFileJpg</code></td>
+							<td>&amp;#xe0c9;</td>
+							<td>\e0c9</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconFileJs"></i> 
+								<i class="iconMediumFileJs"></i> 
+								<i class="iconLargeFileJs"></i>
+							</td>
+							<td><code>iconFileJs</code></td>
+							<td>&amp;#xe0c8;</td>
+							<td>\e0c8</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileMedia"></i> 
+								<i class="iconMediumFileMedia"></i> 
+								<i class="iconLargeFileMedia"></i>
+							</td>
+							<td><code>iconFileMedia</code></td>
+							<td>&amp;#xe0c7;</td>
+							<td>\e0c7</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileMov"></i> 
+								<i class="iconMediumFileMov"></i> 
+								<i class="iconLargeFileMov"></i>
+							</td>
+							<td><code>iconFileMov</code></td>
+							<td>&amp;#xe0c6;</td>
+							<td>\e0c6</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileMp3"></i> 
+								<i class="iconMediumFileMp3"></i> 
+								<i class="iconLargeFileMp3"></i>
+							</td>
+							<td><code>iconFileMp3</code></td>
+							<td>&amp;#xe0c5;</td>
+							<td>\e0c5</td>
+						</tr>							
+						<tr>
+							<td>
+								<i class="iconFileMp4"></i> 
+								<i class="iconMediumFileMp4"></i> 
+								<i class="iconLargeFileMp4"></i>
+							</td>
+							<td><code>iconFileMp4</code></td>
+							<td>&amp;#xe0c4;</td>
+							<td>\e0c4</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileOtf"></i> 
+								<i class="iconMediumFileOtf"></i> 
+								<i class="iconLargeFileOtf"></i>
+							</td>
+							<td><code>iconFileOtf</code></td>
+							<td>&amp;#xe0c3;</td>
+							<td>\e0c3</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFilePdf"></i> 
+								<i class="iconMediumFilePdf"></i> 
+								<i class="iconLargeFilePdf"></i>
+							</td>
+							<td><code>iconFilePdf</code></td>
+							<td>&amp;#xe0c2;</td>
+							<td>\e0c2</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFilePhp"></i> 
+								<i class="iconMediumFilePhp"></i> 
+								<i class="iconLargeFilePhp"></i>
+							</td>
+							<td><code>iconFilePhp</code></td>
+							<td>&amp;#xe0c1;</td>
+							<td>\e0c1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFilePl"></i> 
+								<i class="iconMediumFilePl"></i> 
+								<i class="iconLargeFilePl"></i>
+							</td>
+							<td><code>iconFilePl</code></td>
+							<td>&amp;#xe0c0;</td>
+							<td>\e0c0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFilePng"></i> 
+								<i class="iconMediumFilePng"></i> 
+								<i class="iconLargeFilePng"></i>
+							</td>
+							<td><code>iconFilePng</code></td>
+							<td>&amp;#xe0bf;</td>
+							<td>\e0bf</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFilePpt"></i> 
+								<i class="iconMediumFilePpt"></i> 
+								<i class="iconLargeFilePpt"></i>
+							</td>
+							<td><code>iconFilePpt</code></td>
+							<td>&amp;#xe0be;</td>
+							<td>\e0be</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFilePsd"></i> 
+								<i class="iconMediumFilePsd"></i> 
+								<i class="iconLargeFilePsd"></i>
+							</td>
+							<td><code>iconFilePsd</code></td>
+							<td>&amp;#xe0bd;</td>
+							<td>\e0bd</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFilePy"></i> 
+								<i class="iconMediumFilePy"></i> 
+								<i class="iconLargeFilePy"></i>
+							</td>
+							<td><code>iconFilePy</code></td>
+							<td>&amp;#xe0bc;</td>
+							<td>\e0bc</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileRb"></i> 
+								<i class="iconMediumFileRb"></i> 
+								<i class="iconLargeFileRb"></i>
+							</td>
+							<td><code>iconFileRb</code></td>
+							<td>&amp;#xe0bb;</td>
+							<td>\e0bb</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileRss"></i> 
+								<i class="iconMediumFileRss"></i> 
+								<i class="iconLargeFileRss"></i>
+							</td>
+							<td><code>iconFileRss</code></td>
+							<td>&amp;#xe0ba;</td>
+							<td>\e0ba</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileSettings"></i> 
+								<i class="iconMediumFileSettings"></i> 
+								<i class="iconLargeFileSettings"></i>
+							</td>
+							<td><code>iconFileSettings</code></td>
+							<td>&amp;#xe0b9;</td>
+							<td>\e0b9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileSql"></i> 
+								<i class="iconMediumFileSql"></i> 
+								<i class="iconLargeFileSql"></i>
+							</td>
+							<td><code>iconFileSql</code></td>
+							<td>&amp;#xe0b8;</td>
+							<td>\e0b8</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileSvg"></i> 
+								<i class="iconMediumFileSvg"></i> 
+								<i class="iconLargeFileSvg"></i>
+							</td>
+							<td><code>iconFileSvg</code></td>
+							<td>&amp;#xe0b7;</td>
+							<td>\e0b7</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileSwf"></i> 
+								<i class="iconMediumFileSwf"></i> 
+								<i class="iconLargeFileSwf"></i>
+							</td>
+							<td><code>iconFileSwf</code></td>
+							<td>&amp;#xe0b6;</td>
+							<td>\e0b6</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileTtf"></i> 
+								<i class="iconMediumFileTtf"></i> 
+								<i class="iconLargeFileTtf"></i>
+							</td>
+							<td><code>iconFileTtf</code></td>
+							<td>&amp;#xe0b5;</td>
+							<td>\e0b5</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileTxt"></i> 
+								<i class="iconMediumFileTxt"></i> 
+								<i class="iconLargeFileTxt"></i>
+							</td>
+							<td><code>iconFileTxt</code></td>
+							<td>&amp;#xe0b4;</td>
+							<td>\e0b4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileWrench"></i> 
+								<i class="iconMediumFileWrench"></i> 
+								<i class="iconLargeFileWrench"></i>
+							</td>
+							<td><code>iconFileWrench</code></td>
+							<td>&amp;#xe0b3;</td>
+							<td>\e0b3</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileXls"></i> 
+								<i class="iconMediumFileXls"></i> 
+								<i class="iconLargeFileXls"></i>
+							</td>
+							<td><code>iconFileXls</code></td>
+							<td>&amp;#xe0b2;</td>
+							<td>\e0b2</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileXml"></i> 
+								<i class="iconMediumFileXml"></i> 
+								<i class="iconLargeFileXml"></i>
+							</td>
+							<td><code>iconFileXml</code></td>
+							<td>&amp;#xe0b1;</td>
+							<td>\e0b1</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFileZip"></i> 
+								<i class="iconMediumFileZip"></i> 
+								<i class="iconLargeFileZip"></i>
+							</td>
+							<td><code>iconFileZip</code></td>
+							<td>&amp;#xe0b0;</td>
+							<td>\e0b0</td>
+						</tr>																																																																																																																																															
+					</tbody>
+				</table>
+				
+				<!-- Folders -->				
+				
+				<h2 id="folders">Folders</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconFolderOpen"></i> 
+								<i class="iconMediumFolderOpen"></i> 
+								<i class="iconLargeFolderOpen"></i>
+							</td>
+							<td><code>iconFolderOpen</code></td>
+							<td>&amp;#xe0a7;</td>
+							<td>\e0a7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderClosed"></i> 
+								<i class="iconMediumFolderClosed"></i> 
+								<i class="iconLargeFolderClosed"></i>
+							</td>
+							<td><code>iconFolderClosed</code></td>
+							<td>&amp;#xe0aa;</td>
+							<td>\e0aa</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFolderPlus"></i> 
+								<i class="iconMediumFolderPlus"></i> 
+								<i class="iconLargeFolderPlus"></i>
+							</td>
+							<td><code>iconFolderPlus</code></td>
+							<td>&amp;#xe0a6;</td>
+							<td>\e0a6</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderMinus"></i> 
+								<i class="iconMediumFolderMinus"></i> 
+								<i class="iconLargeFolderMinus"></i>
+							</td>
+							<td><code>iconFolderMinus</code></td>
+							<td>&amp;#xe0a8;</td>
+							<td>\e0a8</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderUnlocked"></i> 
+								<i class="iconMediumFolderUnlocked"></i> 
+								<i class="iconLargeFolderUnlocked"></i>
+							</td>
+							<td><code>iconFolderUnlocked</code></td>
+							<td>&amp;#xe0a5;</td>
+							<td>\e0a5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderLocked"></i> 
+								<i class="iconMediumFolderLocked"></i> 
+								<i class="iconLargeFolderLocked"></i>
+							</td>
+							<td><code>iconFolderLocked</code></td>
+							<td>&amp;#xe0a9;</td>
+							<td>\e0a9</td>
+						</tr>																																																																																																										
+					</tbody>
+				</table>
+				
+				<!-- Location -->				
+				
+				<h2 id="location">Location</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconCompass"></i> 
+								<i class="iconMediumCompass"></i> 
+								<i class="iconLargeCompass"></i>
+							</td>
+							<td><code>iconCompass</code></td>
+							<td>&amp;#xe0fd;</td>
+							<td>\e0fd</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSafari"></i> 
+								<i class="iconMediumSafari"></i> 
+								<i class="iconLargeSafari"></i>
+							</td>
+							<td><code>iconSafari</code></td>
+							<td>&amp;#xe049;</td>
+							<td>\e049</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGps"></i> 
+								<i class="iconMediumGps"></i> 
+								<i class="iconLargeGps"></i>
+							</td>
+							<td><code>iconGps</code></td>
+							<td>&amp;#xe09d;</td>
+							<td>\e09d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMarker"></i> 
+								<i class="iconMediumMarker"></i> 
+								<i class="iconLargeMarker"></i>
+							</td>
+							<td><code>iconMarker</code></td>
+							<td>&amp;#xe07b;</td>
+							<td>\e07b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPushpin1"></i> 
+								<i class="iconMediumPushpin1"></i> 
+								<i class="iconLargePushpin1"></i>
+							</td>
+							<td><code>iconPushpin1</code></td>
+							<td>&amp;#xe05b;</td>
+							<td>\e05b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPushpin2"></i> 
+								<i class="iconMediumPushpin2"></i> 
+								<i class="iconLargePushpin2"></i>
+							</td>
+							<td><code>iconPushpin2</code></td>
+							<td>&amp;#xe05a;</td>
+							<td>\e05a</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconWorld"></i> 
+								<i class="iconMediumWorld"></i> 
+								<i class="iconLargeWorld"></i>
+							</td>
+							<td><code>iconWorld</code></td>
+							<td>&amp;#xe004;</td>
+							<td>\e004</td>
+						</tr>																																																																																																																										
+					</tbody>
+				</table>
+				
+				<!-- Logos -->				
+				
+				<h2 id="logos">Logos</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconAndroid"></i> 
+								<i class="iconMediumAndroid"></i> 
+								<i class="iconLargeAndroid"></i>
+							</td>
+							<td><code>iconAndroid</code></td>
+							<td>&amp;#xe140;</td>
+							<td>\e140</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconApple"></i> 
+								<i class="iconMediumApple"></i> 
+								<i class="iconLargeApple"></i>
+							</td>
+							<td><code>iconApple</code></td>
+							<td>&amp;#xe13f;</td>
+							<td>\e13f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChrome"></i> 
+								<i class="iconMediumChrome"></i> 
+								<i class="iconLargeChrome"></i>
+							</td>
+							<td><code>iconChrome</code></td>
+							<td>&amp;#xe113;</td>
+							<td>\e113</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCss3"></i> 
+								<i class="iconMediumCss3"></i> 
+								<i class="iconLargeCss3"></i>
+							</td>
+							<td><code>iconCss3</code></td>
+							<td>&amp;#xe0f7;</td>
+							<td>\e0f7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFacebook1"></i> 
+								<i class="iconMediumFacebook1"></i> 
+								<i class="iconLargeFacebook1"></i>
+							</td>
+							<td><code>iconFacebook1</code></td>
+							<td>&amp;#xe0df;</td>
+							<td>\e0df</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFacebook2"></i> 
+								<i class="iconMediumFacebook2"></i> 
+								<i class="iconLargeFacebook2"></i>
+							</td>
+							<td><code>iconFacebook2</code></td>
+							<td>&amp;#xe0de;</td>
+							<td>\e0de</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFacebook3"></i> 
+								<i class="iconMediumFacebook3"></i> 
+								<i class="iconLargeFacebook3"></i>
+							</td>
+							<td><code>iconFacebook3</code></td>
+							<td>&amp;#xe0dd;</td>
+							<td>\e0dd</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFirefox"></i> 
+								<i class="iconMediumFirefox"></i> 
+								<i class="iconLargeFirefox"></i>
+							</td>
+							<td><code>iconFirefox</code></td>
+							<td>&amp;#xe0ae;</td>
+							<td>\e0ae</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash1"></i> 
+								<i class="iconMediumFlash1"></i> 
+								<i class="iconLargeFlash1"></i>
+							</td>
+							<td><code>iconFlash1</code></td>
+							<td>&amp;#xe0ac;</td>
+							<td>\e0ac</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash2"></i> 
+								<i class="iconMediumFlash2"></i> 
+								<i class="iconLargeFlash2"></i>
+							</td>
+							<td><code>iconFlash2</code></td>
+							<td>&amp;#xe0ab;</td>
+							<td>\e0ab</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGit"></i> 
+								<i class="iconMediumGit"></i> 
+								<i class="iconLargeGit"></i>
+							</td>
+							<td><code>iconGit</code></td>
+							<td>&amp;#xe0a1;</td>
+							<td>\e0a1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGithub"></i> 
+								<i class="iconMediumGithub"></i> 
+								<i class="iconLargeGithub"></i>
+							</td>
+							<td><code>iconGithub</code></td>
+							<td>&amp;#xe0a0;</td>
+							<td>\e0a0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGooglePlus1"></i> 
+								<i class="iconMediumGooglePlus1"></i> 
+								<i class="iconLargeGooglePlus1"></i>
+							</td>
+							<td><code>iconGooglePlus1</code></td>
+							<td>&amp;#xe09f;</td>
+							<td>\e09f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGooglePlus2"></i> 
+								<i class="iconMediumGooglePlus2"></i> 
+								<i class="iconLargeGooglePlus2"></i>
+							</td>
+							<td><code>iconGooglePlus2</code></td>
+							<td>&amp;#xe09e;</td>
+							<td>\e09e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHtml5"></i> 
+								<i class="iconMediumHtml5"></i> 
+								<i class="iconLargeHtml5"></i>
+							</td>
+							<td><code>iconHtml5</code></td>
+							<td>&amp;#xe095;</td>
+							<td>\e095</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIe"></i> 
+								<i class="iconMediumIe"></i> 
+								<i class="iconLargeIe"></i>
+							</td>
+							<td><code>iconIe</code></td>
+							<td>&amp;#xe094;</td>
+							<td>\e094</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconJava"></i> 
+								<i class="iconMediumJava"></i> 
+								<i class="iconLargeJava"></i>
+							</td>
+							<td><code>iconJava</code></td>
+							<td>&amp;#xe08e;</td>
+							<td>\e08e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn1"></i> 
+								<i class="iconMediumLinkedIn1"></i> 
+								<i class="iconLargeLinkedIn1"></i>
+							</td>
+							<td><code>iconLinkedIn1</code></td>
+							<td>&amp;#xe084;</td>
+							<td>\e084</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn2"></i> 
+								<i class="iconMediumLinkedIn2"></i> 
+								<i class="iconLargeLinkedIn2"></i>
+							</td>
+							<td><code>iconLinkedIn2</code></td>
+							<td>&amp;#xe083;</td>
+							<td>\e083</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn3"></i> 
+								<i class="iconMediumLinkedIn3"></i> 
+								<i class="iconLargeLinkedIn3"></i>
+							</td>
+							<td><code>iconLinkedIn3</code></td>
+							<td>&amp;#xe082;</td>
+							<td>\e082</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinux"></i> 
+								<i class="iconMediumLinux"></i> 
+								<i class="iconLargeLinux"></i>
+							</td>
+							<td><code>iconLinux</code></td>
+							<td>&amp;#xe080;</td>
+							<td>\e080</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconOpera"></i> 
+								<i class="iconMediumOpera"></i> 
+								<i class="iconLargeOpera"></i>
+							</td>
+							<td><code>iconOpera</code></td>
+							<td>&amp;#xe06b;</td>
+							<td>\e06b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPhp"></i> 
+								<i class="iconMediumPhp"></i> 
+								<i class="iconLargePhp"></i>
+							</td>
+							<td><code>iconPhp</code></td>
+							<td>&amp;#xe064;</td>
+							<td>\e064</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPinterest"></i> 
+								<i class="iconMediumPinterest"></i> 
+								<i class="iconLargePinterest"></i>
+							</td>
+							<td><code>iconPinterest</code></td>
+							<td>&amp;#xe061;</td>
+							<td>\e061</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReddit"></i> 
+								<i class="iconMediumReddit"></i> 
+								<i class="iconLargeReddit"></i>
+							</td>
+							<td><code>iconReddit</code></td>
+							<td>&amp;#xe054;</td>
+							<td>\e054</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRss"></i> 
+								<i class="iconMediumRss"></i> 
+								<i class="iconLargeRss"></i>
+							</td>
+							<td><code>iconRss</code></td>
+							<td>&amp;#xe04b;</td>
+							<td>\e04b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSafari"></i> 
+								<i class="iconMediumSafari"></i> 
+								<i class="iconLargeSafari"></i>
+							</td>
+							<td><code>iconSafari</code></td>
+							<td>&amp;#xe049;</td>
+							<td>\e049</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSkype"></i> 
+								<i class="iconMediumSkype"></i> 
+								<i class="iconLargeSkype"></i>
+							</td>
+							<td><code>iconSkype</code></td>
+							<td>&amp;#xe03c;</td>
+							<td>\e03c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStumbleupon"></i> 
+								<i class="iconMediumStumbleupon"></i> 
+								<i class="iconLargeStumbleupon"></i>
+							</td>
+							<td><code>iconStumbleupon</code></td>
+							<td>&amp;#xe030;</td>
+							<td>\e030</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTumbler"></i> 
+								<i class="iconMediumTumbler"></i> 
+								<i class="iconLargeTumbler"></i>
+							</td>
+							<td><code>iconTumbler</code></td>
+							<td>&amp;#xe01d;</td>
+							<td>\e01d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter1"></i> 
+								<i class="iconMediumTwitter1"></i> 
+								<i class="iconLargeTwitter1"></i>
+							</td>
+							<td><code>iconTwitter1</code></td>
+							<td>&amp;#xe01c;</td>
+							<td>\e01c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter2"></i> 
+								<i class="iconMediumTwitter2"></i> 
+								<i class="iconLargeTwitter2"></i>
+							</td>
+							<td><code>iconTwitter2</code></td>
+							<td>&amp;#xe01b;</td>
+							<td>\e01b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter3"></i> 
+								<i class="iconMediumTwitter3"></i> 
+								<i class="iconLargeTwitter3"></i>
+							</td>
+							<td><code>iconTwitter3</code></td>
+							<td>&amp;#xe01a;</td>
+							<td>\e01a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUbuntu"></i> 
+								<i class="iconMediumUbuntu"></i> 
+								<i class="iconLargeUbuntu"></i>
+							</td>
+							<td><code>iconUbuntu</code></td>
+							<td>&amp;#xe019;</td>
+							<td>\e019</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVirtuosiMedia"></i> 
+								<i class="iconMediumVirtuosiMedia"></i> 
+								<i class="iconLargeVirtuosiMedia"></i>
+							</td>
+							<td><code>iconVirtuosiMedia</code></td>
+							<td>&amp;#xe00b;</td>
+							<td>\e00b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWindows"></i> 
+								<i class="iconMediumWindows"></i> 
+								<i class="iconLargeWindows"></i>
+							</td>
+							<td><code>iconWindows</code></td>
+							<td>&amp;#xe006;</td>
+							<td>\e006</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWordpress"></i> 
+								<i class="iconMediumWordpress"></i> 
+								<i class="iconLargeWordpress"></i>
+							</td>
+							<td><code>iconWordpress</code></td>
+							<td>&amp;#xe005;</td>
+							<td>\e005</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Media -->				
+				
+				<h2 id="media">Media</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconCamera"></i> 
+								<i class="iconMediumCamera"></i> 
+								<i class="iconLargeCamera"></i>
+							</td>
+							<td><code>iconCamera</code></td>
+							<td>&amp;#xe120;</td>
+							<td>\e120</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudDown"></i> 
+								<i class="iconMediumCloudDown"></i> 
+								<i class="iconLargeCloudDown"></i>
+							</td>
+							<td><code>iconCloudDown</code></td>
+							<td>&amp;#xe107;</td>
+							<td>\e107</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudUp"></i> 
+								<i class="iconMediumCloudUp"></i> 
+								<i class="iconLargeCloudUp"></i>
+							</td>
+							<td><code>iconCloudUp</code></td>
+							<td>&amp;#xe106;</td>
+							<td>\e106</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard1"></i> 
+								<i class="iconMediumDashboard1"></i> 
+								<i class="iconLargeDashboard1"></i>
+							</td>
+							<td><code>iconDashboard1</code></td>
+							<td>&amp;#xe0f5;</td>
+							<td>\e0f5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard2"></i> 
+								<i class="iconMediumDashboard2"></i> 
+								<i class="iconLargeDashboard2"></i>
+							</td>
+							<td><code>iconDashboard2</code></td>
+							<td>&amp;#xe0f4;</td>
+							<td>\e0f4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard3"></i> 
+								<i class="iconMediumDashboard3"></i> 
+								<i class="iconLargeDashboard3"></i>
+							</td>
+							<td><code>iconDashboard3</code></td>
+							<td>&amp;#xe0f3;</td>
+							<td>\e0f3</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash1"></i> 
+								<i class="iconMediumFlash1"></i> 
+								<i class="iconLargeFlash1"></i>
+							</td>
+							<td><code>iconFlash1</code></td>
+							<td>&amp;#xe0ac;</td>
+							<td>\e0ac</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash2"></i> 
+								<i class="iconMediumFlash2"></i> 
+								<i class="iconLargeFlash2"></i>
+							</td>
+							<td><code>iconFlash2</code></td>
+							<td>&amp;#xe0ab;</td>
+							<td>\e0ab</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHeadphones"></i> 
+								<i class="iconMediumHeadphones"></i> 
+								<i class="iconLargeHeadphones"></i>
+							</td>
+							<td><code>iconHeadphones</code></td>
+							<td>&amp;#xe099;</td>
+							<td>\e099</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMic"></i> 
+								<i class="iconMediumMic"></i> 
+								<i class="iconLargeMic"></i>
+							</td>
+							<td><code>iconMic</code></td>
+							<td>&amp;#xe079;</td>
+							<td>\e079</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMonitor"></i> 
+								<i class="iconMediumMonitor"></i> 
+								<i class="iconLargeMonitor"></i>
+							</td>
+							<td><code>iconMonitor</code></td>
+							<td>&amp;#xe074;</td>
+							<td>\e074</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMute"></i> 
+								<i class="iconMediumMute"></i> 
+								<i class="iconLargeMute"></i>
+							</td>
+							<td><code>iconMute</code></td>
+							<td>&amp;#xe070;</td>
+							<td>\e070</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconVolume0"></i> 
+								<i class="iconMediumVolume0"></i> 
+								<i class="iconLargeVolume0"></i>
+							</td>
+							<td><code>iconVolume0</code></td>
+							<td>&amp;#xe00a;</td>
+							<td>\e00a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume1"></i> 
+								<i class="iconMediumVolume1"></i> 
+								<i class="iconLargeVolume1"></i>
+							</td>
+							<td><code>iconVolume1</code></td>
+							<td>&amp;#xe009;</td>
+							<td>\e009</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume2"></i> 
+								<i class="iconMediumVolume2"></i> 
+								<i class="iconLargeVolume2"></i>
+							</td>
+							<td><code>iconVolume2</code></td>
+							<td>&amp;#xe008;</td>
+							<td>\e008</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote1"></i> 
+								<i class="iconMediumNote1"></i> 
+								<i class="iconLargeNote1"></i>
+							</td>
+							<td><code>iconNote1</code></td>
+							<td>&amp;#xe06e;</td>
+							<td>\e06e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote2"></i> 
+								<i class="iconMediumNote2"></i> 
+								<i class="iconLargeNote2"></i>
+							</td>
+							<td><code>iconNote2</code></td>
+							<td>&amp;#xe06d;</td>
+							<td>\e06d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote3"></i> 
+								<i class="iconMediumNote3"></i> 
+								<i class="iconLargeNote3"></i>
+							</td>
+							<td><code>iconNote3</code></td>
+							<td>&amp;#xe06c;</td>
+							<td>\e06c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPicture"></i> 
+								<i class="iconMediumPicture"></i> 
+								<i class="iconLargePicture"></i>
+							</td>
+							<td><code>iconPicture</code></td>
+							<td>&amp;#xe063;</td>
+							<td>\e063</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPlay"></i> 
+								<i class="iconMediumPlay"></i> 
+								<i class="iconLargePlay"></i>
+							</td>
+							<td><code>iconPlay</code></td>
+							<td>&amp;#xe05f;</td>
+							<td>\e05f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReconnect"></i> 
+								<i class="iconMediumReconnect"></i> 
+								<i class="iconLargeReconnect"></i>
+							</td>
+							<td><code>iconReconnect</code></td>
+							<td>&amp;#xe055;</td>
+							<td>\e055</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconShuffle"></i> 
+								<i class="iconMediumShuffle"></i> 
+								<i class="iconLargeShuffle"></i>
+							</td>
+							<td><code>iconShuffle</code></td>
+							<td>&amp;#xe041;</td>
+							<td>\e041</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleRight"></i> 
+								<i class="iconMediumTriangleRight"></i> 
+								<i class="iconLargeTriangleRight"></i>
+							</td>
+							<td><code>iconTriangleRight</code></td>
+							<td>&amp;#xe020;</td>
+							<td>\e020</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSquare"></i> 
+								<i class="iconMediumSquare"></i> 
+								<i class="iconLargeSquare"></i>
+							</td>
+							<td><code>iconSquare</code></td>
+							<td>&amp;#xe038;</td>
+							<td>\e038</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStop"></i> 
+								<i class="iconMediumStop"></i> 
+								<i class="iconLargeStop"></i>
+							</td>
+							<td><code>iconStop</code></td>
+							<td>&amp;#xe032;</td>
+							<td>\e032</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPause"></i> 
+								<i class="iconMediumPause"></i> 
+								<i class="iconLargePause"></i>
+							</td>
+							<td><code>iconPause</code></td>
+							<td>&amp;#xe066;</td>
+							<td>\e066</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircle"></i> 
+								<i class="iconMediumCircle"></i> 
+								<i class="iconLargeCircle"></i>
+							</td>
+							<td><code>iconCircle</code></td>
+							<td>&amp;#xe112;</td>
+							<td>\e112</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStart"></i> 
+								<i class="iconMediumStart"></i> 
+								<i class="iconLargeStart"></i>
+							</td>
+							<td><code>iconStart</code></td>
+							<td>&amp;#xe033;</td>
+							<td>\e033</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRewind"></i> 
+								<i class="iconMediumRewind"></i> 
+								<i class="iconLargeRewind"></i>
+							</td>
+							<td><code>iconRewind</code></td>
+							<td>&amp;#xe04f;</td>
+							<td>\e04f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconForward"></i> 
+								<i class="iconMediumForward"></i> 
+								<i class="iconLargeForward"></i>
+							</td>
+							<td><code>iconForward</code></td>
+							<td>&amp;#xe0a4;</td>
+							<td>\e0a4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEnd"></i> 
+								<i class="iconMediumEnd"></i> 
+								<i class="iconLargeEnd"></i>
+							</td>
+							<td><code>iconEnd</code></td>
+							<td>&amp;#xe0e1;</td>
+							<td>\e0e1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVirtuosiMedia"></i> 
+								<i class="iconMediumVirtuosiMedia"></i> 
+								<i class="iconLargeVirtuosiMedia"></i>
+							</td>
+							<td><code>iconVirtuosiMedia</code></td>
+							<td>&amp;#xe00b;</td>
+							<td>\e00b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVideo"></i> 
+								<i class="iconMediumVideo"></i> 
+								<i class="iconLargeVideo"></i>
+							</td>
+							<td><code>iconVideo</code></td>
+							<td>&amp;#xe00c;</td>
+							<td>\e00c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileAudio"></i> 
+								<i class="iconMediumFileAudio"></i> 
+								<i class="iconLargeFileAudio"></i>
+							</td>
+							<td><code>iconFileAudio</code></td>
+							<td>&amp;#xe0da;</td>
+							<td>\e0da</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileImage"></i> 
+								<i class="iconMediumFileImage"></i> 
+								<i class="iconLargeFileImage"></i>
+							</td>
+							<td><code>iconFileImage</code></td>
+							<td>&amp;#xe0ca;</td>
+							<td>\e0ca</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileMedia"></i> 
+								<i class="iconMediumFileMedia"></i> 
+								<i class="iconLargeFileMedia"></i>
+							</td>
+							<td><code>iconFileMedia</code></td>
+							<td>&amp;#xe0c7;</td>
+							<td>\e0c7</td>
+						</tr>						
+					</tbody>
+				</table>
+				
+				<!-- Mobile -->				
+				
+				<h2 id="mobile">Mobile</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconAndroid"></i> 
+								<i class="iconMediumAndroid"></i> 
+								<i class="iconLargeAndroid"></i>
+							</td>
+							<td><code>iconAndroid</code></td>
+							<td>&amp;#xe140;</td>
+							<td>\e140</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIphone"></i> 
+								<i class="iconMediumIphone"></i> 
+								<i class="iconLargeIphone"></i>
+							</td>
+							<td><code>iconIphone</code></td>
+							<td>&amp;#xe090;</td>
+							<td>\e090</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBatteryEmpty"></i> 
+								<i class="iconMediumBatteryEmpty"></i> 
+								<i class="iconLargeBatteryEmpty"></i>
+							</td>
+							<td><code>iconBatteryEmpty</code></td>
+							<td>&amp;#xe12f;</td>
+							<td>\e12f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBatteryFull"></i> 
+								<i class="iconMediumBatteryFull"></i> 
+								<i class="iconLargeBatteryFull"></i>
+							</td>
+							<td><code>iconBatteryFull</code></td>
+							<td>&amp;#xe12e;</td>
+							<td>\e12e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBatteryHalf"></i> 
+								<i class="iconMediumBatteryHalf"></i> 
+								<i class="iconLargeBatteryHalf"></i>
+							</td>
+							<td><code>iconBatteryHalf</code></td>
+							<td>&amp;#xe12d;</td>
+							<td>\e12d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBell"></i> 
+								<i class="iconMediumBell"></i> 
+								<i class="iconLargeBell"></i>
+							</td>
+							<td><code>iconBell</code></td>
+							<td>&amp;#xe128;</td>
+							<td>\e128</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBellSilent"></i> 
+								<i class="iconMediumBellSilent"></i> 
+								<i class="iconLargeBellSilent"></i>
+							</td>
+							<td><code>iconBellSilent</code></td>
+							<td>&amp;#xe127;</td>
+							<td>\e127</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBroadcast"></i> 
+								<i class="iconMediumBroadcast"></i> 
+								<i class="iconLargeBroadcast"></i>
+							</td>
+							<td><code>iconBroadcast</code></td>
+							<td>&amp;#xe123;</td>
+							<td>\e123</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconCalendar"></i> 
+								<i class="iconMediumCalendar"></i> 
+								<i class="iconLargeCalendar"></i>
+							</td>
+							<td><code>iconCalendar</code></td>
+							<td>&amp;#xe121;</td>
+							<td>\e121</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCamera"></i> 
+								<i class="iconMediumCamera"></i> 
+								<i class="iconLargeCamera"></i>
+							</td>
+							<td><code>iconCamera</code></td>
+							<td>&amp;#xe120;</td>
+							<td>\e120</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconClock1"></i> 
+								<i class="iconMediumClock1"></i> 
+								<i class="iconLargeClock1"></i>
+							</td>
+							<td><code>iconClock1</code></td>
+							<td>&amp;#xe10a;</td>
+							<td>\e10a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconClock2"></i> 
+								<i class="iconMediumClock2"></i> 
+								<i class="iconLargeClock2"></i>
+							</td>
+							<td><code>iconClock2</code></td>
+							<td>&amp;#xe10b;</td>
+							<td>\e10b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCompass"></i> 
+								<i class="iconMediumCompass"></i> 
+								<i class="iconLargeCompass"></i>
+							</td>
+							<td><code>iconCompass</code></td>
+							<td>&amp;#xe0fd;</td>
+							<td>\e0fd</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmail"></i> 
+								<i class="iconMediumEmail"></i> 
+								<i class="iconLargeEmail"></i>
+							</td>
+							<td><code>iconEmail</code></td>
+							<td>&amp;#xe0e5;</td>
+							<td>\e0e5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverse"></i> 
+								<i class="iconMediumEmailInverse"></i> 
+								<i class="iconLargeEmailInverse"></i>
+							</td>
+							<td><code>iconEmailInverse</code></td>
+							<td>&amp;#xe0e4;</td>
+							<td>\e0e4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailOpen"></i> 
+								<i class="iconMediumEmailOpen"></i> 
+								<i class="iconLargeEmailOpen"></i>
+							</td>
+							<td><code>iconEmailOpen</code></td>
+							<td>&amp;#xe0e2;</td>
+							<td>\e0e2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverseOpen"></i> 
+								<i class="iconMediumEmailInverseOpen"></i> 
+								<i class="iconLargeEmailInverseOpen"></i>
+							</td>
+							<td><code>iconEmailInverseOpen</code></td>
+							<td>&amp;#xe0e3;</td>
+							<td>\e0e3</td>
+						</tr>					
+						<tr>
+							<td>
+								<i class="iconGps"></i> 
+								<i class="iconMediumGps"></i> 
+								<i class="iconLargeGps"></i>
+							</td>
+							<td><code>iconGps</code></td>
+							<td>&amp;#xe09d;</td>
+							<td>\e09d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMarker"></i> 
+								<i class="iconMediumMarker"></i> 
+								<i class="iconLargeMarker"></i>
+							</td>
+							<td><code>iconMarker</code></td>
+							<td>&amp;#xe07b;</td>
+							<td>\e07b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHeadphones"></i> 
+								<i class="iconMediumHeadphones"></i> 
+								<i class="iconLargeHeadphones"></i>
+							</td>
+							<td><code>iconHeadphones</code></td>
+							<td>&amp;#xe099;</td>
+							<td>\e099</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMic"></i> 
+								<i class="iconMediumMic"></i> 
+								<i class="iconLargeMic"></i>
+							</td>
+							<td><code>iconMic</code></td>
+							<td>&amp;#xe079;</td>
+							<td>\e079</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMute"></i> 
+								<i class="iconMediumMute"></i> 
+								<i class="iconLargeMute"></i>
+							</td>
+							<td><code>iconMute</code></td>
+							<td>&amp;#xe070;</td>
+							<td>\e070</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconVolume0"></i> 
+								<i class="iconMediumVolume0"></i> 
+								<i class="iconLargeVolume0"></i>
+							</td>
+							<td><code>iconVolume0</code></td>
+							<td>&amp;#xe00a;</td>
+							<td>\e00a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume1"></i> 
+								<i class="iconMediumVolume1"></i> 
+								<i class="iconLargeVolume1"></i>
+							</td>
+							<td><code>iconVolume1</code></td>
+							<td>&amp;#xe009;</td>
+							<td>\e009</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume2"></i> 
+								<i class="iconMediumVolume2"></i> 
+								<i class="iconLargeVolume2"></i>
+							</td>
+							<td><code>iconVolume2</code></td>
+							<td>&amp;#xe008;</td>
+							<td>\e008</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote1"></i> 
+								<i class="iconMediumNote1"></i> 
+								<i class="iconLargeNote1"></i>
+							</td>
+							<td><code>iconNote1</code></td>
+							<td>&amp;#xe06e;</td>
+							<td>\e06e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote2"></i> 
+								<i class="iconMediumNote2"></i> 
+								<i class="iconLargeNote2"></i>
+							</td>
+							<td><code>iconNote2</code></td>
+							<td>&amp;#xe06d;</td>
+							<td>\e06d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNote3"></i> 
+								<i class="iconMediumNote3"></i> 
+								<i class="iconLargeNote3"></i>
+							</td>
+							<td><code>iconNote3</code></td>
+							<td>&amp;#xe06c;</td>
+							<td>\e06c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPhone"></i> 
+								<i class="iconMediumPhone"></i> 
+								<i class="iconLargePhone"></i>
+							</td>
+							<td><code>iconPhone</code></td>
+							<td>&amp;#xe065;</td>
+							<td>\e065</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPlane"></i> 
+								<i class="iconMediumPlane"></i> 
+								<i class="iconLargePlane"></i>
+							</td>
+							<td><code>iconPlane</code></td>
+							<td>&amp;#xe060;</td>
+							<td>\e060</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPicture"></i> 
+								<i class="iconMediumPicture"></i> 
+								<i class="iconLargePicture"></i>
+							</td>
+							<td><code>iconPicture</code></td>
+							<td>&amp;#xe063;</td>
+							<td>\e063</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPlay"></i> 
+								<i class="iconMediumPlay"></i> 
+								<i class="iconLargePlay"></i>
+							</td>
+							<td><code>iconPlay</code></td>
+							<td>&amp;#xe05f;</td>
+							<td>\e05f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReconnect"></i> 
+								<i class="iconMediumReconnect"></i> 
+								<i class="iconLargeReconnect"></i>
+							</td>
+							<td><code>iconReconnect</code></td>
+							<td>&amp;#xe055;</td>
+							<td>\e055</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconShuffle"></i> 
+								<i class="iconMediumShuffle"></i> 
+								<i class="iconLargeShuffle"></i>
+							</td>
+							<td><code>iconShuffle</code></td>
+							<td>&amp;#xe041;</td>
+							<td>\e041</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTriangleRight"></i> 
+								<i class="iconMediumTriangleRight"></i> 
+								<i class="iconLargeTriangleRight"></i>
+							</td>
+							<td><code>iconTriangleRight</code></td>
+							<td>&amp;#xe020;</td>
+							<td>\e020</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSquare"></i> 
+								<i class="iconMediumSquare"></i> 
+								<i class="iconLargeSquare"></i>
+							</td>
+							<td><code>iconSquare</code></td>
+							<td>&amp;#xe038;</td>
+							<td>\e038</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStop"></i> 
+								<i class="iconMediumStop"></i> 
+								<i class="iconLargeStop"></i>
+							</td>
+							<td><code>iconStop</code></td>
+							<td>&amp;#xe032;</td>
+							<td>\e032</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPause"></i> 
+								<i class="iconMediumPause"></i> 
+								<i class="iconLargePause"></i>
+							</td>
+							<td><code>iconPause</code></td>
+							<td>&amp;#xe066;</td>
+							<td>\e066</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCircle"></i> 
+								<i class="iconMediumCircle"></i> 
+								<i class="iconLargeCircle"></i>
+							</td>
+							<td><code>iconCircle</code></td>
+							<td>&amp;#xe112;</td>
+							<td>\e112</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStart"></i> 
+								<i class="iconMediumStart"></i> 
+								<i class="iconLargeStart"></i>
+							</td>
+							<td><code>iconStart</code></td>
+							<td>&amp;#xe033;</td>
+							<td>\e033</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRewind"></i> 
+								<i class="iconMediumRewind"></i> 
+								<i class="iconLargeRewind"></i>
+							</td>
+							<td><code>iconRewind</code></td>
+							<td>&amp;#xe04f;</td>
+							<td>\e04f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconForward"></i> 
+								<i class="iconMediumForward"></i> 
+								<i class="iconLargeForward"></i>
+							</td>
+							<td><code>iconForward</code></td>
+							<td>&amp;#xe0a4;</td>
+							<td>\e0a4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEnd"></i> 
+								<i class="iconMediumEnd"></i> 
+								<i class="iconLargeEnd"></i>
+							</td>
+							<td><code>iconEnd</code></td>
+							<td>&amp;#xe0e1;</td>
+							<td>\e0e1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVideo"></i> 
+								<i class="iconMediumVideo"></i> 
+								<i class="iconLargeVideo"></i>
+							</td>
+							<td><code>iconVideo</code></td>
+							<td>&amp;#xe00c;</td>
+							<td>\e00c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSkype"></i> 
+								<i class="iconMediumSkype"></i> 
+								<i class="iconLargeSkype"></i>
+							</td>
+							<td><code>iconSkype</code></td>
+							<td>&amp;#xe03c;</td>
+							<td>\e03c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal1"></i> 
+								<i class="iconMediumSignal1"></i> 
+								<i class="iconLargeSignal1"></i>
+							</td>
+							<td><code>iconSignal1</code></td>
+							<td>&amp;#xe040;</td>
+							<td>\e040</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal2"></i> 
+								<i class="iconMediumSignal2"></i> 
+								<i class="iconLargeSignal2"></i>
+							</td>
+							<td><code>iconSignal2</code></td>
+							<td>&amp;#xe03f;</td>
+							<td>\e03f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal3"></i> 
+								<i class="iconMediumSignal3"></i> 
+								<i class="iconLargeSignal3"></i>
+							</td>
+							<td><code>iconSignal3</code></td>
+							<td>&amp;#xe03e;</td>
+							<td>\e03e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSignal4"></i> 
+								<i class="iconMediumSignal4"></i> 
+								<i class="iconLargeSignal4"></i>
+							</td>
+							<td><code>iconSignal4</code></td>
+							<td>&amp;#xe03d;</td>
+							<td>\e03d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSafari"></i> 
+								<i class="iconMediumSafari"></i> 
+								<i class="iconLargeSafari"></i>
+							</td>
+							<td><code>iconSafari</code></td>
+							<td>&amp;#xe049;</td>
+							<td>\e049</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChrome"></i> 
+								<i class="iconMediumChrome"></i> 
+								<i class="iconLargeChrome"></i>
+							</td>
+							<td><code>iconChrome</code></td>
+							<td>&amp;#xe113;</td>
+							<td>\e113</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Operating Systems -->				
+				
+				<h2 id="operating-systems">Operating Systems</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconAndroid"></i> 
+								<i class="iconMediumAndroid"></i> 
+								<i class="iconLargeAndroid"></i>
+							</td>
+							<td><code>iconAndroid</code></td>
+							<td>&amp;#xe140;</td>
+							<td>\e140</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconApple"></i> 
+								<i class="iconMediumApple"></i> 
+								<i class="iconLargeApple"></i>
+							</td>
+							<td><code>iconApple</code></td>
+							<td>&amp;#xe13f;</td>
+							<td>\e13f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChrome"></i> 
+								<i class="iconMediumChrome"></i> 
+								<i class="iconLargeChrome"></i>
+							</td>
+							<td><code>iconChrome</code></td>
+							<td>&amp;#xe113;</td>
+							<td>\e113</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIphone"></i> 
+								<i class="iconMediumIphone"></i> 
+								<i class="iconLargeIphone"></i>
+							</td>
+							<td><code>iconIphone</code></td>
+							<td>&amp;#xe090;</td>
+							<td>\e090</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinux"></i> 
+								<i class="iconMediumLinux"></i> 
+								<i class="iconLargeLinux"></i>
+							</td>
+							<td><code>iconLinux</code></td>
+							<td>&amp;#xe080;</td>
+							<td>\e080</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUbuntu"></i> 
+								<i class="iconMediumUbuntu"></i> 
+								<i class="iconLargeUbuntu"></i>
+							</td>
+							<td><code>iconUbuntu</code></td>
+							<td>&amp;#xe019;</td>
+							<td>\e019</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWindows"></i> 
+								<i class="iconMediumWindows"></i> 
+								<i class="iconLargeWindows"></i>
+							</td>
+							<td><code>iconWindows</code></td>
+							<td>&amp;#xe006;</td>
+							<td>\e006</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPower"></i> 
+								<i class="iconMediumPower"></i> 
+								<i class="iconLargePower"></i>
+							</td>
+							<td><code>iconPower</code></td>
+							<td>&amp;#xe05d;</td>
+							<td>\e05d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCursor"></i> 
+								<i class="iconMediumCursor"></i> 
+								<i class="iconLargeCursor"></i>
+							</td>
+							<td><code>iconCursor</code></td>
+							<td>&amp;#xe115;</td>
+							<td>\e115</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTrash"></i> 
+								<i class="iconMediumTrash"></i> 
+								<i class="iconLargeTrash"></i>
+							</td>
+							<td><code>iconTrash</code></td>
+							<td>&amp;#xe023;</td>
+							<td>\e023</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMinimize"></i> 
+								<i class="iconMediumMinimize"></i> 
+								<i class="iconLargeMinimize"></i>
+							</td>
+							<td><code>iconMinimize</code></td>
+							<td>&amp;#xe078;</td>
+							<td>\e078</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMaximize"></i> 
+								<i class="iconMediumMaximize"></i> 
+								<i class="iconLargeMaximize"></i>
+							</td>
+							<td><code>iconMaximize</code></td>
+							<td>&amp;#xe07a;</td>
+							<td>\e07a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRestore"></i> 
+								<i class="iconMediumRestore"></i> 
+								<i class="iconLargeRestore"></i>
+							</td>
+							<td><code>iconRestore</code></td>
+							<td>&amp;#xe050;</td>
+							<td>\e050</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDelete1"></i> 
+								<i class="iconMediumDelete1"></i> 
+								<i class="iconLargeDelete1"></i>
+							</td>
+							<td><code>iconDelete1</code></td>
+							<td>&amp;#xe002;</td>
+							<td>\e002</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMute"></i> 
+								<i class="iconMediumMute"></i> 
+								<i class="iconLargeMute"></i>
+							</td>
+							<td><code>iconMute</code></td>
+							<td>&amp;#xe070;</td>
+							<td>\e070</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconVolume0"></i> 
+								<i class="iconMediumVolume0"></i> 
+								<i class="iconLargeVolume0"></i>
+							</td>
+							<td><code>iconVolume0</code></td>
+							<td>&amp;#xe00a;</td>
+							<td>\e00a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume1"></i> 
+								<i class="iconMediumVolume1"></i> 
+								<i class="iconLargeVolume1"></i>
+							</td>
+							<td><code>iconVolume1</code></td>
+							<td>&amp;#xe009;</td>
+							<td>\e009</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume2"></i> 
+								<i class="iconMediumVolume2"></i> 
+								<i class="iconLargeVolume2"></i>
+							</td>
+							<td><code>iconVolume2</code></td>
+							<td>&amp;#xe008;</td>
+							<td>\e008</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconContrast1"></i> 
+								<i class="iconMediumContrast1"></i> 
+								<i class="iconLargeContrast1"></i>
+							</td>
+							<td><code>iconContrast1</code></td>
+							<td>&amp;#xe0fc;</td>
+							<td>\e0fc</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconContrast2"></i> 
+								<i class="iconMediumContrast2"></i> 
+								<i class="iconLargeContrast2"></i>
+							</td>
+							<td><code>iconContrast2</code></td>
+							<td>&amp;#xe0fb;</td>
+							<td>\e0fb</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconContrast3"></i> 
+								<i class="iconMediumContrast3"></i> 
+								<i class="iconLargeContrast3"></i>
+							</td>
+							<td><code>iconContrast3</code></td>
+							<td>&amp;#xe0fa;</td>
+							<td>\e0fa</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconClock1"></i> 
+								<i class="iconMediumClock1"></i> 
+								<i class="iconLargeClock1"></i>
+							</td>
+							<td><code>iconClock1</code></td>
+							<td>&amp;#xe10a;</td>
+							<td>\e10a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderOpen"></i> 
+								<i class="iconMediumFolderOpen"></i> 
+								<i class="iconLargeFolderOpen"></i>
+							</td>
+							<td><code>iconFolderOpen</code></td>
+							<td>&amp;#xe0a7;</td>
+							<td>\e0a7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderClosed"></i> 
+								<i class="iconMediumFolderClosed"></i> 
+								<i class="iconLargeFolderClosed"></i>
+							</td>
+							<td><code>iconFolderClosed</code></td>
+							<td>&amp;#xe0aa;</td>
+							<td>\e0aa</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFind"></i> 
+								<i class="iconMediumFind"></i> 
+								<i class="iconLargeFind"></i>
+							</td>
+							<td><code>iconFind</code></td>
+							<td>&amp;#xe0af;</td>
+							<td>\e0af</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileSettings"></i> 
+								<i class="iconMediumFileSettings"></i> 
+								<i class="iconLargeFileSettings"></i>
+							</td>
+							<td><code>iconFileSettings</code></td>
+							<td>&amp;#xe0b9;</td>
+							<td>\e0b9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileCode"></i> 
+								<i class="iconMediumFileCode"></i> 
+								<i class="iconLargeFileCode"></i>
+							</td>
+							<td><code>iconFileCode</code></td>
+							<td>&amp;#xe0d8;</td>
+							<td>\e0d8</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileAudio"></i> 
+								<i class="iconMediumFileAudio"></i> 
+								<i class="iconLargeFileAudio"></i>
+							</td>
+							<td><code>iconFileAudio</code></td>
+							<td>&amp;#xe0da;</td>
+							<td>\e0da</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileImage"></i> 
+								<i class="iconMediumFileImage"></i> 
+								<i class="iconLargeFileImage"></i>
+							</td>
+							<td><code>iconFileImage</code></td>
+							<td>&amp;#xe0ca;</td>
+							<td>\e0ca</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileMedia"></i> 
+								<i class="iconMediumFileMedia"></i> 
+								<i class="iconLargeFileMedia"></i>
+							</td>
+							<td><code>iconFileMedia</code></td>
+							<td>&amp;#xe0c7;</td>
+							<td>\e0c7</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Productivity -->				
+				
+				<h2 id="productivity">Productivity</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconBarAsc1"></i> 
+								<i class="iconMediumBarAsc1"></i> 
+								<i class="iconLargeBarAsc1"></i>
+							</td>
+							<td><code>iconBarAsc1</code></td>
+							<td>&amp;#xe133;</td>
+							<td>\e133</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarAsc2"></i> 
+								<i class="iconMediumBarAsc2"></i> 
+								<i class="iconLargeBarAsc2"></i>
+							</td>
+							<td><code>iconBarAsc2</code></td>
+							<td>&amp;#xe132;</td>
+							<td>\e132</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarDesc1"></i> 
+								<i class="iconMediumBarDesc1"></i> 
+								<i class="iconLargeBarDesc1"></i>
+							</td>
+							<td><code>iconBarDesc1</code></td>
+							<td>&amp;#xe131;</td>
+							<td>\e131</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarDesc2"></i> 
+								<i class="iconMediumBarDesc2"></i> 
+								<i class="iconLargeBarDesc2"></i>
+							</td>
+							<td><code>iconBarDesc2</code></td>
+							<td>&amp;#xe130;</td>
+							<td>\e130</td>
+						</tr>					
+						<tr>
+							<td>
+								<i class="iconBriefcase"></i> 
+								<i class="iconMediumBriefcase"></i> 
+								<i class="iconLargeBriefcase"></i>
+							</td>
+							<td><code>iconBriefcase</code></td>
+							<td>&amp;#xe124;</td>
+							<td>\e124</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCalendar"></i> 
+								<i class="iconMediumCalendar"></i> 
+								<i class="iconLargeCalendar"></i>
+							</td>
+							<td><code>iconCalendar</code></td>
+							<td>&amp;#xe121;</td>
+							<td>\e121</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCheck1"></i> 
+								<i class="iconMediumCheck1"></i> 
+								<i class="iconLargeCheck1"></i>
+							</td>
+							<td><code>iconCheck1</code></td>
+							<td>&amp;#xe11a;</td>
+							<td>\e11a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCheck2"></i> 
+								<i class="iconMediumCheck2"></i> 
+								<i class="iconLargeCheck2"></i>
+							</td>
+							<td><code>iconCheck2</code></td>
+							<td>&amp;#xe119;</td>
+							<td>\e119</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCheck3"></i> 
+								<i class="iconMediumCheck3"></i> 
+								<i class="iconLargeCheck3"></i>
+							</td>
+							<td><code>iconCheck3</code></td>
+							<td>&amp;#xe118;</td>
+							<td>\e118</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconClock1"></i> 
+								<i class="iconMediumClock1"></i> 
+								<i class="iconLargeClock1"></i>
+							</td>
+							<td><code>iconClock1</code></td>
+							<td>&amp;#xe10a;</td>
+							<td>\e10a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconClock2"></i> 
+								<i class="iconMediumClock2"></i> 
+								<i class="iconLargeClock2"></i>
+							</td>
+							<td><code>iconClock2</code></td>
+							<td>&amp;#xe10b;</td>
+							<td>\e10b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCopy"></i> 
+								<i class="iconMediumCopy"></i> 
+								<i class="iconLargeCopy"></i>
+							</td>
+							<td><code>iconCopy</code></td>
+							<td>&amp;#xe0f9;</td>
+							<td>\e0f9</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconDownload"></i> 
+								<i class="iconMediumDownload"></i> 
+								<i class="iconLargeDownload"></i>
+							</td>
+							<td><code>iconDownload</code></td>
+							<td>&amp;#xe0e9;</td>
+							<td>\e0e9</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconEdit1"></i> 
+								<i class="iconMediumEdit1"></i> 
+								<i class="iconLargeEdit1"></i>
+							</td>
+							<td><code>iconEdit1</code></td>
+							<td>&amp;#xe0e8;</td>
+							<td>\e0e8</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconEdit2"></i> 
+								<i class="iconMediumEdit2"></i> 
+								<i class="iconLargeEdit2"></i>
+							</td>
+							<td><code>iconEdit2</code></td>
+							<td>&amp;#xe0e7;</td>
+							<td>\e0e7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEdit3"></i> 
+								<i class="iconMediumEdit3"></i> 
+								<i class="iconLargeEdit3"></i>
+							</td>
+							<td><code>iconEdit3</code></td>
+							<td>&amp;#xe0e6;</td>
+							<td>\e0e6</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconEmail"></i> 
+								<i class="iconMediumEmail"></i> 
+								<i class="iconLargeEmail"></i>
+							</td>
+							<td><code>iconEmail</code></td>
+							<td>&amp;#xe0e5;</td>
+							<td>\e0e5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverse"></i> 
+								<i class="iconMediumEmailInverse"></i> 
+								<i class="iconLargeEmailInverse"></i>
+							</td>
+							<td><code>iconEmailInverse</code></td>
+							<td>&amp;#xe0e4;</td>
+							<td>\e0e4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailOpen"></i> 
+								<i class="iconMediumEmailOpen"></i> 
+								<i class="iconLargeEmailOpen"></i>
+							</td>
+							<td><code>iconEmailOpen</code></td>
+							<td>&amp;#xe0e2;</td>
+							<td>\e0e2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverseOpen"></i> 
+								<i class="iconMediumEmailInverseOpen"></i> 
+								<i class="iconLargeEmailInverseOpen"></i>
+							</td>
+							<td><code>iconEmailInverseOpen</code></td>
+							<td>&amp;#xe0e3;</td>
+							<td>\e0e3</td>
+						</tr>
+							<td>
+								<i class="iconFolderOpen"></i> 
+								<i class="iconMediumFolderOpen"></i> 
+								<i class="iconLargeFolderOpen"></i>
+							</td>
+							<td><code>iconFolderOpen</code></td>
+							<td>&amp;#xe0a7;</td>
+							<td>\e0a7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderClosed"></i> 
+								<i class="iconMediumFolderClosed"></i> 
+								<i class="iconLargeFolderClosed"></i>
+							</td>
+							<td><code>iconFolderClosed</code></td>
+							<td>&amp;#xe0aa;</td>
+							<td>\e0aa</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphDown"></i> 
+								<i class="iconMediumGraphDown"></i> 
+								<i class="iconLargeGraphDown"></i>
+							</td>
+							<td><code>iconGraphDown</code></td>
+							<td>&amp;#xe09b;</td>
+							<td>\e09b</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconGraphUp"></i> 
+								<i class="iconMediumGraphUp"></i> 
+								<i class="iconLargeGraphUp"></i>
+							</td>
+							<td><code>iconGraphUp</code></td>
+							<td>&amp;#xe09c;</td>
+							<td>\e09c</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconInbox"></i> 
+								<i class="iconMediumInbox"></i> 
+								<i class="iconLargeInbox"></i>
+							</td>
+							<td><code>iconInbox</code></td>
+							<td>&amp;#xe093;</td>
+							<td>\e093</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLightbulb"></i> 
+								<i class="iconMediumLightbulb"></i> 
+								<i class="iconLargeLightbulb"></i>
+							</td>
+							<td><code>iconLightbulb</code></td>
+							<td>&amp;#xe087;</td>
+							<td>\e087</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLightning"></i> 
+								<i class="iconMediumLightning"></i> 
+								<i class="iconLargeLightning"></i>
+							</td>
+							<td><code>iconLightning</code></td>
+							<td>&amp;#xe086;</td>
+							<td>\e086</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconPage"></i> 
+								<i class="iconMediumPage"></i> 
+								<i class="iconLargePage"></i>
+							</td>
+							<td><code>iconPage</code></td>
+							<td>&amp;#xe06a;</td>
+							<td>\e06a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPaperclip"></i> 
+								<i class="iconMediumPaperclip"></i> 
+								<i class="iconLargePaperclip"></i>
+							</td>
+							<td><code>iconPaperclip</code></td>
+							<td>&amp;#xe069;</td>
+							<td>\e069</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPaste"></i> 
+								<i class="iconMediumPaste"></i> 
+								<i class="iconLargePaste"></i>
+							</td>
+							<td><code>iconPaste</code></td>
+							<td>&amp;#xe067;</td>
+							<td>\e067</td>
+						</tr>	
+						<tr>
+							<td>
+								<i class="iconPhone"></i> 
+								<i class="iconMediumPhone"></i> 
+								<i class="iconLargePhone"></i>
+							</td>
+							<td><code>iconPhone</code></td>
+							<td>&amp;#xe065;</td>
+							<td>\e065</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPieChart"></i> 
+								<i class="iconMediumPieChart"></i> 
+								<i class="iconLargePieChart"></i>
+							</td>
+							<td><code>iconPieChart</code></td>
+							<td>&amp;#xe062;</td>
+							<td>\e062</td>
+						</tr>																	
+						<tr>
+							<td>
+								<i class="iconPrinter"></i> 
+								<i class="iconMediumPrinter"></i> 
+								<i class="iconLargePrinter"></i>
+							</td>
+							<td><code>iconPrinter</code></td>
+							<td>&amp;#xe05c;</td>
+							<td>\e05c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPushpin1"></i> 
+								<i class="iconMediumPushpin1"></i> 
+								<i class="iconLargePushpin1"></i>
+							</td>
+							<td><code>iconPushpin1</code></td>
+							<td>&amp;#xe05b;</td>
+							<td>\e05b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPushpin2"></i> 
+								<i class="iconMediumPushpin2"></i> 
+								<i class="iconLargePushpin2"></i>
+							</td>
+							<td><code>iconPushpin2</code></td>
+							<td>&amp;#xe05a;</td>
+							<td>\e05a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconScissors"></i> 
+								<i class="iconMediumScissors"></i> 
+								<i class="iconLargeScissors"></i>
+							</td>
+							<td><code>iconScissors</code></td>
+							<td>&amp;#xe047;</td>
+							<td>\e047</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTodo1"></i> 
+								<i class="iconMediumTodo1"></i> 
+								<i class="iconLargeTodo1"></i>
+							</td>
+							<td><code>iconTodo1</code></td>
+							<td>&amp;#xe025;</td>
+							<td>\e025</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTodo2"></i> 
+								<i class="iconMediumTodo2"></i> 
+								<i class="iconLargeTodo2"></i>
+							</td>
+							<td><code>iconTodo2</code></td>
+							<td>&amp;#xe024;</td>
+							<td>\e024</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUpload"></i> 
+								<i class="iconMediumUpload"></i> 
+								<i class="iconLargeUpload"></i>
+							</td>
+							<td><code>iconUpload</code></td>
+							<td>&amp;#xe014;</td>
+							<td>\e014</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Programming -->				
+				
+				<h2 id="programming">Programming</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconCss3"></i> 
+								<i class="iconMediumCss3"></i> 
+								<i class="iconLargeCss3"></i>
+							</td>
+							<td><code>iconCss3</code></td>
+							<td>&amp;#xe0f7;</td>
+							<td>\e0f7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash1"></i> 
+								<i class="iconMediumFlash1"></i> 
+								<i class="iconLargeFlash1"></i>
+							</td>
+							<td><code>iconFlash1</code></td>
+							<td>&amp;#xe0ac;</td>
+							<td>\e0ac</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash2"></i> 
+								<i class="iconMediumFlash2"></i> 
+								<i class="iconLargeFlash2"></i>
+							</td>
+							<td><code>iconFlash2</code></td>
+							<td>&amp;#xe0ab;</td>
+							<td>\e0ab</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGit"></i> 
+								<i class="iconMediumGit"></i> 
+								<i class="iconLargeGit"></i>
+							</td>
+							<td><code>iconGit</code></td>
+							<td>&amp;#xe0a1;</td>
+							<td>\e0a1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGithub"></i> 
+								<i class="iconMediumGithub"></i> 
+								<i class="iconLargeGithub"></i>
+							</td>
+							<td><code>iconGithub</code></td>
+							<td>&amp;#xe0a0;</td>
+							<td>\e0a0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHtml5"></i> 
+								<i class="iconMediumHtml5"></i> 
+								<i class="iconLargeHtml5"></i>
+							</td>
+							<td><code>iconHtml5</code></td>
+							<td>&amp;#xe095;</td>
+							<td>\e095</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconJava"></i> 
+								<i class="iconMediumJava"></i> 
+								<i class="iconLargeJava"></i>
+							</td>
+							<td><code>iconJava</code></td>
+							<td>&amp;#xe08e;</td>
+							<td>\e08e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPhp"></i> 
+								<i class="iconMediumPhp"></i> 
+								<i class="iconLargePhp"></i>
+							</td>
+							<td><code>iconPhp</code></td>
+							<td>&amp;#xe064;</td>
+							<td>\e064</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCode"></i> 
+								<i class="iconMediumCode"></i> 
+								<i class="iconLargeCode"></i>
+							</td>
+							<td><code>iconCode</code></td>
+							<td>&amp;#xe105;</td>
+							<td>\e105</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBug"></i> 
+								<i class="iconMediumBug"></i> 
+								<i class="iconLargeBug"></i>
+							</td>
+							<td><code>iconBug</code></td>
+							<td>&amp;#xe122;</td>
+							<td>\e122</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabase"></i> 
+								<i class="iconMediumDatabase"></i> 
+								<i class="iconLargeDatabase"></i>
+							</td>
+							<td><code>iconDatabase</code></td>
+							<td>&amp;#xe0f2;</td>
+							<td>\e0f2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseCheck"></i> 
+								<i class="iconMediumDatabaseCheck"></i> 
+								<i class="iconLargeDatabaseCheck"></i>
+							</td>
+							<td><code>iconDatabaseCheck</code></td>
+							<td>&amp;#xe0f1;</td>
+							<td>\e0f1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseDelete"></i> 
+								<i class="iconMediumDatabaseDelete"></i> 
+								<i class="iconLargeDatabaseDelete"></i>
+							</td>
+							<td><code>iconDatabaseDelete</code></td>
+							<td>&amp;#xe0f0;</td>
+							<td>\e0f0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseLocked"></i> 
+								<i class="iconMediumDatabaseLocked"></i> 
+								<i class="iconLargeDatabaseLocked"></i>
+							</td>
+							<td><code>iconDatabaseLocked</code></td>
+							<td>&amp;#xe0ef;</td>
+							<td>\e0ef</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseMinus"></i> 
+								<i class="iconMediumDatabaseMinus"></i> 
+								<i class="iconLargeDatabaseMinus"></i>
+							</td>
+							<td><code>iconDatabaseMinus</code></td>
+							<td>&amp;#xe0ee;</td>
+							<td>\e0ee</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabasePlus"></i> 
+								<i class="iconMediumDatabasePlus"></i> 
+								<i class="iconLargeDatabasePlus"></i>
+							</td>
+							<td><code>iconDatabasePlus</code></td>
+							<td>&amp;#xe0ed;</td>
+							<td>\e0ed</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseUnlocked"></i> 
+								<i class="iconMediumDatabaseUnlocked"></i> 
+								<i class="iconLargeDatabaseUnlocked"></i>
+							</td>
+							<td><code>iconDatabaseUnlocked</code></td>
+							<td>&amp;#xe0ec;</td>
+							<td>\e0ec</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileCode"></i> 
+								<i class="iconMediumFileCode"></i> 
+								<i class="iconLargeFileCode"></i>
+							</td>
+							<td><code>iconFileCode</code></td>
+							<td>&amp;#xe0d8;</td>
+							<td>\e0d8</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconKeyboard"></i> 
+								<i class="iconMediumKeyboard"></i> 
+								<i class="iconLargeKeyboard"></i>
+							</td>
+							<td><code>iconKeyboard</code></td>
+							<td>&amp;#xe08a;</td>
+							<td>\e08a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMonitor"></i> 
+								<i class="iconMediumMonitor"></i> 
+								<i class="iconLargeMonitor"></i>
+							</td>
+							<td><code>iconMonitor</code></td>
+							<td>&amp;#xe074;</td>
+							<td>\e074</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMouse1"></i> 
+								<i class="iconMediumMouse1"></i> 
+								<i class="iconLargeMouse1"></i>
+							</td>
+							<td><code>iconMouse1</code></td>
+							<td>&amp;#xe072;</td>
+							<td>\e072</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMouse2"></i> 
+								<i class="iconMediumMouse2"></i> 
+								<i class="iconLargeMouse2"></i>
+							</td>
+							<td><code>iconMouse2</code></td>
+							<td>&amp;#xe071;</td>
+							<td>\e071</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLeftClick"></i> 
+								<i class="iconMediumLeftClick"></i> 
+								<i class="iconLargeLeftClick"></i>
+							</td>
+							<td><code>iconLeftClick</code></td>
+							<td>&amp;#xe089;</td>
+							<td>\e089</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconRightClick"></i> 
+								<i class="iconMediumRightClick"></i> 
+								<i class="iconLargeRightClick"></i>
+							</td>
+							<td><code>iconRightClick</code></td>
+							<td>&amp;#xe04e;</td>
+							<td>\e04e</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Science -->				
+				
+				<h2 id="science">Science</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconBeaker1"></i> 
+								<i class="iconMediumBeaker1"></i> 
+								<i class="iconLargeBeaker1"></i>
+							</td>
+							<td><code>iconBeaker1</code></td>
+							<td>&amp;#xe12c;</td>
+							<td>\e12c</td>
+						</tr>				
+						<tr>
+							<td>
+								<i class="iconBeaker2"></i> 
+								<i class="iconMediumBeaker2"></i> 
+								<i class="iconLargeBeaker2"></i>
+							</td>
+							<td><code>iconBeaker2</code></td>
+							<td>&amp;#xe12b;</td>
+							<td>\e12b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBeaker3"></i> 
+								<i class="iconMediumBeaker3"></i> 
+								<i class="iconLargeBeaker3"></i>
+							</td>
+							<td><code>iconBeaker3</code></td>
+							<td>&amp;#xe12a;</td>
+							<td>\e12a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBeaker4"></i> 
+								<i class="iconMediumBeaker4"></i> 
+								<i class="iconLargeBeaker4"></i>
+							</td>
+							<td><code>iconBeaker4</code></td>
+							<td>&amp;#xe129;</td>
+							<td>\e129</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBug"></i> 
+								<i class="iconMediumBug"></i> 
+								<i class="iconLargeBug"></i>
+							</td>
+							<td><code>iconBug</code></td>
+							<td>&amp;#xe122;</td>
+							<td>\e122</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloud"></i> 
+								<i class="iconMediumCloud"></i> 
+								<i class="iconLargeCloud"></i>
+							</td>
+							<td><code>iconCloud</code></td>
+							<td>&amp;#xe108;</td>
+							<td>\e108</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCompass"></i> 
+								<i class="iconMediumCompass"></i> 
+								<i class="iconLargeCompass"></i>
+							</td>
+							<td><code>iconCompass</code></td>
+							<td>&amp;#xe0fd;</td>
+							<td>\e0fd</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard1"></i> 
+								<i class="iconMediumDashboard1"></i> 
+								<i class="iconLargeDashboard1"></i>
+							</td>
+							<td><code>iconDashboard1</code></td>
+							<td>&amp;#xe0f5;</td>
+							<td>\e0f5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard2"></i> 
+								<i class="iconMediumDashboard2"></i> 
+								<i class="iconLargeDashboard2"></i>
+							</td>
+							<td><code>iconDashboard2</code></td>
+							<td>&amp;#xe0f4;</td>
+							<td>\e0f4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard3"></i> 
+								<i class="iconMediumDashboard3"></i> 
+								<i class="iconLargeDashboard3"></i>
+							</td>
+							<td><code>iconDashboard3</code></td>
+							<td>&amp;#xe0f3;</td>
+							<td>\e0f3</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEye"></i> 
+								<i class="iconMediumEye"></i> 
+								<i class="iconLargeEye"></i>
+							</td>
+							<td><code>iconEye</code></td>
+							<td>&amp;#xe0e0;</td>
+							<td>\e0e0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGps"></i> 
+								<i class="iconMediumGps"></i> 
+								<i class="iconLargeGps"></i>
+							</td>
+							<td><code>iconGps</code></td>
+							<td>&amp;#xe09d;</td>
+							<td>\e09d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphUp"></i> 
+								<i class="iconMediumGraphUp"></i> 
+								<i class="iconLargeGraphUp"></i>
+							</td>
+							<td><code>iconGraphUp</code></td>
+							<td>&amp;#xe09c;</td>
+							<td>\e09c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphDown"></i> 
+								<i class="iconMediumGraphDown"></i> 
+								<i class="iconLargeGraphDown"></i>
+							</td>
+							<td><code>iconGraphDown</code></td>
+							<td>&amp;#xe09b;</td>
+							<td>\e09b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGrid"></i> 
+								<i class="iconMediumGrid"></i> 
+								<i class="iconLargeGrid"></i>
+							</td>
+							<td><code>iconGrid</code></td>
+							<td>&amp;#xe09a;</td>
+							<td>\e09a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLightbulb"></i> 
+								<i class="iconMediumLightbulb"></i> 
+								<i class="iconLargeLightbulb"></i>
+							</td>
+							<td><code>iconLightbulb</code></td>
+							<td>&amp;#xe087;</td>
+							<td>\e087</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLightning"></i> 
+								<i class="iconMediumLightning"></i> 
+								<i class="iconLargeLightning"></i>
+							</td>
+							<td><code>iconLightning</code></td>
+							<td>&amp;#xe086;</td>
+							<td>\e086</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMagnet"></i> 
+								<i class="iconMediumMagnet"></i> 
+								<i class="iconLargeMagnet"></i>
+							</td>
+							<td><code>iconMagnet</code></td>
+							<td>&amp;#xe07c;</td>
+							<td>\e07c</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconMoon"></i> 
+								<i class="iconMediumMoon"></i> 
+								<i class="iconLargeMoon"></i>
+							</td>
+							<td><code>iconMoon</code></td>
+							<td>&amp;#xe073;</td>
+							<td>\e073</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPuzzle1"></i> 
+								<i class="iconMediumPuzzle1"></i> 
+								<i class="iconLargePuzzle1"></i>
+							</td>
+							<td><code>iconPuzzle1</code></td>
+							<td>&amp;#xe059;</td>
+							<td>\e059</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPuzzle2"></i> 
+								<i class="iconMediumPuzzle2"></i> 
+								<i class="iconLargePuzzle2"></i>
+							</td>
+							<td><code>iconPuzzle2</code></td>
+							<td>&amp;#xe058;</td>
+							<td>\e058</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRocket"></i> 
+								<i class="iconMediumRocket"></i> 
+								<i class="iconLargeRocket"></i>
+							</td>
+							<td><code>iconRocket</code></td>
+							<td>&amp;#xe04c;</td>
+							<td>\e04c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconScissors"></i> 
+								<i class="iconMediumScissors"></i> 
+								<i class="iconLargeScissors"></i>
+							</td>
+							<td><code>iconScissors</code></td>
+							<td>&amp;#xe047;</td>
+							<td>\e047</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconShare1"></i> 
+								<i class="iconMediumShare1"></i> 
+								<i class="iconLargeShare1"></i>
+							</td>
+							<td><code>iconShare1</code></td>
+							<td>&amp;#xe043;</td>
+							<td>\e043</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStar"></i> 
+								<i class="iconMediumStar"></i> 
+								<i class="iconLargeStar"></i>
+							</td>
+							<td><code>iconStar</code></td>
+							<td>&amp;#xe036;</td>
+							<td>\e036</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStarEmpty"></i> 
+								<i class="iconMediumStarEmpty"></i> 
+								<i class="iconLargeStarEmpty"></i>
+							</td>
+							<td><code>iconStarEmpty</code></td>
+							<td>&amp;#xe035;</td>
+							<td>\e035</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWrench"></i> 
+								<i class="iconMediumWrench"></i> 
+								<i class="iconLargeWrench"></i>
+							</td>
+							<td><code>iconWrench</code></td>
+							<td>&amp;#xe003;</td>
+							<td>\e003</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Security -->				
+				
+				<h2 id="security">Security</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconLocked"></i> 
+								<i class="iconMediumLocked"></i> 
+								<i class="iconLargeLocked"></i>
+							</td>
+							<td><code>iconLocked</code></td>
+							<td>&amp;#xe07d;</td>
+							<td>\e07d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUnlocked"></i> 
+								<i class="iconMediumUnlocked"></i> 
+								<i class="iconLargeUnlocked"></i>
+							</td>
+							<td><code>iconUnlocked</code></td>
+							<td>&amp;#xe015;</td>
+							<td>\e015</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseLocked"></i> 
+								<i class="iconMediumDatabaseLocked"></i> 
+								<i class="iconLargeDatabaseLocked"></i>
+							</td>
+							<td><code>iconDatabaseLocked</code></td>
+							<td>&amp;#xe0ef;</td>
+							<td>\e0ef</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconDatabaseUnlocked"></i> 
+								<i class="iconMediumDatabaseUnlocked"></i> 
+								<i class="iconLargeDatabaseUnlocked"></i>
+							</td>
+							<td><code>iconDatabaseUnlocked</code></td>
+							<td>&amp;#xe0ec;</td>
+							<td>\e0ec</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderLocked"></i> 
+								<i class="iconMediumFolderLocked"></i> 
+								<i class="iconLargeFolderLocked"></i>
+							</td>
+							<td><code>iconFolderLocked</code></td>
+							<td>&amp;#xe0a9;</td>
+							<td>\e0a9</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconFolderUnlocked"></i> 
+								<i class="iconMediumFolderUnlocked"></i> 
+								<i class="iconLargeFolderUnlocked"></i>
+							</td>
+							<td><code>iconFolderUnlocked</code></td>
+							<td>&amp;#xe0a5;</td>
+							<td>\e0a5</td>
+						</tr>	
+						<tr>
+							<td>
+								<i class="iconBriefcase"></i> 
+								<i class="iconMediumBriefcase"></i> 
+								<i class="iconLargeBriefcase"></i>
+							</td>
+							<td><code>iconBriefcase</code></td>
+							<td>&amp;#xe124;</td>
+							<td>\e124</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCancel1"></i> 
+								<i class="iconMediumCancel1"></i> 
+								<i class="iconLargeCancel1"></i>
+							</td>
+							<td><code>iconCancel1</code></td>
+							<td>&amp;#xe11f;</td>
+							<td>\e11f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCancel2"></i> 
+								<i class="iconMediumCancel2"></i> 
+								<i class="iconLargeCancel2"></i>
+							</td>
+							<td><code>iconCancel2</code></td>
+							<td>&amp;#xe11e;</td>
+							<td>\e11e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconKey1"></i> 
+								<i class="iconMediumKey1"></i> 
+								<i class="iconLargeKey1"></i>
+							</td>
+							<td><code>iconKey1</code></td>
+							<td>&amp;#xe08c;</td>
+							<td>\e08c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconKey2"></i> 
+								<i class="iconMediumKey2"></i> 
+								<i class="iconLargeKey2"></i>
+							</td>
+							<td><code>iconKey2</code></td>
+							<td>&amp;#xe08b;</td>
+							<td>\e08b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLink"></i> 
+								<i class="iconMediumLink"></i> 
+								<i class="iconLargeLink"></i>
+							</td>
+							<td><code>iconLink</code></td>
+							<td>&amp;#xe085;</td>
+							<td>\e085</td>
+						</tr>								
+						<tr>
+							<td>
+								<i class="iconUnlink"></i> 
+								<i class="iconMediumUnlink"></i> 
+								<i class="iconLargeUnlink"></i>
+							</td>
+							<td><code>iconUnlink</code></td>
+							<td>&amp;#xe016;</td>
+							<td>\e016</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Social -->				
+				
+				<h2 id="social">Social</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<tr>
+							<td>
+								<i class="iconFacebook1"></i> 
+								<i class="iconMediumFacebook1"></i> 
+								<i class="iconLargeFacebook1"></i>
+							</td>
+							<td><code>iconFacebook1</code></td>
+							<td>&amp;#xe0df;</td>
+							<td>\e0df</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFacebook2"></i> 
+								<i class="iconMediumFacebook2"></i> 
+								<i class="iconLargeFacebook2"></i>
+							</td>
+							<td><code>iconFacebook2</code></td>
+							<td>&amp;#xe0de;</td>
+							<td>\e0de</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFacebook3"></i> 
+								<i class="iconMediumFacebook3"></i> 
+								<i class="iconLargeFacebook3"></i>
+							</td>
+							<td><code>iconFacebook3</code></td>
+							<td>&amp;#xe0dd;</td>
+							<td>\e0dd</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconGit"></i> 
+								<i class="iconMediumGit"></i> 
+								<i class="iconLargeGit"></i>
+							</td>
+							<td><code>iconGit</code></td>
+							<td>&amp;#xe0a1;</td>
+							<td>\e0a1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGithub"></i> 
+								<i class="iconMediumGithub"></i> 
+								<i class="iconLargeGithub"></i>
+							</td>
+							<td><code>iconGithub</code></td>
+							<td>&amp;#xe0a0;</td>
+							<td>\e0a0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGooglePlus1"></i> 
+								<i class="iconMediumGooglePlus1"></i> 
+								<i class="iconLargeGooglePlus1"></i>
+							</td>
+							<td><code>iconGooglePlus1</code></td>
+							<td>&amp;#xe09f;</td>
+							<td>\e09f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGooglePlus2"></i> 
+								<i class="iconMediumGooglePlus2"></i> 
+								<i class="iconLargeGooglePlus2"></i>
+							</td>
+							<td><code>iconGooglePlus2</code></td>
+							<td>&amp;#xe09e;</td>
+							<td>\e09e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn1"></i> 
+								<i class="iconMediumLinkedIn1"></i> 
+								<i class="iconLargeLinkedIn1"></i>
+							</td>
+							<td><code>iconLinkedIn1</code></td>
+							<td>&amp;#xe084;</td>
+							<td>\e084</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn2"></i> 
+								<i class="iconMediumLinkedIn2"></i> 
+								<i class="iconLargeLinkedIn2"></i>
+							</td>
+							<td><code>iconLinkedIn2</code></td>
+							<td>&amp;#xe083;</td>
+							<td>\e083</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLinkedIn3"></i> 
+								<i class="iconMediumLinkedIn3"></i> 
+								<i class="iconLargeLinkedIn3"></i>
+							</td>
+							<td><code>iconLinkedIn3</code></td>
+							<td>&amp;#xe082;</td>
+							<td>\e082</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPinterest"></i> 
+								<i class="iconMediumPinterest"></i> 
+								<i class="iconLargePinterest"></i>
+							</td>
+							<td><code>iconPinterest</code></td>
+							<td>&amp;#xe061;</td>
+							<td>\e061</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconReddit"></i> 
+								<i class="iconMediumReddit"></i> 
+								<i class="iconLargeReddit"></i>
+							</td>
+							<td><code>iconReddit</code></td>
+							<td>&amp;#xe054;</td>
+							<td>\e054</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSkype"></i> 
+								<i class="iconMediumSkype"></i> 
+								<i class="iconLargeSkype"></i>
+							</td>
+							<td><code>iconSkype</code></td>
+							<td>&amp;#xe03c;</td>
+							<td>\e03c</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconStumbleupon"></i> 
+								<i class="iconMediumStumbleupon"></i> 
+								<i class="iconLargeStumbleupon"></i>
+							</td>
+							<td><code>iconStumbleupon</code></td>
+							<td>&amp;#xe030;</td>
+							<td>\e030</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTumbler"></i> 
+								<i class="iconMediumTumbler"></i> 
+								<i class="iconLargeTumbler"></i>
+							</td>
+							<td><code>iconTumbler</code></td>
+							<td>&amp;#xe01d;</td>
+							<td>\e01d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter1"></i> 
+								<i class="iconMediumTwitter1"></i> 
+								<i class="iconLargeTwitter1"></i>
+							</td>
+							<td><code>iconTwitter1</code></td>
+							<td>&amp;#xe01c;</td>
+							<td>\e01c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter2"></i> 
+								<i class="iconMediumTwitter2"></i> 
+								<i class="iconLargeTwitter2"></i>
+							</td>
+							<td><code>iconTwitter2</code></td>
+							<td>&amp;#xe01b;</td>
+							<td>\e01b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTwitter3"></i> 
+								<i class="iconMediumTwitter3"></i> 
+								<i class="iconLargeTwitter3"></i>
+							</td>
+							<td><code>iconTwitter3</code></td>
+							<td>&amp;#xe01a;</td>
+							<td>\e01a</td>
+						</tr>																							
+						<tr>
+							<td>
+								<i class="iconBookmark"></i> 
+								<i class="iconMediumBookmark"></i> 
+								<i class="iconLargeBookmark"></i>
+							</td>
+							<td><code>iconBookmark</code></td>
+							<td>&amp;#xe125;</td>
+							<td>\e125</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconComment1"></i> 
+								<i class="iconMediumComment1"></i> 
+								<i class="iconLargeComment1"></i>
+							</td>
+							<td><code>iconComment1</code></td>
+							<td>&amp;#xe104;</td>
+							<td>\e104</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconComment2"></i> 
+								<i class="iconMediumComment2"></i> 
+								<i class="iconLargeComment2"></i>
+							</td>
+							<td><code>iconComment2</code></td>
+							<td>&amp;#xe103;</td>
+							<td>\e103</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconComment3"></i> 
+								<i class="iconMediumComment3"></i> 
+								<i class="iconLargeComment3"></i>
+							</td>
+							<td><code>iconComment3</code></td>
+							<td>&amp;#xe102;</td>
+							<td>\e102</td>
+						</tr>																																																																																																																										
+						<tr>
+							<td>
+								<i class="iconComment4"></i> 
+								<i class="iconMediumComment4"></i> 
+								<i class="iconLargeComment4"></i>
+							</td>
+							<td><code>iconComment4</code></td>
+							<td>&amp;#xe101;</td>
+							<td>\e101</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCommentMinus"></i> 
+								<i class="iconMediumCommentMinus"></i> 
+								<i class="iconLargeCommentMinus"></i>
+							</td>
+							<td><code>iconCommentMinus</code></td>
+							<td>&amp;#xe100;</td>
+							<td>\e100</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconCommentPlus"></i> 
+								<i class="iconMediumCommentPlus"></i> 
+								<i class="iconLargeCommentPlus"></i>
+							</td>
+							<td><code>iconCommentPlus</code></td>
+							<td>&amp;#xe0ff;</td>
+							<td>\e0ff</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconComments"></i> 
+								<i class="iconMediumComments"></i> 
+								<i class="iconLargeComments"></i>
+							</td>
+							<td><code>iconComments</code></td>
+							<td>&amp;#xe0fe;</td>
+							<td>\e0fe</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHeart"></i> 
+								<i class="iconMediumHeart"></i> 
+								<i class="iconLargeHeart"></i>
+							</td>
+							<td><code>iconHeart</code></td>
+							<td>&amp;#xe098;</td>
+							<td>\e098</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconHeartEmpty"></i> 
+								<i class="iconMediumHeartEmpty"></i> 
+								<i class="iconLargeHeartEmpty"></i>
+							</td>
+							<td><code>iconHeartEmpty</code></td>
+							<td>&amp;#xe097;</td>
+							<td>\e097</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconShare1"></i> 
+								<i class="iconMediumShare1"></i> 
+								<i class="iconLargeShare1"></i>
+							</td>
+							<td><code>iconShare1</code></td>
+							<td>&amp;#xe043;</td>
+							<td>\e043</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconShare2"></i> 
+								<i class="iconMediumShare2"></i> 
+								<i class="iconLargeShare2"></i>
+							</td>
+							<td><code>iconShare2</code></td>
+							<td>&amp;#xe042;</td>
+							<td>\e042</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSad"></i> 
+								<i class="iconMediumSad"></i> 
+								<i class="iconLargeSad"></i>
+							</td>
+							<td><code>iconSad</code></td>
+							<td>&amp;#xe04a;</td>
+							<td>\e04a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSmiley"></i> 
+								<i class="iconMediumSmiley"></i> 
+								<i class="iconLargeSmiley"></i>
+							</td>
+							<td><code>iconSmiley</code></td>
+							<td>&amp;#xe03a;</td>
+							<td>\e03a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStar"></i> 
+								<i class="iconMediumStar"></i> 
+								<i class="iconLargeStar"></i>
+							</td>
+							<td><code>iconStar</code></td>
+							<td>&amp;#xe036;</td>
+							<td>\e036</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStarEmpty"></i> 
+								<i class="iconMediumStarEmpty"></i> 
+								<i class="iconLargeStarEmpty"></i>
+							</td>
+							<td><code>iconStarEmpty</code></td>
+							<td>&amp;#xe035;</td>
+							<td>\e035</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStarHalf"></i> 
+								<i class="iconMediumStarHalf"></i> 
+								<i class="iconLargeStarHalf"></i>
+							</td>
+							<td><code>iconStarHalf</code></td>
+							<td>&amp;#xe034;</td>
+							<td>\e034</td>
+						</tr>						
+												
+						<tr>
+							<td>
+								<i class="iconThumbsDown"></i> 
+								<i class="iconMediumThumbsDown"></i> 
+								<i class="iconLargeThumbsDown"></i>
+							</td>
+							<td><code>iconThumbsDown</code></td>
+							<td>&amp;#xe027;</td>
+							<td>\e027</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconThumbsUp"></i> 
+								<i class="iconMediumThumbsUp"></i> 
+								<i class="iconLargeThumbsUp"></i>
+							</td>
+							<td><code>iconThumbsUp</code></td>
+							<td>&amp;#xe026;</td>
+							<td>\e026</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUsers"></i> 
+								<i class="iconMediumUsers"></i> 
+								<i class="iconLargeUsers"></i>
+							</td>
+							<td><code>iconUsers</code></td>
+							<td>&amp;#xe00d;</td>
+							<td>\e00d</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Software -->				
+				
+				<h2 id="software">Software</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<tr>
+							<td>
+								<i class="iconPlus"></i> 
+								<i class="iconMediumPlus"></i> 
+								<i class="iconLargePlus"></i>
+							</td>
+							<td><code>iconPlus</code></td>
+							<td>&amp;#xe05e;</td>
+							<td>\e05e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconAdd1"></i> 
+								<i class="iconMediumAdd1"></i> 
+								<i class="iconLargeAdd1"></i>
+							</td>
+							<td><code>iconAdd1</code></td>
+							<td>&amp;#xe145;</td>
+							<td>\e145</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconAdd2"></i> 
+								<i class="iconMediumAdd2"></i> 
+								<i class="iconLargeAdd2"></i>
+							</td>
+							<td><code>iconAdd2</code></td>
+							<td>&amp;#xe144;</td>
+							<td>\e144</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMinus1"></i> 
+								<i class="iconMediumMinus1"></i> 
+								<i class="iconLargeMinus1"></i>
+							</td>
+							<td><code>iconMinus1</code></td>
+							<td>&amp;#xe076;</td>
+							<td>\e076</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMinus2"></i> 
+								<i class="iconMediumMinus2"></i> 
+								<i class="iconLargeMinus2"></i>
+							</td>
+							<td><code>iconMinus2</code></td>
+							<td>&amp;#xe075;</td>
+							<td>\e075</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconSubtract"></i> 
+								<i class="iconMediumSubtract"></i> 
+								<i class="iconLargeSubtract"></i>
+							</td>
+							<td><code>iconSubtract</code></td>
+							<td>&amp;#xe02e;</td>
+							<td>\e02e</td>
+						</tr>						
+						
+						<tr>
+							<td>
+								<i class="iconCheck1"></i> 
+								<i class="iconMediumCheck1"></i> 
+								<i class="iconLargeCheck1"></i>
+							</td>
+							<td><code>iconCheck1</code></td>
+							<td>&amp;#xe11a;</td>
+							<td>\e11a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCheck2"></i> 
+								<i class="iconMediumCheck2"></i> 
+								<i class="iconLargeCheck2"></i>
+							</td>
+							<td><code>iconCheck2</code></td>
+							<td>&amp;#xe119;</td>
+							<td>\e119</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCheck3"></i> 
+								<i class="iconMediumCheck3"></i> 
+								<i class="iconLargeCheck3"></i>
+							</td>
+							<td><code>iconCheck3</code></td>
+							<td>&amp;#xe118;</td>
+							<td>\e118</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDelete1"></i> 
+								<i class="iconMediumDelete1"></i> 
+								<i class="iconLargeDelete1"></i>
+							</td>
+							<td><code>iconDelete1</code></td>
+							<td>&amp;#xe002;</td>
+							<td>\e002</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDelete2"></i> 
+								<i class="iconMediumDelete2"></i> 
+								<i class="iconLargeDelete2"></i>
+							</td>
+							<td><code>iconDelete2</code></td>
+							<td>&amp;#xe0eb;</td>
+							<td>\e0eb</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDelete3"></i> 
+								<i class="iconMediumDelete3"></i> 
+								<i class="iconLargeDelete3"></i>
+							</td>
+							<td><code>iconDelete3</code></td>
+							<td>&amp;#xe0ea;</td>
+							<td>\e0ea</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEdit1"></i> 
+								<i class="iconMediumEdit1"></i> 
+								<i class="iconLargeEdit1"></i>
+							</td>
+							<td><code>iconEdit1</code></td>
+							<td>&amp;#xe0e8;</td>
+							<td>\e0e8</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconEdit2"></i> 
+								<i class="iconMediumEdit2"></i> 
+								<i class="iconLargeEdit2"></i>
+							</td>
+							<td><code>iconEdit2</code></td>
+							<td>&amp;#xe0e7;</td>
+							<td>\e0e7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEdit3"></i> 
+								<i class="iconMediumEdit3"></i> 
+								<i class="iconLargeEdit3"></i>
+							</td>
+							<td><code>iconEdit3</code></td>
+							<td>&amp;#xe0e6;</td>
+							<td>\e0e6</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNew"></i> 
+								<i class="iconMediumNew"></i> 
+								<i class="iconLargeNew"></i>
+							</td>
+							<td><code>iconNew</code></td>
+							<td>&amp;#xe06f;</td>
+							<td>\e06f</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconCopy"></i> 
+								<i class="iconMediumCopy"></i> 
+								<i class="iconLargeCopy"></i>
+							</td>
+							<td><code>iconCopy</code></td>
+							<td>&amp;#xe0f9;</td>
+							<td>\e0f9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPaste"></i> 
+								<i class="iconMediumPaste"></i> 
+								<i class="iconLargePaste"></i>
+							</td>
+							<td><code>iconPaste</code></td>
+							<td>&amp;#xe067;</td>
+							<td>\e067</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFind"></i> 
+								<i class="iconMediumFind"></i> 
+								<i class="iconLargeFind"></i>
+							</td>
+							<td><code>iconFind</code></td>
+							<td>&amp;#xe0af;</td>
+							<td>\e0af</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileSettings"></i> 
+								<i class="iconMediumFileSettings"></i> 
+								<i class="iconLargeFileSettings"></i>
+							</td>
+							<td><code>iconFileSettings</code></td>
+							<td>&amp;#xe0b9;</td>
+							<td>\e0b9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFileWrench"></i> 
+								<i class="iconMediumFileWrench"></i> 
+								<i class="iconLargeFileWrench"></i>
+							</td>
+							<td><code>iconFileWrench</code></td>
+							<td>&amp;#xe0b3;</td>
+							<td>\e0b3</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconFolderOpen"></i> 
+								<i class="iconMediumFolderOpen"></i> 
+								<i class="iconLargeFolderOpen"></i>
+							</td>
+							<td><code>iconFolderOpen</code></td>
+							<td>&amp;#xe0a7;</td>
+							<td>\e0a7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderClosed"></i> 
+								<i class="iconMediumFolderClosed"></i> 
+								<i class="iconLargeFolderClosed"></i>
+							</td>
+							<td><code>iconFolderClosed</code></td>
+							<td>&amp;#xe0aa;</td>
+							<td>\e0aa</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconFolderPlus"></i> 
+								<i class="iconMediumFolderPlus"></i> 
+								<i class="iconLargeFolderPlus"></i>
+							</td>
+							<td><code>iconFolderPlus</code></td>
+							<td>&amp;#xe0a6;</td>
+							<td>\e0a6</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderMinus"></i> 
+								<i class="iconMediumFolderMinus"></i> 
+								<i class="iconLargeFolderMinus"></i>
+							</td>
+							<td><code>iconFolderMinus</code></td>
+							<td>&amp;#xe0a8;</td>
+							<td>\e0a8</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderUnlocked"></i> 
+								<i class="iconMediumFolderUnlocked"></i> 
+								<i class="iconLargeFolderUnlocked"></i>
+							</td>
+							<td><code>iconFolderUnlocked</code></td>
+							<td>&amp;#xe0a5;</td>
+							<td>\e0a5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFolderLocked"></i> 
+								<i class="iconMediumFolderLocked"></i> 
+								<i class="iconLargeFolderLocked"></i>
+							</td>
+							<td><code>iconFolderLocked</code></td>
+							<td>&amp;#xe0a9;</td>
+							<td>\e0a9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSave"></i> 
+								<i class="iconMediumSave"></i> 
+								<i class="iconLargeSave"></i>
+							</td>
+							<td><code>iconSave</code></td>
+							<td>&amp;#xe048;</td>
+							<td>\e048</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconPrinter"></i> 
+								<i class="iconMediumPrinter"></i> 
+								<i class="iconLargePrinter"></i>
+							</td>
+							<td><code>iconPrinter</code></td>
+							<td>&amp;#xe05c;</td>
+							<td>\e05c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTrash"></i> 
+								<i class="iconMediumTrash"></i> 
+								<i class="iconLargeTrash"></i>
+							</td>
+							<td><code>iconTrash</code></td>
+							<td>&amp;#xe023;</td>
+							<td>\e023</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconFlag"></i> 
+								<i class="iconMediumFlag"></i> 
+								<i class="iconLargeFlag"></i>
+							</td>
+							<td><code>iconFlag</code></td>
+							<td>&amp;#xe0ad;</td>
+							<td>\e0ad</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWarning"></i> 
+								<i class="iconMediumWarning"></i> 
+								<i class="iconLargeWarning"></i>
+							</td>
+							<td><code>iconWarning</code></td>
+							<td>&amp;#xe007;</td>
+							<td>\e007</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconSearch"></i> 
+								<i class="iconMediumSearch"></i> 
+								<i class="iconLargeSearch"></i>
+							</td>
+							<td><code>iconSearch</code></td>
+							<td>&amp;#xe046;</td>
+							<td>\e046</td>
+						</tr>																																				
+						<tr>
+							<td>
+								<i class="iconCancel1"></i> 
+								<i class="iconMediumCancel1"></i> 
+								<i class="iconLargeCancel1"></i>
+							</td>
+							<td><code>iconCancel1</code></td>
+							<td>&amp;#xe11f;</td>
+							<td>\e11f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCancel2"></i> 
+								<i class="iconMediumCancel2"></i> 
+								<i class="iconLargeCancel2"></i>
+							</td>
+							<td><code>iconCancel2</code></td>
+							<td>&amp;#xe11e;</td>
+							<td>\e11e</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconArrowUp"></i> 
+								<i class="iconMediumArrowUp"></i> 
+								<i class="iconLargeArrowUp"></i>
+							</td>
+							<td><code>iconArrowUp</code></td>
+							<td>&amp;#xe135;</td>
+							<td>\e135</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDown"></i> 
+								<i class="iconMediumArrowDown"></i> 
+								<i class="iconLargeArrowDown"></i>
+							</td>
+							<td><code>iconArrowDown</code></td>
+							<td>&amp;#xe13c;</td>
+							<td>\e13c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowLeft"></i> 
+								<i class="iconMediumArrowLeft"></i> 
+								<i class="iconLargeArrowLeft"></i>
+							</td>
+							<td><code>iconArrowLeft</code></td>
+							<td>&amp;#xe13a;</td>
+							<td>\e13a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowRight"></i> 
+								<i class="iconMediumArrowRight"></i> 
+								<i class="iconLargeArrowRight"></i>
+							</td>
+							<td><code>iconArrowRight</code></td>
+							<td>&amp;#xe136;</td>
+							<td>\e136</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowNS"></i> 
+								<i class="iconMediumArrowNS"></i> 
+								<i class="iconLargeArrowNS"></i>
+							</td>
+							<td><code>iconArrowNS</code></td>
+							<td>&amp;#xe137;</td>
+							<td>\e137</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowEW"></i> 
+								<i class="iconMediumArrowEW"></i> 
+								<i class="iconLargeArrowEW"></i>
+							</td>
+							<td><code>iconArrowEW</code></td>
+							<td>&amp;#xe13b;</td>
+							<td>\e13b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDiagonalForward"></i> 
+								<i class="iconMediumArrowDiagonalForward"></i> 
+								<i class="iconLargeArrowDiagonalForward"></i>
+							</td>
+							<td><code>iconArrowDiagonalForward</code></td>
+							<td>&amp;#xe13d;</td>
+							<td>\e13d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowDiagonalBackward"></i> 
+								<i class="iconMediumArrowDiagonalBackward"></i> 
+								<i class="iconLargeArrowDiagonalBackward"></i>
+							</td>
+							<td><code>iconArrowDiagonalBackward</code></td>
+							<td>&amp;#xe13e;</td>
+							<td>\e13e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowMulti"></i> 
+								<i class="iconMediumArrowMulti"></i> 
+								<i class="iconLargeArrowMulti"></i>
+							</td>
+							<td><code>iconArrowMulti</code></td>
+							<td>&amp;#xe139;</td>
+							<td>\e139</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconArrowMultiDiagonal"></i> 
+								<i class="iconMediumArrowMultiDiagonal"></i> 
+								<i class="iconLargeArrowMultiDiagonal"></i>
+							</td>
+							<td><code>iconArrowMultiDiagonal</code></td>
+							<td>&amp;#xe138;</td>
+							<td>\e138</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarAsc1"></i> 
+								<i class="iconMediumBarAsc1"></i> 
+								<i class="iconLargeBarAsc1"></i>
+							</td>
+							<td><code>iconBarAsc1</code></td>
+							<td>&amp;#xe133;</td>
+							<td>\e133</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBarDesc1"></i> 
+								<i class="iconMediumBarDesc1"></i> 
+								<i class="iconLargeBarDesc1"></i>
+							</td>
+							<td><code>iconBarDesc1</code></td>
+							<td>&amp;#xe131;</td>
+							<td>\e131</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCalendar"></i> 
+								<i class="iconMediumCalendar"></i> 
+								<i class="iconLargeCalendar"></i>
+							</td>
+							<td><code>iconCalendar</code></td>
+							<td>&amp;#xe121;</td>
+							<td>\e121</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronUp"></i> 
+								<i class="iconMediumChevronUp"></i> 
+								<i class="iconLargeChevronUp"></i>
+							</td>
+							<td><code>iconChevronUp</code></td>
+							<td>&amp;#xe114;</td>
+							<td>\e114</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronDown"></i> 
+								<i class="iconMediumChevronDown"></i> 
+								<i class="iconLargeChevronDown"></i>
+							</td>
+							<td><code>iconChevronDown</code></td>
+							<td>&amp;#xe117;</td>
+							<td>\e117</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronLeft"></i> 
+								<i class="iconMediumChevronLeft"></i> 
+								<i class="iconLargeChevronLeft"></i>
+							</td>
+							<td><code>iconChevronLeft</code></td>
+							<td>&amp;#xe116;</td>
+							<td>\e116</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChevronRight"></i> 
+								<i class="iconMediumChevronRight"></i> 
+								<i class="iconLargeChevronRight"></i>
+							</td>
+							<td><code>iconChevronRight</code></td>
+							<td>&amp;#xe115;</td>
+							<td>\e115</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard1"></i> 
+								<i class="iconMediumDashboard1"></i> 
+								<i class="iconLargeDashboard1"></i>
+							</td>
+							<td><code>iconDashboard1</code></td>
+							<td>&amp;#xe0f5;</td>
+							<td>\e0f5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard2"></i> 
+								<i class="iconMediumDashboard2"></i> 
+								<i class="iconLargeDashboard2"></i>
+							</td>
+							<td><code>iconDashboard2</code></td>
+							<td>&amp;#xe0f4;</td>
+							<td>\e0f4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDashboard3"></i> 
+								<i class="iconMediumDashboard3"></i> 
+								<i class="iconLargeDashboard3"></i>
+							</td>
+							<td><code>iconDashboard3</code></td>
+							<td>&amp;#xe0f3;</td>
+							<td>\e0f3</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconCloudUp"></i> 
+								<i class="iconMediumCloudUp"></i> 
+								<i class="iconLargeCloudUp"></i>
+							</td>
+							<td><code>iconCloudUp</code></td>
+							<td>&amp;#xe106;</td>
+							<td>\e106</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudDown"></i> 
+								<i class="iconMediumCloudDown"></i> 
+								<i class="iconLargeCloudDown"></i>
+							</td>
+							<td><code>iconCloudDown</code></td>
+							<td>&amp;#xe107;</td>
+							<td>\e107</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabase"></i> 
+								<i class="iconMediumDatabase"></i> 
+								<i class="iconLargeDatabase"></i>
+							</td>
+							<td><code>iconDatabase</code></td>
+							<td>&amp;#xe0f2;</td>
+							<td>\e0f2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseCheck"></i> 
+								<i class="iconMediumDatabaseCheck"></i> 
+								<i class="iconLargeDatabaseCheck"></i>
+							</td>
+							<td><code>iconDatabaseCheck</code></td>
+							<td>&amp;#xe0f1;</td>
+							<td>\e0f1</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseDelete"></i> 
+								<i class="iconMediumDatabaseDelete"></i> 
+								<i class="iconLargeDatabaseDelete"></i>
+							</td>
+							<td><code>iconDatabaseDelete</code></td>
+							<td>&amp;#xe0f0;</td>
+							<td>\e0f0</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseLocked"></i> 
+								<i class="iconMediumDatabaseLocked"></i> 
+								<i class="iconLargeDatabaseLocked"></i>
+							</td>
+							<td><code>iconDatabaseLocked</code></td>
+							<td>&amp;#xe0ef;</td>
+							<td>\e0ef</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseMinus"></i> 
+								<i class="iconMediumDatabaseMinus"></i> 
+								<i class="iconLargeDatabaseMinus"></i>
+							</td>
+							<td><code>iconDatabaseMinus</code></td>
+							<td>&amp;#xe0ee;</td>
+							<td>\e0ee</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabasePlus"></i> 
+								<i class="iconMediumDatabasePlus"></i> 
+								<i class="iconLargeDatabasePlus"></i>
+							</td>
+							<td><code>iconDatabasePlus</code></td>
+							<td>&amp;#xe0ed;</td>
+							<td>\e0ed</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconDatabaseUnlocked"></i> 
+								<i class="iconMediumDatabaseUnlocked"></i> 
+								<i class="iconLargeDatabaseUnlocked"></i>
+							</td>
+							<td><code>iconDatabaseUnlocked</code></td>
+							<td>&amp;#xe0ec;</td>
+							<td>\e0ec</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmail"></i> 
+								<i class="iconMediumEmail"></i> 
+								<i class="iconLargeEmail"></i>
+							</td>
+							<td><code>iconEmail</code></td>
+							<td>&amp;#xe0e5;</td>
+							<td>\e0e5</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverse"></i> 
+								<i class="iconMediumEmailInverse"></i> 
+								<i class="iconLargeEmailInverse"></i>
+							</td>
+							<td><code>iconEmailInverse</code></td>
+							<td>&amp;#xe0e4;</td>
+							<td>\e0e4</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailOpen"></i> 
+								<i class="iconMediumEmailOpen"></i> 
+								<i class="iconLargeEmailOpen"></i>
+							</td>
+							<td><code>iconEmailOpen</code></td>
+							<td>&amp;#xe0e2;</td>
+							<td>\e0e2</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEmailInverseOpen"></i> 
+								<i class="iconMediumEmailInverseOpen"></i> 
+								<i class="iconLargeEmailInverseOpen"></i>
+							</td>
+							<td><code>iconEmailInverseOpen</code></td>
+							<td>&amp;#xe0e3;</td>
+							<td>\e0e3</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLocked"></i> 
+								<i class="iconMediumLocked"></i> 
+								<i class="iconLargeLocked"></i>
+							</td>
+							<td><code>iconLocked</code></td>
+							<td>&amp;#xe07d;</td>
+							<td>\e07d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUnlocked"></i> 
+								<i class="iconMediumUnlocked"></i> 
+								<i class="iconLargeUnlocked"></i>
+							</td>
+							<td><code>iconUnlocked</code></td>
+							<td>&amp;#xe015;</td>
+							<td>\e015</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconInfo1"></i> 
+								<i class="iconMediumInfo1"></i> 
+								<i class="iconLargeInfo1"></i>
+							</td>
+							<td><code>iconInfo1</code></td>
+							<td>&amp;#xe092;</td>
+							<td>\e092</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconInfo2"></i> 
+								<i class="iconMediumInfo2"></i> 
+								<i class="iconLargeInfo2"></i>
+							</td>
+							<td><code>iconInfo2</code></td>
+							<td>&amp;#xe091;</td>
+							<td>\e091</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconQuestion1"></i> 
+								<i class="iconMediumQuestion1"></i> 
+								<i class="iconLargeQuestion1"></i>
+							</td>
+							<td><code>iconQuestion1</code></td>
+							<td>&amp;#xe057;</td>
+							<td>\e057</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconQuestion2"></i> 
+								<i class="iconMediumQuestion2"></i> 
+								<i class="iconLargeQuestion2"></i>
+							</td>
+							<td><code>iconQuestion2</code></td>
+							<td>&amp;#xe056;</td>
+							<td>\e056</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTag"></i> 
+								<i class="iconMediumTag"></i> 
+								<i class="iconLargeTag"></i>
+							</td>
+							<td><code>iconTag</code></td>
+							<td>&amp;#xe02a;</td>
+							<td>\e02a</td>
+						</tr>	
+						<tr>
+							<td>
+								<i class="iconTags"></i> 
+								<i class="iconMediumTags"></i> 
+								<i class="iconLargeTags"></i>
+							</td>
+							<td><code>iconTags</code></td>
+							<td>&amp;#xe029;</td>
+							<td>\e029</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTodo1"></i> 
+								<i class="iconMediumTodo1"></i> 
+								<i class="iconLargeTodo1"></i>
+							</td>
+							<td><code>iconTodo1</code></td>
+							<td>&amp;#xe025;</td>
+							<td>\e025</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTodo2"></i> 
+								<i class="iconMediumTodo2"></i> 
+								<i class="iconLargeTodo2"></i>
+							</td>
+							<td><code>iconTodo2</code></td>
+							<td>&amp;#xe024;</td>
+							<td>\e024</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUpload"></i> 
+								<i class="iconMediumUpload"></i> 
+								<i class="iconLargeUpload"></i>
+							</td>
+							<td><code>iconUpload</code></td>
+							<td>&amp;#xe014;</td>
+							<td>\e014</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconDownload"></i> 
+								<i class="iconMediumDownload"></i> 
+								<i class="iconLargeDownload"></i>
+							</td>
+							<td><code>iconDownload</code></td>
+							<td>&amp;#xe0e9;</td>
+							<td>\e0e9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUser"></i> 
+								<i class="iconMediumUser"></i> 
+								<i class="iconLargeUser"></i>
+							</td>
+							<td><code>iconUser</code></td>
+							<td>&amp;#xe013;</td>
+							<td>\e013</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserBusy"></i> 
+								<i class="iconMediumUserBusy"></i> 
+								<i class="iconLargeUserBusy"></i>
+							</td>
+							<td><code>iconUserBusy</code></td>
+							<td>&amp;#xe012;</td>
+							<td>\e012</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUserCheck"></i> 
+								<i class="iconMediumUserCheck"></i> 
+								<i class="iconLargeUserCheck"></i>
+							</td>
+							<td><code>iconUserCheck</code></td>
+							<td>&amp;#xe011;</td>
+							<td>\e011</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUserDelete"></i> 
+								<i class="iconMediumUserDelete"></i> 
+								<i class="iconLargeUserDelete"></i>
+							</td>
+							<td><code>iconUserDelete</code></td>
+							<td>&amp;#xe010;</td>
+							<td>\e010</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserMinus"></i> 
+								<i class="iconMediumUserMinus"></i> 
+								<i class="iconLargeUserMinus"></i>
+							</td>
+							<td><code>iconUserMinus</code></td>
+							<td>&amp;#xe00f;</td>
+							<td>\e00f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserPlus"></i> 
+								<i class="iconMediumUserPlus"></i> 
+								<i class="iconLargeUserPlus"></i>
+							</td>
+							<td><code>iconUserPlus</code></td>
+							<td>&amp;#xe00e;</td>
+							<td>\e00e</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUsers"></i> 
+								<i class="iconMediumUsers"></i> 
+								<i class="iconLargeUsers"></i>
+							</td>
+							<td><code>iconUsers</code></td>
+							<td>&amp;#xe00d;</td>
+							<td>\e00d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconMute"></i> 
+								<i class="iconMediumMute"></i> 
+								<i class="iconLargeMute"></i>
+							</td>
+							<td><code>iconMute</code></td>
+							<td>&amp;#xe070;</td>
+							<td>\e070</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconVolume0"></i> 
+								<i class="iconMediumVolume0"></i> 
+								<i class="iconLargeVolume0"></i>
+							</td>
+							<td><code>iconVolume0</code></td>
+							<td>&amp;#xe00a;</td>
+							<td>\e00a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume1"></i> 
+								<i class="iconMediumVolume1"></i> 
+								<i class="iconLargeVolume1"></i>
+							</td>
+							<td><code>iconVolume1</code></td>
+							<td>&amp;#xe009;</td>
+							<td>\e009</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconVolume2"></i> 
+								<i class="iconMediumVolume2"></i> 
+								<i class="iconLargeVolume2"></i>
+							</td>
+							<td><code>iconVolume2</code></td>
+							<td>&amp;#xe008;</td>
+							<td>\e008</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconWrench"></i> 
+								<i class="iconMediumWrench"></i> 
+								<i class="iconLargeWrench"></i>
+							</td>
+							<td><code>iconWrench</code></td>
+							<td>&amp;#xe003;</td>
+							<td>\e003</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSettings1"></i> 
+								<i class="iconMediumSettings1"></i> 
+								<i class="iconLargeSettings1"></i>
+							</td>
+							<td><code>iconSettings1</code></td>
+							<td>&amp;#xe045;</td>
+							<td>\e045</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSettings2"></i> 
+								<i class="iconMediumSettings2"></i> 
+								<i class="iconLargeSettings2"></i>
+							</td>
+							<td><code>iconSettings2</code></td>
+							<td>&amp;#xe044;</td>
+							<td>\e044</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconZoomIn"></i> 
+								<i class="iconMediumZoomIn"></i> 
+								<i class="iconLargeZoomIn"></i>
+							</td>
+							<td><code>iconZoomIn</code></td>
+							<td>&amp;#xe001;</td>
+							<td>\e001</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconZoomOut"></i> 
+								<i class="iconMediumZoomOut"></i> 
+								<i class="iconLargeZoomOut"></i>
+							</td>
+							<td><code>iconZoomOut</code></td>
+							<td>&amp;#xe000;</td>
+							<td>\e000</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Text Editor -->				
+				
+				<h2 id="text-editor">Text Editor</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<tr>
+							<td>
+								<i class="iconBold"></i> 
+								<i class="iconMediumBold"></i> 
+								<i class="iconLargeBold"></i>
+							</td>
+							<td><code>iconBold</code></td>
+							<td>&amp;#xe126;</td>
+							<td>\e126</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconItalic"></i> 
+								<i class="iconMediumItalic"></i> 
+								<i class="iconLargeItalic"></i>
+							</td>
+							<td><code>iconItalic</code></td>
+							<td>&amp;#xe08f;</td>
+							<td>\e08f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUnderline"></i> 
+								<i class="iconMediumUnderline"></i> 
+								<i class="iconLargeUnderline"></i>
+							</td>
+							<td><code>iconUnderline</code></td>
+							<td>&amp;#xe018;</td>
+							<td>\e018</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconBug"></i> 
+								<i class="iconMediumBug"></i> 
+								<i class="iconLargeBug"></i>
+							</td>
+							<td><code>iconBug</code></td>
+							<td>&amp;#xe122;</td>
+							<td>\e122</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCode"></i> 
+								<i class="iconMediumCode"></i> 
+								<i class="iconLargeCode"></i>
+							</td>
+							<td><code>iconCode</code></td>
+							<td>&amp;#xe105;</td>
+							<td>\e105</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconNew"></i> 
+								<i class="iconMediumNew"></i> 
+								<i class="iconLargeNew"></i>
+							</td>
+							<td><code>iconNew</code></td>
+							<td>&amp;#xe06f;</td>
+							<td>\e06f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCopy"></i> 
+								<i class="iconMediumCopy"></i> 
+								<i class="iconLargeCopy"></i>
+							</td>
+							<td><code>iconCopy</code></td>
+							<td>&amp;#xe0f9;</td>
+							<td>\e0f9</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconEdit2"></i> 
+								<i class="iconMediumEdit2"></i> 
+								<i class="iconLargeEdit2"></i>
+							</td>
+							<td><code>iconEdit2</code></td>
+							<td>&amp;#xe0e7;</td>
+							<td>\e0e7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFind"></i> 
+								<i class="iconMediumFind"></i> 
+								<i class="iconLargeFind"></i>
+							</td>
+							<td><code>iconFind</code></td>
+							<td>&amp;#xe0af;</td>
+							<td>\e0af</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSearch"></i> 
+								<i class="iconMediumSearch"></i> 
+								<i class="iconLargeSearch"></i>
+							</td>
+							<td><code>iconSearch</code></td>
+							<td>&amp;#xe046;</td>
+							<td>\e046</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconPaste"></i> 
+								<i class="iconMediumPaste"></i> 
+								<i class="iconLargePaste"></i>
+							</td>
+							<td><code>iconPaste</code></td>
+							<td>&amp;#xe067;</td>
+							<td>\e067</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconScissors"></i> 
+								<i class="iconMediumScissors"></i> 
+								<i class="iconLargeScissors"></i>
+							</td>
+							<td><code>iconScissors</code></td>
+							<td>&amp;#xe047;</td>
+							<td>\e047</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconSave"></i> 
+								<i class="iconMediumSave"></i> 
+								<i class="iconLargeSave"></i>
+							</td>
+							<td><code>iconSave</code></td>
+							<td>&amp;#xe048;</td>
+							<td>\e048</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconPrinter"></i> 
+								<i class="iconMediumPrinter"></i> 
+								<i class="iconLargePrinter"></i>
+							</td>
+							<td><code>iconPrinter</code></td>
+							<td>&amp;#xe05c;</td>
+							<td>\e05c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSpellcheck"></i> 
+								<i class="iconMediumSpellcheck"></i> 
+								<i class="iconLargeSpellcheck"></i>
+							</td>
+							<td><code>iconSpellcheck</code></td>
+							<td>&amp;#xe039;</td>
+							<td>\e039</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStrikethrough"></i> 
+								<i class="iconMediumStrikethrough"></i> 
+								<i class="iconLargeStrikethrough"></i>
+							</td>
+							<td><code>iconStrikethrough</code></td>
+							<td>&amp;#xe031;</td>
+							<td>\e031</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTextResize"></i> 
+								<i class="iconMediumTextResize"></i> 
+								<i class="iconLargeTextResize"></i>
+							</td>
+							<td><code>iconTextResize</code></td>
+							<td>&amp;#xe028;</td>
+							<td>\e028</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconSubscript"></i> 
+								<i class="iconMediumSubscript"></i> 
+								<i class="iconLargeSubscript"></i>
+							</td>
+							<td><code>iconSubscript</code></td>
+							<td>&amp;#xe02f;</td>
+							<td>\e02f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSuperscript"></i> 
+								<i class="iconMediumSuperscript"></i> 
+								<i class="iconLargeSuperscript"></i>
+							</td>
+							<td><code>iconSuperscript</code></td>
+							<td>&amp;#xe02d;</td>
+							<td>\e02d</td>
+						</tr>																		
+						<tr>
+							<td>
+								<i class="iconFlag"></i> 
+								<i class="iconMediumFlag"></i> 
+								<i class="iconLargeFlag"></i>
+							</td>
+							<td><code>iconFlag</code></td>
+							<td>&amp;#xe0ad;</td>
+							<td>\e0ad</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash1"></i> 
+								<i class="iconMediumFlash1"></i> 
+								<i class="iconLargeFlash1"></i>
+							</td>
+							<td><code>iconFlash1</code></td>
+							<td>&amp;#xe0ac;</td>
+							<td>\e0ac</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash2"></i> 
+								<i class="iconMediumFlash2"></i> 
+								<i class="iconLargeFlash2"></i>
+							</td>
+							<td><code>iconFlash2</code></td>
+							<td>&amp;#xe0ab;</td>
+							<td>\e0ab</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphUp"></i> 
+								<i class="iconMediumGraphUp"></i> 
+								<i class="iconLargeGraphUp"></i>
+							</td>
+							<td><code>iconGraphUp</code></td>
+							<td>&amp;#xe09c;</td>
+							<td>\e09c</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconGraphDown"></i> 
+								<i class="iconMediumGraphDown"></i> 
+								<i class="iconLargeGraphDown"></i>
+							</td>
+							<td><code>iconGraphDown</code></td>
+							<td>&amp;#xe09b;</td>
+							<td>\e09b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPieChart"></i> 
+								<i class="iconMediumPieChart"></i> 
+								<i class="iconLargePieChart"></i>
+							</td>
+							<td><code>iconPieChart</code></td>
+							<td>&amp;#xe062;</td>
+							<td>\e062</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconInfo1"></i> 
+								<i class="iconMediumInfo1"></i> 
+								<i class="iconLargeInfo1"></i>
+							</td>
+							<td><code>iconInfo1</code></td>
+							<td>&amp;#xe092;</td>
+							<td>\e092</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconInfo2"></i> 
+								<i class="iconMediumInfo2"></i> 
+								<i class="iconLargeInfo2"></i>
+							</td>
+							<td><code>iconInfo2</code></td>
+							<td>&amp;#xe091;</td>
+							<td>\e091</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconQuestion1"></i> 
+								<i class="iconMediumQuestion1"></i> 
+								<i class="iconLargeQuestion1"></i>
+							</td>
+							<td><code>iconQuestion1</code></td>
+							<td>&amp;#xe057;</td>
+							<td>\e057</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconQuestion2"></i> 
+								<i class="iconMediumQuestion2"></i> 
+								<i class="iconLargeQuestion2"></i>
+							</td>
+							<td><code>iconQuestion2</code></td>
+							<td>&amp;#xe056;</td>
+							<td>\e056</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconJustify"></i> 
+								<i class="iconMediumJustify"></i> 
+								<i class="iconLargeJustify"></i>
+							</td>
+							<td><code>iconJustify</code></td>
+							<td>&amp;#xe08d;</td>
+							<td>\e08d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconAlignCenter"></i> 
+								<i class="iconMediumAlignCenter"></i> 
+								<i class="iconLargeAlignCenter"></i>
+							</td>
+							<td><code>iconAlignCenter</code></td>
+							<td>&amp;#xe143;</td>
+							<td>\e143</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconAlignLeft"></i> 
+								<i class="iconMediumAlignLeft"></i> 
+								<i class="iconLargeAlignLeft"></i>
+							</td>
+							<td><code>iconAlignLeft</code></td>
+							<td>&amp;#xe142;</td>
+							<td>\e142</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconAlignRight"></i> 
+								<i class="iconMediumAlignRight"></i> 
+								<i class="iconLargeAlignRight"></i>
+							</td>
+							<td><code>iconAlignRight</code></td>
+							<td>&amp;#xe141;</td>
+							<td>\e141</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconTabLeft"></i> 
+								<i class="iconMediumTabLeft"></i> 
+								<i class="iconLargeTabLeft"></i>
+							</td>
+							<td><code>iconTabLeft</code></td>
+							<td>&amp;#xe02c;</td>
+							<td>\e02c</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconTabRight"></i> 
+								<i class="iconMediumTabRight"></i> 
+								<i class="iconLargeTabRight"></i>
+							</td>
+							<td><code>iconTabRight</code></td>
+							<td>&amp;#xe02b;</td>
+							<td>\e02b</td>
+						</tr>												
+						<tr>
+							<td>
+								<i class="iconLeftQuote"></i> 
+								<i class="iconMediumLeftQuote"></i> 
+								<i class="iconLargeLeftQuote"></i>
+							</td>
+							<td><code>iconLeftQuote</code></td>
+							<td>&amp;#xe088;</td>
+							<td>\e088</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRightQuote"></i> 
+								<i class="iconMediumRightQuote"></i> 
+								<i class="iconLargeRightQuote"></i>
+							</td>
+							<td><code>iconRightQuote</code></td>
+							<td>&amp;#xe04d;</td>
+							<td>\e04d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconLink"></i> 
+								<i class="iconMediumLink"></i> 
+								<i class="iconLargeLink"></i>
+							</td>
+							<td><code>iconLink</code></td>
+							<td>&amp;#xe085;</td>
+							<td>\e085</td>
+						</tr>								
+						<tr>
+							<td>
+								<i class="iconUnlink"></i> 
+								<i class="iconMediumUnlink"></i> 
+								<i class="iconLargeUnlink"></i>
+							</td>
+							<td><code>iconUnlink</code></td>
+							<td>&amp;#xe016;</td>
+							<td>\e016</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconListOrdered"></i> 
+								<i class="iconMediumListOrdered"></i> 
+								<i class="iconLargeListOrdered"></i>
+							</td>
+							<td><code>iconListOrdered</code></td>
+							<td>&amp;#xe07f;</td>
+							<td>\e07f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconListUnordered"></i> 
+								<i class="iconMediumListUnordered"></i> 
+								<i class="iconLargeListUnordered"></i>
+							</td>
+							<td><code>iconListUnordered</code></td>
+							<td>&amp;#xe07e;</td>
+							<td>\e07e</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPage"></i> 
+								<i class="iconMediumPage"></i> 
+								<i class="iconLargePage"></i>
+							</td>
+							<td><code>iconPage</code></td>
+							<td>&amp;#xe06a;</td>
+							<td>\e06a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconParagraph"></i> 
+								<i class="iconMediumParagraph"></i> 
+								<i class="iconLargeParagraph"></i>
+							</td>
+							<td><code>iconParagraph</code></td>
+							<td>&amp;#xe068;</td>
+							<td>\e068</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPicture"></i> 
+								<i class="iconMediumPicture"></i> 
+								<i class="iconLargePicture"></i>
+							</td>
+							<td><code>iconPicture</code></td>
+							<td>&amp;#xe063;</td>
+							<td>\e063</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSmiley"></i> 
+								<i class="iconMediumSmiley"></i> 
+								<i class="iconLargeSmiley"></i>
+							</td>
+							<td><code>iconSmiley</code></td>
+							<td>&amp;#xe03a;</td>
+							<td>\e03a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUndo"></i> 
+								<i class="iconMediumUndo"></i> 
+								<i class="iconLargeUndo"></i>
+							</td>
+							<td><code>iconUndo</code></td>
+							<td>&amp;#xe017;</td>
+							<td>\e017</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconRedo"></i> 
+								<i class="iconMediumRedo"></i> 
+								<i class="iconLargeRedo"></i>
+							</td>
+							<td><code>iconRedo</code></td>
+							<td>&amp;#xe053;</td>
+							<td>\e053</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconBackslash"></i> 
+								<i class="iconMediumBackslash"></i> 
+								<i class="iconLargeBackslash"></i>
+							</td>
+							<td><code>iconBackslash</code></td>
+							<td>&amp;#xe134;</td>
+							<td>\e134</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSlash"></i> 
+								<i class="iconMediumSlash"></i> 
+								<i class="iconLargeSlash"></i>
+							</td>
+							<td><code>iconSlash</code></td>
+							<td>&amp;#xe03b;</td>
+							<td>\e03b</td>
+						</tr>												
+					</tbody>
+				</table>
+				
+				<!-- Users -->				
+				
+				<h2 id="users">Users</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<tr>
+							<td>
+								<i class="iconUser"></i> 
+								<i class="iconMediumUser"></i> 
+								<i class="iconLargeUser"></i>
+							</td>
+							<td><code>iconUser</code></td>
+							<td>&amp;#xe013;</td>
+							<td>\e013</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserBusy"></i> 
+								<i class="iconMediumUserBusy"></i> 
+								<i class="iconLargeUserBusy"></i>
+							</td>
+							<td><code>iconUserBusy</code></td>
+							<td>&amp;#xe012;</td>
+							<td>\e012</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUserCheck"></i> 
+								<i class="iconMediumUserCheck"></i> 
+								<i class="iconLargeUserCheck"></i>
+							</td>
+							<td><code>iconUserCheck</code></td>
+							<td>&amp;#xe011;</td>
+							<td>\e011</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUserDelete"></i> 
+								<i class="iconMediumUserDelete"></i> 
+								<i class="iconLargeUserDelete"></i>
+							</td>
+							<td><code>iconUserDelete</code></td>
+							<td>&amp;#xe010;</td>
+							<td>\e010</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserMinus"></i> 
+								<i class="iconMediumUserMinus"></i> 
+								<i class="iconLargeUserMinus"></i>
+							</td>
+							<td><code>iconUserMinus</code></td>
+							<td>&amp;#xe00f;</td>
+							<td>\e00f</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconUserPlus"></i> 
+								<i class="iconMediumUserPlus"></i> 
+								<i class="iconLargeUserPlus"></i>
+							</td>
+							<td><code>iconUserPlus</code></td>
+							<td>&amp;#xe00e;</td>
+							<td>\e00e</td>
+						</tr>						
+						<tr>
+							<td>
+								<i class="iconUsers"></i> 
+								<i class="iconMediumUsers"></i> 
+								<i class="iconLargeUsers"></i>
+							</td>
+							<td><code>iconUsers</code></td>
+							<td>&amp;#xe00d;</td>
+							<td>\e00d</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconStamp"></i> 
+								<i class="iconMediumStamp"></i> 
+								<i class="iconLargeStamp"></i>
+							</td>
+							<td><code>iconStamp</code></td>
+							<td>&amp;#xe037;</td>
+							<td>\e037</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSad"></i> 
+								<i class="iconMediumSad"></i> 
+								<i class="iconLargeSad"></i>
+							</td>
+							<td><code>iconSad</code></td>
+							<td>&amp;#xe04a;</td>
+							<td>\e04a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSmiley"></i> 
+								<i class="iconMediumSmiley"></i> 
+								<i class="iconLargeSmiley"></i>
+							</td>
+							<td><code>iconSmiley</code></td>
+							<td>&amp;#xe03a;</td>
+							<td>\e03a</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<!-- Web -->				
+				
+				<h2 id="web">Web</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Icons</th>
+							<th>CSS Class</th>
+							<th>HTML Entity Code</th>
+							<th>CSS Content Code</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<i class="iconWorld"></i> 
+								<i class="iconMediumWorld"></i> 
+								<i class="iconLargeWorld"></i>
+							</td>
+							<td><code>iconWorld</code></td>
+							<td>&amp;#xe004;</td>
+							<td>\e004</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconChrome"></i> 
+								<i class="iconMediumChrome"></i> 
+								<i class="iconLargeChrome"></i>
+							</td>
+							<td><code>iconChrome</code></td>
+							<td>&amp;#xe113;</td>
+							<td>\e113</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFirefox"></i> 
+								<i class="iconMediumFirefox"></i> 
+								<i class="iconLargeFirefox"></i>
+							</td>
+							<td><code>iconFirefox</code></td>
+							<td>&amp;#xe0ae;</td>
+							<td>\e0ae</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconIe"></i> 
+								<i class="iconMediumIe"></i> 
+								<i class="iconLargeIe"></i>
+							</td>
+							<td><code>iconIe</code></td>
+							<td>&amp;#xe094;</td>
+							<td>\e094</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconOpera"></i> 
+								<i class="iconMediumOpera"></i> 
+								<i class="iconLargeOpera"></i>
+							</td>
+							<td><code>iconOpera</code></td>
+							<td>&amp;#xe06b;</td>
+							<td>\e06b</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconSafari"></i> 
+								<i class="iconMediumSafari"></i> 
+								<i class="iconLargeSafari"></i>
+							</td>
+							<td><code>iconSafari</code></td>
+							<td>&amp;#xe049;</td>
+							<td>\e049</td>
+						</tr>											
+						<tr>
+							<td>
+								<i class="iconLink"></i> 
+								<i class="iconMediumLink"></i> 
+								<i class="iconLargeLink"></i>
+							</td>
+							<td><code>iconLink</code></td>
+							<td>&amp;#xe085;</td>
+							<td>\e085</td>
+						</tr>								
+						<tr>
+							<td>
+								<i class="iconUnlink"></i> 
+								<i class="iconMediumUnlink"></i> 
+								<i class="iconLargeUnlink"></i>
+							</td>
+							<td><code>iconUnlink</code></td>
+							<td>&amp;#xe016;</td>
+							<td>\e016</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudUp"></i> 
+								<i class="iconMediumCloudUp"></i> 
+								<i class="iconLargeCloudUp"></i>
+							</td>
+							<td><code>iconCloudUp</code></td>
+							<td>&amp;#xe106;</td>
+							<td>\e106</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCloudDown"></i> 
+								<i class="iconMediumCloudDown"></i> 
+								<i class="iconLargeCloudDown"></i>
+							</td>
+							<td><code>iconCloudDown</code></td>
+							<td>&amp;#xe107;</td>
+							<td>\e107</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconHtml5"></i> 
+								<i class="iconMediumHtml5"></i> 
+								<i class="iconLargeHtml5"></i>
+							</td>
+							<td><code>iconHtml5</code></td>
+							<td>&amp;#xe095;</td>
+							<td>\e095</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconCss3"></i> 
+								<i class="iconMediumCss3"></i> 
+								<i class="iconLargeCss3"></i>
+							</td>
+							<td><code>iconCss3</code></td>
+							<td>&amp;#xe0f7;</td>
+							<td>\e0f7</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconPage"></i> 
+								<i class="iconMediumPage"></i> 
+								<i class="iconLargePage"></i>
+							</td>
+							<td><code>iconPage</code></td>
+							<td>&amp;#xe06a;</td>
+							<td>\e06a</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash1"></i> 
+								<i class="iconMediumFlash1"></i> 
+								<i class="iconLargeFlash1"></i>
+							</td>
+							<td><code>iconFlash1</code></td>
+							<td>&amp;#xe0ac;</td>
+							<td>\e0ac</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconFlash2"></i> 
+								<i class="iconMediumFlash2"></i> 
+								<i class="iconLargeFlash2"></i>
+							</td>
+							<td><code>iconFlash2</code></td>
+							<td>&amp;#xe0ab;</td>
+							<td>\e0ab</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="iconJava"></i> 
+								<i class="iconMediumJava"></i> 
+								<i class="iconLargeJava"></i>
+							</td>
+							<td><code>iconJava</code></td>
+							<td>&amp;#xe08e;</td>
+							<td>\e08e</td>
+						</tr>																																																																																																																																																																																																																																																		
+			</div>
+		</div>
+					
+	</div>
+</body>
+</html>

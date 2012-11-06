@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Charts</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="../">Overview</a></li>
+						<li><a href="../examples.html">Examples</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Charts</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="chartArea" data-chartData="[
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+					}
+				
+				]" data-chartOptions="{
+					title: 'Visits & Page Views',
+					dataLabels: ['Visits', 'Page Views'],
+					tipText: ['You had <b>{y} {label}</b> on {x}', 'You had {y} {label} on {x}'],
+					xAxisLabel: 'Month',
+					dateFormat: '%Y',
+					dateIntervalUnit: 'year',		
+					dateIntervalValue: 5,	
+					dateStart: '3/1/1992'					
+				}"></div>				
+			</div>
+<!-- 			
+/*					
+					,
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[0,3,6,12,24,48,96,48,24,12,6,3,0,4,16,64,16,4,0,5,25]
+					},
+					{
+						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+						y:[24,12,6,3,0,4,16,4,0,5,25,64,16,0,3,6,12,24,48,96,48]
+					}										
+//*/
+ -->
+ 			<h6>Chart Limitations</h6>
+ 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may fix these 
+ 				issues.</p>
+ 			<ul>
+ 				<li>No animation in IE.</li>
+ 				<li>No negative numbers.</li>
+ 				<li>Data sets need to be the full-width of the graph.</li>
+ 				<li>Dates can only be on the x-axis.</li>
+ 				<li>X-values are necessary when not working with dates.</li>
+ 				<li>Updating the graph requires refreshing the canvas.</li>
+ 				<li>Large numbers may not look good on the axises.</li>
+ 				<li>Charts must be displayed at 100% of the container size.</li>
+ 				<li>Decimals?</li>
+ 			</ul>			
+		</div>
+	</div>
+</body>
+</html>
