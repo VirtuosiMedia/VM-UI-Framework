@@ -23,7 +23,6 @@
  */
 @import url('reset.css');
 @import url('grid.css');
-@import url('utilities.css');
 @import url('type.css');
 @import url('links.css');
 @import url('lists.css');
@@ -39,6 +38,7 @@
 @import url('breadcrumb.css');
 @import url('notices.css');
 @import url('markers.css');
+@import url('utilities.css');
 
 /**
  * JavaScript Plugins
@@ -53,3 +53,4 @@
 @import url('Plugins/charts.css');
 @import url('Plugins/highlighter.css');
 @import url('Plugins/carousel.css');
+@import url('Plugins/tooltips.css');

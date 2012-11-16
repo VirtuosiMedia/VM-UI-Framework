@@ -23,6 +23,7 @@ var VMUI = new Class({
 		         {name:'Carousel', source:'Layout/Carousel.js', selectors:'.carousel, .carouselClean, .carouselVertical'},
 		         {name:'Social', source:'Widgets/Social.js', selectors:'.socialShare'},
 		         {name:'Tabs', source:'Navigation/Tabs.js', selectors:'.tabs, .tabsVertical, .pillTabs, .pillTabsVertical'},
+		         {name:'Tips', source:'Widgets/Tips.js', selectors:'[class^=tip], [class^=powertip]'},
 		         {
 		        	 name:'Charts', 
 		        	 source:'Data/Charts.js', 
