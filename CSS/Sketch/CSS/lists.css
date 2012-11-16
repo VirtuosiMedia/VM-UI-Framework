@@ -11,6 +11,7 @@
 .unlisted, .horizontal {list-style: none;}
 ul, ol {margin: 0em 0em 1.75em 2.5em;}
 .flush, .horizontal {margin-left: 0;}
+.horizontal {display: inline-block;}
 .horizontal li {
 	float: left;
 	margin-right: 1em;
