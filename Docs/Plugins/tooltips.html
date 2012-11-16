@@ -135,7 +135,18 @@
 &lt;!-- An inline tip --&gt;
 &lt;a href="#" class="tip" data-target="#tipToe"&gt;Inline Tip&lt;/a&gt;
 &lt;div id="tipToe" class="tipContent"&gt;Shh! Be vewy quiet, we're hunting wabbits.&lt;/div&gt;
-</pre>				
+</pre>
+				<h6>Custom Styling Tips</h6>
+				<p>If you would like create custom styles for the tips, each tip has the following HTML structure:</p>
+<pre class="html">
+&lt;div class="{tipClassName}Container"&gt;
+	&lt;h6 class="title"&gt;Title&lt;/h6&gt;
+	&lt;div class="content"&gt;Hi Mom!&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+				<p>Keep in mind that the container name is pulled in from the tip class name and appended with 
+					<em>Container</em>. The title and/or the content is also optional depending on which data attributes 
+					are present.</p>		
 			</div>			
 		</div>		
 		<div class="row">
