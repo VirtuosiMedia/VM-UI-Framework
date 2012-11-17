@@ -46,12 +46,12 @@ var Tips = new Class({
 		var titleEl = (title) ? new Element('h6', {'class':'title', html: title}) : '';
 		var contentEl = (content) ? new Element('div', {'class':'content', html: content}) : '';
 		var container = new Element('div', {'class': tip.get('class')+'Container',});
-		container.adopt(titleEl, contentEl).inject(tip, 'after');
+		container.adopt(titleEl, contentEl).inject(document.body);
 		this.setPosition(container, tip).fade(transition);
 	},
 	
 	removeTip: function(tip){
-		var tooltip = tip.getNext('[class$=Container]');
+		var tooltip = $$('[class$=Container]');
 		if (tooltip){
 			var transition = (tip.getData('transition') == 'fade') ? 'out' : 'hide';
 			tooltip.fade(transition).dispose.delay(500, tooltip);
