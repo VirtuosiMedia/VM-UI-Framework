@@ -89,6 +89,7 @@ var Modal = new Class({
 					var leftVal = ((window.getSize().x - $('modal').getSize().x)/2) + 'px';
 					$('modal').setStyle('left', leftVal);
 					self.setCloseTriggers();
+					$(document.body).fireEvent('ajaxUpdate', $('ajaxModal'));
 				},
 				onFailure: function(){
 					$('ajaxModal').set('html', '<p>Modal content could not be loaded.</p>')

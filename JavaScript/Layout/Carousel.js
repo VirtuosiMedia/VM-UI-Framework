@@ -58,6 +58,7 @@ var Carousel = new Class({
 				},
 				onSuccess: function(responseText, responseElements, responseHTML){
 					slide.set('html', responseHTML);
+					$(document.body).fireEvent('ajaxUpdate', slide);
 				},
 				onFailure: function(){
 					slide.set('html', '<p>Content could not be loaded.</p>')

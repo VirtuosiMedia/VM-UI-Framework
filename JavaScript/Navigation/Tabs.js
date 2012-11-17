@@ -53,6 +53,7 @@ var Tabs = new Class({
 				},
 				onSuccess: function(responseText, responseElements, responseHTML){
 					$(tabId).set('html', responseHTML);
+					$(document.body).fireEvent('ajaxUpdate', $(tabId));
 				},
 				onFailure: function(){
 					$(tabId).set('html', '<p>Tab content could not be loaded.</p>')

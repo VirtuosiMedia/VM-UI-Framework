@@ -30,7 +30,8 @@ var VMUI = new Class({
 		        	 selectors:'.chartLine, .chartScatter, .chartArea, .chartBar, .chartPie'
 		         },
 		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'},
-		         {name:'Validate', source:'Form/Validate.js', selectors:'form'}
+		         {name:'Validate', source:'Form/Validate.js', selectors:'form'},
+		         {name:'PasswordToggle', source:'Form/Password/Toggle.js', selectors:'input[type=password].toggle'}
 		],
 		relativePath: '../JavaScript'
 		
@@ -41,25 +42,27 @@ var VMUI = new Class({
 	 */
 	initialize: function(options){
 		this.setOptions(options);
-		this.loadScripts();
+		var self = this;
+		$(document.body).addEvent('ajaxUpdate', function(parent){self.loadScripts(parent);});
+		this.loadScripts(document.body);		
 	},	
 	
-	loadScripts: function(){
+	loadScripts: function(parent){
 		var self = this;
 		Array.each(this.options.assets, function(script){
-			if ($$(script.selectors).length){
+			if (parent.getElements(script.selectors).length){
 				if (self.checkExists(script.name)){
 					Asset.javascript(self.options.relativePath+'/'+script.source, {
 						 onLoad: function(){
 							 if (script.name == 'Lighter'){
-								self.loadLighter(script.selectors);
+								self.loadLighter(parent.getElements(script.selectors));
 							 } else {
-								 var plugin = new window[script.name](script.selectors);
+								 var plugin = new window[script.name](parent.getElements(script.selectors));
 							 }
 						 }
 					 });
 				} else {
-					 var plugin = new window[script.name](script.selectors);
+					 var plugin = new window[script.name](parent.getElements(script.selectors));
 				}
 			}
 		});
