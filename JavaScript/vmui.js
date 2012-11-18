@@ -31,7 +31,8 @@ var VMUI = new Class({
 		         },
 		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'},
 		         {name:'Validate', source:'Form/Validate.js', selectors:'form'},
-		         {name:'PasswordToggle', source:'Form/Password/Toggle.js', selectors:'input[type=password].toggle'}
+		         {name:'PasswordToggle', source:'Form/Password/Toggle.js', selectors:'input[type=password].toggle'},
+		         {name:'PasswordMeter', source:'Form/Password/Meter.js', selectors:'input.meter'}
 		],
 		relativePath: '../JavaScript'
 		
