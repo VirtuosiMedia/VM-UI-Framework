@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Sliders</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});
+			$('toggle').addEvent('change', function(){
+				if (this.checked){
+					$$('#numbers, #custom, #feelings').setStyle('display', 'block');
+				} else {
+					$$('#numbers, #custom, #feelings').setStyle('display', 'none');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="../">Overview</a></li>
+						<li><a href="../examples.html">Examples</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Sliders</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<h3>Overview</h3>
+				<p>The sliders plugin replaces a text input with a slider input that is draggable, keyboard navigable, 
+					and scroll-wheel compatible. The slider can be used for numeric or text-based input.</p>
+				<h3>Usage</h3>
+				<p>To initiate the slider plugin, simply add the class <code>slider</code> to any input element. The 
+					default slider will display a range between 0-100 with an increment of 1. Custom ranges and 
+					increments can be introduced on a per-slider basis using data-attributes.</p>
+<pre class="html">
+//A default slider
+&lt;input type="text" name="default" class="slider"/&gt;	
+</pre>
+			</div>
+			<div class="col8">
+				<h3>Options</h3>
+				<p>The following options are all optional and can be added via data-attributes to the slider input.</p>
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Option</th>
+							<th>Description</th>
+							<th>Default</th>
+							<th class="col2">Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>data-range</code></td>
+							<td>The comma-separated min and max for a numeric slider. Do not use for non-numeric 
+								sliders.</td>
+							<td><em>0, 100</em></td>
+							<td><em>min</em>, <em>max</em></td>
+						</tr>
+						<tr>
+							<td><code>data-start</code></td>
+							<td>The starting position of the slider knob. Integers for numeric sliders, the exact text 
+								for text sliders.</td>
+							<td><em>0</em></td>
+							<td><em>integer</em> | <em>string</em></td>
+						</tr>
+						<tr>
+							<td><code>data-increment</code></td>
+							<td>The size of each step in the slider.</td>
+							<td><em>1</em></td>
+							<td><em>integer</em> </td>
+						</tr>
+						<tr>
+							<td><code>data-options</code></td>
+							<td>A list of comma-separated text values for the slider.</td>
+							<td><em>none</em></td>
+							<td><em>option1</em>, <em>option2</em>, ...</td>
+						</tr>																		
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Demos</h3>
+				<form>
+					<label for="toggle"><input type="checkbox" id="toggle" name="toggle"> Show inputs (for demo only)</label>
+					<label for="numbers">Choose a number between 0-100 (default)</label>
+					<input type="text" name="numbers" id="numbers" class="slider"/>				
+					<label for="custom">Choose a number between 0-50 (custom)</label>
+					<input type="text" name="custom" id="custom" class="slider" data-range="0,50" data-start="25" data-increment="5"/>			
+					<label for="feelings">How do you feel?</label>
+					<input type="text" name="feelings" id="feelings" class="slider" data-options="Horrible,Bad,Neutral,Good,Great" data-start="Neutral"/>										
+				</form>
+				<h6>Example Code</h6>
+<pre class="html">
+&lt;form&gt;
+	&lt;label for="numbers"&gt;Choose a number between 0-100 (default)&lt;/label&gt;
+	&lt;input type="text" name="numbers" id="numbers" class="slider"/&gt;				
+	&lt;label for="custom"&gt;Choose a number between 0-50 (custom)&lt;/label&gt;
+	&lt;input type="text" name="custom" id="custom" class="slider" data-range="0,50" data-start="25" data-increment="5"/&gt;			
+	&lt;label for="feelings"&gt;How do you feel?&lt;/label&gt;
+	&lt;input type="text" name="feelings" id="feelings" class="slider" data-options="Horrible,Bad,Neutral,Good,Great" data-start="Neutral"/&gt;					
+&lt;/form&gt;
+</pre>			
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
