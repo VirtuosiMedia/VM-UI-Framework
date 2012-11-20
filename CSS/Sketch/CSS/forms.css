@@ -8,8 +8,8 @@
 /**
  * Forms
  */
+form {overflow: hidden;}
 form [class*="col"] {margin-left: 0px;}
-
 label {
 	clear: both;
 	float: left;
