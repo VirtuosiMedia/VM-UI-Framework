@@ -34,6 +34,7 @@ var VMUI = new Class({
 		         {name:'PasswordToggle', source:'Form/Password/Toggle.js', selectors:'input[type=password].toggle'},
 		         {name:'PasswordMeter', source:'Form/Password/Meter.js', selectors:'input.meter'},
 		         {name:'Sliders', source:'Form/Widget/Sliders.js', selectors:'input.slider'},
+		         {name:'Autocomplete', source:'Form/Widget/Autocomplete.js', selectors:'input.autocomplete'},
 		],
 		relativePath: '../JavaScript'
 		

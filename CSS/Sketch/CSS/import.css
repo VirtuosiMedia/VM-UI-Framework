@@ -44,6 +44,7 @@
  * JavaScript Plugins
  */
 @import url('Plugins/accordion.css');
+@import url('Plugins/autocomplete.css');
 @import url('Plugins/dropdowns.css');
 @import url('Plugins/form-replacements.css');
 @import url('Plugins/form-validation.css');
