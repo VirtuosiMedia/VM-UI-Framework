@@ -60,7 +60,7 @@ var Autocomplete = new Class({
 		if (['attribute', 'ajaxCSV', 'inlineCSV'].contains(source)){
 			list = this.createListFromCSV(list, text, limit);
 		} else {
-			//list = this.filterHTMLList(list, text);
+			list = this.filterHTMLList(Elements.from(list), text);
 		}
 		return list;
 	},
@@ -80,6 +80,22 @@ var Autocomplete = new Class({
 			}).inject(list);
 		});
 		return list;
+	},
+
+	filterHTMLList: function(list, text){
+		var options = list.getElements('li');
+		var filteredOptions = [];
+		var regex = new RegExp('(' + text + ')', 'gi');
+		Array.each(options, function(option, index){
+			option = option[index];
+			console.log(option.getData('item').toLowerCase())
+			if (option.getData('item').toLowerCase().contains(text.toLowerCase())){
+				var optionText = option.getElement('.text');
+				optionText.set('html', optionText.get('html').replace(regex, "<strong>$1</strong>"));
+				filterOptions.push(option);
+			}
+		});
+		return $$(list.clone(false))[0].adopt(filteredOptions.join(''));
 	},
 	
 	updateList: function(event, input){

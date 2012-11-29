@@ -13,3 +13,13 @@
  */
 .pinContainer {height: 50em;}
 .pinContainer .pin {margin: 1.75em;}
+
+/**
+ * Autocomplete image lists
+ */
+.autocompleteList img {
+	float: left;
+	height: 1em;
+	margin: 0.375em 0.5em 0em 0em;
+	width: 1em;
+}

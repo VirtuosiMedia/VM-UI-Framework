@@ -747,7 +747,9 @@ this.fireEvent("request",[f,a]);if(c.timeout){this.timeout.delay(c.timeout,this)
 }return this.script;},success:function(b,a){if(!this.running){return;}this.clear().fireEvent("complete",b).fireEvent("success",b).callChain();},cancel:function(){if(this.running){this.clear().fireEvent("cancel");
 }return this;},isRunning:function(){return !!this.running;},clear:function(){this.running=false;if(this.script){this.script.destroy();this.script=null;
 }return this;},timeout:function(){if(this.running){this.running=false;this.fireEvent("timeout",[this.script.get("src"),this.script]).fireEvent("failure").cancel();
-}return this;}});Request.JSONP.counter=0;Request.JSONP.request_map={};
+}return this;}});Request.JSONP.counter=0;Request.JSONP.request_map={};Elements.from=function(e,d){if(d||d==null){e=e.stripScripts();}var b,c=e.match(/^\s*<(t[dhr]|tbody|tfoot|thead)/i);
+if(c){b=new Element("table");var a=c[1].toLowerCase();if(["td","th","tr"].contains(a)){b=new Element("tbody").inject(b);if(a!="tr"){b=new Element("tr").inject(b);
+}}}return(b||new Element("div")).set("html",e).getChildren();};
 
 
 /**
