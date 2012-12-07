@@ -803,7 +803,7 @@ Element.implement({
 	 * @param mixed value - The value of the data attribute
 	 */
 	setData: function(attribute, value){
-		this.set('data-'+attribute, value);
+		return this.set('data-'+attribute, value);
 	},	
 	
 	/**
