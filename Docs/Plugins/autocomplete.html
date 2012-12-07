@@ -52,7 +52,7 @@
 							<th>Description</th>
 							<th>Required</th>
 							<th>Default</th>
-							<th class="col4">Values</th>
+							<th>Values</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,7 +61,7 @@
 							<td>The source of the autocomplete list.</td>
 							<td><em>required</em></td>
 							<td><em>none</em></td>
-							<td><em>attribute</em> | <em>inlineCSV</em> | <em>inlineHTML</em> | <em>ajaxCSV</em> | <em>ajaxHTML</em></td>
+							<td><em>attribute</em>|<em>inlineCSV</em>|<em>inlineHTML</em>|<em>ajaxCSV</em>|<em>ajaxHTML</em></td>
 						</tr>
 						<tr>
 							<td><code>data-options</code></td>
@@ -73,7 +73,14 @@
 							<td><em>required</em></td>
 							<td><em>none</em></td>
 							<td><em>mixed</em></td>
-						</tr>						
+						</tr>
+						<tr>
+							<td><code>data-query</code></td>
+							<td>The URL query parameter to be used for AJAX lookups.</td>
+							<td><em>optional</em></td>
+							<td><em>q</em></td>
+							<td><em>string</em></td>
+						</tr>											
 						<tr>
 							<td><code>data-min</code></td>
 							<td>The minimum number of characters that will trigger the autocomplete lookup.</td>
@@ -87,9 +94,49 @@
 							<td><em>optional</em></td>
 							<td><em>5</em></td>
 							<td><em>integer</em></td>
-						</tr>																														
+						</tr>
+						<tr>
+							<td><code>data-prompt</code></td>
+							<td>The prompt to be shown when the input is first focused. 
+								<span class="markerInfo">Note</span> The prompt will only be show if the attribute is 
+								present.
+							</td>
+							<td><em>optional</em></td>
+							<td><em>none</em></td>
+							<td><em>string</em></td>
+						</tr>
+						<tr>
+							<td><code>data-loading</code></td>
+							<td>The prompt to be shown when the results are being loaded.</td>
+							<td><em>optional</em></td>
+							<td><em>loading</em></td>
+							<td><em>string</em></td>
+						</tr>
+						<tr>
+							<td><code>data-empty</code></td>
+							<td>The prompt to be shown when no results are found.</td>
+							<td><em>optional</em></td>
+							<td><em>No results found</em></td>
+							<td><em>string</em></td>
+						</tr>																																															
 					</tbody>
-				</table>				
+				</table>
+				<h3>Events</h3>
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Event</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>				
+						<tr>
+							<td><code>completed</code></td>
+							<td>The <em>completed</em> event is fired for the form input field when an auto-complete option 
+								has been selected from the list.</td>
+						</tr>
+					</tbody>
+				</table>		
 			</div>
 		</div>
 		<div class="row">
@@ -98,18 +145,18 @@
 				<h3>Attribute List</h3>
 				<form>
 					<label for="favorite">What's your favorite food that starts with a P?</label>
-					<input type="text" id="favorite" class="autocomplete" data-source="attribute" data-options="Pizza,Pie,Potatoes,Pork,Papaya,Pecans,Peanut Butter,Peaches,Pancakes" />
+					<input type="text" id="favorite" name="favorite" class="autocomplete" data-source="attribute" data-options="Pizza,Pie,Potatoes,Pork,Papaya,Pecans,Peanut Butter,Peaches,Pancakes" />
 				</form>
 <pre class="html">
 &lt;form&gt;
 	&lt;label for="favorite"&gt;What's your favorite food that starts with a P?&lt;/label&gt;
-	&lt;input type="text" id="favorite" class="autocomplete" data-source="attribute" data-options="Pizza,Pie,Potatoes,Pork,Papaya,Pecans,Peanut Butter,Peaches,Pancakes" /&gt;
+	&lt;input type="text" id="favorite" name="favorite" class="autocomplete" data-source="attribute" data-options="Pizza,Pie,Potatoes,Pork,Papaya,Pecans,Peanut Butter,Peaches,Pancakes" /&gt;
 &lt;/form&gt;
 </pre>			
 				<h3>Inline CSV List</h3>
 				<form>	
 					<label for="states">Name a US state</label>
-					<input type="text" id="states" class="autocomplete" data-source="inlineCSV" data-options="statesList" />
+					<input type="text" id="states" name="states" class="autocomplete" data-source="inlineCSV" data-options="statesList" data-prompt="Enter a US state" />
 				</form>
 				<div id="statesList" class="hidden">Alabama,Alaska,Arizona,Arkansas,California,Colorado,
 					Connecticut,Delaware,District of Columbia,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,
@@ -120,7 +167,7 @@
 <pre class="html">
 &lt;form&gt;	
 	&lt;label for="states"&gt;Name a US state&lt;/label&gt;
-	&lt;input type="text" id="states" class="autocomplete" data-source="inlineCSV" data-options="statesList" /&gt;
+	&lt;input type="text" id="states" name="states" class="autocomplete" data-source="inlineCSV" data-options="statesList" /&gt;
 &lt;/form&gt;
 &lt;div id="statesList" class="hidden"&gt;Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,
 	District of Columbia,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Montana,
@@ -131,7 +178,7 @@
 				<h3>Inline HTML List</h3>
 				<form>	
 					<label for="names">Pick a baby name</label>
-					<input type="text" id="names" class="autocomplete" data-source="inlineHTML" data-options="namesList" />
+					<input type="text" id="names" name="names" class="autocomplete" data-source="inlineHTML" data-options="namesList" />
 				</form>
 				<div id="namesList" class="hidden">
 					<ul class="autocompleteList">
@@ -143,7 +190,7 @@
 						<li data-item="Johanna"><img src="../Images/Smilies/smiley-7.png"/><span class="text">Johanna</span></li>
 						<li data-item="Chris"><img src="../Images/Smilies/smiley-5.png"/><span class="text">Chris</span></li>
 						<li data-item="Peter"><img src="../Images/Smilies/smiley-6.png"/><span class="text">Peter</span></li>
-						<li data-item="Susy"><img src="../Images/Smilies/smiley-5.png"/><span class="text">Suzy</span></li>
+						<li data-item="Suzy"><img src="../Images/Smilies/smiley-5.png"/><span class="text">Suzy</span></li>
 						<li data-item="Lynn"><img src="../Images/Smilies/smiley-4.png"/><span class="text">Lynn</span></li>
 						<li data-item="Jennifer"><img src="../Images/Smilies/smiley-2.png"/><span class="text">Jennifer</span></li>
 						<li data-item="Meghan"><img src="../Images/Smilies/smiley-6.png"/><span class="text">Meghan</span></li>
@@ -153,10 +200,11 @@
 						<li data-item="Angela"><img src="../Images/Smilies/smiley-7.png"/><span class="text">Angela</span></li>
 					</ul>
 				</div>
+				
 <pre class="html">
 &lt;form&gt;	
 	&lt;label for="names"&gt;Pick a baby name&lt;/label&gt;
-	&lt;input type="text" id="names" class="autocomplete" data-source="inlineHTML" data-options="namesList" /&gt;
+	&lt;input type="text" id="names" name="names" class="autocomplete" data-source="inlineHTML" data-options="namesList" /&gt;
 &lt;/form&gt;
 &lt;div id="namesList" class="hidden"&gt;
 	&lt;ul class="autocompleteList"&gt;
@@ -179,6 +227,22 @@
 	&lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+				<h3>AJAX CSV List</h3>
+				<form>	
+					<label for="states">Name a US state</label>
+					<input type="text" id="states2" name="states2" class="autocomplete" data-source="ajaxCSV" data-options="../AJAX/autocomplete-csv.html" />
+				</form>
+				<h3>AJAX HTML List</h3>
+				<form>	
+					<label for="states">Pick a baby name</label>
+					<input type="text" id="names2" name="names2" class="autocomplete" data-source="ajaxHTML" data-options="../AJAX/autocomplete-html.html" />
+				</form>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+							
 			</div>
 		</div>		
 	</div>

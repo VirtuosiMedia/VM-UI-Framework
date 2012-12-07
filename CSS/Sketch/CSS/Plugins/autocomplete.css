@@ -8,7 +8,7 @@
 /**
  * Auto-complete
  */
-.autocompleteList {
+.autocompleteList, .autocompletePrompt {
 	background: #FFF;
 	border: 0.15em solid #111;
 	border-radius: 0px 0px 4px 4px;
@@ -24,4 +24,9 @@
 .autocompleteList li:hover, .autocompleteList li.active {
 	background: #09F;
 	color: #FFF;
+}
+.autocompletePrompt {
+	color: #999;
+	margin-left: 0.05em;
+	padding: 0 1em;
 }
