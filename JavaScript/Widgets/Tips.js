@@ -12,7 +12,7 @@ var Tips = new Class({
 	Implements: [Events, Options],
 
 	/**
-	 * @param string - selectors - The selectors for the notifications
+	 * @param string - selectors - The selectors for the tips
 	 */
 	initialize: function(selectors){
 		var tips = $$(selectors);
