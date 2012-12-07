@@ -35,8 +35,12 @@
 	background: #CCC;
 	color: #222;
 }
-[class^="button"].disabled, [class^="buttonSecondary"].disabled, [class^="button"][disabled], 
-[class^="button"][disabled] {
+[class^="button"][data-state=active], [class^="buttonSecondary"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #999;
+	border-color: #777;
+}
+[class^="button"][data-state~=disabled], [class^="buttonSecondary"][data-state~=disabled], [class^="button"][disabled], 
+[class^="buttonSecondary"][disabled] {
 	background: #BBB;
 	color: #666;
 	pointer: default;
@@ -59,7 +63,11 @@
 	background: #0077AA;
 	color: #FFF;
 }
-[class^="buttonInfo"].disabled, [class^="buttonInfo"][disabled] {
+[class^="buttonInfo"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #00557D;
+	border-color: #00324A;
+}
+[class^="buttonInfo"][data-state~=disabled], [class^="buttonInfo"][disabled] {
 	background: #07A;
 	color: #0AD;
 	pointer: default;
@@ -82,7 +90,11 @@
 	background: #4D9E0C;
 	color: #FFF; 
 }
-[class^="buttonSuccess"].disabled, [class^="buttonSuccess"][disabled] {
+[class^="buttonSuccess"][data-state=active], [class^="buttonPrimary"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #336707;
+	border-color: #1D3C04;
+}
+[class^="buttonSuccess"][data-state~=disabled], [class^="buttonPrimary"][disabled] {
 	background: #4D9E0C;
 	color: #67BF17;
 	pointer: default;
@@ -105,7 +117,11 @@
 	background: #FF9900;
 	color: #FFF; 
 }
-[class^="buttonWarning"].disabled, [class^="buttonWarning"][disabled] {
+[class^="buttonWarning"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #BB7100;
+	border-color: #663E00;
+}
+[class^="buttonWarning"][data-state~=disabled], [class^="buttonWarning"][disabled] {
 	background: #FF9900;
 	color: #FEC912;
 	pointer: default;
@@ -128,7 +144,11 @@
 	background: #D50000;
 	color: #FFF; 
 }
-[class^="buttonError"].disabled, [class^="buttonError"][disabled] {
+[class^="buttonError"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #9D0000;
+	border-color: #510000;
+}
+[class^="buttonError"][data-state~=disabled], [class^="buttonError"][disabled] {
 	background: #E61111;
 	color: #F66;
 	pointer: default;
@@ -151,7 +171,11 @@
 	background: #222;
 	color: #FFF; 
 }
-[class^="buttonInverted"].disabled, [class^="buttonInverted"][disabled] {
+[class^="buttonInverted"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #000;
+	border-color: #000;
+}
+[class^="buttonInverted"][data-state~=disabled], [class^="buttonInverted"][disabled] {
 	background: #111;
 	color: #555;
 	pointer: default;
