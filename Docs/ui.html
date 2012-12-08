@@ -147,7 +147,74 @@
 					</div>
 				</div>
 			</div>
-		</div>							
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="pagination">Pagination</h2>
+			</div>
+			<p>Pagination is handled with an unordered list of links with a class of <code>pagination</code>. If there 
+				is a current item in the pagination, the <code>li</code> should be give the class of 
+				<code>active</code>.</p>
+			<div class="row">
+				<div class="col6">
+					<h4>Pagination Examples</h4>
+					<h6>Numbered Pagination</h6>
+					<ul class="pagination">
+						<li class="active">1</li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+					</ul>
+					<h6>Full Pagination</h6>
+					<ul class="pagination">
+						<li class="disabled">Latest</li>
+						<li class="disabled">Newer</li>
+						<li class="active">1</li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">Older</a></li>
+						<li><a href="#">Oldest</a></li>
+					</ul>
+					<h6>Directional Pagination</h6>
+					<ul class="pagination">
+						<li class="disabled">Newer Posts</li>
+						<li class="right"><a href="#">Older Posts</a></li>
+					</ul>														
+				</div>
+				<div class="col6">
+<pre class="html">
+&lt;!-- Numbered Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="active"&gt;1&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Full Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="disabled"&gt;Latest&lt;/li&gt;
+	&lt;li class="disabled"&gt;Newer&lt;/li&gt;
+	&lt;li class="active"&gt;1&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Older&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Oldest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Directional Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="disabled"&gt;Newer Posts&lt;/li&gt;
+	&lt;li class="right"&gt;&lt;a href="#"&gt;Older Posts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+				</div>
+			</div>
+		</div>									
 	</div>
 </body>
 </html>
