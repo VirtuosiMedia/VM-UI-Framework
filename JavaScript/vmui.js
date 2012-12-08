@@ -36,6 +36,7 @@ var VMUI = new Class({
 		         {name:'PasswordMeter', source:'Form/Password/Meter.js', selectors:'input.meter'},
 		         {name:'Sliders', source:'Form/Widget/Sliders.js', selectors:'input.slider'},
 		         {name:'Autocomplete', source:'Form/Widget/Autocomplete.js', selectors:'input.autocomplete'},
+		         {name:'Pager', source:'Layout/Pager.js', selectors:'.pager'},
 		],
 		relativePath: '../JavaScript'		
 	},

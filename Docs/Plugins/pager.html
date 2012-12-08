@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Pager</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});
+			$$('.pager').addEvent('change', function(){
+				var target = $('target');
+				target.set('text', 'New page has been loaded!').fade('show').highlight();
+				target.fade.delay(2000, target, 'out');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="../">Overview</a></li>
+						<li><a href="../examples.html">Examples</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Pager</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Overview</h3>
+
+				<h3>Usage</h3>
+
+				<h3>Options</h3>
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Option</th>
+							<th>Description</th>
+							<th>Required</th>
+							<th>Default</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>data-style</code></td>
+							<td>The style for the pagination widget.</td>
+							<td><em>optional</em></td>
+							<td><em>numeric</em></td>
+							<td><em>numeric</em>|<em>directional</em>|<em>partial</em>|<em>full</em></td>
+						</tr>																																															
+					</tbody>
+				</table>					
+				<h3>Events</h3>
+				<p>If you want to tie in additional functionality when the content changes, add a MooTools  
+					<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent">event listener</a> 
+					to the page container:</p>				
+				<table>
+					<thead>
+						<tr>
+							<th class="col2">Event</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>				
+						<tr>
+							<td><code>change</code></td>
+							<td>The <em>change</em> event is fired on the <code>.pager</code> element when a new page is 
+								revealed.</td>
+						</tr>												
+					</tbody>
+				</table>		
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Demo</h3>
+				<div class="row">
+					<div class="col8">
+						<div class="pager" data-style="full">
+							<div class="page">
+								<h6>Page 1</h6>
+								<p>In odio libero, mollis non ultrices vel, venenatis et erat. Mauris facilisis fermentum neque, 
+									quis vestibulum est pulvinar congue. In ac cursus purus. Vestibulum volutpat, quam quis 
+									molestie porta, quam mi imperdiet elit, non blandit velit nulla sit amet nunc.</p>
+							</div>
+							<div class="page">
+								<h6>Page 2</h6>
+								<p>Integer libero elit, aliquam a pharetra at, varius mattis tortor. Vivamus in urna nulla, eu 
+									ultricies felis. Maecenas dolor nisi, faucibus non accumsan vitae, condimentum nec arcu.</p>
+							</div>
+							<div class="page">
+								<h6>Page 3</h6>
+								<p>Vivamus a felis sit amet enim hendrerit luctus sed eget justo. Sed ut nisi ac orci hendrerit 
+									feugiat id vel ipsum. Nulla et fermentum diam.</p>
+							</div>
+							<div class="page">
+								<h6>Page 4</h6>
+								<p>Maecenas dolor nisi, faucibus non accumsan vitae, condimentum nec arcu. Vestibulum interdum, 
+									massa adipiscing sagittis ornare, felis dolor congue felis, sed suscipit diam lectus eu 
+									lectus. Quisque ut risus leo. Nullam posuere porta lacus sit amet sodales. Mauris eget 
+									aliquam ligula.</p>
+							</div>															
+						</div>
+					</div>
+					<div id="target" class="col4"></div>
+				</div>
+				<h6>Demo HTML</h6>
+<pre class="html">
+&lt;div class="pager" data-style="full"&gt;
+	&lt;div class="page"&gt;
+		&lt;h6&gt;Page 1&lt;/h6&gt;
+		&lt;p&gt;In odio libero, mollis non ultrices vel, venenatis et erat. Mauris facilisis fermentum neque, 
+			quis vestibulum est pulvinar congue. In ac cursus purus. Vestibulum volutpat, quam quis 
+			molestie porta, quam mi imperdiet elit, non blandit velit nulla sit amet nunc.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="page"&gt;
+		&lt;h6&gt;Page 2&lt;/h6&gt;
+		&lt;p&gt;Integer libero elit, aliquam a pharetra at, varius mattis tortor. Vivamus in urna nulla, eu 
+			ultricies felis. Maecenas dolor nisi, faucibus non accumsan vitae, condimentum nec arcu.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="page"&gt;
+		&lt;h6&gt;Page 3&lt;/h6&gt;
+		&lt;p&gt;Vivamus a felis sit amet enim hendrerit luctus sed eget justo. Sed ut nisi ac orci hendrerit 
+			feugiat id vel ipsum. Nulla et fermentum diam.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="page"&gt;
+		&lt;h6&gt;Page 4&lt;/h6&gt;
+		&lt;p&gt;Maecenas dolor nisi, faucibus non accumsan vitae, condimentum nec arcu. Vestibulum interdum, 
+			massa adipiscing sagittis ornare, felis dolor congue felis, sed suscipit diam lectus eu 
+			lectus. Quisque ut risus leo. Nullam posuere porta lacus sit amet sodales. Mauris eget 
+			aliquam ligula.&lt;/p&gt;
+	&lt;/div&gt;															
+&lt;/div&gt;
+</pre>
+				<h6>Demo JavaScript</h6>
+				<p>The following JavaScript isn't necessary to make the pager work, it's just to show how to detect the 
+					page <code>change</code> event.</p>
+<pre class="js">
+$$('.pager').addEvent('change', function(){
+	var target = $('target');
+	target.set('text', 'New page has been loaded!').fade('show').highlight();
+	target.fade.delay(2000, target, 'out');
+});
+</pre>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
