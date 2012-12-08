@@ -8,6 +8,7 @@
 /**
  * Pagination
  */
+.pager {margin-bottom: 1.75em;}
 .pagination {
 	display: block;
 	height: auto;
@@ -40,5 +41,16 @@
 	line-height: 1.1em;
 	padding: 0.2em 0.4375em;
 }
-.pagination .disabled {color: #CCC;}
+.pagination .active a, .pagination .disabled a {
+	border: none;
+	color: #000;
+	cursor: default;
+	padding: 0;
+}
+.pagination .active a:hover {background: none;}
+.pagination .disabled, .pagination .disabled:hover {
+	background: none;
+	color: #CCC;
+	cursor: default;
+}
 .pagination .right {float: right;}
