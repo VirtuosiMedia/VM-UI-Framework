@@ -16,7 +16,10 @@ var Dropdown = new Class({
 	 */
 	initialize: function(selectors){
 		this.triggers = $$(selectors);
-		this.dropdowns = $$(selectors.split(',').join('>a+*, ') + '>a+*');
+		this.dropdowns = dropdowns = [];
+		Array.each(selectors, function(dropdown){
+			dropdowns.push(dropdown.getElement('>a+*'));
+		});
 		this.setDropdowns();
 		this.setTriggers();
 	},
