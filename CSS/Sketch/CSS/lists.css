@@ -56,6 +56,7 @@ dd:last-child {
 	border-radius: 0px 0px 4px 4px;
 	margin-bottom: -0.2em;
 }
+
 /* Make ordered lists with bold, decimal numbers without adding extra markup. To get rid of bold, delete below here */ 
 ol {
 	counter-reset: item;
@@ -82,6 +83,7 @@ ol ol ol li:before {
 	counter-increment: grandchildItem;
 	left: -56px;
 }
+
 /*Tree lists*/
 .tree, .tree ul {list-style: none;}
 .tree ul li {position: relative;}
@@ -104,93 +106,138 @@ ol ol ol li:before {
 	width: 0.2em;
 }
 .tree ul li:last-child::after {height: 1em;}
-/* Node lists*/
-.node {
-	background: #FFF;
-	border: 0.2em solid #222;
-	border-radius: 4px;
-	list-style: none;
-	margin-left: 0px;
-	padding: 0 0.35em 1.75em;
-	overflow: hidden;
+
+/**
+ * Node lists will become tree lists at the mobile size
+ */
+@media (max-width: 768px) {
+	.node {
+		background: #FFF;
+		border: 0.2em solid #222;
+		border-radius: 4px;
+		list-style: none;
+		margin-left: 0px;
+		padding: 0 0.35em 1.75em;
+		overflow: hidden;
+	}
+	.node, .node ul {list-style: none;}
+	.node ul li {position: relative;}
+	.node ul li::before {
+		background: #222;
+		content: '';
+		height: 0.2em;
+		left: -1.5em;
+		position: absolute;
+		top: 0.9em;
+		width: 1em;
+	}
+	.node ul li::after {
+		background: #222;
+		content: '';
+		height: 100%;
+		left: -1.5em;
+		position: absolute;
+		top: 0;
+		width: 0.2em;
+	}
+	.node ul li:last-child::after {height: 1em;}
+	.node li span+span::before {
+		content: ', ';
+		display: block;
+	}	
 }
-.node li {
-	float: left;
-	margin-right: 20px;
-	position: relative;
-	text-align: center;
+
+/**
+ * Node lists for anything larger than mobile
+ */
+@media (min-width: 768px) {
+	.node {
+		background: #FFF;
+		border: 0.2em solid #222;
+		border-radius: 4px;
+		list-style: none;
+		margin-left: 0px;
+		padding: 0 0.35em 1.75em;
+		overflow: hidden;
+	}
+	.node li {
+		float: left;
+		margin-right: 20px;
+		position: relative;
+		text-align: center;
+	}
+	.node > li {margin-top: 1.75em;}
+	.node li:last-child {margin-right: 0px;}
+	.node li:only-child {width: 100%;}
+	.node li:only-child span {width: auto;}
+	.node li:only-child::after {
+		background: #FFF;
+		content: '';
+		display: block;
+		height: 1.75em;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 900;
+	}
+	.node li:first-child::before {
+		background: #FFF;
+		content: '';
+		display: block;
+		height: 1.75em;
+		position: absolute;
+		top: 0;
+		width: 50%;
+		z-index: 900;
+	}
+	.node li span {
+		background: #FFF;
+		border: 0.1em solid #222;
+		border-radius: 4px;
+		display: inline-block;
+		left: 0px;
+		padding: 0 0.5em;
+		position: relative;
+		z-index: 1000;
+	}
+	.node li span+span {margin-left: 20px;}
+	.node li span+span::before {
+		background: #222;
+		content: '';
+		display: block;
+		height: 2px;
+		left: -21px;
+		top: 0.9em;
+		position: absolute;
+		width: 20px;
+		z-index: 110000;
+	}
+	.node ul {
+		display: block;
+		list-style: none;
+		margin: 1.75em 0 0;
+		position: relative;
+		width: 100%;
+	}
+	.node ul:after {
+		background: #222;
+		content: '';
+		display: block;
+		height: 3.5em;
+		left: 50%;
+		position: absolute;
+		top: -2.65em;
+		width: 2px;
+	}
+	.node ul::before {
+		background: #222;
+		content: '';
+		display: block;
+		height: 2px;
+		position: absolute;
+		left: 0;
+		top: .8em;
+		width: 100%;
+	}
+	.node li span:hover, .node li span:hover ~ ul li span {background: #EEE;}
 }
-.node > li {margin-top: 1.75em;}
-.node li:last-child {margin-right: 0px;}
-.node li:only-child {width: 100%;}
-.node li:only-child span {width: auto;}
-.node li:only-child::after {
-	background: #FFF;
-	content: '';
-	display: block;
-	height: 1.75em;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 900;
-}
-.node li:first-child::before {
-	background: #FFF;
-	content: '';
-	display: block;
-	height: 1.75em;
-	position: absolute;
-	top: 0;
-	width: 50%;
-	z-index: 900;
-}
-.node li span {
-	background: #FFF;
-	border: 0.1em solid #222;
-	border-radius: 4px;
-	display: inline-block;
-	left: 0px;
-	padding: 0 0.5em;
-	position: relative;
-	z-index: 1000;
-}
-.node li span+span {margin-left: 20px;}
-.node li span+span::before {
-	background: #222;
-	content: '';
-	display: block;
-	height: 2px;
-	left: -21px;
-	top: 0.9em;
-	position: absolute;
-	width: 20px;
-	z-index: 110000;
-}
-.node ul {
-	display: block;
-	list-style: none;
-	margin: 1.75em 0 0;
-	position: relative;
-	width: 100%;
-}
-.node ul:after {
-	background: #222;
-	content: '';
-	display: block;
-	height: 3.5em;
-	left: 50%;
-	position: absolute;
-	top: -2.65em;
-	width: 2px;
-}
-.node ul::before {
-	background: #222;
-	content: '';
-	display: block;
-	height: 2px;
-	position: absolute;
-	left: 0;
-	top: .8em;
-	width: 100%;
-}
-.node li span:hover, .node li span:hover ~ ul li span {background: #EEE;}
