@@ -118,3 +118,11 @@
 	.col11 {width: 1070px;}
 	.col12 {width: 1170px;}
 }
+
+.firstCol {
+	clear: both;
+	margin-left: 0;
+}
+@media (max-width: 768px) {
+	.firstCol {clear: none;}
+}
