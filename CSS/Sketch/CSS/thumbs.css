@@ -17,3 +17,11 @@
 	margin-bottom: 10px;
 }
 .thumbs li:first-child {margin-left: 0;}
+
+@media (max-width: 768px) {
+	.thumbs li {width: 47%;}
+	.thumbs li:nth-child(odd) {
+		clear: both;
+		margin-right: 6%;
+	}
+}
