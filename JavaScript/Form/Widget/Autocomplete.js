@@ -80,6 +80,7 @@ var Autocomplete = new Class({
 		var list = input.getData('options');
 		var text = input.get('value').trim();
 		var limit = (input.hasData('limit')) ? input.getData('limit').toInt() : 5;
+		var sort = (input.hasData('sort')) ? (input.getData('sort') === 'true') : true;
 
 		if (['inlineHTML', 'inlineCSV'].contains(source)){
 			list = $(list).get('html');
@@ -88,9 +89,9 @@ var Autocomplete = new Class({
 		}
 		
 		if (['attribute', 'ajaxCSV', 'inlineCSV'].contains(source)){
-			list = this.createListFromCSV(list, text, limit);
+			list = this.createListFromCSV(list, text, limit, sort);
 		} else {
-			list = this.filterHTMLList(Elements.from(list), text, limit);
+			list = this.filterHTMLList(Elements.from(list), text, limit, sort);
 		}
 		return list;
 	},
@@ -110,10 +111,12 @@ var Autocomplete = new Class({
 		return this.list;
 	},
 	
-	createListFromCSV: function(values, text, limit){
+	createListFromCSV: function(values, text, limit, sort){
 		values = values.split(',').filter(function(value){
 			return value.toLowerCase().contains(text.toLowerCase());
-		}).sort().slice(0, limit);
+		});
+		if (sort) {values.sort();}
+		values.slice(0, limit);
 		var list = new Element('ul', {'class': 'autocompleteList'});
 				
 		Array.each(values, function(value){
@@ -128,11 +131,12 @@ var Autocomplete = new Class({
 		return list;
 	},
 
-	filterHTMLList: function(list, text, limit){
+	filterHTMLList: function(list, text, limit, sort){
 		var options = list.getElements('li')[0];
 		var filteredOptions = [], filteredText = {};
 		text = text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 		var regex = new RegExp('(' + text + ')', 'gi');
+		
 		Array.each(options, function(option, index){
 			option = $$(options[index])[0];
 			if (option.getData('item').toLowerCase().contains(text.toLowerCase())){
@@ -141,8 +145,8 @@ var Autocomplete = new Class({
 				filteredOptions.push(option);
 			}
 		});
-		
-		filteredOptions = this.sortHTMLListItems(filteredOptions).slice(0, limit);
+
+		filteredOptions = (sort) ? this.sortHTMLListItems(filteredOptions).slice(0, limit) : filteredOptions.slice(0, limit);
 		list = new Element('ul', {'class': 'autocompleteList'});
 		
 		return list.adopt(filteredOptions);
