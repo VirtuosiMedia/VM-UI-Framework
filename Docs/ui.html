@@ -220,6 +220,33 @@
 		<div class="row">
 			<div class="col12">
 				<h2 class="title" id="thumbs">Thumbnails</h2>
+				<p>Responsive thumbnail galleries are simple to implement. Just create an unordered list and give it a 
+					class of <code>thumbs</code>. Each list element should receive a column class to give it a width: 
+					<code>col1</code>, <code>col2</code>, etc. When a row's widths add up to the grid-width (12), the 
+					next column <code>li</code> should be given a class of <code>firstCol</code> so that it will clear 
+					the the previous row.</p>
+				<p><span class="markerInfo">Note</span> For mobile-sized devices, the thumbnails will automatically 
+					appear in rows of two.</p>
+				<h6>Code</h6>
+<pre class="html">
+&lt;ul class="thumbs"&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-1-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-2-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-3-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-4-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-5-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-6-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2 firstCol"&gt;&lt;img src="Images/Gallery/rome-7-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-8-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-9-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-10-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-1-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-2-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2 firstCol"&gt;&lt;img src="Images/Gallery/thailand-3-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-4-thumb.jpg"/&gt;&lt;/li&gt;					
+&lt;/ul&gt;
+</pre>			
+				<h6>Demo</h6> 
 				<ul class="thumbs">
 					<li class="col2"><img src="Images/Gallery/rome-1-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-2-thumb.jpg"/></li>
@@ -227,13 +254,13 @@
 					<li class="col2"><img src="Images/Gallery/rome-4-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-5-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-6-thumb.jpg"/></li>
-					<li class="col2"><img src="Images/Gallery/rome-7-thumb.jpg"/></li>
+					<li class="col2 firstCol"><img src="Images/Gallery/rome-7-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-8-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-9-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/rome-10-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/thailand-1-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/thailand-2-thumb.jpg"/></li>
-					<li class="col2"><img src="Images/Gallery/thailand-3-thumb.jpg"/></li>
+					<li class="col2 firstCol"><img src="Images/Gallery/thailand-3-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/thailand-4-thumb.jpg"/></li>					
 				</ul>
 			</div>
