@@ -8,16 +8,16 @@
 /**
  * Buttons
  */
-[class^="button"] {
+[class*="button"] {
 	border: 0.1em solid #999;
 	border-radius: 2px;
 	margin-left: 1px;
 	padding: 0em 0.5em;
 	text-decoration: none;
 }
-[class^="button"]:hover, [class^="button"]:visited {color: #FFF;}
-.button, .button:visited, [class^="button"], [class^="buttonSecondary"], .buttonMedium:visited, .buttonLarge:visited, 
-[class^="buttonSecondary"]:visited {
+[class*="button"]:hover, [class*="button"]:visited {color: #FFF;}
+.button, .button:visited, [class*="button"], [class*="buttonSecondary"], .buttonMedium:visited, .buttonLarge:visited, 
+[class*="buttonSecondary"]:visited {
 	background: #EEE; 
 	background: -moz-linear-gradient(top, #EEEEEE 0%, #BBBBBB 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#BBBBBB)); 
@@ -31,21 +31,21 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB',GradientType=0);
 	text-shadow: 1px 1px 1px #FFF;
 }
-.button:hover, [class^="button"]:hover, [class^="buttonSecondary"]:hover {
+.button:hover, [class*="button"]:hover, [class*="buttonSecondary"]:hover {
 	background: #CCC;
 	color: #222;
 }
-[class^="button"][data-state=active], [class^="buttonSecondary"][data-state=active]{
+[class*="button"][data-state=active], [class*="buttonSecondary"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #999;
 	border-color: #777;
 }
-[class^="button"][data-state~=disabled], [class^="buttonSecondary"][data-state~=disabled], [class^="button"][disabled], 
-[class^="buttonSecondary"][disabled] {
+[class*="button"][data-state~=disabled], [class*="buttonSecondary"][data-state~=disabled], [class*="button"][disabled], 
+[class*="buttonSecondary"][disabled] {
 	background: #BBB;
 	color: #666;
 	pointer: default;
 }
-[class^="buttonInfo"] {
+[class*="buttonInfo"] {
 	background: #09C; 
 	background: -moz-linear-gradient(top, #0099CC 0%, #006699 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0099CC), color-stop(100%,#006699)); 
@@ -59,20 +59,20 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#006699',GradientType=0);
 	text-shadow: -1px -1px 1px #069;
 }
-[class^="buttonInfo"]:hover {
+[class*="buttonInfo"]:hover {
 	background: #0077AA;
 	color: #FFF;
 }
-[class^="buttonInfo"][data-state=active]{
+[class*="buttonInfo"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #00557D;
 	border-color: #00324A;
 }
-[class^="buttonInfo"][data-state~=disabled], [class^="buttonInfo"][disabled] {
+[class*="buttonInfo"][data-state~=disabled], [class*="buttonInfo"][disabled] {
 	background: #07A;
 	color: #0AD;
 	pointer: default;
 }
-[class^="buttonSuccess"], [class^="buttonPrimary"] {
+[class*="buttonSuccess"], [class*="buttonPrimary"] {
 	background: #56AF08; 
 	background: -moz-linear-gradient(top, #56AF08 0%, #4D9E0C 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#56AF08), color-stop(100%,#4D9E0C)); 
@@ -86,20 +86,20 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56AF08', endColorstr='#4D9E0C',GradientType=0);
 	text-shadow: -1px -1px 1px #235003; 
 }
-[class^="buttonSuccess"]:hover, [class^="buttonPrimary"]:hover {
+[class*="buttonSuccess"]:hover, [class*="buttonPrimary"]:hover {
 	background: #4D9E0C;
 	color: #FFF; 
 }
-[class^="buttonSuccess"][data-state=active], [class^="buttonPrimary"][data-state=active]{
+[class*="buttonSuccess"][data-state=active], [class*="buttonPrimary"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #336707;
 	border-color: #1D3C04;
 }
-[class^="buttonSuccess"][data-state~=disabled], [class^="buttonPrimary"][disabled] {
+[class*="buttonSuccess"][data-state~=disabled], [class*="buttonPrimary"][disabled] {
 	background: #4D9E0C;
 	color: #67BF17;
 	pointer: default;
 }
-[class^="buttonWarning"] {
+[class*="buttonWarning"] {
 	background: #FEC912; 
 	background: -moz-linear-gradient(top, #FFB111 0%, #FF9900 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFB111), color-stop(100%,#FF9900)); 
@@ -113,20 +113,20 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB111', endColorstr='#FF9900',GradientType=0);
 	text-shadow: -1px -1px 1px #F49300; 
 }
-[class^="buttonWarning"]:hover {
+[class*="buttonWarning"]:hover {
 	background: #FF9900;
 	color: #FFF; 
 }
-[class^="buttonWarning"][data-state=active]{
+[class*="buttonWarning"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #BB7100;
 	border-color: #663E00;
 }
-[class^="buttonWarning"][data-state~=disabled], [class^="buttonWarning"][disabled] {
+[class*="buttonWarning"][data-state~=disabled], [class*="buttonWarning"][disabled] {
 	background: #FF9900;
 	color: #FEC912;
 	pointer: default;
 }
-[class^="buttonError"] {
+[class*="buttonError"] {
 	background: #FB0000; 
 	background: -moz-linear-gradient(top, #FB0000 0%, #D50000 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FB0000), color-stop(100%,#D50000)); 
@@ -140,20 +140,20 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FB0000', endColorstr='#D50000',GradientType=0);
 	text-shadow: -1px -1px 1px #CE0000; 
 }
-[class^="buttonError"]:hover {
+[class*="buttonError"]:hover {
 	background: #D50000;
 	color: #FFF; 
 }
-[class^="buttonError"][data-state=active]{
+[class*="buttonError"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #9D0000;
 	border-color: #510000;
 }
-[class^="buttonError"][data-state~=disabled], [class^="buttonError"][disabled] {
+[class*="buttonError"][data-state~=disabled], [class*="buttonError"][disabled] {
 	background: #E61111;
 	color: #F66;
 	pointer: default;
 }
-[class^="buttonInverted"] {
+[class*="buttonInverted"] {
 	background: #333; 
 	background: -moz-linear-gradient(top, #333333 0%, #111111 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#111111)); 
@@ -167,31 +167,31 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#111111',GradientType=0);
 	text-shadow: -1px -1px 1px #000; 
 }
-[class^="buttonInverted"]:hover {
+[class*="buttonInverted"]:hover {
 	background: #222;
 	color: #FFF; 
 }
-[class^="buttonInverted"][data-state=active]{
+[class*="buttonInverted"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #000;
 	border-color: #000;
 }
-[class^="buttonInverted"][data-state~=disabled], [class^="buttonInverted"][disabled] {
+[class*="buttonInverted"][data-state~=disabled], [class*="buttonInverted"][disabled] {
 	background: #111;
 	color: #555;
 	pointer: default;
 }
-[class^="button"][class$="Medium"] {
+[class*="button"][class$="Medium"] {
 	display: inline-block;
 	height: 1.75em;
 	margin: 1.70em 0em 1.70em 0.1em;
 }
-[class^="button"][class$="Large"] {
+[class*="button"][class$="Large"] {
 	display: inline-block;
 	height: 2.25em;
 	line-height: 2.2em;
 	margin: 1.45em 0em 1.45em 0.1em;
 }
-[class^="button"][class$="Multi"] {
+[class*="button"][class$="Multi"] {
 	display: inline-block;
 	height: 4em;
 	line-height: 2.2em;
@@ -199,7 +199,7 @@
 	overflow: hidden;
 	padding: 0em 1em;
 }
-[class^="button"][class$="Multi"] span:first-child {
+[class*="button"][class$="Multi"] span:first-child {
 	float: left;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -208,7 +208,7 @@
 	text-align: center;
 	width: 100%;	
 }
-[class^="button"][class$="Multi"] span:last-child {
+[class*="button"][class$="Multi"] span:last-child {
 	clear: left;
 	float: left;
 	height: 1em;
@@ -230,6 +230,6 @@ body .row ul.buttonGroup {
 	float: left;
 	margin-right: 0px;
 }
-.buttonGroup [class^="button"] {border-radius: 0px;}
-.buttonGroup li:first-child [class^="button"] {border-radius: 2px 0px 0px 2px;}
-.buttonGroup li:last-child [class^="button"] {border-radius: 0px 2px 2px 0px;}
+.buttonGroup [class*="button"] {border-radius: 0px;}
+.buttonGroup li:first-child [class*="button"] {border-radius: 2px 0px 0px 2px;}
+.buttonGroup li:last-child [class*="button"] {border-radius: 0px 2px 2px 0px;}
