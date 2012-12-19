@@ -29,7 +29,7 @@ var Loader = this.Loader = new Class({
         this.setOptions(options);
         this.stylesheets = {};
         this.scripts     = {};
-        
+
         // Figure out path based on script location of Lighter.js or option passed in.
         $$('head script').each(function(el) {
             var script = el.src.split('?', 1),
@@ -85,7 +85,7 @@ var Loader = this.Loader = new Class({
             src:  this.options.scripts + fileName,
             type: 'text/javascript'
         });
-        
+     
         script.addEvents({
             load:  onLoad,
             error: onError,

@@ -97,7 +97,7 @@ var Lighter = this.Lighter = new Class({
      */
     light: function (codeblock, container)
     {
-        var codeblock = document.id(codeblock),
+    	var codeblock = document.id(codeblock),
             container = document.id(container),
             lighter   = codeblock.retrieve('lighter'),
             code      = this.getCode(codeblock),
@@ -116,10 +116,8 @@ var Lighter = this.Lighter = new Class({
             lighter.setStyle('display', 'inherit');
             return this;
         }
-
         // Load fuel/flame to and build lighter when ready.
-        this.loader.loadFuel(fuelType, function() {
-            
+        this.loader.loadFuel(fuelType, function() {       
         	var fuel = new Fuel[fuelType]({});
          
             var wicks   = this.parser.parse(fuel, code),

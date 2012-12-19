@@ -116,9 +116,17 @@ var VMUI = new Class({
 			compiler: new Compiler.List(),
 			mode: 'ol'
 		});
-		
+
 		$$(selectors).each(function(el) {
 			lighter.light(el);
+			
+			//This fixes a bug in IE that creates duplicate codeblocks
+			if (Browser.ie){
+				var fixIEBug = function(){
+					el.getNext().dispose();
+				};
+				fixIEBug.delay(50)
+			}
 		});	
 	}
 });

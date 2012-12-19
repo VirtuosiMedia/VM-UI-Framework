@@ -15,6 +15,7 @@ requires:
 provides: [Parser]
 ...
 */
+
 (function(){
 
 var Parser = this.Parser = new Class({
