@@ -51,7 +51,7 @@ var Tips = new Class({
 	},
 	
 	removeTip: function(tip){
-		var tooltip = $$('[class$=Container]');
+		var tooltip = $$('[class*=tip][class$=Container]');
 		if (tooltip){
 			var transition = (tip.getData('transition') == 'fade') ? 'out' : 'hide';
 			tooltip.fade(transition).dispose.delay(500, tooltip);
