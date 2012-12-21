@@ -40,3 +40,17 @@
 	background: #111;
 	color: #09C;
 }
+
+/**
+ * Hide the menus by default for smartphones and tablets
+ */
+@media (max-width: 768px) {
+	.navbarContainer {height: auto;}
+	.navbarContainer .container {width: 100%;}
+	.navbarContainer ul {width: 100%;}
+	.navbarContainer ul>li {
+		clear: left;
+		text-indent: 0.15em;
+		width: 100%;
+	}
+}

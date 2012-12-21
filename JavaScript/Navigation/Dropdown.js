@@ -52,11 +52,12 @@ var Dropdown = new Class({
 	},
 	
 	show: function(index){
-		this.dropdowns[index].setStyle('margin-top', 0).morph({height: null, opacity: 1});
+		var position = ((window.getSize().x < 768) && (!this.dropdowns[index].getPrevious('[class*=button]'))) ? 'relative' : 'absolute';
+		this.dropdowns[index].setStyles({'margin-top': 0, position: position}).morph({height: null, opacity: 1});
 	},
 	
 	hide: function(index){
-		this.dropdowns[index].setStyle('margin-top', -5000).morph({height: 0, opacity: 0});
+		this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute'}).morph({height: 0, opacity: 0});
 	},
 	
 	toggle: function(index){

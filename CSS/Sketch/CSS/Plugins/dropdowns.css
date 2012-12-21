@@ -66,6 +66,16 @@ span.dropdown {
 	padding-top: 1.75em;	
 	z-index: 10000;
 }
+
+@media (max-width: 768px) {
+	.navbarContainer .dropdown ul {width: 100%;}
+	.navbarContainer .megaDropdown>div {
+		margin-left: -50%;
+		position: relative;
+		width: 100%;
+	}
+	.navbarContainer .megaDropdown>div>[class*="col"] {margin-left: 10px;}
+}
 @media (min-width: 768px) and (max-width: 980px) {
 	.megaDropdown>div {
 		margin-left: -362px;
