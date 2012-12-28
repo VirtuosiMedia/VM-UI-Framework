@@ -12,30 +12,34 @@ var Accordion = new Class({
 	Implements: [Events, Options],
 
 	/**
-	 * @param string - selectors - The selectors for the notifications
+	 * @param string - selectors - The selectors for the accordions
 	 */
 	initialize: function(selectors){
-		this.togglers = $$(selectors + '>li>a');
-		this.elements = $$(selectors + '>li>a+*');
-		this.slides = {};
-		this.setSlides();
-		this.setTogglers();
+		var self = this;
+		this.slides = [], this.togglers = [], this.elements = [];
+		Array.each(selectors, function(accordion, index){
+			self.togglers[index] = accordion.getChildren('li').getChildren('a').flatten();
+			self.elements[index] = accordion.getChildren('li').getChildren('a+*').flatten();
+			self.slides[index] = {};
+			self.setSlides(index);
+			self.setTogglers(index);
+		});
 	},
 		
-	setSlides: function(){
-		this.elements.each(function(item, index){
-			this.slides[index] = new Fx.Slide(item, {'mode':'vertical'});
+	setSlides: function(accordionIndex){
+		this.elements[accordionIndex].each(function(item, index){
+			this.slides[accordionIndex][index] = new Fx.Slide(item, {'mode':'vertical'});
 		}.bind(this));
 	},
 
-	setTogglers: function(){
-		this.togglers.each(function(toggler, index){
+	setTogglers: function(accordionIndex){
+		this.togglers[accordionIndex].each(function(toggler, index){
 			if (!toggler.getParent('li').hasClass('active')){
-				this.slides[index].hide();
+				this.slides[accordionIndex][index].hide();
 			}
 			toggler.addEvent('click', function(e){
 				e.stop();
-				this.slides[index].toggle();
+				this.slides[accordionIndex][index].toggle();
 			}.bind(this));
 		}.bind(this));	
 	}
