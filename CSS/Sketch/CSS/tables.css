@@ -35,3 +35,22 @@ tbody tr {
    	-webkit-transition: all .2s linear;	
 }
 tbody tr:hover {background: #F2F2F2;}
+.stripedTable tr:nth-child(2n) {background: #F2F2F2;}
+.stripedTable tr:nth-child(2n):hover {background: #CCC;}
+.borderedTable thead td {
+	border-bottom: 1px solid #AAA;
+	border-right: 1px solid #AAA;
+}
+.borderedTable thead tr td:last-child {border-right: none;}
+.borderedTable tbody td {
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+}
+.stripedTable.borderedTable tbody tr:nth-child(2n):hover td {
+	border-bottom: 1px solid #999;
+	border-right: 1px solid #999;
+}
+.borderedTable tbody tr td:last-child, .stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {
+	border-right: none;
+}
+.borderedTable tbody tr:last-child td, .borderedTable tbody tr:nth-child(2n):last-child:hover td {border-bottom: none;}
