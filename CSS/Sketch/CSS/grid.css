@@ -40,7 +40,7 @@
 		margin-bottom: 20px;		
 		width: 100%;
 	}
-	body div[class^="notice"], body table {width: 97.4%;}
+	body div[class^="notice"] {width: 97.4%;}
 	[class*="offset"] {margin: 0;}
 }
 
