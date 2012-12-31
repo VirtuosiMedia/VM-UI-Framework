@@ -167,8 +167,8 @@ var PasswordMeter = new Class({
 		var containerId = meter.get('name') + 'Container';
 		if (!$(containerId)){
 			var msg = new Element('span', {'class': 'message', text: message});
-			var progressBar = new Element('span', {'class': 'progressBar ' + meterClass, styles: {width: percent + '%'}});
-			var progressContainer = new Element('span', {'class': 'progressContainer'}).adopt(progressBar);
+			var progressBar = new Element('span', {'class': 'passwordBar ' + meterClass, styles: {width: percent + '%'}});
+			var progressContainer = new Element('span', {'class': 'passwordContainer'}).adopt(progressBar);
 			var container = new Element('div', {
 				id: containerId, 
 				'class': 'passwordMeter'
@@ -176,7 +176,7 @@ var PasswordMeter = new Class({
 		} else {
 			var meterContainer = $(containerId);
 			meterContainer.getElement('.message').set('text', message);
-			meterContainer.getElement('.progressBar').set('class', 'progressBar ' + meterClass).set('morph', {
+			meterContainer.getElement('.passwordBar').set('class', 'passwordBar ' + meterClass).set('morph', {
 				duration: 250,
 				unit: '%'
 			}).morph({width: percent + '%'});
