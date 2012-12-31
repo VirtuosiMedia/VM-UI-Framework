@@ -14,3 +14,31 @@ body .skipBottom {margin-bottom: 0;}
 .topMargin {margin-top: 1.75em;}
 .bottomMargin {margin-bottom: 1.75em;}
 .hidden {display: none;}
+
+/**
+ * Smartphones and tablets
+ */
+@media (max-width: 767px) {
+	.hideMobile, .showTablet, .showSmallDesktop, .showLargeDesktop {display: none;}
+}
+
+/**
+ * Tablets
+ */
+@media (min-width: 768px) and (max-width: 980px) {
+	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none;}			
+}
+
+/**
+ * Small Desktops
+ */
+@media (min-width: 981px) and (max-width: 1200px) {
+	.showMobile, .showTablet, .hideSmallDesktop, .showLargeDesktop {display: none;}		
+}
+
+/**
+ * Large Desktops
+ */
+@media (min-width: 1201px) {
+	.showMobile, .showTablet, .showSmallDesktop, .hideLargeDesktop {display: none;}			
+}

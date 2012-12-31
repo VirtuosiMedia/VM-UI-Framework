@@ -268,11 +268,33 @@
 			</div>			
 		</div>
 		<div class="row" id="selective-display">
+			<div class="col12">
+				<h2 class="title">Selective Display</h2>
+			</div>
+		</div>		
+		<div class="row">
 			<div class="col4">
-				<h3>Selective Display</h3>
 				<p>It certain cases, you may wish to show or hide different content at different screen sizes. To do so,
-					add one of the selective display classes to any element. The table shows the break points and also 
-					serves as a demo.</p>
+					add one of the selective display classes to any element. The table shows the break points.</p>
+				<h6>Demo</h6>
+				<ul>
+					<li>Mobile Screens: 
+						<span class="successMarker showMobile">Show This</span> 
+						<span class="marker hideMobile">Hide This</span>
+					</li>
+					<li>Tablets: 
+						<span class="successMarker showTablet">Show This</span> 
+						<span class="marker hideTablet">Hide This</span>
+					</li>
+					<li>Small Desktops: 
+						<span class="successMarker showSmallDesktop">Show This</span> 
+						<span class="marker hideSmallDesktop">Hide This</span>
+					</li>
+					<li>Large Desktops: 
+						<span class="successMarker showLargeDesktop">Show This</span> 
+						<span class="marker hideLargeDesktop">Hide This</span>
+					</li>
+				</ul>					
 			</div>
 			<div class="col8">
 				<table class="columnTable borderedTable">
@@ -292,68 +314,62 @@
 					<tbody>
 						<tr>
 							<td data-column="Class"><code>showMobile</code></td>
-							<td data-column="0-767px">Yes</td>
-							<td data-column="768-980px">No</td>
-							<td data-column="981-1200px">No</td>
-							<td data-column="1201px+">No</td>
+							<td data-column="0-767px" class="successCell">Yes</td>
+							<td data-column="768-980px" class="disabledCell">No</td>
+							<td data-column="981-1200px" class="disabledCell">No</td>
+							<td data-column="1201px+" class="disabledCell">No</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>hideMobile</code></td>
-							<td data-column="0-767px">No</td>
-							<td data-column="768-980px">Yes</td>
-							<td data-column="981-1200px">Yes</td>
-							<td data-column="1201px+">Yes</td>
+							<td data-column="0-767px" class="disabledCell">No</td>
+							<td data-column="768-980px" class="successCell">Yes</td>
+							<td data-column="981-1200px" class="successCell">Yes</td>
+							<td data-column="1201px+" class="successCell">Yes</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>showTablet</code></td>
-							<td data-column="0-767px">No</td>
-							<td data-column="768-980px">Yes</td>
-							<td data-column="981-1200px">No</td>
-							<td data-column="1201px+">No</td>
+							<td data-column="0-767px" class="disabledCell">No</td>
+							<td data-column="768-980px" class="successCell">Yes</td>
+							<td data-column="981-1200px" class="disabledCell">No</td>
+							<td data-column="1201px+" class="disabledCell">No</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>hideTablet</code></td>
-							<td data-column="0-767px">Yes</td>
-							<td data-column="768-980px">No</td>
-							<td data-column="981-1200px">Yes</td>
-							<td data-column="1201px+">Yes</td>
+							<td data-column="0-767px" class="successCell">Yes</td>
+							<td data-column="768-980px" class="disabledCell">No</td>
+							<td data-column="981-1200px" class="successCell">Yes</td>
+							<td data-column="1201px+" class="successCell">Yes</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>showSmallDesktop</code></td>
-							<td data-column="0-767px">No</td>
-							<td data-column="768-980px">No</td>
-							<td data-column="981-1200px">Yes</td>
-							<td data-column="1201px+">No</td>
+							<td data-column="0-767px" class="disabledCell">No</td>
+							<td data-column="768-980px" class="disabledCell">No</td>
+							<td data-column="981-1200px" class="successCell">Yes</td>
+							<td data-column="1201px+" class="disabledCell">No</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>hideSmallDesktop</code></td>
-							<td data-column="0-767px">Yes</td>
-							<td data-column="768-980px">Yes</td>
-							<td data-column="981-1200px">No</td>
-							<td data-column="1201px+">Yes</td>
+							<td data-column="0-767px" class="successCell">Yes</td>
+							<td data-column="768-980px" class="successCell">Yes</td>
+							<td data-column="981-1200px" class="disabledCell">No</td>
+							<td data-column="1201px+" class="successCell">Yes</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>showLargeDesktop</code></td>
-							<td data-column="0-767px">No</td>
-							<td data-column="768-980px">No</td>
-							<td data-column="981-1200px">No</td>
-							<td data-column="1201px+">Yes</td>
+							<td data-column="0-767px" class="disabledCell">No</td>
+							<td data-column="768-980px" class="disabledCell">No</td>
+							<td data-column="981-1200px" class="disabledCell">No</td>
+							<td data-column="1201px+" class="successCell">Yes</td>
 						</tr>
 						<tr>
 							<td data-column="Class"><code>hideLargeDesktop</code></td>
-							<td data-column="0-767px">Yes</td>
-							<td data-column="768-980px">Yes</td>
-							<td data-column="981-1200px">Yes</td>
-							<td data-column="1201px+">No</td>
+							<td data-column="0-767px" class="successCell">Yes</td>
+							<td data-column="768-980px" class="successCell">Yes</td>
+							<td data-column="981-1200px" class="successCell">Yes</td>
+							<td data-column="1201px+" class="disabledCell">No</td>
 						</tr>																													
 					</tbody>
 				</table>
-				<ul>
-					<li><a class="button showMobile">Show Mobile</a> <a class="button hideMobile">Hide Mobile</a></li>
-					<li><a class="button showTablet">Show Tablet</a> <a class="button hideTablet">Hide Tablet</a></li>
-					<li><a class="button showSmallDesktop">Show Small Desktop</a> <a class="button hideSmallDesktop">Hide Small Desktop</a></li>
-					<li><a class="button showLargeDesktop">Show Large Desktop</a> <a class="button hideLargeDesktop">Hide Large Desktop</a></li>
-				</ul>
 			</div>
 		</div>					
 	</div>
