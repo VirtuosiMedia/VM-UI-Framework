@@ -8,18 +8,15 @@
 /**
  * Markers
  */
-span[class^="marker"] {
+span.marker, span[class*="Marker"] {
 	background: #999;
 	border-radius: 4px;
 	color: #FFF;
 	font-size: 0.875em;
-	font-variant: small-caps;
-	font-weight: bold;
-	line-height: 0.8em;
-	padding: 0.0em 0.375em 0.2em;
+	padding: 0.1em 0.375em 0.1em;
 	vertical-align: 10%;
 }
-span.markerInfo {background: #069;}
-span.markerSuccess {background: #4D9E0C;}
-span.markerWarning {background: #FB9702;}
-span.markerError {background: #FF6A6A;}
+span.infoMarker {background: #069;}
+span.successMarker {background: #4D9E0C;}
+span.warningMarker {background: #FB9702;}
+span.errorMarker {background: #FF6A6A;}

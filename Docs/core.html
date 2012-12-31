@@ -533,7 +533,81 @@ p {
 				<p>Adding a <code>borderedTable</code> class to the <code>&lt;table&gt;</code> element will produce a 
 					table with borders around each cell.</p>
 			</div>
-		</div>				
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Responsive Tables</h3>
+				<p>Because each table is different, tables can be difficult to make responsive. There is no 
+					"one-size-fits-all" approach because the data that needs to be displayed from table to table varies 
+					so much. In recognition of this design dilemma, VM UI Framework provides several different 
+					approaches to making tables responsive.</p>
+				<div class="row">
+					<div class="col4">
+						<h6>Column Tables</h6>
+						<p>In cases where it's necessary to display all of the data in a wide table, you can add the 
+							class <code>columnTable</code> to the <code>table</code> element. Then, for each 
+							<code>td</code> element in the <code>tbody</code>, add a data-attribute of 
+							<code>data-column</code> with the column's name as the value. For mobile-sized screens, 
+							each row in the table will collapse into a single column, with each cell value preceded by 
+							the column name. (Chris Coyier gets the credit for this 
+							<a href="http://css-tricks.com/responsive-data-tables/">technique</a>).</p>
+					</div>
+					<div class="col8">
+						<table class="borderedTable stripedTable columnTable">
+							<caption>Users Table</caption>
+							<thead>
+								<tr>
+									<th colspan="4">Users Table</th>
+								</tr>							
+								<tr>
+									<td>ID</td>
+									<td>Username</td>
+									<td>Email</td>
+									<td>Hometown</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="ID">1</td>
+									<td data-column="Username">Donald Duck</td>
+									<td data-column="Email">donald@duck.com</td>
+									<td data-column="Hometown">Quackville</td>
+								</tr>
+								<tr>
+									<td data-column="ID">2</td>
+									<td data-column="Username">John Doe</td>
+									<td data-column="Email">john@doe.com</td>
+									<td data-column="Hometown">Anywhere, USA</td>
+								</tr>
+								<tr>
+									<td data-column="ID">3</td>
+									<td data-column="Username">Sally Sometimes</td>
+									<td data-column="Email">saso@gmail.com</td>
+									<td data-column="Hometown">Washington D.C.</td>
+								</tr>
+								<tr>
+									<td data-column="ID">4</td>
+									<td data-column="Username">Jay Leno</td>
+									<td data-column="Email">jay@leno.com</td>
+									<td data-column="Hometown">LA</td>
+								</tr>
+								<tr>
+									<td data-column="ID">5</td>
+									<td data-column="Username">Justin B.</td>
+									<td data-column="Email">j@belieb.com</td>
+									<td data-column="Hometown">Somewhere in Canada</td>
+								</tr>
+							</tbody>
+						</table>
+						<p><span class="infoMarker">Note</span> In order to maintain consistent header bars for the 
+							table, you will need to use both the <code>&lt;caption&gt;</code> element and the 
+							<code>&lt;th&gt;</code> element. The <code>&lt;caption&gt;</code> will be shown for mobile 
+							screens, but hidden	for all other sizes. The <code>&lt;th&gt;</code> will display for the 
+							inverse.</p>					
+					</div>
+				</div>
+			</div>
+		</div>						
 		<div class="row">
 			<div class="col12">
 				<h2 class="title">Forms</h2>

@@ -41,14 +41,14 @@
 		<div class="row">
 			<div class="col7">
 				<div class="notice">This is a generic notice. Class: <code>notice</code></div>
-				<div class="noticeInfo">This is an info-based notice. Class: <code>noticeInfo</code></div>
-				<div class="noticeSuccess">This is an success-based notice. Class: <code>noticeSuccess</code></div>
-				<div class="noticeWarning">This is an warning-based notice. Class: <code>noticeWarning</code></div>
-				<div class="noticeError">This is an error-based notice. Class: <code>noticeError</code></div>
-				<p><span class="markerInfo">Note</span> The correct semantic container for a notice is a <code>div</code> element. 
-					Multi-line notice bars should use an additional	<code>p</code> tag for the text for proper 
-					spacing.</p>
-				<div class="noticeInfo">
+				<div class="infoNotice">This is an info-based notice. Class: <code>infoNotice</code></div>
+				<div class="successNotice">This is an success-based notice. Class: <code>successNotice</code></div>
+				<div class="warningNotice">This is an warning-based notice. Class: <code>warningNotice</code></div>
+				<div class="errorNotice">This is an error-based notice. Class: <code>errorNotice</code></div>
+				<p><span class="infoMarker">Note</span> The correct semantic container for a notice is a 
+					<code>div</code> element. Multi-line notice bars should use an additional	<code>p</code> tag for 
+					the text for proper	spacing.</p>
+				<div class="infoNotice">
 					<h6>Notice Header</h6>
 					<p>This is a multi-line info-based notice bar. It should extend over multiple lines. Other elements 
 						can be introduced to a notice bar such as a heading or an image.</p>
@@ -76,13 +76,14 @@
 		</div>
 		<div class="row">
 			<div class="col5">
-				<p>At times, you'll want to have <span class="markerInfo">special markers</span> in the context of your text to draw attention to a 
+				<p>At times, you'll want to have <span class="infoMarker">special markers</span> in the context of your text to draw attention to a 
 					short but significant piece of information. Markers have the same use cases as notices, but instead 
 					of using a <code>notice</code> class prefix, use the class <code>marker</code> instead.</p>
 				<p>When constructing markers, use the <code>&lt;span&gt;</code> tag.
 			</div>
 			<div class="col7">
-				<table>
+				<table class="columnTable">
+					<caption>Marker Classes</caption>
 					<thead>
 						<tr>
 							<th>CSS Class</th>
@@ -92,29 +93,29 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>marker</code></td>
-							<td><span class="marker">Generic</span></td>
-							<td>A generic marker.</td>
+							<td data-column="CSS Class"><code>marker</code></td>
+							<td data-column="Example"><span class="marker">Generic</span></td>
+							<td data-column="Description">A generic marker.</td>
 						</tr>
 						<tr>
-							<td><code>markerInfo</code></td>
-							<td><span class="markerInfo">Info</span></td>
-							<td>An info marker.</td>
+							<td data-column="CSS Class"><code>infoMarker</code></td>
+							<td data-column="Example"><span class="infoMarker">Info</span></td>
+							<td data-column="Description">An info marker.</td>
 						</tr>
 						<tr>
-							<td><code>markerSuccess</code></td>
-							<td><span class="markerSuccess">Success</span></td>
-							<td>A success marker.</td>
+							<td data-column="CSS Class"><code>successMarker</code></td>
+							<td data-column="Example"><span class="successMarker">Success</span></td>
+							<td data-column="Description">A success marker.</td>
 						</tr>
 						<tr>
-							<td><code>markerWarning</code></td>
-							<td><span class="markerWarning">Warning</span></td>
-							<td>A warning marker.</td>
+							<td data-column="CSS Class"><code>warningMarker</code></td>
+							<td data-column="Example"><span class="warningMarker">Warning</span></td>
+							<td data-column="Description">A warning marker.</td>
 						</tr>
 						<tr>
-							<td><code>markerError</code></td>
-							<td><span class="markerError">Error</span></td>
-							<td>An error marker.</td>
+							<td data-column="CSS Class"><code>errorMarker</code></td>
+							<td data-column="Example"><span class="errorMarker">Error</span></td>
+							<td data-column="Description">An error marker.</td>
 						</tr>																														
 					</tbody>
 				</table>
@@ -225,7 +226,7 @@
 					<code>col1</code>, <code>col2</code>, etc. When a row's widths add up to the grid-width (12), the 
 					next column <code>li</code> should be given a class of <code>firstCol</code> so that it will clear 
 					the the previous row.</p>
-				<p><span class="markerInfo">Note</span> For mobile-sized devices, the thumbnails will automatically 
+				<p><span class="infoMarker">Note</span> For mobile-sized devices, the thumbnails will automatically 
 					appear in rows of two.</p>
 				<h6>Code</h6>
 <pre class="html">
