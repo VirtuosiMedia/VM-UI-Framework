@@ -10,20 +10,21 @@
  */
 table {
 	border: 0.15em solid #222;
-	border-collapse: separate;
 	border-radius: 4px;
 	border-spacing: 0;
 	margin-bottom: 1.5em;
+	overflow: auto;
 	width: 100%;
 	word-wrap: break-word;
 }
-th, tfoot {
+.columnTable caption, th, tfoot {
 	background: #222;
 	color: #FFF;
 	text-align: left;
 }
+.columnTable caption {display: none;}
 thead td {background: #CCC;}
-th, td {padding: 0px 8px;}
+th, td {padding: 0 0.4em;}
 th[class^=col], td[class^=col] {
 	float: none;
 	margin-left: 0;
@@ -34,6 +35,7 @@ tbody tr {
    	-o-transition: all .2s linear;
    	-webkit-transition: all .2s linear;	
 }
+tbody tr {background: #FFF;}
 tbody tr:hover {background: #F2F2F2;}
 .stripedTable tr:nth-child(2n) {background: #F2F2F2;}
 .stripedTable tr:nth-child(2n):hover {background: #CCC;}
@@ -53,4 +55,72 @@ tbody tr:hover {background: #F2F2F2;}
 .borderedTable tbody tr td:last-child, .stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {
 	border-right: none;
 }
-.borderedTable tbody tr:last-child td, .borderedTable tbody tr:nth-child(2n):last-child:hover td {border-bottom: none;}
+.borderedTable tbody tr:last-child td, .borderedTable tbody tr:last-child:hover td {border-bottom: none;}
+
+/**
+ * Cell Shading
+ */
+table tbody tr td.disabledCell {
+	background: #EFEFEF;
+	color: #999;	
+}
+table tbody tr td.disabledCell:hover {background: #DDD;}
+table tbody tr td.infoCell {
+	background: #D5F1FF;
+	color: #069;
+}
+table tbody tr td.infoCell:hover {background: #B0E6FF;}
+table tbody tr td.successCell {
+	background: #E2FBCE;
+	color: #4D9E0C;
+}
+table tbody tr td.successCell:hover {background: #D9FABE;}
+table tbody tr td.warningCell {
+	background: #FEEACB;
+	color: #FB9702;
+}
+table tbody tr td.warningCell:hover {background: #FEDFB1;}
+table tbody tr td.errorCell {
+	background: #FFE6E6;
+	color: #FF6A6A;
+}
+table tbody tr td.errorCell:hover {background: #FFCECE;}
+
+/**
+ * Responsive tables for smartphones and tablets
+ */
+@media (max-width: 768px) {
+	.columnTable caption {
+		display: inline-block;
+		padding: 0 0.4em;
+		width: 100%;
+	}
+	.columnTable thead {display: none;}
+	.columnTable tbody td {
+		background: #FFF;
+		border: none;
+		box-sizing: border-box;
+		float: left;
+		padding-left: 45%;
+		position: relative;
+		width: 100%;
+	}
+	.columnTable tbody td:before {
+		clear: left;
+		content: attr(data-column);
+		display: inline-block;
+		left: 0.4em;
+		position: absolute;
+		height: 100%;
+		width: 40%;
+	}
+	.columnTable tbody td:hover {background: #F2F2F2;}
+	.columnTable.stripedTable tbody td:nth-child(2n) {background: #F2F2F2;}
+	.columnTable.stripedTable tbody td:nth-child(2n):hover {background: #CCC;}
+	.columnTable.borderedTable td, .columnTable.borderedTable tbody tr:last-child td, 
+	.columnTable.borderedTable tbody tr:last-child:hover td {border-bottom: 1px solid #999;}
+	.columnTable tbody tr td:last-child, .columnTable tbody tr:hover td:last-child {
+		border-bottom: 0.15em solid #222;
+	}
+	.columnTable tbody tr:last-child td:last-child {border-bottom: none;}
+}

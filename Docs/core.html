@@ -537,10 +537,10 @@ p {
 		<div class="row">
 			<div class="col12">
 				<h3>Responsive Tables</h3>
-				<p>Because each table is different, tables can be difficult to make responsive. There is no 
-					"one-size-fits-all" approach because the data that needs to be displayed from table to table varies 
-					so much. In recognition of this design dilemma, VM UI Framework provides several different 
-					approaches to making tables responsive.</p>
+				<p>Because each table is different, tables can be difficult to make responsive (as demonstrated by the 
+					examples above). There is no "one-size-fits-all" approach because the data that needs to be 
+					displayed from table to table varies so much. In recognition of this design dilemma, VM UI Framework 
+					provides several different approaches to making tables responsive.</p>
 				<div class="row">
 					<div class="col4">
 						<h6>Column Tables</h6>
@@ -606,8 +606,104 @@ p {
 							inverse.</p>					
 					</div>
 				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Hiding Select Columns</h6>
+						<p>For some tables, it may not be necessary to display all columns on smaller screens. In such 
+							cases, you can use the <a href="layout.html#selective-display">selective display classes</a> 
+							on each <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> in the column you wish to hide 
+							or show	at select screen resolutions.</p>	
+					</div>
+					<div class="col8">
+						<table class="borderedTable stripedTable">
+							<thead>
+								<tr>
+									<th colspan="4">Users Table</th>
+								</tr>
+								<tr>
+									<td>ID</td>
+									<td>Username</td>
+									<td class="hideMobile">Email</td>
+									<td class="hideMobile">Hometown</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Donald Duck</td>
+									<td class="hideMobile">donald@duck.com</td>
+									<td class="hideMobile">Quackville</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>John Doe</td>
+									<td class="hideMobile">john@doe.com</td>
+									<td class="hideMobile">Anywhere, USA</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Sally Sometimes</td>
+									<td class="hideMobile">saso@gmail.com</td>
+									<td class="hideMobile">Washington D.C.</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Jay Leno</td>
+									<td class="hideMobile">jay@leno.com</td>
+									<td class="hideMobile">LA</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Justin B.</td>
+									<td class="hideMobile">j@belieb.com</td>
+									<td class="hideMobile">Somewhere in Canada</td>
+								</tr>
+							</tbody>
+						</table>					
+					</div>
+				</div>				
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col4">
+				<h3>Table Cell Shading</h3>
+				<p>Some tables may require shading options per individual cell. Just add the proper cell-shading class 
+					to the <code>td</code> element you wish to shade.</p>
 			</div>
-		</div>						
+			<div class="col8">
+				<table class="columnTable borderedTable">
+					<caption>Table Cell Shading Classes</caption>
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Example</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Class"><code>disabledCell</code></td>
+							<td data-column="Example" class="disabledCell">Disabled Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>infoCell</code></td>
+							<td data-column="Example" class="infoCell">Info Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>successCell</code></td>
+							<td data-column="Example" class="successCell">Success Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>warningCell</code></td>
+							<td data-column="Example" class="warningCell">Warning Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>errorCell</code></td>
+							<td data-column="Example" class="errorCell">Error Cell</td>
+						</tr>																								
+					</tbody>
+				</table>
+			</div>
+		</div>									
 		<div class="row">
 			<div class="col12">
 				<h2 class="title">Forms</h2>
