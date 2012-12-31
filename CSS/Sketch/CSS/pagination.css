@@ -15,19 +15,23 @@
 	list-style: none;
 	margin-left: 0;
 	overflow: hidden;
+	padding-top: 0.1em;
 	width: 100%;
 }
 .pagination li {
 	float: left;
 	height: auto;
-	margin-right: 0.5em;
+	margin: 0 0.5em 1.75em 0em;
 }
 .pagination li:last-child {margin-right: 0;}
-.pagination a {
+.pagination a, .pagination .active, .pagination .disabled {
 	border: 0.15em solid #111;
 	border-radius: 2px;
-	box-sizing:border-box;
-	padding: 0.2em 0.4375em;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 1.75em;
+	line-height: 1.45em;
+	padding: 0em 0.4375em;
 	text-decoration: none;
 }
 .pagination a:hover {
@@ -36,11 +40,11 @@
 }
 .pagination .active, .pagination .disabled {
 	border: 0.15em solid #CCC;
-	border-radius: 2px;
-	height: 1.1em;
-	line-height: 1.1em;
-	padding: 0.2em 0.4375em;
+	margin-top: 0.05em;
 }
+@media (max-width: 768px) {
+	.pagination .active, .pagination .disabled {margin-top: 0;}
+}	
 .pagination .active a, .pagination .disabled a {
 	border: none;
 	color: #000;
