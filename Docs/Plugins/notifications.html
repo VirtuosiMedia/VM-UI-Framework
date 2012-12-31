@@ -43,22 +43,22 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<div class="noticeInfo"  data-closeTime="3000">
+				<div class="infoNotice"  data-closeTime="3000">
 					<a href="#" class="close">x</a>
 					<p>This notice will self-destruct in 3 seconds.</p>
 				</div>
-				<div class="noticeSuccess hidden" data-openTime="1000">
+				<div class="successNotice hidden" data-openTime="1000">
 					<p>This notice will have appeared after 1 seconds. It cannot be closed.</p>
 				</div>
 				<div class="notice hidden" data-openTime="2000">
 					<a href="#" class="close">x</a>
 					<p>This notice will have appeared after 2 seconds.</p>
 				</div>
-				<div class="noticeWarning hidden" data-openTime="3000" data-closeTime="6000">
+				<div class="warningNotice hidden" data-openTime="3000" data-closeTime="6000">
 					<a href="#" class="close">x</a>
 					<p>This notice will have appeared after 3 seconds. It will disappear 3 seconds later.</p>
 				</div>
-				<div class="noticeError hidden" data-openTime="4000">
+				<div class="errorNotice hidden" data-openTime="4000">
 					<a href="#" class="close">x</a>
 					<p>This notice will have appeared after 4 seconds.</p>
 				</div>																
@@ -76,19 +76,22 @@
 				<h3>Options</h3>
 				<p>Notifications have two options that control when the notification appears and disappears. All options 
 					are passed in as an HTML5 <code>data-</code> attribute and none of them are required.</p>
-				<table>
+				<table class="columnTable">
+					<caption>Options</caption>
 					<thead>
 						<tr><th>Data Attribute</th><th class="col4">Description</th></tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-closeTime</code></td>
-							<td>The number of milliseconds before the notification is closed automatically.</td>
+							<td data-column="Data Attribute"><code>data-closeTime</code></td>
+							<td data-column="Description">The number of milliseconds before the notification is 
+							closed automatically.</td>
 						</tr>
 						<tr>
-							<td><code>data-openTime</code></td>
-							<td>The number of milliseconds before the notification is opened automatically. The 
-								notification should be given the <code>hidden</code> class to hide it initially.</td>
+							<td data-column="Data Attribute"><code>data-openTime</code></td>
+							<td data-column="Description">The number of milliseconds before the notification is opened 
+								automatically. The notification should be given the <code>hidden</code> class to hide 
+								it initially.</td>
 						</tr>						
 					</tbody>
 				</table>				

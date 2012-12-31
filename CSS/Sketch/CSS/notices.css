@@ -8,15 +8,16 @@
 /**
  * Notice Bars
  */
-div[class^="notice"] {
+div.notice, div[class*="Notice"] {
 	border: 0.15em solid;
 	border-radius: 4px;
+	box-sizing: border-box;
 	margin-bottom: 1.5em;
 	padding: 0% 1%;
 	position: relative;
 	width: 98%;
 }
-div[class^="notice"] p {
+div.notice p, div[class*="Notice"] p {
 	margin: 0em 0.5em;
 	text-indent: 0em;
 }
@@ -25,37 +26,37 @@ div.notice {
 	border-color: #999;
 	color: #999;	
 }
-div.noticeInfo {
+div.infoNotice {
 	background: #D5F1FF;
 	border-color: #069;
 	color: #069;
 }
-div.noticeSuccess {
+div.successNotice {
 	background: #E2FBCE;
 	border-color: #4D9E0C;
 	color: #4D9E0C;
 }
-div.noticeWarning {
+div.warningNotice {
 	background: #FEEACB;
 	border-color: #FB9702;
 	color: #FB9702;
 }
-div.noticeError {
+div.errorNotice {
 	background: #FFE6E6;
 	border-color: #FF6A6A;
 	color: #FF6A6A;
 }
-div[class^="notice"] .close {
+.notice .close, div[class*="Notice"] .close {
 	position: absolute;
 	right: 1em;
 	text-decoration: none;
 }
 div.notice .close {color: #999;}
-div.noticeInfo .close {color: #069;}
-div.noticeSuccess .close {color: #4D9E0C;}
-div.noticeWarning .close {color: #FB9702;}
-div.noticeError .close {color: #FF6A6A;}
-div[class^="notice"] .close:hover {
+div.infoNotice .close {color: #069;}
+div.successNotice .close {color: #4D9E0C;}
+div.warningNotice .close {color: #FB9702;}
+div.errorNotice .close {color: #FF6A6A;}
+div.notice .close:hover, div[class*="Notice"] .close:hover {
 	border-radius: 0.5em;
 	display: block;
 	height: 1em;
@@ -69,19 +70,19 @@ div.notice .close:hover {
 	background: #999;
 	color: #EEE;
 }
-div.noticeInfo .close:hover {
+div.infoNotice .close:hover {
 	background: #069;
 	color: #D5F1FF;
 }
-div.noticeSuccess .close:hover {
+div.successNotice .close:hover {
 	background: #4D9E0C;
 	color: #E2FBCE;
 }
-div.noticeWarning .close:hover {
+div.warningNotice .close:hover {
 	background: #FB9702;
 	color: #FEEACB;
 }
-div.noticeError .close:hover {
+div.errorNotice .close:hover {
 	background: #FF6A6A;
 	color: #FFE6E6;
 }
