@@ -35,6 +35,23 @@
 		<div class="row">
 			<div class="col12">
 				<h1 class="pageTitle">UI Elements</h1>
+				<h6>Contents</h6>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#notices">Notices</a></li>
+							<li><a href="#markers">Markers</a></li>
+							<li><a href="#progress-bars">Progress Bars</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#breadcrumbs">Breadcrumbs</a></li>
+							<li><a href="#pagination">Pagination</a></li>
+							<li><a href="#thumbs">Thumbnails</a></li>
+						</ul>
+					</div>					
+				</div>
 				<h2 class="title" id="notices">Notices</h2>
 			</div>
 		</div>
@@ -120,6 +137,67 @@
 					</tbody>
 				</table>
 			</div>			
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="progress-bars">Progress Bars</h2>
+				<div class="row">
+					<div class="col5">
+						<p>Progress bars can be created by adding the class <code>progressBar</code> to a 
+							<code>&lt;span&gt;</code> or <code>&lt;div&gt;</code>element. Then, in a child element, add 
+							the bar's width via the <code>style</code> attribute, as shown below.</p>
+<pre class="html">
+&lt;span class="progressBar"&gt;
+	&lt;span style="width: 33%;"&gt;&lt;/span&gt;
+&lt;/span&gt;
+</pre>						
+					</div>
+					<div class="col7">
+						<table class="columnTable">
+							<caption>Progress Bar Classes</caption>
+							<thead>
+								<tr>
+									<th class="col2">CSS Class</th>
+									<th>Example</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="CSS Class"><code>progressBar</code></td>
+									<td data-column="Example">
+										<span class="progressBar"><span style="width: 15%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>infoProgressBar</code></td>
+									<td data-column="Example">
+										<span class="infoProgressBar"><span style="width: 30%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+								<tr>
+									<td data-column="CSS Class"><code>successProgressBar</code></td>
+									<td data-column="Example">
+										<span class="successProgressBar"><span style="width: 45%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>warningProgressBar</code></td>
+									<td data-column="Example">
+										<span class="warningProgressBar"><span style="width: 60%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>errorProgressBar</code></td>
+									<td data-column="Example">
+										<span class="errorProgressBar"><span style="width: 75%;"></span></span>
+									</td>
+								</tr>																														
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
