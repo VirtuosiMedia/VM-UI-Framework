@@ -39,11 +39,105 @@
 					<li>Current Plugin</li>
 				</ul>			
 				<h1 class="pageTitle">Charts</h1>
+				<div class="row">
+					<div class="col3">
+						<h6>Code</h6>
+						<ul>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#usage">Usage</a></li>
+							<li><a href="#options">Options</a></li>
+						</ul>
+					</div>
+					<div class="col9">
+						<h6>Demos</h6>
+						<div class="row">
+							<div class="col3">
+								<ul>
+									<li><a href="#area-charts">Area Charts</a></li>
+									<li><a href="#line-charts">Line Charts</a></li>
+									<li><a href="#scatter-charts">Scatter Charts</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#bar-charts">Bar Charts</a></li>
+									<li><a href="#pie-charts">Pie Charts</a></li>
+								</ul>
+							</div>						
+						</div>										
+				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
-				<div class="chartArea" data-chartData="[
+				<h2 id="overview">Overview</h2>
+				<p>Web applications often need some sort of charts or graphs, but there are few viable options that 
+					aren't commercial, poorly-documented, bound up in a restrictive open source license, or Flash-based. 
+					The charts in VM UI Framework are SVG-based and responsive, meaning that you can use them easily 
+					for all modern browsers and devices. There are alse options for making each chart interactive and 
+					animated.</p>
+				<h2 id="usage">Usage</h2>				
+				<div class="row">
+					<div class="col6">
+						<p>There are five basic chart types, each of which has the ability to be customized. The chart 
+							type is	assigned via class to a <code>&lt;div&gt;</code> element.</p>
+					</div>
+					<div class="col6">
+						<table class="borderedTable columnTable">
+							<caption>Chart Types</caption>
+							<thead>
+								<tr>
+									<th colspan="2">Chart Types</th>
+								</tr>
+								<tr>
+									<td>Type</td>
+									<td>Class</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="Type">Area chart</td>
+									<td data-column="Class"><code>areaChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Bar chart</td>
+									<td data-column="Class"><code>barChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Line chart</td>
+									<td data-column="Class"><code>lineChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Pie chart</td>
+									<td data-column="Class"><code>pieChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Scatter chart</td>
+									<td data-column="Class"><code>scatterChart</code></td>
+								</tr>																
+							</tbody>
+						</table>
+					</div>
+				</div>
+	 			<h6>Current Chart Limitations</h6>
+	 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may fix these 
+	 				issues.</p>
+	 			<ul>
+	 				<li>No animation in IE.</li>
+	 				<li>No negative numbers.</li>
+	 				<li>Data sets need to be the full-width of the graph.</li>
+	 				<li>Dates can only be on the x-axis.</li>
+	 				<li>X-values are necessary when not working with dates.</li>
+	 				<li>Updating the graph requires refreshing the canvas.</li>
+	 				<li>Large numbers may not look good on the axises.</li>
+	 				<li>Charts must be displayed at 100% of the container size.</li>
+	 				<li>Decimals?</li>
+	 			</ul>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<div class="areaChart" data-chartData="[
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
 						y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
@@ -85,20 +179,7 @@
 					}										
 //*/
  -->
- 			<h6>Chart Limitations</h6>
- 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may fix these 
- 				issues.</p>
- 			<ul>
- 				<li>No animation in IE.</li>
- 				<li>No negative numbers.</li>
- 				<li>Data sets need to be the full-width of the graph.</li>
- 				<li>Dates can only be on the x-axis.</li>
- 				<li>X-values are necessary when not working with dates.</li>
- 				<li>Updating the graph requires refreshing the canvas.</li>
- 				<li>Large numbers may not look good on the axises.</li>
- 				<li>Charts must be displayed at 100% of the container size.</li>
- 				<li>Decimals?</li>
- 			</ul>			
+			
 		</div>
 	</div>
 </body>
