@@ -16,6 +16,7 @@
 	}
 	.tabs li, .pillTabs li {
 		float: left; 
+		margin-top: 0.15em;		
 		position: relative;
 	}
 	.pillTabs li {margin-right: 0.5em;}
@@ -23,6 +24,7 @@
 		background: #FFF;
 		border-left: 0.15em solid #222;
 		border-top: 0.15em solid #222;
+		box-sizing: border-box;
 		padding: 0.3em 1em;
 		text-decoration: none;
 	}
