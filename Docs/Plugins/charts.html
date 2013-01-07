@@ -137,6 +137,54 @@
 		</div>
 		<div class="row">
 			<div class="col12">
+				<h3 id="area-charts">Area Charts</h3>
+				<div class="row">
+					<div class="col4">
+						<h6>Basic Area Chart</h6>
+					</div>
+					<div class="col8">
+						<ul class="tabs">
+							<li><a class="active" href="#area1-example">Demo</a></li>
+							<li><a href="#area1-code">Code</a></li>
+						</ul>
+						<div class="tabContent">
+							<div id="area1-example" class="active">
+								<div class="areaChart" data-chartData="[
+									{
+										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+										y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+									},
+									{
+										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+										y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+									}
+								]"
+								
+								data-chartOptions="{}"
+								></div>
+							</div>
+							<div id="area1-code">
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+{
+	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+},
+{
+	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],
+	y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+}
+]"&gt;&lt;/div&gt;
+</pre>
+							</div>
+						</div>			
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col12">
 				<div class="areaChart" data-chartData="[
 					{
 						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
@@ -155,7 +203,8 @@
 					dateFormat: '%Y',
 					dateIntervalUnit: 'year',		
 					dateIntervalValue: 5,	
-					dateStart: '3/1/1992'					
+					dateStart: '3/1/1992',
+					showTitle: true					
 				}"></div>				
 			</div>
 <!-- 			

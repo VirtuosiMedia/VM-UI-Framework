@@ -8,7 +8,8 @@
 /**
  * Charts
  */
-[class^="chart"], [class^="chart"] > svg {
+[class*="Chart"], [class*="Chart"] > svg {
+	border: 1px solid #CCC;
 	display: block;
 	height: 100%;
 	position: relative;
@@ -50,4 +51,8 @@
 	padding: 0.5em;
 	position: absolute;
 	width: auto;
+}
+.chartTitle {
+	font-size: 0.75em;
+	font-weight: bold;
 }

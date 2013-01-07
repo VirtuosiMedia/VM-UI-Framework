@@ -12,9 +12,10 @@ var Charts = new Class({
 	Implements: [Events, Options],
 
 	defaultOptions: {
-		animate: true,										//Whether or not to animate the graph, defaults true
+		animate: false,										//Whether or not to animate the graph, defaults true
 		animationDuration: 1,								//The total animation duration in seconds
 		axisColor: '#333',									//The hex color of the axis lines
+		aspectRatio: [16, 5],								//The aspect ratio of the canvas area, as an array [x, y]
 		colors: ['#058DC7', "#A006C7", "#C7062D", "#06C740", "#C7A006"],			//The chart hex colors for lines, bars, and pie segments
 		dataLabels: [],										//Labels for each of the data sets, will also show in the key
 		dateEnd: 'now',										//now, or specific date
@@ -24,18 +25,18 @@ var Charts = new Class({
 		dateStart: '8/18/2012',								//now, or a specific date
 		gridColor: '#DDD',									//The hex color of the grid lines
 		keyPosition: 'right',								//Where to show the key: left, right, top, bottom
-		showAreaLines: true,								//Whether or not to show lines on an area chart
+		showAreaLines: false,								//Whether or not to show lines on an area chart
 		showAxisLabels: true,								//Whether or not to show the axis labels
 		showAxisLines: true,								//Whether or not to show the axis lines		
-		showGridX: true,									//Whether or not to show the x-axis grid lines
-		showGridY: true,									//Whether or not to show the y-axis grid lines
-		showIntervalLabels: true,							//Whether or not to show interval labels
-		showKey: true,										//Whether or not to show the key
+		showGridX: false,									//Whether or not to show the x-axis grid lines
+		showGridY: false,									//Whether or not to show the y-axis grid lines
+		showIntervalLabels: false,							//Whether or not to show interval labels
+		showKey: false,										//Whether or not to show the key
 		showLineFill: false,								//Whether or not to create a fill between the x-axis and line
-		showPoints: true,									//Whether or not to show line points
+		showPoints: false,									//Whether or not to show line points
 		showTicksX: true,									//Whether or not to show tick marks along the x-axis
 		showTicksY: true,									//Whether or not to show tick marks along the y-axis		
-		showTips: true,										//Whether or not to show tips on hover
+		showTips: false,									//Whether or not to show tips on hover
 		showTitle: true,									//Whether or not to show the chart title
 		textColor: "#000",									//The hex code for the text color
 		title: 'Untitled Chart',							//The title of the chart
@@ -44,7 +45,7 @@ var Charts = new Class({
 															//Options include {x}, {y}, {xAxis}, {yAxis}, and {label}
 		xAxisLabel: 'x-axis',								//The x-axis label
 		xInterval: 25,										//The interval between ticks on the x-axis
-		xAxisIsDate: true,									//Whether or not the x-axis is a date, to be used with other date options
+		xAxisIsDate: false,									//Whether or not the x-axis is a date, to be used with other date options
 		xLabels: [],										//Labels for the x-axis, defaults to numbers. Should match tick count		
 		yAxisLabel: 'y-axis',								//The y-axis label		
 		yInterval: 25,										//The interval between ticks on the y-axis
@@ -70,16 +71,17 @@ var Charts = new Class({
 		this.data = JSON.decode(chart.getData('chartData'));
 		this.options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
 		this.points = [];
-		this.svg = new SVG('svg', {viewBox:"0 0 300 195", id: 'chart-' + self.chartIndex});
+		this.aspectHeightRatio = (300/this.options.aspectRatio[0]) * this.options.aspectRatio[1];
+		this.svg = new SVG('svg', {viewBox: "0 0 300 " + this.aspectHeightRatio, id: 'chart-' + self.chartIndex});
 		
 		//Internet explorer didn't play well with resizing
-		this.setChartHeight(chart);
+		this.setCanvasHeight(chart);
 		window.addEvent('resize', function(){
-			self.setChartHeight(chart);
+			self.setCanvasHeight(chart);
 		});
 
-		this.xOffset = 30;
-		this.yOffset = 30;
+		this.setOffsets();
+		this.setChartSize();
 		
 		//If not pie chart
 		if (this.options.xAxisIsDate){
@@ -103,12 +105,12 @@ var Charts = new Class({
 		chart.adopt(this.svg.render());
 	},
 
-	setChartHeight: function(chart){
-		var height = (chart.getSize()['x']/4) * 3;
+	setCanvasHeight: function(chart){
+		var height = (chart.getSize()['x']/this.options.aspectRatio[0]) * this.options.aspectRatio[1];
 		chart.setStyle('height', height);		
 	},
 	
-	createChartLine: function(){
+	createLineChart: function(){
 		if (this.options.showTitle){this.setTitle();}
 		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
 		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
@@ -129,7 +131,7 @@ var Charts = new Class({
 		}		
 	},
 	
-	createChartArea: function(){
+	createAreaChart: function(){
 		this.renderMask();
 		
 		if (this.options.showTitle){this.setTitle();}
@@ -157,7 +159,7 @@ var Charts = new Class({
 		}		
 	},
 	
-	createChartScatter: function(){
+	createScatterChart: function(){
 		if (this.options.showTitle){this.setTitle();}
 		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
 		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
@@ -234,8 +236,21 @@ var Charts = new Class({
 		this.parseData();
 	},
 
-	setCanvasSize: function(){
+	setChartSize: function(){
+		this.chartWidth = 300;
+		this.chartWidth = (this.options.showTicksX) ? this.chartWidth - 5 : this.chartWidth;
+		this.chartWidth = (this.options.showTicksY) ? this.chartWidth - 15 : this.chartWidth;
 		
+		this.chartHeight = this.aspectHeightRatio - this.yOffset;
+		this.chartHeight = (this.options.showTicksY) ? this.chartHeight - 5 : this.chartHeight;
+		this.chartHeight = (this.options.showAxisLabels) ? this.chartHeight - 10 : this.chartHeight;
+	},
+
+	setOffsets: function(){
+		this.xOffset = (this.options.showTicksX) ? 5 : 0;
+		this.xOffset = (this.options.showAxisLabels) ? this.xOffset + 10 : this.xOffset;
+		
+		this.yOffset = (this.options.showTitle) ? 20 : 0;		
 	},
 	
 	setMaxes: function(){
@@ -258,11 +273,7 @@ var Charts = new Class({
 	},
 
 	setTitle: function(){
-		var title = new SVG.Text({
-			'class': 'chartTitle',
-			x: 0,
-			y: 20,
-		});
+		var title = new SVG.Text({'class': 'chartTitle', x: 0, y: 10,});
 		this.svg.adopt(title.setText(this.options.title).render());
 	},
 
@@ -290,7 +301,7 @@ var Charts = new Class({
 	renderAxisLines: function(){
 		var xOffset = this.xOffset, yOffset = this.yOffset;	
 		var line = new SVG.Path({
-			d: 'M '+xOffset+' '+(yOffset + 0.5) +', '+xOffset+' '+(130+yOffset)+', '+(260+xOffset)+' '+(130+yOffset),
+			d: 'M '+xOffset+' '+(yOffset + 0.5) +', '+xOffset+' '+(this.chartHeight+yOffset)+', '+(this.chartWidth+xOffset)+' '+(this.chartHeight+yOffset),
 			stroke: this.options.axisColor,
 			fill: "transparent",
 			"stroke-width": 1
@@ -303,10 +314,10 @@ var Charts = new Class({
 		var ticks = [],
 			xOffset = this.xOffset, 
 			yOffset = this.yOffset,
-			xInterval = (this.options.xInterval/this.maxX) * 260,
-			yInterval = (this.options.yInterval/this.maxY) * 130,
+			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
+			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight,
 			xStart = xOffset + xInterval;
-			yStart = yOffset + 130 + .5 - yInterval;
+			yStart = yOffset + this.chartHeight + .5 - yInterval;
 
 		if (this.options.showTicksX){
 			for (var x = xStart; x < (xOffset + 280); x+=xInterval){
@@ -335,9 +346,9 @@ var Charts = new Class({
 		var grids = [],
 			xOffset = this.xOffset, 
 			yOffset = this.yOffset,
-			xInterval = (this.options.xInterval/this.maxX) * 260,
-			yInterval = (this.options.yInterval/this.maxY) * 130,
-			yStart = yOffset + 130 + .5,
+			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
+			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight,
+			yStart = yOffset + this.chartHeight + .5,
 			normalMaxX = this.normalize(this.maxX, 'x');
 
 		if (this.options.showGridX){
@@ -352,7 +363,7 @@ var Charts = new Class({
 
 		if (this.options.showGridY){
 			for (var y = yStart; y >= (yOffset); y-=yInterval){
-				grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + 260) + ' ' + y);
+				grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + this.chartWidth) + ' ' + y);
 			}
 		}
 			
@@ -371,8 +382,8 @@ var Charts = new Class({
 		var xLabels = [], 
 			yLabels = [], 
 			self = this,
-			xInterval = (this.options.xInterval/this.maxX) * 260,
-			yInterval = (this.options.yInterval/this.maxY) * 130;
+			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
+			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight;
 
 		if (this.options.xLabels.length > 0){
 			xLabels = this.options.xLabels;
@@ -421,17 +432,18 @@ var Charts = new Class({
 		var xLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
 			x: this.normalize((this.maxX/2), 'x'),
-			y: (this.yOffset + 150), 
+			y: (this.yOffset + this.chartHeight + 10), 
 			'text-anchor': 'middle'
 		});
 		this.svg.adopt(xLabel.setText(this.options.xAxisLabel).render());
 		
+		var yMiddle = this.normalize((this.maxY/2), 'y');
 		var yLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
 			x: 5,
-			y: 97.5, 
+			y: yMiddle, 
 			'text-anchor': 'middle',
-			transform: "rotate(270 5 97.5)" 
+			transform: "rotate(270 5 " + yMiddle + ")" 
 		});
 		this.svg.adopt(yLabel.setText(this.options.yAxisLabel).render());		
 	},
@@ -494,9 +506,9 @@ var Charts = new Class({
 		var max = this['max'+axis.capitalize()];
 		var offset = this[axis+'Offset'];
 		if (axis == 'y'){
-			value = (130 + offset) - Math.round(((value/max) * 130));	
+			value = (this.chartHeight + offset) - Math.round(((value/max) * this.chartHeight));	
 		} else {
-			value = Math.round(((value/max) * 260)) + offset;	
+			value = Math.round(((value/max) * this.chartWidth)) + offset;	
 		}
 		return value;
 	},
@@ -552,7 +564,7 @@ var Charts = new Class({
 	},
 
 	renderLineFill: function(index){
-		var yVal = this.yOffset + 130;
+		var yVal = this.yOffset + this.chartHeight;
 		var linePath = this.points[index].line + ', ' + this.normalize(this.maxX, 'x') + ' ' + yVal + ', ' + this.xOffset + ' ' + yVal;
 		var lineFill = new SVG.Path({
 			"class": "dataFill dataset"+index,
