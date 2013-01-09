@@ -15,7 +15,7 @@ var Charts = new Class({
 		animate: false,										//Whether or not to animate the graph, defaults true
 		animationDuration: 1,								//The total animation duration in seconds
 		axisColor: '#333',									//The hex color of the axis lines
-		aspectRatio: [16, 5],								//The aspect ratio of the canvas area, as an array [x, y]
+		aspectRatio: [16, 9],								//The aspect ratio of the canvas area, as an array [x, y]
 		colors: ['#058DC7', "#A006C7", "#C7062D", "#06C740", "#C7A006"],			//The chart hex colors for lines, bars, and pie segments
 		dataLabels: [],										//Labels for each of the data sets, will also show in the key
 		dateEnd: 'now',										//now, or specific date
@@ -24,20 +24,20 @@ var Charts = new Class({
 		dateIntervalValue: 6,								//3
 		dateStart: '8/18/2012',								//now, or a specific date
 		gridColor: '#DDD',									//The hex color of the grid lines
-		keyPosition: 'right',								//Where to show the key: left, right, top, bottom
+		keyPosition: 'bottom',									//Where to show the key: left, right, top, bottom
 		showAreaLines: false,								//Whether or not to show lines on an area chart
-		showAxisLabels: true,								//Whether or not to show the axis labels
-		showAxisLines: true,								//Whether or not to show the axis lines		
+		showAxisLabels: false,								//Whether or not to show the axis labels
+		showAxisLines: false,								//Whether or not to show the axis lines		
 		showGridX: false,									//Whether or not to show the x-axis grid lines
 		showGridY: false,									//Whether or not to show the y-axis grid lines
 		showIntervalLabels: false,							//Whether or not to show interval labels
 		showKey: false,										//Whether or not to show the key
 		showLineFill: false,								//Whether or not to create a fill between the x-axis and line
 		showPoints: false,									//Whether or not to show line points
-		showTicksX: true,									//Whether or not to show tick marks along the x-axis
-		showTicksY: true,									//Whether or not to show tick marks along the y-axis		
+		showTicksX: false,									//Whether or not to show tick marks along the x-axis
+		showTicksY: false,									//Whether or not to show tick marks along the y-axis		
 		showTips: false,									//Whether or not to show tips on hover
-		showTitle: true,									//Whether or not to show the chart title
+		showTitle: false,									//Whether or not to show the chart title
 		textColor: "#000",									//The hex code for the text color
 		title: 'Untitled Chart',							//The title of the chart
 		tickColor: '#333',									//The hex color of the tick marks
@@ -59,40 +59,44 @@ var Charts = new Class({
 		var self = this;
 		this.namespace = "http://www.w3.org/2000/svg";
 		this.selectors = selectors;
+		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [];
+		
 		Array.each($$(selectors), function(chart, index){	
+			self.charts[index] = chart;
 			self.chartIndex = index;			
-			self.createChart(chart, selectors);
+			self.createChart(chart, index, selectors);
 		});
 	},
 	
-	createChart: function(chart, selectors){
+	createChart: function(chart, index, selectors){
 		var self = this;
 		var chartType = 'create'+chart.get('class').capitalize();
-		this.data = JSON.decode(chart.getData('chartData'));
-		this.options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
-		this.points = [];
-		this.aspectHeightRatio = (300/this.options.aspectRatio[0]) * this.options.aspectRatio[1];
-		this.svg = new SVG('svg', {viewBox: "0 0 300 " + this.aspectHeightRatio, id: 'chart-' + self.chartIndex});
+		this.data[index] = JSON.decode(chart.getData('chartData'));
+		this.options[index] = options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
+		this.points[index] = [];
+		this.dim[index] = {};
+		this.dim[index].aspectRatioHeight = (300/options.aspectRatio[0]) * options.aspectRatio[1];
+		this.svg[index] = new SVG('svg', {viewBox: "0 0 300 " + this.dim[index].aspectRatioHeight, id: 'chart-' + index});
 		
 		//Internet explorer didn't play well with resizing
-		this.setCanvasHeight(chart);
+		this.setCanvasHeight(chart, index);
 		window.addEvent('resize', function(){
-			self.setCanvasHeight(chart);
+			self.setCanvasHeight(chart, index);
 		});
 
-		this.setOffsets();
-		this.setChartSize();
+		this.setOffsets(index);
+		this.setChartSize(index);
 		
 		//If not pie chart
-		if (this.options.xAxisIsDate){
-			this.options.xInterval = this.options.dateIntervalValue;
-			this.parseDateData();
+		if (options.xAxisIsDate){
+			options.xInterval = this.options.dateIntervalValue;
+			this.parseDateData(index);
 		} else {		
-			this.parseData();
+			this.parseData(index);
 		}
 		
 		//This fixes a bug that renders the chart in full and then animates it.
-		if ((this.options.animate) && (!Browser.ie)){
+		if ((options.animate) && (!Browser.ie)){
 			this.svg.set('opacity', 0).addEvent('load', function(){
 				this.set('opacity', 1);
 			});
@@ -100,96 +104,103 @@ var Charts = new Class({
 			this.options.animate = false; //IE can't do declarative animations, but future versions may rework the animation type 
 		}		
 		
-		this[chartType]();		
-				
-		chart.adopt(this.svg.render());
+		this[chartType](index);		
+		
+		chart.adopt(this.svg[index].render());
 	},
 
-	setCanvasHeight: function(chart){
-		var height = (chart.getSize()['x']/this.options.aspectRatio[0]) * this.options.aspectRatio[1];
+	setCanvasHeight: function(chart, index){
+		var options = this.options[index];
+		var height = (chart.getSize()['x']/options.aspectRatio[0]) * options.aspectRatio[1];
 		chart.setStyle('height', height);		
 	},
 	
-	createLineChart: function(){
-		if (this.options.showTitle){this.setTitle();}
-		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
-		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
-		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
-		if (this.options.showAxisLabels){this.renderAxisLabels();}
+	createLineChart: function(index){
+		var options = this.options[index];
 		
-		Array.each(this.data, function(data, index){
-			this.renderLine(index);
-			if (this.options.showLineFill){this.renderLineFill(index);}			
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
+		if (options.showGridX||options.showGridY){this.renderGrids(index);}
+		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		
+		Array.each(this.data[index], function(data, dataIndex){
+			this.renderLine(index, dataIndex);
+			if (options.showLineFill){this.renderLineFill(index, dataIndex);}			
 		}, this);
 		
-		if (this.options.showAxisLines){this.renderAxisLines();}
+		if (this.options.showAxisLines){this.renderAxisLines(index);}
 		
-		if (this.options.showPoints){
-			Array.each(this.data, function(data, index){
-				this.renderPoints(index);
+		if (options.showPoints){
+			Array.each(this.data[index], function(data, dataIndex){
+				this.renderPoints(index, dataIndex);
 			}, this);
 		}		
 	},
 	
-	createAreaChart: function(){
-		this.renderMask();
+	createAreaChart: function(index){
+		var options = this.options[index];
+		this.renderMask(index);
 		
-		if (this.options.showTitle){this.setTitle();}
-		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
-		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
-		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
-		if (this.options.showAxisLabels){this.renderAxisLabels();}
-		if (this.options.showKey){this.renderKey();}
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showTicksX||this.options.showTicksY){this.renderTicks(index);}
+		if (options.showGridX||this.options.showGridY){this.renderGrids(index);}
+		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		if (options.showKey){this.renderKey(index);}
 		
 		var group = new SVG('g', {'clip-path': 'url(#chartCanvas)'});
 		
-		Array.each(this.data, function(data, index){
-			if (this.options.showAreaLines){this.renderLine(index)};
-			group.adopt(this.renderLineFill(index));			
+		Array.each(this.data[index], function(data, dataIndex){
+			if (options.showAreaLines){this.renderLine(index, dataIndex)};
+			group.adopt(this.renderLineFill(index, dataIndex));			
 		}, this);
 		
-		this.svg.adopt(group.render());
+		this.svg[index].adopt(group.render());
 		
-		if (this.options.showAxisLines){this.renderAxisLines();}
+		if (options.showAxisLines){this.renderAxisLines(index);}
 		
-		if (this.options.showPoints){
-			Array.each(this.data, function(data, index){
-				this.renderPoints(index);
+		if (options.showPoints){
+			Array.each(this.data[index], function(data, dataIndex){
+				this.renderPoints(index, dataIndex);
 			}, this);
 		}		
 	},
 	
-	createScatterChart: function(){
-		if (this.options.showTitle){this.setTitle();}
-		if (this.options.showTicksX||this.options.showTicksY){this.renderTicks();}
-		if (this.options.showGridX||this.options.showGridY){this.renderGrids();}
-		if (this.options.showIntervalLabels){this.renderIntervalLabels();}
-		if (this.options.showAxisLabels){this.renderAxisLabels();}
-		if (this.options.showAxisLines){this.renderAxisLines();}
+	createScatterChart: function(index){
+		var options = this.options[index];
+		
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
+		if (options.showGridX||options.showGridY){this.renderGrids(index);}
+		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		if (options.showAxisLines){this.renderAxisLines(index);}
 				
-		Array.each(this.data, function(data, index){
-			this.renderPoints(index);
+		Array.each(this.data[index], function(data, dataIndex){
+			this.renderPoints(index, dataIndex);
 		}, this);
 	},	
 	
 	/**
 	 * @description Parses data for line, scatter, and bar charts
 	 */
-	parseData: function(){
-		this.setMaxes();
+	parseData: function(index){
+		var options = this.options[index];	
+		this.setMaxes(index);
 
-		Array.each(this.data, function(dataObject, index){
+		Array.each(this.data[index], function(dataObject, dataIndex){
 			var numPoints = dataObject.x.length;
 			var linePoints = [];
-			this.points[index] = points = {
+			this.points[index][dataIndex] = points = {
 				data: [],
 				line: null
 			};
 			
 			for (var i = 0; i < numPoints; i++){
-				var normalizedX = this.normalize(dataObject.x[i], 'x');
-				var normalizedY = this.normalize(dataObject.y[i], 'y');
-				var xValue = (this.options.xAxisIsDate) ? this.xTipValues[i] : dataObject.x[i];
+				var normalizedX = this.normalize(index, dataObject.x[i], 'x');
+				var normalizedY = this.normalize(index, dataObject.y[i], 'y');
+				var xValue = (options.xAxisIsDate) ? this.xTipValues[i] : dataObject.x[i];
 				
 				points.data.push({
 					xVal: xValue,
@@ -201,131 +212,153 @@ var Charts = new Class({
 				linePoints.push(normalizedX + ' ' + normalizedY);
 			}
 			
-			this.points[index].line = 'M ' + linePoints.join(', ');
-			this.setDataLabels(index);
+			this.points[index][dataIndex].line = 'M ' + linePoints.join(', ');
+			this.setDataLabels(index, dataIndex);
 		}, this);
 	},
 
-	parseDateData: function(){
-		var startDate = (this.options.dateStart.toLowerCase() == 'now') ? new Date() : new Date(this.options.dateStart);
-		var endDate = (this.options.dateEnd.toLowerCase() == 'now') ? new Date() : new Date(this.options.dateEnd);
-		var numDataPoints = (this.data[0].y.length - 1);
+	parseDateData: function(index){
+		var options = this.options[index];
+		var startDate = (options.dateStart.toLowerCase() == 'now') ? new Date() : new Date(options.dateStart);
+		var endDate = (options.dateEnd.toLowerCase() == 'now') ? new Date() : new Date(options.dateEnd);
+		var numDataPoints = (this.data[index][0].y.length - 1);
 		var diff = startDate.diff(endDate);
-		var dateDiff = (diff < numDataPoints) ? diff : numDataPoints + 1 + this.options.dateIntervalValue;
+		var dateDiff = (diff < numDataPoints) ? diff : numDataPoints + 1 + options.dateIntervalValue;
 		var xValues = [];
 		this.xTipValues = [];
 		
-		if (this.options.xLabels.length === 0){
-			for (i=0; i <= dateDiff; i+=this.options.dateIntervalValue){
-				var labelDate = startDate.clone().increment(this.options.dateIntervalUnit, i).format(this.options.dateFormat);
-				this.options.xLabels.push(labelDate);
+		if (options.xLabels.length === 0){
+			for (i=0; i <= dateDiff; i+=options.dateIntervalValue){
+				var labelDate = startDate.clone().increment(options.dateIntervalUnit, i).format(options.dateFormat);
+				options.xLabels.push(labelDate);
 			}
 		}
 				
 		for (i=0; i<= numDataPoints; i++){
 			xValues.push(i);
-			this.xTipValues.push(endDate.clone().decrement(this.options.dateIntervalUnit, i).format(this.options.dateFormat));
+			this.xTipValues.push(endDate.clone().decrement(options.dateIntervalUnit, i).format(options.dateFormat));
 		}
 
 		this.xTipValues.reverse();
 		
-		Array.each(this.data, function(dataObject, index){
-			this.data[index].x = xValues;
+		Array.each(this.data[index], function(dataObject, dataIndex){
+			this.data[index][dataIndex].x = xValues;
 		}, this);		
 		
-		this.parseData();
+		this.parseData(index);
 	},
 
-	setChartSize: function(){
-		this.chartWidth = 300;
-		this.chartWidth = (this.options.showTicksX) ? this.chartWidth - 5 : this.chartWidth;
-		this.chartWidth = (this.options.showTicksY) ? this.chartWidth - 15 : this.chartWidth;
+	setChartSize: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
 		
-		this.chartHeight = this.aspectHeightRatio - this.yOffset;
-		this.chartHeight = (this.options.showTicksY) ? this.chartHeight - 5 : this.chartHeight;
-		this.chartHeight = (this.options.showAxisLabels) ? this.chartHeight - 10 : this.chartHeight;
+		dim.width = 300;
+		dim.width = (options.showTicksX) ? dim.width - 5 : dim.width;
+		dim.width = (options.showTicksY) ? dim.width - 15 : dim.width;
+		dim.width = (options.showIntervalLabels) ? dim.width - 25 : dim.width;
+		dim.width = (['right', 'left'].contains(options.keyPosition)) ? dim.width - 50 : dim.width;
+		
+		dim.height = dim.aspectRatioHeight - dim.yOffset;
+		dim.height = (options.showTicksY) ? dim.height - 5 : dim.height;
+		dim.height = (options.showAxisLabels) ? dim.height - 10 : dim.height;
+		dim.height = (options.showIntervalLabels) ? dim.height - 10 : dim.height;
+		dim.height = (options.keyPosition == 'bottom') ? dim.height - 20 : dim.height;
+
 	},
 
-	setOffsets: function(){
-		this.xOffset = (this.options.showTicksX) ? 5 : 0;
-		this.xOffset = (this.options.showAxisLabels) ? this.xOffset + 10 : this.xOffset;
+	setOffsets: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];		
 		
-		this.yOffset = (this.options.showTitle) ? 20 : 0;		
+		dim.xOffset = (options.showTicksY) ? 5 : 0;
+		dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
+		dim.xOffset = (options.showIntervalLabels) ? dim.xOffset + 20 : dim.xOffset;
+		dim.xOffset = (options.keyPosition == 'left') ? dim.xOffset + 50 : dim.xOffset;
+		
+		dim.yOffset = (options.showTitle) ? 25 : 0;
+		dim.yOffset = (options.keyPosition == 'top') ? dim.yOffset + 10 : dim.yOffset;
 	},
 	
-	setMaxes: function(){
+	setMaxes: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
 		var xValues = [], yValues = [];
 		
-		Array.each(this.data, function(dataObject, index){
+		Array.each(this.data[index], function(dataObject){
 			xValues.combine(dataObject.x);
 			yValues.combine(dataObject.y);
 		});
 		
-		this.maxX = Math.max.apply(Math, xValues);
+		dim.maxX = Math.max.apply(Math, xValues);
 		maxY = Math.max.apply(Math, yValues);
-		yInterval = this.options.yInterval;
+		yInterval = options.yInterval;
 		
 		if (maxY % yInterval){
-			this.maxY = ((Math.round(maxY/yInterval) + 1) * yInterval);
+			dim.maxY = ((Math.round(maxY/yInterval) + 1) * yInterval);
 		} else {
-			this.maxY = maxY + yInterval;		
+			dim.maxY = maxY + yInterval;		
 		}		
 	},
 
-	setTitle: function(){
-		var title = new SVG.Text({'class': 'chartTitle', x: 0, y: 10,});
-		this.svg.adopt(title.setText(this.options.title).render());
+	setTitle: function(index){
+		var title = new SVG.Text({'class': 'chartTitle', x: 0, y: 15,});
+		this.svg[index].adopt(title.setText(this.options[index].title).render());
 	},
 
-	setDataLabels: function(index){
-		this.options.dataLabels[index] = (this.options.dataLabels[index]) 
-			? this.options.dataLabels[index] 
-			: 'Data Set ' + (index + 1);
-		this.options.tipText[index] = (this.options.tipText[index]) 
-			? this.options.tipText[index] 
-			: '{xAxis}: {x}, {yAxis}: {y}';
+	setDataLabels: function(index, dataIndex){
+		var options = this.options[index];
+		options.dataLabels[dataIndex] = (options.dataLabels[dataIndex])	? options.dataLabels[dataIndex] : 'Data Set ' + (dataIndex + 1);
+		options.tipText[dataIndex] = (options.tipText[dataIndex]) ? options.tipText[dataIndex] : '{xAxis}: {x}, {yAxis}: {y}';
 	},
 	
-	renderMask: function(){
+	renderMask: function(index){
+		var dim = this.dim[index];
+
 		var mask = new SVG.Rect({
-			x: this.normalize(0, 'x'),
-			y: this.normalize(this.maxY, 'y'),
-			height: (this.normalize(0, 'y') - this.normalize(this.maxY, 'y')),
-			width: this.normalize(this.maxX, 'x') - this.normalize(0, 'x')
+			x: this.normalize(index, 0, 'x'),
+			y: this.normalize(index, dim.maxY, 'y'),
+			height: (this.normalize(index, 0, 'y') - this.normalize(index, dim.maxY, 'y')),
+			width: this.normalize(index, dim.maxX, 'x') - this.normalize(index, 0, 'x')
 		});
 		var chartCanvas = new SVG.ClipPath({id: 'chartCanvas'}).adopt(mask.render());
 		var defs = new SVG('defs').adopt(chartCanvas.render());
-		this.svg.adopt(defs.render());
+		this.svg[index].adopt(defs.render());
 	},
 	
-	renderAxisLines: function(){
-		var xOffset = this.xOffset, yOffset = this.yOffset;	
+	renderAxisLines: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		var xOffset = dim.xOffset, yOffset = dim.yOffset;
+		
 		var line = new SVG.Path({
-			d: 'M '+xOffset+' '+(yOffset + 0.5) +', '+xOffset+' '+(this.chartHeight+yOffset)+', '+(this.chartWidth+xOffset)+' '+(this.chartHeight+yOffset),
-			stroke: this.options.axisColor,
+			d: 'M '+xOffset+' '+(yOffset + 0.5) +', '+xOffset+' '+(dim.height+yOffset)+', '+(dim.width+xOffset)+' '+(dim.height+yOffset),
+			stroke: options.axisColor,
 			fill: "transparent",
 			"stroke-width": 1
 		});
 		
-		this.svg.adopt(line.render());		
+		this.svg[index].adopt(line.render());		
 	},
 
-	renderTicks: function(){
+	renderTicks: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];		
+		
 		var ticks = [],
-			xOffset = this.xOffset, 
-			yOffset = this.yOffset,
-			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
-			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight,
+			xOffset = dim.xOffset, 
+			yOffset = dim.yOffset,
+			xInterval = (options.xInterval/dim.maxX) * dim.width,
+			yInterval = (options.yInterval/dim.maxY) * dim.height,
 			xStart = xOffset + xInterval;
-			yStart = yOffset + this.chartHeight + .5 - yInterval;
+			yStart = yOffset + dim.height + .5 - yInterval;
 
-		if (this.options.showTicksX){
-			for (var x = xStart; x < (xOffset + 280); x+=xInterval){
+		if (options.showTicksX){
+			for (var x = xStart; x < (xOffset + dim.width + 1); x+=xInterval){
 				ticks.push('M ' + x + ' ' + (yStart + 3 + yInterval) + ', ' + x + ' ' + (yStart + yInterval - 0.5));
 			}		
 		}
 			
-		if (this.options.showTicksY){
+		if (options.showTicksY){
 			for (var y = yStart; y >= (yOffset); y-=yInterval){
 				ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
 			}
@@ -334,25 +367,28 @@ var Charts = new Class({
 		Array.each(ticks, function(tickPath){
 			var tick = new SVG.Path({
 				d: tickPath,
-				stroke: this.options.tickColor,
+				stroke: options.tickColor,
 				fill: "transparent",
 				"stroke-width": 0.5
 			});
-			this.svg.adopt(tick.render());
+			this.svg[index].adopt(tick.render());
 		}, this);
 	},
 
-	renderGrids: function(){
+	renderGrids: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
 		var grids = [],
-			xOffset = this.xOffset, 
-			yOffset = this.yOffset,
-			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
-			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight,
-			yStart = yOffset + this.chartHeight + .5,
-			normalMaxX = this.normalize(this.maxX, 'x');
+			xOffset = dim.xOffset, 
+			yOffset = dim.yOffset,
+			xInterval = (options.xInterval/dim.maxX) * dim.width,
+			yInterval = (options.yInterval/dim.maxY) * dim.height,
+			yStart = yOffset + dim.height + .5,
+			normalMaxX = this.normalize(index, dim.maxX, 'x');
 
-		if (this.options.showGridX){
-			for (var x = xOffset; x < (xOffset + 280); x+=xInterval){
+		if (options.showGridX){
+			for (var x = xOffset; x < (xOffset + dim.width + 1); x+=xInterval){
 				grids.push('M ' + x + ' ' + (yStart) + ', ' + x + ' ' + (yOffset + 0.5));
 			}
 
@@ -361,156 +397,183 @@ var Charts = new Class({
 			}
 		}
 
-		if (this.options.showGridY){
+		if (options.showGridY){
 			for (var y = yStart; y >= (yOffset); y-=yInterval){
-				grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + this.chartWidth) + ' ' + y);
+				grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
 			}
 		}
 			
 		Array.each(grids, function(gridPath){
 			var grid = new SVG.Path({
 				d: gridPath,
-				stroke: this.options.gridColor,
+				stroke: options.gridColor,
 				fill: "transparent",
 				"stroke-width": 0.5
 			});
-			this.svg.adopt(grid.render());
+			this.svg[index].adopt(grid.render());
 		}, this);
 	},	
 
-	renderIntervalLabels: function(){
+	renderIntervalLabels: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
 		var xLabels = [], 
 			yLabels = [], 
 			self = this,
-			xInterval = (this.options.xInterval/this.maxX) * this.chartWidth,
-			yInterval = (this.options.yInterval/this.maxY) * this.chartHeight;
+			xInterval = (options.xInterval/dim.maxX) * dim.width,
+			yInterval = (options.yInterval/dim.maxY) * dim.height;
 
-		if (this.options.xLabels.length > 0){
-			xLabels = this.options.xLabels;
+		if (options.xLabels.length > 0){
+			xLabels = options.xLabels;
 		} else {
-			for (var i = 0; i <= this.maxX; i+= this.options.xInterval){
+			for (var i = 0; i <= dim.maxX; i+= options.xInterval){
 				xLabels.push(i);
 			}
 		}
 		
-		var xCounter = this.xOffset;
-		Array.each(xLabels, function(value, index){
+		var xCounter = dim.xOffset;
+		Array.each(xLabels, function(value){
 			var label = new SVG.Text({
 				'class': 'chartIntervalLabel',
 				x: xCounter,
-				y: (self.yOffset + 140),
+				y: (dim.yOffset + dim.height + 10),
 				'text-anchor': 'middle'
 			});
-			self.svg.adopt(label.setText(value).render());
+			self.svg[index].adopt(label.setText(value).render());
 			xCounter += xInterval;
 		});
 		
-		if (this.options.yLabels.length > 0){
-			yLabels = this.options.yLabels;
+		if (options.yLabels.length > 0){
+			yLabels = options.yLabels;
 		} else {
-			for (var i = 0; i <= this.maxY; i+= this.options.yInterval){
+			for (var i = 0; i <= dim.maxY; i+= options.yInterval){
 				yLabels.push(i);
 			}
 		}
 		
 		yLabels.reverse();
 		
-		var yCounter = this.yOffset + 2;
-		Array.each(yLabels, function(value, index){
+		var yCounter = dim.yOffset + 2;
+		Array.each(yLabels, function(value){
 			var label = new SVG.Text({
 				'class': 'chartIntervalLabel',
-				x: (self.xOffset - 5),
+				x: (dim.xOffset - 5),
 				y: yCounter, 
 				'text-anchor': 'end'
 			});
-			self.svg.adopt(label.setText(value).render());
+			self.svg[index].adopt(label.setText(value).render());
 			yCounter += yInterval;
 		});		
 	},
 
-	renderAxisLabels: function(){
+	renderAxisLabels: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
+		var intervalLabelHeight = (options.showIntervalLabels) ? 10 : 0;
 		var xLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
-			x: this.normalize((this.maxX/2), 'x'),
-			y: (this.yOffset + this.chartHeight + 10), 
+			x: this.normalize(index, (dim.maxX/2), 'x'),
+			y: (dim.yOffset + dim.height + intervalLabelHeight + 10), 
 			'text-anchor': 'middle'
 		});
-		this.svg.adopt(xLabel.setText(this.options.xAxisLabel).render());
+		this.svg[index].adopt(xLabel.setText(options.xAxisLabel).render());
 		
-		var yMiddle = this.normalize((this.maxY/2), 'y');
+		var yMiddle = this.normalize(index, (dim.maxY/2), 'y');
+		var xOffset = (options.keyPosition == 'left') ? 60 : 10;
 		var yLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
-			x: 5,
+			x: xOffset,
 			y: yMiddle, 
 			'text-anchor': 'middle',
-			transform: "rotate(270 5 " + yMiddle + ")" 
+			transform: "rotate(270 " + xOffset + " " + yMiddle + ")" 
 		});
-		this.svg.adopt(yLabel.setText(this.options.yAxisLabel).render());		
+		this.svg[index].adopt(yLabel.setText(options.yAxisLabel).render());		
 	},
 
-	renderKey: function(){
-		var currentX = 304,
-			currentY = this.yOffset + 160,
-			self = this;
+	renderKey: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];		
+		
+		var numLabels = options.dataLabels.length - 1;
+		var	self = this;
 
-		Array.each(this.data, function(data, index){
+		Array.each(this.data[index], function(data, dataIndex){
 			var keyLabel = new SVG.Text();
-			keyLabel.setText(self.options.dataLabels[index]);
+			dataIndex = numLabels - dataIndex; //Reverse it to get the right order
+			keyLabel.setText(options.dataLabels[dataIndex]);
 			
 			var keyColor = new SVG.Rect({
 				height: 5,
 				width: 5,
 				x: -8,
 				y: -4.5,
-				fill: self.options.colors[index],
+				fill: options.colors[dataIndex],
 				opacity: 0.7
 			});
 
 			var group = new SVG.G({
-				id: 'chartKey-' + index, 
-				'class': 'chartKey',
-				
+				id: 'chartKey-' + dataIndex, 
+				'class': 'chartKey'
 			}).addEvents({
 				click: function(e){
 					e.stop();
-					var index = this.getAttributeNS(null, 'id').split('-')[1];
+					var dataIndex = this.getAttributeNS(null, 'id').split('-')[1];
 
 					if (this.getAttributeNS(null, 'class') == 'chartKey'){
 						this.setAttributeNS(null, 'class', 'chartKey disabled');
-						$$('.dataset'+index).setStyle('display', 'none');
+						$$('.dataset'+dataIndex).setStyle('display', 'none');
 					} else {
 						this.setAttributeNS(null, 'class', 'chartKey');
-						$$('.dataset'+index).setStyle('display', 'block');
+						$$('.dataset'+dataIndex).setStyle('display', 'block');
 					}
 				}
 			}).adopt(keyColor.render()).adopt(keyLabel.render());
-			self.svg.adopt(group.render());
+			self.svg[index].adopt(group.render());
 		});
 			
-		//This is because it's almost impossible to pre-calculate the key width before inserting it into the DOM
-		this.svg.addEvent('DOMNodeInserted', function(){
-			currentX = 305;
-			Array.each($$('.chartKey'), function(key, index){
-				currentX = currentX - key.getBBox().width - 5;
-				key.set('transform', 'translate(' + currentX + ',' + currentY + ')');
-			});			
-		});
+		this.svg[index].addEvent('DOMNodeInserted', function(){self.positionKeys(index);});
+		window.addEvent('resize', function(){self.positionKeys(index);});
+	},
+
+	//This is because it's almost impossible to pre-calculate the key width before inserting it into the DOM	
+	positionKeys: function(index){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
+		if (['top', 'bottom'].contains(options.keyPosition)){
+			var currentX = 313;
+			var	currentY = (options.keyPosition == 'top') ? dim.yOffset - 30 : dim.yOffset + dim.height + 10;
+			currentY = (options.showTicksY) ? currentY + 5 : currentY;
+			currentY = (options.showAxisLabels) ? currentY + 10 : currentY;
+			currentY = (options.showIntervalLabels) ? currentY + 10 : currentY;			
+		} else {
+			
+		}
+
+		Array.each(this.charts[index].getElements('.chartKey'), function(key){
+			currentX = currentX - key.getBBox().width - 5;
+			key.set('transform', 'translate(' + currentX + ',' + currentY + ')');
+		});					
 	},
 	
 	/**
-	 * @description Normalizes a single coordinate so it can be displayed in the appropriate perspective ratio
+	 * @description Normalizes a single coordinate so it can be displayed in the appropriate aspect ratio
+	 * @param int index - The chart index
 	 * @param numeric value - The value to be normalized
 	 * @param string axis - Either x or y
 	 */
-	normalize: function(value, axis){
-		var max = this['max'+axis.capitalize()];
-		var offset = this[axis+'Offset'];
+	normalize: function(index, value, axis){
+		var dim = this.dim[index];
+		var max = dim['max'+axis.capitalize()];
+		var offset = dim[axis+'Offset'];
+		
 		if (axis == 'y'){
-			value = (this.chartHeight + offset) - Math.round(((value/max) * this.chartHeight));	
+			return (dim.height + offset) - Math.round(((value/max) * dim.height));
 		} else {
-			value = Math.round(((value/max) * this.chartWidth)) + offset;	
+			return Math.round(((value/max) * dim.width)) + offset;	
 		}
-		return value;
 	},
 	
 	/**
@@ -537,25 +600,28 @@ var Charts = new Class({
 	 * Use: 	Analyze trends, patterns, and exceptions
 	 * 			 
 	 */
-	renderLine: function(index){
+	renderLine: function(index, dataIndex){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
 		var line = new SVG.Path({
-			id: "dataLine"+index,
-			"class":"dataLine dataset"+index,
-			d: this.points[index].line,
-			stroke: this.options.colors[index],
+			id: "dataLine"+dataIndex,
+			"class":"dataLine dataset"+dataIndex,
+			d: this.points[index][dataIndex].line,
+			stroke: options.colors[dataIndex],
 			fill: "transparent",
 			"shape-rendering": "geometric-precision",
 			"stroke-width": 1.25,
 			"stroke-linecap": "round"
 		}, this);
 		
-		if (this.options.animate){
+		if (options.animate){
 			var lineLength = line.render().getTotalLength();
 			var animation = new SVG.Animate({
 				attributeName: "stroke-dashoffset",
 				from: lineLength,
 				to: 0,
-				dur: this.options.animationDuration + (index/4) + 's',
+				dur: options.animationDuration + (dataIndex/4) + 's',
 				fill: 'freeze'
 			});
 			line.set('stroke-dasharray', lineLength + ' ' + lineLength).adopt(animation.render());
@@ -563,24 +629,30 @@ var Charts = new Class({
 		this.svg.adopt(line.render());	
 	},
 
-	renderLineFill: function(index){
-		var yVal = this.yOffset + this.chartHeight;
-		var linePath = this.points[index].line + ', ' + this.normalize(this.maxX, 'x') + ' ' + yVal + ', ' + this.xOffset + ' ' + yVal;
+	renderLineFill: function(index, dataIndex){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
+		var yVal = dim.yOffset + dim.height;
+		var linePath = this.points[index][dataIndex].line + ', ' 
+			+ this.normalize(index, dim.maxX, 'x') + ' ' 
+			+ yVal + ', ' + dim.xOffset + ' ' + yVal;
+		
 		var lineFill = new SVG.Path({
-			"class": "dataFill dataset"+index,
+			"class": "dataFill dataset" + dataIndex,
 			stroke: "transparent",
 			d: linePath,
-			fill: this.options.colors[index],
+			fill: options.colors[dataIndex],
 			"shape-rendering": "geometric-precision"
 		});
 
-		if (this.options.animate){
+		if (options.animate){
 			var animation = new SVG.AnimateTransform({
 				attributeName: "transform",
 				type: "skewY",
 				from: 50,
 				to: 0,
-				dur: this.options.animationDuration + (index/4) + 's',
+				dur: options.animationDuration + (dataIndex/4) + 's',
 				fill: 'freeze'
 			});
 			lineFill.adopt(animation.render());
@@ -588,13 +660,16 @@ var Charts = new Class({
 		return lineFill.render();
 	},
 	
-	renderPoints: function(index){
-		var self = this;
-		var numPoints = this.points[index].data.length;
-		var animationLength = this.options.animationDuration / numPoints;
+	renderPoints: function(index, dataIndex){
+		var options = this.options[index];
+		var dim = this.dim[index];
 		
-		Array.each(this.points[index].data, function(data, animationIndex){
-			var id = 'dataPoint-' + index + '-' + animationIndex;
+		var self = this;
+		var numPoints = this.points[index][dataIndex].data.length;
+		var animationLength = options.animationDuration / numPoints;
+		
+		Array.each(this.points[index][dataIndex].data, function(data, animationIndex){
+			var id = 'dataPoint-' + dataIndex + '-' + animationIndex;
 			
 			var mouseoverEffect = new SVG.Animate({
 				attributeName: "r",
@@ -616,17 +691,17 @@ var Charts = new Class({
 			
 			var point = new SVG.Circle({
 				id: id,
-				"class":"dataPoint dataset"+index,
+				"class":"dataPoint dataset"+dataIndex,
 				stroke: "#FFF",
 				"stroke-width": 0.25,
 				cx: data.xPoint,
 				cy: data.yPoint,
 				r: 1.5,
-				fill: self.options.colors[index],
+				fill: options.colors[dataIndex],
 				"shape-rendering": "geometric-precision"
 			}).addEvents({
 				mouseover: function(){
-					self.renderTip(id, data.xVal, data.yVal, index);
+					self.renderTip(id, data.xVal, data.yVal, index, dataIndex);
 				},
 				mouseout: function(){
 					self.removeTip(id);
@@ -634,20 +709,20 @@ var Charts = new Class({
 			}, this).adopt(mouseoverEffect.render()).adopt(mouseoutEffect.render());
 			
 			
-			if (self.options.animate){
+			if (options.animate){
 				var startTime = animationIndex * animationLength
 				var animation = new SVG.Animate({
 					attributeName: "r",
 					from: 0,
 					to: 1.5,
 					begin: startTime + 's',
-					dur: (self.options.animationDuration - startTime) + (index/4) + 's',
+					dur: (options.animationDuration - startTime) + (dataIndex/4) + 's',
 					fill: 'freeze'
 				});
 				point.set('r', 0).adopt(animation);
 			}
 			
-			self.svg.adopt(point.render());
+			self.svg[index].adopt(point.render());
 		});
 	},
 
@@ -660,13 +735,13 @@ var Charts = new Class({
 		return {y: top, x: left};
 	},
 	
-	renderTip: function(id, x, y, index){
+	renderTip: function(id, x, y, index, dataIndex){
 		if ($$('.chartTip').length > 0){ $$('.chartTip').dispose(); }
 		var self = this;
 		var chart = $('chart-' + this.chartIndex);
 		var pos = $(id).getCoordinates(chart);
-		var title = this.options.dataLabels[index];
-		var content = this.options.tipText[index].substitute({
+		var title = this.options.dataLabels[dataIndex];
+		var content = this.options.tipText[dataIndex].substitute({
 			x: x, 
 			y: y, 
 			xAxis: this.options.xAxisLabel,
@@ -677,7 +752,7 @@ var Charts = new Class({
 		var titleEl = new Element('span', {
 			'class': 'chartTipTitle',
 			html: title,
-			styles: {color: self.options.colors[index]}
+			styles: {color: self.options.colors[dataIndex]}
 		});
 		var contentEl = new Element('span', {'class': 'chartTipContent', html: content});
 		var location = this.getTipLocation(id, chart);
