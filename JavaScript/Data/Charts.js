@@ -24,7 +24,8 @@ var Charts = new Class({
 		dateIntervalValue: 6,								//3
 		dateStart: '8/18/2012',								//now, or a specific date
 		gridColor: '#DDD',									//The hex color of the grid lines
-		keyPosition: 'bottom',									//Where to show the key: left, right, top, bottom
+		keyPosition: 'bottom',								//Where to show the key: left, right, top, bottom
+		keyWidthPercentage: '15',							//The width percentage of the key, applicable only to key positions left and right 
 		showAreaLines: false,								//Whether or not to show lines on an area chart
 		showAxisLabels: false,								//Whether or not to show the axis labels
 		showAxisLines: false,								//Whether or not to show the axis lines		
@@ -53,26 +54,38 @@ var Charts = new Class({
 	},
 	
 	/**
-	 * @param string - selectors - The selectors for chart containers
+	 * @param string selectors - The selectors for chart containers
 	 */
 	initialize: function(selectors){
-		var self = this;
 		this.namespace = "http://www.w3.org/2000/svg";
 		this.selectors = selectors;
 		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [];
 		
-		Array.each($$(selectors), function(chart, index){	
-			self.charts[index] = chart;
-			self.chartIndex = index;			
-			self.createChart(chart, index, selectors);
-		});
+		//The selectors are reversed because of a clipping bug in Chrome whenever the browser is resized. I don't know why this works
+		Array.each($$(this.selectors).reverse(), function(chart, index){	
+			this.charts[index] = chart;			
+			this.createChart(chart, index, null, false);
+		}, this);
+	},
+
+	update: function(chart, index, data){
+		chart.getChildren().destroy();
+		this.charts[index] = chart;
+		this.createChart(chart, index, data, true);
 	},
 	
-	createChart: function(chart, index, selectors){
+	/**
+	 * @param object chart - The chart element
+	 * @param int index - The index of the chart
+	 * @param mixed data (optional) - If the chart has been updated with new data, this should be populated with an 
+	 * 		array of objects, else the value should be null
+	 * @param bool update (optional) - TRUE if the chart is being updated, FALSE otherwise
+	 */
+	createChart: function(chart, index, data, update){
 		var self = this;
-		var chartType = 'create'+chart.get('class').capitalize();
-		this.data[index] = JSON.decode(chart.getData('chartData'));
-		this.options[index] = options = Object.merge(this.defaultOptions, JSON.decode(chart.getData('chartOptions')));
+		var chartType = 'create' + chart.get('class').replace('inline', '').capitalize();
+		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
+		this.options[index] = options = Object.merge(Object.clone(this.defaultOptions), JSON.decode(chart.getData('chartOptions')));
 		this.points[index] = [];
 		this.dim[index] = {};
 		this.dim[index].aspectRatioHeight = (300/options.aspectRatio[0]) * options.aspectRatio[1];
@@ -96,17 +109,23 @@ var Charts = new Class({
 		}
 		
 		//This fixes a bug that renders the chart in full and then animates it.
-		if ((options.animate) && (!Browser.ie)){
-			this.svg.set('opacity', 0).addEvent('load', function(){
-				this.set('opacity', 1);
-			});
+		if ((options.animate) && (!Browser.ie)&&(!Browser.firefox)){
+			if (!update){
+				this.svg[index].set('opacity', 0).addEvent('load', function(){
+					this.set('opacity', 1);
+				});
+			}
 		} else {
-			this.options.animate = false; //IE can't do declarative animations, but future versions may rework the animation type 
+			options.animate = false; //IE can't do declarative animations, but future versions may rework the animation type 
 		}		
 		
 		this[chartType](index);		
+		chart.empty().adopt(this.svg[index].render());
+		this.svg[index];
 		
-		chart.adopt(this.svg[index].render());
+		chart.removeEvents().addEvent('updateChart', function(data){ //Events are removed for garbage collection
+			self.update(this, self.selectors.indexOf(this), data);
+		});	
 	},
 
 	setCanvasHeight: function(chart, index){
@@ -149,7 +168,7 @@ var Charts = new Class({
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		if (options.showKey){this.renderKey(index);}
 		
-		var group = new SVG('g', {'clip-path': 'url(#chartCanvas)'});
+		var group = new SVG('g', {'clip-path': 'url(#chartCanvas' + index + ')'});
 		
 		Array.each(this.data[index], function(data, dataIndex){
 			if (options.showAreaLines){this.renderLine(index, dataIndex)};
@@ -251,32 +270,34 @@ var Charts = new Class({
 	setChartSize: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
-		
+
 		dim.width = 300;
 		dim.width = (options.showTicksX) ? dim.width - 5 : dim.width;
 		dim.width = (options.showTicksY) ? dim.width - 15 : dim.width;
-		dim.width = (options.showIntervalLabels) ? dim.width - 25 : dim.width;
-		dim.width = (['right', 'left'].contains(options.keyPosition)) ? dim.width - 50 : dim.width;
+		dim.width = (options.showIntervalLabels) ? dim.width - 30 : dim.width;
+		dim.width = ((['right', 'left'].contains(options.keyPosition))&&(options.showKey)) ? dim.width - dim.keyWidth : dim.width;
 		
 		dim.height = dim.aspectRatioHeight - dim.yOffset;
 		dim.height = (options.showTicksY) ? dim.height - 5 : dim.height;
 		dim.height = (options.showAxisLabels) ? dim.height - 10 : dim.height;
 		dim.height = (options.showIntervalLabels) ? dim.height - 10 : dim.height;
-		dim.height = (options.keyPosition == 'bottom') ? dim.height - 20 : dim.height;
-
+		dim.height = ((options.keyPosition == 'bottom')&&(options.showKey)) ? dim.height - 20 : dim.height;
 	},
 
 	setOffsets: function(index){
 		var options = this.options[index];
-		var dim = this.dim[index];		
+		var dim = this.dim[index];
+		
+		dim.keyWidth = (300*(options.keyWidthPercentage/100)).toInt();
 		
 		dim.xOffset = (options.showTicksY) ? 5 : 0;
 		dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
 		dim.xOffset = (options.showIntervalLabels) ? dim.xOffset + 20 : dim.xOffset;
-		dim.xOffset = (options.keyPosition == 'left') ? dim.xOffset + 50 : dim.xOffset;
+		dim.xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.xOffset + dim.keyWidth : dim.xOffset;
 		
 		dim.yOffset = (options.showTitle) ? 25 : 0;
-		dim.yOffset = (options.keyPosition == 'top') ? dim.yOffset + 10 : dim.yOffset;
+		dim.yOffset = (options.showIntervalLabels) ? dim.yOffset + 15 : dim.yOffset;
+		dim.yOffset = ((options.keyPosition == 'top')&&(options.showKey)) ? dim.yOffset + 10 : dim.yOffset;
 	},
 	
 	setMaxes: function(index){
@@ -301,7 +322,8 @@ var Charts = new Class({
 	},
 
 	setTitle: function(index){
-		var title = new SVG.Text({'class': 'chartTitle', x: 0, y: 15,});
+		var xVal = (options.showIntervalLabels|options.showAxisLabels) ? 5 : 0;
+		var title = new SVG.Text({'class': 'chartTitle', x: xVal, y: 15,});
 		this.svg[index].adopt(title.setText(this.options[index].title).render());
 	},
 
@@ -320,7 +342,7 @@ var Charts = new Class({
 			height: (this.normalize(index, 0, 'y') - this.normalize(index, dim.maxY, 'y')),
 			width: this.normalize(index, dim.maxX, 'x') - this.normalize(index, 0, 'x')
 		});
-		var chartCanvas = new SVG.ClipPath({id: 'chartCanvas'}).adopt(mask.render());
+		var chartCanvas = new SVG.ClipPath({id: 'chartCanvas'+index}).adopt(mask.render());
 		var defs = new SVG('defs').adopt(chartCanvas.render());
 		this.svg[index].adopt(defs.render());
 	},
@@ -481,7 +503,7 @@ var Charts = new Class({
 		this.svg[index].adopt(xLabel.setText(options.xAxisLabel).render());
 		
 		var yMiddle = this.normalize(index, (dim.maxY/2), 'y');
-		var xOffset = (options.keyPosition == 'left') ? 60 : 10;
+		var xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.keyWidth + 10 : 10;
 		var yLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
 			x: xOffset,
@@ -514,19 +536,19 @@ var Charts = new Class({
 			});
 
 			var group = new SVG.G({
-				id: 'chartKey-' + dataIndex, 
+				id: 'chartKey-' + index + '-' + dataIndex, 
 				'class': 'chartKey'
 			}).addEvents({
 				click: function(e){
 					e.stop();
-					var dataIndex = this.getAttributeNS(null, 'id').split('-')[1];
+					var dataIndex = this.getAttributeNS(null, 'id').split('-')[2];
 
 					if (this.getAttributeNS(null, 'class') == 'chartKey'){
 						this.setAttributeNS(null, 'class', 'chartKey disabled');
-						$$('.dataset'+dataIndex).setStyle('display', 'none');
+						self.charts[index].getElements('.dataset'+dataIndex).setStyle('display', 'none');
 					} else {
 						this.setAttributeNS(null, 'class', 'chartKey');
-						$$('.dataset'+dataIndex).setStyle('display', 'block');
+						self.charts[index].getElements('.dataset'+dataIndex).setStyle('display', 'block');
 					}
 				}
 			}).adopt(keyColor.render()).adopt(keyLabel.render());
@@ -543,17 +565,29 @@ var Charts = new Class({
 		var dim = this.dim[index];
 		
 		if (['top', 'bottom'].contains(options.keyPosition)){
-			var currentX = 313;
-			var	currentY = (options.keyPosition == 'top') ? dim.yOffset - 30 : dim.yOffset + dim.height + 10;
-			currentY = (options.showTicksY) ? currentY + 5 : currentY;
-			currentY = (options.showAxisLabels) ? currentY + 10 : currentY;
-			currentY = (options.showIntervalLabels) ? currentY + 10 : currentY;			
-		} else {
+			var xVal = (options.showIntervalLabels||options.showAxisLabels) ? 304 : 313;
+			var totalWidth = 0;
 			
+			var	yVal = (options.keyPosition == 'top') ? dim.yOffset - 40 : dim.yOffset + dim.height + 10;
+			yVal = (options.showTicksY) ? yVal + 5 : yVal;
+			yVal = (options.showAxisLabels) ? yVal + 10 : yVal;
+			yVal = (options.showIntervalLabels) ? yVal + 10 : yVal;			
+		} else {
+			var xVal = (options.keyPosition == 'right') ? dim.xOffset + dim.width + 15 : 15;
+			var yVal = dim.yOffset + 20;
 		}
-
-		Array.each(this.charts[index].getElements('.chartKey'), function(key){
-			currentX = currentX - key.getBBox().width - 5;
+		
+		var chartKeys = this.charts[index].getElements('.chartKey');
+		Array.each(chartKeys, function(key, keyIndex){
+			if (['top', 'bottom'].contains(options.keyPosition)){
+				var keyBox = key.getBBox();
+				var currentX = xVal - totalWidth - keyBox.width - 5;
+				totalWidth += keyBox.width + 5;
+				var currentY = yVal;
+			} else {
+				var currentX = xVal;
+				var currentY = yVal - (10 * (keyIndex + 1));
+			}
 			key.set('transform', 'translate(' + currentX + ',' + currentY + ')');
 		});					
 	},
@@ -626,7 +660,7 @@ var Charts = new Class({
 			});
 			line.set('stroke-dasharray', lineLength + ' ' + lineLength).adopt(animation.render());
 		}
-		this.svg.adopt(line.render());	
+		this.svg[index].adopt(line.render());	
 	},
 
 	renderLineFill: function(index, dataIndex){
@@ -707,8 +741,7 @@ var Charts = new Class({
 					self.removeTip(id);
 				}
 			}, this).adopt(mouseoverEffect.render()).adopt(mouseoutEffect.render());
-			
-			
+					
 			if (options.animate){
 				var startTime = animationIndex * animationLength
 				var animation = new SVG.Animate({
@@ -737,22 +770,26 @@ var Charts = new Class({
 	
 	renderTip: function(id, x, y, index, dataIndex){
 		if ($$('.chartTip').length > 0){ $$('.chartTip').dispose(); }
+		
 		var self = this;
-		var chart = $('chart-' + this.chartIndex);
+		var options = this.options[index];
+		var dim = this.dim[index];
+		
+		var chart = $('chart-' + index);
 		var pos = $(id).getCoordinates(chart);
-		var title = this.options.dataLabels[dataIndex];
-		var content = this.options.tipText[dataIndex].substitute({
+		var title = options.dataLabels[dataIndex];
+		var content = options.tipText[dataIndex].substitute({
 			x: x, 
 			y: y, 
-			xAxis: this.options.xAxisLabel,
-			yAxis: this.options.yAxisLabel,
+			xAxis: options.xAxisLabel,
+			yAxis: options.yAxisLabel,
 			label: title
 		});
 		
 		var titleEl = new Element('span', {
 			'class': 'chartTipTitle',
 			html: title,
-			styles: {color: self.options.colors[dataIndex]}
+			styles: {color: options.colors[dataIndex]}
 		});
 		var contentEl = new Element('span', {'class': 'chartTipContent', html: content});
 		var location = this.getTipLocation(id, chart);
@@ -767,10 +804,10 @@ var Charts = new Class({
 	},
 	
 	removeTip: function(id){
-			var removeTip = function() {
-				if ($(id + 'ChartTip')){ $(id + 'ChartTip').dispose(); }
-			};
-			removeTip.delay(300);
+		var removeTip = function(){
+			if ($(id + 'ChartTip')){ $(id + 'ChartTip').dispose(); }
+		};
+		removeTip.delay(300);
 	},
 	
 	/**
