@@ -140,30 +140,49 @@
 				<h3 id="area-charts">Area Charts</h3>
 				<div class="row">
 					<div class="col4">
-						<h6>Basic Area Chart</h6>
+						<h6>Inline Area Chart</h6>
+						<p>Inline area charts are small charts that can appear inline within the context of a block of 
+							text or other inline elements. <span class="infoMarker">Note</span> Because inline charts 
+							are so small, they should generally only be used with a single data set and without many of
+							the visual chart features enabled. Keep inline charts simple.</p>
 					</div>
 					<div class="col8">
-						<ul class="tabs">
-							<li><a class="active" href="#area1-example">Demo</a></li>
-							<li><a href="#area1-code">Code</a></li>
-						</ul>
-						<div class="tabContent">
-							<div id="area1-example" class="active">
-								<div class="areaChart" data-chartData="[
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-									},
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-									}
-								]"
-								
-								data-chartOptions="{}"
-								></div>
-							</div>
-							<div id="area1-code">
+						<h6>Demo</h6>
+						<p>This is an inline area chart: <span class="inlineAreaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							}
+						]"
+						></span> It can appear within a paragraph.</p>
+						<h6>Code</h6>
+<pre class="html">
+&lt;p&gt;This is an inline area chart: &lt;span class="inlineAreaChart" data-chartData="[{
+	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+}]"&gt;&lt;/span&gt; It can appear within a paragraph.&lt;/p&gt;
+</pre>			
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Basic Area Chart</h6>
+						<p>This is the default area chart, with no options enabled. It expands to the full width of its 
+							container and shows data only.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"></div>
+						<h6>Code</h6>
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 {
@@ -175,191 +194,421 @@
 	y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
 }
 ]"&gt;&lt;/div&gt;
-</pre>
-							</div>
-						</div>			
+</pre>			
 					</div>
 				</div>
 				<div class="row">
 					<div class="col4">
 						<h6>Area Chart With Axis & Labels</h6>
+						<p>In this example, the title, labels, ticks, and axis lines have all been enabled. Each of 
+							those elements can be toggled separately through the options object.</p> 
+							<p><span class="infoMarker">Note</span> Chart text may not be perfect on mobile-sized 
+							screens, so choose what information you display carefully.</p>
 					</div>
 					<div class="col8">
-						<ul class="tabs">
-							<li><a class="active" href="#area1-example">Demo</a></li>
-							<li><a href="#area1-code">Code</a></li>
-						</ul>
-						<div class="tabContent">
-							<div id="area1-example" class="active">
-								<div class="areaChart" data-chartData="[
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-									},
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-									}
-								]"
-								
-								data-chartOptions="{
-									showAxisLabels: true, 
-									showAxisLines: true, 
-									showTicksY: true, 
-									showTicksX: true,
-									showIntervalLabels: true
-								}"></div>
-							</div>
-							<div id="area1-code">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Axis & Label Demo'
+						}"></div>
+						<h6>Code</h6>
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-},
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],
-	y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-}
-]"&gt;&lt;/div&gt;
-</pre>
-							</div>
-						</div>			
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	title: 'Axis & Label Demo'
+}"&gt;&lt;/div&gt;
+</pre>		
 					</div>
 				</div>
 				<div class="row">
 					<div class="col4">
-						<h6>Basic Area Chart</h6>
+						<h6>Area Charts With Interactive Keys</h6>
+						<p>The keys in the charts plugin are all interactive. Clicking on the key text or color square 
+							will toggle the visibility of that dataset in the graph.</p> 
+						<p>Keys can appear in four different positions: <em>top</em>, <em>bottom</em>, <em>left</em>, 
+							or <em>right</em>, with a default position of <em>bottom</em>. Choose the appropriate key 
+							position based on the length and number of your dataset labels.</p>
+						<p><span class="infoMarker">Note</span> The width of the <em>left</em> and <em>right</em> key 
+							positions can be determined using the <code>keyWidthPercentage</code> option, which 
+							defaults to 15%. Because cross-browser support for SVG text-wrapping isn't particularly 
+							fantastic, you'll need to use this option for especially longer labels.</p>			
 					</div>
 					<div class="col8">
-						<ul class="tabs">
-							<li><a class="active" href="#area1-example">Demo</a></li>
-							<li><a href="#area1-code">Code</a></li>
-						</ul>
-						<div class="tabContent">
-							<div id="area1-example" class="active">
-								<div class="areaChart" data-chartData="[
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-									},
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-									}
-								]"
-								
-								data-chartOptions="{}"
-								></div>
-							</div>
-							<div id="area1-code">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Bottom Key Demo'
+						}"></div>
+						<h6>Code</h6>
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-},
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],
-	y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-}
-]"&gt;&lt;/div&gt;
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Bottom Key Demo'
+}"&gt;&lt;/div&gt;
 </pre>
-							</div>
-						</div>			
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							keyPosition: 'right',
+							title: 'Right Key Demo'
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	keyPosition: 'right',
+	title: 'Right Key Demo'
+}"&gt;&lt;/div&gt;
+</pre>		
 					</div>
 				</div>
 				<div class="row">
 					<div class="col4">
-						<h6>Basic Area Chart</h6>
+						<h6>Grid Lines</h6>
+						<p>Grid lines can be added to the chart as well, with granular control over both the <em>X</em> 
+							and <em>Y</em> lines through the <code>showGridX</code> and <code>showGridY</code> options. 
+							Grid line color is set through the <code>gridColor</code> option.</p>			
 					</div>
 					<div class="col8">
-						<ul class="tabs">
-							<li><a class="active" href="#area1-example">Demo</a></li>
-							<li><a href="#area1-code">Code</a></li>
-						</ul>
-						<div class="tabContent">
-							<div id="area1-example" class="active">
-								<div class="areaChart" data-chartData="[
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-									},
-									{
-										x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-										y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-									}
-								]"
-								
-								data-chartOptions="{}"
-								></div>
-							</div>
-							<div id="area1-code">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Grid Lines Demo',
+							showGridX: true,
+							showGridY: true
+						}"></div>
+						<h6>Code</h6>
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-},
-{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],
-	y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-}
-]"&gt;&lt;/div&gt;
-</pre>
-							</div>
-						</div>			
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Grid Lines Demo',
+	showGridX: true,
+	showGridY: true
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Lines, Points &amp; Tips</h6>
+						<p>The area chart can display a line overlay from point to point, as well as individual data 
+							points using the <code>showAreaLines</code> and <code>showPoints</code> options.</p>
+						<p>The tips for <em>Data Set 1</em> in the demo are custom text, whereas the tips for <em>Data 
+							Set 2</em> are the default tips. Tip text can be customized per data set and is set via the 
+							<code>tipText</code> option.</p>
+						<p>The <code>tipText</code> option's value should be an array, with custom text as a series of 
+							strings in the same order as the data sets. The string can take HTML and also has special 
+							placeholders that will be replaced automatically.</p>
+						<h6>Tip Text Placeholders</h6>
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Placeholders</caption>
+							<thead>
+								<tr>
+									<th>String</th>
+									<th>Replacement</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="String">{x}</td>
+									<td data-column="Replacement">The x-cordinate value.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{y}</td>
+									<td data-column="Replacement">The y-cordinate value.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{xAxis}</td>
+									<td data-column="Replacement">The name of the x-axis.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{yAxis}</td>
+									<td data-column="Replacement">The name of the y-axis.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{label}</td>
+									<td data-column="Replacement">The name of the dataset.</td>
+								</tr>																								
+							</tbody>
+						</table>			
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Lines, Points & Tips Demo',
+							showGridX: true,
+							showGridY: true,
+							showAreaLines: true,
+							showPoints: true,
+							showTips: true,
+							tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'] 
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Lines, Points, & Tips Demo',
+	showGridX: true,
+	showGridY: true,
+	showAreaLines: true,
+	showPoints: true,
+	showTips: true,
+	tipText: ['This is a custom tip. The value for the {xAxis} is: {x}']
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Animation</h6>
+						<p>The chart can be animated by setting the <code>animate</code> option to <code>true</code>. 
+							The length of the animation can also be controlled with the <code>animationDuration</code> 
+							option, which defaults to a 1 second animation.</p>
+						<p><span class="infoMarker">Note</span> Animations do not currently work in Internet Explorer 
+							as it does not support declarative animations. The chart will simply ignore the 
+							<code>animate</code> option and display a static chart in Internet Explorer.</p>	
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div id="animatedAreaChart" class="areaChart" data-chartData="[
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Animation Demo',
+							showGridX: true,
+							showGridY: true,
+							showAreaLines: true,
+							showPoints: true,
+							showTips: true,
+							tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'],
+							animate: true
+						}"></div>
+						<p><a id="animateButton" class="buttonInfo" href="#">Refresh Animation</a></p>
+						<script type="text/javascript">
+							window.addEvent('domready', function(){
+								$('animateButton').addEvent('click', function(e){
+									e.stop();
+									$('animatedAreaChart').fireEvent('updateChart');
+								});
+							});
+						</script>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	},
+	{
+		x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
+		y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+	}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Lines, Points, & Tips Demo',
+	showGridX: true,
+	showGridY: true,
+	showAreaLines: true,
+	showPoints: true,
+	showTips: true,
+	tipText: ['This is a custom tip. The value for the {xAxis} is: {x}']
+}"&gt;&lt;/div&gt;
+</pre>		
 					</div>
 				</div>												
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col12">
-				<div class="areaChart" data-chartData="[
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
-					},
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-					}
-				
-				]" data-chartOptions="{
-					title: 'Visits & Page Views',
-					dataLabels: ['Visits', 'Page Views'],
-					tipText: ['You had <b>{y} {label}</b> on {x}', 'You had {y} {label} on {x}'],
-					xAxisLabel: 'Month',
-					dateFormat: '%Y',
-					dateIntervalUnit: 'year',		
-					dateIntervalValue: 5,	
-					dateStart: '3/1/1992',
-					showTitle: true					
-				}"></div>				
-			</div>
-<!-- 			
-/*					
-					,
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
-					},
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[0,1,2,4,8,16,32,64,32,16,8,4,2,1,0,1,2,4,8,16,32]
-					},
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[0,3,6,12,24,48,96,48,24,12,6,3,0,4,16,64,16,4,0,5,25]
-					},
-					{
-						x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
-						y:[24,12,6,3,0,4,16,4,0,5,25,64,16,0,3,6,12,24,48,96,48]
-					}										
-//*/
- -->
-			
 		</div>
 	</div>
 </body>
