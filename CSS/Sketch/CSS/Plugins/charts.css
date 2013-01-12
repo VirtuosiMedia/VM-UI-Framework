@@ -8,15 +8,22 @@
 /**
  * Charts
  */
+[class*="Chart"] {margin-bottom: 1.75em;}
 [class*="Chart"], [class*="Chart"] > svg {
-	border: 1px solid #CCC;
 	display: block;
 	height: 100%;
 	position: relative;
     width: 100%;
 }
+[class*="inline"][class*="Chart"], [class*="inline"][class*="Chart"] > svg {
+	display: inline;
+	height: 1.2em;
+	top: 0.015em;
+	width: 2.133em;
+}
 .dataLine, .dataPoint {opacity: 0.7;}
 .dataFill {opacity: 0.2;}
+[class*="inline"][class*="Chart"] .dataFill {opacity: 0.6;}
 .dataPoint:hover {
 	cursor: pointer;
 	opacity: 1;
@@ -51,6 +58,11 @@
 	padding: 0.5em;
 	position: absolute;
 	width: auto;
+}
+.chartTipTitle {
+	display: inline-block;
+	font-weight: bold;
+	width: 100%;
 }
 .chartTitle {
 	font-size: 0.75em;
