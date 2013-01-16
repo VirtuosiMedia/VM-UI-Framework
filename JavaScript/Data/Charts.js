@@ -26,6 +26,10 @@ var Charts = new Class({
 		gridColor: '#DDD',									//The hex color of the grid lines
 		keyPosition: 'bottom',								//Where to show the key: left, right, top, bottom
 		keyWidthPercentage: '15',							//The width percentage of the key, applicable only to key positions left and right 
+		maxX: null,											//The maximum value of the x-axis
+		maxY: null,											//The maximum value of the y-axis
+		minX: 0,											//The minimum value of the x-axis, defaults to 0
+		minY: 0,											//The minimum value of the y-axis, defaults to 0
 		showAreaLines: false,								//Whether or not to show lines on an area chart
 		showAxisLabels: false,								//Whether or not to show the axis labels
 		showAxisLines: false,								//Whether or not to show the axis lines		
@@ -61,13 +65,19 @@ var Charts = new Class({
 		this.selectors = selectors;
 		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [];
 		
-		//The selectors are reversed because of a clipping bug in Chrome whenever the browser is resized. I don't know why this works
-		Array.each($$(this.selectors).reverse(), function(chart, index){	
+		Array.each($$(this.selectors), function(chart, index){	
 			this.charts[index] = chart;			
 			this.createChart(chart, index, null, false);
 		}, this);
 	},
 
+	/**
+	 * @description Updates a chart by clearing the canvas and repainting it with the new data
+	 * @param object chart - The chart element to be resized
+	 * @param int index - The index of the chart
+	 * @param array data - optional - An array of objects containing x, y keys with array values of data to be charted. 
+	 * 		If no data is passed in, the chart will use the existing data found in the data-chartData attribute.
+	 */		
 	update: function(chart, index, data){
 		chart.getChildren().destroy();
 		this.charts[index] = chart;
@@ -128,12 +138,21 @@ var Charts = new Class({
 		});	
 	},
 
+	/**
+	 * @description Sets the canvas height according to the aspect ratio set in the options
+	 * @param object chart - The chart element to be resized
+	 * @param int index - The index of the chart
+	 */		
 	setCanvasHeight: function(chart, index){
 		var options = this.options[index];
 		var height = (chart.getSize()['x']/options.aspectRatio[0]) * options.aspectRatio[1];
 		chart.setStyle('height', height);		
 	},
-	
+
+	/**
+	 * @description Creates a line chart
+	 * @param int index - The index of the chart
+	 */		
 	createLineChart: function(index){
 		var options = this.options[index];
 		
@@ -145,7 +164,7 @@ var Charts = new Class({
 		
 		Array.each(this.data[index], function(data, dataIndex){
 			this.renderLine(index, dataIndex);
-			if (options.showLineFill){this.renderLineFill(index, dataIndex);}			
+			if (options.showLineFill){this.renderArea(index, dataIndex);}			
 		}, this);
 		
 		if (this.options.showAxisLines){this.renderAxisLines(index);}
@@ -156,7 +175,11 @@ var Charts = new Class({
 			}, this);
 		}		
 	},
-	
+
+	/**
+	 * @description Creates an area chart
+	 * @param int index - The index of the chart
+	 */		
 	createAreaChart: function(index){
 		var options = this.options[index];
 		this.renderMask(index);
@@ -172,7 +195,7 @@ var Charts = new Class({
 		
 		Array.each(this.data[index], function(data, dataIndex){
 			if (options.showAreaLines){this.renderLine(index, dataIndex)};
-			group.adopt(this.renderLineFill(index, dataIndex));			
+			group.adopt(this.renderArea(index, dataIndex));			
 		}, this);
 		
 		this.svg[index].adopt(group.render());
@@ -185,7 +208,11 @@ var Charts = new Class({
 			}, this);
 		}		
 	},
-	
+
+	/**
+	 * @description Creates a scatter chart
+	 * @param int index - The index of the chart
+	 */	
 	createScatterChart: function(index){
 		var options = this.options[index];
 		
@@ -203,10 +230,11 @@ var Charts = new Class({
 	
 	/**
 	 * @description Parses data for line, scatter, and bar charts
+	 * @param int index - The index of the chart
 	 */
 	parseData: function(index){
 		var options = this.options[index];	
-		this.setMaxes(index);
+		this.setDataRange(index);
 
 		Array.each(this.data[index], function(dataObject, dataIndex){
 			var numPoints = dataObject.x.length;
@@ -231,11 +259,15 @@ var Charts = new Class({
 				linePoints.push(normalizedX + ' ' + normalizedY);
 			}
 			
-			this.points[index][dataIndex].line = 'M ' + linePoints.join(', ');
+			this.points[index][dataIndex].line = 'M ' + linePoints.join(' L ');
 			this.setDataLabels(index, dataIndex);
 		}, this);
 	},
 
+	/**
+	 * @description Prepares the data for date-based graphs before passing it to the parseData function
+	 * @param int index - The index of the chart
+	 */	
 	parseDateData: function(index){
 		var options = this.options[index];
 		var startDate = (options.dateStart.toLowerCase() == 'now') ? new Date() : new Date(options.dateStart);
@@ -267,6 +299,10 @@ var Charts = new Class({
 		this.parseData(index);
 	},
 
+	/**
+	 * @description Sets the height and width boundaries for the chart area based on which options are enabled.
+	 * @param int index - The index of the chart
+	 */	
 	setChartSize: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -284,6 +320,10 @@ var Charts = new Class({
 		dim.height = ((options.keyPosition == 'bottom')&&(options.showKey)) ? dim.height - 20 : dim.height;
 	},
 
+	/**
+	 * @description Sets the offset and key dimensions based on which options are enabled.
+	 * @param int index - The index of the chart
+	 */	
 	setOffsets: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -299,8 +339,13 @@ var Charts = new Class({
 		dim.yOffset = (options.showIntervalLabels) ? dim.yOffset + 15 : dim.yOffset;
 		dim.yOffset = ((options.keyPosition == 'top')&&(options.showKey)) ? dim.yOffset + 10 : dim.yOffset;
 	},
-	
-	setMaxes: function(index){
+
+	/**
+	 * @description Sets the numerical boundaries for the chart area. Unless specified in the options, the y-values for 
+	 * 		the chart will exceed the highest and lowest points in the data by one full interval for asthetics.
+	 * @param int index - The index of the chart
+	 */		
+	setDataRange: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
 		var xValues = [], yValues = [];
@@ -310,43 +355,70 @@ var Charts = new Class({
 			yValues.combine(dataObject.y);
 		});
 		
-		dim.maxX = Math.max.apply(Math, xValues);
-		maxY = Math.max.apply(Math, yValues);
-		yInterval = options.yInterval;
-		
-		if (maxY % yInterval){
-			dim.maxY = ((Math.round(maxY/yInterval) + 1) * yInterval);
-		} else {
-			dim.maxY = maxY + yInterval;		
+		dim.maxX = (options.maxX) ? options.maxX : Math.max.apply(Math, xValues);
+		dim.minX = (options.minX) ? options.minX : Math.min.apply(Math, xValues);
+		dim.minY = (options.minY) ? options.minY : Math.min.apply(Math, yValues);
+
+		var minY = Math.min.apply(Math, yValues);
+		if (minY >= 0){
+			dim.minY = options.minY;
+		} else { //There will be an interval added on below the graph's lowest point for asthetics	
+			yInterval = options.yInterval;
+			dim.minY = (minY % yInterval) ? (minY - (yInterval + (minY % yInterval)) - yInterval) : minY - yInterval;
 		}		
+		
+		if (options.maxY){
+			dim.maxY = options.maxY;
+		} else { //There will be an interval added on top of the graph's highest point for asthetics
+			maxY = Math.max.apply(Math, yValues);
+			yInterval = options.yInterval;
+			dim.maxY = (maxY % yInterval) ? ((Math.round(maxY/yInterval) + 1) * yInterval) : maxY + yInterval;
+		}
 	},
 
+	/**
+	 * @description Sets the title for the chart
+	 * @param int index - The index of the chart
+	 */		
 	setTitle: function(index){
 		var xVal = (options.showIntervalLabels|options.showAxisLabels) ? 5 : 0;
 		var title = new SVG.Text({'class': 'chartTitle', x: xVal, y: 15,});
 		this.svg[index].adopt(title.setText(this.options[index].title).render());
 	},
 
+	/**
+	 * @description Sets the labels for each dataset for use in key labels and tooltips
+	 * @param int index - The index of the chart
+	 * @param in dataIndex - The index of the dataset
+	 */		
 	setDataLabels: function(index, dataIndex){
 		var options = this.options[index];
 		options.dataLabels[dataIndex] = (options.dataLabels[dataIndex])	? options.dataLabels[dataIndex] : 'Data Set ' + (dataIndex + 1);
 		options.tipText[dataIndex] = (options.tipText[dataIndex]) ? options.tipText[dataIndex] : '{xAxis}: {x}, {yAxis}: {y}';
 	},
-	
+
+	/**
+	 * @description Sets the boundaries for the clippath, which restricts animations to the chart area only
+	 * @param int index - The index of the chart
+	 */		
 	renderMask: function(index){
 		var dim = this.dim[index];
 
 		var mask = new SVG.Rect({
-			x: this.normalize(index, 0, 'x'),
+			x: this.normalize(index, dim.minX, 'x'),
 			y: this.normalize(index, dim.maxY, 'y'),
-			height: (this.normalize(index, 0, 'y') - this.normalize(index, dim.maxY, 'y')),
-			width: this.normalize(index, dim.maxX, 'x') - this.normalize(index, 0, 'x')
+			height: (this.normalize(index, 0, 'y') - this.normalize(index, dim.maxY - dim.minY, 'y')),
+			width: this.normalize(index, dim.maxX - dim.minX, 'x') - this.normalize(index, 0, 'x')
 		});
 		var chartCanvas = new SVG.ClipPath({id: 'chartCanvas'+index}).adopt(mask.render());
 		var defs = new SVG('defs').adopt(chartCanvas.render());
 		this.svg[index].adopt(defs.render());
 	},
-	
+
+	/**
+	 * @description Renders the x and y axises
+	 * @param int index - The index of the chart
+	 */		
 	renderAxisLines: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -362,6 +434,10 @@ var Charts = new Class({
 		this.svg[index].adopt(line.render());		
 	},
 
+	/**
+	 * @description Renders the tickmarks for both the x and y axises, spaced according to the interval set in the options
+	 * @param int index - The index of the chart
+	 */		
 	renderTicks: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];		
@@ -369,22 +445,41 @@ var Charts = new Class({
 		var ticks = [],
 			xOffset = dim.xOffset, 
 			yOffset = dim.yOffset,
-			xInterval = (options.xInterval/dim.maxX) * dim.width,
-			yInterval = (options.yInterval/dim.maxY) * dim.height,
-			xStart = xOffset + xInterval;
-			yStart = yOffset + dim.height + .5 - yInterval;
+			xInterval = (options.xInterval/(dim.maxX - dim.minX)) * dim.width,
+			yInterval = (options.yInterval/(dim.maxY - dim.minY)) * dim.height,
+			xStart = this.normalize(index, dim.minX, 'x'),
+			minY = this.normalize(index, dim.minY, 'y'),
+			numX = 0;
+		var yStart = (dim.minY >= 0) ? minY : this.normalize(index, 0, 'y');
 
 		if (options.showTicksX){
 			for (var x = xStart; x < (xOffset + dim.width + 1); x+=xInterval){
-				ticks.push('M ' + x + ' ' + (yStart + 3 + yInterval) + ', ' + x + ' ' + (yStart + yInterval - 0.5));
-			}		
+				ticks.push('M ' + x + ' ' + minY + ', ' + x + ' ' + (minY + 3));
+			}
+			ticks.splice(0, 1); //Interval removed to minimize visual complexity
+			numX = ticks.length;
 		}
 			
 		if (options.showTicksY){
-			for (var y = yStart; y >= (yOffset); y-=yInterval){
-				ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
+			if (dim.minY >= 0){
+				for (var y = yStart; y >= yOffset; y-=yInterval){
+					ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
+				}
+				ticks.splice(numX, 1);
+			} else { //We need zero to show up on the graph
+				for (var y = yStart; y <= minY; y+= yInterval){
+					ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
+				}
+				ticks.pop(); //Interval removed to minimize visual complexity
+				
+				yStart = this.normalize(index, options.yInterval, 'y');
+				var maxY = this.normalize(index, dim.maxY, 'y');
+				for (var y = yStart; y >= maxY; y-= yInterval){				
+					ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
+				}
 			}
-		}
+			ticks.push('M ' + xOffset + ' ' + yOffset + ', ' + (xOffset -3) + ' ' + yOffset);
+		}		
 			
 		Array.each(ticks, function(tickPath){
 			var tick = new SVG.Path({
@@ -397,6 +492,10 @@ var Charts = new Class({
 		}, this);
 	},
 
+	/**
+	 * @description Renders the grids for both the x and y axises, spaced according to the interval set in the options
+	 * @param int index - The index of the chart
+	 */		
 	renderGrids: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -404,27 +503,37 @@ var Charts = new Class({
 		var grids = [],
 			xOffset = dim.xOffset, 
 			yOffset = dim.yOffset,
-			xInterval = (options.xInterval/dim.maxX) * dim.width,
-			yInterval = (options.yInterval/dim.maxY) * dim.height,
-			yStart = yOffset + dim.height + .5,
-			normalMaxX = this.normalize(index, dim.maxX, 'x');
+			xInterval = (options.xInterval/(dim.maxX - dim.minX)) * dim.width,
+			yInterval = (options.yInterval/(dim.maxY - dim.minY)) * dim.height,
+			maxX = this.normalize(index, dim.maxX, 'x'),
+			minY = this.normalize(index, dim.minY, 'y');
+		var yStart = (dim.minY >= 0) ? minY : this.normalize(index, 0, 'y');
 
 		if (options.showGridX){
 			for (var x = xOffset; x < (xOffset + dim.width + 1); x+=xInterval){
-				grids.push('M ' + x + ' ' + (yStart) + ', ' + x + ' ' + (yOffset + 0.5));
-			}
-
-			if (x > normalMaxX){
-				grids.push('M ' + normalMaxX + ' ' + (yStart) + ', ' + normalMaxX + ' ' + (yOffset + 0.5));
-			}
+				grids.push('M ' + x + ' ' + minY + ', ' + x + ' ' + (yOffset + 0.5));
+			}			
 		}
 
 		if (options.showGridY){
-			for (var y = yStart; y >= (yOffset); y-=yInterval){
-				grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
+			if (dim.minY >= 0){
+				for (var y = yStart; y >= (yOffset); y-=yInterval){
+					grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
+				}
+			} else { //We need zero to show up on the graph
+				for (var y = yStart; y <= minY; y+= yInterval){
+					grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
+				}
+				
+				yStart = this.normalize(index, options.yInterval, 'y');
+				var maxY = this.normalize(index, dim.maxY, 'y');
+				for (var y = yStart; y >= maxY; y-= yInterval){				
+					grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
+				}				
 			}
+			grids.push('M ' + xOffset + ' ' + yOffset + ', ' + (xOffset + dim.width) + ' ' + yOffset);
 		}
-			
+	
 		Array.each(grids, function(gridPath){
 			var grid = new SVG.Path({
 				d: gridPath,
@@ -436,6 +545,11 @@ var Charts = new Class({
 		}, this);
 	},	
 
+	/**
+	 * @description Renders the labels for each interval. Note: all text is strictly horizontal and no checking on length
+	 * 		is done, so be careful with the length of your text
+	 * @param int index - The index of the chart
+	 */		
 	renderIntervalLabels: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -443,13 +557,13 @@ var Charts = new Class({
 		var xLabels = [], 
 			yLabels = [], 
 			self = this,
-			xInterval = (options.xInterval/dim.maxX) * dim.width,
-			yInterval = (options.yInterval/dim.maxY) * dim.height;
+			xInterval = (options.xInterval/(dim.maxX - dim.minX)) * dim.width,
+			yInterval = (options.yInterval/(dim.maxY - dim.minY)) * dim.height;
 
 		if (options.xLabels.length > 0){
 			xLabels = options.xLabels;
 		} else {
-			for (var i = 0; i <= dim.maxX; i+= options.xInterval){
+			for (var i = dim.minX; i <= dim.maxX; i+= options.xInterval){
 				xLabels.push(i);
 			}
 		}
@@ -469,8 +583,18 @@ var Charts = new Class({
 		if (options.yLabels.length > 0){
 			yLabels = options.yLabels;
 		} else {
-			for (var i = 0; i <= dim.maxY; i+= options.yInterval){
-				yLabels.push(i);
+			if (dim.minY >= 0){
+				for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
+					yLabels.push(i);
+				}
+			} else { //We need zero to show up on the graph
+				for (var i = 0; i >= dim.minY; i-= options.yInterval){
+					yLabels.push(i);
+				}
+				yLabels.reverse();
+				for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
+					yLabels.push(i);
+				}				
 			}
 		}
 		
@@ -489,6 +613,10 @@ var Charts = new Class({
 		});		
 	},
 
+	/**
+	 * @description Renders the axis labels in the middle of each axis, with the y-axis text rotated 
+	 * @param int index - The index of the chart
+	 */		
 	renderAxisLabels: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -496,24 +624,28 @@ var Charts = new Class({
 		var intervalLabelHeight = (options.showIntervalLabels) ? 10 : 0;
 		var xLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
-			x: this.normalize(index, (dim.maxX/2), 'x'),
+			x: this.normalize(index, (dim.maxX + dim.minX)/2, 'x'),
 			y: (dim.yOffset + dim.height + intervalLabelHeight + 10), 
 			'text-anchor': 'middle'
 		});
 		this.svg[index].adopt(xLabel.setText(options.xAxisLabel).render());
 		
-		var yMiddle = this.normalize(index, (dim.maxY/2), 'y');
+		var yMiddle = (dim.minY < 0) ? (dim.maxY + dim.minY)/2 : (dim.maxY + dim.minY)/2;
 		var xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.keyWidth + 10 : 10;
 		var yLabel = new SVG.Text({
 			'class': 'chartAxisLabel',
 			x: xOffset,
-			y: yMiddle, 
+			y: this.normalize(index, yMiddle, 'y'), 
 			'text-anchor': 'middle',
-			transform: "rotate(270 " + xOffset + " " + yMiddle + ")" 
+			transform: "rotate(270 " + xOffset + " " + this.normalize(index, yMiddle, 'y') + ")" 
 		});
 		this.svg[index].adopt(yLabel.setText(options.yAxisLabel).render());		
 	},
 
+	/**
+	 * @description Renders keys for each dataset if the showKeys option is true
+	 * @param int index - The index of the chart
+	 */	
 	renderKey: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];		
@@ -558,8 +690,12 @@ var Charts = new Class({
 		this.svg[index].addEvent('DOMNodeInserted', function(){self.positionKeys(index);});
 		window.addEvent('resize', function(){self.positionKeys(index);});
 	},
-
-	//This is because it's almost impossible to pre-calculate the key width before inserting it into the DOM	
+	
+	/**
+	 * @description Positions the keys after they have been inserted into the document. This function is necessary 
+	 * 		because it's almost impossible to pre-calculate the key width before inserting it into the DOM.
+	 * @param int index - The index of the chart
+	 */
 	positionKeys: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -600,13 +736,10 @@ var Charts = new Class({
 	 */
 	normalize: function(index, value, axis){
 		var dim = this.dim[index];
-		var max = dim['max'+axis.capitalize()];
-		var offset = dim[axis+'Offset'];
-		
 		if (axis == 'y'){
-			return (dim.height + offset) - Math.round(((value/max) * dim.height));
+			return (dim.height + dim.yOffset) - (((value - dim.minY)/(dim.maxY - dim.minY)) * dim.height);
 		} else {
-			return Math.round(((value/max) * dim.width)) + offset;	
+			return (((value - dim.minX)/(dim.maxX - dim.minX)) * dim.width) + dim.xOffset;	
 		}
 	},
 	
@@ -663,15 +796,21 @@ var Charts = new Class({
 		this.svg[index].adopt(line.render());	
 	},
 
-	renderLineFill: function(index, dataIndex){
+	/**
+	 * @description Creates an area graphic for a single dataset, animating it if animation is enabled
+	 * @param int index - The index of the chart
+	 * @param int dataIndex - The index of the dataset to be rendered as an area
+	 */		
+	renderArea: function(index, dataIndex){
 		var options = this.options[index];
 		var dim = this.dim[index];
 		
-		var yVal = dim.yOffset + dim.height;
-		var linePath = this.points[index][dataIndex].line + ', ' 
-			+ this.normalize(index, dim.maxX, 'x') + ' ' 
-			+ yVal + ', ' + dim.xOffset + ' ' + yVal;
-		
+		var coordinates = this.points[index][dataIndex].line.split(' ');
+		var firstX = coordinates[1];
+		var lastX = coordinates[coordinates.length - 2];
+		var yVal = ((dim.maxY > 0)&& (dim.minY <=0)) ? this.normalize(index, 0, 'y') : dim.yOffset + dim.height;
+		var linePath = this.points[index][dataIndex].line + ' L ' + lastX + ' ' + yVal + ' L ' + firstX + ' ' + yVal;
+
 		var lineFill = new SVG.Path({
 			"class": "dataFill dataset" + dataIndex,
 			stroke: "transparent",
@@ -693,7 +832,12 @@ var Charts = new Class({
 		}
 		return lineFill.render();
 	},
-	
+
+	/**
+	 * @description Renders points for a single dataset, animating them if animation is enabled
+	 * @param int index - The index of the chart
+	 * @param int dataIndex - The index of the dataset to be rendered as an area
+	 */				
 	renderPoints: function(index, dataIndex){
 		var options = this.options[index];
 		var dim = this.dim[index];
@@ -703,7 +847,7 @@ var Charts = new Class({
 		var animationLength = options.animationDuration / numPoints;
 		
 		Array.each(this.points[index][dataIndex].data, function(data, animationIndex){
-			var id = 'dataPoint-' + dataIndex + '-' + animationIndex;
+			var id = 'dataPoint-' + index + '-' + dataIndex + '-' + animationIndex;
 			
 			var mouseoverEffect = new SVG.Animate({
 				attributeName: "r",
@@ -759,6 +903,13 @@ var Charts = new Class({
 		});
 	},
 
+	/**
+	 * @description Gets the location of a point relative to the chart, making sure that tips along the edges of a chart 
+	 * 		will be properlly diplayed.
+	 * @param int id - The id of the tip for which a location should be retrieved
+	 * @param object chart - The chart where the tip is located
+	 * @return object - An object with the x,y coordinates where the tip should be placed
+	 */			
 	getTipLocation: function(id, chart){
 		var pos = $(id).getPosition(chart);
 		var location = $(id).getCoordinates(chart);
@@ -767,7 +918,17 @@ var Charts = new Class({
 		var top = ((dimensions.height/2) < pos.y) ? (location.top - 100) : (location.top);
 		return {y: top, x: left};
 	},
-	
+
+	/**
+	 * @description Renders a tip when a chart element is interacted with by the user
+	 * @param string id - The id of the tip to be rendered
+	 * @param mixed x - The x value for the chart element in relation to the chart's data (not to be confused with its 
+	 * 		CSS x coordinate location)
+	 * @param mixed y - The y value for the chart element in relation to the chart's data (not to be confused with its 
+	 * 		CSS y coordinate location)
+	 * @param int index - The index of the chart
+	 * @param int dataIndex - The index of the dataset 
+	 */
 	renderTip: function(id, x, y, index, dataIndex){
 		if ($$('.chartTip').length > 0){ $$('.chartTip').dispose(); }
 		
@@ -793,6 +954,7 @@ var Charts = new Class({
 		});
 		var contentEl = new Element('span', {'class': 'chartTipContent', html: content});
 		var location = this.getTipLocation(id, chart);
+
 		var tip = new Element('div', {
 			id: id + 'ChartTip',
 			'class': 'chartTip',
@@ -803,11 +965,12 @@ var Charts = new Class({
 		}).adopt(titleEl, contentEl).inject(chart, 'after');
 	},
 	
+	/**
+	 * @description Removes a tip from the DOM
+	 * @param string id - The id of the tip to be removed
+	 */
 	removeTip: function(id){
-		var removeTip = function(){
-			if ($(id + 'ChartTip')){ $(id + 'ChartTip').dispose(); }
-		};
-		removeTip.delay(300);
+		(function(){if ($(id + 'ChartTip')){ $(id + 'ChartTip').dispose(); }}).delay(300);
 	},
 	
 	/**
