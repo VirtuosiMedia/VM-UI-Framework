@@ -128,7 +128,7 @@
 	 				<li>X-values are necessary when not working with dates.</li>
 	 				<li>Updating the graph requires refreshing the canvas.</li>
 	 				<li>Large numbers may not look good on the axises.</li>
-	 				<li>Decimals?</li>
+	 				<li>Missing values are not supported.</li>
 	 			</ul>				
 			</div>
 		</div>
@@ -594,7 +594,73 @@ data-chartOptions="{
 }"&gt;&lt;/div&gt;
 </pre>		
 					</div>
-				</div>				
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Decimal Values &amp; Custom Intervals</h6>
+						<p>Decimal values can be used in any chart, but in most cases, you will probably want to adjust 
+							the intervals along at least one of the axises. To do so, use the <code>xInterval</code> 
+							and <code>yInterval</code> options to establish custom intervals.</p>
+						<p>By default, the interval labels will show only integers, so any decimal interval labels will 
+							be rounded to the nearest integer. To show decimal interval labels, use the 
+							<code>decimalPrecisionX</code> and <code>decimalPrecisionY</code> options to specify the 
+							number of decimal places to be shown. <span class="infoMarker">Note</span> This will only 
+							affect the interval labels; the data points and tips will display the full number as 
+							specified in the dataset.</p> 
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								x:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 
+								y:[0,0.3,0.1,0.6,0.45,0.1,0.3,0.1,0.8,0.45,0,0.3,0.1,0.6,0.45,0.1,0.3,0.1,0.6,0.45,0.2]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Decimal Values & Custom Intervals',
+							showGridX: true,
+							showGridY: true,
+							xInterval: 4,
+							yInterval: 0.2,
+							decimalPrecisionY: 1,
+							showPoints: true,
+							showAreaLines: true
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+		{
+			x:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 
+			y:[0,0.3,0.1,0.6,0.45,0.1,0.3,0.1,0.8,0.45,0,0.3,0.1,0.6,0.45,0.1,0.3,0.1,0.6,0.45,0.2]
+		}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		title: 'Decimal Values & Custom Intervals',
+		showGridX: true,
+		showGridY: true,
+		xInterval: 4,
+		yInterval: 0.2,
+		decimalPrecisionY: 1,
+		showPoints: true,
+		showAreaLines: true
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>								
 				<div class="row">
 					<div class="col4">
 						<h6>Animation</h6>

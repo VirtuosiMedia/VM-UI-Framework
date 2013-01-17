@@ -23,6 +23,8 @@ var Charts = new Class({
 		dateIntervalUnit: 'day',							//year, month, week, day, hour, minute, second, ms
 		dateIntervalValue: 6,								//3
 		dateStart: '8/18/2012',								//now, or a specific date
+		decimalPrecisionX: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
+		decimalPrecisionY: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		gridColor: '#DDD',									//The hex color of the grid lines
 		keyPosition: 'bottom',								//Where to show the key: left, right, top, bottom
 		keyWidthPercentage: '15',							//The width percentage of the key, applicable only to key positions left and right 
@@ -357,7 +359,6 @@ var Charts = new Class({
 		
 		dim.maxX = (options.maxX) ? options.maxX : Math.max.apply(Math, xValues);
 		dim.minX = (options.minX) ? options.minX : Math.min.apply(Math, xValues);
-		dim.minY = (options.minY) ? options.minY : Math.min.apply(Math, yValues);
 
 		var minY = Math.min.apply(Math, yValues);
 		if (minY >= 0){
@@ -564,7 +565,7 @@ var Charts = new Class({
 			xLabels = options.xLabels;
 		} else {
 			for (var i = dim.minX; i <= dim.maxX; i+= options.xInterval){
-				xLabels.push(i);
+				xLabels.push(i.toFixed(options.decimalPrecisionX));
 			}
 		}
 		
@@ -585,15 +586,15 @@ var Charts = new Class({
 		} else {
 			if (dim.minY >= 0){
 				for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
-					yLabels.push(i);
+					yLabels.push(i.toFixed(options.decimalPrecisionY));
 				}
 			} else { //We need zero to show up on the graph
 				for (var i = 0; i >= dim.minY; i-= options.yInterval){
-					yLabels.push(i);
+					yLabels.push(i.toFixed(options.decimalPrecisionY));
 				}
 				yLabels.reverse();
 				for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
-					yLabels.push(i);
+					yLabels.push(i.toFixed(options.decimalPrecisionY));
 				}				
 			}
 		}
