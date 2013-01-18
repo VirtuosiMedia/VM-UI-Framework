@@ -32,9 +32,16 @@ var Sliders = new Class({
 			var increment = 1;
 			var steps = range.getLast();
 		} else {
-			var range = (input.hasData('range')) ? input.getData('range').split(',') : [0, 100];
+			if (input.hasData('range')){
+				var range = input.getData('range').split(',');
+				range.each(function(item, index, arr){
+					range[index] = item.toInt();
+				}); 
+			} else {
+				var range = [0, 100];
+			}
 			var increment = (input.hasData('increment')) ? input.getData('increment').toInt() : 1;
-			var steps = (input.hasData('increment')) ? Math.round(range.getLast()/increment) : range.getLast();
+			var steps = (input.hasData('increment')) ? Math.round((range[1] - range[0])/increment) : range.getLast();
 		}
 
 		if (input.hasData('start')){
@@ -56,6 +63,7 @@ var Sliders = new Class({
 		container.adopt(min, track, max).inject(input, 'after').addEvent('click', function(){
 			this.getElement('.knob').focus();
 		});
+
 		var inputSlider = new Slider(track, knob, {
 			snap: true, wheel: true, range: range, initialStep: start, steps: steps,
 			onChange: function(step){
