@@ -71,6 +71,7 @@ var Sliders = new Class({
 				counter.set('text', value);
 				input.set('value', value);
 				knob.setData('step', step);
+				input.fireEvent('change');
 			}
 		});
 		knob.addEvents({
