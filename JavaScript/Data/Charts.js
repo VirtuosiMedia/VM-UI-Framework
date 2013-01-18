@@ -96,7 +96,7 @@ var Charts = new Class({
 	createChart: function(chart, index, data, update){
 		var self = this;
 		var chartType = 'create' + chart.get('class').replace('inline', '').capitalize();
-		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
+		
 		this.options[index] = options = Object.merge(Object.clone(this.defaultOptions), JSON.decode(chart.getData('chartOptions')));
 		this.points[index] = [];
 		this.dim[index] = {};
@@ -112,12 +112,18 @@ var Charts = new Class({
 		this.setOffsets(index);
 		this.setChartSize(index);
 		
-		//If not pie chart
-		if (options.xAxisIsDate){
-			options.xInterval = this.options.dateIntervalValue;
-			this.parseDateData(index);
-		} else {		
-			this.parseData(index);
+		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
+		if ((this.data[index])&&(this.data[index].length > 0)){
+			//If not pie chart
+			if (options.xAxisIsDate){
+				options.xInterval = this.options.dateIntervalValue;
+				this.parseDateData(index);
+			} else {		
+				this.parseData(index);
+			}
+		} else {
+			this.data[index] = null;
+			this.setDataRange(index);
 		}
 		
 		//This fixes a bug that renders the chart in full and then animates it.
@@ -164,18 +170,20 @@ var Charts = new Class({
 		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		
-		Array.each(this.data[index], function(data, dataIndex){
-			this.renderLine(index, dataIndex);
-			if (options.showLineFill){this.renderArea(index, dataIndex);}			
-		}, this);
-		
-		if (this.options.showAxisLines){this.renderAxisLines(index);}
-		
-		if (options.showPoints){
+		if (this.data[index]){
 			Array.each(this.data[index], function(data, dataIndex){
-				this.renderPoints(index, dataIndex);
+				this.renderLine(index, dataIndex);
+				if (options.showLineFill){this.renderArea(index, dataIndex);}			
 			}, this);
-		}		
+			
+			if (this.options.showAxisLines){this.renderAxisLines(index);}
+			
+			if (options.showPoints){
+				Array.each(this.data[index], function(data, dataIndex){
+					this.renderPoints(index, dataIndex);
+				}, this);
+			}
+		}
 	},
 
 	/**
@@ -184,8 +192,7 @@ var Charts = new Class({
 	 */		
 	createAreaChart: function(index){
 		var options = this.options[index];
-		this.renderMask(index);
-		
+				
 		if (options.showTitle){this.setTitle(index);}
 		if (options.showTicksX||this.options.showTicksY){this.renderTicks(index);}
 		if (options.showGridX||this.options.showGridY){this.renderGrids(index);}
@@ -195,16 +202,19 @@ var Charts = new Class({
 		
 		var group = new SVG('g', {'clip-path': 'url(#chartCanvas' + index + ')'});
 		
-		Array.each(this.data[index], function(data, dataIndex){
-			if (options.showAreaLines){this.renderLine(index, dataIndex)};
-			group.adopt(this.renderArea(index, dataIndex));			
-		}, this);
+		if (this.data[index]){
+			this.renderMask(index);
+			Array.each(this.data[index], function(data, dataIndex){
+				if (options.showAreaLines){this.renderLine(index, dataIndex)};
+				group.adopt(this.renderArea(index, dataIndex));			
+			}, this);
+		}
 		
 		this.svg[index].adopt(group.render());
 		
 		if (options.showAxisLines){this.renderAxisLines(index);}
 		
-		if (options.showPoints){
+		if ((options.showPoints)&&(this.data[index])){
 			Array.each(this.data[index], function(data, dataIndex){
 				this.renderPoints(index, dataIndex);
 			}, this);
@@ -224,10 +234,12 @@ var Charts = new Class({
 		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		if (options.showAxisLines){this.renderAxisLines(index);}
-				
-		Array.each(this.data[index], function(data, dataIndex){
-			this.renderPoints(index, dataIndex);
-		}, this);
+		
+		if (this.data[index]){
+			Array.each(this.data[index], function(data, dataIndex){
+				this.renderPoints(index, dataIndex);
+			}, this);
+		}
 	},	
 	
 	/**
@@ -351,15 +363,24 @@ var Charts = new Class({
 		var dim = this.dim[index];
 		var xValues = [], yValues = [];
 		
-		Array.each(this.data[index], function(dataObject){
-			xValues.combine(dataObject.x);
-			yValues.combine(dataObject.y);
-		});
-		
-		dim.maxX = (options.maxX) ? options.maxX : Math.max.apply(Math, xValues);
-		dim.minX = (options.minX) ? options.minX : Math.min.apply(Math, xValues);
+		if (this.data[index]){
+			Array.each(this.data[index], function(dataObject){
+				xValues.combine(dataObject.x);
+				yValues.combine(dataObject.y);
+			});
+		} 
 
-		var minY = Math.min.apply(Math, yValues);
+		//Not having this check can result in a value of infinity for empty datasets. While Buzz Lightyear might 
+		//	approve, it kind of messes up the charts for those of us without spring-loaded wings or lasers. Dear Santa...				
+		if (this.data[index]){
+			dim.minX = (options.minX) ? options.minX : Math.min.apply(Math, xValues);
+			dim.maxX = (options.maxX) ? options.maxX : Math.max.apply(Math, xValues);
+		} else {
+			dim.minX = (options.minX !== null) ? options.minX :0;
+			dim.maxX = (options.maxX !== null) ? options.maxX : 100;
+		}
+
+		var minY = (this.data[index]) ? Math.min.apply(Math, yValues) : 0;
 		if (minY >= 0){
 			dim.minY = options.minY;
 		} else { //There will be an interval added on below the graph's lowest point for asthetics	
