@@ -18,11 +18,11 @@ var Charts = new Class({
 		aspectRatio: [16, 9],								//The aspect ratio of the canvas area, as an array [x, y]
 		colors: ['#058DC7', "#A006C7", "#C7062D", "#06C740", "#C7A006"],			//The chart hex colors for lines, bars, and pie segments
 		dataLabels: [],										//Labels for each of the data sets, will also show in the key
-		dateEnd: 'now',										//now, or specific date
+		dateEnd: null,										//now, or specific date
 		dateFormat: '%b %d',								//Y:M:W H:M:S
-		dateIntervalUnit: 'day',							//year, month, week, day, hour, minute, second, ms
-		dateIntervalValue: 6,								//3
-		dateStart: '8/18/2012',								//now, or a specific date
+		dateIntervalUnit: 'day',							//The inverval unit for a date: year, month, week, day, hour, minute, second, ms
+		dateIntervalValue: 1,								//The interval value for a date
+		dateStart: null,									//now, or a specific date
 		decimalPrecisionX: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		decimalPrecisionY: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		gridColor: '#DDD',									//The hex color of the grid lines
@@ -65,7 +65,7 @@ var Charts = new Class({
 	initialize: function(selectors){
 		this.namespace = "http://www.w3.org/2000/svg";
 		this.selectors = selectors;
-		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [];
+		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [], this.xTipValues = [];;
 		
 		Array.each($$(this.selectors), function(chart, index){	
 			this.charts[index] = chart;			
@@ -249,7 +249,7 @@ var Charts = new Class({
 			for (var i = 0; i < numPoints; i++){
 				var normalizedX = this.normalize(index, dataObject.x[i], 'x');
 				var normalizedY = this.normalize(index, dataObject.y[i], 'y');
-				var xValue = (options.xAxisIsDate) ? this.xTipValues[i] : dataObject.x[i];
+				var xValue = (options.xAxisIsDate) ? this.xTipValues[index][i] : dataObject.x[i];
 				
 				points.data.push({
 					xVal: xValue,
@@ -272,16 +272,15 @@ var Charts = new Class({
 	 */	
 	parseDateData: function(index){
 		var options = this.options[index];
-		var startDate = (options.dateStart.toLowerCase() == 'now') ? new Date() : new Date(options.dateStart);
-		var endDate = (options.dateEnd.toLowerCase() == 'now') ? new Date() : new Date(options.dateEnd);
+		var startDate = ((options.dateStart)&&(options.dateStart != 'now')) ? new Date(options.dateStart) : new Date();
+		var endDate = ((options.dateEnd)&&(options.dateEnd != 'now')) ? new Date(options.dateEnd) : new Date();
 		var numDataPoints = (this.data[index][0].y.length - 1);
-		var diff = startDate.diff(endDate);
-		var dateDiff = (diff < numDataPoints) ? diff : numDataPoints + 1 + options.dateIntervalValue;
+		var diff = startDate.diff(endDate, options.dateIntervalUnit);
 		var xValues = [];
-		this.xTipValues = [];
-		
+		this.xTipValues[index] = [];
+
 		if (options.xLabels.length === 0){
-			for (i=0; i <= dateDiff; i+=options.dateIntervalValue){
+			for (i=0; i <= diff; i+=options.dateIntervalValue){
 				var labelDate = startDate.clone().increment(options.dateIntervalUnit, i).format(options.dateFormat);
 				options.xLabels.push(labelDate);
 			}
@@ -289,15 +288,15 @@ var Charts = new Class({
 				
 		for (i=0; i<= numDataPoints; i++){
 			xValues.push(i);
-			this.xTipValues.push(endDate.clone().decrement(options.dateIntervalUnit, i).format(options.dateFormat));
+			this.xTipValues[index].push(endDate.clone().decrement(options.dateIntervalUnit, i).format(options.dateFormat));
 		}
-
-		this.xTipValues.reverse();
 		
+		this.xTipValues[index].reverse();
 		Array.each(this.data[index], function(dataObject, dataIndex){
 			this.data[index][dataIndex].x = xValues;
 		}, this);		
 		
+		options.xInterval = options.dateIntervalValue;		
 		this.parseData(index);
 	},
 
@@ -426,10 +425,11 @@ var Charts = new Class({
 		var xOffset = dim.xOffset, yOffset = dim.yOffset;
 		
 		var line = new SVG.Path({
-			d: 'M '+xOffset+' '+(yOffset + 0.5) +', '+xOffset+' '+(dim.height+yOffset)+', '+(dim.width+xOffset)+' '+(dim.height+yOffset),
+			d: 'M '+xOffset+' ' +yOffset+', '+xOffset+' '+(dim.height+yOffset)+', '+(dim.width+xOffset)+' '+(dim.height+yOffset),
 			stroke: options.axisColor,
 			fill: "transparent",
-			"stroke-width": 1
+			"stroke-width": 1,
+			"shape-rendering": "geometric-precision"
 		});
 		
 		this.svg[index].adopt(line.render());		
@@ -487,7 +487,8 @@ var Charts = new Class({
 				d: tickPath,
 				stroke: options.tickColor,
 				fill: "transparent",
-				"stroke-width": 0.5
+				"stroke-width": 0.5,
+				"shape-rendering": "geometric-precision"
 			});
 			this.svg[index].adopt(tick.render());
 		}, this);
@@ -513,7 +514,8 @@ var Charts = new Class({
 		if (options.showGridX){
 			for (var x = xOffset; x < (xOffset + dim.width + 1); x+=xInterval){
 				grids.push('M ' + x + ' ' + minY + ', ' + x + ' ' + (yOffset + 0.5));
-			}			
+			}
+			grids.push('M ' + maxX + ' ' + yOffset + ', ' + maxX + ' ' + minY);
 		}
 
 		if (options.showGridY){
@@ -540,7 +542,8 @@ var Charts = new Class({
 				d: gridPath,
 				stroke: options.gridColor,
 				fill: "transparent",
-				"stroke-width": 0.5
+				"stroke-width": 0.5,
+				"shape-rendering": "geometric-precision"
 			});
 			this.svg[index].adopt(grid.render());
 		}, this);
@@ -571,6 +574,7 @@ var Charts = new Class({
 		
 		var xCounter = dim.xOffset;
 		Array.each(xLabels, function(value){
+			
 			var label = new SVG.Text({
 				'class': 'chartIntervalLabel',
 				x: xCounter,

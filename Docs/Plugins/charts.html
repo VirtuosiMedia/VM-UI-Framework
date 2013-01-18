@@ -660,7 +660,159 @@ data-chartOptions="{
 }"&gt;&lt;/div&gt;
 </pre>		
 					</div>
-				</div>								
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Dates</h6>
+						<p>Charts can make use of dates along along the x-axis. When using dates, it is not necessary 
+							to enter the x-coordinate dataset (if you do, it will be ignored). To enable dates along 
+							the x-axis, set the <code>xAxisIsDate</code> option to <code>true</code>.</p>
+						<p>The date range is set using the <code>dateStart</code> and <code>dateEnd</code> options, 
+							both of which accept any date string accepted by the default JavaScript 
+							<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date">Date 
+							object</a>. The default value for both options is the current date and time, so at least 
+							one option will need to be specified.</p>
+						<p>Date intervals are controlled by two options: <code>dateIntervalUnit</code> and 
+							<code>dateIntervalValue</code>. The default value for the <code>dateIntervalUnit</code> 
+							option is <code>day</code>, but other options include:</p>
+						<ul>
+							<li><code>year</code></li>
+							<li><code>month</code></li>
+							<li><code>week</code></li>
+							<li><code>day</code></li>
+							<li><code>hour</code></li>
+							<li><code>minute</code></li>
+							<li><code>second</code></li>
+							<li><code>ms</code></li>
+						</ul>
+						<p>The <code>dateIntervalValue</code> option controls the frequency of the interval in the 
+							chosen date unit. The default value is 1.</p>
+						<h6>Date Formatting</h6>
+						<p>The date label format is highly customizable and can feature almost any unit of time in a 
+							custom string. The format is set via the <code>dateFormat</code> option. All date 
+							replacement strings must be preceded by the percent sign, <code>%</code>. The replacement 
+							string formats can be found in the MooTools More 
+							<a href="http://mootools.net/docs/more/Types/Date#Date:format">Date.format method 
+							documentation</a>.</p>
+						<h6>Troubleshooting</h6>
+						<p>If the labels or values are displaying incorrectly, make sure that you have a date range 
+							that corresponds to at least the number of data points. If you come up short, the chart will 
+							be off.</p> 
+					</div>
+					<div class="col8">
+						<h6>Demos</h6>
+						<div class="areaChart" data-chartData="[
+							{
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Days',
+							showGridX: true,
+							showGridY: true,
+							showPoints: true,
+							showAreaLines: true,
+							xAxisIsDate: true,
+							dateStart: '1/1/2012',
+							dateEnd: '1/21/2012',
+							dateIntervalValue: 3
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+		{y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]},
+		{y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		showKey: true,
+		title: 'Days',
+		showGridX: true,
+		showGridY: true,
+		showPoints: true,
+		showAreaLines: true,
+		xAxisIsDate: true,
+		dateStart: '1/1/2012',
+		dateEnd: '1/21/2012',
+		dateIntervalValue: 3
+}"&gt;&lt;/div&gt;
+</pre>
+						<div class="areaChart" data-chartData="[
+							{
+								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							},
+							{
+								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
+							}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Years',
+							showGridX: true,
+							showGridY: true,
+							showPoints: true,
+							showAreaLines: true,
+							xAxisIsDate: true,
+							dateFormat: '%Y',
+							dateStart: '1/1/1993',
+							dateEnd: '1/1/2013',
+							dateIntervalUnit: 'year',
+							dateIntervalValue: 3
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="areaChart" data-chartData="[
+		{y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]},
+		{y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		showKey: true,
+		title: 'Years',
+		showGridX: true,
+		showGridY: true,
+		showPoints: true,
+		showAreaLines: true,
+		xAxisIsDate: true,
+		dateFormat: '%Y',
+		dateStart: '1/1/1993',
+		dateEnd: '1/1/2013',
+		dateIntervalUnit: 'year',
+		dateIntervalValue: 3
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>												
 				<div class="row">
 					<div class="col4">
 						<h6>Animation</h6>
