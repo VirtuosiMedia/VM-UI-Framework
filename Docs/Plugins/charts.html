@@ -915,6 +915,9 @@ data-chartOptions="{
 							function or you can choose to dynamically update the <code>data-chartData</code> 
 							attribute and the data will be automatically detected when the <code>updateChart</code> 
 							event is fired.</p>
+						<p><span class="infoMarker">Notes</span> When the <code>updateChart</code> event is fired, the 
+							entire chart is re-rendered. Animations should not be used with dynamic data with a high 
+							refresh rate.</p>
 						<h6>Empty Datasets</h6>
 						<p>If you want to have an empty dataset like the initial state of the demo, you must define 
 							both the <code>maxX</code> and <code>maxY</code> options, otherwise the result will be an 
