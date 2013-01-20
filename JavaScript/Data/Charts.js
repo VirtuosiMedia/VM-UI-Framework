@@ -26,6 +26,7 @@ var Charts = new Class({
 		decimalPrecisionX: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		decimalPrecisionY: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		gridColor: '#DDD',									//The hex color of the grid lines
+		histogram: false,									//Removes the gap between columns or bars to create a histogram
 		keyPosition: 'bottom',								//Where to show the key: left, right, top, bottom
 		keyWidthPercentage: '15',							//The width percentage of the key, applicable only to key positions left and right 
 		maxX: null,											//The maximum value of the x-axis
@@ -37,7 +38,9 @@ var Charts = new Class({
 		showAxisLines: false,								//Whether or not to show the axis lines		
 		showGridX: false,									//Whether or not to show the x-axis grid lines
 		showGridY: false,									//Whether or not to show the y-axis grid lines
-		showIntervalLabels: false,							//Whether or not to show interval labels
+		showIntervalLabels: false,							//Whether or not to show interval labels on both axises
+		showIntervalLabelsX: false,							//Whether or not to show x-axis interval labels
+		showIntervalLabelsY: false,							//Whether or not to show y-axis interval labels
 		showKey: false,										//Whether or not to show the key
 		showLineFill: false,								//Whether or not to create a fill between the x-axis and line
 		showPoints: false,									//Whether or not to show line points
@@ -65,7 +68,8 @@ var Charts = new Class({
 	initialize: function(selectors){
 		this.namespace = "http://www.w3.org/2000/svg";
 		this.selectors = selectors;
-		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [], this.xTipValues = [];;
+		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [], 
+		this.xTipValues = [], this.chartTypes = [];
 		
 		Array.each($$(this.selectors), function(chart, index){	
 			this.charts[index] = chart;			
@@ -95,7 +99,7 @@ var Charts = new Class({
 	 */
 	createChart: function(chart, index, data, update){
 		var self = this;
-		var chartType = 'create' + chart.get('class').replace('inline', '').capitalize();
+		this.chartTypes[index] = chartType = 'create' + chart.get('class').replace('inline', '').capitalize();
 		
 		this.options[index] = options = Object.merge(Object.clone(this.defaultOptions), JSON.decode(chart.getData('chartOptions')));
 		this.points[index] = [];
@@ -114,8 +118,9 @@ var Charts = new Class({
 		
 		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
 		if ((this.data[index])&&(this.data[index].length > 0)){
-			//If not pie chart
-			if (options.xAxisIsDate){
+			if (chartType == 'createColumnChart'){
+				this.parseBarData(index);
+			} else if (options.xAxisIsDate){
 				options.xInterval = this.options.dateIntervalValue;
 				this.parseDateData(index);
 			} else {		
@@ -167,8 +172,9 @@ var Charts = new Class({
 		if (options.showTitle){this.setTitle(index);}
 		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
 		if (options.showGridX||options.showGridY){this.renderGrids(index);}
-		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showIntervalLabels||options.showIntervalLabelsY||options.showIntervalLabelsX){this.renderIntervalLabels(index);}
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		if (options.showKey){this.renderKey(index);}
 		
 		if (this.data[index]){
 			Array.each(this.data[index], function(data, dataIndex){
@@ -196,7 +202,7 @@ var Charts = new Class({
 		if (options.showTitle){this.setTitle(index);}
 		if (options.showTicksX||this.options.showTicksY){this.renderTicks(index);}
 		if (options.showGridX||this.options.showGridY){this.renderGrids(index);}
-		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showIntervalLabels||options.showIntervalLabelsY||options.showIntervalLabelsX){this.renderIntervalLabels(index);}
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		if (options.showKey){this.renderKey(index);}
 		
@@ -231,16 +237,45 @@ var Charts = new Class({
 		if (options.showTitle){this.setTitle(index);}
 		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
 		if (options.showGridX||options.showGridY){this.renderGrids(index);}
-		if (options.showIntervalLabels){this.renderIntervalLabels(index);}
+		if (options.showIntervalLabels||options.showIntervalLabelsY||options.showIntervalLabelsX){this.renderIntervalLabels(index);}
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		if (options.showAxisLines){this.renderAxisLines(index);}
+		if (options.showKey){this.renderKey(index);}
 		
 		if (this.data[index]){
 			Array.each(this.data[index], function(data, dataIndex){
 				this.renderPoints(index, dataIndex);
 			}, this);
 		}
-	},	
+	},
+
+	/**
+	 * @description Creates a bar chart
+	 * @param int index - The index of the chart
+	 */	
+	createColumnChart: function(index){
+		var options = this.options[index];
+		
+		if (this.charts[index].get('class') == 'inlineColumnChart'){options.histogram = true;}
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
+		if (options.showGridX||options.showGridY){this.renderGrids(index);}
+		if (options.showIntervalLabels||options.showIntervalLabelsY||options.showIntervalLabelsX){this.renderIntervalLabels(index);}
+		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		if (options.showAxisLines){this.renderAxisLines(index);}
+		if (options.showKey){this.renderKey(index);}
+		
+		var group = new SVG('g', {'clip-path': 'url(#chartCanvas' + index + ')'});
+		
+		if (this.data[index]){
+			this.renderMask(index);
+			Array.each(this.data[index], function(data, dataIndex){
+				group.adopt(this.renderColumns(index, dataIndex));			
+			}, this);
+		}
+		
+		this.svg[index].adopt(group.render());		
+	},
 	
 	/**
 	 * @description Parses data for line, scatter, and bar charts
@@ -291,19 +326,40 @@ var Charts = new Class({
 		var xValues = [];
 		this.xTipValues[index] = [];
 
-		if (options.xLabels.length === 0){
-			for (i=0; i <= diff; i+=options.dateIntervalValue){
-				var labelDate = startDate.clone().increment(options.dateIntervalUnit, i).format(options.dateFormat);
-				options.xLabels.push(labelDate);
-			}
-		}
-				
 		for (i=0; i<= numDataPoints; i++){
 			xValues.push(i);
-			this.xTipValues[index].push(endDate.clone().decrement(options.dateIntervalUnit, i).format(options.dateFormat));
-		}
+			if (this.chartTypes[index] != 'createColumnChart'){
+				this.xTipValues[index].push(endDate.clone().decrement(options.dateIntervalUnit, i).format(options.dateFormat));
+			}
+		}		
 		
-		this.xTipValues[index].reverse();
+		if (options.xLabels.length === 0){
+			if (this.chartTypes[index] == 'createColumnChart'){
+				if (((options.dateEnd)&&(options.dateEnd == 'now'))||((options.dateEnd)&&(!options.dateStart))){
+					for (i=numDataPoints; i >= 0; i--){
+						var dateCounter = i * options.dateIntervalValue;
+						var labelDate = endDate.clone().decrement(options.dateIntervalUnit, dateCounter).format(options.dateFormat);
+						options.xLabels.push(labelDate);
+						this.xTipValues[index].push(labelDate);
+					}					
+				} else {
+					var dateCounter = 0;
+					for (i=0; i <= numDataPoints; i++){
+						var labelDate = startDate.clone().increment(options.dateIntervalUnit, dateCounter).format(options.dateFormat);
+						options.xLabels.push(labelDate);
+						this.xTipValues[index].push(labelDate);
+						dateCounter += options.dateIntervalValue;
+					}					
+				}				
+			} else {
+				for (i=0; i <= diff; i+=options.dateIntervalValue){
+					var labelDate = startDate.clone().increment(options.dateIntervalUnit, i).format(options.dateFormat);
+					options.xLabels.push(labelDate);
+				}
+				this.xTipValues[index].reverse();
+			}
+		}		
+
 		Array.each(this.data[index], function(dataObject, dataIndex){
 			this.data[index][dataIndex].x = xValues;
 		}, this);		
@@ -312,6 +368,38 @@ var Charts = new Class({
 		this.parseData(index);
 	},
 
+	/**
+	 * @description Prepares the data for bar graphs before passing it to the parseData function
+	 * @param int index - The index of the chart
+	 */	
+	parseBarData: function(index){
+		var options = this.options[index];
+		
+		//The coordinates need to be created to avoid errors when passed to parseData		
+		Array.each(this.data[index], function(dataObject, dataIndex){
+			if (!dataObject.x){
+				dataObject.x = [];
+				var numItems = dataObject.y.length;
+				for (var i=0; i<numItems; i++){
+					dataObject.x.push((i));
+				}
+			} else if (!dataObject.y){
+				dataObject.y = [];
+				var numItems = dataObject.x.length;
+				for (var i=0; i<numItems; i++){
+					dataObject.y.push(i);
+				}				
+			}
+		});
+		
+		if (options.xAxisIsDate){
+			options.xInterval = this.options.dateIntervalValue;
+			this.parseDateData(index);
+		} else {		
+			this.parseData(index);
+		}
+	},	
+	
 	/**
 	 * @description Sets the height and width boundaries for the chart area based on which options are enabled.
 	 * @param int index - The index of the chart
@@ -323,13 +411,13 @@ var Charts = new Class({
 		dim.width = 300;
 		dim.width = (options.showTicksX) ? dim.width - 5 : dim.width;
 		dim.width = (options.showTicksY) ? dim.width - 15 : dim.width;
-		dim.width = (options.showIntervalLabels) ? dim.width - 30 : dim.width;
+		dim.width = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.width - 30 : dim.width;
 		dim.width = ((['right', 'left'].contains(options.keyPosition))&&(options.showKey)) ? dim.width - dim.keyWidth : dim.width;
 		
 		dim.height = dim.aspectRatioHeight - dim.yOffset;
 		dim.height = (options.showTicksY) ? dim.height - 5 : dim.height;
 		dim.height = (options.showAxisLabels) ? dim.height - 10 : dim.height;
-		dim.height = (options.showIntervalLabels) ? dim.height - 10 : dim.height;
+		dim.height = (options.showIntervalLabels||options.showIntervalLabelsX) ? dim.height - 10 : dim.height;
 		dim.height = ((options.keyPosition == 'bottom')&&(options.showKey)) ? dim.height - 20 : dim.height;
 	},
 
@@ -345,11 +433,10 @@ var Charts = new Class({
 		
 		dim.xOffset = (options.showTicksY) ? 5 : 0;
 		dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
-		dim.xOffset = (options.showIntervalLabels) ? dim.xOffset + 20 : dim.xOffset;
+		dim.xOffset = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.xOffset + 20 : dim.xOffset;
 		dim.xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.xOffset + dim.keyWidth : dim.xOffset;
 		
 		dim.yOffset = (options.showTitle) ? 25 : 0;
-		dim.yOffset = (options.showIntervalLabels) ? dim.yOffset + 15 : dim.yOffset;
 		dim.yOffset = ((options.keyPosition == 'top')&&(options.showKey)) ? dim.yOffset + 10 : dim.yOffset;
 	},
 
@@ -475,6 +562,10 @@ var Charts = new Class({
 		var yStart = (dim.minY >= 0) ? minY : this.normalize(index, 0, 'y');
 
 		if (options.showTicksX){
+			if (this.chartTypes[index] == 'createColumnChart'){
+				xInterval = dim.width/this.data[index][0].x.length;
+			}
+			
 			for (var x = xStart; x < (xOffset + dim.width + 1); x+=xInterval){
 				ticks.push('M ' + x + ' ' + minY + ', ' + x + ' ' + (minY + 3));
 			}
@@ -533,6 +624,10 @@ var Charts = new Class({
 		var yStart = (dim.minY >= 0) ? minY : this.normalize(index, 0, 'y');
 
 		if (options.showGridX){
+			if (this.chartTypes[index] == 'createColumnChart'){
+				xInterval = dim.width/this.data[index][0].x.length;
+			}
+			
 			for (var x = xOffset; x < (xOffset + dim.width + 1); x+=xInterval){
 				grids.push('M ' + x + ' ' + minY + ', ' + x + ' ' + (yOffset + 0.5));
 			}
@@ -585,58 +680,74 @@ var Charts = new Class({
 			xInterval = (options.xInterval/(dim.maxX - dim.minX)) * dim.width,
 			yInterval = (options.yInterval/(dim.maxY - dim.minY)) * dim.height;
 
-		if (options.xLabels.length > 0){
-			xLabels = options.xLabels;
-		} else {
-			for (var i = dim.minX; i <= dim.maxX; i+= options.xInterval){
-				xLabels.push(i.toFixed(options.decimalPrecisionX));
+		if (options.showIntervalLabels||options.showIntervalLabelsX){
+			if (this.chartTypes[index] == 'createColumnChart'){
+				var numItems = this.data[index][0].x.length;
+				xInterval = dim.width/numItems;
 			}
-		}
-		
-		var xCounter = dim.xOffset;
-		Array.each(xLabels, function(value){
 			
-			var label = new SVG.Text({
-				'class': 'chartIntervalLabel',
-				x: xCounter,
-				y: (dim.yOffset + dim.height + 10),
-				'text-anchor': 'middle'
-			});
-			self.svg[index].adopt(label.setText(value).render());
-			xCounter += xInterval;
-		});
-		
-		if (options.yLabels.length > 0){
-			yLabels = options.yLabels;
-		} else {
-			if (dim.minY >= 0){
-				for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
-					yLabels.push(i.toFixed(options.decimalPrecisionY));
-				}
-			} else { //We need zero to show up on the graph
-				for (var i = 0; i >= dim.minY; i-= options.yInterval){
-					yLabels.push(i.toFixed(options.decimalPrecisionY));
-				}
-				yLabels.reverse();
-				for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
-					yLabels.push(i.toFixed(options.decimalPrecisionY));
+			if (options.xLabels.length > 0){
+				xLabels = options.xLabels;
+			} else {
+				if (this.chartTypes[index] == 'createColumnChart'){
+					for (var i = 1; i <= numItems; i++){
+						xLabels.push(i.toFixed(options.decimalPrecisionX));
+						self.xTipValues[index] = xLabels;
+					}
+				} else {
+					for (var i = dim.minX; i <= dim.maxX; i+= options.xInterval){
+						xLabels.push(i.toFixed(options.decimalPrecisionX));
+					}					
 				}				
 			}
+			
+			var xCounter = (this.chartTypes[index] == 'createColumnChart') ? dim.xOffset + (xInterval/2) : dim.xOffset;
+			Array.each(xLabels, function(value){
+				
+				var label = new SVG.Text({
+					'class': 'chartIntervalLabel',
+					x: xCounter,
+					y: (dim.yOffset + dim.height + 10),
+					'text-anchor': 'middle'
+				});
+				self.svg[index].adopt(label.setText(value).render());
+				xCounter += xInterval;
+			});
 		}
 		
-		yLabels.reverse();
-		
-		var yCounter = dim.yOffset + 2;
-		Array.each(yLabels, function(value){
-			var label = new SVG.Text({
-				'class': 'chartIntervalLabel',
-				x: (dim.xOffset - 5),
-				y: yCounter, 
-				'text-anchor': 'end'
+		if (options.showIntervalLabels||options.showIntervalLabelsY){
+			if (options.yLabels.length > 0){
+				yLabels = options.yLabels;
+			} else {
+				if (dim.minY >= 0){
+					for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
+						yLabels.push(i.toFixed(options.decimalPrecisionY));
+					}
+				} else { //We need zero to show up on the graph
+					for (var i = 0; i >= dim.minY; i-= options.yInterval){
+						yLabels.push(i.toFixed(options.decimalPrecisionY));
+					}
+					yLabels.reverse();
+					for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
+						yLabels.push(i.toFixed(options.decimalPrecisionY));
+					}				
+				}
+			}
+			
+			yLabels.reverse();
+			
+			var yCounter = dim.yOffset + 2;
+			Array.each(yLabels, function(value){
+				var label = new SVG.Text({
+					'class': 'chartIntervalLabel',
+					x: (dim.xOffset - 5),
+					y: yCounter, 
+					'text-anchor': 'end'
+				});
+				self.svg[index].adopt(label.setText(value).render());
+				yCounter += yInterval;
 			});
-			self.svg[index].adopt(label.setText(value).render());
-			yCounter += yInterval;
-		});		
+		}
 	},
 
 	/**
@@ -765,7 +876,7 @@ var Charts = new Class({
 		if (axis == 'y'){
 			return (dim.height + dim.yOffset) - (((value - dim.minY)/(dim.maxY - dim.minY)) * dim.height);
 		} else {
-			return (((value - dim.minX)/(dim.maxX - dim.minX)) * dim.width) + dim.xOffset;	
+			return (((value - dim.minX)/(dim.maxX - dim.minX)) * dim.width) + dim.xOffset;
 		}
 	},
 	
@@ -781,7 +892,62 @@ var Charts = new Class({
 	 * 		Compare categorical data
 	 * 		
 	 */
-	renderBar: function(data){},
+	renderColumns: function(index, dataIndex){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		var data = this.data[index][dataIndex];
+		var self = this;
+
+		var intervalWidth = dim.width/data.x.length;
+		var numDataSets = this.data[index].length;
+		var columnWidth = (!options.histogram) ? intervalWidth/(numDataSets + 1) : intervalWidth/numDataSets;
+		var gap = (!options.histogram) ? columnWidth/2 : 0;
+		var yStart = (dim.minY >= 0) ? this.normalize(index, dim.minY, 'y') : this.normalize(index, 0, 'y');
+		var columns = [];
+		
+		data.y.each(function(y, columnIndex){
+			var intervalStart = intervalWidth * columnIndex;
+			var xStart = dim.xOffset + intervalStart + gap + (dataIndex * columnWidth);
+			var xEnd = xStart + columnWidth;
+			var yEnd = self.normalize(index, y, 'y');
+			
+			var lineFill = new SVG.Path({
+				"class": "dataColumn dataset" + dataIndex,
+				stroke: options.colors[dataIndex],
+				"stroke-width": 1,
+				d: ['M', xStart, yStart, xEnd, yStart, xEnd, yEnd, xStart, yEnd].join(' '),
+				fill: options.colors[dataIndex],
+				"shape-rendering": "geometric-precision"
+			});
+			
+			if (options.showTips){
+				var id = 'dataPoint-' + index + '-' + dataIndex + '-' + columnIndex;
+				lineFill.set('id', id).addEvents({
+					mouseover: function(){
+						self.renderTip(id, self.xTipValues[index][columnIndex], y, index, dataIndex);
+					},
+					mouseout: function(){
+						self.removeTip(id);
+					}
+				});				
+			}
+
+			if (options.animate){
+				var animation = new SVG.AnimateTransform({
+					attributeName: "transform",
+					type: "skewY",
+					from: 50,
+					to: 0,
+					dur: options.animationDuration + (dataIndex/4) + 's',
+					fill: 'freeze'
+				});
+				lineFill.adopt(animation.render());
+			}
+			
+			columns.push(lineFill.render());
+		});
+		return columns;
+	},
 
 	/**
 	 * Variations: scatter, scatterLine,
@@ -874,25 +1040,7 @@ var Charts = new Class({
 		
 		Array.each(this.points[index][dataIndex].data, function(data, animationIndex){
 			var id = 'dataPoint-' + index + '-' + dataIndex + '-' + animationIndex;
-			
-			var mouseoverEffect = new SVG.Animate({
-				attributeName: "r",
-				from: 1.5,
-				to: 1.85,
-				begin: 'mouseover',
-				dur: '0.1s',
-				fill: 'freeze'
-			});
-
-			var mouseoutEffect = new SVG.Animate({
-				attributeName: "r",
-				from: 1.85,
-				to: 1.5,
-				begin: 'mouseout',
-				dur: '0.3s',
-				fill: 'freeze'
-			});			
-			
+		
 			var point = new SVG.Circle({
 				id: id,
 				"class":"dataPoint dataset"+dataIndex,
@@ -903,14 +1051,36 @@ var Charts = new Class({
 				r: 1.5,
 				fill: options.colors[dataIndex],
 				"shape-rendering": "geometric-precision"
-			}).addEvents({
-				mouseover: function(){
-					self.renderTip(id, data.xVal, data.yVal, index, dataIndex);
-				},
-				mouseout: function(){
-					self.removeTip(id);
-				}
-			}, this).adopt(mouseoverEffect.render()).adopt(mouseoutEffect.render());
+			});
+			
+			if (options.showTips){
+				var mouseoverEffect = new SVG.Animate({
+					attributeName: "r",
+					from: 1.5,
+					to: 1.85,
+					begin: 'mouseover',
+					dur: '0.1s',
+					fill: 'freeze'
+				});
+
+				var mouseoutEffect = new SVG.Animate({
+					attributeName: "r",
+					from: 1.85,
+					to: 1.5,
+					begin: 'mouseout',
+					dur: '0.3s',
+					fill: 'freeze'
+				});
+				
+				point.addEvents({
+					mouseover: function(){
+						self.renderTip(id, data.xVal, data.yVal, index, dataIndex);
+					},
+					mouseout: function(){
+						self.removeTip(id);
+					}
+				}, this).adopt(mouseoverEffect.render()).adopt(mouseoutEffect.render());
+			}
 					
 			if (options.animate){
 				var startTime = animationIndex * animationLength
