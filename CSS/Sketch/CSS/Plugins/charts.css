@@ -21,8 +21,10 @@
 	top: 0.015em;
 	width: 2.133em;
 }
-.dataLine, .dataPoint {opacity: 0.7;}
+.dataLine, .dataPoint, .dataColumn {opacity: 0.7;}
+.dataColumn:hover {opacity: 0.9;}
 .dataFill {opacity: 0.2;}
+[class*="inline"][class*="Chart"] .dataColumn {opacity: 0.9;}
 [class*="inline"][class*="Chart"] .dataFill {opacity: 0.6;}
 .dataPoint:hover {
 	cursor: pointer;
