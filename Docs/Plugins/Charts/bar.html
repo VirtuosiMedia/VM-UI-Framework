@@ -627,6 +627,7 @@ data-chartOptions="{
 							xLabels: ['100', '75', '50', '25', '0', '25', '50', '75', '100'],
 							yAxisLabel: 'Age (years)',
 							yLabels: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81+'],
+							yLabelWidthPercentage: 8,
 							minX: -100,
 							maxX: 100,
 							histogram: true,
@@ -635,8 +636,8 @@ data-chartOptions="{
 						<h6>Code</h6>
 <pre class="html">
 &lt;div class="barChart" data-chartData="[
-		{x:[1,6,3,-17,-15,87,75,-45,94]},
-		{x:[12,37,34,-36,25,47,75,-40,63]}
+		{x:[-5,-6,-13,-17,-15,-87,-75,-45,-94]},
+		{x:[12,37,34,36,25,47,75,40,63]}
 	]"
 	
 	data-chartOptions="{
@@ -647,11 +648,23 @@ data-chartOptions="{
 		showIntervalLabels: true,
 		showTitle: true,
 		showKey: true,
-		title: 'Negative Values &amp; Custom Ranges',
+		title: 'People Who Like Vegetables',
 		showGridX: true,
-		showGridY: true,
-		minX: -50,
-		maxX: 100
+		showTips: true,
+		tipText: [
+			'{x}% of men, ages {y}, like vegetables', 
+			'{x}% of women, ages {y}, like vegetables'
+		],
+		dataLabels: ['Men', 'Women'],
+		xAxisLabel: 'Percent (%) Who Like Vegetables',
+		xLabels: ['100', '75', '50', '25', '0', '25', '50', '75', '100'],
+		yAxisLabel: 'Age (years)',
+		yLabels: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81+'],
+		yLabelWidthPercentage: 8,
+		minX: -100,
+		maxX: 100,
+		histogram: true,
+		pyramid: true
 }"&gt;&lt;/div&gt;
 </pre>		
 					</div>
