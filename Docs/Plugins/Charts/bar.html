@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VM UI Framework - JavaScript Plugins - Charts - Bar Charts</title>
+	<link rel="stylesheet" type="text/css" href="../../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../../CSS/examples.css" />
+	<script src="../../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../../JavaScript'});	
+		});
+	</script>
+</head>
+<body>
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="../">Overview</a></li>
+						<li><a href="../examples.html">Examples</a></li>
+						<li><a href="../layout.html">Page Layout</a></li>
+						<li><a href="../core.html">Core Elements</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../ui.html">UI Elements</a></li>
+						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li><a href="../charts.html">Charts</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Bar Charts</h1>
+				<div class="row">
+					<div class="col3">
+						<h6>Code</h6>
+						<ul>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#usage">Usage</a></li>
+							<li><a href="#options">Options</a></li>
+						</ul>
+					</div>
+					<div class="col9">
+						<h6>Demos</h6>
+						<div class="row">
+							<div class="col3">
+								<ul>
+									<li><a href="#area-charts">Area Charts</a></li>
+									<li><a href="#line-charts">Line Charts</a></li>
+									<li><a href="#scatter-charts">Scatter Charts</a></li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#bar-charts">Bar Charts</a></li>
+									<li><a href="#pie-charts">Pie Charts</a></li>
+								</ul>
+							</div>						
+						</div>										
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 id="overview">Overview</h2>
+				<p>Web applications often need some sort of charts or graphs, but there are few viable options that 
+					aren't commercial, poorly-documented, bound up in a restrictive open source license, or Flash-based. 
+					The charts in VM UI Framework are SVG-based and responsive, meaning that you can use them easily 
+					for all modern browsers and devices. There are alse options for making each chart interactive and 
+					animated.</p>
+				<h2 id="usage">Usage</h2>				
+				<div class="row">
+					<div class="col6">
+						<p>There are five basic chart types, each of which has the ability to be customized. The chart 
+							type is	assigned via class to a <code>&lt;div&gt;</code> element.</p>
+					</div>
+					<div class="col6">
+						<table class="borderedTable columnTable">
+							<caption>Chart Types</caption>
+							<thead>
+								<tr>
+									<th colspan="2">Chart Types</th>
+								</tr>
+								<tr>
+									<td>Type</td>
+									<td>Class</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="Type">Area chart</td>
+									<td data-column="Class"><code>areaChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Bar chart</td>
+									<td data-column="Class"><code>barChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Line chart</td>
+									<td data-column="Class"><code>lineChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Pie chart</td>
+									<td data-column="Class"><code>pieChart</code></td>
+								</tr>
+								<tr>
+									<td data-column="Type">Scatter chart</td>
+									<td data-column="Class"><code>scatterChart</code></td>
+								</tr>																
+							</tbody>
+						</table>
+					</div>
+				</div>
+	 			<h6>Current Chart Limitations</h6>
+	 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may or may not 
+	 				fix these issues.</p>
+	 			<ul>
+	 				<li>No animation in IE.</li>
+	 				<li>Dates can only be on the x-axis.</li>
+	 				<li>X-values are necessary when not working with dates.</li>
+	 				<li>Updating the graph requires refreshing the canvas.</li>
+	 				<li>Large numbers may not look good on the axises.</li>
+	 				<li>Missing values are not supported.</li>
+	 			</ul>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="bar-charts">Bar Charts</h3>
+				<div class="row">
+					<div class="col4">
+						<h6>Inline Bar Charts</h6>
+						<p>Inline bar charts are small charts that can appear inline within the context of a block of 
+							text or other inline elements. <span class="infoMarker">Note</span> Because inline charts 
+							are so small, they should generally only be used with a single data set and without many of
+							the visual chart features enabled. Keep inline charts simple.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<p>This is an inline bar chart: <span class="inlineBarChart" data-chartData="[
+							{x:[40,80,60,20,50,30]}
+						]"></span> It can appear within a paragraph.</p>
+						<h6>Code</h6>
+<pre class="html">
+&lt;p&gt;This is an inline bar chart: &lt;span class="inlineAreaChart" data-chartData="[
+{x:[40,80,60,20,50,30]}
+]"&gt;&lt;/span&gt; It can appear within a paragraph.&lt;/p&gt;
+</pre>			
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Basic Bar Charts</h6>
+						<p>This is the default bar chart, with no options enabled. It expands to the full width of 
+							its	container and shows data only. The x-axis data is not necessary.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[30,100,170,80,120,70,150,20,60]}														
+						]"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+{y:[30,100,170,80,120,70,150,20,60]}
+]"&gt;&lt;/div&gt;
+</pre>			
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Histograms</h6>
+						<p>For bar charts with single data sets, you may wish to remove the gaps between the bars 
+							to create a	histogram. To do so, set the <code>histogram</code> option to 
+							<code>true</code>.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{
+								x:[1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+							}
+						]"
+						
+						data-chartOptions="{
+							histogram: true
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{
+		x:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
+	}
+]"
+
+data-chartOptions="{
+	histogram: true
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Axis Lines, Ticks, &amp; Labels</h6>
+						<p>In this example, the title, labels, ticks, and axis lines have all been enabled. Each of 
+							those elements can be toggled separately through the options object.</p>
+						<p><span class="infoMarker">Note</span> Chart text may not be perfect on mobile-sized 
+							screens, so choose what information you display carefully.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[6,24,38,15,87,75,45,23,12,73,87,99,34,20]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Axis Lines, Ticks, &amp; Labels',
+							maxX: 100
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{x:[6,24,38,15,87,75,45,23,12,73,87,99,34,20]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	title: 'Axis Lines, Ticks, &amp; Labels',
+	maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Custom Interval Labels</h6>
+						<p>Custom interval labels can be added using the <code>xLabels</code> and <code>yLabels</code>
+							options, which both accept an array of strings as a value. The number of strings in the 
+							<code>yLabels</code> array must match the number of data points in each data set.</p>
+						<p>If your labels are longer, you can specify the width of the area used for labels along the 
+							y-axis using the <code>yLabelWidthPercentage</code> option. The default value for 
+							<code>yLabelWidthPercentage</code> is 5% of the total width of the chart canvas area, but 
+							the option accepts any positive integer value between 1-100.</p>
+						<p><span class="infoMarker">Note</span> If you want to skip a label, use <code>null</code> in 
+							place of any string in the label array.</p>
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[30,100,170]},
+							{x:[80,120,70]},
+							{x:[20,60,30]}														
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Custom Labels',
+							maxX: 200,
+							yLabels: ['Bob', 'John', 'Sue']
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{y:[30,100,170]},
+	{y:[80,120,70]},
+	{y:[20,60,30]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	title: 'Custom Labels',
+	maxX: 200,
+	yLabels: ['Bob', 'John', 'Sue']
+}"&gt;&lt;/div&gt;
+</pre>			
+					</div>
+				</div>								
+				<div class="row">
+					<div class="col4">
+						<h6>Interactive Keys</h6>
+						<p>The keys in the charts plugin are all interactive. Clicking on the key text or color square 
+							will toggle the visibility of that dataset in the graph.</p> 
+						<p>Keys can appear in four different positions: <em>top</em>, <em>bottom</em>, <em>left</em>, 
+							or <em>right</em>, with a default position of <em>bottom</em>. Choose the appropriate key 
+							position based on the length and number of your dataset labels.</p>
+						<p><span class="infoMarker">Note</span> The width of the <em>left</em> and <em>right</em> key 
+							positions can be determined using the <code>keyWidthPercentage</code> option, which 
+							defaults to 15%. Because cross-browser support for SVG text-wrapping isn't particularly 
+							fantastic, you'll need to use this option for especially longer labels.</p>			
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[38,15,87,75,45,23,12,73,17,45,87]},
+							{x:[36,25,47,75,40,63,22,43,10,46,68]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Bottom Key',
+							maxX: 100
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{x:[38,15,87,75,45,23,12,73,17,45,87]},
+	{x:[36,25,47,75,40,63,22,43,10,46,68]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Bottom Key',
+	maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[38,45,23,12,73,17,45,87]},
+							{x:[36,25,47,75,43,10,46,68]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							keyPosition: 'right',
+							title: 'Right Key',
+							maxX: 100
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{x:[38,45,23,12,73,17,45,87]},
+	{x:[36,25,47,75,43,10,46,68]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	keyPosition: 'right',
+	title: 'Right Key',
+	maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Grid Lines</h6>
+						<p>Grid lines can be added to the chart as well, with granular control over both the <em>X</em> 
+							and <em>Y</em> lines through the <code>showGridX</code> and <code>showGridY</code> options. 
+							Grid line color is set through the <code>gridColor</code> option.</p>			
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[87,75,45,23]},
+							{x:[23,15,65,33]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Grid Lines',
+							showGridX: true,
+							showGridY: true,
+							maxX: 100
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{x:[87,75,45,23]},
+	{x:[23,15,65,33]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Grid Lines',
+	showGridX: true,
+	showGridY: true,
+	maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Chart Tips</h6>
+						<p>The tips for <em>Data Set 1</em> in the demo are custom text, whereas the tips for <em>Data 
+							Set 2</em> and <em>Data Set 3</em> are the default tips. Tip text can be customized per data 
+							set and is set via the <code>tipText</code> option.</p>
+						<p>The <code>tipText</code> option's value should be an array, with custom text as a series of 
+							strings in the same order as the data sets. The string can take HTML and also has special 
+							placeholders that will be replaced automatically.</p>
+						<h6>Tip Text Placeholders</h6>
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Placeholders</caption>
+							<thead>
+								<tr>
+									<th>String</th>
+									<th>Replacement</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="String">{x}</td>
+									<td data-column="Replacement">The x-cordinate value.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{y}</td>
+									<td data-column="Replacement">The y-cordinate value.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{xAxis}</td>
+									<td data-column="Replacement">The name of the x-axis.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{yAxis}</td>
+									<td data-column="Replacement">The name of the y-axis.</td>
+								</tr>
+								<tr>
+									<td data-column="String">{label}</td>
+									<td data-column="Replacement">The name of the dataset.</td>
+								</tr>																								
+							</tbody>
+						</table>			
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[1,6,3,17,12]},
+							{x:[4,9,10,14,3]},
+							{x:[17,2,7,15,8]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Chart Tips',
+							showGridX: true,
+							showGridY: true,
+							showTips: true,
+							tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'],
+							maxX: 20,
+							xInterval: 5 
+						}"></div>						
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+	{x:[1,6,3,17,12]},
+	{x:[4,9,10,14,3]},
+	{x:[17,2,7,15,8]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Chart Tips',
+	showGridX: true,
+	showGridY: true,
+	showTips: true,
+	tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'],
+	maxX: 20,
+	xInterval: 5 
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Negative Values &amp; Custom Ranges</h6>
+						<p>Using the <code>minX</code> and <code>maxX</code> 
+							options, you can override the default behavior and give your chart custom ranges.</p>
+						<p><span class="infoMarker">Note</span> Because of the way column charts are animated, you should 
+							avoid using animation for column charts with negative numbers.</p>	
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[1,6,3,-17,-15,87,75,-45,94]},
+							{x:[12,37,34,-36,25,47,75,-40,63]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Negative Values &amp; Custom Ranges',
+							showGridX: true,
+							showGridY: true,
+							minX: -50,
+							maxX: 100
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+		{x:[1,6,3,-17,-15,87,75,-45,94]},
+		{x:[12,37,34,-36,25,47,75,-40,63]}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		showKey: true,
+		title: 'Negative Values &amp; Custom Ranges',
+		showGridX: true,
+		showGridY: true,
+		minX: -50,
+		maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Pyramid Charts</h6>
+						<p>To create a pyramid chart, use exactly two data sets, one with all negative values and the 
+							other will all positive values. Then, set the <code>pyramid</code> option to true and use 
+							both the <code>minX</code> and <code>maxX</code> to set the x-axis range to equal positive 
+							and negative spans.</p>
+						<p><span class="infoMarker">Note</span> Avoid using animation for pyramid charts.</p>	
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[-5,-6,-13,-17,-15,-87,-75,-45,-94]},
+							{x:[12,37,34,36,25,47,75,40,63]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'People Who Like Vegetables',
+							showGridX: true,
+							showTips: true,
+							tipText: [
+								'{x}% of men, ages {y}, like vegetables', 
+								'{x}% of women, ages {y}, like vegetables'
+							],
+							dataLabels: ['Men', 'Women'],
+							xAxisLabel: 'Percent (%) Who Like Vegetables',
+							xLabels: ['100', '75', '50', '25', '0', '25', '50', '75', '100'],
+							yAxisLabel: 'Age (years)',
+							yLabels: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81+'],
+							minX: -100,
+							maxX: 100,
+							histogram: true,
+							pyramid: true
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+		{x:[1,6,3,-17,-15,87,75,-45,94]},
+		{x:[12,37,34,-36,25,47,75,-40,63]}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		showKey: true,
+		title: 'Negative Values &amp; Custom Ranges',
+		showGridX: true,
+		showGridY: true,
+		minX: -50,
+		maxX: 100
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col4">
+						<h6>Decimal Values &amp; Custom Intervals</h6>
+						<p>Decimal values can be used in any chart, but in most cases, you will probably want to adjust 
+							the intervals along at least one of the axises. To do so, use the <code>xInterval</code> 
+							and <code>yInterval</code> options to establish custom intervals.</p>
+						<p>By default, the interval labels will show only integers, so any decimal interval labels will 
+							be rounded to the nearest integer. To show decimal interval labels, use the 
+							<code>decimalPrecisionX</code> and <code>decimalPrecisionY</code> options to specify the 
+							number of decimal places to be shown. <span class="infoMarker">Note</span> This will only 
+							affect the interval labels; the data points and tips will display the full number as 
+							specified in the dataset.</p> 
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div class="barChart" data-chartData="[
+							{x:[0.3,0.1,0.6,0.45,0.75,0.1,0.3,0.1,0.6,0.45,0.2]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Decimal Values & Custom Intervals',
+							showGridX: true,
+							showGridY: true,
+							xInterval: 0.2,
+							maxX: 1,
+							decimalPrecisionX: 1,
+							showTips: true
+						}"></div>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div class="barChart" data-chartData="[
+		{x:[0.3,0.1,0.6,0.45,0.75,0.1,0.3,0.1,0.6,0.45,0.2]}
+	]"
+	
+	data-chartOptions="{
+		showAxisLabels: true, 
+		showAxisLines: true, 
+		showTicksY: true, 
+		showTicksX: true,
+		showIntervalLabels: true,
+		showTitle: true,
+		title: 'Decimal Values & Custom Intervals',
+		showGridX: true,
+		showGridY: true,
+		xInterval: 0.2,
+		maxX: 1,
+		decimalPrecisionX: 1,
+		showTips: true
+}"&gt;&lt;/div&gt;
+</pre>		
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col4">
+						<h6>Animation</h6>
+						<p>The chart can be animated by setting the <code>animate</code> option to <code>true</code>. 
+							The length of the animation can also be controlled with the <code>animationDuration</code> 
+							option, which defaults to a 1 second animation.</p>
+						<p><span class="infoMarker">Note</span> Animations do not currently work in Internet Explorer 
+							as it does not support declarative animations. The chart will simply ignore the 
+							<code>animate</code> option and display a static chart in Internet Explorer.</p>	
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div id="animatedBarChart" class="barChart" data-chartData="[
+							{x:[3,17,12,24,73,87,99,34,20]},
+							{x:[23,15,25,47,75,43,10,46,60]}
+						]"
+						
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true,
+							showIntervalLabels: true,
+							showTitle: true,
+							showKey: true,
+							title: 'Animated Chart',
+							showGridX: true,
+							showGridY: true,
+							showPoints: true,
+							showTips: true,
+							tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'],
+							animate: true,
+							maxX: 100 
+						}"></div>
+						<p><a id="animateButton" class="buttonInfo" href="#">Refresh Animation</a></p>
+						<script type="text/javascript">
+							window.addEvent('domready', function(){
+								$('animateButton').addEvent('click', function(e){
+									e.stop();
+									$('animatedBarChart').fireEvent('updateChart');
+								});
+							});
+						</script>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div id="animatedBarChart" class="columnChart" data-chartData="[
+	{x:[3,17,12,24,73,87,99,34,20]},
+	{x:[23,15,25,47,75,43,10,46,60]}
+]"
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true,
+	showIntervalLabels: true,
+	showTitle: true,
+	showKey: true,
+	title: 'Animated Chart',
+	showGridX: true,
+	showGridY: true,
+	showPoints: true,
+	showTips: true,
+	tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'],
+	animate: true,
+	maxX: 100 
+}"&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a id="animateButton" class="buttonInfo" href="#"&gt;Refresh Animation&lt;/a&gt;&lt;/p&gt;
+
+&lt;script type="text/javascript"&gt;
+	window.addEvent('domready', function(){
+		$('animateButton').addEvent('click', function(e){
+			e.stop();
+			$('animatedBarChart').fireEvent('updateChart');
+		});
+	});
+&lt;/script&gt;
+</pre>		
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Dynamic Data</h6>
+						<p>The chart can be updated dynamically using data generated via script or retrieved via AJAX. 
+							To update the chart, fire the <code>updateChart</code> event on the chart container 
+							element. New data can either be passed in as parameters via the <code>fireEvent</code> 
+							function or you can choose to dynamically update the <code>data-chartData</code> 
+							attribute and the data will be automatically detected when the <code>updateChart</code> 
+							event is fired.</p>
+						<p><span class="infoMarker">Notes</span> When the <code>updateChart</code> event is fired, the 
+							entire chart is re-rendered. Animations should not be used with dynamic data with a high 
+							refresh rate.</p>
+						<h6>Empty Datasets</h6>
+						<p>If you want to have an empty dataset like the initial state of the demo, you must define 
+							the <code>maxX</code> option, otherwise the result will be an error.</p>	
+					</div>
+					<div class="col8">
+						<h6>Demo</h6>
+						<div id="dynamicBarChart" class="barChart" data-chartData=""
+					
+						data-chartOptions="{
+							showAxisLabels: true, 
+							showAxisLines: true, 
+							showTicksY: true, 
+							showTicksX: true, 
+							showIntervalLabels: true,
+							showTitle: true,
+							title: 'Dynamic Data Demo',
+							showGridY: true,
+							showAreaLines: true,
+							maxX: 100,
+							histogram: true
+						}"></div>
+						<ul class="unlisted horizontal">
+							<li><a id="dataToggle" class="buttonInfo" href="#">Start Data</a></li>
+							<li><a id="clearData" class="button" href="#">Clear Data</a></li>
+						</ul>
+						<p>Choose the data refresh rate in milliseconds:</p>
+						<form>
+							<input type="text" id="dataSpeed" name="dataSpeed" class="slider" data-range="10,1000" data-increment="10" data-start="500">
+						</form>
+						<script type="text/javascript">
+							window.addEvent('domready', function(){
+								var update = function(){
+									var xValue = Number.random(0, 100);
+									var data = JSON.decode($('dynamicBarChart').getData('chartData'));
+
+									if (!data){
+										data = [{x: [xValue]}];
+									} else {
+										data[0].x.unshift(xValue)
+										if (data[0].x.length > 10){
+											data[0].x.splice(10, 1);
+										} 
+									}
+
+									$('dynamicBarChart').setData('chartData', JSON.encode(data));
+									$('dynamicBarChart').fireEvent('updateChart');
+								};
+								
+								var timer;
+								
+								$('dataToggle').addEvent('click', function(e){
+									e.stop();							
+									if (this.get('text') == 'Start Data'){
+										this.set('text', 'Stop Data');
+										timer = update.periodical($('dataSpeed').get('value').toInt());
+									} else {
+										this.set('text', 'Start Data');									
+										clearInterval(timer);
+									}
+								});
+								
+								$('clearData').addEvent('click', function(e){
+									e.stop();
+									$('dynamicBarChart').setData('chartData', '');
+									$('dynamicBarChart').fireEvent('updateChart');
+								});
+								
+								$('dataSpeed').addEvent('change', function(){
+									if ($('dataToggle').get('text') == 'Stop Data'){
+										clearInterval(timer);
+										timer = update.periodical(this.get('value').toInt());
+									}
+								});
+							});
+						</script>
+						<h6>Code</h6>
+<pre class="html">
+&lt;div id="dynamicBarChart" class="columnChart" data-chartData=""
+
+data-chartOptions="{
+	showAxisLabels: true, 
+	showAxisLines: true, 
+	showTicksY: true, 
+	showTicksX: true, 
+	showIntervalLabels: true,
+	showTitle: true,
+	title: 'Dynamic Data Demo',
+	showGridY: true,
+	showAreaLines: true,
+	maxX: 100,
+	histogram: true
+}"&gt;&lt;/div&gt;
+&lt;ul class="unlisted horizontal"&gt;
+	&lt;li&gt;&lt;a id="dataToggle" class="buttonInfo" href="#"&gt;Start Data&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a id="clearData" class="button" href="#"&gt;Clear Data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Choose the data refresh rate in milliseconds:&lt;/p&gt;
+&lt;form&gt;
+	&lt;input type="text" id="dataSpeed" name="dataSpeed" class="slider" data-range="10,1000" data-increment="10" data-start="500"&gt;
+&lt;/form&gt;
+&lt;script type="text/javascript"&gt;
+	window.addEvent('domready', function(){
+		var update = function(){
+			var xValue = Number.random(0, 100);
+			var data = JSON.decode($('dynamicBarChart').getData('chartData'));
+
+			if (!data){
+				data = [{x: [xValue]}];
+			} else {
+				data[0].x.unshift(xValue)
+				if (data[0].x.length > 10){
+					data[0].x.splice(10, 1);
+				} 
+			}
+
+			$('dynamicBarChart').setData('chartData', JSON.encode(data));
+			$('dynamicBarChart').fireEvent('updateChart');
+		};
+		
+		var timer;
+		
+		$('dataToggle').addEvent('click', function(e){
+			e.stop();							
+			if (this.get('text') == 'Start Data'){
+				this.set('text', 'Stop Data');
+				timer = update.periodical($('dataSpeed').get('value').toInt());
+			} else {
+				this.set('text', 'Start Data');									
+				clearInterval(timer);
+			}
+		});
+		
+		$('clearData').addEvent('click', function(e){
+			e.stop();
+			$('dynamicBarChart').setData('chartData', '');
+			$('dynamicBarChart').fireEvent('updateChart');
+		});
+		
+		$('dataSpeed').addEvent('change', function(){
+			if ($('dataToggle').get('text') == 'Stop Data'){
+				clearInterval(timer);
+				timer = update.periodical(this.get('value').toInt());
+			}
+		});
+	});
+&lt;/script&gt;
+</pre>		
+						</div>
+					</div>
+				</div>																				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
