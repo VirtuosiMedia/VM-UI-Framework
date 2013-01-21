@@ -33,6 +33,7 @@ var Charts = new Class({
 		maxY: null,											//The maximum value of the y-axis
 		minX: 0,											//The minimum value of the x-axis, defaults to 0
 		minY: 0,											//The minimum value of the y-axis, defaults to 0
+		pyramid: false,										//Turns a bar chart into a pyramid chart, requires 2 data sets, one with negative values
 		showAreaLines: false,								//Whether or not to show lines on an area chart
 		showAxisLabels: false,								//Whether or not to show the axis labels
 		showAxisLines: false,								//Whether or not to show the axis lines		
@@ -59,6 +60,7 @@ var Charts = new Class({
 		xLabels: [],										//Labels for the x-axis, defaults to numbers. Should match tick count		
 		yAxisLabel: 'y-axis',								//The y-axis label		
 		yInterval: 25,										//The interval between ticks on the y-axis
+		yLabelWidthPercentage: 5,							//The width percentage of y interval labels, if they are enabled
 		yLabels: []											//Labels for the x-axis, defaults to numbers. Should match tick count
 	},
 	
@@ -69,7 +71,7 @@ var Charts = new Class({
 		this.namespace = "http://www.w3.org/2000/svg";
 		this.selectors = selectors;
 		this.charts = [], this.options = [], this.data = [], this.points = [], this.svg = [], this.dim = [], 
-		this.xTipValues = [], this.chartTypes = [];
+		this.xTipValues = [], this.yTipValues = [], this.chartTypes = [];
 		
 		Array.each($$(this.selectors), function(chart, index){	
 			this.charts[index] = chart;			
@@ -118,7 +120,7 @@ var Charts = new Class({
 		
 		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
 		if ((this.data[index])&&(this.data[index].length > 0)){
-			if (chartType == 'createColumnChart'){
+			if (['createColumnChart', 'createBarChart'].contains(chartType)){
 				this.parseBarData(index);
 			} else if (options.xAxisIsDate){
 				options.xInterval = this.options.dateIntervalValue;
@@ -250,7 +252,7 @@ var Charts = new Class({
 	},
 
 	/**
-	 * @description Creates a bar chart
+	 * @description Creates a column chart
 	 * @param int index - The index of the chart
 	 */	
 	createColumnChart: function(index){
@@ -276,6 +278,34 @@ var Charts = new Class({
 		
 		this.svg[index].adopt(group.render());		
 	},
+	
+	/**
+	 * @description Creates a bar chart
+	 * @param int index - The index of the chart
+	 */	
+	createBarChart: function(index){
+		var options = this.options[index];
+		
+		if (this.charts[index].get('class') == 'inlineBarChart'){options.histogram = true;}
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showTicksX||options.showTicksY){this.renderTicks(index);}
+		if (options.showGridX||options.showGridY){this.renderGrids(index);}
+		if (options.showIntervalLabels||options.showIntervalLabelsY||options.showIntervalLabelsX){this.renderIntervalLabels(index);}
+		if (options.showAxisLabels){this.renderAxisLabels(index);}
+		if (options.showAxisLines){this.renderAxisLines(index);}
+		if (options.showKey){this.renderKey(index);}
+		
+		var group = new SVG('g', {'clip-path': 'url(#chartCanvas' + index + ')'});
+		
+		if (this.data[index]){
+			this.renderMask(index);
+			Array.each(this.data[index], function(data, dataIndex){
+				group.adopt(this.renderBars(index, dataIndex));			
+			}, this);
+		}
+		
+		this.svg[index].adopt(group.render());		
+	},	
 	
 	/**
 	 * @description Parses data for line, scatter, and bar charts
@@ -430,10 +460,11 @@ var Charts = new Class({
 		var dim = this.dim[index];
 		
 		dim.keyWidth = (300*(options.keyWidthPercentage/100)).toInt();
+		var yLabelWidth = (300*(options.yLabelWidthPercentage/100)).toInt();
 		
 		dim.xOffset = (options.showTicksY) ? 5 : 0;
 		dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
-		dim.xOffset = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.xOffset + 20 : dim.xOffset;
+		dim.xOffset = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.xOffset + yLabelWidth : dim.xOffset;
 		dim.xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.xOffset + dim.keyWidth : dim.xOffset;
 		
 		dim.yOffset = (options.showTitle) ? 25 : 0;
@@ -460,13 +491,13 @@ var Charts = new Class({
 		//Not having this check can result in a value of infinity for empty datasets. While Buzz Lightyear might 
 		//	approve, it kind of messes up the charts for those of us without spring-loaded wings or lasers. Dear Santa...				
 		if (this.data[index]){
-			dim.minX = (options.minX) ? options.minX : Math.min.apply(Math, xValues);
-			dim.maxX = (options.maxX) ? options.maxX : Math.max.apply(Math, xValues);
+			dim.minX = (options.minX !== null) ? options.minX : Math.min.apply(Math, xValues);
+			dim.maxX = (options.maxX !== null) ? options.maxX : Math.max.apply(Math, xValues);
 		} else {
 			dim.minX = (options.minX !== null) ? options.minX :0;
 			dim.maxX = (options.maxX !== null) ? options.maxX : 100;
 		}
-
+		
 		var minY = (this.data[index]) ? Math.min.apply(Math, yValues) : 0;
 		if (minY >= 0){
 			dim.minY = options.minY;
@@ -574,16 +605,21 @@ var Charts = new Class({
 		}
 			
 		if (options.showTicksY){
+			if (this.chartTypes[index] == 'createBarChart'){
+				var numItems = (this.data[index]) ? this.data[index][0].y.length : 10;
+				yInterval = dim.height/numItems;
+			}
+			
 			if (dim.minY >= 0){
 				for (var y = yStart; y >= yOffset; y-=yInterval){
 					ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
 				}
-				ticks.splice(numX, 1);
+				if (this.chartTypes[index] != 'createBarChart'){ticks.splice(numX, 1)};
 			} else { //We need zero to show up on the graph
 				for (var y = yStart; y <= minY; y+= yInterval){
 					ticks.push('M ' + xOffset + ' ' + y + ', ' + (xOffset -3) + ' ' + y);
 				}
-				ticks.pop(); //Interval removed to minimize visual complexity
+				if (this.chartTypes[index] != 'createBarChart'){ticks.pop();} //Interval removed to minimize visual complexity
 				
 				yStart = this.normalize(index, options.yInterval, 'y');
 				var maxY = this.normalize(index, dim.maxY, 'y');
@@ -635,6 +671,11 @@ var Charts = new Class({
 		}
 
 		if (options.showGridY){
+			if (this.chartTypes[index] == 'createBarChart'){
+				var numItems = (this.data[index]) ? this.data[index][0].y.length : 10;
+				yInterval = dim.height/numItems;
+			}
+			
 			if (dim.minY >= 0){
 				for (var y = yStart; y >= (yOffset); y-=yInterval){
 					grids.push('M ' + xOffset + ' ' + y + ', ' + (xOffset + dim.width) + ' ' + y);
@@ -716,27 +757,44 @@ var Charts = new Class({
 		}
 		
 		if (options.showIntervalLabels||options.showIntervalLabelsY){
+			if (this.chartTypes[index] == 'createBarChart'){
+				var numItems = (this.data[index]) ? this.data[index][0].y.length : 10;
+				yInterval = dim.height/numItems;
+			}			
+			
 			if (options.yLabels.length > 0){
 				yLabels = options.yLabels;
+				self.yTipValues[index] = yLabels;
 			} else {
-				if (dim.minY >= 0){
-					for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
+				if (this.chartTypes[index] == 'createBarChart'){
+					for (var i = 1; i <= numItems; i++){
 						yLabels.push(i.toFixed(options.decimalPrecisionY));
 					}
-				} else { //We need zero to show up on the graph
-					for (var i = 0; i >= dim.minY; i-= options.yInterval){
-						yLabels.push(i.toFixed(options.decimalPrecisionY));
+					self.yTipValues[index] = yLabels;
+				} else {				
+					if (dim.minY >= 0){
+						for (var i = dim.minY; i <= dim.maxY; i+= options.yInterval){
+							yLabels.push(i.toFixed(options.decimalPrecisionY));
+						}
+					} else { //We need zero to show up on the graph
+						for (var i = 0; i >= dim.minY; i-= options.yInterval){
+							yLabels.push(i.toFixed(options.decimalPrecisionY));
+						}
+						yLabels.reverse();
+						for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
+							yLabels.push(i.toFixed(options.decimalPrecisionY));
+						}				
 					}
-					yLabels.reverse();
-					for (var i = options.yInterval; i <= dim.maxY; i+= options.yInterval){
-						yLabels.push(i.toFixed(options.decimalPrecisionY));
-					}				
 				}
 			}
 			
-			yLabels.reverse();
+			if (this.chartTypes[index] == 'createBarChart'){
+				var yCounter = dim.yOffset + 2 + (yInterval/2);
+			} else {
+				var yCounter = dim.yOffset + 2;
+				yLabels.reverse();
+			}
 			
-			var yCounter = dim.yOffset + 2;
 			Array.each(yLabels, function(value){
 				var label = new SVG.Text({
 					'class': 'chartIntervalLabel',
@@ -950,6 +1008,83 @@ var Charts = new Class({
 	},
 
 	/**
+	 * Variations: stackedBar, stackedBarPercent
+	 * Options: orientation(horizontal|vertical)
+	 * Notes:	0.5-1.0 bar gap width
+	 * 			Tick marks on outside
+	 * 			Fill at least 2/3's vertical scale
+	 * 			Horizontal labels should be flush right
+	 * 			Sort single-variable horizontal charts in order of data
+	 * Use: Investigate specific comparisons in time
+	 * 		Compare categorical data
+	 * 		
+	 */
+	renderBars: function(index, dataIndex){
+		var options = this.options[index];
+		var dim = this.dim[index];
+		var data = this.data[index][dataIndex];
+		var self = this;
+
+		var intervalHeight = dim.height/data.y.length;
+		var numDataSets = this.data[index].length;
+		if (options.pyramid){
+			var columnHeight = (!options.histogram) ? intervalHeight/2 : intervalHeight;
+		} else {
+			var columnHeight = (!options.histogram) ? intervalHeight/(numDataSets + 1) : intervalHeight/numDataSets;
+		}
+		var gap = (!options.histogram) ? columnHeight/2 : 0;
+		var xStart = (dim.minX >= 0) ? this.normalize(index, dim.minX, 'x') : this.normalize(index, 0, 'x');
+		var bars = [];
+		
+		data.x.each(function(x, columnIndex){
+			var intervalStart = intervalHeight * columnIndex;
+			if (options.pyramid){
+				var yStart = dim.yOffset + intervalStart + gap;
+			} else {
+				var yStart = dim.yOffset + intervalStart + gap + (dataIndex * columnHeight);
+			}
+			var yEnd = yStart + columnHeight;
+			var xEnd = self.normalize(index, x, 'x');
+			
+			var lineFill = new SVG.Path({
+				"class": "dataBar dataset" + dataIndex,
+				stroke: options.colors[dataIndex],
+				"stroke-width": 0.5,
+				d: ['M', xStart, yStart, xEnd, yStart, xEnd, yEnd, xStart, yEnd].join(' '),
+				fill: options.colors[dataIndex],
+				"shape-rendering": "geometricPrecision"
+			});
+			
+			if (options.showTips){
+				var id = 'dataPoint-' + index + '-' + dataIndex + '-' + columnIndex;
+				lineFill.set('id', id).addEvents({
+					mouseover: function(){
+						self.renderTip(id, x, self.yTipValues[index][columnIndex], index, dataIndex);
+					},
+					mouseout: function(){
+						self.removeTip(id);
+					}
+				});				
+			}
+
+			if (options.animate){
+				var animation = new SVG.AnimateTransform({
+					attributeName: "transform",
+					type: "skewX",
+					from: -90,
+					to: 0,
+					dur: options.animationDuration + (dataIndex/4) + 's',
+					fill: 'freeze'
+				});
+				lineFill.adopt(animation.render());
+			}
+			
+			bars.push(lineFill.render());
+		});
+		return bars;
+	},	
+	
+	/**
 	 * Variations: scatter, scatterLine,
 	 * Options: points, line, fill
 	 * Notes:	Tick marks on outside
@@ -1131,6 +1266,9 @@ var Charts = new Class({
 		var self = this;
 		var options = this.options[index];
 		var dim = this.dim[index];
+		
+		//This is to make negative pyramid numbers appear positive
+		x = ((options.pyramid)&&(x < 0)) ? -x : x;
 		
 		var chart = $('chart-' + index);
 		var pos = $(id).getCoordinates(chart);

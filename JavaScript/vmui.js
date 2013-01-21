@@ -28,7 +28,7 @@ var VMUI = new Class({
 		         {
 		        	 name:'Charts', 
 		        	 source:'Data/Charts.js', 
-		        	 selectors:'.lineChart, .inlineLineChart, .scatterChart, .areaChart, .inlineAreaChart, .barChart, .columnChart, .inlineColumnChart, .pieChart, .inlinePieChart'
+		        	 selectors:'.lineChart, .inlineLineChart, .scatterChart, .areaChart, .inlineAreaChart, .barChart, .inlineBarChart, .columnChart, .inlineColumnChart, .pieChart, .inlinePieChart'
 		         },
 		         {name:'Pin', source:'Layout/Pin.js', selectors:'.pin'},
 		         {name:'Validate', source:'Form/Validate.js', selectors:'form'},
