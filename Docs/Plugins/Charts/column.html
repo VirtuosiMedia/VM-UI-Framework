@@ -148,7 +148,6 @@
 						<h6>Demo</h6>
 						<p>This is an inline column chart: <span class="inlineColumnChart" data-chartData="[
 							{
-								x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
 								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
 							}
 						]"
@@ -156,7 +155,6 @@
 						<h6>Code</h6>
 <pre class="html">
 &lt;p&gt;This is an inline column chart: &lt;span class="inlineAreaChart" data-chartData="[{
-	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
 	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
 }]"&gt;&lt;/span&gt; It can appear within a paragraph.&lt;/p&gt;
 </pre>			
@@ -264,6 +262,10 @@ data-chartOptions="{
 						<p>Custom interval labels can be added using the <code>xLabels</code> and <code>yLabels</code>
 							options, which both accept an array of strings as a value. The number of strings in the 
 							array must match the number of data points in each data set.</p>
+						<p>If your labels are longer, you can specify the width of the area used for labels along the 
+							y-axis using the <code>yLabelWidthPercentage</code> option. The default value for 
+							<code>yLabelWidthPercentage</code> is 5% of the total width of the chart canvas area, but 
+							the option accepts any positive integer value between 1-100.</p>							
 						<p><span class="infoMarker">Note</span> If you want to skip a label, use <code>null</code> in 
 							place of any string in the label array.</p>
 					</div>
