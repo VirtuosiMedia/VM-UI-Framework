@@ -16,14 +16,18 @@ var Charts = new Class({
 		animationDuration: 1,								//The total animation duration in seconds
 		axisColor: '#333',									//The hex color of the axis lines
 		aspectRatio: [16, 9],								//The aspect ratio of the canvas area, as an array [x, y]
-		colors: ['#058DC7', "#A006C7", "#C7062D", "#06C740", "#C7A006"],			//The chart hex colors for lines, bars, and pie segments
+		colors: [											//The chart hex colors for lines, bars, and pie segments
+		    '#058DC7', '#A006C7', '#C7062D', '#06C740', 
+		    '#C7A006', '#EEE', '#CCC', '#999', '#666', 
+		    '#333', '#000'
+		],
 		dataLabels: [],										//Labels for each of the data sets, will also show in the key
 		dateEnd: null,										//now, or specific date
 		dateFormat: '%b %d',								//Y:M:W H:M:S
 		dateIntervalUnit: 'day',							//The inverval unit for a date: year, month, week, day, hour, minute, second, ms
 		dateIntervalValue: 1,								//The interval value for a date
 		dateStart: null,									//now, or a specific date
-		decimalPrecisionX: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
+		decimalPrecisionX: 0,								//The number of decimal places shown on interval labels or pie tips; does not affect placement or other tips
 		decimalPrecisionY: 0,								//The number of decimal places shown on interval labels; does not affect placement or tips
 		gridColor: '#DDD',									//The hex color of the grid lines
 		histogram: false,									//Removes the gap between columns or bars to create a histogram
@@ -53,7 +57,7 @@ var Charts = new Class({
 		title: 'Untitled Chart',							//The title of the chart
 		tickColor: '#333',									//The hex color of the tick marks
 		tipText: [],										//The HTML text for the tip, where values inside of {} are replaced by coordinates
-															//Options include {x}, {y}, {xAxis}, {yAxis}, and {label}
+															//Options include {x}, {y}, {xAxis}, {yAxis}, {piePercent} and {label}
 		xAxisLabel: 'x-axis',								//The x-axis label
 		xInterval: 25,										//The interval between ticks on the x-axis
 		xAxisIsDate: false,									//Whether or not the x-axis is a date, to be used with other date options
@@ -119,18 +123,20 @@ var Charts = new Class({
 		this.setChartSize(index);
 		
 		this.data[index] = (data) ? data : JSON.decode(chart.getData('chartData'));
-		if ((this.data[index])&&(this.data[index].length > 0)){
-			if (['createColumnChart', 'createBarChart'].contains(chartType)){
-				this.parseBarData(index);
-			} else if (options.xAxisIsDate){
-				options.xInterval = this.options.dateIntervalValue;
-				this.parseDateData(index);
-			} else {		
-				this.parseData(index);
+		if (chartType != 'createPieChart'){
+			if ((this.data[index])&&(this.data[index].length > 0)){
+				if (['createColumnChart', 'createBarChart'].contains(chartType)){
+					this.parseBarData(index);
+				} else if (options.xAxisIsDate){
+					options.xInterval = this.options.dateIntervalValue;
+					this.parseDateData(index);
+				} else {		
+					this.parseData(index);
+				}
+			} else {
+				this.data[index] = null;
+				this.setDataRange(index);
 			}
-		} else {
-			this.data[index] = null;
-			this.setDataRange(index);
 		}
 		
 		//This fixes a bug that renders the chart in full and then animates it.
@@ -146,7 +152,6 @@ var Charts = new Class({
 		
 		this[chartType](index);		
 		chart.empty().adopt(this.svg[index].render());
-		this.svg[index];
 		
 		chart.removeEvents().addEvent('updateChart', function(data){ //Events are removed for garbage collection
 			self.update(this, self.selectors.indexOf(this), data);
@@ -306,6 +311,20 @@ var Charts = new Class({
 		
 		this.svg[index].adopt(group.render());		
 	},	
+
+	/**
+	 * @description Creates a pie chart
+	 * @param int index - The index of the chart
+	 */	
+	createPieChart: function(index){
+		var options = this.options[index];
+		this.data[index][0].x.each(function(item, dataIndex){
+			this.setDataLabels(index, dataIndex);
+		}, this);		
+		if (options.showTitle){this.setTitle(index);}
+		if (options.showKey){this.renderKey(index);}
+		if (this.data[index][0].x){this.svg[index].adopt(this.renderPie(index));}		
+	},	
 	
 	/**
 	 * @description Parses data for line, scatter, and bar charts
@@ -439,15 +458,19 @@ var Charts = new Class({
 		var dim = this.dim[index];
 
 		dim.width = 300;
-		dim.width = (options.showTicksX) ? dim.width - 5 : dim.width;
-		dim.width = (options.showTicksY) ? dim.width - 15 : dim.width;
-		dim.width = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.width - 30 : dim.width;
+		if (this.chartTypes[index] != 'createPieChart'){
+			dim.width = (options.showTicksX) ? dim.width - 5 : dim.width;
+			dim.width = (options.showTicksY) ? dim.width - 15 : dim.width;
+			dim.width = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.width - 30 : dim.width;
+		}
 		dim.width = ((['right', 'left'].contains(options.keyPosition))&&(options.showKey)) ? dim.width - dim.keyWidth : dim.width;
 		
 		dim.height = dim.aspectRatioHeight - dim.yOffset;
-		dim.height = (options.showTicksY) ? dim.height - 5 : dim.height;
-		dim.height = (options.showAxisLabels) ? dim.height - 10 : dim.height;
-		dim.height = (options.showIntervalLabels||options.showIntervalLabelsX) ? dim.height - 10 : dim.height;
+		if (this.chartTypes[index] != 'createPieChart'){
+			dim.height = (options.showTicksY) ? dim.height - 5 : dim.height;
+			dim.height = (options.showAxisLabels) ? dim.height - 10 : dim.height;
+			dim.height = (options.showIntervalLabels||options.showIntervalLabelsX) ? dim.height - 10 : dim.height;
+		}
 		dim.height = ((options.keyPosition == 'bottom')&&(options.showKey)) ? dim.height - 20 : dim.height;
 	},
 
@@ -462,9 +485,12 @@ var Charts = new Class({
 		dim.keyWidth = (300*(options.keyWidthPercentage/100)).toInt();
 		var yLabelWidth = (300*(options.yLabelWidthPercentage/100)).toInt();
 		
-		dim.xOffset = (options.showTicksY) ? 5 : 0;
-		dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
-		dim.xOffset = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.xOffset + yLabelWidth : dim.xOffset;
+		dim.xOffset = 0;
+		if (this.chartTypes[index] != 'createPieChart'){
+			dim.xOffset = (options.showTicksY) ? 5 : dim.xOffset;
+			dim.xOffset = (options.showAxisLabels) ? dim.xOffset + 15 : dim.xOffset;
+			dim.xOffset = (options.showIntervalLabels||options.showIntervalLabelsY) ? dim.xOffset + yLabelWidth : dim.xOffset;
+		}
 		dim.xOffset = ((options.keyPosition == 'left')&&(options.showKey)) ? dim.xOffset + dim.keyWidth : dim.xOffset;
 		
 		dim.yOffset = (options.showTitle) ? 25 : 0;
@@ -534,6 +560,7 @@ var Charts = new Class({
 		var options = this.options[index];
 		options.dataLabels[dataIndex] = (options.dataLabels[dataIndex])	? options.dataLabels[dataIndex] : 'Data Set ' + (dataIndex + 1);
 		options.tipText[dataIndex] = (options.tipText[dataIndex]) ? options.tipText[dataIndex] : '{xAxis}: {x}, {yAxis}: {y}';
+		options.tipText[dataIndex] = (this.chartTypes[index] == 'createPieChart') ? '{piePercent}% of total' : options.tipText[dataIndex]
 	},
 
 	/**
@@ -843,15 +870,25 @@ var Charts = new Class({
 	 */	
 	renderKey: function(index){
 		var options = this.options[index];
-		var dim = this.dim[index];		
+		var dim = this.dim[index];
+		var datasets = (this.chartTypes[index] == 'createPieChart') ? this.data[index][0].x : this.data[index];
 		
 		var numLabels = options.dataLabels.length - 1;
 		var	self = this;
 
-		Array.each(this.data[index], function(data, dataIndex){
+		Array.each(datasets, function(data, dataIndex){
 			var keyLabel = new SVG.Text();
 			dataIndex = numLabels - dataIndex; //Reverse it to get the right order
-			keyLabel.setText(options.dataLabels[dataIndex]);
+
+			if (self.chartTypes[index] == 'createPieChart'){
+				var total = 0;
+				self.data[index][0].x.each(function(value){total += value;});
+				var percent = ' ('+((self.data[index][0].x[dataIndex]/total)*100).toFixed(options.decimalPrecisionX)+'%)';
+				var keyText = options.dataLabels[dataIndex]+percent;
+			} else{
+				var keyText = options.dataLabels[dataIndex];
+			}			
+			keyLabel.setText(keyText);
 			
 			var keyColor = new SVG.Rect({
 				height: 5,
@@ -894,6 +931,7 @@ var Charts = new Class({
 	positionKeys: function(index){
 		var options = this.options[index];
 		var dim = this.dim[index];
+		var chartKeys = this.charts[index].getElements('.chartKey');
 		
 		if (['top', 'bottom'].contains(options.keyPosition)){
 			var xVal = (options.showIntervalLabels||options.showAxisLabels) ? 304 : 313;
@@ -905,10 +943,9 @@ var Charts = new Class({
 			yVal = (options.showIntervalLabels) ? yVal + 10 : yVal;			
 		} else {
 			var xVal = (options.keyPosition == 'right') ? dim.xOffset + dim.width + 15 : 15;
-			var yVal = dim.yOffset + 20;
+			var yVal = dim.yOffset + (15 * chartKeys.length) - 5;
 		}
-		
-		var chartKeys = this.charts[index].getElements('.chartKey');
+				
 		Array.each(chartKeys, function(key, keyIndex){
 			if (['top', 'bottom'].contains(options.keyPosition)){
 				var keyBox = key.getBBox();
@@ -1269,6 +1306,13 @@ var Charts = new Class({
 		
 		//This is to make negative pyramid numbers appear positive
 		x = ((options.pyramid)&&(x < 0)) ? -x : x;
+		if (this.chartTypes[index] == 'createPieChart'){
+			var total = 0;
+			this.data[index][0].x.each(function(value){total += value;});
+			var percent = ((x/total)*100).toFixed(options.decimalPrecisionX);
+		} else{
+			var percent = 'N/A';
+		}
 		
 		var chart = $('chart-' + index);
 		var pos = $(id).getCoordinates(chart);
@@ -1278,7 +1322,8 @@ var Charts = new Class({
 			y: y, 
 			xAxis: options.xAxisLabel,
 			yAxis: options.yAxisLabel,
-			label: title
+			label: title,
+			piePercent: percent
 		});
 		
 		var titleEl = new Element('span', {
@@ -1313,5 +1358,68 @@ var Charts = new Class({
 	 * 			No more than 5 slices
 	 * Use: Single variable comparison for 5 or fewer items
 	 */
-	renderPie: function(data){}	
+	renderPie: function(index){
+		var self = this;
+		var options = this.options[index];
+		var dim = this.dim[index];		
+				
+		var data = this.data[index][0].x;
+		var total = 0;
+		data.each(function(value){total += value;});
+		var startX = dim.xOffset + (dim.width/2);
+		var startY = dim.yOffset + (dim.height/2);
+		var radius = (dim.width > dim.height) ? dim.height/2 : dim.width/2;
+		var totalAngle = -90;
+		var animationLength = options.animationDuration / data.length;
+		var x1, y1, x2, y2, rx, ry = 0;
+					
+		data.each(function(value, dataIndex){
+			var angle = 360 * (value/total);
+			var startAngle = totalAngle;
+			totalAngle += angle;
+			var endAngle = totalAngle;
+			
+			x1 = startX + (radius*Math.cos(Math.PI*startAngle/180));
+			y1 = startY + (radius*Math.sin(Math.PI*startAngle/180));
+			x2 = startX + (radius*Math.cos(Math.PI*endAngle/180));
+			y2 = startY + (radius*Math.sin(Math.PI*endAngle/180));
+			var largeArc = (angle > 180) ? 1 : 0;
+
+			var path = ['M'+startX, startY,'L'+x1+','+y1,'A'+radius+','+radius+' 0 '+largeArc+',1', x2+','+y2, 'z'].join(' ');
+			var lineFill = new SVG.Path({
+				"class": "dataPie dataset" + dataIndex,
+				stroke: "transparent",
+				d: path,
+				fill: options.colors[dataIndex],
+				"shape-rendering": "geometric-precision"
+			});
+			
+			if (options.showTips){
+				var id = 'dataPie-' + index + '-' + dataIndex;
+				lineFill.set('id', id).addEvents({
+					mouseover: function(){
+						self.renderTip(id, value, value, index, dataIndex);
+					},
+					mouseout: function(){
+						self.removeTip(id);
+					}
+				});				
+			}
+
+			if (options.animate){
+				var startTime = dataIndex * animationLength
+				var animation = new SVG.Animate({
+					attributeName: "fill",
+					from: "transparent",
+					to: options.colors[dataIndex],
+					begin: startTime + 's',
+					dur: (options.animationDuration - startTime) + (dataIndex/4) + 's',
+					fill: 'freeze'
+				});
+				lineFill.set('fill', 'transparent').adopt(animation);
+			}			
+			
+			self.svg[index].adopt(lineFill.render());
+		});
+	}	
 });

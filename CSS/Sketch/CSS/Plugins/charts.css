@@ -21,8 +21,9 @@
 	top: 0.015em;
 	width: 2.133em;
 }
-.dataLine, .dataPoint, .dataColumn, .dataBar {opacity: 0.7;}
+.dataLine, .dataPoint, .dataColumn, .dataBar, .dataPie:hover {opacity: 0.7;}
 .dataColumn:hover, .dataBar:hover {opacity: 0.9;}
+.dataPie {opacity: 0.6;}
 .dataFill {opacity: 0.2;}
 [class*="inline"][class*="Chart"] .dataColumn {opacity: 0.9;}
 [class*="inline"][class*="Chart"] .dataFill {opacity: 0.6;}
