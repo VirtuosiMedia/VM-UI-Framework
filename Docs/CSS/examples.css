@@ -1,4 +1,16 @@
 /**
+ * The logos
+ */
+#homeLogo {
+	color: #09C;
+	float: left;
+	font-size: 3em;
+	height: 1.15em !important;
+	padding: 0 0.15em 0;
+	width: 1.5em;
+}
+
+/**
  * Display the grids
  */
 .gridContainer .row div {
@@ -22,4 +34,13 @@
 	height: 1em;
 	margin: 0.375em 0.5em 0em 0em;
 	width: 1em;
+}
+
+/**
+ * Featured images
+ */
+.featuredImage {
+	border: 1px solid #222;
+	border-radius: 2px;
+	box-sizing: border-box;
 }
