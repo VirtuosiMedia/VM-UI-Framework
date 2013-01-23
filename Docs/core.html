@@ -2,23 +2,24 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>VM UI Framework - Core Elements</title>
+	<title>Core Elements - VM UI Framework</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
-	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />		
 </head>
-<body>
+<body id="top">
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="./">Overview</a></li>
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
 						<li><a href="examples.html">Examples</a></li>
-						<li><a href="layout.html">Page Layout</a></li>
-						<li><a href="core.html" class="active">Core Elements</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a class="active" href="core.html">Core</a></li>
 						<li><a href="icons.html">Icons</a></li>
-						<li><a href="ui.html">UI Elements</a></li>
-						<li><a href="plugins.html">JavaScript Plugins</a></li>
+						<li><a href="extras.html">Extras</a></li>
+						<li><a href="plugins.html">Plugins</a></li>
+						<li><a href="resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
@@ -28,7 +29,28 @@
 		<div class="row">
 			<div class="col12">
 				<h1 class="pageTitle">Core Elements</h1>
-				<h2 class="title">Typography</h2>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#typography">Typography</a></li>
+							<li><a href="#lists">Lists</a></li>
+							<li><a href="#quotes">Quotations</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#code">Code</a></li>
+							<li><a href="#tables">Tables</a></li>
+							<li><a href="#forms">Forms</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#buttons">Buttons</a></li>
+						</ul>
+					</div>										
+				</div>				
+				<h2 id="typography" class="title">Typography</h2>
 				<p>Typography is an often-overlooked but absolutely essential part to your design. Below are the styled 
 					typographic elements that are found in VM UI Framework.</p>
 			</div>
@@ -79,6 +101,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col6">
 				<h3>Headings</h3>
@@ -93,11 +116,10 @@
 				<h5>Heading 5 <small>This is a byline</small></h5>
 				<h6>Heading 6 <small>This is a byline</small></h6>
 			</div>
-		</div>
-		
+		</div>	
 		<div class="row">
 			<div class="col12">
-				<h3 class="title">Lists</h3>
+				<h3 id="lists" class="title">Lists</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -252,7 +274,7 @@
 						</ul>					
 					</li>
 				</ul>
-				<p><span class="markerWarning">Warning</span> Node lists have a few caveats to using them, so they 
+				<p><span class="warningMarker">Warning</span> Node lists have a few caveats to using them, so they 
 					won't be suitable for all use cases:</p>
 				<ul>
 					<li>The width of the column must be wide enough to properly display the node hierarchy. A node list 
@@ -264,12 +286,13 @@
 					<li>Using multiple parents on the top level works, but it may take a little extra work to make them 
 						look right on sub-levels.</li>
 					<li>On smaller screen sizes, a node list will automatically turn into a tree list.</li> 
-				</ul>				
+				</ul>
+				<p><a href="#top">Return to top</a></p>				
 			</div>
 		</div>		
 		<div class="row">
 			<div class="col12">
-				<h3 class="title">Quotations</h3>
+				<h2 id="quotes" class="title">Quotations</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -288,14 +311,16 @@
 					simply add a utility class of either <code>left</code> or <code>right</code>. Keep in mind that 
 					blockquotes that are displayed at 100% width will have their float removed. If you use a
 					<code>&lt;p&gt;</code> tag inside your <code>&lt;blockquote&gt;</code>, the first letter of the 
-					first paragraph will feature a dropcap.
-				</p>
+					first paragraph will feature a dropcap.</p>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col6">
 				<p>Blockquotes that are floated to the left will have the divider on the right rather than the left.</p>
 				<blockquote class="left">
-					<p>Why would I bother reinventing the wheel? I want my cars to fly!</p>
-					<small>- Benjamin Kuker</small>
+					<p>A beginning is a very delicate time. Know then that it is the year 10191. The Known Universe is 
+						ruled by the Padishah Emperor Shaddam IV, my father. In this time, the most precious substance 
+						in the universe is the spice Melange. The spice extends life.</p>
+					<small>- Princess Irulan</small>
 				</blockquote>
 				<p>If you would like to add an author name or credit a source as a visible citation, just include it in 
 					the blockquote, wrapped in the <code>&lt;small&gt;</code> tag. If you have a URL to point to for a 
@@ -304,7 +329,7 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h2 class="title">Code</h2>
+				<h2 id="code" class="title">Code</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -319,18 +344,19 @@ p {
  	font-weight: bold;
 }			
 </pre>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col4">
 				<p>For small snippets of code, wrap them in the	<code>&lt;code&gt;</code> tag. For longer snippets, 
 					wrap them inside a <code>&lt;pre&gt;</code>	tag.</p>
 				<h6>Syntax Highlighting</h6>
 				<p>Code syntax highlighting can be accomplished by including the 
-					<a href="plugins.html#lighter">Lighter JavaScript plugin</a>.</p> 					
+					<a href="plugins/code.html">Lighter JavaScript plugin</a>.</p> 					
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h2 class="title">Tables</h2>
+				<h2 id="tables" class="title">Tables</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -669,6 +695,7 @@ p {
 				<h3>Table Cell Shading</h3>
 				<p>Some tables may require shading options per individual cell. Just add the proper cell-shading class 
 					to the <code>td</code> element you wish to shade.</p>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col8">
 				<table class="columnTable borderedTable">
@@ -706,7 +733,7 @@ p {
 		</div>									
 		<div class="row">
 			<div class="col12">
-				<h2 class="title">Forms</h2>
+				<h2 id="forms" class="title">Forms</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -723,7 +750,8 @@ p {
 					<code>&lt;input&gt;</code> element, depending on which side you want it to appear.</p>
 				<h6>Additional Styling</h6>
 				<p>Selects, checkboxes, and radios can be custom-styled using several of our 
-					<a href="plugins.html">JavaScript plugins</a>.</p> 
+					<a href="plugins.html">JavaScript plugins</a>.</p>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col8">
 				<form>
@@ -759,7 +787,7 @@ p {
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h2 class="title">Buttons</h2>
+				<h2 id="buttons" class="title">Buttons</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -852,6 +880,7 @@ p {
 					<code>buttonInfoMulti</code>.</p>
 				<a href="#" class="buttonSuccessMulti"><span>Free Download</span><span>Version 1.1 Available</span></a> 
 				<a href="#" class="buttonMulti"><span>Take A Tour</span><span>Over 100 Features</span></a>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col8">
 				<h6>Button Groups</h6>
@@ -882,6 +911,34 @@ p {
 				</ul>				
 			</div>
 		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="buttonInfo" href="icons.html">See The Icon Font</a></li>
+					<li><a href="layout.html">Back to the Layout Guide</a></li>
+				</ul>
+				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
 	</div>
 </body>
 </html>
