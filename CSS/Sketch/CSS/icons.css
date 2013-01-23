@@ -33,6 +33,16 @@
 [class^="iconLarge"]:before {font-size: 1.5em;}
 
 /**
+ * A fix for pie chart conflicts
+ */
+i[class*="PieChart"] {
+	display: inline-block;
+	margin-bottom: 0;
+	height: auto;
+	width: auto;
+}
+
+/**
  * Icons, Alphabetical
  */
 [class^="icon"][class$="Add1"]:before {content: "\e145";}
