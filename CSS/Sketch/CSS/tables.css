@@ -24,7 +24,10 @@ table {
 }
 .columnTable caption {display: none;}
 thead td {background: #CCC;}
-th, td {padding: 0 0.4em;}
+th, td {
+	box-sizing: border-box;
+	padding: 0 0.4em;
+}
 th[class^=col], td[class^=col] {
 	float: none;
 	margin-left: 0;
