@@ -5,64 +5,124 @@
 	<title>VM UI Framework - Summary</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../JavaScript'});	
+		});
+	</script>		
 </head>
 <body>
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="./" class="active">Overview</a></li>
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
 						<li><a href="examples.html">Examples</a></li>
-						<li><a href="layout.html">Page Layout</a></li>
-						<li><a href="core.html">Core Elements</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a href="core.html">Core</a></li>
 						<li><a href="icons.html">Icons</a></li>
-						<li><a href="ui.html">UI Elements</a></li>
-						<li><a href="plugins.html">JavaScript Plugins</a></li>
+						<li><a href="extras.html">Extras</a></li>
+						<li><a href="plugins.html">Plugins</a></li>
+						<li><a href="resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>	
 	</div>
-	<div class="featuredContainer">
-		<div class="container">
-			<div class="row">
-				<div class="col4">
-					<img src="Images/index-logo.png" />
-				</div>
-				<div class="col8">
-					<h1 class="pageTitle">VM UI Framework <small><span class="markerSuccess">Beta</span></small></h1>
-					<p>A modern, grid-based CSS, layout, and UI framwork for HTML5,	VM UI Framework was created to assist 
-						in creating websites and, more specifically, web applications. It's a companion to VM PHP 
-						Framework, but can be used independently as well. It's inspired by Twitter's Bootstrap framework, 
-						but we wanted to take it in a slightly different direction.</p>
-					<ul class="horizontal">
-						<li><a href="#" class="buttonLarge">Demos</a></li>
-						<li><a href="#" class="buttonInvertedLarge">Download</a></li>
-					</ul>
-				</div>
+	<div class="container topMargin">
+		<div class="row">
+			<div class="col8">
+				<h1 class="pageTitle">VM UI Framework</h1>
+				<h3>Use for any app. Build for any screen.</h3>
+				<p>A modern, grid-based CSS, layout, and UI framwork for HTML5,	VM UI Framework was made 
+					to assist in creating websites and web applications.</p>
+				<ul class="horizontal">
+					<li><a href="examples.html" class="buttonInfoMulti">
+						<span>Start The Tour</span>
+						<span>See what you can create</span>
+					</a></li>
+				</ul>														
+			</div>
+			<div class="col4 topMargin">
+				<h6>Quick Info</h6>
+				<ul>
+					<li>VM UI Framework is licensed under the 
+						<a href="http://opensource.org/licenses/MIT">MIT License</a>.</li>
+					<li>You are using: <strong>v1.0 Beta</strong></li>
+					<li>The latest version can always be found on 
+						<a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a>.</li>
+					<li>Browser support: 
+						<i class="iconChrome"></i>
+						<i class="iconIe"></i>
+						<i class="iconFirefox"></i>
+						<i class="iconSafari"></i>
+						<i class="iconOpera"></i>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="container">
+		<div class="row">
+			<div class="col4">
+				<h6>Packed With Features</h6>
+				<img class="featuredImage" src="Images/Features/features.png" alt="Packed full of features"/>
+				<p>From carefully calculated typography to responsive tables, from easy grid-based layouts to a 326 
+					character custom icon font, you're going to love using VM UI Framework.</p>
+			</div>
+			<div class="col4">
+				<h6>100% Responsive</h6>
+				<img class="featuredImage" src="Images/Features/responsive.png" alt="It's all responsive"/>
+				<p>Every single interface element has been tested extensively so that they scale from large desktop 
+					screens to mobile browsers. It simply just works.</p>
+			</div>			
+			<div class="col4">
+				<h6>Over 20 Plugins</h6>
+				<img class="featuredImage" src="Images/Features/plugins.png" alt="Lots of plugins"/>
+				<p>A plugin for every need. They're automatically loaded on the page, but only when you need them. No 
+					JavaScript knowledge required.</p>
+			</div>
+		</div>		
 		<div class="row">
 			<div class="col4">
 				<h6>For Modern Browsers</h6>
+				<img class="featuredImage" src="Images/Features/browsers.png" alt="Modern Browser Support"/>
 				<p>In order to keep our codebase neat and tidy, we are only supporting the latest versions of each 
 					browser. Most browsers update themselves, but I know what you're wondering: this means IE9+.</p>
 			</div>
 			<div class="col4">
 				<h6>MooTools-Powered</h6>
+				<img class="featuredImage" src="Images/Features/mootools.png" alt="Powered By MooTools"/>
 				<p>All of our JavaScript plugins use <a href="http://mootools.net/">MooTools</a>, a JavaScript framework 
 					that allows for fast, flexible, and clean development.</p>
 			</div>			
 			<div class="col4">
 				<h6>MIT License</h6>
+				<img class="featuredImage" src="Images/Features/open.png" alt="Open Source"/>
 				<p>VM UI Framework is licensed as open source under the 
 					<a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>, meaning that you can 
 					use it in whatever projects you need to without a worry.</p>
 			</div>
-		</div>	
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<span class="socialShare" data-url="http://uiframework.com" 
+					data-text="VM UI Framework - rapid prototyping and polished interfaces."></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>			
 	</div>
 </body>
 </html>
