@@ -13,19 +13,20 @@
 		});
 	</script>	
 </head>
-<body>
+<body id="top">
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="./">Overview</a></li>
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
 						<li><a href="examples.html">Examples</a></li>
-						<li><a href="layout.html">Page Layout</a></li>
-						<li><a href="core.html">Core Elements</a></li>
-						<li><a href="icons.html" class="active">Icons</a></li>
-						<li><a href="ui.html">UI Elements</a></li>
-						<li><a href="plugins.html">JavaScript Plugins</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a href="core.html">Core</a></li>
+						<li><a class="active" href="icons.html">Icons</a></li>
+						<li><a href="extras.html">Extras</a></li>
+						<li><a href="plugins/index.html">Plugins</a></li>
+						<li><a href="resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
@@ -35,6 +36,59 @@
 		<div class="row skipBottom">
 			<div class="col12">
 				<h1 class="pageTitle">Icons</h1>
+				<div class="row">
+					<div class="col3">
+						<h6>Code</h6>
+						<ul>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#usage">Usage</a></li>
+							<li><a href="#sizes">Icon Sizes</a></li>
+							<li><a href="#compression">Font Compression</a></li>
+							<li><a href="#custom-sizes">Custom Font Sizes</a></li>
+							<li><a href="#create">Create Your Own Font</a></li>
+							<li><a href="#categories">Categories</a></li>
+						</ul>
+					</div>
+					<div class="col9">
+						<h6>Icon Categories</h6>
+						<div class="row">				
+							<div class="col3">
+								<ul>
+									<li><a href="#arrows">Arrows</a> (38)</li>
+									<li><a href="#browsers">Browsers</a> (25)</li>
+									<li><a href="#charts">Charts &amp; Graphs</a> (19)</li>
+									<li><a href="#computer-hardware">Computer Hardware</a> (10)</li>
+									<li><a href="#ecommerce">Ecommerce</a> (9)</li>
+									<li><a href="#file-formats">File Formats</a> (45)</li>
+									<li><a href="#folders">Folders</a> (6)</li>
+								</ul>
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#location">Location</a> (7)</li>
+									<li><a href="#logos">Logos</a> (37)</li>
+									<li><a href="#media">Media</a> (36)</li>
+									<li><a href="#mobile">Mobile</a> (51)</li>
+									<li><a href="#operating-systems">Operating Systems</a> (30)</li>
+									<li><a href="#productivity">Productivity</a> (39)</li>
+									<li><a href="#programming">Programming</a> (24)</li>
+								</ul>			
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#science">Science</a> (27)</li>
+									<li><a href="#security">Security</a> (13)</li>
+									<li><a href="#social">Social</a> (38)</li>
+									<li><a href="#software">Software</a> (95)</li>
+									<li><a href="#text-editor">Text Editor</a> (48)</li>
+									<li><a href="#users">Users</a> (10)</li>
+									<li><a href="#web">Web</a> (16)</li>
+								</ul>			
+							</div>
+						</div>
+					</div>						
+				</div>				
+				<h2 id="overview">Overview</h2>
 				<p>VM UI Framework features an extensive icon font of 326 unique icons. The icons are all original and 
 					the font was compiled using the <a href="http://keyamoon.com/icomoon/app/">IcoMoon font 
 					generator</a>. An icon font has several advantages over traditional images:</p>
@@ -44,8 +98,9 @@
 					<li>One download for all icons can minimize the total page size and reduce the number of resources 
 						loaded.</li> 
 					<li>Icon fonts can be compressed, whereas images cannot.</li>
-				</ol> 
-				<h2>Usage</h2>
+				</ol>
+				<p><a href="#top">Return to top</a></p> 
+				<h2 id="usage">Usage</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -57,11 +112,12 @@
 				<p>Just like the rest of VM UI Framework, the class names follow camel-cased capitalization, meaning 
 					that the class name starts lower case, but the first letter of each word after that is capitalized. 
 					No hyphens or spaces are necessary.</p>
-				<h6>Icon Sizes</h6>
+				<p><a href="#top">Return to top</a></p>
+				<h6 id="sizes">Icon Sizes</h6>
 				<p>By default, icons come in 3 sizes: default, medium, and large. The default size doesn't need any 
 					special treatment, but to use either medium or large, simply add the size after "icon" but before 
 					the icon name in the CSS class. A size can be applied to any icon.</p>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr><th>Icon</th><th>Class</th><th>Size (em)</th><th>Size (px)</th></tr>
 					</thead>
@@ -86,13 +142,15 @@
 						</tr>												
 					</tbody>
 				</table>
-				<h6>Font Compression</h6>
+				<p><a href="#top">Return to top</a></p>
+				<h6 id="compression">Font Compression</h6>
 				<p>All font files can and should be compressed using Gzip compression, with the exception of files in 
 					the WOFF format. File size savings can be up to 40-70%. See Stoyan Stefanov's article, 
 					<a href="http://www.phpied.com/gzip-your-font-face-files/">Gzip your @font-face files</a>, and 
 					Steve Souder's article,
 					<a href="http://www.stevesouders.com/blog/2009/10/13/font-face-and-performance/">@font-face and 
 					performance</a>, for more information.</p>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col6">
 				<h6>Example</h6>
@@ -113,7 +171,7 @@
 		</div>
 		<div class="row">
 			<div class="col6">
-				<h2>Custom Font Sizes</h2>
+				<h2 id="custom-sizes">Custom Font Sizes</h2>
 				<p>If you would like to create a custom icon size, simply create a new class using the CSS attribute 
 					selector. The class name should start with <code>icon</code>, followed by the name of your custom 
 					size, as detailed in the example below. You will also have to use the <code>:before</code> 
@@ -123,9 +181,10 @@
 [class^="iconHuge"]:before {font-size: 10.25em;}
 [class^="iconTiny"]:before {font-size: 0.5em;}
 </pre>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col6">
-				<h2>Create Your Own Font</h2>
+				<h2 id="create">Create Your Own Font</h2>
 				<p>All of the SVG images used to create the font are stored in the <em>Images/SVG</em> folder. You can 
 					use or edit the images to create your own fonts.</p>
 					<p>You can also import the font into the <a href="http://keyamoon.com/icomoon/app/">IcoMoon font	
@@ -137,45 +196,10 @@
 		</div>				
 		<div class="row skipBottom">
 			<div class="col12">				
-				<h2>Icon Categories</h2>
+				<h2 id="categories">Icon Categories</h2>
 				<p>The icons have been sorted into groups below so that you can quickly find the icons you need. Icons 
 					that may fall under multiple groups will be listed more than once for convenience.</p>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col4">
-				<ul>
-					<li><a href="#arrows">Arrows</a> (38)</li>
-					<li><a href="#browsers">Browsers</a> (25)</li>
-					<li><a href="#charts">Charts &amp; Graphs</a> (19)</li>
-					<li><a href="#computer-hardware">Computer Hardware</a> (10)</li>
-					<li><a href="#ecommerce">Ecommerce</a> (9)</li>
-					<li><a href="#file-formats">File Formats</a> (45)</li>
-					<li><a href="#folders">Folders</a> (6)</li>
-				</ul>
-			</div>
-			<div class="col4">
-				<ul>
-					<li><a href="#location">Location</a> (7)</li>
-					<li><a href="#logos">Logos</a> (37)</li>
-					<li><a href="#media">Media</a> (36)</li>
-					<li><a href="#mobile">Mobile</a> (51)</li>
-					<li><a href="#operating-systems">Operating Systems</a> (30)</li>
-					<li><a href="#productivity">Productivity</a> (39)</li>
-					<li><a href="#programming">Programming</a> (24)</li>
-				</ul>			
-			</div>
-			<div class="col4">
-				<ul>
-					<li><a href="#science">Science</a> (27)</li>
-					<li><a href="#security">Security</a> (13)</li>
-					<li><a href="#social">Social</a> (38)</li>
-					<li><a href="#software">Software</a> (95)</li>
-					<li><a href="#text-editor">Text Editor</a> (48)</li>
-					<li><a href="#users">Users</a> (10)</li>
-					<li><a href="#web">Web</a> (16)</li>
-				</ul>			
-			</div>						
 		</div>
 		<div class="row">
 			<div class="col12">
@@ -183,7 +207,7 @@
 				<!-- Arrows -->
 			
 				<h2 id="arrows">Arrows</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -575,11 +599,12 @@
 						</tr>																																																																																																																																																									
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Browsers -->
 				
 				<h2 id="browsers">Browsers</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -841,11 +866,12 @@
 						</tr>																																																																																				
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Charts and Graphs -->				
 				
 				<h2 id="charts">Charts &amp; Graphs</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1047,11 +1073,12 @@
 						</tr>																																																																														
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Computer Hardware -->				
 				
 				<h2 id="computer-hardware">Computer Hardware</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1163,11 +1190,12 @@
 						</tr>																																																																																																																	
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 
 				<!-- Ecommerce -->				
 				
 				<h2 id="ecommerce">Ecommerce</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1269,11 +1297,12 @@
 						</tr>																			
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- File Formats -->				
 				
 				<h2 id="file-formats">File Formats</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1735,11 +1764,12 @@
 						</tr>																																																																																																																																															
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Folders -->				
 				
 				<h2 id="folders">Folders</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1811,11 +1841,12 @@
 						</tr>																																																																																																										
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Location -->				
 				
 				<h2 id="location">Location</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -1897,11 +1928,12 @@
 						</tr>																																																																																																																										
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Logos -->				
 				
 				<h2 id="logos">Logos</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -2283,11 +2315,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Media -->				
 				
 				<h2 id="media">Media</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -2659,11 +2692,12 @@
 						</tr>						
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Mobile -->				
 				
 				<h2 id="mobile">Mobile</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -3185,11 +3219,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Operating Systems -->				
 				
 				<h2 id="operating-systems">Operating Systems</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -3501,11 +3536,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Productivity -->				
 				
 				<h2 id="productivity">Productivity</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -3906,11 +3942,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Programming -->				
 				
 				<h2 id="programming">Programming</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -4162,11 +4199,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Science -->				
 				
 				<h2 id="science">Science</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -4448,11 +4486,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Security -->				
 				
 				<h2 id="security">Security</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -4594,11 +4633,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Social -->				
 				
 				<h2 id="social">Social</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -4991,11 +5031,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Software -->				
 				
 				<h2 id="software">Software</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -5968,11 +6009,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Text Editor -->				
 				
 				<h2 id="text-editor">Text Editor</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -6474,11 +6516,12 @@
 						</tr>												
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Users -->				
 				
 				<h2 id="users">Users</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -6590,11 +6633,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				
 				<!-- Web -->				
 				
 				<h2 id="web">Web</h2>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
 					<thead>
 						<tr>
 							<th>Icons</th>
@@ -6763,10 +6807,39 @@
 							<td><code>iconJava</code></td>
 							<td>&amp;#xe08e;</td>
 							<td>\e08e</td>
-						</tr>																																																																																																																																																																																																																																																		
+						</tr>
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>																																																																																																																																																																																																																																																		
 			</div>
 		</div>
-					
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="buttonInfo" href="extras.html">See The UI Extras</a></li>
+					<li><a href="core.html">Back to the Core Elements</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
 	</div>
 </body>
 </html>
