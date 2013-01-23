@@ -14,31 +14,39 @@ body .skipBottom {margin-bottom: 0;}
 .topMargin {margin-top: 1.75em;}
 .bottomMargin {margin-bottom: 1.75em;}
 .hidden {display: none;}
+.divider {
+	background: #CCC;
+	clear: both;
+	display: block;
+	height: 1px;
+	margin-bottom: 1.75em;
+	width: 100%;
+}
 
 /**
  * Smartphones and tablets
  */
 @media (max-width: 767px) {
-	.hideMobile, .showTablet, .showSmallDesktop, .showLargeDesktop {display: none;}
+	.hideMobile, .showTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}
 }
 
 /**
  * Tablets
  */
 @media (min-width: 768px) and (max-width: 980px) {
-	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none;}			
+	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}			
 }
 
 /**
  * Small Desktops
  */
 @media (min-width: 981px) and (max-width: 1200px) {
-	.showMobile, .showTablet, .hideSmallDesktop, .showLargeDesktop {display: none;}		
+	.showMobile, .showTablet, .hideSmallDesktop, .showLargeDesktop {display: none !important;}		
 }
 
 /**
  * Large Desktops
  */
 @media (min-width: 1201px) {
-	.showMobile, .showTablet, .showSmallDesktop, .hideLargeDesktop {display: none;}			
+	.showMobile, .showTablet, .showSmallDesktop, .hideLargeDesktop {display: none !important;}			
 }
