@@ -38,6 +38,7 @@ var VMUI = new Class({
 		         {name:'Autocomplete', source:'Form/Widget/Autocomplete.js', selectors:'input.autocomplete'},
 		         {name:'Pager', source:'Layout/Pager.js', selectors:'.pager'},
 		         {name:'MobileMenu', source:'Navigation/MobileMenu.js', selectors:'.mobileMenu'},
+		         {name:'Reveal', source:'Widgets/Reveal.js', selectors:'.revealToggle'},
 		],
 		relativePath: '../JavaScript'		
 	},
