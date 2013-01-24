@@ -3,29 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>VM UI Framework - JavaScript Plugins - Charts</title>
-	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
-	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
-	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
-	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../../CSS/examples.css" />
+	<script src="../../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			var loader = new VMUI({relativePath:'../../JavaScript'});	
+			var loader = new VMUI({relativePath:'../../../JavaScript'});	
 		});
 	</script>
 </head>
-<body>
+<body id="top">
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="../">Overview</a></li>
-						<li><a href="../examples.html">Examples</a></li>
-						<li><a href="../layout.html">Page Layout</a></li>
-						<li><a href="../core.html">Core Elements</a></li>
-						<li><a href="../icons.html">Icons</a></li>
-						<li><a href="../ui.html">UI Elements</a></li>
-						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					<a href="../../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../../examples/">Examples</a></li>
+						<li><a href="../../layout.html">Layout</a></li>
+						<li><a href="../../core.html">Core</a></li>
+						<li><a href="../../icons.html">Icons</a></li>
+						<li><a href="../../extras.html">Extras</a></li>
+						<li><a class="active" href="../">Plugins</a></li>
+						<li><a href="../../templates.html">Templates</a></li>
+						<li><a href="../../resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
@@ -35,7 +38,7 @@
 		<div class="row">
 			<div class="col12">
 				<ul class="breadcrumb topMargin">
-					<li><a href="../plugins.html">JavaScript Plugins</a></li>
+					<li><a href="../">JavaScript Plugins</a></li>
 					<li>Current Plugin</li>
 				</ul>			
 				<h1 class="pageTitle">Charts</h1>
@@ -53,16 +56,16 @@
 						<div class="row">
 							<div class="col3">
 								<ul>
-									<li><a href="charts/area.html">Area Charts</a></li>
-									<li><a href="charts/column.html">Column Charts</a></li>
-									<li><a href="charts/bar.html">Bar Charts</a></li>
+									<li><a href="area.html">Area Charts</a></li>
+									<li><a href="bar.html">Bar Charts</a></li>									
+									<li><a href="column.html">Column Charts</a></li>
 								</ul>
 							</div>
 							<div class="col3">
 								<ul>
-									<li><a href="charts/line.html">Line Charts</a></li>
-									<li><a href="charts/pie.html">Pie Charts</a></li>
-									<li><a href="charts/scatter.html">Scatter Charts</a></li>
+									<li><a href="line.html">Line Charts</a></li>
+									<li><a href="pie.html">Pie Charts</a></li>
+									<li><a href="scatter.html">Scatter Charts</a></li>
 								</ul>
 							</div>						
 						</div>										
@@ -133,6 +136,33 @@
 	 			</ul>				
 			</div>
 		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="buttonInfo" href="area.html">See Area Charts In Action</a></li>
+					<li><a href="../autoload.html">Back to Plugin Autoloading</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
 	</div>
 </body>
 </html>
