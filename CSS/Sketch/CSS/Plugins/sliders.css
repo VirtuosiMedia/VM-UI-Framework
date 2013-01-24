@@ -45,3 +45,13 @@
 	top: 1em;
 	width: 100%;
 }
+
+/* Min and max are hidden for mobile screens */
+@media (max-width: 768px) {
+	.sliderContainer {
+		padding-bottom: 1.75em;
+		width: 100%;
+	}
+	.sliderContainer .track {width: 99%;}
+	.sliderContainer .min, .sliderContainer .max {display: none !important;}
+}
