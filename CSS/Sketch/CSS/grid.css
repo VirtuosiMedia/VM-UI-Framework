@@ -37,7 +37,7 @@
 	}
 	.row > [class*="col"] {
 		clear:both;
-		margin-bottom: 20px;		
+		margin-bottom: 0px;		
 		width: 100%;
 	}
 	body div[class^="notice"] {width: 97.4%;}
