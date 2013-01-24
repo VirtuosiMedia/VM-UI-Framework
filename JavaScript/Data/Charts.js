@@ -12,7 +12,7 @@ var Charts = new Class({
 	Implements: [Events, Options],
 
 	defaultOptions: {
-		animate: false,										//Whether or not to animate the graph, defaults true
+		animate: false,										//Whether or not to animate the graph, defaults false
 		animationDuration: 1,								//The total animation duration in seconds
 		axisColor: '#333',									//The hex color of the axis lines
 		aspectRatio: [16, 9],								//The aspect ratio of the canvas area, as an array [x, y]
@@ -558,7 +558,7 @@ var Charts = new Class({
 	 */		
 	setDataLabels: function(index, dataIndex){
 		var options = this.options[index];
-		options.dataLabels[dataIndex] = (options.dataLabels[dataIndex])	? options.dataLabels[dataIndex] : 'Data Set ' + (dataIndex + 1);
+		options.dataLabels[dataIndex] = (options.dataLabels[dataIndex])	? options.dataLabels[dataIndex] : 'Series ' + (dataIndex + 1);
 		options.tipText[dataIndex] = (options.tipText[dataIndex]) ? options.tipText[dataIndex] : '{xAxis}: {x}, {yAxis}: {y}';
 		options.tipText[dataIndex] = (this.chartTypes[index] == 'createPieChart') ? '{piePercent}% of total' : options.tipText[dataIndex]
 	},
