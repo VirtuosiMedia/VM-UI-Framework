@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>VM UI Framework - JavaScript Plugins - Autoloading & Customization</title>
+	<title>JavaScript Plugins - VM UI Framework</title>
 	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
 	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
 	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
@@ -11,21 +11,23 @@
 		window.addEvent('domready', function() {
 			var loader = new VMUI({relativePath:'../../JavaScript'});	
 		});
-	</script>
+	</script>	
 </head>
-<body>
+<body id="top">
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="../">Overview</a></li>
-						<li><a href="../examples.html">Examples</a></li>
-						<li><a href="../layout.html">Page Layout</a></li>
-						<li><a href="../core.html">Core Elements</a></li>
+					<a href="../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../examples/">Examples</a></li>
+						<li><a href="../layout.html">Layout</a></li>
+						<li><a href="../core.html">Core</a></li>
 						<li><a href="../icons.html">Icons</a></li>
-						<li><a href="../ui.html">UI Elements</a></li>
-						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+						<li><a href="../extras.html">Extras</a></li>
+						<li><a class="active" href="./">Plugins</a></li>
+						<li><a href="../templates.html">Templates</a></li>
+						<li><a href="../resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
@@ -34,73 +36,83 @@
 	<div class="container">
 		<div class="row">
 			<div class="col12">
-				<ul class="breadcrumb topMargin">
-					<li><a href="../plugins.html">JavaScript Plugins</a></li>
-					<li>Current Page</li>
-				</ul>			
-				<h1 class="pageTitle">Smart JavaScript Plugin Autoloading</h1>
-			</div>
-		</div>
-		<div class="row skipBottom">
-			<div class="col4">
-				<p>VM UI Framework makes it ridiculously easy to use our JavaScript plugins. All you need to do 
-					is include two JavaScript files and the plugins will be loaded only if they are needed. The 
-					plugin loader will also make sure that files aren't inserted twice.</p>  
-			</div>
-			<div class="col8">
-				<h6>Plugin Loader Code</h6>													
-				<p>Just insert the following code into the <code>&lt;head&gt;</code> of your page.</p> 
-<pre class="html">
-&lt;script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;script src="../JavaScript/vmui.js" type="text/javascript"&gt;&lt;/script&gt;
-</pre>						
+				<h1 class="pageTitle">JavaScript Plugins</h1>
+				<p>For an overview of how to create custom plugins and how to load plugins on the page (it's easy!), 
+					please see the <a href="autoload.html">Autoloading & Customization</a> tutorial.</p>
+				<h3>Plugin List</h3>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col6">
-				<h6>Plugin Loader Customization</h6>
-				<p>Since VM UI Framework uses MooTools, it follows a one class per file convention. Once a file 
-					is loaded, its class is also automatically instantiated and passed the CSS selectors it 
-					needs to interact with. If those selectors aren't found on the page, the file won't be 
-					loaded.</p>
-				<p>You can change the CSS selectors each plugin uses by editing the <code>assets</code> array found 
-					in <code>vmui.js</code>.</p>
-				<p><span class="infoMarker">Note</span> Depending on where you place your JavaScript files, you may 
-					need to edit the relative path to indicate the path of your Javscript files relative to the page 
-					calling them. If your JavaScript files aren't in the <code>../JavaScript</code> directory, just 
-					edit the <code>relativePath</code> option in <code>vmui.js</code>.</p>
+			<div class="col3">
+				<h6>Data</h6>
+				<ul>
+					<li><a href="plugins/charts.html">Charts</a></li>
+					<li><a href="plugins/code.html">Code</a></li>
+				</ul>				
+				<h6>Forms</h6>
+				<ul>
+					<li><a href="plugins/autocomplete.html">Auto-complete</a></li>
+					<li><a href="plugins/form-replacements.html">Form Replacements</a></li>
+					<li><a href="plugins/form-validation.html">Form Validation</a></li>
+					<li><a href="plugins/password-meter.html">Password Strength Meter</a></li>
+					<li><a href="plugins/password-toggle.html">Password Toggle</a></li>
+					<li><a href="plugins/sliders.html">Sliders</a></li>
+				</ul>
 			</div>
-			<div class="col6">
-				<h6>Increasing Plugin Performance</h6>
-				<p>Because each plugin is loaded dynamically after the page is loaded, there may be a slight delay 
-					between the page load and when the plugin is activated. For plugins that manipulate visible page 
-					elements, this could cause a slight flicker before the plugin activates, depending on connection 
-					and download speeds.</p>
-				<p>To minimize or avoid the visible flicker, you can manually load the plugin file in the document 
-					<code>&lt;head&gt;</code> before loading <code>vmui.js</code>. There shouldn't be any need to 
-					activate the plugin, it will still be instantiated automatically. Again, no file will be 
-					double-loaded.</p> 
+			<div class="col3">
+				<h6>Layout</h6>				
+				<ul>
+					<li><a href="plugins/modal.html">Modal Windows</a></li>
+					<li><a href="plugins/pager.html">Pager</a></li>
+					<li><a href="plugins/pinned-elements.html">Pinned Elements</a></li>
+					<li><a href="plugins/slideshow-carousel.html">Slideshow Carousel</a></li>
+				</ul>								
+				<h6>Navigation</h6>
+				<ul>
+					<li><a href="plugins/accordion.html">Accordion Menu</a></li>
+					<li><a href="plugins/dropdown.html">Dropdown Menu</a></li>
+					<li><a href="plugins/mobile-menu.html">Mobile Menu</a></li>
+					<li><a href="plugins/tabs.html">Tabs</a></li>
+				</ul>			
 			</div>
+			<div class="col3">
+				<h6>UI Widgets</h6>				
+				<ul>
+					<li><a href="plugins/buttons.html">Button States</a></li>
+					<li><a href="plugins/notifications.html">Notifications</a></li>
+					<li><a href="plugins/reveal.html">Reveal</a></li>
+					<li><a href="plugins/social.html">Social Share</a></li>
+					<li><a href="plugins/tooltips.html">Tooltips</a></li>
+				</ul>		
+			</div>			
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h6>Adding Your Own Custom Plugins</h6>
-				<p>If you want to add your own plugins to be autoloaded by the VMUI loader, you'll need to create first 
-					create a MooTools class, with the first and only required parameter in the constructor being the 
-					CSS selectors you want the plugin to interact with. Then, add your plugin to the 
-					<code>assets</code> array found	in <code>vmui.js</code>.</p>
-				<p>Each item in the <code>assets</code> array is an object consisting of plugin name, the plugin source 
-					file relative to the root JavaScript directory, and the CSS selectors.</p>
-					<p>For example, if you were creating a plugin that replaced all 
-						<code>&lt;span class="smiley"&gt;&lt;/span&gt;</code> elements with a smiley face, you would 
-						create a MooTools class called <code>Smiley</code> in a file called <code>Smiley.js</code>. 
-						Then you would add the following object to the <code>assets</code> array:</p>
-<pre class="js">
-{name: 'Smiley', source: 'Smiley.js', selectors: 'span[class=smiley]'}
-</pre>						   
-
-			</div>			
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="buttonInfo" href="autoload.html">Learn How Plugins Are Loaded</a></li>
+					<li><a href="../extras.html">Back to the UI Extras</a></li>
+				</ul>				
+			</div>
 		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>				
 	</div>
 </body>
 </html>
