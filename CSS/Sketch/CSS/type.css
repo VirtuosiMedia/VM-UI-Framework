@@ -88,3 +88,8 @@ ins {
 	color: #4D9E0C;
 	text-decoration: none;
 }
+
+/* Headlines have word-breaking on mobile screens */
+@media (max-width: 768px) {
+	h1, h2, h3, h4, h5, h6 {word-wrap: break-word;}
+}
