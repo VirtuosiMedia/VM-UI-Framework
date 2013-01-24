@@ -116,6 +116,7 @@ ol ol ol li:before {
 		border: 0.2em solid #222;
 		border-radius: 4px;
 		list-style: none;
+		margin-bottom: 0px;
 		margin-left: 0px;
 		padding: 0 0.35em 1.75em;
 		overflow: hidden;
