@@ -10,7 +10,9 @@
  */
 .thumbs {
 	list-style: none;
+	overflow: auto;
 	margin-left: 0;
+	width: 100%;
 }
 .thumbs li {
 	float: left;
