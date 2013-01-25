@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>VM UI Framework - JavaScript Plugins - Charts</title>
+	<title>Area Charts - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="../../../CSS/vmui.css" />
 	<link rel="stylesheet" type="text/css" href="../../CSS/examples.css" />
 	<script src="../../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
@@ -13,19 +14,21 @@
 		});
 	</script>
 </head>
-<body>
+<body id="top">
 	<div class="navbarContainer">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
-					<ul>
-						<li><a href="../">Overview</a></li>
-						<li><a href="../examples.html">Examples</a></li>
-						<li><a href="../layout.html">Page Layout</a></li>
-						<li><a href="../core.html">Core Elements</a></li>
-						<li><a href="../icons.html">Icons</a></li>
-						<li><a href="../ui.html">UI Elements</a></li>
-						<li><a href="../plugins.html" class="active">JavaScript Plugins</a></li>
+					<a href="../../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../../examples/">Examples</a></li>
+						<li><a href="../../layout.html">Layout</a></li>
+						<li><a href="../../core.html">Core</a></li>
+						<li><a href="../../icons.html">Icons</a></li>
+						<li><a href="../../extras.html">Extras</a></li>
+						<li><a class="active" href="../">Plugins</a></li>
+						<li><a href="../../templates.html">Templates</a></li>
+						<li><a href="../../resources.html">Resources</a></li>
 					</ul>
 				</div>
 			</div>
@@ -35,8 +38,8 @@
 		<div class="row">
 			<div class="col12">
 				<ul class="breadcrumb topMargin">
-					<li><a href="../plugins.html">JavaScript Plugins</a></li>
-					<li><a href="../charts.html">Charts</a></li>
+					<li><a href="../">JavaScript Plugins</a></li>
+					<li><a href="./">Charts</a></li>
 					<li>Current Plugin</li>
 				</ul>			
 				<h1 class="pageTitle">Area Charts</h1>
@@ -47,6 +50,7 @@
 							<li><a href="#overview">Overview</a></li>
 							<li><a href="#usage">Usage</a></li>
 							<li><a href="#options">Options</a></li>
+							<li><a href="#events">Events</a></li>
 						</ul>
 					</div>
 					<div class="col9">
@@ -54,91 +58,401 @@
 						<div class="row">
 							<div class="col3">
 								<ul>
-									<li><a href="#area-charts">Area Charts</a></li>
-									<li><a href="#line-charts">Line Charts</a></li>
-									<li><a href="#scatter-charts">Scatter Charts</a></li>
+									<li><a href="#inline">Inline</a></li>
+									<li><a href="#default">Default</a></li>
+									<li><a href="#axis">Axis &amp; Labels</a></li>
+									<li><a href="#keys">Interactive Keys</a></li>
+									<li><a href="#grids">Grid Lines</a></li>
 								</ul>
 							</div>
 							<div class="col3">
 								<ul>
-									<li><a href="#bar-charts">Bar Charts</a></li>
-									<li><a href="#pie-charts">Pie Charts</a></li>
+									<li><a href="#tips">Lines, Points &amp; Tips</a></li>
+									<li><a href="#negative">Negative Values &amp; Custom Ranges</a></li>
+									<li><a href="#decimal">Decimal Values &amp; Custom Intervals</a></li>									
 								</ul>
-							</div>						
-						</div>										
+							</div>
+							<div class="col3">
+								<ul>
+									<li><a href="#dates">Dates</a></li>
+									<li><a href="#animation">Animation</a></li>
+									<li><a href="#dynamic">Dynamic Data</a></li>									
+								</ul>
+							</div>													
+						</div>
+					</div>										
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
 				<h2 id="overview">Overview</h2>
-				<p>Web applications often need some sort of charts or graphs, but there are few viable options that 
-					aren't commercial, poorly-documented, bound up in a restrictive open source license, or Flash-based. 
-					The charts in VM UI Framework are SVG-based and responsive, meaning that you can use them easily 
-					for all modern browsers and devices. There are alse options for making each chart interactive and 
-					animated.</p>
+				<p>Area charts should be used to track one or more sets of data over time or to compare multiple 
+	 				sets of data. Area charts are similar in purpose to line charts, but provide more visual 
+	 				emphasis.</p>
+	 			<p>The area charts that you can create with this plugin are highly customizable, can be animated, 
+	 				updated dynamically, and feature lines, data points, and tooltips. Find out more below.</p>
+	 			<p><a href="#top">Return to top</a></p>
 				<h2 id="usage">Usage</h2>				
-				<div class="row">
-					<div class="col6">
-						<p>There are five basic chart types, each of which has the ability to be customized. The chart 
-							type is	assigned via class to a <code>&lt;div&gt;</code> element.</p>
-					</div>
-					<div class="col6">
-						<table class="borderedTable columnTable">
-							<caption>Chart Types</caption>
-							<thead>
-								<tr>
-									<th colspan="2">Chart Types</th>
-								</tr>
-								<tr>
-									<td>Type</td>
-									<td>Class</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td data-column="Type">Area chart</td>
-									<td data-column="Class"><code>areaChart</code></td>
-								</tr>
-								<tr>
-									<td data-column="Type">Bar chart</td>
-									<td data-column="Class"><code>barChart</code></td>
-								</tr>
-								<tr>
-									<td data-column="Type">Line chart</td>
-									<td data-column="Class"><code>lineChart</code></td>
-								</tr>
-								<tr>
-									<td data-column="Type">Pie chart</td>
-									<td data-column="Class"><code>pieChart</code></td>
-								</tr>
-								<tr>
-									<td data-column="Type">Scatter chart</td>
-									<td data-column="Class"><code>scatterChart</code></td>
-								</tr>																
-							</tbody>
-						</table>
-					</div>
-				</div>
-	 			<h6>Current Chart Limitations</h6>
-	 			<p>Charts are very flexible and dynamic, but they have some limitations. Future versions may or may not 
-	 				fix these issues.</p>
-	 			<ul>
-	 				<li>No animation in IE.</li>
-	 				<li>Dates can only be on the x-axis.</li>
-	 				<li>X-values are necessary when not working with dates.</li>
-	 				<li>Updating the graph requires refreshing the canvas.</li>
-	 				<li>Large numbers may not look good on the axises.</li>
-	 				<li>Missing values are not supported.</li>
-	 			</ul>				
+				<p>To create an area chart, assign a class of <code>areaChart</code> to a <code>div</code> element. 
+					Data and options are assigned via the <code>data-chartData</code> and <code>data-chartOptions</code> 
+					attributes, respectively.</p>
+				<p>The <code>data-chartData</code> attribute takes an array of JSON objects as its value, with each 
+					object containing <em>x</em> and <em>y</em> keys with array values containing numerical data 
+					points. Charts with dates along the x-axis will ignore the x key-value pair, so for those charts, 
+					its possible to omit the x-axis information.</p>
+				<p>Chart options passed through the <code>data-chartOptions</code> attribute must be contained in a 
+					single-level JSON object, with each option key corresponding to a value. It's not necessary to 
+					use the <code>data-chartOptions</code> attribute if you only want to have the default chart. All of 
+					the options relevant to area charts are detailed below.</p>
+				<p><a href="#top">Return to top</a></p>
+				<h2 id="options">Options</h2> 
+	 			<table class="columnTable borderedTable stripedTable">
+	 				<caption>Chart Options</caption>
+	 				<thead>
+	 					<tr>
+	 						<th colspan="4">Chart Options</th>
+	 					</tr>
+	 					<tr>
+	 						<td>Option</td>
+	 						<td class="col4">Description</td>
+	 						<td>Default Value</td>
+	 						<td class="col3">Values</td>
+	 					</tr>
+	 				</thead>
+	 				<tbody>
+	 					<tr>
+	 						<td data-column="Option"><code>animate</code></td>
+	 						<td data-column="Description">Animates the chart.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>animationDuration</code></td>
+	 						<td data-column="Description">The duration of the chart animation in seconds.</td>
+	 						<td data-column="Default Value"><code>1</code></td>
+	 						<td data-column="Values">Any positive number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>axisColor</code></td>
+	 						<td data-column="Description">The hex color of the axis lines.</td>
+	 						<td data-column="Default Value"><code>#333</code></td>
+	 						<td data-column="Values">Any hex color code as a string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>aspectRatio</code></td>
+	 						<td data-column="Description">The aspect ratio of the entire chart area, including labels 
+	 							and keys.</td>
+	 						<td data-column="Default Value"><code>[16, 9]</code></td>
+	 						<td data-column="Values">An array of 2 positive integers <code>[x, y]</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>colors</code></td>
+	 						<td data-column="Description">The hex colors for each series of chart data.</td>
+	 						<td data-column="Default Value"><code>['#058DC7', '#A006C7', '#C7062D', '#06C740', 
+	 							'#C7A006', '#EEE', '#CCC', '#999', '#666', '#333', '#000']</code></td>
+	 						<td data-column="Values">An array of hex codes <code>[color1, color2, ...]</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dataLabels</code></td>
+	 						<td data-column="Description">Labels for each series of data, will also show in the key. 
+	 							If no labels are provided, labels will be 'Series 1', 'Series 2', etc.</td>
+	 						<td data-column="Default Value"><code>[]</code></td>
+	 						<td data-column="Values">An array of strings equal to the number of series <code>['Label 1', 
+	 							'Label 2', ...]</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dateEnd</code></td>
+	 						<td data-column="Description">Sets the end date for a time-based chart. 
+	 							<code>xAxisIsDate</code> must be enabled.</td>
+	 						<td data-column="Default Value"><code>null</code></td>
+	 						<td data-column="Values"><code>'now'</code> or any date string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dateFormat</code></td>
+	 						<td data-column="Description">Formats the date by replacing placeholders in a string.  
+	 							<code>xAxisIsDate</code> must be enabled.</td>
+	 						<td data-column="Default Value"><code>'%b %d'</code></td>
+	 						<td data-column="Values">A string of any combination of options from the 
+	 							<a href="http://mootools.net/docs/more/Types/Date#Date:format">MooTools Date Object</a></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dateIntervalUnit</code></td>
+	 						<td data-column="Description">Sets the inverval unit for a date. 
+	 							<code>xAxisIsDate</code> must be enabled.</td>
+	 						<td data-column="Default Value"><code>'day'</code></td>
+	 						<td data-column="Values"><code>'year'</code>, <code>'month'</code>, <code>'week'</code>, 
+	 							<code>'day'</code>, <code>'hour'</code>, <code>'minute'</code>, <code>'second'</code>,
+	 							<code>'ms'</code>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dateIntervalValue</code></td>
+	 						<td data-column="Description">Sets the interval value for a date. 
+	 							<code>xAxisIsDate</code> must be enabled.</td>
+	 						<td data-column="Default Value"><code>1</code></td>
+	 						<td data-column="Values">Any positive integer</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>dateStart</code></td>
+	 						<td data-column="Description">Sets the start date for a time-based chart. 
+	 							<code>xAxisIsDate</code> must be enabled.</td>
+	 						<td data-column="Default Value"><code>null</code></td>
+	 						<td data-column="Values"><code>'now'</code> or any date string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>decimalPrecisionX</code></td>
+	 						<td data-column="Description">The number of decimal places shown on x-axis interval labels 
+	 							or pie tips; does not affect placement or other tip types.</td>
+	 						<td data-column="Default Value"><code>0</code></td>
+	 						<td data-column="Values">0 or any positive integer</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>decimalPrecisionY</code></td>
+	 						<td data-column="Description">The number of decimal places shown on y-axis interval labels; 
+	 							does not affect placement or any tips.</td>
+	 						<td data-column="Default Value"><code>0</code></td>
+	 						<td data-column="Values">0 or any positive integer</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>gridColor</code></td>
+	 						<td data-column="Description">The hex color of the grid lines.</td>
+	 						<td data-column="Default Value"><code>'#DDD'</code></td>
+	 						<td data-column="Values">Any hex color string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>keyPosition</code></td>
+	 						<td data-column="Description">The position of the key. The <code>showKey</code> option must 
+	 							also be enabled.</td>
+	 						<td data-column="Default Value"><code>'bottom'</code></td>
+	 						<td data-column="Values"><code>'top'</code>, <code>'bottom'</code>, <code>'left'</code>, 
+	 							<code>'right'</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>keyWidthPercentage</code></td>
+	 						<td data-column="Description">The width percentage of the key in relation to the entire 
+	 							chart area, applicable only for left and right key positions.</td>
+	 						<td data-column="Default Value"><code>12</code></td>
+	 						<td data-column="Values">Any positive integer</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>maxX</code></td>
+	 						<td data-column="Description">The maximum value of the x-axis.</td>
+	 						<td data-column="Default Value"><code>null</code></td>
+	 						<td data-column="Values">Any number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>maxY</code></td>
+	 						<td data-column="Description">The maximum value of the y-axis.</td>
+	 						<td data-column="Default Value"><code>null</code></td>
+	 						<td data-column="Values">Any number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>minX</code></td>
+	 						<td data-column="Description">The minimum value of the x-axis.</td>
+	 						<td data-column="Default Value"><code>0</code></td>
+	 						<td data-column="Values">Any number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>minY</code></td>
+	 						<td data-column="Description">The minimum value of the y-axis.</td>
+	 						<td data-column="Default Value"><code>0</code></td>
+	 						<td data-column="Values">Any number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showAreaLines</code></td>
+	 						<td data-column="Description">Toggles a line chart overlay on an area chart.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showAxisLabels</code></td>
+	 						<td data-column="Description">Toggles both the x and y axis labels.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showAxisLines</code></td>
+	 						<td data-column="Description">Toggles both the x and y axis lines.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showGridX</code></td>
+	 						<td data-column="Description">Toggles the x-axis grid lines.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showGridY</code></td>
+	 						<td data-column="Description">Toggles the y-axis grid lines.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showIntervalLabels</code></td>
+	 						<td data-column="Description">Toggles interval labels on both axises.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showIntervalLabelsX</code></td>
+	 						<td data-column="Description">Toggles interval labels on the x-axis.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showIntervalLabelsY</code></td>
+	 						<td data-column="Description">Toggles interval labels on the y-axis.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showKey</code></td>
+	 						<td data-column="Description">Toggles the chart key.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showPoints</code></td>
+	 						<td data-column="Description">Toggles individual data points for area and line charts.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showTicksX</code></td>
+	 						<td data-column="Description">Toggles tick marks along the x-axis.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showTicksY</code></td>
+	 						<td data-column="Description">Toggles tick marks along the y-axis.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showTips</code></td>
+	 						<td data-column="Description">Toggles tooltips for all charts. Line charts and area charts 
+	 							must have <code>showPoints</code> enabled for tips to show.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>showTitle</code></td>
+	 						<td data-column="Description">Toggles the chart title.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>textColor</code></td>
+	 						<td data-column="Description">The color of all text in the chart.</td>
+	 						<td data-column="Default Value"><code>"#000"</code></td>
+	 						<td data-column="Values">Any hex color string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>title</code></td>
+	 						<td data-column="Description">The title of the chart.</td>
+	 						<td data-column="Default Value"><code>"Untitled Chart"</code></td>
+	 						<td data-column="Values">Any string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>tickColor</code></td>
+	 						<td data-column="Description">The color of all tick marks.</td>
+	 						<td data-column="Default Value"><code>"#333"</code></td>
+	 						<td data-column="Values">Any hex color string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>tipText</code></td>
+	 						<td data-column="Description">An array of HTML text strings to customize the tip text, one 
+	 							string for each series. Placeholders in the string (surrounded by curly braces {}) can 
+	 							be replaced by values or labels from the chart. Placeholders options include: {x}, {y}, 
+	 							{xAxis}, {yAxis}, {piePercent} and {label}.</td>
+	 						<td data-column="Default Value"><code>[]</code></td>
+	 						<td data-column="Values">An array of HTML strings with placeholders, one string for each 
+	 							series</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>xAxisLabel</code></td>
+	 						<td data-column="Description">The label for the x-axis.</td>
+	 						<td data-column="Default Value"><code>"x-axis"</code></td>
+	 						<td data-column="Values">Any string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>xInterval</code></td>
+	 						<td data-column="Description">The interval for the x-axis.</td>
+	 						<td data-column="Default Value"><code>25</code></td>
+	 						<td data-column="Values">Any positive number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>xAxisIsDate</code></td>
+	 						<td data-column="Description">Toggles the date options for a chart. Any coordinate values 
+	 							for the x-axis entered in the <code>data-chartData</code> attribute will be 
+	 							ignored.</td>
+	 						<td data-column="Default Value"><code>false</code></td>
+	 						<td data-column="Values"><code>true</code>, <code>false</code></td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>xLabels</code></td>
+	 						<td data-column="Description">An array of labels for the x-axis matching the number of 
+	 							intervals. If no labels are entered, the chart will default to using numbers. To 
+	 							skip labels for an interval, use <code>null</code> as a placeholder in the array.</td>
+	 						<td data-column="Default Value"><code>[]</code></td>
+	 						<td data-column="Values">An array of any combination of numbers, strings, or nulls matching 
+	 							the number of intervals</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>yAxisLabel</code></td>
+	 						<td data-column="Description">The label for the y-axis.</td>
+	 						<td data-column="Default Value"><code>"y-axis"</code></td>
+	 						<td data-column="Values">Any string</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>yInterval</code></td>
+	 						<td data-column="Description">The interval for the y-axis.</td>
+	 						<td data-column="Default Value"><code>25</code></td>
+	 						<td data-column="Values">Any positive number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>yLabelWidthPercentage</code></td>
+	 						<td data-column="Description">The width percentage (in relation to the entire chart area) 
+	 							of y interval labels, if they are enabled.</td>
+	 						<td data-column="Default Value"><code>5</code></td>
+	 						<td data-column="Values">Any positive number</td>
+	 					</tr>
+	 					<tr>
+	 						<td data-column="Option"><code>yLabels</code></td>
+	 						<td data-column="Description">An array of labels for the y-axis matching the number of 
+	 							intervals. If no labels are entered, the chart will default to using numbers. To 
+	 							skip labels for an interval, use <code>null</code> as a placeholder in the array.</td>
+	 						<td data-column="Default Value"><code>[]</code></td>
+	 						<td data-column="Values">An array of any combination of numbers, strings, or nulls matching 
+	 							the number of intervals</td>
+	 					</tr>	 					 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 						 				
+	 				</tbody>
+	 			</table>
+	 			<p><a href="#top">Return to top</a></p>
+	 			<h2 id="events">Events</h2>
+	 			<p>Each chart type has an <code>updateChart</code> event, which allows the chart to be updated 
+	 				dynamically. The event is bound to the chart container element and can be fired using MooTools' 
+	 				<a href="http://mootools.net/docs/core/Element/Element.Event#Element:fireEvent">fireEvent</a> 
+	 				method.</p>
+	 			<p>New data can be passed directly to the chart via <code>fireEvent</code>. If no new data is passed 
+	 				through	<code>fireEvent</code>, then the plugin will pull the data and options from the data 
+	 				attributes.</p>
+	 			<p><span class="infoMarker">Note</span> When the <code>updateChart</code> event is fired, the plugin 
+	 				will rerender the chart completely.</p>
+	 			<p>Examples of how to use the <code>updateChart</code> event can be found in the 
+	 				<a href="#dynamic">Dynamic Data</a> example.</p>
+	 			<p><a href="#top">Return to top</a></p>
+	 			<span class="divider"></span> 						
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3 id="area-charts">Area Charts</h3>
+				<h3 id="demos">Demos</h3>
 				<div class="row">
 					<div class="col4">
-						<h6>Inline Area Chart</h6>
+						<h6 id="inline">Inline Area Chart</h6>
 						<p>Inline area charts are small charts that can appear inline within the context of a block of 
 							text or other inline elements. <span class="infoMarker">Note</span> Because inline charts 
 							are so small, they should generally only be used with a single data set and without many of
@@ -153,18 +467,22 @@
 							}
 						]"
 						></span> It can appear within a paragraph.</p>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#inlineCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="inlineCode">
 <pre class="html">
 &lt;p&gt;This is an inline area chart: &lt;span class="inlineAreaChart" data-chartData="[{
 	x:[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100], 
 	y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
 }]"&gt;&lt;/span&gt; It can appear within a paragraph.&lt;/p&gt;
 </pre>			
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Basic Area Chart</h6>
+						<h6 id="default">Default</h6>
 						<p>This is the default area chart, with no options enabled. It expands to the full width of its 
 							container and shows data only.</p>
 					</div>
@@ -180,7 +498,9 @@
 								y:[23,15,65,33,37,32,34,36,25,47,75,40,63,22,43,10,46,68,69,68,60]
 							}
 						]"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#defaultCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="defaultCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 {
@@ -193,11 +513,13 @@
 }
 ]"&gt;&lt;/div&gt;
 </pre>			
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Area Chart With Axis &amp; Labels</h6>
+						<h6 id="axis">Axis &amp; Labels</h6>
 						<p>In this example, the title, labels, ticks, and axis lines have all been enabled. Each of 
 							those elements can be toggled separately through the options object.</p>
 						<p>If your labels are longer, you can specify the width of the area used for labels along the 
@@ -229,7 +551,9 @@
 							showTitle: true,
 							title: 'Axis & Labels'
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#axisCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="axisCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 	{
@@ -252,16 +576,18 @@ data-chartOptions="{
 	title: 'Axis &amp; Labels'
 }"&gt;&lt;/div&gt;
 </pre>		
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Area Charts With Interactive Keys</h6>
+						<h6 id="keys">Interactive Keys</h6>
 						<p>The keys in the charts plugin are all interactive. Clicking on the key text or color square 
-							will toggle the visibility of that dataset in the graph.</p> 
+							will toggle the visibility of that series in the graph.</p> 
 						<p>Keys can appear in four different positions: <em>top</em>, <em>bottom</em>, <em>left</em>, 
 							or <em>right</em>, with a default position of <em>bottom</em>. Choose the appropriate key 
-							position based on the length and number of your dataset labels.</p>
+							position based on the length and number of your series labels.</p>
 						<p><span class="infoMarker">Note</span> The width of the <em>left</em> and <em>right</em> key 
 							positions can be determined using the <code>keyWidthPercentage</code> option, which 
 							defaults to 15%. Because cross-browser support for SVG text-wrapping isn't particularly 
@@ -290,7 +616,9 @@ data-chartOptions="{
 							showKey: true,
 							title: 'Bottom Key'
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#bottomCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="bottomCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 	{
@@ -314,6 +642,7 @@ data-chartOptions="{
 	title: 'Bottom Key'
 }"&gt;&lt;/div&gt;
 </pre>
+						</div>
 						<h6>Demo</h6>
 						<div class="areaChart" data-chartData="[
 							{
@@ -337,7 +666,9 @@ data-chartOptions="{
 							keyPosition: 'right',
 							title: 'Right Key'
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#rightCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="rightCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 	{
@@ -362,11 +693,13 @@ data-chartOptions="{
 	title: 'Right Key'
 }"&gt;&lt;/div&gt;
 </pre>		
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Grid Lines</h6>
+						<h6 id="grids">Grid Lines</h6>
 						<p>Grid lines can be added to the chart as well, with granular control over both the <em>X</em> 
 							and <em>Y</em> lines through the <code>showGridX</code> and <code>showGridY</code> options. 
 							Grid line color is set through the <code>gridColor</code> option.</p>			
@@ -396,7 +729,9 @@ data-chartOptions="{
 							showGridX: true,
 							showGridY: true
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#gridCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="gridCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 	{
@@ -421,12 +756,14 @@ data-chartOptions="{
 	showGridX: true,
 	showGridY: true
 }"&gt;&lt;/div&gt;
-</pre>		
+</pre>			
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Lines, Points &amp; Tips</h6>
+						<h6 id="tips">Lines, Points &amp; Tips</h6>
 						<p>The area chart can display a line overlay from point to point, as well as individual data 
 							points using the <code>showAreaLines</code> and <code>showPoints</code> options.</p>
 						<p>The tips for <em>Data Set 1</em> in the demo are custom text, whereas the tips for <em>Data 
@@ -463,7 +800,7 @@ data-chartOptions="{
 								</tr>
 								<tr>
 									<td data-column="String">{label}</td>
-									<td data-column="Replacement">The name of the dataset.</td>
+									<td data-column="Replacement">The name of the series.</td>
 								</tr>																								
 							</tbody>
 						</table>			
@@ -497,7 +834,9 @@ data-chartOptions="{
 							showTips: true,
 							tipText: ['This is a custom tip. The <b>value</b> for the {xAxis} is: {x}'] 
 						}"></div>						
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#tipsCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="tipsCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 	{
@@ -527,13 +866,15 @@ data-chartOptions="{
 	tipText: ['This is a custom tip. The value for the {xAxis} is: {x}']
 }"&gt;&lt;/div&gt;
 </pre>		
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Negative Values &amp; Custom Ranges</h6>
+						<h6 id="negative">Negative Values &amp; Custom Ranges</h6>
 						<p>By default, the chart area will expand to accomodate all of the data with the largest view 
-							possible while still making the chart legible. Negative values in your dataset will add a 
+							possible while still making the chart legible. Negative values in your series will add a 
 							one interval padding to the bottom of your chart below your lowest value, while charts with 
 							no negative numbers will not add the bottom interval. All charts add a one interval padding 
 							to the top of the chart. This is done for asthetic purposes, adding visual whitespace to the 
@@ -570,7 +911,9 @@ data-chartOptions="{
 							maxX: 150,
 							minX: -50
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#negativeCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="negativeCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 		{
@@ -600,9 +943,10 @@ data-chartOptions="{
 </pre>		
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Decimal Values &amp; Custom Intervals</h6>
+						<h6 id="decimal">Decimal Values &amp; Custom Intervals</h6>
 						<p>Decimal values can be used in any chart, but in most cases, you will probably want to adjust 
 							the intervals along at least one of the axises. To do so, use the <code>xInterval</code> 
 							and <code>yInterval</code> options to establish custom intervals.</p>
@@ -611,7 +955,7 @@ data-chartOptions="{
 							<code>decimalPrecisionX</code> and <code>decimalPrecisionY</code> options to specify the 
 							number of decimal places to be shown. <span class="infoMarker">Note</span> This will only 
 							affect the interval labels; the data points and tips will display the full number as 
-							specified in the dataset.</p> 
+							specified in the series.</p> 
 					</div>
 					<div class="col8">
 						<h6>Demo</h6>
@@ -638,7 +982,9 @@ data-chartOptions="{
 							showPoints: true,
 							showAreaLines: true
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#decimalCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="decimalCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 		{
@@ -664,13 +1010,15 @@ data-chartOptions="{
 		showAreaLines: true
 }"&gt;&lt;/div&gt;
 </pre>		
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Dates</h6>
+						<h6 id="dates">Dates</h6>
 						<p>Charts can make use of dates along along the x-axis. When using dates, it is not necessary 
-							to enter the x-coordinate dataset (if you do, it will be ignored). To enable dates along 
+							to enter the x-coordinate in the series (if you do, it will be ignored). To enable dates along 
 							the x-axis, set the <code>xAxisIsDate</code> option to <code>true</code>.</p>
 						<p>The date range is set using the <code>dateStart</code> and <code>dateEnd</code> options, 
 							both of which accept any date string accepted by the default JavaScript 
@@ -734,7 +1082,9 @@ data-chartOptions="{
 							dateEnd: '1/21/2012',
 							dateIntervalValue: 3
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#daysCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="daysCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 		{y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]},
@@ -761,6 +1111,7 @@ data-chartOptions="{
 		dateIntervalValue: 3
 }"&gt;&lt;/div&gt;
 </pre>
+						</div>
 						<div class="areaChart" data-chartData="[
 							{
 								y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]
@@ -791,7 +1142,9 @@ data-chartOptions="{
 							dateIntervalUnit: 'year',
 							dateIntervalValue: 3
 						}"></div>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#yearsCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="yearsCode">
 <pre class="html">
 &lt;div class="areaChart" data-chartData="[
 		{y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20]},
@@ -820,11 +1173,13 @@ data-chartOptions="{
 		dateIntervalValue: 3
 }"&gt;&lt;/div&gt;
 </pre>		
+						</div>
 					</div>
-				</div>												
+				</div>
+				<p><a href="#top">Return to top</a></p>												
 				<div class="row">
 					<div class="col4">
-						<h6>Animation</h6>
+						<h6 id="animation">Animation</h6>
 						<p>The chart can be animated by setting the <code>animate</code> option to <code>true</code>. 
 							The length of the animation can also be controlled with the <code>animationDuration</code> 
 							option, which defaults to a 1 second animation.</p>
@@ -871,7 +1226,9 @@ data-chartOptions="{
 								});
 							});
 						</script>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#animateCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="animateCode">
 <pre class="html">
 &lt;div id="animatedAreaChart" class="areaChart" data-chartData="[
 	{
@@ -913,11 +1270,13 @@ data-chartOptions="{
 	});
 &lt;/script&gt;
 </pre>		
+						</div>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
-						<h6>Dynamic Data</h6>
+						<h6 id="dynamic">Dynamic Data</h6>
 						<p>The chart can be updated dynamically using data generated via script or retrieved via AJAX. 
 							To update the chart, fire the <code>updateChart</code> event on the chart container 
 							element. New data can either be passed in as parameters via the <code>fireEvent</code> 
@@ -928,7 +1287,7 @@ data-chartOptions="{
 							entire chart is re-rendered. Animations should not be used with dynamic data with a high 
 							refresh rate.</p>
 						<h6>Empty Datasets</h6>
-						<p>If you want to have an empty dataset like the initial state of the demo, you must define 
+						<p>If you want to have an empty series like the initial state of the demo, you must define 
 							both the <code>maxX</code> and <code>maxY</code> options, otherwise the result will be an 
 							error.</p>	
 					</div>
@@ -1007,7 +1366,9 @@ data-chartOptions="{
 								});
 							});
 						</script>
-						<h6>Code</h6>
+						<p><a class="revealToggle buttonInfo" href="#dynamicCode" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="dynamicCode">
 <pre class="html">
 &lt;div id="dynamicAreaChart" class="areaChart" data-chartData=""
 
@@ -1083,11 +1444,40 @@ data-chartOptions="{
 	});
 &lt;/script&gt;
 </pre>		
+							</div>
 						</div>
 					</div>
-				</div>																				
+				</div>
+				<p><a href="#top">Return to top</a></p>																				
 			</div>
 		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="buttonInfo" href="bar.html">See Bar Charts In Action</a></li>
+					<li><a href="./">Back to the Charts Overview</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>			
 	</div>
 </body>
 </html>
