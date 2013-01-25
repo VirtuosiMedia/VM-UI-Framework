@@ -183,19 +183,26 @@ var Charts = new Class({
 		if (options.showAxisLabels){this.renderAxisLabels(index);}
 		if (options.showKey){this.renderKey(index);}
 		
+		var group = new SVG('g', {'clip-path': 'url(#chartCanvas' + index + ')'});
+		
 		if (this.data[index]){
 			Array.each(this.data[index], function(data, dataIndex){
 				this.renderLine(index, dataIndex);
-				if (options.showLineFill){this.renderArea(index, dataIndex);}			
+				if (options.showLineFill){
+					this.renderMask(index);
+					this.renderArea(index, dataIndex);
+					group.adopt(this.renderArea(index, dataIndex));
+				}			
 			}, this);
+		}
+		
+		this.svg[index].adopt(group.render());
+		if (options.showAxisLines){this.renderAxisLines(index);}
 			
-			if (this.options.showAxisLines){this.renderAxisLines(index);}
-			
-			if (options.showPoints){
-				Array.each(this.data[index], function(data, dataIndex){
-					this.renderPoints(index, dataIndex);
-				}, this);
-			}
+		if ((options.showPoints) && (this.data[index])){
+			Array.each(this.data[index], function(data, dataIndex){
+				this.renderPoints(index, dataIndex);
+			}, this);
 		}
 	},
 
@@ -1134,6 +1141,8 @@ var Charts = new Class({
 	renderLine: function(index, dataIndex){
 		var options = this.options[index];
 		var dim = this.dim[index];
+
+		var width = (this.charts[index].get('class').contains('inline')) ? 10 : 1.25;
 		
 		var line = new SVG.Path({
 			id: "dataLine"+dataIndex,
@@ -1142,7 +1151,7 @@ var Charts = new Class({
 			stroke: options.colors[dataIndex],
 			fill: "transparent",
 			"shape-rendering": "geometric-precision",
-			"stroke-width": 1.25,
+			"stroke-width": width,
 			"stroke-linecap": "round"
 		}, this);
 		
@@ -1168,7 +1177,7 @@ var Charts = new Class({
 	renderArea: function(index, dataIndex){
 		var options = this.options[index];
 		var dim = this.dim[index];
-		
+
 		var coordinates = this.points[index][dataIndex].line.split(' ');
 		var firstX = coordinates[1];
 		var lastX = coordinates[coordinates.length - 2];
