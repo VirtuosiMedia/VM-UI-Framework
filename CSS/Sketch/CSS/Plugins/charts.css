@@ -25,7 +25,7 @@
 .dataColumn:hover, .dataBar:hover {opacity: 0.9;}
 .dataPie {opacity: 0.6;}
 .dataFill {opacity: 0.2;}
-[class*="inline"][class*="Chart"] .dataColumn {opacity: 0.9;}
+[class*="inline"][class*="Chart"] .dataColumn, [class*="inline"][class*="Chart"] .dataLine {opacity: 0.9;}
 [class*="inline"][class*="Chart"] .dataFill {opacity: 0.6;}
 .dataPoint:hover {
 	cursor: pointer;
