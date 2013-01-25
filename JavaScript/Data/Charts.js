@@ -32,7 +32,7 @@ var Charts = new Class({
 		gridColor: '#DDD',									//The hex color of the grid lines
 		histogram: false,									//Removes the gap between columns or bars to create a histogram
 		keyPosition: 'bottom',								//Where to show the key: left, right, top, bottom
-		keyWidthPercentage: '15',							//The width percentage of the key, applicable only to key positions left and right 
+		keyWidthPercentage: 12,								//The width percentage of the key, applicable only to key positions left and right 
 		maxX: null,											//The maximum value of the x-axis
 		maxY: null,											//The maximum value of the y-axis
 		minX: 0,											//The minimum value of the x-axis, defaults to 0
