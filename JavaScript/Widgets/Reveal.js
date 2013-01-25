@@ -18,7 +18,7 @@ var Reveal = new Class({
 		var togglers = $$(selectors);
 		var self = this;
 		Array.each(togglers, function(toggler){
-			var content = $(toggler.get('href'));
+			var content = $(toggler.get('href').replace('#', ''));
 			var transition = toggler.getData('transition');
 			
 			if (transition != 'slide'){
