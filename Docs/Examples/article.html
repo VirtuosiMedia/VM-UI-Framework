@@ -15,7 +15,7 @@
 	</script>	
 </head>
 <body id="top">
-	<div class="navbarContainer">
+	<div class="navbarContainer fixed">
 		<div class="container">
 			<div class="row">
 				<div class="col12">
@@ -26,17 +26,43 @@
 						<li><a href="#">Politics</a></li>
 						<li><a href="#">Health</a></li>
 						<li><a href="#">Sports</a></li>
-						<li><a class="active" href="#">Travel</a></li>
+						<li><a class="active" href="#">Travel</a>
+							<ul class="showMobile">
+								<li><a href="#">Planes</a></li>
+								<li><a href="#">Trains</a></li>
+								<li><a class="active" href="#">Automobiles</a></li>
+								<li><a href="#">Rockets</a></li>
+								<li><a href="#">Pogo Sticks</a></li>
+							</ul>						
+						</li>
+					</ul>
+					<ul class="mobileMenu right" data-text="<i class='iconSearch'></i>">
+						<li><form><input type="text"/><button class="buttonInverted" value='search'>&#xe046;</button></form></li>
 					</ul>
 				</div>
 			</div>
 		</div>	
 	</div>
+	<div class="secondaryNavbarContainer hideMobile fixed">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<ul>
+						<li><a href="#">Planes</a></li>
+						<li><a href="#">Trains</a></li>
+						<li><a class="active" href="#">Automobiles</a></li>
+						<li><a href="#">Rockets</a></li>
+						<li><a href="#">Pogo Sticks</a></li>
+					</ul>
+				</div>
+			</div>			
+		</div>	
+	</div>	
 	<div class="container">
 		<div class="row">
-			<div class="col9 topMargin">
+			<div class="col9 secondaryMargin">
 				<h1 class="skipBottom">10 Rules For A Memorable Road Trip</h1>
-				<p><em>Today's Date - By Parker Cruz</em>
+				<p><em>Today's Date - By Parkor Cruz</em>
 				<img src="../Images/Examples/road.jpg" alt="10 Rules For A Memorable Road Trip" />
 				<div class="row">
 					<div class="col2">
@@ -91,7 +117,7 @@
 				<span class="divider"></span>
 				<span class="socialShare" data-showCount="false"></span>
 			</div>
-			<div class="col3 topMargin">
+			<div class="col3 secondaryMargin">
 				<h6>More From Travel</h6>
 				<ul class="flush unlisted">
 					<li><a href="#">1,000 Things TSA Won't Allow On A Plane, Including Snakes</a></li>
