@@ -17,8 +17,10 @@
 	src: url('../../../Fonts/VM-UI-Icons.eot?#iefix') format('embedded-opentype'),
 		url('../../../Fonts/VM-UI-Icons.svg#VM-UI-Icons') format('svg'),
 		url('../../../Fonts/VM-UI-Icons.woff') format('woff'),
-		url('../../../Fonts/VM-UI-Icons.ttf') format('truetype');	
+		url('../../../Fonts/VM-UI-Icons.ttf') format('truetype');
+	unicode-range: U+E000-U+E145;	
 } 
+body {font-family: 'VM-UI-Icons', Georgia, "Times New Roman", serif;}
 
 /**
  * Icons, Types
