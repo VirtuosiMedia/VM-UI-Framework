@@ -14,6 +14,12 @@ body .skipBottom {margin-bottom: 0;}
 .topMargin {margin-top: 1.75em;}
 .bottomMargin {margin-bottom: 1.75em;}
 .hidden {display: none;}
+.fixed {
+	position: fixed;
+	z-index: 10000;
+}
+.primaryMargin {margin-top: 5.2em;}
+.secondaryMargin {margin-top: 6.95em;}
 .divider {
 	background: #CCC;
 	clear: both;
