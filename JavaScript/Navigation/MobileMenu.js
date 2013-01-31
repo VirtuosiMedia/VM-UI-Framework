@@ -31,29 +31,48 @@ var MobileMenu = new Class({
 	}, 
 	
 	createMobileMenus: function(){
-		Array.each(this.menus, function(menu){
+		var self = this;
+		var buttonContainer = new Element('ul', {id: 'mobileButtonContainer', 'class': 'buttonGroup', styles: {float: 'right'}});
+		Array.each(this.menus, function(menu, index){
 			menu.setStyles({overflow: 'hidden', height: 0});
 			menu.getParent('[class*=col]').setStyle('margin-bottom', 0);
 			var text = (menu.hasData('text')) ? menu.getData('text') : 'Menu';
 			var button = new Element('span', {
 				'class': 'buttonInverted mobileMenuTrigger',
-				text: text,
+				html: text,
+
 				events: {
 					click: function(){
 						if (menu.getStyle('height') == '0px'){
+							self.menus.setStyle('height', 0);
+							$$('.mobileMenuTrigger').setData('state', null);
 							menu.setStyle('height', 'auto');
+							this.setData('state', 'active');
+							if ($$('.navbarContainer')[0].hasClass('fixed')){
+								$$('.navbarContainer')[0].setStyle('position', 'static');
+							}
 						} else {
-							console.log('close')
 							menu.setStyle('height', 0);
+							this.setData('state', null);
+							self.resetFixedMenus();
 						}
 					}
 				}
-			}).inject(menu, 'before');
-		});		
+			})
+			var li = new Element('li').adopt(button).inject(buttonContainer);
+		});
+		buttonContainer.inject(this.menus[0], 'before');
+	},
+
+	resetFixedMenus: function(){
+		if ($$('.navbarContainer')[0].hasClass('fixed')){
+			$$('.navbarContainer')[0].setStyle('position', 'fixed');
+		}			
 	},
 	
 	resetMobileMenus: function(){
-		this.menus.setStyle('height', 'auto');
-		$$('.mobileMenuTrigger').dispose();
+		this.resetFixedMenus();
+		this.menus.setStyles({height: 'auto', overflow: 'inherit'});
+		$('mobileButtonContainer').dispose();		
 	}
 });

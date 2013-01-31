@@ -55,9 +55,17 @@
 					<code>navbarContainer</code> header. The list will be hidden for mobile screens and the button will 
 					be inserted just before the list in the markup. By default, the button is given the 
 					<code>buttonInverted</code> button style class as well as a class of <code>mobileMenuTrigger</code>,
-					which can be overridden if you wish to style it differently.</p>
+					which can be over-ridden if you wish to style it differently.</p>
 				<p>The default text for button is <em>Menu</em>, but you can change this by add a <code>data-text</code> 
 					data-attribute to the menu's <code>ul</code>.</p>
+				<p>Multiple mobile menus can be used in a single navbar. Each mobile menu <code>ul</code> element will 
+					have a corresponding button in a button group, in the order laid out in the code.</p>
+				<p>If you have a secondary nav bar, it's recommended to hide it for mobile screens using the 
+					<code>hideMobile</code> class. If needed, place a duplicate secondary menu <code>ul</code> within 
+					the <code>li</code> element for the active menu item in the primary navbar. Give the duplicate 
+					<code>ul</code> a class of <code>showMobile</code> so that it will only be shown to mobile 
+					browsers. An example of this technique in action can be seen in the 
+					<a href="../Examples/article.html">article example</a>.</p> 
 				<h3>Demo</h3>
 				<p>To see the Mobile Menu plugin in action, just resize your browser to a mobile screen width. The code 
 					for the demo is below:</p>
