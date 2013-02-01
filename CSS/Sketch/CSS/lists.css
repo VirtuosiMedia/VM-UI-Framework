@@ -16,6 +16,7 @@ ul, ol {margin: 0em 0em 1.75em 2.5em;}
 	float: left;
 	margin-right: 1em;
 }
+.horizontal li:last-child {margin-right: 0;}
 ul ul, ol ol {margin-bottom: 0em;}
 dl {margin-bottom: 1.75em;}
 dt {
