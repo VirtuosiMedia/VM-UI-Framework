@@ -23,8 +23,10 @@ var MobileMenu = new Class({
 		}		
 		window.addEvent('resize', function(){
 			if (window.getCoordinates().width <= 768){
+				self.adjustFloatingMenus(true);
 				if ($$('.mobileMenuTrigger').length == 0){self.createMobileMenus();}
 			} else {
+				self.adjustFloatingMenus(false);
 				self.resetMobileMenus();
 			}
 		});		
@@ -72,7 +74,13 @@ var MobileMenu = new Class({
 	
 	resetMobileMenus: function(){
 		this.resetFixedMenus();
-		this.menus.setStyles({height: 'auto', overflow: 'inherit'});
-		$('mobileButtonContainer').dispose();		
+		this.menus.setStyles({height: 'auto', overflow: null});
+		if ($('mobileButtonContainer')) {$('mobileButtonContainer').dispose();}		
+	},
+	
+	adjustFloatingMenus: function(mobile){
+		var floaters = (mobile) 
+			? $$('.floatingNav [class*=col]').setStyle('padding', 0) 
+			: $$('.floatingNav [class*=col]').setStyle('padding', '0 1em');
 	}
 });
