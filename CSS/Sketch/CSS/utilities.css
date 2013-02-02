@@ -13,7 +13,7 @@
 body .skipBottom {margin-bottom: 0 !important;}
 .topMargin {margin-top: 1.75em !important;}
 .bottomMargin {margin-bottom: 1.75em !important;}
-.hidden {display: none !important;}
+.hidden {display: none;}
 .fixed {
 	position: fixed;
 	z-index: 10000;
