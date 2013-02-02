@@ -12,19 +12,16 @@ div.notice, div[class*="Notice"] {
 	border: 0.15em solid;
 	border-radius: 4px;
 	box-sizing: border-box;
-	margin-bottom: 1.5em;
-	padding: 0% 1%;
+	margin: 0 0 1.5em 0;
+	padding: 0.725em 1em;
 	position: relative;
-	width: 98%;
+	width: 100%;
 }
-div.notice p, div[class*="Notice"] p {
-	margin: 0em 0.5em;
-	text-indent: 0em;
-}
+div.notice p:last-child, div[class*="Notice"] p:last-child {margin-bottom: 0;}
 div.notice {
 	background: #EEE;
-	border-color: #999;
-	color: #999;	
+	border-color: #777;
+	color: #777;	
 }
 div.infoNotice {
 	background: #D5F1FF;
@@ -47,27 +44,47 @@ div.errorNotice {
 	color: #FF6A6A;
 }
 .notice .close, div[class*="Notice"] .close {
-	position: absolute;
-	right: 1em;
-	text-decoration: none;
-}
-div.notice .close {color: #999;}
-div.infoNotice .close {color: #069;}
-div.successNotice .close {color: #4D9E0C;}
-div.warningNotice .close {color: #FB9702;}
-div.errorNotice .close {color: #FF6A6A;}
-div.notice .close:hover, div[class*="Notice"] .close:hover {
-	border-radius: 0.5em;
+	border: 0.15em solid;
+	border-radius: 0.75em;
+	box-sizing: border-box;
 	display: block;
-	height: 1em;
-	line-height: 0.8em;
-	right: 0.8em;
+	height: 1.5em;
+	line-height: 1.1em;	
+	position: absolute;
+	right: -0.45em;
 	text-align: center;
-	top: 0.525em;
-	width: 1em;
+	text-decoration: none;
+	top: -0.45em;
+	width: 1.5em;	
 }
+div.notice .close{
+	background: #EEE;
+	border-color: #777;
+	color: #777;
+}
+div.infoNotice .close{
+	background: #D5F1FF;
+	border-color: #069;
+	color: #069;
+}
+div.successNotice .close{
+	background: #E2FBCE;
+	border-color: #4D9E0C;
+	color: #4D9E0C;
+}
+div.warningNotice .close{
+	background: #FEEACB;
+	border-color: #FB9702;
+	color: #FB9702;
+}
+div.errorNotice .close{
+	background: #FFE6E6;
+	border-color: #FF6A6A;
+	color: #FF6A6A;
+}
+
 div.notice .close:hover {
-	background: #999;
+	background: #777;
 	color: #EEE;
 }
 div.infoNotice .close:hover {
