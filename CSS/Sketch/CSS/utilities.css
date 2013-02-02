@@ -8,18 +8,18 @@
 /**
  * Utilities
  */
-.right {float: right;}
-.left {float: left;}
-body .skipBottom {margin-bottom: 0;}
-.topMargin {margin-top: 1.75em;}
-.bottomMargin {margin-bottom: 1.75em;}
-.hidden {display: none;}
+.right {float: right !important;}
+.left {float: left !important;}
+body .skipBottom {margin-bottom: 0 !important;}
+.topMargin {margin-top: 1.75em !important;}
+.bottomMargin {margin-bottom: 1.75em !important;}
+.hidden {display: none !important;}
 .fixed {
 	position: fixed;
 	z-index: 10000;
 }
-.primaryMargin {margin-top: 5.2em;}
-.secondaryMargin {margin-top: 6.95em;}
+.primaryMargin {margin-top: 5.2em !important;}
+.secondaryMargin {margin-top: 6.95em !important;}
 .divider {
 	background: #CCC;
 	clear: both;
