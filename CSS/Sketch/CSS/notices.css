@@ -44,62 +44,19 @@ div.errorNotice {
 	color: #FF6A6A;
 }
 .notice .close, div[class*="Notice"] .close {
-	border: 0.15em solid;
+	background: #EEE;
+	border: 0.15em solid #333;
 	border-radius: 0.75em;
 	box-sizing: border-box;
+	color: #777;	
 	display: block;
 	height: 1.5em;
 	line-height: 1.1em;	
 	position: absolute;
-	right: -0.45em;
+	right: -0.75em;
 	text-align: center;
 	text-decoration: none;
-	top: -0.45em;
+	top: -0.75em;
 	width: 1.5em;	
 }
-div.notice .close{
-	background: #EEE;
-	border-color: #777;
-	color: #777;
-}
-div.infoNotice .close{
-	background: #D5F1FF;
-	border-color: #069;
-	color: #069;
-}
-div.successNotice .close{
-	background: #E2FBCE;
-	border-color: #4D9E0C;
-	color: #4D9E0C;
-}
-div.warningNotice .close{
-	background: #FEEACB;
-	border-color: #FB9702;
-	color: #FB9702;
-}
-div.errorNotice .close{
-	background: #FFE6E6;
-	border-color: #FF6A6A;
-	color: #FF6A6A;
-}
-
-div.notice .close:hover {
-	background: #777;
-	color: #EEE;
-}
-div.infoNotice .close:hover {
-	background: #069;
-	color: #D5F1FF;
-}
-div.successNotice .close:hover {
-	background: #4D9E0C;
-	color: #E2FBCE;
-}
-div.warningNotice .close:hover {
-	background: #FB9702;
-	color: #FEEACB;
-}
-div.errorNotice .close:hover {
-	background: #FF6A6A;
-	color: #FFE6E6;
-}
+div.notice .close:hover, div[class*="Notice"] .close:hover {background: #CCC;}
