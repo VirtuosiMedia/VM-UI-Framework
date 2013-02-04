@@ -42,7 +42,6 @@ var MobileMenu = new Class({
 			var button = new Element('span', {
 				'class': 'buttonInverted mobileMenuTrigger',
 				html: text,
-
 				events: {
 					click: function(){
 						if (menu.getStyle('height') == '0px'){
