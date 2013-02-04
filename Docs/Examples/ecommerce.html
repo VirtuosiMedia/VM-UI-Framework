@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ecommerce Example - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="container hideMobile">
+		<div class="row skipBottom">
+			<div class="col12">
+				<div class="infoNotice hidden topMargin" data-openTime="1500" data-closeTime="15000">
+					<a href="#" class="close">x</a>
+					<p>To buy anything in our store, you must first create an account because we value capturing your 
+						information	<em>waaaaay</em> more than your money, especially since you'll probably never 
+						return.</p>
+				</div>			
+				<a href="#" id="homeLogoFloat"><i class="iconLargeVirtuosiMedia"></i></a>				
+				<ul id="utilityFloat" class="horizontal right">
+					<li><a href="#">Free Sign Up</a></li>
+					<li><a href="#">Log In</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="navbarContainer floatingNav pin">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="#" id="homeLogo" class="showMobile"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li class="dropdown"><a href="#">Categories</a>
+							<ul>
+								<li><a href="#">Herbivores</a></li>
+								<li><a href="#">Things Grandma Would Like</a></li>
+								<li><a href="#">Potent Potables</a></li>
+								<li><a href="#">Not Asparagus</a></li>
+								<li><a href="#">Words That Begin With A Letter</a></li>
+							</ul>						
+						</li>
+						<li><a href="#">My Cat Blog</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+					<ul class="mobileMenu showMobile" data-text="&#xe013;">
+						<li><a href="#">Free Sign Up</a></li>
+						<li><a href="#">Log In</a></li>
+					</ul>					
+					<ul class="mobileMenu right" data-text="&#xe046;">
+						<li><form><input type="text"/><button class="buttonInverted" value='search'>&#xe046;</button></form></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col9">
+				<ul class="breadcrumb topMargin bottomMargin">
+					<li><a href="#">Home</a></li>
+					<li>Best Sellers</li>
+				</ul>
+				<div class="row">
+					<div class="col3">
+						<strong>Solar Flashlight</strong>
+						<a href="#">
+							<img src="../Images/Examples/flashlight.png" alt="Solar Powered Flashlight"  class="tip featuredImage" 
+								data-content="Now you can finally see dark places in the daylight!" />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$129.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Silent Alarm Clock</strong>
+						<a href="#">
+							<img src="../Images/Examples/alarm.png" alt="Silent Alarm Clock"  class="tip featuredImage" 
+								data-content="Tired of alarms waking you up? No more with the Silent Alarm Clock!" />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$59.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Best Friend Rock</strong>
+						<a href="#">
+							<img src="../Images/Examples/rock.png" alt="Best Friend Rock" class="tip featuredImage" 
+								data-content="He'll never give you up, never let you down." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$39.99</em></li>
+						</ul>
+					</div>										
+				</div>
+				<div class="row">
+					<div class="col3">
+						<strong>Bag of Air</strong>
+						<a href="#">
+							<img src="../Images/Examples/air.png" alt="Bag of Air"  class="tip featuredImage" 
+								data-content="A refill pack for when you're out of breath!" />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$12.49</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Replacement Sock</strong>
+						<a href="#">
+							<img src="../Images/Examples/sock.png" alt="Replacement Sock"  class="tip featuredImage" 
+								data-content="Get at least one for every time you do laundry." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$1.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Invisible Ink Pen</strong>
+						<a href="#">
+							<img src="../Images/Examples/pen.png" alt="Invisible Ink Pen" class="tip featuredImage" 
+								data-content="It's already waiting in your mailbox." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$8.99</em></li>
+						</ul>
+					</div>										
+				</div>
+				<div class="row">
+					<div class="col3">
+						<strong>Green Music</strong>
+						<a href="#">
+							<img src="../Images/Examples/green.png" alt="Green Music"  class="tip featuredImage" 
+								data-content="A collection of 5 minute, 23 second songs for while you're waiting..." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$13.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Minivan Glasses</strong>
+						<a href="#">
+							<img src="../Images/Examples/minivan.png" alt="Minivan Glasses"  class="tip featuredImage" 
+								data-content="Prevents new parents from purchasing minivans." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$17.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Stingshot</strong>
+						<a href="#">
+							<img src="../Images/Examples/shot.png" alt="Stingshot" class="tip featuredImage" 
+								data-content="Guaranteed to hit your wrist everytime." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$22.99</em></li>
+						</ul>
+					</div>										
+				</div>
+				<ul class="pagination">
+					<li class="active">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+				</ul>
+				<h6>Recommended Because The Internet Tracks Everything You Do</h6>
+				<div class="row">
+					<div class="col3">
+						<strong>Fungus Powder</strong>
+						<a href="#">
+							<img src="../Images/Examples/powder.png" alt="Foot Fungus Powder"  class="tip featuredImage" 
+								data-content="A great accessory for a replacement sock." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$34.99</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>Unibrow Trimmer</strong>
+						<a href="#">
+							<img src="../Images/Examples/trimmer.png" alt="Unibrow Trimmer"  class="tip featuredImage" 
+								data-content="Pro Tip: Trim the middle, not the sides." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$55.49</em></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<strong>1001 Cat Videos</strong>
+						<a href="#">
+							<img src="../Images/Examples/video.png" alt="1001 Cat Videos" class="tip featuredImage" 
+								data-content="Comes with a free cheeseburger. Freshness may vary." />
+						</a>
+						<ul class="horizontal">
+							<li><a href="#" class="buttonInfo">View Product</a></li>
+							<li><em>$99.99</em></li>
+						</ul>
+					</div>										
+				</div>																
+			</div>
+			<div class="col3 topMargin">
+				<h6>Free Shipping To Siberia</h6>
+				<p>If you live in select remote locations in Siberia, you may be eligible for free shipping. All 
+					others will be charged $79.99 for normal shipping per item. Express rates may cost extra.</p>
+				<h6>Subscribe</h6>
+				<p>Our newsletter is completely irrelevant, we'll email you more often than you'd like, and you'll 
+					eventually report us as spam. Everyone wins!</p>
+				<form>
+					<label for="email">Email</label>
+					<input type="text" id="email" name="email" data-validate="{email:{}}" />
+					<label><a href="#" class="buttonSuccess">Subscribe</a></label>
+				</form>
+			</div>			
+		</div>
+	</div>
+</body>
+</html>
