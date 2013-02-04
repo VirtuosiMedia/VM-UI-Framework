@@ -47,25 +47,98 @@
 		<div class="row">
 			<div class="col3 pinContainer showCol">
 				<div class="pin">
-					<h6>Pinned Example</h6>
+					<h3>Scroll Down</h3>
 					<ul>
-						<li><a href="#description">Description</a></li>
-						<li><a href="#code">Code Example</a></li>
+						<li><a href="#overview">Overview</a></li>
+						<li><a href="#usage">Usage</a></li>
+						<li><a href="#demo">Demo</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="col9" style="height: 1200px; display: block;">
-				<h6 id="description">Description</h6>
+			<div class="col9">
+				<h3 id="overview">Overview</h3>
 				<p>Pinned elements will remain in place when the page is scrolled until they reach the bottom boundary 
-					of their parent element. To create a pin, just add the class <code>pin</code> to any element. The 
-					pinned element will respect any top or bottom margins already applied to it.</p>
+					of their parent element.</p>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="usage">Usage</h3>
+				<p>To create a pin, just add the class <code>pin</code> to any element. The pinned element will respect 
+					any top or bottom margins already applied to it.</p>
 				<p><span class="infoMarker">Note</span> Only one pinned element can exist per container element. If you 
 					have multiple items in the same area that you want pinned, wrap them in a container and pin the 
 					container.</p>
 				<p><span class="warningMarker">Warning</span> Pinned elements are not disabled for mobile screen sizes 
 					where each column in the grid expands to 100% width. Consider either making the pinned element 
 					permanantly fixed or using the <code>hideMobile</code> class for mobile screens.</p>
-				<h6 id="code">Code Example</h6>
+				<h6>Events &amp; Style Hooks</h6>
+				<p>Pinned elements have three custom events and three different style hooks that will allow you to 
+					either perform a dynamic action on your page when the pinned element is in a specific state or 
+					custom style your pinned element based on its state.</p>
+				<p>The and the custom events can be	accessed by attaching an 
+					<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent">event listener</a> 
+					to the pinned element.</p>
+				<table class="borderedTable columnTable stripedTable">
+					<caption>JavaScript Events</caption>
+					<thead>
+						<tr>
+							<th colspan="2">JavaScript Events</th>
+						</tr>
+						<tr>
+							<td>Event</td>
+							<td>Description</td>
+						</tr>						
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Event"><code>pinTop</code></td>
+							<td data-column="Description">Fired whenever the page is scrolled and the pin is in its 
+								topmost position in its container. Also fired on initial page load.</td>
+						</tr>					
+						<tr>
+							<td data-column="Event"><code>pinScroll</code></td>
+							<td data-column="Description">Fired whenever the page is scrolled and the pin is between 
+								the top and bottom boundaries of its container.</td>
+						</tr>					
+						<tr>
+							<td data-column="Event"><code>pinBottom</code></td>
+							<td data-column="Description">Fired when the page is scrolled and the pin has reached the 
+								bottom boundary of its container.</td>
+						</tr>					
+					</tbody>
+				</table>
+				<p>Style hooks are simply CSS classes added to the pinned element. An demo of style hooks in action can 
+					be found in the floating navbar on the 
+					<a href="../Examples/ecommerce.html">Ecommerce example page</a>.</p>
+				<table class="borderedTable columnTable stripedTable">
+					<caption>Style Hooks</caption>
+					<thead>
+						<tr>
+							<th colspan="2">Style Hooks</th>
+						</tr>
+						<tr>
+							<td>CSS Class</td>
+							<td>Description</td>
+						</tr>						
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="CSS Class"><code>pinTop</code></td>
+							<td data-column="Description">Present whenever the page is scrolled and the pin is in its 
+								topmost position in its container. Also present on initial page load.</td>
+						</tr>					
+						<tr>
+							<td data-column="CSS Class"><code>pinScroll</code></td>
+							<td data-column="Description">Present whenever the page is scrolled and the pin is between 
+								the top and bottom boundaries of its container.</td>
+						</tr>					
+						<tr>
+							<td data-column="CSS Class"><code>pinBottom</code></td>
+							<td data-column="Description">Present when the page is scrolled and the pin has reached the 
+								bottom boundary of its container.</td>
+						</tr>					
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>
+				<h6 id="demo">Demo</h6>				
 				<p>Below is the code for the pinned list to the left. The <code>pinContainer</code> and 
 					<code>showCol</code> classes aren't necessary to create a pin, they're just used to create the 
 					demo.</p>
@@ -80,6 +153,7 @@
 	&lt;/div&gt;
 &lt;/div&gt;
 </pre>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
