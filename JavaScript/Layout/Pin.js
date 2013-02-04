@@ -15,41 +15,47 @@ var Pin = new Class({
 	 * @param string - selectors - The selectors for the pinned elements
 	 */
 	initialize: function(selectors){
-		this.coordinates = [];
 		this.boundaries = [];
+		this.widths = [];
 		this.emSize = parseInt($$('body')[0].getStyle('line-height'));
 		Array.each($$(selectors), function(pinned, index){
-			this.createPin(pinned, index);
+			this.createPin.delay(50, this, [pinned, index]);
 		}, this);
 	},
 	
 	createPin: function(pinned, index){
-		var self = this;
-		this.coordinates[index] = pinned.getCoordinates();
-		this.boundaries[index] = pinned.getParent().getCoordinates();
-
-		pinned.getParent().setStyles({
-			display: 'block', 
-			width: self.boundaries[index].width+'px', 
-			height: self.boundaries[index].height+'px',
-			position: 'relative'
-		});
+		var dim = this.calculatePinPos(pinned, index);
+		pinned.setStyle('z-index', 100001);		
+		pinned.getParent().setStyles({display: 'block',	position: 'relative'});
+		this.setPin(pinned, dim, index);
 		
-		window.addEvent('scroll', function(){
-			var winPos = this.getScroll().y;
-			var pinHeight = self.coordinates[index].height + parseInt(pinned.getStyle('margin-top')) + parseInt(pinned.getStyle('margin-bottom')); 
-			var pinPos = self.boundaries[index].bottom - pinHeight - self.emSize;
-			if (winPos >= self.coordinates[index].top){
-				pinned.setStyles({position:'fixed',	top: 0});
-			}
-			
-			if (winPos < (self.coordinates[index].top - self.emSize)){
-				pinned.setStyles({position:'static'});
-			}
-						
-			if (winPos >= pinPos){
-				pinned.setStyles({position: 'absolute', bottom: 0, top: null});
-			}
-		});
+		window.addEvents({
+			scroll: function(){this.setPin(pinned, dim, index);}.bind(this),
+			resize: function(){this.setPin.delay(100, this, [pinned, this.calculatePinPos(pinned, index), index]);}.bind(this)
+		}, this);
+	},
+
+	calculatePinPos: function(pinned, index){
+		var dim = pinned.getCoordinates();
+		var bottom =  pinned.getParent().getCoordinates().top + pinned.getParent().getComputedSize().height;
+		var pinHeight = dim.height + parseInt(pinned.getStyle('margin-top')) + parseInt(pinned.getStyle('margin-bottom')); 
+		this.boundaries[index] = bottom - pinHeight - this.emSize;
+		this.widths[index] = pinned.setStyles({top: pinned.getCoordinates(pinned.getParent()).top, position: 'static', width: 'auto'}).getSize().x;
+		return dim;
+	},
+	
+	setPin: function(pinned, dim, index){
+		var winPos = window.getScroll().y;
+		if (winPos <= dim.top + 1){
+			pinned.setStyles({position:'static'}).addClass('pinTop').removeClass('pinScroll').removeClass('pinBottom').fireEvent('pinTop');
+		} else {
+			if ((winPos <= this.boundaries[index])){
+				pinned.setStyles({
+					position:'fixed', top: 0, bottom: null, width: this.widths[index]
+				}).addClass('pinScroll').removeClass('pinTop').removeClass('pinBottom').fireEvent('pinScroll');;
+			} else {
+				pinned.setStyles({position: 'absolute', bottom: 0, top: null}).addClass('pinBottom').removeClass('pinScroll').removeClass('pinTop').fireEvent('pinBottom');;			
+			}			
+		}		
 	}
 });
