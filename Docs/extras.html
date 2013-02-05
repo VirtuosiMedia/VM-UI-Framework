@@ -57,7 +57,8 @@
 					<div class="col3">
 						<ul>
 							<li><a href="#thumbs">Thumbnails</a></li>
-							<li><a href="#snippets">Snippets</a></li>
+							<li><a href="#cards">Cards</a></li>
+							<li><a href="#images">Image Styles</a></li>
 						</ul>
 					</div>										
 				</div>				
@@ -477,6 +478,267 @@
 					<li class="col2 firstCol"><img src="Images/Gallery/thailand-3-thumb.jpg"/></li>
 					<li class="col2"><img src="Images/Gallery/thailand-4-thumb.jpg"/></li>					
 				</ul>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="cards">Cards</h2>
+				<div class="row">
+					<div class="col5">
+						<p>Cards are formatted and styled information blocks that can be used for bios, status 
+							updates, comments, any kind of feed, a summary, or almost anything else. They can exist 
+							with any of the following elements: an image, a title, content, and a list of links.</p>
+						<p>It's possible to use an individual card or a list of cards. Lists of cards can be 
+							nested to form comment threads or similar interfaces.</p>
+						<p>To create an individual card, create a container with a class of <code>card</code>. 
+							Each card can contain either one or two containers, which can be given the classes 
+							<code>cardPic</code> and <code>cardContent</code>. If you want to include a list of links 
+							at the bottom of the card, just add a class of <code>cardLinks</code> to the 
+							<code>ul</code> element.</p>
+						<p>A list of cards functions much the same way as individual cards, but each 
+							<code>li</code> acts as the card container, so you only need to add a 
+							<code>cardList</code> class to the <code>ul</code> element. If you have a child list, it 
+							should not be placed in either the <code>cardPic</code> or the  <code>cardContent</code>
+							containers. Instead, it should be placed after them, but within the <code>li</code> 
+							element.</p>
+						
+					</div>
+					<div class="col7">
+						<h6>Individual Card</h6>
+						<div class="card">
+							<div class="cardPic">
+								<img src="Images/Examples/user3.jpg" alt=""/>
+							</div>		
+							<div class="cardContent">
+								<h1>Luna</h1>
+								<p>Why will you never let me outside? You know how much I love it out there and I 
+									hardly ever run away.</p>
+								<ul class="cardLinks">
+									<li><a href="#">Profile</a></li>
+									<li><a href="#">Website</a></li>
+									<li><a href="#">Twitter</a></li>
+								</ul>
+							</div>						
+						</div>
+						<p><a href="#card" class="revealToggle buttonInfo" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="card">
+							<h6>Code</h6>
+<pre class="html">
+&lt;div class="card"&gt;
+	&lt;div class="cardPic"&gt;
+		&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+	&lt;/div&gt;		
+	&lt;div class="cardContent"&gt;
+		&lt;h1&gt;Luna&lt;/h1&gt;
+		&lt;p&gt;Why will you never let me outside? You know how much I love it out there and I 
+			hardly ever run away.&lt;/p&gt;
+		&lt;ul class="cardLinks"&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;						
+&lt;/div&gt;
+</pre>					
+						</div>						
+						<h6>Nested Card List</h6>
+						<ul class="cardList">
+							<li>
+								<div class="cardPic">
+									<img src="Images/Examples/user3.jpg" alt=""/>
+								</div>		
+								<div class="cardContent">
+									<h1>Luna</h1>
+									<p>Sometimes I will get hyper and do a 360&deg; spin kick off the wall. I'm a crazy 
+										ninja cat and I <em>will</em> find you. I can open doors.</p>
+									<ul class="cardLinks">
+										<li><a href="#">Profile</a></li>
+										<li><a href="#">Website</a></li>
+										<li><a href="#">Twitter</a></li>
+									</ul>
+								</div>							
+							</li>
+							<li>
+								<div class="cardPic">
+									<img src="Images/Examples/user5.jpg" alt=""/>
+								</div>		
+								<div class="cardContent">
+									<h1>Kole</h1>
+									<p>When we get up in the morning, Luna and I like to do our best impression of a 
+										herd of elephants. We're stealthy like that.</p>
+									<ul class="cardLinks">
+										<li><a href="#">Profile</a></li>
+										<li><a href="#">Website</a></li>
+										<li><a href="#">Twitter</a></li>
+									</ul>
+								</div>
+								<ul>
+									<li>
+										<div class="cardPic">
+											<img src="Images/Examples/user3.jpg" alt=""/>
+										</div>		
+										<div class="cardContent">
+											<h1>Luna</h1>
+											<p>Who are you calling an elephant?</p>
+											<ul class="cardLinks">
+												<li><a href="#">Profile</a></li>
+												<li><a href="#">Website</a></li>
+												<li><a href="#">Twitter</a></li>
+											</ul>
+										</div>
+										<ul>
+											<li>
+												<div class="cardPic">
+													<img src="Images/Examples/user5.jpg" alt=""/>
+												</div>		
+												<div class="cardContent">
+													<h1>Kole</h1>
+													<p>Well, you <em>do</em> keep stealing my food. Just sayin'...</p>
+													<ul class="cardLinks">
+														<li><a href="#">Profile</a></li>
+														<li><a href="#">Website</a></li>
+														<li><a href="#">Twitter</a></li>
+													</ul>
+												</div>									
+											</li>
+										</ul>																			
+									</li>
+								</ul>							
+							</li>							
+						</ul>
+						<p><a href="#cardList" class="revealToggle buttonInfo" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="cardList">
+							<h6>Code</h6>
+<pre class="html">
+&lt;ul class="cardList"&gt;
+	&lt;li&gt;
+		&lt;div class="cardPic"&gt;
+			&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+		&lt;/div&gt;		
+		&lt;div class="cardContent"&gt;
+			&lt;h1&gt;Luna&lt;/h1&gt;
+			&lt;p&gt;Sometimes I will get hyper and do a 360&deg; spin kick off the wall. I'm a crazy 
+				ninja cat and I &lt;em&gt;will&lt;/em&gt; find you. I can open doors.&lt;/p&gt;
+			&lt;ul class="cardLinks"&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;							
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;div class="cardPic"&gt;
+			&lt;img src="Images/Examples/user5.jpg" alt=""/&gt;
+		&lt;/div&gt;		
+		&lt;div class="cardContent"&gt;
+			&lt;h1&gt;Kole&lt;/h1&gt;
+			&lt;p&gt;When we get up in the morning, Luna and I like to do our best impression of a 
+				herd of elephants. We're stealthy like that.&lt;/p&gt;
+			&lt;ul class="cardLinks"&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+			&lt;li&gt;
+				&lt;div class="cardPic"&gt;
+					&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+				&lt;/div&gt;		
+				&lt;div class="cardContent"&gt;
+					&lt;h1&gt;Luna&lt;/h1&gt;
+					&lt;p&gt;Who are you calling an elephant?&lt;/p&gt;
+					&lt;ul class="cardLinks"&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;ul&gt;
+					&lt;li&gt;
+						&lt;div class="cardPic"&gt;
+							&lt;img src="Images/Examples/user5.jpg" alt=""/&gt;
+						&lt;/div&gt;		
+						&lt;div class="cardContent"&gt;
+							&lt;h1&gt;Kole&lt;/h1&gt;
+							&lt;p&gt;Well, you &lt;em&gt;do&lt;/em&gt; keep stealing my food. Just sayin'...&lt;/p&gt;
+							&lt;ul class="cardLinks"&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/div&gt;									
+					&lt;/li&gt;
+				&lt;/ul&gt;																			
+			&lt;/li&gt;
+		&lt;/ul&gt;							
+	&lt;/li&gt;							
+&lt;/ul&gt;
+</pre>							
+						</div>
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="images">Image Styles</h2>
+				<div class="row">
+					<div class="col6">
+						<p>Unless specifically overridden, all images by default will proportionally expand or contract 
+							to 100% of the width of their container. In addition to that default functionality, you can 
+							add styling to your images by adding one or more of the following classes:</p>
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Image Style Classes</caption>
+							<thead>
+								<tr>
+									<th colspan="2">Image Style Classes</th>
+								</tr>
+								<tr> 
+									<td>Class</td>
+									<td>Description</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr> 
+									<td data-column="Class"><code>roundedImg</code></td>
+									<td data-column="Description">Gives the image a rounded rectangle shape.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>circleImg</code></td>
+									<td data-column="Description">Gives the image a circle shape.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>borderImg</code></td>
+									<td data-column="Description">Adds a border to the image.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>borderOffsetImg</code></td>
+									<td data-column="Description">Adds a border with padding to the image.</td>
+								</tr>																															
+							</tbody>
+						</table>
+					</div>
+					<div class="col6">
+						<h6>Demo</h6>
+						<p>You can hover over each image to see what classes have been applied.</p>
+						<ul class="thumbs">
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="tip" data-content="Default"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg tip" data-content="Class: roundedImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg tip" data-content="Class: circleImg"/></li>
+							<li class="col2 firstCol"><img src="Images/Examples/user4.jpg" class="borderImg tip" data-content="Class: borderImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg borderImg tip" data-content="Classes: roundedImg, borderImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg borderImg tip" data-content="Classes: circleImg, borderImg"/></li>					
+							<li class="col2 firstCol"><img src="Images/Examples/user4.jpg" class="borderOffsetImg tip" data-content="Class: borderOffsetImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg borderOffsetImg tip" data-content="Classes: roundedImg, borderOffsetImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg borderOffsetImg tip" data-content="Classes: circleImg, borderOffsetImg"/></li>									
+						</ul>
+					</div>
+				</div>
 				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
