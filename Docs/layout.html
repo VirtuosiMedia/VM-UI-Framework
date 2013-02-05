@@ -54,11 +54,28 @@
 					</div>					
 				</div>												
 				<h2 id="grid" class="title">Responsive Grid</h2>
-				<p>The responsive grid system contains 12 columns and is based on a 960 pixel width with 20px margins in 
-					its default size. A grid is	constructed with 3 main parts: a container, a row, and a column. 
-					Containers and rows are given classes of <code>container</code> and <code>row</code>, respectively. 
-					Columns are given the class	<code>col</code> followed by a number, 1-12. For example, a column that 
-					takes up the full width of the container would be given the class <code>col12</code>.</p>
+				<div class="row">
+					<div class="col7">
+						<p>The responsive grid system contains 12 columns and is based on a 960 pixel width with 20px margins in 
+							its default size. A grid is	constructed with 3 main parts: a container, a row, and a column, with 
+							containers always containing rows and rows always wrapping columns.	Containers and rows are given 
+							classes of <code>container</code> and <code>row</code>, respectively. Columns are given the class	
+							<code>col</code> followed by a number, 1-12. For example, a column that	takes up the full width of 
+							the row would be given the class <code>col12</code>. The total width of columns or offsets in a 
+							single row cannot exceed 12. Content should only be placed directly in columns and never in a 
+							container or row.</p>
+					</div>
+					<div class="col5">
+<pre class="html">
+&lt;div class="container"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col5"&gt;&lt;/div&gt;
+		&lt;div class="col7"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>			
+					</div>
+				</div>		
 				<p>Rows and columns can also be nested into columns, so long as the width of the child columns do not 
 					exceed the width of the parent column.</p>
 			</div>
