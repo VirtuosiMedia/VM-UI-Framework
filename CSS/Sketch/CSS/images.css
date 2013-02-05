@@ -12,3 +12,10 @@ img {
 	height: auto;
 	width: 100%;
 }
+.roundedImg {border-radius: 6px;}
+.circleImg {border-radius: 50%;}
+.borderImg, .borderOffsetImg {
+	border: 0.15em solid #222;
+	box-sizing: border-box;
+}
+.borderOffsetImg {padding: 0.3em;}
