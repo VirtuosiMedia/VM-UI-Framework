@@ -8,7 +8,7 @@
 /**
  * Tooltips
  */
-[class^=tip][class$=Container], [class^=powertip][class$=Container] {
+[class*=tip][class$=Container], [class*=powertip][class$=Container] {
 	background: #111;
 	border: 0.15em #111 solid;
 	border-radius: 4px;
@@ -19,38 +19,38 @@
 	position: absolute;
 	z-index: 100000;
 }
-[class^=powertip][class$=Container] {
+[class*=powertip][class$=Container] {
 	background: #FFF;
 	color: #000;
 }
-[class^=tip][class$=Container]:after, [class^=powertip][class$=Container]:after, 
-[class^=powertip][class$=Container]:before {
+[class*=tip][class$=Container]:after, [class*=powertip][class$=Container]:after, 
+[class*=powertip][class$=Container]:before {
 	content: '';
 	border-style: solid;
 	height: 0;
 	position: absolute;
 	width: 0;
 }
-[class^=powertip][class$=Container]:before {z-index: 100;}
-[class^=tip][class$=TopContainer]:after, [class^=tip][class$=Container]:after, 
-[class^=powertip][class$=TopContainer]:after, [class^=powertip][class$=Container]:after,
-[class^=powertip][class$=TopContainer]:before, [class^=powertip][class$=Container]:before {
+[class*=powertip][class$=Container]:before {z-index: 100;}
+[class*=tip][class$=TopContainer]:after, [class*=tip][class$=Container]:after, 
+[class*=powertip][class$=TopContainer]:after, [class*=powertip][class$=Container]:after,
+[class*=powertip][class$=TopContainer]:before, [class*=powertip][class$=Container]:before {
 	border-color: #111 transparent transparent transparent;
 	border-width: 0.4em 0.4em 0em 0.4em;
 	left: 50%;
 	margin-left: -0.3em;
 	bottom: -0.5em;
 }
-[class^=tip][class$=BottomContainer]:after, [class^=powertip][class$=BottomContainer]:after, 
-[class^=powertip][class$=BottomContainer]:before {
+[class*=tip][class$=BottomContainer]:after, [class*=powertip][class$=BottomContainer]:after, 
+[class*=powertip][class$=BottomContainer]:before {
 	border-color: transparent transparent #111 transparent;
 	border-width: 0 0.4em 0.4em 0.4em;
 	left: 50%;
 	margin-left: -0.3em;
 	top: -0.5em;
 }
-[class^=tip][class$=LeftContainer]:after, [class^=powertip][class$=LeftContainer]:after, 
-[class^=powertip][class$=LeftContainer]:before {
+[class*=tip][class$=LeftContainer]:after, [class*=powertip][class$=LeftContainer]:after, 
+[class*=powertip][class$=LeftContainer]:before {
 	border-color: transparent transparent transparent #111;
 	border-width: 0.4em 0em 0.4em 0.4em;
 	top: 50%;
@@ -58,44 +58,44 @@
 	margin: -0.3em 0 0 0.15em;
 	right: 0em;
 }
-[class^=tip][class$=RightContainer]:after, [class^=powertip][class$=RightContainer]:after, 
-[class^=powertip][class$=RightContainer]:before {
+[class*=tip][class$=RightContainer]:after, [class*=powertip][class$=RightContainer]:after, 
+[class*=powertip][class$=RightContainer]:before {
 	border-color: transparent #111 transparent transparent;
 	border-width: 0.4em 0.4em 0.4em 0;
 	top: 50%;
 	margin: -0.3em 0 0 0;
 	left: -0.5em;
 }
-[class^=powertip][class$=TopContainer]:before, [class^=powertip][class$=Container]:before {
+[class*=powertip][class$=TopContainer]:before, [class*=powertip][class$=Container]:before {
 	border-color: #FFF transparent transparent transparent;
 	bottom: -0.3em;	
 }
-[class^=powertip][class$=BottomContainer]:before {
+[class*=powertip][class$=BottomContainer]:before {
 	border-color: transparent transparent #EEE transparent;
 	top: -0.3em;
 }
-[class^=powertip][class$=LeftContainer]:before {
+[class*=powertip][class$=LeftContainer]:before {
 	border-color: transparent transparent transparent #FFF;
 	margin-left: -0.05em;
 	right: -0.3em;
 }
-[class^=powertip][class$=RightContainer]:before {
+[class*=powertip][class$=RightContainer]:before {
 	border-color: transparent #FFF transparent transparent;
 	left: -0.3em;
 }
-[class^=tip][class$=Container] .title, [class^=powertip][class$=Container] .title {
+[class*=tip][class$=Container] .title, [class*=powertip][class$=Container] .title {
 	font-size: 1em;
 	margin-bottom: 0;
 	padding: 0.2em 0.8em;
 }
-[class^=powertip][class$=Container] .title {
+[class*=powertip][class$=Container] .title {
 	background: #EEE;
 	border-bottom: #CCC solid 1px;
 }
-[class^=tip][class$=Container] .title:after, [class^=powertip][class$=Container] .title:after {
+[class*=tip][class$=Container] .title:after, [class*=powertip][class$=Container] .title:after {
 	border: none;
 }
-[class^=tip][class$=Container] .content, [class^=powertip][class$=Container] .content {
+[class*=tip][class$=Container] .content, [class*=powertip][class$=Container] .content {
 	padding: 0.4em 0.8em;	
 }
 .tipContent {display: none;}
