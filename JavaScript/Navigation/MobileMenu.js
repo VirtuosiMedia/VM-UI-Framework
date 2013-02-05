@@ -66,7 +66,7 @@ var MobileMenu = new Class({
 	},
 
 	resetFixedMenus: function(){
-		if ($$('.navbarContainer')[0].hasClass('fixed')){
+		if (($$('.navbarContainer').length > 0) && ($$('.navbarContainer')[0].hasClass('fixed'))){
 			$$('.navbarContainer')[0].setStyle('position', 'fixed');
 		}			
 	},
