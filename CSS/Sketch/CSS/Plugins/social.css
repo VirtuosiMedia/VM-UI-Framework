@@ -21,8 +21,8 @@
 	float: left;
 }
 .socialShare ul li .button {
-	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	display: inline-block;
 	height: 1.25em;
 	line-height: 1.2em;
@@ -72,8 +72,8 @@
 	border: 0.075em solid #999;
 	border-bottom-color: transparent;
 	border-radius: 4px 4px 0px 0px;
-	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	display: inline-block;
 	height: 1.4em;
 	line-height: 1.3em;

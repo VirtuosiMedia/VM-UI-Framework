@@ -21,6 +21,7 @@
 	background: #FFF;
 	border: #222 solid 0.15em;
 	border-radius: 0px 0px 4px 4px;
+	-moz-box-sizing: border-box;	
 	box-sizing: border-box;
 	display: block;
 	min-width: 9em;
@@ -56,6 +57,7 @@ span.dropdown {
 }
 .megaDropdown>div {
 	background: #FFF;
+	-moz-box-sizing: border-box;	
 	box-sizing: border-box;
 	border: #222 solid 0.15em;
 	border-radius: 0px 0px 4px 4px;

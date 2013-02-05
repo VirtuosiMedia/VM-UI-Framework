@@ -27,6 +27,7 @@
 .pagination a, .pagination .active, .pagination .disabled {
 	border: 0.15em solid #111;
 	border-radius: 2px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
 	height: 1.75em;

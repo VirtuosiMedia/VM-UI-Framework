@@ -11,6 +11,7 @@
 .progressBar, [class*="ProgressBar"] {
 	border: 0.15em solid #222;
 	border-radius: 4px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
 	position: relative;

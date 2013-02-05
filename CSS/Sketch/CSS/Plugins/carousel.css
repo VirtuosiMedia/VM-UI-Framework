@@ -91,6 +91,7 @@
 [class^=carousel] .thumbContainer {position: relative;}
 [class^=carousel] .thumbContainer .scrollLeft, .carousel .thumbContainer .scrollRight {
 	background: #111;
+	-moz-box-sizing: border-box;	
 	box-sizing: border-box; 
 	color: #FFF;
 	cursor: pointer;

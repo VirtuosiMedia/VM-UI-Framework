@@ -12,6 +12,7 @@
 	background: #111;
 	border: 0.15em #111 solid;
 	border-radius: 4px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;	
 	color: #FFF;
 	max-width: 15em;

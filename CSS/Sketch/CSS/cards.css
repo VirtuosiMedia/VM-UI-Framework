@@ -9,6 +9,7 @@
  * Cards
  */
 .card, .cardList>li, .cardList li>ul>li  {
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: block;
 	overflow: hidden;
@@ -25,6 +26,7 @@
 }
 .cardList>li:hover, .cardList li>ul>li:hover {background: rgba(0, 0, 0, 0.02);}
 .card .cardPic, .cardList .cardPic {
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	float: left;
 	padding: 0 1em 0 0;

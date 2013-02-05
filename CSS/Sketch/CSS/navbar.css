@@ -58,6 +58,7 @@
 	background: linear-gradient(top, #333333 0%,#222222 100%);
 	border: 0.1em solid #000;
 	border-radius: 2px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);
 	overflow: hidden;
@@ -71,6 +72,7 @@
 	background: -o-linear-gradient(top, #333333 0%,#222222 100%); 
 	background: -ms-linear-gradient(top, #333333 0%,#222222 100%); 
 	background: linear-gradient(top, #333333 0%,#222222 100%);
+	-moz-box-sizing: border-box;
 	box-sizing: border-box; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);	
 }
@@ -89,6 +91,7 @@
 }
 .secondaryNavbarContainer {
 	background: #EEE;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	height: 1.75em;
 	line-height: 1.75em;

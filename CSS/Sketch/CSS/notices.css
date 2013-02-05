@@ -11,6 +11,7 @@
 div.notice, div[class*="Notice"] {
 	border: 0.15em solid;
 	border-radius: 4px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0 0 1.5em 0;
 	padding: 0.725em 1em;
@@ -47,6 +48,7 @@ div.errorNotice {
 	background: #EEE;
 	border: 0.15em solid #333;
 	border-radius: 0.75em;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	color: #777;	
 	display: block;

@@ -12,6 +12,7 @@
 	background: #FFF;
 	border: 0.15em solid #111;
 	border-radius: 0px 0px 4px 4px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	list-style: none;
 	margin: -0.05em 0 0;

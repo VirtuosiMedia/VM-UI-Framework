@@ -16,6 +16,7 @@ img {
 .circleImg {border-radius: 50%;}
 .borderImg, .borderOffsetImg {
 	border: 0.15em solid #222;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .borderOffsetImg {padding: 0.3em;}

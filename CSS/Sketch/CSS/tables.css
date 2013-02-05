@@ -25,6 +25,7 @@ table {
 .columnTable caption {display: none;}
 thead td {background: #CCC;}
 th, td {
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0 0.4em;
 }
@@ -102,6 +103,7 @@ table tbody tr td.errorCell:hover {background: #FFCECE;}
 	.columnTable tbody td {
 		background: #FFF;
 		border: none;
+		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		float: left;
 		padding-left: 45%;
