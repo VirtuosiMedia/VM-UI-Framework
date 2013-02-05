@@ -65,7 +65,7 @@ var Dropdown = new Class({
 	},
 	
 	hide: function(index, target, type){
-		if ((target.getNext('ul') != this.dropdowns[index])||(target == this.dropdowns[index].getPrevious('a'))||(type == 'click')){
+		if ((target.getNext('ul') != this.dropdowns[index])||(type == 'click')){
 			this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute', right: null}).morph({height: 0, opacity: 0});
 		} 
 	},
