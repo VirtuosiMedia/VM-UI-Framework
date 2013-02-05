@@ -45,24 +45,32 @@ var Dropdown = new Class({
 				mouseleave: function(e){self.hide.delay(500, self, [index, e.target])},
 				click: function(e){
 					e.stop();
-					self.toggle(index);
+					self.toggle(index, e);
 				}
 			});
 		});	
 	},
 	
-	show: function(index){
-		var position = ((window.getSize().x < 768) && (!this.dropdowns[index].getPrevious('[class*=button]'))) ? 'relative' : 'absolute';
-		this.dropdowns[index].setStyles({'margin-top': 0, position: position}).morph({height: null, opacity: 1});
-	},
-	
-	hide: function(index, target){
-		if (target.getNext() != this.dropdowns[index]){
-			this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute'}).morph({height: 0, opacity: 0});
+	show: function(index){//Most of these calculations are to prevent the dropdown from causing a horizontal scrollbar
+		var dropdown = this.dropdowns[index];
+		var position = ((window.getSize().x < 768) && (!dropdown.getPrevious('[class*=button]'))) ? 'relative' : 'absolute';
+		if (dropdown.getParent().get('class') != 'megaDropdown'){
+			var padding = parseInt(dropdown.getFirst('li a').getStyle('padding-right')) - parseInt(dropdown.getStyle('border-right-width'));
+			var overlap = window.getSize().x - dropdown.getCoordinates().right - padding;
+			if (overlap < 0){
+				dropdown.setStyle('right', (window.getSize().x - dropdown.getParent().getCoordinates().right));
+			} 
 		}
+		dropdown.setStyles({'margin-top': 0, position: position}).morph({height: null, opacity: 1});
 	},
 	
-	toggle: function(index){
-		var toggle = (this.dropdowns[index].getStyle('height').toInt() == 0) ? this.show(index) : this.hide(index);
+	hide: function(index, target, type){
+		if ((target.getNext('ul') != this.dropdowns[index])||(target == this.dropdowns[index].getPrevious('a'))||(type == 'click')){
+			this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute', right: null}).morph({height: 0, opacity: 0});
+		} 
+	},
+	
+	toggle: function(index, e){
+		var toggle = (this.dropdowns[index].getStyle('height').toInt() == 0) ? this.show(index) : this.hide(index, e.target, 'click');
 	}
 });
