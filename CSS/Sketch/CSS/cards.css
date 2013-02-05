@@ -1,0 +1,59 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Cards
+ */
+.card, .cardList>li, .cardList li>ul>li  {
+	box-sizing: border-box;
+	display: block;
+	overflow: hidden;
+	padding: 0 0em 1.75em 0em;
+}
+.cardList {
+	border-top: 1px solid #E8E8E8;
+	list-style: none;
+	margin: 0 0 1.75em 0;
+}
+.cardList>li, .cardList li>ul>li {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+	padding: 0.875em 1em;
+}
+.cardList>li:hover, .cardList li>ul>li:hover {background: rgba(0, 0, 0, 0.02);}
+.card .cardPic, .cardList .cardPic {
+	box-sizing: border-box;
+	float: left;
+	padding: 0 1em 0 0;
+	width: 25%;
+}
+.card .cardContent, .cardList .cardContent {
+	clear: none;
+	float: left;
+}
+.card .cardPic + .cardContent, .cardList .cardPic + .cardContent {width: 75%;}
+.card .cardLinks, .cardList .cardLinks {
+	list-style: none;
+	margin: 0;
+}
+.card .cardLinks li, .cardList .cardLinks li {
+	float: left;
+	margin: 0 1em 0 0;
+}
+.card h1, .cardList h1, .card h2, .cardList h2, .card h3, .cardList h3, .card h4, .cardList h4,
+.card h5, .cardList h5, .card h6, .cardList h6 {
+	font-size: 1em;
+	line-height: 1.75em;
+	margin-bottom: 1.75em;
+}
+.cardList li>ul {
+	border-top: 1px solid rgba(0, 0, 0, 0.075);
+	clear: both;
+	display: block;
+	float: left;
+	list-style: none;
+	margin: 0.875em 0 0 1em;
+}
