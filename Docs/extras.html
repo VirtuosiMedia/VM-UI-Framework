@@ -42,52 +42,179 @@
 				<div class="row">
 					<div class="col3">
 						<ul>
+							<li><a href="#navbars">Navbars</a></li>
 							<li><a href="#notices">Notices</a></li>
 							<li><a href="#markers">Markers</a></li>
-							<li><a href="#progress-bars">Progress Bars</a></li>
 						</ul>
 					</div>
 					<div class="col3">
 						<ul>
+							<li><a href="#progress-bars">Progress Bars</a></li>						
 							<li><a href="#breadcrumbs">Breadcrumbs</a></li>
 							<li><a href="#pagination">Pagination</a></li>
-							<li><a href="#thumbs">Thumbnails</a></li>
 						</ul>
-					</div>					
-				</div>
-				<h2 class="title" id="notices">Notices</h2>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#thumbs">Thumbnails</a></li>
+							<li><a href="#snippets">Snippets</a></li>
+						</ul>
+					</div>										
+				</div>				
 			</div>
 		</div>
 		<div class="row">
-			<div class="col7">
-				<div class="notice">This is a generic notice. Class: <code>notice</code></div>
-				<div class="infoNotice">This is an info-based notice. Class: <code>infoNotice</code></div>
-				<div class="successNotice">This is an success-based notice. Class: <code>successNotice</code></div>
-				<div class="warningNotice">This is an warning-based notice. Class: <code>warningNotice</code></div>
-				<div class="errorNotice">This is an error-based notice. Class: <code>errorNotice</code></div>
-				<p><span class="infoMarker">Note</span> The correct semantic container for a notice is a 
-					<code>div</code> element. Multi-line notice bars should use an additional	<code>p</code> tag for 
-					the text for proper	spacing.</p>
-				<div class="infoNotice">
-					<h6>Notice Header</h6>
-					<p>This is a multi-line info-based notice bar. It should extend over multiple lines. Other elements 
-						can be introduced to a notice bar such as a heading or an image.</p>
+			<div class="col12">
+				<h2 class="title" id="navbars">Navbars</h2>
+				<div class="row">
+					<div class="col5">
+						<p>There are three types of navbars: the default navbar, a secondary navbar, and a floating 
+							navbar. The default navbar and secondary navbar are both full-width and attached to the 
+							top of the page, with the secondary navbar meant to be placed below the default navbar. The 
+							floating navbar is <em>not</em> attached to the top of the page, can have content above it, 
+							and is only the width of the grid.</p>
+						<p>Navbars are placed inside of their own special container element, outside of the container 
+							for the rest of the page. To designate a container for use with navbars, apply the class 
+							<code>navbarContainer</code> to the container element for both the default navbar. For 
+							secondary navbars, add the class <code>secondaryNavbarContainer</code> instead. Floating 
+							navbars use the class <code>floatingNavbarContainer</code>. For all types of navbar 
+							containers, you must use the navbar container element, the regular container, and then rows 
+							and columns.</p>
+						<p>When using both the default and secondary navbars, each should have a separate container. 
+							Columns and rows will work within navbars, but in general, no navbar container should have 
+							more than one row.</p>
+						<h6>Fixed &amp; Pinned Navbars</h6>
+						<p>The default behavior for all navbars is to have a static position, meaning that when the 
+							page is scrolled, the navbar will eventually disappear. However, any navbar can be made 
+							persistent so that it will not disappear when scrolled. For the default and secondary 
+							navbars, just add the class <code>fixed</code> to the navbar container.</p>
+						<p>Floating navbars act a little differently, so instead of add the class <code>fixed</code>, 
+							add the class <code>pin</code> to the container instead. Making floating navbars persistent 
+							requires using the <a href="Plugins/pinned-elements.html">Pinned Elements plugin</a>, so 
+							make sure that the plugin is included on the page. When	scrolled, a floating navbar will 
+							automatically expand to the full-width of the page. A pinned floating navbar is used on the 
+							<a href="Examples/ecommerce.html">ecommerce example page</a>.</p>
+						<h6>Mobile Considerations</h6>
+						<p>Including both a default and secondary navbar on a mobile screen will be overkill in most 
+							cases, so it's recommended to hide the secondary navigation for mobile-sized screens using 
+							the <code>hideMobile</code> utility class. If the secondary menu items are still necessary, 
+							considering hiding the secondary menu bar, but adding the items as a submenu beneath the 
+							active menu item in the default menu by applying the class <code>showMobile</code> to the 
+							submenu. A demonstration of this can be found in the 
+							<a href="Examples/article.html">article example page</a>.</p>
+						<p>On mobile-sized screens, the floating navbar will appear full-width and will essentially act 
+							the same as the default navbar.</p>
+						<h6>Navbar Demos</h6>
+						<p>Variations of the navbar in action can be found in the <a href="Examples/">examples</a> 
+							section.</p> 
+					</div>
+					<div class="col7">
+						<h6>Default Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Secondary Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+&lt;div class="secondaryNavbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Floating Navbar</h6>
+<pre class="html">
+&lt;div class="floatingNavbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Mobile Secondary Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;
+				&lt;ul class="mobileMenu"&gt;
+					&lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="active" href="#"&gt;3&lt;/a&gt;
+						&lt;ul class="showMobile"&gt;
+							&lt;li&gt;&lt;a href="#"&gt;3.1&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;3.2&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a class="active" href="#"&gt;3.3&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;						
+					&lt;/li&gt;
+				&lt;/ul&gt;					
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+&lt;div class="secondaryNavbarContainer hideMobile"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>					
+					</div>
 				</div>
 				<p><a href="#top">Return to top</a></p>
 			</div>
-			<div class="col5">
-				<p>Notices are for when your application or website has new information to share with the user. You can 
-					use the notices either as a single-line notification bar or as a larger block notification. There 
-					are five kinds of notices:</p>
-				<ol>
-					<li><strong>Generic</strong> - A generic notice container.</li>
-					<li><strong>Info</strong> - For when new information is	available that is helpful, but isn't 
-						necessarily urgent.</li>
-					<li><strong>Success</strong> - For when the user successfully completes an action.</li>
-					<li><strong>Warning</strong> - For when the user needs to be informed about an action that could 
-						have adverse or unexpected consequences.</li>
-					<li><strong>Error</strong> - For when the user has encountered or commited an error.</li>
-				</ol>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="notices">Notices</h2>
+				<div class="row">
+					<div class="col7">
+						<div class="notice">This is a generic notice. Class: <code>notice</code></div>
+						<div class="infoNotice">This is an info-based notice. Class: <code>infoNotice</code></div>
+						<div class="successNotice">This is an success-based notice. Class: <code>successNotice</code></div>
+						<div class="warningNotice">This is an warning-based notice. Class: <code>warningNotice</code></div>
+						<div class="errorNotice">This is an error-based notice. Class: <code>errorNotice</code></div>
+						<p><span class="infoMarker">Note</span> The correct semantic container for a notice is a 
+							<code>div</code> element. Multi-line notice bars should use an additional	<code>p</code> tag for 
+							the text for proper	spacing.</p>
+						<div class="infoNotice">
+							<h6>Notice Header</h6>
+							<p>This is a multi-line info-based notice bar. It should extend over multiple lines. Other elements 
+								can be introduced to a notice bar such as a heading or an image.</p>
+						</div>
+					</div>
+					<div class="col5">
+						<p>Notices are for when your application or website has new information to share with the user. You can 
+							use the notices either as a single-line notification bar or as a larger block notification. There 
+							are five kinds of notices:</p>
+						<ol>
+							<li><strong>Generic</strong> - A generic notice container.</li>
+							<li><strong>Info</strong> - For when new information is	available that is helpful, but isn't 
+								necessarily urgent.</li>
+							<li><strong>Success</strong> - For when the user successfully completes an action.</li>
+							<li><strong>Warning</strong> - For when the user needs to be informed about an action that could 
+								have adverse or unexpected consequences.</li>
+							<li><strong>Error</strong> - For when the user has encountered or commited an error.</li>
+						</ol>
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
