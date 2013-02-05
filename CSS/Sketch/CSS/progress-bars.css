@@ -22,7 +22,7 @@
 .progressBar>*, [class*="ProgressBar"]>* {
 	content: '';
 	display: block;
-	height: 1.15em;
+	height: 100%;
 	position: absolute;
 	width: 33%;
 }
