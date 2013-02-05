@@ -42,7 +42,7 @@ var Dropdown = new Class({
 		this.triggers.each(function(trigger, index){
 			trigger.addEvents({
 				mouseenter: function(){self.show(index);},
-				mouseleave: function(){self.hide(index);},
+				mouseleave: function(e){self.hide.delay(500, self, [index, e.target])},
 				click: function(e){
 					e.stop();
 					self.toggle(index);
@@ -56,8 +56,10 @@ var Dropdown = new Class({
 		this.dropdowns[index].setStyles({'margin-top': 0, position: position}).morph({height: null, opacity: 1});
 	},
 	
-	hide: function(index){
-		this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute'}).morph({height: 0, opacity: 0});
+	hide: function(index, target){
+		if (target.getNext() != this.dropdowns[index]){
+			this.dropdowns[index].setStyles({'margin-top': -5000, position: 'absolute'}).morph({height: 0, opacity: 0});
+		}
 	},
 	
 	toggle: function(index){
