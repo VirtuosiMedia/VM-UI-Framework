@@ -2,7 +2,7 @@
 * @author Virtuosi Media
 * @link http://www.virtuosimedia.com
 * @version 1.0
-* @copyright Copyright (c) 2012, Virtuosi Media
+* @copyright Copyright (c) 2012-13, Virtuosi Media
 * @license: MIT License
 * @description: Creates tab menus and content
 * Requirements: MooTools 1.4 Core - See http://mootools.net
@@ -19,7 +19,7 @@ var Tabs = new Class({
 		this.cachedTabs = [];
 		Array.each($$(selectors), function(tabMenu){
 			self.createTabMenu(tabMenu, selectors);
-			if (self.isMobile()){
+			if (window.getCoordinates().width <= 768){
 				self.setMobileTabs(tabMenu);
 			}			
 		});		
@@ -40,35 +40,25 @@ var Tabs = new Class({
 		});
 
 		window.addEvent('resize', function(){
-			if (self.isMobile()){
+			if (window.getCoordinates().width <= 768){
 				self.setMobileTabs(tabMenu);
 			} else {
-				self.unsetMobileTabs();
+				self.unsetMobileTabs(tabMenu);
 			}
 		});
 	},
-
-	isMobile: function(){
-		return (window.getCoordinates().width <= 768);
-	},	
 	
 	loadTab: function(tab){
-		var tabId = tab.get('href').substring(1)
+		var tabId = tab.get('href').substring(1);
 		var tabContainer = $(tabId);
-		tabContainer.getSiblings().removeClass('active').removeClass('activeMobile');
+		tabContainer.getSiblings().removeClass('active');
+		tab.getParent().getParent().getElements('.mobileTabContent').removeClass('active');
 		
 		if (!this.cachedTabs.contains(tabId)){
 			this.loadAjaxTab(tab, tabId, tab.getData('targetUrl'));
 		}
-		
-		if (this.isMobile()){
-			tabContainer.addClass('activeMobile');
-			if ((!tab.hasData('targetUrl'))||(this.cachedTabs.contains(tabId))){
-				this.loadMobileTab(tab, tabContainer);
-			}
-		} else {
-			tabContainer.addClass('active');	
-		}
+
+		tabContainer.addClass('active');
 	},
 	
 	loadAjaxTab: function(tab, tabId, targetUrl){
@@ -82,15 +72,9 @@ var Tabs = new Class({
 				onSuccess: function(responseText, responseElements, responseHTML){
 					$(tabId).set('html', responseHTML);
 					$(document.body).fireEvent('ajaxUpdate', $(tabId));
-					if (self.isMobile()){
-						self.loadMobileTab(tab, $(tabId));
-					}
 				},
 				onFailure: function(){
-					$(tabId).set('html', '<p>Tab content could not be loaded.</p>')
-					if (self.isMobile()){
-						self.loadMobileTab(tab, $(tabId));
-					}					
+					$(tabId).set('html', '<p>Tab content could not be loaded.</p>')					
 				}
 			});
 			$(tabId).load(targetUrl);
@@ -104,34 +88,22 @@ var Tabs = new Class({
 		}		
 	},
 
-	loadMobileTab: function(tab, tabContainer){
-		tab.getParent().getParent().getElements('.mobileTabContent').dispose();
-		var tabContent = tabContainer.clone().addClass('mobileTabContent');
-		if (tab.getSiblings('.mobileTabContent').length == 0){
-			tabContent.inject(tab, 'after');
-		}
-		$(document.body).fireEvent('ajaxUpdate', tabContent);
-	},
-	
 	setMobileTabs: function(tabMenu){
-		this.loadTab(tabMenu.getElement('.active'));
-		$$('.tabContent, .pillTabContent').getChildren().each(function(children){
-			children.each(function(child){
-				if (child.hasClass('active') == true){
-					child.removeClass('active').addClass('activeMobile');
-				}
-			});
+		var tabs = tabMenu.getChildren('li');
+		var tabContainer = tabMenu.getNext('.tabContent, .pillTabContent');
+		var contents = tabContainer.getChildren();
+		contents.each(function(content, index){
+			content.addClass('mobileTabContent').inject(tabs[index]);
 		});
+		tabContainer.empty();
 	},
 	
-	unsetMobileTabs: function(){
-		$$('.tabContent, .pillTabContent').getChildren().each(function(children){
-			children.each(function(child){
-				if (child.hasClass('activeMobile')){
-					child.removeClass('activeMobile').addClass('active');
-				}
-			});
+	unsetMobileTabs: function(tabMenu){
+		var contents = tabMenu.getElements('.mobileTabContent');
+		var tabContainer = tabMenu.getNext('.tabContent, .pillTabContent');
+		contents.each(function(content){
+			content.removeClass('.mobileTabContent').inject(tabContainer);
 		});
-		$$('.mobileTabContent').dispose();
+		tabMenu.getElements('.mobileTabContent').dispose();
 	}
 });
