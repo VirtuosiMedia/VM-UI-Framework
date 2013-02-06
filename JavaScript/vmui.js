@@ -16,7 +16,7 @@ var VMUI = new Class({
 		         {name:'Button', source:'Widgets/Button.js', selectors:'[class^=button][data-state]'},
 		         {name:'CheckboxReplace', source:'Form/Replace/Checkbox.js', selectors:'input[type=checkbox]'},
 		         {name:'RadioReplace', source:'Form/Replace/Radio.js', selectors:'input[type=radio]'},
-		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select'},
+		         {name:'SelectReplace', source:'Form/Replace/Select.js', selectors:'select:not([multiple])'},
 		         {name:'Dropdown', source:'Navigation/Dropdown.js', selectors:'.dropdown, .megaDropdown'},
 		         {name:'Lighter', source:'Lighter/Lighter.js', selectors:'pre'},
 		         {name:'Modal', source:'Layout/Modal.js', selectors:'.modalTrigger'},
