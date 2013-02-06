@@ -157,4 +157,6 @@
 	}
 	.tabContent > div, .pillTabContent > div {display: none;}
 	.tabs iframe, .tabsVertical iframe, .pillTabs iframe, .pillTabsVertical iframe {width: 98.5%;}
+	.mobileTabContent {display: none;}
+	.mobileTabContent.active {display: block;}
 }
