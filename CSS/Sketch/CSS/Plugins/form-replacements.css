@@ -14,7 +14,7 @@
 	bottom: -0.15em;
 	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
 	box-shadow: inset 2px 2px 3px #E9E9E9;	
-	display: inline-block;
+	display: inline-block !important;
 	height: 0.8em;
 	position: relative;
 	width: 0.8em;
@@ -49,6 +49,7 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	float:left;
 	height: 2.2em;
 	line-height: 2.2em;
+	margin-bottom: 1.75em;
 	padding: 0 0.5em 0 0em;
 	text-indent: 0.5em;
 	width:auto; 
