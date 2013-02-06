@@ -28,9 +28,11 @@ var Tabs = new Class({
 	createTabMenu: function(tabMenu, selectors){
 		var trigger = (tabMenu.hasData('trigger')) ? tabMenu.getData('trigger') : 'click';
 		var history = (tabMenu.hasData('history')) ? tabMenu.getData('history') : false;
+		var delegators = [];
+		selectors.each(function(item){ delegators.push('.' + item.get('class') + '>li>a');});
 		var self = this;
 
-		tabMenu.addEvent(trigger+':relay(li a)', function(e){
+		tabMenu.addEvent(trigger+':relay(' + delegators.join(', ') + ')', function(e){
 			if (!history) { e.stop(); }
 			this.getParent('ul').getChildren('li a').removeClass('active');
 			this.set('class', 'active');
