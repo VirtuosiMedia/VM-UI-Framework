@@ -13,7 +13,7 @@ var CheckboxReplace = new Class({
 	Implements: [Events, Options],
 
 	options: {
-		activeClass: 'active',
+		activeClass: 'focused',
 		checkedClass: 'checked',
 		uncheckedClass: 'unchecked',
 		cloneClasses: false
@@ -32,18 +32,18 @@ var CheckboxReplace = new Class({
 	replaceCheckboxes: function(){
 		var self = this;
 		Array.each(this.checkboxes, function(box){
-			var replaceId = (box.get('id')) ? box.get('id')+'Replace' : box.get('name')+'Replace';
+			var replaceId = (box.get('id')) ? box.get('id')+'ReplaceId' : box.get('name')+'ReplaceId';
 			var replaceClass = (box.checked) ? self.options.checkedClass : self.options.uncheckedClass;
 			replaceClass = (self.options.cloneClasses) ? replaceClass+' '+box.get('class') : replaceClass;
 			var replacement = new Element('a', {
-				'id':replaceId,
-				'class':replaceClass + ' checkboxReplace',
-				'name':box.get('name'),
-				'tabindex':box.get('tabindex'),
+				'data-id': replaceId,
+				'class': replaceClass + ' checkboxReplace ' + replaceId,
+				'name': box.get('name'),
+				'tabindex': box.get('tabindex'),
 				events: {
 					'click': function(){ 
 						if (box.getParent('label')){
-							$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+							$$('.'+replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 						} else {
 							box.checked = (!box.checked);
 						}
@@ -65,9 +65,12 @@ var CheckboxReplace = new Class({
 						}
 					}
 				}
-			}).inject(box, 'after');
+			});
+			if (!box.getNext('a.checkboxReplace')){ //Prevents duplication
+				replacement.inject(box, 'after');
+			} 			
 			box.addEvent('change', function(e){
-				$(replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+				$$('.'+replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 			}).setStyle('display', 'none');
 			$$('label[for=' + box.get('name') + ']').addEvent('click', function(){
 				if (box.checked) {

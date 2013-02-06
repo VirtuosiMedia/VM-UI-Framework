@@ -66,10 +66,10 @@ var SelectReplace = new Class({
 		var display = new Element('span', {'class':this.options.displayClass, 'html':select.getSelected()[0].get('text')});
 		var trigger = new Element('span', {'class':this.options.triggerClass, 'html':self.options.triggerInactiveHtml});
 		this.triggers[index] = new Element('a', {
-			'id':replaceId,
+			'id': replaceId,
 			'class': self.options.containerClass,
-			'name':select.get('name'),
-			'tabindex':select.get('tabindex'),
+			'name': select.get('name'),
+			'tabindex': select.get('tabindex'),
 			events: {
 				'click': function(){
 					(self.lists[index].getStyle('display') == 'block') ? self.collapseList(index) :	self.expandList(index);
@@ -83,11 +83,13 @@ var SelectReplace = new Class({
 					select.fireEvent('blur');
 				}
 			}
-		}).adopt(display, trigger).inject(select, 'after');
+		}).adopt(display, trigger);
+		if ((!select.getNext())||(select.getNext().getNext().get('name') != select.get('name'))){ //Prevents duplication
+			this.triggers[index].inject(select, 'after');
+		}		
 	},
 	
 	/**
-	 * @todo - Rework this method
 	 * @param array - listOptions - An array of options to append to the current options in the dropdown list
 	 */
 	append: function(listOptions){
@@ -97,7 +99,6 @@ var SelectReplace = new Class({
 	},
 
 	/**
-	 * @todo - Rework this method
 	 * @param array - listOptions - An array of options to remove from the current options in the dropdown list
 	 */
 	remove: function(listOptions){
@@ -110,7 +111,6 @@ var SelectReplace = new Class({
 	},	
 	
 	/**
-	 * @todo - Rework this method
 	 * @param array - listOptions - An array of options to replace the current options in the dropdown list
 	 */
 	replace: function(listOptions){
@@ -121,8 +121,10 @@ var SelectReplace = new Class({
 	
 	createList: function(select, index){
 		var self = this;
+		var name = (select.get('id')) ? select.get('id')+'ReplaceList' : select.get('name')+'ReplaceList';
 		
 		this.lists[index] = new Element('ul', {
+			"data-name": name,
 			'class': self.options.listClass,
 			styles: {
 				'max-height': 300,
@@ -130,8 +132,11 @@ var SelectReplace = new Class({
 				'position': 'absolute',
 				'z-index': 1000
 			}
-		}).inject(select, 'after');
-		
+		});
+		if (select.getNext().getData('name') !== this.lists[index].getData('name')){ //Prevents duplication
+			this.lists[index].inject(select, 'after');
+		}		
+
 		this.createListOptions(index);
 		this.triggers[index].getElement('.'+this.options.displayClass).setStyle('min-width', this.lists[index].getCoordinates().width);
 		this.lists[index].setStyle('display', 'none');

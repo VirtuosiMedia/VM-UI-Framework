@@ -36,10 +36,10 @@ var RadioReplace = new Class({
 			var replaceClass = (box.checked) ? self.options.checkedClass : self.options.uncheckedClass;
 			replaceClass = (self.options.cloneClasses) ? replaceClass+' '+box.get('class') : replaceClass;
 			var replacement = new Element('a', {
-				'id':replaceId,
-				'class':replaceClass + ' radioReplace',
-				'name':box.get('name'),
-				'tabindex':box.get('tabindex'),
+				'id': replaceId,
+				'class': replaceClass + ' radioReplace',
+				'data-name': box.get('name'),
+				'tabindex': box.get('tabindex'),
 				events: {
 					'click': function(){ 
 						box.checked = (box.checked) ? true : false;
@@ -64,7 +64,10 @@ var RadioReplace = new Class({
 						}
 					}
 				}
-			}).inject(box, 'after');
+			});
+			if (!box.getNext('a.radioReplace')){ //Prevents duplication
+				replacement.inject(box, 'after');
+			}
 			box.addEvent('change', function(e){
 				$$('input[name='+this.get('name')+'] + .checked').set('class', self.options.uncheckedClass + ' radioReplace');
 				$$('input[value='+this.get('value')+'] + .unchecked').set('class', self.options.checkedClass + ' radioReplace');
