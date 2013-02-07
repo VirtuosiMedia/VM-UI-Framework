@@ -59,7 +59,7 @@ tbody tr:hover {background: #F2F2F2;}
 .borderedTable tbody tr td:last-child, .stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {
 	border-right: none;
 }
-.borderedTable tbody tr:last-child td, .borderedTable tbody tr:last-child:hover td {border-bottom: none;}
+.borderedTable tbody tr:last-child td, .borderedTable tbody tr:last-child:hover td {border-bottom: none !important;}
 
 /**
  * Cell Shading
@@ -124,8 +124,11 @@ table tbody tr td.errorCell:hover {background: #FFCECE;}
 	.columnTable.stripedTable tbody td:nth-child(2n):hover {background: #CCC;}
 	.columnTable.borderedTable td, .columnTable.borderedTable tbody tr:last-child td, 
 	.columnTable.borderedTable tbody tr:last-child:hover td {border-bottom: 1px solid #999;}
-	.columnTable tbody tr td:last-child, .columnTable tbody tr:hover td:last-child {
-		border-bottom: 0.15em solid #222;
+	.columnTable tbody tr td:last-child, .columnTable tbody tr:hover td:last-child, 
+	.columnTable tbody tr td:last-child:hover, .columnTable tbody tr:hover td:last-child:hover {
+		border-bottom: 0.15em solid #222 !important;
 	}
-	.columnTable tbody tr:last-child td:last-child {border-bottom: none;}
+	.columnTable tbody tr:last-child td:last-child, .columnTable tbody tr:last-child td:last-child:hover {
+		border-bottom: none !important;
+	}
 }
