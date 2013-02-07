@@ -54,15 +54,30 @@
 					<li>Current Plugin</li>
 				</ul>
 				<h1 class="pageTitle">Modal Windows</h1>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#overview">Overview</a>
+							<li><a href="#usage">Usage</a>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#options">Options</a>
+							<li><a href="#events">Events</a>
+						</ul>
+					</div>					
+				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3 id="description">Description</h3>
+				<h3 id="overview">Overview</h3>
 				<p>A modal window can load content into a popup dialog. The content can be loaded from on the page or 
 					from an external page and it can be either static or dynamic. The modal will automatically be 
 					centered on the page and can be dismissed clicking outside of it or with a close trigger.</p>
-				<h3>General Use</h3>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="usage">Usage</h3>
 				<p>Each modal window can load content in three ways: from inline content, via AJAX on the same site, or 
 					in an iframe from an external site. Here's how the trigger works:</p>
 <pre class="html">
@@ -138,8 +153,45 @@
 				<p>The above results in the following modal: 
 					<a class="buttonInfo modalTrigger" href="http://uiframework.com/">Iframe Modal</a></p>
 				<h6>Styling Iframe Content</h6>
-				<p>The iframe modal defaults to a width of 80% of the current window and a height of 500px.</p>				
-				<h3>Modal Events</h3>
+				<p>The iframe modal defaults to a width of 80% of the current window and a height of 500px.</p>
+				<p><a href="#top">Return to top</a></p>						
+				<h3 id="options">Options</h3>
+				<p>Options to customize the modal can be passed through data attributes in the modal trigger.</p>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Modal Options</caption>
+					<thead>
+						<tr class="row">
+							<th class="col3">Option</th>
+							<th class="col5">Description</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Option"><code>data-target</code></td>
+							<td data-column="Description">The source of the modal content. This will overwrite the <code>href</code> attribute in 
+								links and is mandatory for all triggers that are not a link.</td>
+							<td data-column="Values">A URL or an id of an HTML element, of the format <code>#contentId</code></td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-event</code></td>
+							<td data-column="Description">Defines the trigger event for the modal.</td>
+							<td data-column="Values"><code>click</code>, <code>hover</code>, etc. - defaults to <code>click</code></td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-hideOverlay</code></td>
+							<td data-column="Description">Whether or not an overlay should be hidden.</td>
+							<td data-column="Values"><code>true</code> or <code>false</code> - defaults false</td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-noFx</code></td>
+							<td data-column="Description">Whether or not the modal should be animated when triggered.</td>
+							<td data-column="Values"><code>true</code> or <code>false</code> - defaults false</td>
+						</tr>												
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="events">Events</h3>
 				<div class="row">
 					<div class="col6">
 						<p>In some modal situations, like saving a modal form, you will want to interact with the modal 
@@ -194,41 +246,8 @@ $('eventDemo').addEvents({
 		$('demoTarget').appendText('Modal closed...').highlight();
 	}
 });
-</pre>													
-				<h3>Options</h3>
-				<p>Options to customize the modal can be passed through data attributes in the modal trigger.</p>
-				<table>
-					<thead>
-						<tr class="row">
-							<th class="col3">Data Attribute</th>
-							<th class="col5">Description</th>
-							<th>Values</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>data-target</code></td>
-							<td>The source of the modal content. This will overwrite the <code>href</code> attribute in 
-								links and is mandatory for all triggers that are not a link.</td>
-							<td>A URL or an id of an HTML element, of the format <code>#contentId</code></td>
-						</tr>
-						<tr>
-							<td><code>data-event</code></td>
-							<td>Defines the trigger event for the modal.</td>
-							<td><code>click</code>, <code>hover</code>, etc. - defaults to <code>click</code></td>
-						</tr>
-						<tr>
-							<td><code>data-hideOverlay</code></td>
-							<td>Whether or not an overlay should be hidden.</td>
-							<td><code>true</code> or <code>false</code> - defaults false</td>
-						</tr>
-						<tr>
-							<td><code>data-noFx</code></td>
-							<td>Whether or not the modal should be animated when triggered.</td>
-							<td><code>true</code> or <code>false</code> - defaults false</td>
-						</tr>												
-					</tbody>
-				</table>
+</pre>			
+				<p><a href="#top">Return to top</a></p>												
 			</div>
 		</div>
 		<div class="row">

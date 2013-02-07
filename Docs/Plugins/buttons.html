@@ -46,18 +46,19 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3>Overview</h3>
+				<h3 id="overview">Overview</h3>
 				<p>Button states allow you to make a button more dynamic than just a link. Buttons with state can be 
 					active or inactive and enabled or disabled. You can add your own custom functionality to a button
 					depending on the state.</p>
-				<h3>Usage</h3>
+				<h3 id="usage">Usage</h3>
 				<p>To differentiate dynamic buttons from regular link buttons, add the date attribute 
 					<code>data-state</code> to the button. Most buttons won't require <code>data-state</code> to have 
 					a value as the buttons are inactive and enabled by default. If you would like to make a button 
 					active be default, just give <code>data-state</code> attribute a value of <code>active</code>. If 
 					you need to disable it by default, use the value <code>disabled</code>.</p>
-				<h3>Options</h3>
-				<table>
+				<h3 id="options">Options</h3>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Button Options</caption>
 					<thead>
 						<tr>
 							<th class="col2">Option</th>
@@ -69,19 +70,20 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-state</code></td>
-							<td>The state of the button.</td>
-							<td><em>required</em></td>
-							<td><em>none</em></td>
-							<td><em>active</em>|<em>disabled</em></td>
+							<td data-column="Option"><code>data-state</code></td>
+							<td data-column="Description">The state of the button.</td>
+							<td data-column="Required"><em>required</em></td>
+							<td data-column="Default"><em>none</em></td>
+							<td data-column="Values"><em>active</em>|<em>disabled</em></td>
 						</tr>																																															
 					</tbody>
 				</table>					
-				<h3>Events</h3>
+				<h3 id="events">Events</h3>
 				<p>In order to add custom functionality to a button, add MooTools'  
 					<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent">event listeners</a> 
 					to your button using one of the custom events below:</p>				
-				<table>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Button Events</caption>
 					<thead>
 						<tr>
 							<th class="col2">Event</th>
@@ -90,30 +92,33 @@
 					</thead>
 					<tbody>				
 						<tr>
-							<td><code>activated</code></td>
-							<td>The <em>activated</em> event is fired for the button when it is clicked while in an 
-								inactive state.</td>
+							<td data-column="Event"><code>activated</code></td>
+							<td data-column="Description">The <em>activated</em> event is fired for the button when it 
+								is clicked while in an inactive state.</td>
 						</tr>
 						<tr>
-							<td><code>deactivated</code></td>
-							<td>The <em>deactivated</em> event is fired for the button when it is clicked while in an 
-								active state.</td>
+							<td data-column="Event"><code>deactivated</code></td>
+							<td data-column="Description">The <em>deactivated</em> event is fired for the button when it 
+								is clicked while in an active state.</td>
 						</tr>
 						<tr>
-							<td><code>activate</code></td>
-							<td>Fire the <em>activate</em> event to activate the button.</td>
+							<td data-column="Event"><code>activate</code></td>
+							<td data-column="Description">Fire the <em>activate</em> event to activate the button.</td>
 						</tr>
 						<tr>
-							<td><code>deactivate</code></td>
-							<td>Fire the <em>deactivate</em> event to deactivate the button.</td>
+							<td data-column="Event"><code>deactivate</code></td>
+							<td data-column="Description">Fire the <em>deactivate</em> event to deactivate the 
+								button.</td>
 						</tr>												
 						<tr>
-							<td><code>disable</code></td>
-							<td>Fire the <em>disable</em> event to disable the button for the user.</td>
+							<td data-column="Event"><code>disable</code></td>
+							<td data-column="Description">Fire the <em>disable</em> event to disable the button for the 
+								user.</td>
 						</tr>
 						<tr>
-							<td><code>enable</code></td>
-							<td>Fire the <em>enable</em> event to enable the button for the user.</td>
+							<td data-column="Event"><code>enable</code></td>
+							<td data-column="Description">Fire the <em>enable</em> event to enable the button for the 
+								user.</td>
 						</tr>												
 					</tbody>
 				</table>		
@@ -121,7 +126,7 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3>Demos</h3>
+				<h3 id="demos">Demos</h3>
 				<h6>A Single Button</h6>
 				<p class="skipBottom">This button can be toggled active or inactive and it can be enabled or disabled 
 					via the checkbox. If it is disabled, it will remember its previous state when re-enabled.</p>

@@ -46,7 +46,7 @@
 		</div>
 		<div class="row">
 			<div class="col5">
-				<h3>Overview</h3>
+				<h3 id="overview">Overview</h3>
 				<p>Many social media sites offer sharing widgets that websites can embed on their webpages. However, 
 					embedding JavaScript from multiple 3rd-party sites can cause a number of issues.</p>
 				<h6>Issues With 3rd-Party Widgets</h6>
@@ -72,7 +72,7 @@
 					does not yet have an offical API.</p>
 			</div>
 			<div class="col7">
-				<h3>Usage</h3>
+				<h3 id="usage">Usage</h3>
 				<p>Default usage of the Social Share plugin is extremely simple: just add the class 
 					<code>socialShare</code> to any <code>&lt;span&gt;</code> element. By default, a horizontal button 
 					list with buttons and share counts for Facebook, Twitter, LinkedIn, Reddit, and Pinterest will be 
@@ -81,46 +81,47 @@
 <pre class="html">
 &lt;span class="socialShare"&gt;&lt;/span&gt;
 </pre>
-				<h6>Options</h6>
+				<h3 id="options">Options</h3>
 				<p>Social Share has multiple options that allow you to customize the number and order of the social 
 					networks used, whether or not to show the share count, the layout of the buttons, and what style 
 					of button should be displayed.</p>
 				<p>All options are passed in as an HTML5 <code>data-</code> attribute and none of them are required.</p>
-				<table>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Social Share Options</caption>
 					<thead>
-						<tr><th>Data Attribute</th><th class="col4">Description</th></tr>
+						<tr><th>Option</th><th class="col4">Description</th></tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-url</code></td>
-							<td>The URL of the page to be shared and for which counts should be retrieved. Defaults to 
-								the current page.</td>
+							<td data-column="Option"><code>data-url</code></td>
+							<td data-column="Description">The URL of the page to be shared and for which counts should 
+								be retrieved. Defaults to the current page.</td>
 						</tr>
 						<tr>
-							<td><code>data-text</code></td>
-							<td>The text to be auto-filled on network submissions. Defaults to the current page 
-								title.</td>
+							<td data-column="Option"><code>data-text</code></td>
+							<td data-column="Description">The text to be auto-filled on network submissions. Defaults 
+								to the current page	title.</td>
 						</tr>						
 						<tr>
-							<td><code>data-networks</code></td>
-							<td>An comma-separated ordered list of networks to be displayed. Options include: 
-								<em>facebook</em>, <em>twitter</em>, <em>linkedin</em>, <em>reddit</em>, and 
-								<em>pinterest</em>. Defaults to all networks.</td>
+							<td data-column="Option"><code>data-networks</code></td>
+							<td data-column="Description">An comma-separated ordered list of networks to be displayed. 
+								Options include: <em>facebook</em>, <em>twitter</em>, <em>linkedin</em>, 
+								<em>reddit</em>, and <em>pinterest</em>. Defaults to all networks.</td>
 						</tr>
 						<tr>
-							<td><code>data-showCount</code></td>
-							<td>A boolean value on whether or not to show the share count. Defaults to 
-								<em>true</em>.</td>
+							<td data-column="Option"><code>data-showCount</code></td>
+							<td data-column="Description">A boolean value on whether or not to show the share count. 
+								Defaults to	<em>true</em>.</td>
 						</tr>
 						<tr>
-							<td><code>data-countSize</code></td>
-							<td>Determines if the count widget should be small and inline or large. Options are 
-								<em>small</em> and <em>large</em>. Defaults to <em>small</em>.</td>
+							<td data-column="Option"><code>data-countSize</code></td>
+							<td data-column="Description">Determines if the count widget should be small and inline or 
+								large. Options are <em>small</em> and <em>large</em>. Defaults to <em>small</em>.</td>
 						</tr>
 						<tr>
-							<td><code>data-orientation</code></td>
-							<td>Controls the layout of the widget list. Options are <em>horizontal</em> and 
-								<em>vertical</em>. Defaults to <em>horizontal</em>.</td>
+							<td data-column="Option"><code>data-orientation</code></td>
+							<td data-column="Description">Controls the layout of the widget list. Options are 
+								<em>horizontal</em> and	<em>vertical</em>. Defaults to <em>horizontal</em>.</td>
 						</tr>																		
 					</tbody>
 				</table>
@@ -128,7 +129,7 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3>Examples</h3>
+				<h3 id="demos">Demos</h3>
 				<p>Below are demos of the different configurations that can be used with the Social Share plugin. 
 					Example code is provided for each demo.</p> 
 			</div>

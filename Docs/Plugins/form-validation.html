@@ -48,7 +48,7 @@
 						<ul>
 							<li><a href="#overview">Overview</a></li>
 							<li><a href="#usage">Usage</a></li>
-							<li><a href="#validators">Validators Reference</a></li>
+							<li><a href="#validators">Validators</a></li>
 						</ul>
 					</div>
 					<div class="col9">
@@ -131,12 +131,14 @@
 &lt;label for="range"&gt;Required Input, Range: 3,8&lt;/label&gt;
 &lt;input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/&gt;									
 </pre> 
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>		
 		<div class="row">
 			<div class="col12">
 				<h3 id="validators">Validators</h3>
-				<table>
+				<table class="columnTable stripedTable borderedTable">
+					<caption>Form Validators</caption>
 					<thead>
 						<tr>
 							<th class="col2">Validator Name</th>
@@ -146,125 +148,127 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>required</code></td>
-							<td>Makes the field required.</td>
-							<td>None</td>
+							<td data-column="Name"><code>required</code></td>
+							<td data-column="Description">Makes the field required.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>regex</code></td>
-							<td>A custom regular expression to be evaluted. <span class="infoMarker">Note</span> If you 
+							<td data-column="Name"><code>regex</code></td>
+							<td data-column="Description">A custom regular expression to be evaluted. <span class="infoMarker">Note</span> If you 
 								use <code>regex</code>, be sure to pass in a custom error message as the default 
 								message won't be very helpful to users.</td>
-							<td><em>regex string</em> <code>regex</code></td>
+							<td data-column="Parameters"><em>regex string</em> <code>regex</code></td>
 						</tr>						
 						<tr>
-							<td><code>minLength</code></td>
-							<td>Enforces a minimum length on the input value.</td>
-							<td><em>integer</em> <code>minValue</code></td>
+							<td data-column="Name"><code>minLength</code></td>
+							<td data-column="Description">Enforces a minimum length on the input value.</td>
+							<td data-column="Parameters"><em>integer</em> <code>minValue</code></td>
 						</tr>
 						<tr>
-							<td><code>maxLength</code></td>
-							<td>Enforces a maximum length on the input value.</td>
-							<td><em>integer</em> <code>maxValue</code></td>
+							<td data-column="Name"><code>maxLength</code></td>
+							<td data-column="Description">Enforces a maximum length on the input value.</td>
+							<td data-column="Parameters"><em>integer</em> <code>maxValue</code></td>
 						</tr>
 						<tr>
-							<td><code>range</code></td>
-							<td>Enforces a both a minimum and a maximum length on the input value.</td>
-							<td><em>array</em> [<code>minValue</code>, <code>maxValue</code>]</td>
+							<td data-column="Name"><code>range</code></td>
+							<td data-column="Description">Enforces a both a minimum and a maximum length on the input value.</td>
+							<td data-column="Parameters"><em>array</em> [<code>minValue</code>, <code>maxValue</code>]</td>
 						</tr>
 						<tr>
-							<td><code>matches</code></td>
-							<td>The field value must match the value of the field name passed in as a parameter. Useful 
+							<td data-column="Name"><code>matches</code></td>
+							<td data-column="Description">The field value must match the value of the field name passed in as a parameter. Useful 
 								for password matching fields.</td>
-							<td><em>string</em> <code>matchName</code></td>
+							<td data-column="Parameters"><em>string</em> <code>matchName</code></td>
 						</tr>
 						<tr>
-							<td><code>differs</code></td>
-							<td>The opposite of <code>matches</code>. Ensures two fields do not have the same value.</td>
-							<td><em>string</em> <code>differName</code></td>
+							<td data-column="Name"><code>differs</code></td>
+							<td data-column="Description">The opposite of <code>matches</code>. Ensures two fields do not have the same value.</td>
+							<td data-column="Parameters"><em>string</em> <code>differName</code></td>
 						</tr>
 						<tr>
-							<td><code>includes</code></td>
-							<td>The field must contain one of the passed in values.</td>
-							<td><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
+							<td data-column="Name"><code>includes</code></td>
+							<td data-column="Description">The field must contain one of the passed in values.</td>
+							<td data-column="Parameters"><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
 						</tr>
 						<tr>
-							<td><code>excludes</code></td>
-							<td>The field cannot contain one of the passed in values.</td>
-							<td><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
+							<td data-column="Name"><code>excludes</code></td>
+							<td data-column="Description">The field cannot contain one of the passed in values.</td>
+							<td data-column="Parameters"><em>array</em> [<code>value1</code>, <code>value2</code>, ...]</td>
 						</tr>
 						<tr>
-							<td><code>alpha</code></td>
-							<td>Only alphabetic character are accepted.</td>
-							<td>None</td>
+							<td data-column="Name"><code>alpha</code></td>
+							<td data-column="Description">Only alphabetic character are accepted.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>numeric</code></td>
-							<td>Only numeric character are accepted.</td>
-							<td>None</td>
+							<td data-column="Name"><code>numeric</code></td>
+							<td data-column="Description">Only numeric character are accepted.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>alphanumeric</code></td>
-							<td>Only alphanumeric character are accepted.</td>
-							<td>None</td>
+							<td data-column="Name"><code>alphanumeric</code></td>
+							<td data-column="Description">Only alphanumeric character are accepted.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>email</code></td>
-							<td>Requires a valid email address.</td>
-							<td>None</td>
+							<td data-column="Name"><code>email</code></td>
+							<td data-column="Description">Requires a valid email address.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>url</code></td>
-							<td>Requires a valid URL.</td>
-							<td>None</td>
+							<td data-column="Name"><code>url</code></td>
+							<td data-column="Description">Requires a valid URL.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>password</code></td>
-							<td>Password must contain one lowercase letter, one uppercase letter, one number, and be at 
+							<td data-column="Name"><code>password</code></td>
+							<td data-column="Description">Password must contain one lowercase letter, one uppercase letter, one number, and be at 
 								least 6 characters long.</td>
-							<td>None</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>usZip</code></td>
-							<td>Validates US ZIP codes.</td>
-							<td>None</td>
+							<td data-column="Name"><code>usZip</code></td>
+							<td data-column="Description">Validates US ZIP codes.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>canadaPostal</code></td>
-							<td>Validates Canadian postal codes.</td>
-							<td>None</td>
+							<td data-column="Name"><code>canadaPostal</code></td>
+							<td data-column="Description">Validates Canadian postal codes.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>credit</code></td>
-							<td>Validates all major credit cards.</td>
-							<td>None</td>
+							<td data-column="Name"><code>credit</code></td>
+							<td data-column="Description">Validates all major credit cards.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>dateMDY</code></td>
-							<td>Tests a date for a M/D/Y format.</td>
-							<td>None</td>
+							<td data-column="Name"><code>dateMDY</code></td>
+							<td data-column="Description">Tests a date for a M/D/Y format.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>dateYMD</code></td>
-							<td>Tests a date for a Y/M/D format.</td>
-							<td>None</td>
+							<td data-column="Name"><code>dateYMD</code></td>
+							<td data-column="Description">Tests a date for a Y/M/D format.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>imageFile</code></td>
-							<td>For use with file inputs. Tests to see if the selected file is an image.</td>
-							<td>None</td>
+							<td data-column="Name"><code>imageFile</code></td>
+							<td data-column="Description">For use with file inputs. Tests to see if the selected file is an image.</td>
+							<td data-column="Parameters">None</td>
 						</tr>
 						<tr>
-							<td><code>phone</code></td>
-							<td>Validates North American phone number formats.</td>
-							<td>None</td>
+							<td data-column="Name"><code>phone</code></td>
+							<td data-column="Description">Validates North American phone number formats.</td>
+							<td data-column="Parameters">None</td>
 						</tr>																																																																																																																																			
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>		
 		<div class="row">
 			<div class="col12">
+				<h1 id="demos" class="title">Demos</h1>
 				<h3 id="required">Required Elements</h3>
 				<ul class="tabsVertical">
 					<li><a href="#requiredDemo" class="active">Demo</a></li>
@@ -322,6 +326,7 @@
 </pre>					
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -351,6 +356,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -388,6 +394,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>		
 		<div class="row">
@@ -425,6 +432,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>		
 		<div class="row">
@@ -458,6 +466,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -495,6 +504,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -540,6 +550,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -573,6 +584,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -606,6 +618,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">
@@ -635,6 +648,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">

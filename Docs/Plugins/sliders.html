@@ -61,7 +61,8 @@
 			<div class="col8">
 				<h3>Options</h3>
 				<p>The following options are all optional and can be added via data-attributes to the slider input.</p>
-				<table>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Slider Options</caption>
 					<thead>
 						<tr>
 							<th class="col2">Option</th>
@@ -72,30 +73,30 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-range</code></td>
-							<td>The comma-separated min and max for a numeric slider. Do not use for non-numeric 
+							<td data-column="Option"><code>data-range</code></td>
+							<td  data-column="Description">The comma-separated min and max for a numeric slider. Do not use for non-numeric 
 								sliders.</td>
-							<td><em>0, 100</em></td>
-							<td><em>min</em>, <em>max</em></td>
+							<td  data-column="Default"><em>0, 100</em></td>
+							<td  data-column="Values"><em>min</em>, <em>max</em></td>
 						</tr>
 						<tr>
-							<td><code>data-start</code></td>
-							<td>The starting position of the slider knob. Integers for numeric sliders, the exact text 
+							<td  data-column="Option"><code>data-start</code></td>
+							<td  data-column="Description">The starting position of the slider knob. Integers for numeric sliders, the exact text 
 								for text sliders.</td>
-							<td><em>0</em></td>
-							<td><em>integer</em> | <em>string</em></td>
+							<td  data-column="Default"><em>0</em></td>
+							<td  data-column="Values"><em>integer</em> | <em>string</em></td>
 						</tr>
 						<tr>
-							<td><code>data-increment</code></td>
-							<td>The size of each step in the slider.</td>
-							<td><em>1</em></td>
-							<td><em>integer</em> </td>
+							<td  data-column="Option"><code>data-increment</code></td>
+							<td  data-column="Description">The size of each step in the slider.</td>
+							<td  data-column="Default"><em>1</em></td>
+							<td  data-column="Values"><em>integer</em> </td>
 						</tr>
 						<tr>
-							<td><code>data-options</code></td>
-							<td>A list of comma-separated text values for the slider.</td>
-							<td><em>none</em></td>
-							<td><em>option1</em>, <em>option2</em>, ...</td>
+							<td  data-column="Option"><code>data-options</code></td>
+							<td  data-column="Description">A list of comma-separated text values for the slider.</td>
+							<td  data-column="Default"><em>none</em></td>
+							<td  data-column="Values"><em>option1</em>, <em>option2</em>, ...</td>
 						</tr>																		
 					</tbody>
 				</table>

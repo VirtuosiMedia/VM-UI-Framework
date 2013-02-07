@@ -10,7 +10,14 @@
 	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			var loader = new VMUI({relativePath:'../../JavaScript'});	
+			var loader = new VMUI({relativePath:'../../JavaScript'});
+			
+			//For the demo
+			$$('.pager').addEvent('change', function(){
+				var target = $('target');
+				target.set('text', 'New page has been loaded!').fade('show').highlight();
+				target.fade.delay(2000, target, 'out');
+			});			
 		});
 	</script>	
 </head>
@@ -42,16 +49,45 @@
 					<li>Current Plugin</li>
 				</ul>
 				<h1 class="pageTitle">Pager</h1>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#overview">Overview</a>
+							<li><a href="#usage">Usage</a>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#options">Options</a>
+							<li><a href="#events">Events</a>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#demo">Demo</a>
+						</ul>
+					</div>										
+				</div>				
 			</div>
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3>Overview</h3>
-
-				<h3>Usage</h3>
-
-				<h3>Options</h3>
-				<table>
+				<h3 id="overview">Overview</h3>
+				<p>The pager plugin creates paginated content and automatically adds the pagination links. The 
+					pagination links can be customized so that you can show as little or as much detail as needed.</p>
+				<p><a href="#top">Return to top</a></p>  
+				<h3 id="usage">Usage</h3>
+				<p>To use the pager plugin, you will need a parent container element with a class of <code>pager</code>. 
+					For each page that you'd like to include, create a child container with a class of 
+					<code>page</code>.</p>
+				<p>The level of detail for the pagination links is controlled with the <code>data-style</code> 
+					attribute, which is applied to the parent container element.</p>
+				<p>When a new page is loaded, the plugin will also trigger the <code>change</code> event, detailed 
+					below. Use this if, for example, you'd like to autoplay the next video or slide in a series.</p>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="options">Options</h3>
+				<table class="columnTable">
+					<caption>Pager Options</caption>
 					<thead>
 						<tr>
 							<th class="col2">Option</th>
@@ -63,15 +99,16 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-style</code></td>
-							<td>The style for the pagination widget.</td>
-							<td><em>optional</em></td>
-							<td><em>numeric</em></td>
-							<td><em>numeric</em>|<em>directional</em>|<em>partial</em>|<em>full</em></td>
+							<td data-column="Option"><code>data-style</code></td>
+							<td data-column="Description">The style for the pagination widget.</td>
+							<td data-column="Required"><em>optional</em></td>
+							<td data-column="Default"><em>numeric</em></td>
+							<td data-column="Values"><em>numeric</em> | <em>directional</em> | <em>partial</em> | <em>full</em></td>
 						</tr>																																															
 					</tbody>
-				</table>					
-				<h3>Events</h3>
+				</table>
+				<p><a href="#top">Return to top</a></p>					
+				<h3 id="events">Events</h3>
 				<p>If you want to tie in additional functionality when the content changes, add a MooTools  
 					<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent">event listener</a> 
 					to the page container:</p>				
@@ -89,12 +126,9 @@
 								revealed.</td>
 						</tr>												
 					</tbody>
-				</table>		
-			</div>
-		</div>
-		<div class="row">
-			<div class="col12">
-				<h3>Demo</h3>
+				</table>
+				<p><a href="#top">Return to top</a></p>		
+				<h3 id="demo">Demo</h3>
 				<div class="row">
 					<div class="col8">
 						<div class="pager" data-style="full">
@@ -163,6 +197,7 @@ $$('.pager').addEvent('change', function(){
 	target.fade.delay(2000, target, 'out');
 });
 </pre>
+				<p><a href="#top">Return to top</a></p>
 			</div>
 		</div>
 		<div class="row">

@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div class="col6">
-						<h6>Demos & Examples</h6>
+						<h6>Demos &amp; Examples</h6>
 						<div class="row skipBottom">
 							<div class="col3">
 								<ul>
@@ -76,12 +76,13 @@
 							<div class="col3">
 								<ul>
 									<li><a href="#thumb-gallery">Thumb Gallery</a></li>								
-									<li><a href="#zoomPan">Zoom & Pan Slideshow</a></li>
+									<li><a href="#zoomPan">Zoom &amp; Pan Slideshow</a></li>
 									<li><a href="#clean">Clean Carousel</a></li>
 								</ul>
 							</div>						
 						</div>
-					</div>				
+					</div>
+				</div>				
 			</div>
 		</div>
 		<div class="row">
@@ -90,6 +91,7 @@
 				<p>The carousel plugin can function as a rotating content widget, a slideshow, or a filmstrip gallery. 
 					It's fully responsive, can use images or HTML, and slides can even be loaded via AJAX. There are 7 
 					different slide transitions and there are multiple styles for controls.</p>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="usage">Usage</h3>
 				<div class="row skipBottom">
 					<div class="col6">
@@ -130,13 +132,15 @@
 </pre>					
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="carousel-options">Carousel Options</h3>
 				<p>The carousel options are data attributes that should be applied to the carousel container element 
 					with the <code>carousel</code> class.</p>
-				<table>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Carousel Options</caption>
 					<thead>
 						<tr>
-							<th class="col2">Option</th>
+							<th class="col3">Option</th>
 							<th>Description</th>
 							<th>Default</th>
 							<th>Values</th>
@@ -144,34 +148,36 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-autoplay</code></td>
-							<td>Whether or not the slides automatically play.</td>
-							<td><em>true</em></td>
-							<td><em>true</em> | <em>false</em></td>
+							<td data-column="Option"><code>data-autoplay</code></td>
+							<td data-column="Description">Whether or not the slides automatically play.</td>
+							<td data-column="Default"><em>true</em></td>
+							<td data-column="Values"><em>true</em> | <em>false</em></td>
 						</tr>
 						<tr>
-							<td><code>data-duration</code></td>
-							<td>The delay in milli-seconds between each slide change.</td>
-							<td><em>4000</em></td>
-							<td><em>integer</em></td>
+							<td data-column="Option"><code>data-duration</code></td>
+							<td data-column="Description">The delay in milli-seconds between each slide change.</td>
+							<td data-column="Default"><em>4000</em></td>
+							<td data-column="Values"><em>integer</em></td>
 						</tr>
 						<tr>
-							<td><code>data-transition</code></td>
-							<td>The type of transition between slides. Note that the <em>zoomPan</em> option will only 
+							<td data-column="Option"><code>data-transition</code></td>
+							<td data-column="Description">The type of transition between slides. Note that the <em>zoomPan</em> option will only 
 								work for image based slideshows.</td>
-							<td><em>standard</em></td>
-							<td><em>standard</em> | <em>fade</em> | <em>slideLeft</em> | <em>slideRight</em> | 
+							<td data-column="Default"><em>standard</em></td>
+							<td data-column="Values"><em>standard</em> | <em>fade</em> | <em>slideLeft</em> | <em>slideRight</em> | 
 								<em>slideTop</em> | <em>slideBottom</em> | <em>zoomPan</em></td>
 						</tr>												
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="slide-options">Slide Options</h3>
 				<p>The slide options are data attributes that should be applied to the slide <code>li</code> container 
 					element.</p>				
-				<table>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Slide Options</caption>
 					<thead>
 						<tr>
-							<th class="col2">Option</th>
+							<th class="col3">Option</th>
 							<th>Description</th>
 							<th>Default</th>
 							<th>Values</th>
@@ -179,14 +185,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-targetUrl</code></td>
-							<td>The URL with which the slide's content should be populated. Any current slide content 
+							<td data-column="Option"><code>data-targetUrl</code></td>
+							<td data-column="Description">The URL with which the slide's content should be populated. Any current slide content 
 								will be replaced with the AJAX content.</td>
-							<td><em>none</em></td>
-							<td><em>relative URL</em> (no iframe) | <em>full URL</em> (iframe)</td>
+							<td data-column="Default"><em>none</em></td>
+							<td data-column="Values"><em>relative URL</em> (no iframe) | <em>full URL</em> (iframe)</td>
 						</tr>												
 					</tbody>
 				</table>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="controls">Carousel Controls</h3>
 				<div class="row">
 					<div class="col6">
@@ -200,7 +207,8 @@
 							control.</p>						 
 					</div>
 					<div class="col6">
-						<table>
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Control Classes</caption>
 							<thead>
 								<tr>
 									<th class="col2">Control Class</th>
@@ -209,34 +217,35 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><code>next</code></td>
-									<td>Advances the carousel to the next slide.</td>
+									<td data-column="Class"><code>next</code></td>
+									<td data-column="Description">Advances the carousel to the next slide.</td>
 								</tr>
 								<tr>
-									<td><code>previous</code></td>
-									<td>Reverses the carousel to the previous slide.</td>
+									<td data-column="Class"><code>previous</code></td>
+									<td data-column="Description">Reverses the carousel to the previous slide.</td>
 								</tr>
 								<tr>
-									<td><code>play</code></td>
-									<td>Initiates autoplay. If autoplay is already enabled, it will automatically 
-										change to <code>pause</code>.</td>
+									<td data-column="Class"><code>play</code></td>
+									<td data-column="Description">Initiates autoplay. If autoplay is already enabled, 
+										it will automatically change to <code>pause</code>.</td>
 								</tr>										
 								<tr>
-									<td><code>pause</code></td>
-									<td>Stops autoplay. If autoplay is not enabled, it will automatically change to 
-										<code>play</code>.</td>
+									<td data-column="Class"><code>pause</code></td>
+									<td data-column="Description">Stops autoplay. If autoplay is not enabled, it will 
+										automatically change to <code>play</code>.</td>
 								</tr>
 								<tr>
-									<td><code>first</code></td>
-									<td>Sets the carousel to the first slide.</td>
+									<td data-column="Class"><code>first</code></td>
+									<td data-column="Description">Sets the carousel to the first slide.</td>
 								</tr>													
 								<tr>
-									<td><code>last</code></td>
-									<td>Sets the carousel to the last slide.</td>
+									<td data-column="Class"><code>last</code></td>
+									<td data-column="Description">Sets the carousel to the last slide.</td>
 								</tr>
 								<tr>
-									<td><code>counter</code></td>
-									<td>Displays the current slide number in relation to the number of slides.</td>
+									<td data-column="Class"><code>counter</code></td>
+									<td data-column="Description">Displays the current slide number in relation to the 
+										number of slides.</td>
 								</tr>																		
 							</tbody>
 						</table>
@@ -290,6 +299,7 @@
 </pre>
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="previews">Slide Previews</h3>
 				<div class="row">
 					<div class="col4">												
@@ -338,6 +348,7 @@
 </pre>					
 					</div>					
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<h3 id="captions">Slide Captions</h3>
 				<div class="row">
 					<div class="col4">
@@ -365,11 +376,8 @@
 </pre>					
 					</div>
 				</div>
+				<p><a href="#top">Return to top</a></p>
 				<h1 id="demos" class="pageTitle">Demos</h1>																
-			</div>
-		</div>
-		<div class="row">
-			<div class="col12">
 				<div class="row">
 					<div class="col8">				
 						<div class="carousel" data-autoplay="true" data-duration="5000">
@@ -443,10 +451,7 @@
 	&lt;/ul&gt;					
 &lt;/div&gt;
 </pre>					
-			</div>
-		</div>
-		<div class="row">
-			<div class="col12">
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
 						<h3 id="fade">Manual Fade Slideshow</h3>
@@ -502,10 +507,7 @@
 	&lt;a href="#" class="next" title="Next"&gt;&lt;i class="iconChevronRight"&gt;&lt;/i&gt;&lt;/a&gt;										
 &lt;/div&gt;
 </pre>
-			</div>			
-		</div>
-		<div class="row">
-			<div class="col12">
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col8">
 						<div class="carousel" data-autoplay="false">
@@ -577,10 +579,7 @@
 	&lt;/ul&gt;										
 &lt;/div&gt;
 </pre>
-			</div>
-		</div>		
-		<div class="row">
-			<div class="col12">
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
 						<h3 id="thumb-gallery">Thumb Gallery</h3>
@@ -723,10 +722,7 @@
 	&lt;/ul&gt;					
 &lt;/div&gt;
 </pre>
-			</div>			
-		</div>
-		<div class="row">
-			<div class="col12">
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col8">
 						<div class="carousel" data-transition="zoomPan" data-duration="5000">
@@ -751,7 +747,7 @@
 						</div>			
 					</div>
 					<div class="col4">
-						<h3 id="zoomPan">Zoom & Pan Slideshow</h3>
+						<h3 id="zoomPan">Zoom &amp; Pan Slideshow</h3>
 						<p>This carousel example is a true slideshow, with autoplay and no controls. It features 
 							the <code>zoomPan</code> transition, which is excellent for adding emotion and dramatic 
 							qualities for images. This transition will only work with images and captions, but not with 
@@ -780,10 +776,7 @@
 	&lt;/ul&gt;										
 &lt;/div&gt;
 </pre>				
-			</div>			
-		</div>
-		<div class="row">
-			<div class="col12">
+				<p><a href="#top">Return to top</a></p>
 				<div class="row">
 					<div class="col4">
 						<h3 id="clean">Clean Carousel</h3>
@@ -824,6 +817,7 @@
 	&lt;/ul&gt;															
 &lt;/div&gt;
 </pre>
+				<p><a href="#top">Return to top</a></p>
 			</div>			
 		</div>						
 		<div class="row">

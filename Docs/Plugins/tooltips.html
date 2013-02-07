@@ -46,7 +46,7 @@
 		</div>
 		<div class="row">
 			<div class="col12">
-				<h3>Overview</h3>
+				<h3 id="overview">Overview</h3>
 				<p>Tooltips come in two forms, regular tips and powertips, both of which function the same way. The 
 					regular tips are a single color, while the powertips differentiate between the tip title and the 
 					content. Both tip styles allow four orientations (top, bottom, left, and right), an instant or 
@@ -57,7 +57,7 @@
 		</div>
 		<div class="row">
 			<div class="col4">
-				<h3>Usage</h3>
+				<h3 id="usage">Usage</h3>
 				<p>Tooltips can be added to any element simply by giving it a class of either <code>tip</code> or 
 					<code>powertip</code>. By default, the tooltips will appear above the trigger element. However, if 
 					you would like to have them appear to the right or on the bottom, you could modify the class to 
@@ -78,11 +78,12 @@
 					to the content's containing element.</p> 
 			</div>
 			<div class="col8">
-				<h6>Tooltip Options</h6>
-				<table>
+				<h6 id="options">Options</h6>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Tooltip Options</caption>
 					<thead>
 						<tr>
-							<th class="col2">Attribute</th>
+							<th class="col3">Options</th>
 							<th>Description</th>
 							<th>Default</th>
 							<th>Values</th>
@@ -90,40 +91,40 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><code>data-title</code></td>
-							<td>The title of the tip.</td>
-							<td><em>none</em></td>
-							<td><em>string</em></td>
+							<td data-column="Option"><code>data-title</code></td>
+							<td data-column="Description">The title of the tip.</td>
+							<td data-column="Default"><em>none</em></td>
+							<td data-column="Values"><em>string</em></td>
 						</tr>
 						<tr>
-							<td><code>data-content</code></td>
-							<td>The content of the tip.</td>
-							<td><em>none</em></td>
-							<td><em>string</em></td>
+							<td data-column="Option"><code>data-content</code></td>
+							<td data-column="Description">The content of the tip.</td>
+							<td data-column="Default"><em>none</em></td>
+							<td data-column="Values"><em>string</em></td>
 						</tr>
 						<tr>
-							<td><code>data-target</code></td>
-							<td>The id of the element containing the tip's content.</td>
-							<td><em>none</em></td>
-							<td><em>target #id</em></td>
+							<td data-column="Option"><code>data-target</code></td>
+							<td data-column="Description">The id of the element containing the tip's content.</td>
+							<td data-column="Default"><em>none</em></td>
+							<td data-column="Values"><em>target #id</em></td>
 						</tr>
 						<tr>
-							<td><code>data-transition</code></td>
-							<td>How the tip appears and disappears.</td>
-							<td><em>instant</em></td>
-							<td><em>instant</em>|<em>fade</em></td>
+							<td data-column="Option"><code>data-transition</code></td>
+							<td data-column="Description">How the tip appears and disappears.</td>
+							<td data-column="Default"><em>instant</em></td>
+							<td data-column="Values"><em>instant</em>|<em>fade</em></td>
 						</tr>
 						<tr>
-							<td><code>data-offset</code></td>
-							<td>The tip offset from the trigger in pixels (without the unit).</td>
-							<td><em>10</em></td>
-							<td><em>int</em> (in pixels)</td>
+							<td data-column="Option"><code>data-offset</code></td>
+							<td data-column="Description">The tip offset from the trigger in pixels (without the unit).</td>
+							<td data-column="Default"><em>10</em></td>
+							<td data-column="Values"><em>int</em> (in pixels)</td>
 						</tr>						
 						<tr>
-							<td><code>data-event</code></td>
-							<td>The trigger event for the tip.</td>
-							<td><em>hover</em></td>
-							<td><em>hover</em>|<em>click</em></td>
+							<td data-column="Option"><code>data-event</code></td>
+							<td data-column="Description">The trigger event for the tip.</td>
+							<td data-column="Option"><em>hover</em></td>
+							<td data-column="Option"><em>hover</em>|<em>click</em></td>
 						</tr>																								
 					</tbody>
 				</table>
