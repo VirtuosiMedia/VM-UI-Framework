@@ -28,6 +28,7 @@ body {font-family: Georgia, "Times New Roman", 'VM-UI-Icons', serif;}
 [class^="icon"] {display: inline-block;}
 [class^="icon"]:before, [class^="iconMedium"]:before, [class^="iconLarge"]:before {
 	font-family: 'VM-UI-Icons';
+	font-size: 0.96em;
 	font-style: normal;
 	speak: none;
 }
