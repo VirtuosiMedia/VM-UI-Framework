@@ -44,6 +44,7 @@
 .featuredImage {
 	border: 1px solid #222;
 	border-radius: 2px;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
