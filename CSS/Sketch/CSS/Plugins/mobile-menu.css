@@ -9,6 +9,7 @@
  * Mobile Menu 
  */
 @media (max-width: 768px) {
+	#mobileButtonContainer {margin-right: 1em;}
 	.mobileMenuTrigger {
 		color: #FFF;
 		cursor: pointer;

@@ -135,10 +135,12 @@
  * Hide the menus by default for smartphones and tablets
  */
 @media (max-width: 768px) {
-	.navbarContainer, .secondaryNavbarContainer {height: auto;}
-	.navbarContainer .container, .secondaryNavbarContainer .container {width: 100%;}
-	.navbarContainer ul, .secondaryNavbarContainer ul {width: 100%;}
-	.navbarContainer ul>li, .secondaryNavbarContainer ul>li {
+	.navbarContainer, .secondaryNavbarContainer, .floatingNavbarContainer {height: auto;}
+	.navbarContainer .container, .secondaryNavbarContainer .container, .floatingNavbarContainer .container {width: 100%;}
+	.navbarContainer ul, .secondaryNavbarContainer ul, .floatingNavbarContainer ul {width: 100%;}
+	.navbarContainer ul:not(#mobileButtonContainer)>li, 
+	.secondaryNavbarContainer ul:not(#mobileButtonContainer)>li, 
+	.floatingNavbarContainer ul:not(#mobileButtonContainer)>li {
 		clear: left;
 		text-indent: 0.15em;
 		width: 100%;

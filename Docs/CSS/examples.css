@@ -10,6 +10,7 @@
 	width: 1.5em;
 }
 #homeLogoFloat {line-height: 1.15em;}
+.floatingNavbarContainer #homeLogo {line-height: 1.15em;}
 
 /**
  * Display the grids
