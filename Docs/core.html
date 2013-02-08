@@ -794,9 +794,10 @@ p {
 		</div>
 		<div class="row">
 			<div class="col4">
-				<p>There are several styles of buttons, each with a specific semantic meaning. You should endeavor to 
-					make consistent use of the button type throughout your application or website. To create a button, 
-					simply add the appropriate button class to the element.</p>
+				<p>There are several styles of buttons, each with a specific name designed to be both semantic and easy 
+					to remember. You should endeavor to	make consistent use of the button type throughout your 
+					application or website. To create a button,	simply add the appropriate button class to the 
+					element.</p>
 			</div>
 			<div class="col8">
 				<table>
@@ -809,27 +810,27 @@ p {
 					<tbody>
 						<tr>
 							<td><a href="#" class="button">Button</a></td>
-							<td><code>button</code>, <code>buttonSecondary</code></td>
+							<td><code>button</code>, <code>secondaryButton</code></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="buttonInfo">Button</a></td>
-							<td><code>buttonInfo</code></td>
+							<td><a href="#" class="infoButton">Button</a></td>
+							<td><code>infoButton</code></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="buttonSuccess">Button</a></td>
-							<td><code>buttonSuccess</code>, <code>buttonPrimary</code></td>
+							<td><a href="#" class="successButton">Button</a></td>
+							<td><code>successButton</code>, <code>primaryButton</code></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="buttonWarning">Button</a></td>
-							<td><code>buttonWarning</code></td>
+							<td><a href="#" class="warningButton">Button</a></td>
+							<td><code>warningButton</code></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="buttonError">Button</a></td>
-							<td><code>buttonError</code></td>
+							<td><a href="#" class="errorButton">Button</a></td>
+							<td><code>errorButton</code></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="buttonInverted">Button</a></td>
-							<td><code>buttonInverted</code></td>
+							<td><a href="#" class="contrastButton">Button</a></td>
+							<td><code>contrastButton</code></td>
 						</tr>																													
 					</tbody>
 				</table>
@@ -839,8 +840,8 @@ p {
 			<div class="col6">
 				<h6>Buttons Sizes</h6>
 				<p>There are three button sizes: small, medium, and large. To make your button either medium or large, 
-					append the size to your button class. For example, <code>buttonInfoLarge</code> or 
-					<code>buttonSuccessMedium</code>. Small buttons are	the default size, so there is no need to append 
+					prepend the size to your button class. For example, <code>largeInfoButton</code> or 
+					<code>mediumSuccessButton</code>. Small buttons are	the default size, so there is no need to append 
 					anything to the end of the class. The small buttons can also be used inline with text 
 					(<a href="#" class="button">Example</a>), but the medium and large button will push vertical 
 					margins so that they won't disrupt vertical rhythm.</p>
@@ -851,22 +852,22 @@ p {
 					<div class="col2">
 						<ul class="unlisted flush">
 							<li><a href="#" class="button">Default</a></li>
-							<li><a href="#" class="buttonMedium">Medium</a></li>
-							<li><a href="#" class="buttonLarge">Large Button</a></li>
+							<li><a href="#" class="mediumButton">Medium</a></li>
+							<li><a href="#" class="largeButton">Large Button</a></li>
 						</ul>
 					</div>
 					<div class="col2">
 						<ul class="unlisted flush">
-							<li><a href="#" class="buttonInfo">Default</a></li>
-							<li><a href="#" class="buttonInfoMedium">Medium</a></li>
-							<li><a href="#" class="buttonInfoLarge">Large Button</a></li>
+							<li><a href="#" class="infoButton">Default</a></li>
+							<li><a href="#" class="mediumInfoButton">Medium</a></li>
+							<li><a href="#" class="largeInfoButton">Large Button</a></li>
 						</ul>
 					</div>					
 					<div class="col2">
 						<ul class="unlisted flush">
-							<li><a href="#" class="buttonSuccess">Default</a></li>
-							<li><a href="#" class="buttonSuccessMedium">Medium</a></li>
-							<li><a href="#" class="buttonSuccessLarge">Large Button</a></li>
+							<li><a href="#" class="successButton">Default</a></li>
+							<li><a href="#" class="mediumSuccessButton">Medium</a></li>
+							<li><a href="#" class="largeSuccessButton">Large Button</a></li>
 						</ul>
 					</div>					
 				</div>							
@@ -878,10 +879,10 @@ p {
 				<p>Multi-line buttons allow you to add subtitle text to larger button text and are meant for important 
 					calls-to-action, like downloads, sign-ups, etc. To create a multi-line button, use any of the 
 					existing button classes (except the sized classes like Medium or Large) and append 
-					<code>Multi</code> to the class name, like <code>buttonSuccessMulti</code> or 
-					<code>buttonInfoMulti</code>.</p>
-				<a href="#" class="buttonSuccessMulti"><span>Free Download</span><span>Version 1.1 Available</span></a> 
-				<a href="#" class="buttonMulti"><span>Take A Tour</span><span>Over 100 Features</span></a>
+					<code>Multi</code> to the class name, like <code>multiSuccessButton</code> or 
+					<code>multiInfoButton</code>.</p>
+				<a href="#" class="multiSuccessButton"><span>Free Download</span><span>Version 1.1 Available</span></a> 
+				<a href="#" class="multiButton"><span>Take A Tour</span><span>Over 100 Features</span></a>
 				<p><a href="#top">Return to top</a></p>
 			</div>
 			<div class="col8">
@@ -898,18 +899,18 @@ p {
 					<li><a href="#" class="button">Button 5</a></li>
 				</ul>
 				<ul class="buttonGroup">
-					<li><a href="#" class="buttonInvertedMedium">Button 1</a></li>
-					<li><a href="#" class="buttonInvertedMedium">Button 2</a></li>
-					<li><a href="#" class="buttonInvertedMedium">Button 3</a></li>
-					<li><a href="#" class="buttonInvertedMedium">Button 4</a></li>
-					<li><a href="#" class="buttonInvertedMedium">Button 5</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 1</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 2</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 3</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 4</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 5</a></li>
 				</ul>
 				<ul class="buttonGroup">
-					<li><a href="#" class="buttonInfoLarge">Button 1</a></li>
-					<li><a href="#" class="buttonInfoLarge">Button 2</a></li>
-					<li><a href="#" class="buttonInfoLarge">Button 3</a></li>
-					<li><a href="#" class="buttonInfoLarge">Button 4</a></li>
-					<li><a href="#" class="buttonInfoLarge">Button 5</a></li>
+					<li><a href="#" class="largeInfoButton">Button 1</a></li>
+					<li><a href="#" class="largeInfoButton">Button 2</a></li>
+					<li><a href="#" class="largeInfoButton">Button 3</a></li>
+					<li><a href="#" class="largeInfoButton">Button 4</a></li>
+					<li><a href="#" class="largeInfoButton">Button 5</a></li>
 				</ul>				
 			</div>
 		</div>
@@ -918,7 +919,7 @@ p {
 				<span class="divider"></span>
 				<h6>Want to continue the tour?</h6>
 				<ul class="horizontal unlisted skipBottom">
-					<li><a class="buttonInfo" href="icons.html">See The Icon Font</a></li>
+					<li><a class="infoButton" href="icons.html">See The Icon Font</a></li>
 					<li><a href="layout.html">Back to the Layout Guide</a></li>
 				</ul>
 				

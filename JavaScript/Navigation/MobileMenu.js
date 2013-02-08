@@ -40,7 +40,7 @@ var MobileMenu = new Class({
 			menu.getParent('[class*=col]').setStyle('margin-bottom', 0);
 			var text = (menu.hasData('text')) ? menu.getData('text') : 'Menu';
 			var button = new Element('span', {
-				'class': 'buttonInverted mobileMenuTrigger',
+				'class': 'contrastButton mobileMenuTrigger',
 				html: text,
 				events: {
 					click: function(){

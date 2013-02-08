@@ -111,13 +111,13 @@
 		&lt;p&gt;This is a modal window built with inline content and featuring an overlay.&lt;/p&gt;
 	&lt;/div&gt;
 	&lt;div class="modalFooter"&gt;
-		&lt;a href="#" class="buttonInfoLarge save"&gt;Got it!&lt;/a&gt;
+		&lt;a href="#" class="largeInfoButton save"&gt;Got it!&lt;/a&gt;
 		&lt;a href="#" class="buttonLarge close"&gt;Close&lt;/a&gt;
 	&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 				<p>The example above will result in the following modal: 
-					<a class="buttonInfo modalTrigger" href="#exampleModal">Inline Modal</a></p>
+					<a class="infoButton modalTrigger" href="#exampleModal">Inline Modal</a></p>
 				<div id="exampleModal" class="modal col6">
 					<div class="modalHeader">
 						<h6>Example Modal</h6>
@@ -127,7 +127,7 @@
 						<p>This is a modal window built with inline content and featuring an overlay.</p>
 					</div>
 					<div class="modalFooter">
-						<a href="#" class="buttonInfoLarge save">Got it!</a>
+						<a href="#" class="largeInfoButton save">Got it!</a>
 						<a href="#" class="buttonLarge close">Close</a>
 					</div>
 				</div>
@@ -136,10 +136,10 @@
 					<span class="infoMarker">Note</span> The file path must be relative without the preceding 
 					<code>http</code> or else the file will be loaded in an iframe.</p>
 <pre class="html">
-&lt;a class="buttonInfo modalTrigger" href="../AJAX/content.html"&gt;AJAX Modal&lt;/a&gt;
+&lt;a class="infoButton modalTrigger" href="../AJAX/content.html"&gt;AJAX Modal&lt;/a&gt;
 </pre>						 								
 				<p>The button above will result in the following modal: 
-					<a class="buttonInfo modalTrigger" href="../AJAX/content.html">AJAX Modal</a></p>
+					<a class="infoButton modalTrigger" href="../AJAX/content.html">AJAX Modal</a></p>
 				<h6>Styling AJAX Content</h6>
 				<p>Content in an AJAX modal is placed in a container with an id of <code>ajaxModal</code>. By default, 
 					the container has padding of <code>1em</code>, however, that can easily be overridden through CSS. 
@@ -148,10 +148,10 @@
 				<p>To load iframe content, simply point the trigger to an external site, with a URL starting with 
 					<code>http</code>.</p>
 <pre class="html">
-&lt;a class="buttonInfo modalTrigger" href="http://uiframework.com/"&gt;Example Modal&lt;/a&gt;
+&lt;a class="infoButton modalTrigger" href="http://uiframework.com/"&gt;Example Modal&lt;/a&gt;
 </pre>
 				<p>The above results in the following modal: 
-					<a class="buttonInfo modalTrigger" href="http://uiframework.com/">Iframe Modal</a></p>
+					<a class="infoButton modalTrigger" href="http://uiframework.com/">Iframe Modal</a></p>
 				<h6>Styling Iframe Content</h6>
 				<p>The iframe modal defaults to a width of 80% of the current window and a height of 500px.</p>
 				<p><a href="#top">Return to top</a></p>						
@@ -218,7 +218,7 @@
 				</div>
 				<h6>Events Example</h6>
 				<p>The following code will catch events from the <code>eventDemo</code> modal. 
-					<a href="#eventDemo" class="buttonInfo modalTrigger">Event Modal</a></p>
+					<a href="#eventDemo" class="infoButton modalTrigger">Event Modal</a></p>
 				<span id="demoTarget"></span>
 				
 				<div id="eventDemo" class="modal col6">
@@ -230,7 +230,7 @@
 						<p>See the events as they happen.</p>
 					</div>
 					<div class="modalFooter">
-						<a href="#" class="buttonInfoLarge save">Save</a>
+						<a href="#" class="largeInfoButton save">Save</a>
 						<a href="#" class="buttonLarge close">Close</a>
 					</div>
 				</div>						
@@ -255,7 +255,7 @@ $('eventDemo').addEvents({
 				<span class="divider"></span>
 				<h6>Want to continue the tour?</h6>
 				<ul class="horizontal unlisted skipBottom">
-					<li><a class="buttonInfo" href="pager.html">Learn How To Use The Pager Plugin</a></li>
+					<li><a class="infoButton" href="pager.html">Learn How To Use The Pager Plugin</a></li>
 					<li><a href="sliders.html">Back to Sliders</a></li>
 				</ul>				
 			</div>

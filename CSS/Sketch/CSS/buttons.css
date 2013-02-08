@@ -8,16 +8,7 @@
 /**
  * Buttons
  */
-[class*="button"] {
-	border: 0.1em solid #999;
-	border-radius: 2px;
-	margin-left: 1px;
-	padding: 0em 0.5em;
-	text-decoration: none;
-}
-[class*="button"]:hover, [class*="button"]:visited {color: #FFF;}
-.button, .button:visited, [class*="button"], [class*="buttonSecondary"], .buttonMedium:visited, .buttonLarge:visited, 
-[class*="buttonSecondary"]:visited {
+.button, [class*="Button"] {
 	background: #EEE; 
 	background: -moz-linear-gradient(top, #EEEEEE 0%, #BBBBBB 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#BBBBBB)); 
@@ -25,27 +16,31 @@
 	background: -o-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
 	background: -ms-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
 	background: linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%);
+	border: 0.1em solid #999;
 	border-color: #EEE;
+	border-radius: 2px;
 	box-shadow: 0 0 0 1px #999, 0 0 0 1px #999;
 	color: #222; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB',GradientType=0);
+	margin-left: 1px;
+	padding: 0em 0.5em;
+	text-decoration: none;	
 	text-shadow: 1px 1px 1px #FFF;
 }
-.button:hover, [class*="button"]:hover, [class*="buttonSecondary"]:hover {
+.button:hover, [class*="Button"]:hover {
 	background: #CCC;
 	color: #222;
 }
-[class*="button"][data-state=active], [class*="buttonSecondary"][data-state=active]{
+[class*="Button"][data-state=active], [class*="Button"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #999;
 	border-color: #777;
 }
-[class*="button"][data-state~=disabled], [class*="buttonSecondary"][data-state~=disabled], [class*="button"][disabled], 
-[class*="buttonSecondary"][disabled] {
+.button[data-state~=disabled], .button[disabled], [class*="Button"][data-state~=disabled], [class*="Button"][disabled] {
 	background: #BBB;
 	color: #666;
 	pointer: default;
 }
-[class*="buttonInfo"] {
+.infoButton, [class*="InfoButton"] {
 	background: #09C; 
 	background: -moz-linear-gradient(top, #0099CC 0%, #006699 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0099CC), color-stop(100%,#006699)); 
@@ -55,24 +50,25 @@
 	background: linear-gradient(top, #0099CC 0%,#006699 100%);
 	border-color: #0099CC;
 	box-shadow: 0 0 0 1px #004477, 0 0 0 1px #004477;
-	color: #FFF; 
+	color: #FFF !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#006699',GradientType=0);
 	text-shadow: -1px -1px 1px #069;
 }
-[class*="buttonInfo"]:hover {
+.infoButton:hover, [class*="InfoButton"]:hover {
 	background: #0077AA;
 	color: #FFF;
 }
-[class*="buttonInfo"][data-state=active]{
+.infoButton[data-state=active], [class*="InfoButton"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #00557D;
 	border-color: #00324A;
 }
-[class*="buttonInfo"][data-state~=disabled], [class*="buttonInfo"][disabled] {
+.infoButton[data-state~=disabled], [class*="InfoButton"][data-state~=disabled], .infoButton[disabled], 
+[class*="InfoButton"][disabled] {
 	background: #07A;
 	color: #0AD;
 	pointer: default;
 }
-[class*="buttonSuccess"], [class*="buttonPrimary"] {
+.successButton, [class*="SuccessButton"], .primaryButton, [class*="PrimaryButton"] {
 	background: #56AF08; 
 	background: -moz-linear-gradient(top, #56AF08 0%, #4D9E0C 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#56AF08), color-stop(100%,#4D9E0C)); 
@@ -82,24 +78,26 @@
 	background: linear-gradient(top, #56AF08 0%,#4D9E0C 100%);
 	border-color: #86C64E;
 	box-shadow: 0 0 0 1px #235003, 0 0 0 1px #235003;
-	color: #FFF; 
+	color: #FFF !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56AF08', endColorstr='#4D9E0C',GradientType=0);
 	text-shadow: -1px -1px 1px #235003; 
 }
-[class*="buttonSuccess"]:hover, [class*="buttonPrimary"]:hover {
+.successButton:hover, [class*="SuccessButton"]:hover, .primaryButton:hover, [class*="PrimaryButton"]:hover {
 	background: #4D9E0C;
 	color: #FFF; 
 }
-[class*="buttonSuccess"][data-state=active], [class*="buttonPrimary"][data-state=active]{
+.successButton[data-state=active], [class*="SuccessButton"][data-state=active], .primaryButton[data-state=active], 
+[class*="buttonPrimary"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #336707;
 	border-color: #1D3C04;
 }
-[class*="buttonSuccess"][data-state~=disabled], [class*="buttonPrimary"][disabled] {
+.successButton[data-state~=disabled], [class*="SuccessButton"][data-state~=disabled], .primaryButton[disabled], 
+[class*="PrimaryButton"][disabled] {
 	background: #4D9E0C;
 	color: #67BF17;
 	pointer: default;
 }
-[class*="buttonWarning"] {
+.warningButton, [class*="WarningButton"] {
 	background: #FEC912; 
 	background: -moz-linear-gradient(top, #FFB111 0%, #FF9900 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFB111), color-stop(100%,#FF9900)); 
@@ -109,24 +107,25 @@
 	background: linear-gradient(top, #FFB111 0%,#FF9900 100%);
 	border-color: #FFBB55;
 	box-shadow: 0 0 0 1px #F49300, 0 0 0 1px #F49300;
-	color: #FFF; 
+	color: #FFF !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB111', endColorstr='#FF9900',GradientType=0);
 	text-shadow: -1px -1px 1px #F49300; 
 }
-[class*="buttonWarning"]:hover {
+.warningButton:hover, [class*="WarningButton"]:hover {
 	background: #FF9900;
 	color: #FFF; 
 }
-[class*="buttonWarning"][data-state=active]{
+.warningButton[data-state=active], [class*="WarningButton"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #BB7100;
 	border-color: #663E00;
 }
-[class*="buttonWarning"][data-state~=disabled], [class*="buttonWarning"][disabled] {
+.warningButton[data-state~=disabled], [class*="WarningButton"][data-state~=disabled], .warningButton[disabled], 
+[class*="WarningButton"][disabled] {
 	background: #FF9900;
 	color: #FEC912;
 	pointer: default;
 }
-[class*="buttonError"] {
+.errorButton, [class*="ErrorButton"] {
 	background: #FB0000; 
 	background: -moz-linear-gradient(top, #FB0000 0%, #D50000 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FB0000), color-stop(100%,#D50000)); 
@@ -136,24 +135,25 @@
 	background: linear-gradient(top, #FB0000 0%,#D50000 100%);
 	border-color: #FF4040;
 	box-shadow: 0 0 0 1px #CE0000, 0 0 0 1px #CE0000;
-	color: #FFF; 
+	color: #FFF !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FB0000', endColorstr='#D50000',GradientType=0);
 	text-shadow: -1px -1px 1px #CE0000; 
 }
-[class*="buttonError"]:hover {
+.errorButton:hover, [class*="ErrorButton"]:hover {
 	background: #D50000;
 	color: #FFF; 
 }
-[class*="buttonError"][data-state=active]{
+.errorButton[data-state=active], [class*="ErrorButton"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #9D0000;
 	border-color: #510000;
 }
-[class*="buttonError"][data-state~=disabled], [class*="buttonError"][disabled] {
+.errorButton[data-state~=disabled], [class*="ErrorButton"][data-state~=disabled], .errorButton[disabled], 
+[class*="ErrorButton"][disabled] {
 	background: #E61111;
 	color: #F66;
 	pointer: default;
 }
-[class*="buttonInverted"] {
+.contrastButton, [class*="ContrastButton"] {
 	background: #333; 
 	background: -moz-linear-gradient(top, #333333 0%, #111111 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#111111)); 
@@ -163,35 +163,36 @@
 	background: linear-gradient(top, #333333 0%,#111111 100%);
 	border-color: #555;
 	box-shadow: 0 0 0 1px #000, 0 0 0 1px #000;
-	color: #FFF; 
+	color: #FFF !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#111111',GradientType=0);
 	text-shadow: -1px -1px 1px #000; 
 }
-[class*="buttonInverted"]:hover {
+.contrastButton:hover, [class*="ContrastButton"]:hover {
 	background: #222;
 	color: #FFF; 
 }
-[class*="buttonInverted"][data-state=active]{
+.contrastButton[data-state=active], [class*="ContrastButton"][data-state=active]{
 	box-shadow: inset 2px 2px 4px 0px #000;
 	border-color: #000;
 }
-[class*="buttonInverted"][data-state~=disabled], [class*="buttonInverted"][disabled] {
+.contrastButton[data-state~=disabled], [class*="ContrastButton"][data-state~=disabled], .contrastButton[disabled], 
+[class*="ContrastButton"][disabled] {
 	background: #111;
 	color: #555;
 	pointer: default;
 }
-[class*="button"][class$="Medium"] {
+[class*="medium"][class$="Button"] {
 	display: inline-block;
 	height: 1.75em;
 	margin: 1.70em 0em 1.70em 0.1em;
 }
-[class*="button"][class$="Large"] {
+[class*="large"][class$="Button"] {
 	display: inline-block;
 	height: 2.25em;
 	line-height: 2.2em;
 	margin: 1.45em 0em 1.45em 0.1em;
 }
-[class*="button"][class$="Multi"] {
+[class*="multi"][class$="Button"] {
 	display: inline-block;
 	height: 4em;
 	line-height: 2.2em;
@@ -199,7 +200,7 @@
 	overflow: hidden;
 	padding: 0em 1em;
 }
-[class*="button"][class$="Multi"] span:first-child {
+[class*="multi"][class$="Button"] span:first-child {
 	float: left;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -208,14 +209,14 @@
 	text-align: center;
 	width: 100%;	
 }
-[class*="button"][class$="Multi"] span:last-child {
+[class*="multi"][class$="Button"] span:last-child {
 	clear: left;
 	float: left;
 	height: 1em;
 	text-align: center;
 	width: 100%;
 }
-body .row .buttonMulti, body .row .buttonSecondaryMulti {color: #222;}
+body .row .multiButton, body .row .multiSecondaryButton {color: #222;}
 body .row ul.buttonGroup {
 	background: none;
 	border: none;
@@ -230,6 +231,6 @@ body .row ul.buttonGroup {
 	float: left;
 	margin-right: 0px;
 }
-.buttonGroup [class*="button"] {border-radius: 0px;}
-.buttonGroup li:first-child [class*="button"] {border-radius: 2px 0px 0px 2px;}
-.buttonGroup li:last-child [class*="button"] {border-radius: 0px 2px 2px 0px;}
+.buttonGroup .button, .buttonGroup [class*="Button"] {border-radius: 0px;}
+.buttonGroup li:first-child .button, .buttonGroup li:first-child [class*="Button"] {border-radius: 2px 0px 0px 2px;}
+.buttonGroup li:last-child .button, .buttonGroup li:last-child [class*="Button"] {border-radius: 0px 2px 2px 0px;}

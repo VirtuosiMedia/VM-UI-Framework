@@ -296,7 +296,7 @@
 							<label><input type="radio" data-validate="{required:{}}" value="1" name="radio" /> Option 1</label>
 							<label><input type="radio" data-validate="{required:{}}" value="2" name="radio" /> Option 2</label>
 							<label><input type="radio" data-validate="{required:{}}" value="3" name="radio" /> Option 3</label>		
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="requiredCode">
@@ -321,7 +321,7 @@
 	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="1" name="radio" /&gt; Option 1&lt;/label&gt;
 	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="2" name="radio" /&gt; Option 2&lt;/label&gt;
 	&lt;label&gt;&lt;input type="radio" data-validate="{required:{}}" value="3" name="radio" /&gt; Option 3&lt;/label&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>					
 					</div>
@@ -342,7 +342,7 @@
 						<form id="regexForm">
 							<label for="regex">Custom Regex: (Must contain 'pizza')</label>
 							<input type="text" data-validate="{regex:{params:'pizza'}}" name="regex"/>		
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="regexCode">
@@ -351,7 +351,7 @@
 &lt;form id="regexForm"&gt;
 	&lt;label for="regex"&gt;Custom Regex: (Must contain 'pizza')&lt;/label&gt;
 	&lt;input type="text" data-validate="{regex:{params:'pizza'}}" name="regex"/&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -376,7 +376,7 @@
 							<input type="text" data-validate="{required:{}, maxLength:{params:5}}" name="max"/>
 							<label for="range">Required Input, Range: 3,8</label>
 							<input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/>		
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="lengthCode">
@@ -389,7 +389,7 @@
 	&lt;input type="text" data-validate="{required:{}, maxLength:{params:5}}" name="max"/&gt;
 	&lt;label for="range"&gt;Required Input, Range: 3,8&lt;/label&gt;
 	&lt;input type="text" data-validate="{required:{}, range:{params:[3,8]}}" name="range"/&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -414,7 +414,7 @@
 							<input type="text" data-validate="{required:{}, matches:{params:'test'}}" name="matches"/>
 							<label for="differs">Differs From Test Field</label>
 							<input type="text" data-validate="{required:{}, differs:{params:'test'}}" name="differs"/>
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="matchingCode">
@@ -427,7 +427,7 @@
 	&lt;input type="text" data-validate="{required:{}, matches:{params:'test'}}" name="matches"/&gt;
 	&lt;label for="differs"&gt;Differs From Test Field&lt;/label&gt;
 	&lt;input type="text" data-validate="{required:{}, differs:{params:'test'}}" name="differs"/&gt;	
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -450,7 +450,7 @@
 							<input type="text" data-validate="{includes:{params:['pizza', 'steak', 'fries']}}" name="includes"/>
 							<label for="excludes">Excludes: (Cannot contain 'onions', 'salad', or 'mayo')</label>
 							<input type="text" data-validate="{excludes:{params:['onions', 'salad', 'mayo']}}" name="excludes"/>
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="listCode">
@@ -461,7 +461,7 @@
 	&lt;input type="text" data-validate="{includes:{params:['pizza', 'steak', 'fries']}}" name="includes"/&gt;
 	&lt;label for="excludes"&gt;Excludes: (Cannot contain 'onions', 'salad', or 'mayo')&lt;/label&gt;
 	&lt;input type="text" data-validate="{excludes:{params:['onions', 'salad', 'mayo']}}" name="excludes"/&gt;	
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -486,7 +486,7 @@
 							<input type="text" data-validate="{numeric:{}}" name="numeric"/>
 							<label for="alphanumeric">Alphanumeric Only</label>
 							<input type="text" data-validate="{alphanumeric:{}}" name="alphanumeric"/>							
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="alphaCode">
@@ -499,7 +499,7 @@
 	&lt;input type="text" data-validate="{numeric:{}}" name="numeric"/&gt;
 	&lt;label for="alphanumeric"&gt;Alphanumeric Only&lt;/label&gt;
 	&lt;input type="text" data-validate="{alphanumeric:{}}" name="alphanumeric"/&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -528,7 +528,7 @@
 							<input type="text" data-validate="{phone:{}}" name="phone"/>
 							<label for="credit">Credit Card</label>
 							<input type="text" data-validate="{credit:{}}" name="credit"/>																						
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="commonCode">
@@ -545,7 +545,7 @@
 	&lt;input type="text" data-validate="{phone:{}}" name="phone"/&gt;
 	&lt;label for="credit"&gt;Credit Card&lt;/label&gt;
 	&lt;input type="text" data-validate="{credit:{}}" name="credit"/&gt;	
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -568,7 +568,7 @@
 							<input type="text" data-validate="{usZip:{}}" name="zip"/>
 							<label for="canada">Canadian Postal Code</label>
 							<input type="text" data-validate="{canadaPostal:{}}" name="canada"/>					
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="postalCode">
@@ -579,7 +579,7 @@
 	&gt;input type="text" data-validate="{usZip:{}}" name="zip"/&lt;
 	&gt;label for="canada"&lt;Canadian Postal Code&gt;/label&lt;
 	&gt;input type="text" data-validate="{canadaPostal:{}}" name="canada"/&lt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -602,7 +602,7 @@
 							<input type="text" data-validate="{dateMDY:{}}" name="mdy"/>
 							<label for="ymd">Date: Y/M/D</label>
 							<input type="text" data-validate="{dateYMD:{}}" name="ymd"/>					
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="datesCode">
@@ -613,7 +613,7 @@
 	&lt;input type="text" data-validate="{dateMDY:{}}" name="mdy"/&gt;
 	&lt;label for="ymd"&gt;Date: Y/M/D&lt;/label&gt;
 	&lt;input type="text" data-validate="{dateYMD:{}}" name="ymd"/&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -634,7 +634,7 @@
 						<form id="imageForm">
 							<label for="image">Upload an image file</label>
 							<input type="file" data-validate="{imageFile:{}}" name="image"/>					
-							<input type="submit" class="buttonInfoLarge" value="Submit" />
+							<input type="submit" class="largeInfoButton" value="Submit" />
 						</form>						
 					</div>
 					<div id="imageCode">
@@ -643,7 +643,7 @@
 &lt;form id="imageForm"&gt;
 	&lt;label for="image"&gt;Upload an image file&lt;/label&gt;
 	&lt;input type="file" data-validate="{imageFile:{}}" name="image"/&gt;		
-	&lt;input type="submit" class="buttonInfoLarge" value="Submit" /&gt;
+	&lt;input type="submit" class="largeInfoButton" value="Submit" /&gt;
 &lt;/form&gt;
 </pre>
 					</div>
@@ -656,7 +656,7 @@
 				<span class="divider"></span>
 				<h6>Want to continue the tour?</h6>
 				<ul class="horizontal unlisted skipBottom">
-					<li><a class="buttonInfo" href="password-meter.html">Learn How To Use The Password Strength Meter</a></li>
+					<li><a class="infoButton" href="password-meter.html">Learn How To Use The Password Strength Meter</a></li>
 					<li><a href="code.html">Back to Form Replacements</a></li>
 				</ul>				
 			</div>
