@@ -21,6 +21,10 @@
 .breadcrumb a:after {
 	color: #000;
 	content: '\25b6';
-	margin-left: 0.75em;
+	display: inline-block;
+	height: 1.35em;
+	margin: 0 0.75em;
+	overflow: hidden;
 	position: absolute;
+	text-decoration: none;
 }
