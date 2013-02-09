@@ -19,7 +19,7 @@ var Tabs = new Class({
 		this.cachedTabs = [];
 		Array.each($$(selectors), function(tabMenu){
 			self.createTabMenu(tabMenu, selectors);
-			if (window.getCoordinates().width <= 768){
+			if (self.isMobile()){
 				self.setMobileTabs(tabMenu);
 			}			
 		});		
@@ -40,12 +40,20 @@ var Tabs = new Class({
 		});
 
 		window.addEvent('resize', function(){
-			if (window.getCoordinates().width <= 768){
+			if (self.isMobile()){
 				self.setMobileTabs(tabMenu);
 			} else {
 				self.unsetMobileTabs(tabMenu);
 			}
 		});
+	},
+	
+	isMobile: function(){ //Necessary because IE, Firefox, and Opera calculate width with the scrollbar
+		if (Browser.ie||Browser.firefox||Browser.opera){
+			return (window.innerWidth <= 768);
+		} else {
+			return (window.getCoordinates().width <= 768);
+		}
 	},
 	
 	loadTab: function(tab){
