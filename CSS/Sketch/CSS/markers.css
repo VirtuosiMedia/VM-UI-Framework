@@ -12,11 +12,9 @@ span.marker, span[class*="Marker"] {
 	background: #999;
 	border-radius: 4px;
 	color: #FFF;
+	display: inline;
 	font-size: 0.875em;
 	padding: 0.1em 0.375em 0.1em;
-	position: relative;
-	top: 0.1em;
-	vertical-align: 10%;
 }
 span.infoMarker {background: #069;}
 span.successMarker {background: #4D9E0C;}
