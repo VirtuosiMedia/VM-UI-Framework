@@ -20,6 +20,7 @@
 	background: #FFF;
 	border: 0.15em solid #111;
 	border-radius: 4px;
+	box-shadow: inset 0px 0px 0px 1px #000, inset -0px -0px 0px 1px #000;
 	list-style: none;
 	margin: 0;
 	overflow: hidden;
