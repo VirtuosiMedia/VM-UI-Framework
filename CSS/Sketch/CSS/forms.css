@@ -23,6 +23,7 @@ input[type=text], input[type=password], input[type=file], textarea, select {
 	float: left;
 	margin: 0 0 1.1em 0;
 }
+input[type=text]::-ms-clear, input[type=password]::-ms-reveal {display: none;}
 input[type=text]:focus, input[type=password]:focus, input[type=file]:focus, textarea:focus, select:focus {
 	border-left-color: #CCC;
 	outline: none;
@@ -40,6 +41,7 @@ textarea {
 	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
 	box-shadow: inset 2px 2px 3px #E9E9E9;	
 	min-height: 6em;
+	overflow: auto;
 	text-indent: 0.5em; 	
 }
 select {
