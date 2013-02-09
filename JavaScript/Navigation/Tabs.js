@@ -58,6 +58,7 @@ var Tabs = new Class({
 			this.loadAjaxTab(tab, tabId, tab.getData('targetUrl'));
 		}
 
+		tab.addClass('active');
 		tabContainer.addClass('active');
 	},
 	
