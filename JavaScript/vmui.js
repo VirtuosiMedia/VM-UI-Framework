@@ -127,7 +127,7 @@ var VMUI = new Class({
 				var fixIEBug = function(){
 					el.getNext().dispose();
 				};
-				fixIEBug.delay(50)
+				fixIEBug.delay(500)
 			}
 		});	
 	}
