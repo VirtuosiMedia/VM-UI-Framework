@@ -8,11 +8,16 @@
 /**
  * Form Validation
  */
+label {margin-right: 0.5em;}
 .errorMessage, .successMessage {
 	float: left;
-	margin-left: 0.5em;
 }
 input.error, textarea.error, .selectContainer.error {border-color: #C00;}
 .errorMessage {color: #C00;}
-input.success, textarea.success, .selectContainer.success {border-color: #5D8B30;}
-.successMessage {color: #5D8B30;}
+input.success, textarea.success, .selectContainer.success {
+	border-color: #5D8B30;
+}
+.successMessage {
+	color: #5D8B30;
+	margin-top: -1px;	
+}
