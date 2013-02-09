@@ -163,24 +163,27 @@ var PasswordMeter = new Class({
 	},
 	
 	setMeter: function(meter, entropy, message, meterClass){
-		var percent = (entropy <= 100) ? entropy : 100;
+		
 		var containerId = meter.get('name') + 'Container';
 		if (!$(containerId)){
 			var msg = new Element('span', {'class': 'message', text: message});
-			var progressBar = new Element('span', {'class': 'passwordBar ' + meterClass, styles: {width: percent + '%'}});
-			var progressContainer = new Element('span', {'class': 'passwordContainer'}).adopt(progressBar);
 			var container = new Element('div', {
 				id: containerId, 
 				'class': 'passwordMeter'
-			}).adopt(msg, progressContainer).inject(meter, 'after');
+			}).inject(meter, 'after');
+			var width = container.getSize().x;
+			var percent = (entropy <= 100) ? (width/100)*entropy : width;
+			var progressBar = new Element('span', {'class': 'passwordBar ' + meterClass, styles: {width: percent}});
+			var progressContainer = new Element('span', {'class': 'passwordContainer'}).adopt(progressBar);
+			container.adopt(msg, progressContainer)
 		} else {
 			var meterContainer = $(containerId);
+			var width = meterContainer.getSize().x;
+			var percent = (entropy <= 100) ? (width/100)*entropy : width;
 			meterContainer.getElement('.message').set('text', message);
 			meterContainer.getElement('.passwordBar').set('class', 'passwordBar ' + meterClass).set('morph', {
-				duration: 250,
-				unit: '%'
-			}).morph({width: percent + '%'});
+				duration: 250
+			}).morph({width: percent});
 		}
 	}
 });
-	
