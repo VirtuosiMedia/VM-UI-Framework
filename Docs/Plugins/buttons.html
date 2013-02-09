@@ -10,7 +10,15 @@
 	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			var loader = new VMUI({relativePath:'../../JavaScript'});	
+			var loader = new VMUI({relativePath:'../../JavaScript'});
+			$('disable').addEvent('change', function(){
+				var largeButton = $('largeButton');
+				if (largeButton.getData('state').contains('disabled')){
+					largeButton.fireEvent('enable');
+				} else {
+					largeButton.fireEvent('disable');
+				}
+			});			
 		});
 	</script>	
 </head>
@@ -130,12 +138,12 @@
 				<h6>A Single Button</h6>
 				<p class="skipBottom">This button can be toggled active or inactive and it can be enabled or disabled 
 					via the checkbox. If it is disabled, it will remember its previous state when re-enabled.</p>
-				<p class="skipBottom"><a id="largeButton" class="buttonLarge" href="#" data-state="active">Toggle Me!</a></p>
+				<p class="skipBottom"><a id="largeButton" class="largeButton" href="#" data-state="active">Toggle Me!</a></p>
 				<form class="bottomMargin">
 					<label for="disable"><input type="checkbox" name="disable" id="disable"/> Disable Button</label>
 				</form>
 <pre class="html">
-&lt;p class="skipBottom"&gt;&lt;a id="largeButton" class="buttonLarge" href="#" data-state="active"&gt;Toggle Me!&lt;/a&gt;&lt;/p&gt;
+&lt;p class="skipBottom"&gt;&lt;a id="largeButton" class="largeButton" href="#" data-state="active"&gt;Toggle Me!&lt;/a&gt;&lt;/p&gt;
 &lt;form class="bottomMargin"&gt;
 	&lt;label for="disable"&gt;&lt;input type="checkbox" name="disable" id="disable"/&gt; Disable Button&lt;/label&gt;
 &lt;/form&gt;
@@ -144,14 +152,14 @@
 				<p class="skipBottom">Only the last button in this button group can be activated, the rest are just 
 					normal links.</p>
 				<ul class="buttonGroup">
-					<li><a href="#" class="buttonMedium">Link</a></li>
-					<li><a href="#" class="buttonMedium">Link</a></li>
+					<li><a href="#" class="mediumButton">Link</a></li>
+					<li><a href="#" class="mediumButton">Link</a></li>
 					<li><a href="#" class="mediumInfoButton" data-state>Toggle</a></li>
 				</ul>
 <pre class="html">
 &lt;ul class="buttonGroup"&gt;
-	&lt;li&gt;&lt;a href="#" class="buttonMedium"&gt;Link&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;a href="#" class="buttonMedium"&gt;Link&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#" class="mediumButton"&gt;Link&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#" class="mediumButton"&gt;Link&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href="#" class="mediumInfoButton" data-state&gt;Toggle&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>				
