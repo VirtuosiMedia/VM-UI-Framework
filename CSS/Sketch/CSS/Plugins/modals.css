@@ -73,7 +73,7 @@
 	overflow: auto;
 	padding: 1em;
 }
-.modalFooter [class^="button"] {
+.modalFooter .button, .modalFooter [class*="Button"] {
 	float: right;
 	margin: 0 0 0 0.5em;
 }
