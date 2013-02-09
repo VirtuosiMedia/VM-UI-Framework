@@ -32,12 +32,15 @@
 	.pillTabs a, .pillTabsVertical a {
 		border: 0.15em solid transparent;
 		border-radius: 4px;
-		padding: 0.3em 1em;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;		
+		margin-top: 0;
+		padding: 0.3em 1em 0.45em;
 		text-decoration: none;	
 	}
 	.tabs a.active {
 		color: #666;
-		padding-bottom: 0.45em;
+		padding-bottom: 0.5em;
 	}
 	.pillTabs a.active, .pillTabsVertical a.active {
 		background: #222;
@@ -82,16 +85,9 @@
 		width: 90%;
 	}
 	.pillTabsVertical a {margin-bottom: 0.5em}
-	.tabsVertical a.active {position: relative;}
-	.tabsVertical a.active:after {
-		background: #FFF;
-		content: '';
-		display: block;
-		height: 2.35em;
-		position: absolute;
-		right: -0.3em;
-		top: 0px;
-		width: 0.5em;
+	.tabsVertical a.active {
+		box-sizing: content-box;
+		padding-right: 0.5em;
 	}
 	.tabsVertical + .tabContent, .pillTabsVertical + .pillTabContent {
 		clear: none;
