@@ -147,6 +147,18 @@
 &lt;form class="bottomMargin"&gt;
 	&lt;label for="disable"&gt;&lt;input type="checkbox" name="disable" id="disable"/&gt; Disable Button&lt;/label&gt;
 &lt;/form&gt;
+&lt;script&gt;
+	window.addEvent('domready', function() {
+		$('disable').addEvent('change', function(){
+			var largeButton = $('largeButton');
+			if (largeButton.getData('state').contains('disabled')){
+				largeButton.fireEvent('enable');
+			} else {
+				largeButton.fireEvent('disable');
+			}
+		});			
+	});
+&lt;/script&gt;
 </pre>
 				<h6>A Button Group</h6>
 				<p class="skipBottom">Only the last button in this button group can be activated, the rest are just 
