@@ -22,7 +22,7 @@
 	box-shadow: 0 0 0 1px #999, 0 0 0 1px #999;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	color: #222; 
+	color: #222 !important; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB',GradientType=0);
 	margin-left: 1px;
 	padding: 0em 0.5em;
