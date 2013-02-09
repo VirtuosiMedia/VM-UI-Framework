@@ -49,12 +49,12 @@
 	color: #FFF;
 	background: #CCC;
 }
-.dropdown>[class^=button] {margin-bottom: 0;}
-.dropdown>[class^=button]+ul {
+.dropdown>.button, .dropdown>[class*=Button] {margin-bottom: 0;}
+.dropdown>.button+ul, .dropdown>[class*=Button]+ul {
 	border: 1px solid #999;
 	margin: 0;
 }
-.dropdown>[class^=button]+ul a {text-decoration: none;}
+.dropdown>.button+ul a, .dropdown>[class*=Button]+ul a {text-decoration: none;}
 span.dropdown {
 	display: inline-block;
 	margin-bottom: 1.45em;
