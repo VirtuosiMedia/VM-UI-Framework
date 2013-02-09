@@ -17,6 +17,8 @@ label {
 input[type=text], input[type=password], input[type=file], textarea, select {
 	border: 0.15em solid #222;
 	border-radius: 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	clear: both;
 	float: left;
 	margin: 0 0 1.1em 0;
@@ -29,7 +31,7 @@ input[type=text], input[type=password], input[type=file] {
 	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
 	box-shadow: inset 2px 2px 3px #E9E9E9;
 	font-size: 1em;
-	height: 2.2em;
+	height: 2.5em;
 	line-height: 2.2em;
 	text-indent: 0.5em; 
 }
@@ -41,7 +43,7 @@ textarea {
 	text-indent: 0.5em; 	
 }
 select {
-	height: 2.2em;
+	height: 2.5em;
 }
 .formContainer {
 	clear: both;
