@@ -9,6 +9,7 @@
  * Accordion Menu
  */
 .accordion {
+	background: #FFF;
 	border: #222 solid 0.15em;
 	border-radius: 4px;
 	-moz-box-sizing: border-box;
