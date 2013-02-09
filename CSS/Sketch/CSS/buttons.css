@@ -16,10 +16,12 @@
 	background: -o-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
 	background: -ms-linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%); 
 	background: linear-gradient(top, #EEEEEE 0%,#BBBBBB 100%);
-	border: 0.1em solid #999;
+	border: 1px solid #999;
 	border-color: #EEE;
 	border-radius: 2px;
 	box-shadow: 0 0 0 1px #999, 0 0 0 1px #999;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	color: #222; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB',GradientType=0);
 	margin-left: 1px;
@@ -184,19 +186,19 @@
 [class*="medium"][class$="Button"] {
 	display: inline-block;
 	height: 1.75em;
-	margin: 1.70em 0em 1.70em 0.1em;
+	margin: 1.80em 0em 1.80em 0.1em;
 }
 [class*="large"][class$="Button"] {
 	display: inline-block;
 	height: 2.25em;
 	line-height: 2.2em;
-	margin: 1.45em 0em 1.45em 0.1em;
+	margin: 1.55em 0em 1.55em 0.1em;
 }
 [class*="multi"][class$="Button"] {
 	display: inline-block;
 	height: 4em;
 	line-height: 2.2em;
-	margin: 1.45em 0em 1.45em 0.1em;
+	margin: 1.55em 0em 1.55em 0.1em;
 	overflow: hidden;
 	padding: 0em 1em;
 }
