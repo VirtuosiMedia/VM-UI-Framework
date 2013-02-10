@@ -127,6 +127,8 @@ table.borderedTable tr td:last-child:after {
 	width: 0.15em;
 }
 table tfoot+tbody tr td {border-radius: 0 !important;}
+.stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {border-right: #222 0.15em solid;}
+.stripedTable.borderedTable tbody tr:last-child:hover td {border-bottom: #222 0.15em solid;}
 
 /**
  * Cell Shading
