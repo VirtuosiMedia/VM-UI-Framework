@@ -140,14 +140,20 @@ var Charts = new Class({
 		}
 		
 		//This fixes a bug that renders the chart in full and then animates it.
-		if ((options.animate) && (!Browser.ie)&&(!Browser.firefox)){
+		if ((options.animate) && (Browser.chrome)){
 			if (!update){
+				console.log('preload')
 				this.svg[index].set('opacity', 0).addEvent('load', function(){
+					console.log('load')
 					this.set('opacity', 1);
 				});
 			}
 		} else {
-			options.animate = false; //IE can't do declarative animations, but future versions may rework the animation type 
+			//IE can't do declarative animations, but future versions may rework the animation type
+			//Safari breaks on Windows, so until it can be tested on Macs, it is also disabled
+			if ((Browser.ie)||(Browser.safari)){
+				options.animate = false; 
+			}
 		}		
 		
 		this[chartType](index);		
