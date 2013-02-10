@@ -68,6 +68,8 @@
 	float: left;
 	list-style: none;
 	margin: 0;
+	overflow: hidden;
+	width: auto;
 }
 [class^=carousel] .previews li {
 	float: left;
@@ -76,11 +78,10 @@
 }
 [class^=carousel] .previews a {
 	color: #FFF;
-	opacity: 0.5;
 	text-decoration: none;
 }
 [class^=carousel] .previews a.active, [class^=carousel] .previews.thumbs .active img {opacity: 1;}
-[class^=carousel] .previews a:hover, [class^=carousel] .previews.thumbs a:hover img {opacity: 0.8;}
+[class^=carousel] .previews a:hover, [class^=carousel] .previews.thumbs a:hover img {opacity: 1;}
 [class^=carousel] .previews.thumbs img {
 	border: 1px solid #000;
 	border-radius: 4px;
