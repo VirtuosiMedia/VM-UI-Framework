@@ -37,7 +37,7 @@ var Pin = new Class({
 
 	calculatePinPos: function(pinned, index){
 		var dim = pinned.getCoordinates();
-		var bottom =  pinned.getParent().getCoordinates().top + pinned.getParent().getComputedSize().height;
+		var bottom =  pinned.getParent().getCoordinates().top + pinned.getParent().getCoordinates().height;
 		var pinHeight = dim.height + parseInt(pinned.getStyle('margin-top')) + parseInt(pinned.getStyle('margin-bottom')); 
 		this.boundaries[index] = bottom - pinHeight - this.emSize;
 		this.widths[index] = pinned.setStyles({top: pinned.getCoordinates(pinned.getParent()).top, position: 'static', width: 'auto'}).getSize().x;
