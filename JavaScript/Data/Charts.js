@@ -601,6 +601,7 @@ var Charts = new Class({
 			d: 'M '+xOffset+' ' +yOffset+', '+xOffset+' '+(dim.height+yOffset)+', '+(dim.width+xOffset)+' '+(dim.height+yOffset),
 			stroke: options.axisColor,
 			fill: "transparent",
+			"fill-opacity": 0,
 			"stroke-width": 1,
 			"shape-rendering": "geometric-precision"
 		});
@@ -1150,6 +1151,7 @@ var Charts = new Class({
 			d: this.points[index][dataIndex].line,
 			stroke: options.colors[dataIndex],
 			fill: "transparent",
+			"fill-opacity": 0,
 			"shape-rendering": "geometric-precision",
 			"stroke-width": width,
 			"stroke-linecap": "round"
