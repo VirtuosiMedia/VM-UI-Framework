@@ -10,3 +10,4 @@
  */
 a {color: #09C;}
 a:hover, a:visited {color: #069;}
+a:active, a:focus {outline: #09F dotted 1px;}
