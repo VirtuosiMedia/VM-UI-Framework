@@ -114,7 +114,7 @@ var Carousel = new Class({
 				self.setLayout(index);
 				if (self.options[index]['transition'] == 'zoomPan'){
 					$$(self.slides[index].getElements('img')).each(function(item){
-						item[0].get('morph').cancel()
+						item[0].get('morph').cancel();
 						item.setStyles({width: '100%', height: 'auto'});
 					})
 					self.setCaptionPosition(index);

@@ -71,10 +71,13 @@
 	overflow: hidden;
 	width: auto;
 }
-[class^=carousel] .previews li {
+[class^=carousel] .previews li, [class^=carousel] .previews.thumbs li:nth-child(odd) {
+	clear: none !important;
 	float: left;
 	line-height: 1.25em;
-	margin-left: 1em;
+	margin-left: 1em !important;
+	margin-right: 0;
+	width: auto !important;
 }
 [class^=carousel] .previews a {
 	color: #FFF;
