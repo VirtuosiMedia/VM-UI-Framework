@@ -355,30 +355,34 @@ var Carousel = new Class({
 	},
 	
 	zoomPan: function(index, nextIndex, firstRun){
-		this.setCaptionPosition(index);
-		var currentIndex = this.active[index];
-		var currentSlide = this.slides[index][currentIndex].setStyles({position: 'relative', top: 0, left: 0});
-		var zoomStart = Number.random(110, 150);
-		var zoomEnd = zoomStart + [-10, 10, -10].getRandom();
-		var panStart = -((zoomStart - 100)/2);
-		var panEnd = Number.random(-(zoomEnd - 100), 0);
-		var duration = (this.options[index]['duration']) ? this.options[index]['duration'] : 4000;
-		var fadeType = (firstRun == 'first') ? 'show' : 'in';
-		
-		var nextSlide = this.slides[index][nextIndex].setStyles({
-			position: 'absolute', top: 0, left: 0,	opacity: 0
-		});
-		var slideImage = nextSlide.getChildren('img')[0].setStyles({
-			position: 'relative', height: zoomStart+'%', width: zoomStart+'%', left: panStart+'%', top: panStart+'%'
-		});
-		nextSlide.addClass('active').fade(fadeType);
-		slideImage.set('morph', {duration: duration, transition: Fx.Transitions.Sine.easeOut, unit: '%', fps: 100}).morph({
-			height: zoomEnd, width: zoomEnd, left: panEnd, top: panEnd
-		});
-		if (firstRun !== 'first'){
-			currentSlide.set({duration: 2000}).fade('out').removeClass.delay(2000, currentSlide, 'active')
-		}
-		this.active[index] = nextIndex;		
+		if (Browser.opera){
+			this.standard(index, nextIndex);
+		} else {
+			this.setCaptionPosition(index);
+			var currentIndex = this.active[index];
+			var currentSlide = this.slides[index][currentIndex].setStyles({position: 'relative', top: 0, left: 0});
+			var zoomStart = Number.random(110, 150);
+			var zoomEnd = zoomStart + [-10, 10, -10].getRandom();
+			var panStart = -((zoomStart - 100)/2);
+			var panEnd = Number.random(-(zoomEnd - 100), 0);
+			var duration = (this.options[index]['duration']) ? this.options[index]['duration'] : 4000;
+			var fadeType = (firstRun == 'first') ? 'show' : 'in';
+	
+			var nextSlide = this.slides[index][nextIndex].setStyles({
+				position: 'absolute', top: 0, left: 0,	opacity: 0
+			});
+			var slideImage = nextSlide.getChildren('img')[0].setStyles({
+				position: 'relative', height: zoomStart+'%', width: zoomStart+'%', left: panStart+'%', top: panStart+'%'
+			});
+			nextSlide.addClass('active').fade(fadeType);
+			slideImage.set('morph', {duration: duration, transition: Fx.Transitions.Sine.easeOut, unit: '%', fps: 100}).morph({
+				height: zoomEnd, width: zoomEnd, left: panEnd, top: panEnd
+			});
+			if (firstRun !== 'first'){
+				currentSlide.set({duration: 2000}).fade('out').removeClass.delay(2000, currentSlide, 'active')
+			}
+			this.active[index] = nextIndex;
+		} 
 	},
 	
 	setCaptionPosition: function(index){
