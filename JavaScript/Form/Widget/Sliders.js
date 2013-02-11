@@ -51,7 +51,7 @@ var Sliders = new Class({
 		}
 		
 		var container = new Element('ul', {id: name + 'Container', 'class': 'sliderContainer'});
-		var knob = new Element('a', {'class': 'knob', href: '#'});
+		var knob = new Element('a', {'class': 'knob', tabindex: input.get('tabindex')});
 		var counter = new Element('li', {'class': 'counter', text: start});
 		var track = new Element('li', {'class': 'track'}).adopt(knob, counter);
 		
