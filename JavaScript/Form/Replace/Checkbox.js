@@ -72,14 +72,7 @@ var CheckboxReplace = new Class({
 			box.addEvent('change', function(e){
 				$$('.'+replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
 			}).setStyle('display', 'none');
-			$$('label[for=' + box.get('name') + ']').addEvent('click', function(){
-				if (box.checked) {
-					box.set('checked', false).fireEvent('change').fireEvent('focus');
-				} else {
-					box.set('checked', true).fireEvent('change').fireEvent('focus');
-				}
-				this.getElement('.checkboxReplace').focus();
-			});
+			$$('label[for=' + box.get('name') + ']').addEvent('click', function(){replacement.fireEvent('click');});
 		});
 	}
 });
