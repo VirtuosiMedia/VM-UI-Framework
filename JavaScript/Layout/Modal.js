@@ -18,6 +18,7 @@ var Modal = new Class({
 		Array.each($$(selectors), function(trigger, index){
 			this.setTrigger(trigger, index);
 		}, this);
+		this.setWindowEvents();
 	},
 	
 	setTrigger: function(trigger){
@@ -40,9 +41,7 @@ var Modal = new Class({
 				height: displayHeight.y
 			},
 			events: {
-				click: function(){
-					self.close();
-				}
+				click: function(){self.close();},
 			}
 		}, this);
 		if (!this.currentTrigger.getData('hideOverlay')){
@@ -51,22 +50,38 @@ var Modal = new Class({
 	},
 	
 	createModal: function(){
-		var size = window.getSize(); 
-		var modal = new Element('div', {'id': 'modal', styles: {top: -2000}});
-		modal.inject($(document.body));
+		var modal = new Element('div', {'id': 'modal', styles: {top: -2000}}).inject($(document.body));
 		this.getModalContent();
+		this.positionModal();
+		this.setCloseTriggers();
+	},
+
+	positionModal: function(){
+		var size = window.getSize();
+		var modal = $('modal');
+		if (size.x <= 768){
+			var topVal = 0, leftVal = 0, height = size.y + 'px';
+		} else {
+			var dimensions = modal.getSize();
+			var topVal = ((size.y - dimensions.y)/2) + 'px';
+			var leftVal = ((size.x - dimensions.x)/2) + 'px';
+			var height = modal.hasClass('iframeModal') ? 500 : 'auto';
+		}
 		
-		var dimensions = modal.getSize();
-		var topVal = ((size.y - dimensions.y)/2) + 'px';
-		var leftVal = ((size.x - dimensions.x)/2) + 'px';
+		modal.setStyle('height', height);
+		var headerHeight = (modal.getElement('.modal .modalHeader')) ? modal.getElement('.modal .modalHeader').getSize().y : 0;
+		var footerHeight = (modal.getElement('.modal .modalFooter')) ? modal.getElement('.modal .modalFooter').getSize().y : 0;
+		var contentHeight = modal.getSize().y - headerHeight - footerHeight - 22;
+		if (modal.getElement('.modal .modalContent')){
+			modal.getElement('.modal .modalContent').setStyle('height', contentHeight);
+		}
 		
 		if (this.currentTrigger.getData('noFx') == 'true'){
 			modal.setStyles({top: topVal, left: leftVal});
 		} else {
 			modal.set('tween', {fps: 200, duration: 'short', transition: Fx.Transitions.Expo.easeOut});
-			modal.setStyle('left', leftVal).tween('top', topVal);
-		}
-		this.setCloseTriggers();
+			modal.setStyles({left: leftVal}).tween('top', topVal);
+		}		
 	},
 	
 	getModalContent: function(){
@@ -97,8 +112,9 @@ var Modal = new Class({
 			});
 			$('ajaxModal').load(target);			
 		} else if (target.test(/^http/)){
-			var content = new Element('iframe', {src: target, styles: {height: '100%', width: '100%'}});
-			$('modal').setStyles({width: '80%', height: 500, padding: '0px 5px 5px 0px'}).adopt(content);				
+			var content = new Element('iframe', {src: target});
+			var iframeClose = new Element('a', {'class': 'iframeClose close', text: 'X'});
+			$('modal').addClass('iframeModal').adopt(content, iframeClose);				
 		} else {
 			var content = new Element('div', {
 				html: 'Modal content could not be found.',
@@ -118,6 +134,16 @@ var Modal = new Class({
 			self.fireModalEvent('modalSaved');		
 			self.close();
 		});		
+	},
+	
+	setWindowEvents: function(){
+		var self = this;
+		window.addEvent('resize', function(){
+			if ($('overlay')){
+				$('overlay').setStyle('height', this.getSize().y);
+				self.positionModal();
+			}
+		});
 	},
 
 	fireModalEvent: function(event){

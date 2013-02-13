@@ -75,7 +75,8 @@
 				<h3 id="overview">Overview</h3>
 				<p>A modal window can load content into a popup dialog. The content can be loaded from on the page or 
 					from an external page and it can be either static or dynamic. The modal will automatically be 
-					centered on the page and can be dismissed clicking outside of it or with a close trigger.</p>
+					centered on the page and can be dismissed clicking outside of it or with a close trigger. For 
+					mobile screens, the modal will expand to full-screen size.</p>
 				<p><a href="#top">Return to top</a></p>
 				<h3 id="usage">Usage</h3>
 				<p>Each modal window can load content in three ways: from inline content, via AJAX on the same site, or 
@@ -89,7 +90,13 @@
 
 &lt;!-- External Site Iframe Trigger --&gt;
 &lt;a class="button modalTrigger" href="http://www.virtuosimedia.com/"&gt;Example Modal&lt;/a&gt;
-</pre>					
+</pre>			
+				<h6>Closing Modals</h6>
+				<p>To close a modal, add a link or a button with a class of <code>close</code> somewhere inside of the 
+					modal.</p>
+				<p><span class="warningMarker">Warning</span> A close button must be manually added to every type of 
+					modal, with the exception of iframe modals (they add their own close button). If a close button is 
+					not added, <strong>mobile users will not be able to close the modal</strong>.</p>		
 				<h6>Loading Inline Content</h6>
 				<p>The modal trigger must reference the id of the modal content container in either the 
 					<code>href</code> or <code>data-target</code> attribute.</p>
@@ -108,7 +115,28 @@
 		&lt;a href="#" class="close"&gt;&lt;span class="iconLargeDelete3"&gt;&lt;/span&gt;&lt;/a&gt;
 	&lt;/div&gt;
 	&lt;div class="modalContent"&gt;
-		&lt;p&gt;This is a modal window built with inline content and featuring an overlay.&lt;/p&gt;
+		&lt;p&gt;This is a modal window built with inline content and featuring an overlay. The text below 
+			shows what happens when modal content overflows.&lt;/p&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non magna metus. Vivamus 
+			vitae mi dui, eu accumsan leo. Vestibulum sagittis malesuada varius. Curabitur ultricies, 
+			diam interdum posuere congue, lorem eros facilisis dui, a aliquet quam erat at quam. Nunc 
+			pellentesque consectetur dolor vel venenatis. Nunc libero enim, mollis at fermentum eget, 
+			lobortis non enim. Maecenas justo augue, pharetra ut ullamcorper in, feugiat ac arcu. Duis 
+			quis augue ut libero pharetra ultricies. Vivamus vitae risus nibh. Phasellus eget aliquam 
+			ligula. Praesent malesuada, risus sit amet iaculis pretium, risus erat sagittis magna, in 
+			vestibulum libero velit a odio. Praesent est justo, ultricies id pretium vel, vehicula ut 
+			leo. Nunc et sapien non magna volutpat facilisis.&lt;/p&gt;
+		&lt;p&gt;In placerat mollis lorem sit amet tincidunt. Nulla iaculis, orci et blandit lacinia, purus 
+			eros pellentesque sapien, non ornare erat elit eu risus. Nulla cursus vulputate tempus. Sed 
+			tempor ante adipiscing lorem malesuada non pretium ante malesuada. Nullam dignissim, tortor 
+			sed ornare convallis, est orci scelerisque odio, nec vulputate nibh arcu in velit. Vivamus 
+			in justo quis mauris feugiat sodales quis vel turpis. Donec quis bibendum elit. Suspendisse 
+			dui risus, tempus ac suscipit viverra, convallis adipiscing eros. Quisque velit urna, 
+			suscipit placerat dapibus vel, malesuada in ipsum. Nullam ut felis pulvinar ante 
+			ullamcorper facilisis at tincidunt quam. Donec quis quam et orci ullamcorper pulvinar a 
+			quis eros. Fusce quam dui, ultrices a laoreet quis, vulputate at dolor. Curabitur ac eros 
+			elit, in sagittis justo. Vivamus ullamcorper facilisis massa, vitae porttitor dui suscipit 
+			sed. Fusce tempus imperdiet orci, varius lobortis velit imperdiet sit amet.&lt;/p&gt;
 	&lt;/div&gt;
 	&lt;div class="modalFooter"&gt;
 		&lt;a href="#" class="largeInfoButton save"&gt;Got it!&lt;/a&gt;
@@ -124,7 +152,28 @@
 						<a href="#" class="close"><span class="iconLargeDelete3"></span></a>
 					</div>
 					<div class="modalContent">
-						<p>This is a modal window built with inline content and featuring an overlay.</p>
+						<p>This is a modal window built with inline content and featuring an overlay. The text below 
+							shows what happens when modal content overflows.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non magna metus. Vivamus 
+							vitae mi dui, eu accumsan leo. Vestibulum sagittis malesuada varius. Curabitur ultricies, 
+							diam interdum posuere congue, lorem eros facilisis dui, a aliquet quam erat at quam. Nunc 
+							pellentesque consectetur dolor vel venenatis. Nunc libero enim, mollis at fermentum eget, 
+							lobortis non enim. Maecenas justo augue, pharetra ut ullamcorper in, feugiat ac arcu. Duis 
+							quis augue ut libero pharetra ultricies. Vivamus vitae risus nibh. Phasellus eget aliquam 
+							ligula. Praesent malesuada, risus sit amet iaculis pretium, risus erat sagittis magna, in 
+							vestibulum libero velit a odio. Praesent est justo, ultricies id pretium vel, vehicula ut 
+							leo. Nunc et sapien non magna volutpat facilisis.</p>
+						<p>In placerat mollis lorem sit amet tincidunt. Nulla iaculis, orci et blandit lacinia, purus 
+							eros pellentesque sapien, non ornare erat elit eu risus. Nulla cursus vulputate tempus. Sed 
+							tempor ante adipiscing lorem malesuada non pretium ante malesuada. Nullam dignissim, tortor 
+							sed ornare convallis, est orci scelerisque odio, nec vulputate nibh arcu in velit. Vivamus 
+							in justo quis mauris feugiat sodales quis vel turpis. Donec quis bibendum elit. Suspendisse 
+							dui risus, tempus ac suscipit viverra, convallis adipiscing eros. Quisque velit urna, 
+							suscipit placerat dapibus vel, malesuada in ipsum. Nullam ut felis pulvinar ante 
+							ullamcorper facilisis at tincidunt quam. Donec quis quam et orci ullamcorper pulvinar a 
+							quis eros. Fusce quam dui, ultrices a laoreet quis, vulputate at dolor. Curabitur ac eros 
+							elit, in sagittis justo. Vivamus ullamcorper facilisis massa, vitae porttitor dui suscipit 
+							sed. Fusce tempus imperdiet orci, varius lobortis velit imperdiet sit amet.</p>
 					</div>
 					<div class="modalFooter">
 						<a href="#" class="largeInfoButton save">Got it!</a>

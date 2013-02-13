@@ -29,6 +29,8 @@
 	border: 0.3em solid #000;
 	border-radius: 4px;
 	box-shadow: 1px 1px 3px 1px #111;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
 	display: block;
 	height: auto;
 	left: 50%;
@@ -46,11 +48,15 @@
 .ajaxModal {margin-left: -2em;}
 .modal {display: none;}
 #modal .modal {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
 	display: block;
 	margin: 0px;
 }
 .modalHeader {
 	border-bottom: #CCC 1px solid;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	padding: 1em;
 	position: relative;
 }
@@ -70,10 +76,56 @@
 .modalFooter {
 	background: #F9F9F9;
 	border-top: #CCC 1px solid;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
 	overflow: auto;
 	padding: 1em;
 }
 .modalFooter .button, .modalFooter [class*="Button"] {
 	float: right;
 	margin: 0 0 0 0.5em;
+}
+#modal.iframeModal {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
+	height: 500px;
+	padding: 0 5px 5px 0;
+	width: 80%;
+}
+#modal iframe {
+	height: 100%;
+	width: 100%;
+}
+/**
+ * Modals are full-screen size on mobile
+ */
+@media (max-width: 768px) {
+	#modal, #modal.iframeModal {
+		max-height: 100% !important;
+		max-width: 100% !important;
+		overflow: hidden;
+		width: 100%;	
+	}
+	.modal, .ajaxModal {width: 100%;}
+	.modalContent {display: block;}		
+	.modalFooter {
+		bottom: 0;
+		position: absolute;
+		width: 100%;
+	}
+	.iframeClose {
+		background: #222;
+		border-radius: 0 0 0 4px;
+		box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.3);
+		color: #FFF;
+		cursor: pointer;
+		display: block;
+		line-height: 3em;
+		padding: 0em 1em;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.iframeClose:hover, .iframeClose:active {background: #000;}
 }
