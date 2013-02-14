@@ -25,18 +25,18 @@ h1 {
 }
 h2 {
 	font-size: 1.625em;
-	line-height: 1.1em;
-	margin-bottom: 1.1em;	
+	line-height: 1.07695em;
+	margin-bottom: 1.07695em;	
 }
 h3 {
 	font-size: 1.5em;
-	line-height: 1.2em;
-	margin-bottom: 1.2em;
+	line-height: 1.166667em;
+	margin-bottom: 1.166667em;
 }
 h4 {
 	font-size: 1.375em;
-	line-height: 1.3em;
-	margin-bottom: 1.3em;
+	line-height: 1.273em;
+	margin-bottom: 1.273em;
 }
 h5 {
 	font-size: 1.25em;
@@ -44,8 +44,8 @@ h5 {
 }
 h6 {
 	font-size: 1.125em;
-	line-height: 1.6em;
-	margin-bottom: 1.6em;
+	line-height: 1.555556em;
+	margin-bottom: 1.555556em;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 	bottom: -0.3em;
@@ -88,6 +88,7 @@ ins {
 	color: #4D9E0C;
 	text-decoration: none;
 }
+
 
 /* Headlines have word-breaking on mobile screens */
 @media (max-width: 768px) {
