@@ -17,22 +17,31 @@ var Tips = new Class({
 	initialize: function(selectors){
 		var tips = $$(selectors);
 		var self = this;
-		Array.each(tips, function(tip){
-			var startEvent = (tip.hasData('event')) ? tip.getData('event') : 'mouseover';
-			var endEvent = (startEvent == 'mouseover') ? 'mouseout' : 'mouseover';
-			var endTip = (startEvent == 'mouseover') ? tip : $$('html');
-			tip.addEvent(startEvent, function(e){
+		tips.each(function(tip){
+			self.addTipEvents(tip);
+		});
+		window.addEvent('resize', function(){
+			tips.each(function(tip){
+				var container = $$('.' + tip.get('class') + 'Container').dispose();
+			});
+		});
+	},
+	
+	addTipEvents: function(tip){
+		var self = this;
+		tip.addEvents({
+			mouseover: function(e){
 				e.stop();
 				self.addTip(tip);
-			});
-			if (startEvent == 'mouseover'){
-				tip.addEvent('mouseout', function(e){self.removeTip(tip);});				
-			} else {
-				$$('html').addEvent('click', function(e){
-					if (!e.target.hasClass('tipContainer')){
-						self.removeTip(tip);
-					}
-				});
+			}, 
+			mouseout: function(e){self.removeTip(tip);},
+			click: function(e){
+				e.stop();
+				if (e.target.hasClass('tipContainer')){
+					self.addTip(tip);	
+				} else {
+					self.removeTip(tip);
+				}
 			}
 		});
 	},
@@ -51,7 +60,7 @@ var Tips = new Class({
 	},
 	
 	removeTip: function(tip){
-		var tooltip = $$('[class*=tip][class$=Container]');
+		var tooltip = $$('[class*=tip][class*=Container]');
 		if (tooltip){
 			var transition = (tip.getData('transition') == 'fade') ? 'out' : 'hide';
 			tooltip.fade(transition).dispose.delay(500, tooltip);
@@ -64,13 +73,18 @@ var Tips = new Class({
 	},
 
 	setPosition: function(container, tip){
+		var win = window.getSize();
+		var scroll = window.getScroll();
 		var pos = tip.getCoordinates();
 		var tipSize = container.getSize(); 
 		var offset = (tip.hasData('offset')) ? tip.getData('offset').toInt() + 10 : 10;
 		var location = tip.get('class').hyphenate().split('-').getLast();
 		location = (['top', 'bottom', 'left', 'right'].contains(location)) ? location : 'top';
 
-		if (['bottom', 'top'].contains(location)) {
+		if (win.x <= 420){
+			var x = (win.x - tipSize.x)/2;
+			var y = (pos.top - tipSize.y - offset > scroll.y) ? pos.top - tipSize.y - offset : pos.bottom + offset; 
+		} else if (['bottom', 'top'].contains(location)){
 			var x = pos.left - ((tipSize.x - pos.width)/2); //Centers the tip
 			var y = (location == 'top') ? pos.top - tipSize.y - offset : pos.bottom + offset;
 		} else {
@@ -78,7 +92,44 @@ var Tips = new Class({
 			var y = pos.top - ((tipSize.y - pos.height)/2); //Centers the tip
 		}
 		
+		//This fixes tips that go off screen
+		var offLeft = (x < 0);
+		var offRight = ((x + tipSize.x) > win.x);
+		
+		if (offLeft || offRight){ 
+			if (offLeft){
+				x = pos.left;
+				container.addClass('offscreenLeftTip');
+			} else {
+				x = pos.right - tipSize.x;
+				container.addClass('offscreenRightTip');	
+			}
+		}
+
+		var offTop = (y < scroll.y);
+		var offBottom = (y + tipSize.y + offset > scroll.y + win.y);		
+		
+		if (offTop||offBottom||offLeft||offRight){
+			container.removeClass('offscreenBottomTip');
+			if (offTop){
+				var y = pos.bottom + offset;
+				container.addClass('offscreenTopTip');
+			} else {
+				var y = pos.top - tipSize.y - offset;
+				container.addClass('offscreenBottomTip');
+			}
+			
+			if (['left', 'right'].contains(location)){
+				container.removeClass('offscreenLeftTip').removeClass('offscreenRightTip');
+				if (location == 'left'){
+					x = pos.left;
+					container.addClass('offscreenLeftTip');	
+				} else {
+					x = pos.right - tipSize.x;
+					container.addClass('offscreenRightTip');
+				}
+			}
+		}
 		return container.setStyles({top: y, left: x});
-	}
-	
+	}	
 });

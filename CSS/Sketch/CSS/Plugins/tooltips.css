@@ -8,7 +8,7 @@
 /**
  * Tooltips
  */
-[class*=tip][class$=Container], [class*=powertip][class$=Container] {
+[class*=tip][class*=Container], [class*=powertip][class*=Container] {
 	background: #111;
 	border: 0.15em #111 solid;
 	border-radius: 4px;
@@ -20,38 +20,39 @@
 	position: absolute;
 	z-index: 100000;
 }
-[class*=powertip][class$=Container] {
+[class*=powertip][class*=Container] {
 	background: #FFF;
 	color: #000;
 }
-[class*=tip][class$=Container]:after, [class*=powertip][class$=Container]:after, 
-[class*=powertip][class$=Container]:before {
+[class*=tip][class*=Container]:after, [class*=powertip][class*=Container]:after, 
+[class*=powertip][class*=Container]:before {
 	content: '';
 	border-style: solid;
 	height: 0;
 	position: absolute;
 	width: 0;
 }
-[class*=powertip][class$=Container]:before {z-index: 100;}
-[class*=tip][class$=TopContainer]:after, [class*=tip][class$=Container]:after, 
-[class*=powertip][class$=TopContainer]:after, [class*=powertip][class$=Container]:after,
-[class*=powertip][class$=TopContainer]:before, [class*=powertip][class$=Container]:before {
+[class*=powertip][class*=Container]:before {z-index: 100;}
+[class*=tip][class*=TopContainer]:after, [class*=tip][class*=Container]:after, 
+[class*=powertip][class*=TopContainer]:after, [class*=powertip][class*=Container]:after,
+[class*=powertip][class*=TopContainer]:before, [class*=powertip][class*=Container]:before,
+[class*=tip][class*=Container].offscreenBottomTip:after {
 	border-color: #111 transparent transparent transparent;
 	border-width: 0.4em 0.4em 0em 0.4em;
 	left: 50%;
 	margin-left: -0.3em;
 	bottom: -0.5em;
 }
-[class*=tip][class$=BottomContainer]:after, [class*=powertip][class$=BottomContainer]:after, 
-[class*=powertip][class$=BottomContainer]:before {
+[class*=tip][class*=BottomContainer]:after, [class*=powertip][class*=BottomContainer]:after, 
+[class*=powertip][class*=BottomContainer]:before, [class*=tip][class*=TopContainer].offscreenTopTip:after {
 	border-color: transparent transparent #111 transparent;
 	border-width: 0 0.4em 0.4em 0.4em;
 	left: 50%;
 	margin-left: -0.3em;
 	top: -0.5em;
 }
-[class*=tip][class$=LeftContainer]:after, [class*=powertip][class$=LeftContainer]:after, 
-[class*=powertip][class$=LeftContainer]:before {
+[class*=tip][class*=LeftContainer]:after, [class*=powertip][class*=LeftContainer]:after, 
+[class*=powertip][class*=LeftContainer]:before {
 	border-color: transparent transparent transparent #111;
 	border-width: 0.4em 0em 0.4em 0.4em;
 	top: 50%;
@@ -59,44 +60,99 @@
 	margin: -0.3em 0 0 0.15em;
 	right: 0em;
 }
-[class*=tip][class$=RightContainer]:after, [class*=powertip][class$=RightContainer]:after, 
-[class*=powertip][class$=RightContainer]:before {
+[class*=tip][class*=RightContainer]:after, [class*=powertip][class*=RightContainer]:after, 
+[class*=powertip][class*=RightContainer]:before {
 	border-color: transparent #111 transparent transparent;
 	border-width: 0.4em 0.4em 0.4em 0;
 	top: 50%;
 	margin: -0.3em 0 0 0;
 	left: -0.5em;
 }
-[class*=powertip][class$=TopContainer]:before, [class*=powertip][class$=Container]:before {
+[class*=powertip][class*=TopContainer]:before, [class*=powertip][class*=Container]:before {
 	border-color: #FFF transparent transparent transparent;
 	bottom: -0.3em;	
 }
-[class*=powertip][class$=BottomContainer]:before {
+[class*=powertip][class*=BottomContainer]:before {
 	border-color: transparent transparent #EEE transparent;
 	top: -0.3em;
 }
-[class*=powertip][class$=LeftContainer]:before {
+[class*=powertip][class*=LeftContainer]:before {
 	border-color: transparent transparent transparent #FFF;
 	margin-left: -0.05em;
 	right: -0.3em;
 }
-[class*=powertip][class$=RightContainer]:before {
+[class*=powertip][class*=RightContainer]:before {
 	border-color: transparent #FFF transparent transparent;
 	left: -0.3em;
 }
-[class*=tip][class$=Container] .title, [class*=powertip][class$=Container] .title {
+[class*=tip][class*=Container] .title, [class*=powertip][class*=Container] .title {
 	font-size: 1em;
 	margin-bottom: 0;
 	padding: 0.2em 0.8em;
 }
-[class*=powertip][class$=Container] .title {
+[class*=powertip][class*=Container] .title {
 	background: #EEE;
 	border-bottom: #CCC solid 1px;
 }
-[class*=tip][class$=Container] .title:after, [class*=powertip][class$=Container] .title:after {
+[class*=tip][class*=Container] .title:after, [class*=powertip][class*=Container] .title:after {
 	border: none;
 }
-[class*=tip][class$=Container] .content, [class*=powertip][class$=Container] .content {
+[class*=tip][class*=Container] .content, [class*=powertip][class*=Container] .content {
 	padding: 0.4em 0.8em;	
 }
 .tipContent {display: none;}
+
+/**
+ * Fixes offscreen tips
+ */
+[class*=tip][class*=Container].offscreenLeftTip:after {left: 25%;}
+[class*=tip][class*=Container].offscreenLeftTip:before {left: 22%;}
+[class*=tip][class*=Container].offscreenRightTip:after {left: 75%;}
+[class*=tip][class*=Container].offscreenRightTip:before {left: 72%;}
+[class*=tip][class*=Container].offscreenTopTip:after {
+	border-color: transparent transparent #222 transparent;
+	border-width: 0 0.4em 0.4em 0.4em;	
+	bottom: auto;
+	top: -0.5em;
+}
+[class*=tip][class*=Container].offscreenTopTip:before {
+	border-color: transparent transparent #EEE transparent;
+	border-width: 0 0.4em 0.4em 0.4em;
+	bottom: auto;
+	top: -0.3em;	
+}
+[class*=tip][class*=Container].offscreenBottomTip:after {
+	bottom: -0.5em;
+	top: auto;
+}
+[class*=tip][class*=Container].offscreenBottomTip:before {
+	border-color: #FFF transparent transparent transparent;
+	border-width: 0.4em 0.4em 0em 0.4em;
+	bottom: -0.3em;
+	top: auto;	
+}
+[class*=tip][class*=Container].offscreenTopTip.offscreenLeftTip:before, 
+[class*=tip][class*=Container].offscreenTopTip.offscreenRightTip:before {
+	top: 0;
+}
+[class*=tip][class*=Container].offscreenTopTip.offscreenLeftTip:after, 
+[class*=tip][class*=Container].offscreenTopTip.offscreenRightTip:after {
+	top: -0.15em;
+}
+[class*=tip][class*=Container].offscreenTopTip.offscreenLeftTip:after {left: 19.5%;}
+[class*=tip][class*=Container].offscreenTopTip.offscreenRightTip:after {left: 72%;}
+
+/**
+ * Small mobile devices only
+ */
+@media (max-width: 420px) {
+	[class*=tip][class*=Container], [class*=powertip][class*=Container]{
+		box-shadow: 0 0 3px 1px rgba(0,0,0,0.4);
+		max-width: 98%;
+		width: 98%;
+	}
+	[class*=tip][class*=Container]:before, [class*=powertip][class*=Container]:before, 
+	[class*=tip][class*=Container]:after, [class*=powertip][class*=Container]:after {
+		display: none;
+	}
+}

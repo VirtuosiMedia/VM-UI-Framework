@@ -50,10 +50,8 @@
 				<p>Tooltips come in two forms, regular tips and powertips, both of which function the same way. The 
 					regular tips are a single color, while the powertips differentiate between the tip title and the 
 					content. Both tip styles allow four orientations (top, bottom, left, and right), an instant or 
-					fading transition, variable offsets, click or hover triggers, and the ability to pull tip content 
-					from an inline element.</p>
+					fading transition, variable offsets, and the ability to pull tip content from an inline element.</p>
 			</div>
-
 		</div>
 		<div class="row">
 			<div class="col4">
@@ -65,8 +63,11 @@
 				<p>Each tip also comes with a number of options to customize it (the options are the same for both tip
 					types). The options are passed in through data-attributes. In most cases, you will at least want to 
 					use the <code>data-content</code> attribute to provide your tip with content. Options exist for 
-					controlling the transition, the offset, the trigger event, adding a title, and even pulling in 
+					controlling the transition, the offset, adding a title, and even pulling in 
 					content from another element.</p>
+				<p>Tips work on mobile screens as well, though they function slightly different. No matter the tip 
+					direction, the mobile tooltip will only appear above or below the trigger, depending on the scroll 
+					position. Mobile tips will also appear just under the full-screen width.</p>
 				<h6>Inline Tips</h6>
 				<p>Inline tips populate the tip's content from any given element on the page with an id. To assign the 
 					target element, simply assign the <code>date-target</code> attribute with the element id, including 
@@ -119,13 +120,7 @@
 							<td data-column="Description">The tip offset from the trigger in pixels (without the unit).</td>
 							<td data-column="Default"><em>10</em></td>
 							<td data-column="Values"><em>int</em> (in pixels)</td>
-						</tr>						
-						<tr>
-							<td data-column="Option"><code>data-event</code></td>
-							<td data-column="Description">The trigger event for the tip.</td>
-							<td data-column="Option"><em>hover</em></td>
-							<td data-column="Option"><em>hover</em>|<em>click</em></td>
-						</tr>																								
+						</tr>																												
 					</tbody>
 				</table>
 				<h6>Sample Code</h6>
@@ -158,11 +153,13 @@
 				<h3>Demos</h3>
 				<h6>Regular Tips</h6>
 				<ul class="unlisted flush horizontal">
+					<li><a href="#" class="tipLeft" data-content="This is a left tip">Left Tip</a></li>
 					<li><a href="#" class="tip" data-content="This is the default tip">Default Tip</a></li>
 					<li><a href="#" class="tipTop" data-content="This is a top tip">Top Tip</a></li>
 					<li><a href="#" class="tipRight" data-content="This is a right tip">Right Tip</a></li>
 					<li><a href="#" class="tipBottom" data-content="This is a bottom tip">Bottom Tip</a></li>
 					<li><a href="#" class="tipLeft" data-content="This is a left tip">Left Tip</a></li>
+					<li><a href="#" class="tipRight" data-content="This is a right tip">Right Tip</a></li>
 				</ul>
 				<h6>Example Code</h6>
 <pre class="html">
@@ -176,11 +173,13 @@
 </pre>					
 				<h6>Power Tips</h6>
 				<ul class="unlisted flush horizontal">
+					<li><a href="#" class="powertipLeft" data-title="Left" data-content="This is a left tip">Left Tip</a></li>
 					<li><a href="#" class="powertip" data-title="Default" data-content="This is the default tip">Default Tip</a></li>
 					<li><a href="#" class="powertipTop" data-title="Top" data-content="This is a top tip">Top Tip</a></li>
 					<li><a href="#" class="powertipRight" data-title="Right" data-content="This is a right tip">Right Tip</a></li>
 					<li><a href="#" class="powertipBottom" data-title="Bottom" data-content="This is a bottom tip">Bottom Tip</a></li>
 					<li><a href="#" class="powertipLeft" data-title="Left" data-content="This is a left tip">Left Tip</a></li>
+					<li><a href="#" class="powertipRight" data-title="Right" data-content="This is a right tip">Right Tip</a></li>
 				</ul>
 				<h6>Example Code</h6>
 <pre class="html">
@@ -196,7 +195,6 @@
 				<ul class="unlisted flush horizontal">
 					<li><a href="#" class="tipTop" data-content="This tip fades in and out" data-transition="fade">Fade Tip</a></li>
 					<li><a href="#" class="tipRight" data-content="This tip is offset by 10px" data-offset="10">Offset Tip</a></li>
-					<li><a href="#" class="tipBottom" data-content="This tip is triggered by a click" data-event="click">Click Tip</a></li>
 					<li><a href="#" class="tipLeft" data-target="#inlineTipContent">Inline Tip</a></li>
 				</ul>
 				<div id="inlineTipContent" class="tipContent">
@@ -207,7 +205,6 @@
 &lt;ul class="unlisted flush horizontal"&gt;
 	&lt;li&gt;&lt;a href="#" class="tipTop" data-content="This tip fades in and out" data-transition="fade"&gt;Fade Tip&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href="#" class="tipRight" data-content="This tip is offset by 10px" data-offset="10"&gt;Offset Tip&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;a href="#" class="tipBottom" data-content="This tip is triggered by a click" data-event="click"&gt;Click Tip&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href="#" class="tipLeft" data-target="#inlineTipContent"&gt;Inline Tip&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div id="inlineTipContent" class="tipContent"&gt;
