@@ -39,6 +39,7 @@ var VMUI = new Class({
 		         {name:'Pager', source:'Layout/Pager.js', selectors:'.pager'},
 		         {name:'MobileMenu', source:'Navigation/MobileMenu.js', selectors:'.mobileMenu'},
 		         {name:'Reveal', source:'Widgets/Reveal.js', selectors:'.revealToggle'},
+		         {name:'Baseline', source:'Layout/Baseline.js', selectors:'img, svg, canvas, object, video, audio, iframe, [class*=Chart]'} //This should always go last to let everything render
 		],
 		relativePath: '../JavaScript'		
 	},
