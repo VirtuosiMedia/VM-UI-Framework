@@ -142,9 +142,7 @@ var Charts = new Class({
 		//This fixes a bug that renders the chart in full and then animates it.
 		if ((options.animate) && (Browser.chrome)){
 			if (!update){
-				console.log('preload')
 				this.svg[index].set('opacity', 0).addEvent('load', function(){
-					console.log('load')
 					this.set('opacity', 1);
 				});
 			}
