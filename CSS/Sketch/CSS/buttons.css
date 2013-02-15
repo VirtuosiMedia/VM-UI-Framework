@@ -183,26 +183,26 @@
 	color: #555;
 	pointer: default;
 }
-[class*="medium"][class$="Button"] {
+[class*="medium"][class*="Button"] {
 	display: inline-block;
 	height: 1.75em;
-	margin: 1.80em 0em 1.80em 0.1em;
+	margin: 1.75em 0em 1.75em 0.1em;
 }
-[class*="large"][class$="Button"] {
+[class*="large"][class*="Button"] {
 	display: inline-block;
 	height: 2.25em;
 	line-height: 2.2em;
-	margin: 1.55em 0em 1.55em 0.1em;
+	margin: 1.25em 0em 1.75em 0.1em;
 }
-[class*="multi"][class$="Button"] {
+[class*="multi"][class*="Button"] {
 	display: inline-block;
 	height: 4em;
 	line-height: 2.2em;
-	margin: 1.55em 0em 1.55em 0.1em;
+	margin: 1.25em 0em 1.75em 0.1em;
 	overflow: hidden;
 	padding: 0em 1em;
 }
-[class*="multi"][class$="Button"] span:first-child {
+[class*="multi"][class*="Button"] span:first-child {
 	float: left;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -211,7 +211,7 @@
 	text-align: center;
 	width: 100%;	
 }
-[class*="multi"][class$="Button"] span:last-child {
+[class*="multi"][class*="Button"] span:last-child {
 	clear: left;
 	float: left;
 	height: 1em;
