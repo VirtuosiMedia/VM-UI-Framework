@@ -9,8 +9,6 @@
  * Syntax Highlighter
  */
 .standardLighter {
-	border: 0.15em solid #222;
-	border-radius: 2px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -28,8 +26,8 @@
 	width: 30px;
 }
 .standardLighter .standardline {
-	background-color: #fff;
-	border-left: 0.2em solid #222;
+	background-color: #FFF;
+	border-left: 0.1em solid #EEE;
 	padding: 0 3px 0 10px;
 	padding-left: 15px;
 	padding-right: 5px;
@@ -38,8 +36,8 @@
 .standardLighter .standardfirst {margin-top: -0.15em;}
 .standardLighter .standardlast  {margin-bottom: -0.15em;}
 ol.standardLighter {
-	background: #222;
-	color: #FFF;
+	background: #FCFCFC;
+	color: #999;
 	list-style: decimal-leading-zero;
 	margin: 0 0 1.815em 0;
 }
