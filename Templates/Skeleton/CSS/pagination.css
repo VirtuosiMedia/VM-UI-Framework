@@ -25,13 +25,13 @@
 }
 .pagination li:last-child {margin-right: 0;}
 .pagination a, .pagination .active, .pagination .disabled {
-	border: 0.15em solid #111;
+	border: 0.1em solid #111;
 	border-radius: 2px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
 	height: 1.75em;
-	line-height: 1.45em;
+	line-height: 1.75em;
 	padding: 0em 0.4375em;
 	text-decoration: none;
 }
@@ -40,7 +40,7 @@
 	color: #FFF;
 }
 .pagination .active, .pagination .disabled {
-	border: 0.15em solid #CCC;
+	border: 0.1em solid #CCC;
 	margin-top: 0.05em;
 }
 @media (max-width: 768px) {
