@@ -51,7 +51,7 @@ var VMUI = new Class({
 		this.setOptions(options);
 		var self = this;
 		$(document.body).addEvent('ajaxUpdate', function(parent){self.loadScripts(parent);});
-		var smoothScroll = new Fx.SmoothScroll({links: 'a'});
+		var smoothScroll = new Fx.SmoothScroll({links: 'a:not(.revealToggle)'});
 		this.loadScripts(document.body);		
 	},	
 	
