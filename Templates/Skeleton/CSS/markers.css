@@ -9,14 +9,25 @@
  * Markers
  */
 span.marker, span[class*="Marker"] {
-	background: #999;
-	border-radius: 4px;
-	color: #FFF;
+	border: #999 0.1em solid;
+	color: #999;
 	display: inline;
 	font-size: 0.875em;
 	padding: 0.1em 0.375em 0.1em;
 }
-span.infoMarker {background: #069;}
-span.successMarker {background: #4D9E0C;}
-span.warningMarker {background: #FB9702;}
-span.errorMarker {background: #FF6A6A;}
+span.infoMarker {
+	border-color: #069;
+	color: #069;
+}
+span.successMarker {
+	border-color: #4D9E0C;
+	color: #4D9E0C;
+}
+span.warningMarker {
+	border-color: #FB9702;
+	color: #FB9702;
+}
+span.errorMarker {
+	border-color: #FF6A6A;
+	color: #FF6A6A;	
+}
