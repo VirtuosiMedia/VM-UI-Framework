@@ -1,0 +1,37 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Progress bars
+ */
+.progressBar, [class*="ProgressBar"] {
+	border: 0.15em solid #222;
+	border-radius: 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	height: 1.4em;
+	line-height: 1.1em;	
+	top: 0.4em;
+	width: 100%;
+}
+.progressBar>*, [class*="ProgressBar"]>* {
+	content: '';
+	display: block;
+	height: 100%;
+	position: absolute;
+	width: 33%;
+}
+@media (max-width: 768px) {
+	.progressBar>*, [class*="ProgressBar"]>* {height: 1.1em;}
+}
+.progressBar>* {background: #999;}
+.infoProgressBar>* {background: #069;}
+.successProgressBar>* {background: #4D9E0C;}
+.warningProgressBar>* {background: #FB9702;}
+.errorProgressBar>* {background: #FF6A6A;}

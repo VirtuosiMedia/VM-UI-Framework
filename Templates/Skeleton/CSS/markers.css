@@ -1,0 +1,22 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Markers
+ */
+span.marker, span[class*="Marker"] {
+	background: #999;
+	border-radius: 4px;
+	color: #FFF;
+	display: inline;
+	font-size: 0.875em;
+	padding: 0.1em 0.375em 0.1em;
+}
+span.infoMarker {background: #069;}
+span.successMarker {background: #4D9E0C;}
+span.warningMarker {background: #FB9702;}
+span.errorMarker {background: #FF6A6A;}

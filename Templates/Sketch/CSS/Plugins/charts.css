@@ -1,0 +1,73 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Charts
+ */
+[class*="Chart"] {margin-bottom: 1.75em;}
+[class*="Chart"], [class*="Chart"] > svg {
+	display: block;
+	height: 100%;
+	position: relative;
+    width: 100%;
+}
+[class*="inline"][class*="Chart"], [class*="inline"][class*="Chart"] > svg {
+	display: inline;
+	height: 1.2em;
+	top: 0.015em;
+	width: 2.133em;
+}
+.dataLine, .dataPoint, .dataColumn, .dataBar, .dataPie:hover {opacity: 0.7;}
+.dataColumn:hover, .dataBar:hover {opacity: 0.9;}
+.dataPie {opacity: 0.6;}
+.dataFill {opacity: 0.2;}
+[class*="inline"][class*="Chart"] .dataColumn, [class*="inline"][class*="Chart"] .dataLine {opacity: 0.9;}
+[class*="inline"][class*="Chart"] .dataFill {opacity: 0.6;}
+.dataPoint:hover {
+	cursor: pointer;
+	opacity: 1;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-webkit-transition: all 500ms ease;
+	transition: all 500ms ease;	
+}
+.chartAxisLabel {
+	font-size: 0.4em;
+	font-weight: bold;
+}
+.chartIntervalLabel, .chartKey {font-size: 0.4em;}
+.chartKey:hover, .chartKey.disabled {
+	cursor: pointer;
+	opacity: 0.3;
+}
+.chartKey.disabled:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+.chartTip {
+	background: #FFF;
+	border: 0.2em solid #000;
+	border-radius: 4px;
+	display: block;
+	height: auto;
+	max-width: 10em;
+	opacity: 0.9;
+	overflow: hidden;
+	padding: 0.5em;
+	position: absolute;
+	width: auto;
+}
+.chartTipTitle {
+	display: inline-block;
+	font-weight: bold;
+	width: 100%;
+}
+.chartTitle {
+	font-size: 0.75em;
+	font-weight: bold;
+}

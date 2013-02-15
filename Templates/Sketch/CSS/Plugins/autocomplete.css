@@ -1,0 +1,33 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Auto-complete
+ */
+.autocompleteList, .autocompletePrompt {
+	background: #FFF;
+	border: 0.15em solid #111;
+	border-radius: 0px 0px 4px 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	list-style: none;
+	margin: -0.05em 0 0;
+	position: absolute;
+	z-index: 10000;
+}
+.autocompleteList li {
+	padding: 0 1em;
+}
+.autocompleteList li:hover, .autocompleteList li.active {
+	background: #09F;
+	color: #FFF;
+}
+.autocompletePrompt {
+	color: #999;
+	margin-left: 0.05em;
+	padding: 0 1em;
+}

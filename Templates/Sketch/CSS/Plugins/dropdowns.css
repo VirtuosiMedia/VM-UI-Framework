@@ -1,0 +1,107 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Dropdowns
+ */
+.navbarContainer .dropdown:hover>a, .navbarContainer .megaDropdown:hover>a, 
+.floatingNavbarContainer .dropdown:hover>a, .floatingNavbarContainer .megaDropdown:hover>a {
+	background: #111;
+	color: #09C;
+}
+.dropdown>a:after, .megaDropdown>a:after {
+	content: ' \25BC';
+	font-size: 0.8em;
+}
+.navbarContainer .dropdown>a:after, .navbarContainer .megaDropdown>a:after, .floatingNavbarContainer .dropdown>a:after, 
+.floatingNavbarContainer .megaDropdown>a:after {color: #999;}
+.dropdown ul {
+	background: #FFF;
+	border: #222 solid 0.15em;
+	border-radius: 0px 0px 4px 4px;
+	-moz-box-sizing: border-box;	
+	box-sizing: border-box;
+	display: block;
+	min-width: 9em;
+	width: auto;
+	z-index: 10000;
+}
+.dropdown li {
+	clear: left;
+	width: 100%;
+}
+.dropdown ul a {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	color: #09C;
+	display: block;
+	height: 1.75em;
+	line-height: 1.75em;
+	padding: 0 0.5em;
+	text-shadow: none;
+	width: 100%;	
+}
+.dropdown ul a:hover {
+	color: #FFF;
+	background: #CCC;
+}
+.dropdown>.button, .dropdown>[class*=Button] {margin-bottom: 0;}
+.dropdown>.button+ul, .dropdown>[class*=Button]+ul {
+	border: 1px solid #999;
+	margin: 0;
+}
+.dropdown>.button+ul a, .dropdown>[class*=Button]+ul a {text-decoration: none;}
+span.dropdown {
+	display: inline-block;
+	margin-bottom: 1.45em;
+}
+.megaDropdown>div {
+	background: #FFF;
+	-moz-box-sizing: border-box;	
+	box-sizing: border-box;
+	border: #222 solid 0.15em;
+	border-radius: 0px 0px 4px 4px;
+	display: block;
+	left: 50%;
+	line-height: 1.75em;
+	margin-top: -0.2em;
+	padding-top: 1.75em;	
+	z-index: 10000;
+}
+
+@media (max-width: 768px) {
+	.navbarContainer .dropdown ul, .floatingNavbarContainer .dropdown ul {width: 100%;}
+	.navbarContainer .megaDropdown>div, .floatingNavbarContainer .megaDropdown>div {
+		margin-left: -50%;
+		position: relative;
+		width: 100%;
+	}
+	.navbarContainer .megaDropdown>div>[class*="col"], .floatingNavbarContainer .megaDropdown>div>[class*="col"] {
+		margin-left: 10px;
+	}
+}
+@media (min-width: 768px) and (max-width: 980px) {
+	.megaDropdown>div {
+		margin-left: -362px;
+		width: 724px;
+	}
+	.megaDropdown>div>[class*="col"] {margin-left: 10px;}
+}
+@media (min-width: 980px) {
+	.megaDropdown>div {
+		margin-left: -470px;
+		width: 940px;
+	}
+	.megaDropdown>div>[class*="col"] {margin-left: 10px;}
+}
+@media (min-width: 1200px) {
+	.megaDropdown>div {
+		margin-left: -585px;
+		width: 1170px;
+	}
+	.megaDropdown>div>[class*="col"] {margin-left: 15px;}
+}

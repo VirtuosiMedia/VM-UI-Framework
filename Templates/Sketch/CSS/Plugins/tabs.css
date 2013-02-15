@@ -1,0 +1,158 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Tabs
+ */
+@media (min-width: 769px) {
+	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
+		float: left;
+		list-style: none;
+		margin: 0;
+	}
+	.tabs li, .pillTabs li {
+		float: left; 
+		margin-top: 0.15em;		
+		position: relative;
+	}
+	.pillTabs li {margin-right: 0.5em;}
+	.tabs a, .tabsVertical a {
+		background: #FFF;
+		border-left: 0.15em solid #222;
+		border-top: 0.15em solid #222;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 0.3em 1em;
+		text-decoration: none;
+	}
+	.pillTabs a, .pillTabsVertical a {
+		border: 0.15em solid transparent;
+		border-radius: 4px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;		
+		margin-top: 0;
+		padding: 0.3em 1em 0.45em;
+		text-decoration: none;	
+	}
+	.tabs a.active {
+		color: #666;
+		padding-bottom: 0.5em;
+	}
+	.pillTabs a.active, .pillTabsVertical a.active {
+		background: #222;
+		color: #FFF;
+	}
+	.pillTabs a:hover, .pillTabsVertical a:hover {border-color: #222;}
+	.tabs li:first-child a, .tabsVertical li:first-child a {border-top-left-radius: 4px;}
+	.tabs li:last-child a {
+		border-right: 0.15em solid #222;
+		border-top-right-radius: 4px;
+	}
+	.tabContent {
+		border: 0.15em solid #222;
+		border-radius: 0px 4px 4px 4px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		clear: both;
+		margin-bottom: 1.75em;
+		padding: 1em;
+	}
+	.pillTabContent {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		clear: both;
+		padding: 1.75em 0;
+	}
+	.tabContent > div, .pillTabContent > div {display: none;}
+	.tabContent .active, .pillTabContent .active  {display: block;}
+	.tabsVertical, .pillTabsVertical {
+		display: block;
+		width: 20%;
+	}
+	.tabsVertical li {position: relative;}
+	.tabsVertical a, .pillTabsVertical a {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;	
+		display: block;
+		width: 100%;
+	}
+	.pillTabsVertical a {
+		margin-right: 10%;
+		width: 90%;
+	}
+	.pillTabsVertical a {margin-bottom: 0.5em}
+	.tabsVertical a.active {
+		box-sizing: content-box;
+		padding-right: 0.5em;
+	}
+	.tabsVertical + .tabContent, .pillTabsVertical + .pillTabContent {
+		clear: none;
+		float: left;
+		width: 80%;
+	}
+	.pillTabsVertical + .pillTabContent {padding-top: 0;}
+	.tabsVertical li:last-child a {
+		border-bottom: 0.15em solid #222;
+		border-bottom-left-radius: 4px;
+	}
+	.tabContent iframe, .pillTabContent iframe {
+		border: none;
+		height: 35em;
+		width: 100%;
+	}
+}
+/**
+ * Tabs become accordions for smartphones and tablets
+ */
+@media (max-width: 768px) {
+	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
+		border: 0.15em solid #222;
+		border-radius: 2px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		list-style: none;
+		margin-left: 0;
+		padding: 0.875em;
+		width: 100%;
+	}
+	.tabs li, .tabsVertical li, .pillTabs li, .pillTabsVertical li {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;}
+	.tabs li>a, .tabsVertical li>a, .pillTabs li>a, .pillTabsVertical li>a {
+		background: #EEE;
+		border-radius: 2px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		color: #222;
+		display: block;
+		width: 100%;
+		text-decoration: none;
+		text-indent: 0.45em;
+	}
+	.tabs li>a:before, .tabsVertical li>a:before, .pillTabs li>a:before, .pillTabsVertical li>a:before {
+		content: '\25B6';
+		margin-right: 0.3em;
+	}
+	.tabs li>a.active:before, .tabsVertical li>a.active:before, .pillTabs li>a.active:before, 
+	.pillTabsVertical li>a.active:before {
+		content: '\25BC';
+		margin-right: 0.3em;
+	}	
+	.tabs li>a:hover, .tabsVertical li>a:hover, .pillTabs li>a:hover, .pillTabsVertical li>a:hover, .tabs li>a.active, 
+	.tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
+		background: #222;
+		color: #FFF;
+	}
+	.tabs li>a.active, .tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
+		margin-bottom: 1.75em;
+	}
+	.tabContent > div, .pillTabContent > div {display: none;}
+	.tabs iframe, .tabsVertical iframe, .pillTabs iframe, .pillTabsVertical iframe {width: 98.5%;}
+	.mobileTabContent {display: none;}
+	.mobileTabContent.active {display: block;}
+}

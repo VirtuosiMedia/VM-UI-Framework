@@ -1,0 +1,107 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Checkbox, Radio Replace
+ */
+.checked, .unchecked {
+	border: #222 solid 0.15em;
+	border-radius: 2px;
+	bottom: -0.15em;
+	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
+	box-shadow: inset 2px 2px 3px #E9E9E9;	
+	display: inline-block !important;
+	height: 0.8em;
+	position: relative;
+	width: 0.8em;
+}
+.checked.active, .unchecked.active {
+	border-left-color: #CCC;
+	outline: none;
+}
+.checked::before {
+	color: #4D9E0C;
+	content: '\2713';
+	font-size: 1.3em;
+	font-weight: bold;
+	position: absolute;
+	top: -0.5em;
+}
+input[type=radio] + .checked, input[type=radio] + .unchecked {
+	border-radius: 0.6em;
+	outline: none;
+}
+
+/**
+ * Select Replace
+ */
+.selectContainer, .checkboxGroupContainer {
+	clear: left;
+	color: #333;
+	cursor: pointer;
+	background: #FFF;
+	border: 0.15em solid #222;
+	border-radius: 2px;
+	float:left;
+	height: 2.2em;
+	line-height: 2.2em;
+	margin-bottom: 1.75em;
+	padding: 0 0.5em 0 0em;
+	text-indent: 0.5em;
+	width:auto; 
+}
+.selectContainer.active {
+	border-color-left: #CCC;
+	outline: none;
+}
+.selectContainer .display, .checkboxGroupContainer .display {float: left;}
+.trigger {
+	clear: none;
+	display: block;
+	float: left;
+	width: 17px;	
+}
+.selectContainer.expanded.down {border-radius: 2px 2px 0px 0px;}
+.selectContainer.expanded.up {border-radius: 0px 0px 2px 2px;}
+.selectList, .checkSelectList, .content .selectList {
+	background: #FFF;
+	border: 0.15em solid #222;
+	list-style: none;
+	margin-left: 0px;
+	max-height: 8em;
+	z-index: 100;
+}
+.selectList.up, .checkSelectList.up {border-radius: 2px 2px 0px 0px;}
+.selectList.down, .checkSelectList.down {border-radius: 0px 0px 2px 2px;}
+.selectList li, .checkSelectList li {
+	cursor: pointer;
+	height: 2.2em;
+	line-height: 2.2em;
+	text-indent: 0.5em;	
+}
+.selectList li:hover, li.activeLi, .checkSelectList li:hover, .checkSelectList li:hover label {
+	background:#09F;
+	color:#FFF;
+	text-shadow:none;
+}
+.selectList li.selectOptgroup {height: auto;}
+.selectList li.selectOptgroup:hover {
+	background: none;
+	color: #000;
+	cursor: default;
+}
+.selectOptgroup span {
+	color: #999;
+	font-style: italic; 
+	font-weight: bold; 
+}
+.selectOptgroup ul {
+	list-style: none; 
+	margin: 0px; 
+	padding: 0px;
+}
+.selectList .selectOptgroup li {text-indent: 1em;}

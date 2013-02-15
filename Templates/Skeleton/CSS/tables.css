@@ -1,0 +1,209 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Tables
+ */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	margin-bottom: 1.5em;
+	overflow: auto;
+	width: 100%;
+	word-wrap: break-word;
+}
+.columnTable caption, th, tfoot {
+	background: #222;
+	color: #FFF;
+	text-align: left;
+}
+.columnTable caption {display: none;}
+thead td {background: #CCC;}
+th, td {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 0.4em;
+}
+th[class^=col], td[class^=col] {
+	float: none;
+	margin-left: 0;
+} 
+tbody tr {
+	transition: all .2s linear;
+   	-moz-transition: all .2s linear;
+   	-o-transition: all .2s linear;
+   	-webkit-transition: all .2s linear;	
+}
+tbody tr {background: #FFF;}
+tbody tr:hover {background: #F2F2F2;}
+.stripedTable tr:nth-child(2n) {background: #F2F2F2;}
+.stripedTable tr:nth-child(2n):hover {background: #CCC;}
+.borderedTable thead td {
+	border-bottom: 1px solid #AAA;
+	border-right: 1px solid #AAA;
+}
+.borderedTable tbody td {
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+}
+.stripedTable.borderedTable tbody tr:nth-child(2n):hover td {
+	border-bottom: 1px solid #999;
+	border-right: 1px solid #999;
+}
+
+/**
+ * Necessary but silly hack for rounded corners - Remove if border-collapse: collapse ever works with rounded corners
+ */
+table tr:first-child th:first-child {
+  border-top: #222 0.15em solid;
+  border-left: #222 0.15em solid;
+  border-top-left-radius: 4px;
+}
+table tr:first-child th:last-child {
+  border-top: #222 0.15em solid;
+  border-right: #222 0.15em solid;  
+  border-top-right-radius: 4px;
+}
+table tbody tr:last-child td:first-child, table tfoot tr:last-child td:first-child {
+  border-bottom: #222 0.15em solid;
+  border-left: #222 0.15em solid; 
+  border-bottom-left-radius: 4px;
+}
+table tbody tr:last-child td:last-child, table tfoot tr:last-child td:last-child {
+  border-bottom: #222 0.15em solid;
+  border-right: #222 0.15em solid;   
+  border-bottom-right-radius: 4px;
+}
+table tr:first-child th {
+  border-top: #222 0.15em solid;
+}
+table tbody tr:last-child td {
+  border-bottom: #222 0.15em solid;
+  position: relative;
+}
+table.borderedTable tbody tr:last-child td:after {
+	background: #222;
+	bottom: -0.125em;
+	content: '';
+	display: block;
+	height: 0.15em;
+	position: absolute;
+	right: -0.125em;
+	width: 0.15em;	
+}
+table.borderedTable tbody tr:last-child td:last-child:after {display: none;}
+table tr td:first-child {
+  border-left: #222 0.15em solid;
+  position: relative;
+}
+table.borderedTable tr td:first-child:after {
+	background: #222;
+	content: '';
+	display: block;
+	height: 0.15em;
+	left: -0.125em;
+	top: -0.1em;
+	position: absolute;
+	width: 0.125em;
+}
+table tr td:last-child {
+  border-right: #222 0.15em solid;
+  position: relative;
+}
+table.borderedTable tr td:last-child:after {
+	background: #222;
+	content: '';
+	display: block;
+	height: 0.15em;
+	position: absolute;
+	right: -0.15em;
+	top: -0.1em;
+	width: 0.15em;
+}
+table tfoot+tbody tr td {border-radius: 0 !important;}
+.stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {border-right: #222 0.15em solid;}
+.stripedTable.borderedTable tbody tr:last-child:hover td {border-bottom: #222 0.15em solid;}
+
+/**
+ * Cell Shading
+ */
+table tbody tr td.disabledCell {
+	background: #EFEFEF;
+	color: #999;	
+}
+table tbody tr td.disabledCell:hover {background: #DDD;}
+table tbody tr td.infoCell {
+	background: #D5F1FF;
+	color: #069;
+}
+table tbody tr td.infoCell:hover {background: #B0E6FF;}
+table tbody tr td.successCell {
+	background: #E2FBCE;
+	color: #4D9E0C;
+}
+table tbody tr td.successCell:hover {background: #D9FABE;}
+table tbody tr td.warningCell {
+	background: #FEEACB;
+	color: #FB9702;
+}
+table tbody tr td.warningCell:hover {background: #FEDFB1;}
+table tbody tr td.errorCell {
+	background: #FFE6E6;
+	color: #FF6A6A;
+}
+table tbody tr td.errorCell:hover {background: #FFCECE;}
+
+/**
+ * Responsive tables for smartphones and tablets
+ */
+@media (max-width: 768px) {
+	.columnTable caption {
+		display: inline-block;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 4px 4px 0px 0px;
+		padding: 0 0.4em;
+		width: 100%;
+	}
+	.columnTable thead {display: none;}
+	.columnTable tbody td {
+		background: #FFF;
+		border: none;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		float: left;
+		padding-left: 45%;
+		position: relative;
+		width: 100%;
+	}
+	.columnTable tbody td:before {
+		clear: left;
+		content: attr(data-column);
+		display: inline-block;
+		left: 0.4em;
+		position: absolute;
+		height: 100%;
+		width: 40%;
+	}
+	.columnTable tbody td:hover {background: #F2F2F2;}
+	.columnTable.stripedTable tbody td:nth-child(2n) {background: #F2F2F2;}
+	.columnTable.stripedTable tbody td:nth-child(2n):hover {background: #CCC;}
+	.columnTable.borderedTable td, .columnTable.borderedTable tbody tr:last-child td, 
+	.columnTable.borderedTable tbody tr:last-child:hover td {border-bottom: 1px solid #999;}
+	.columnTable tbody tr td:last-child, .columnTable tbody tr:hover td:last-child, 
+	.columnTable tbody tr td:last-child:hover, .columnTable tbody tr:hover td:last-child:hover {
+		border-bottom: 0.15em solid #222 !important;
+	}
+	.columnTable tbody td, .columnTable tbody td:hover {
+		border-left: 0.15em solid #222 !important;
+		border-right: 0.15em solid #222 !important;
+	}
+	.columnTable tbody tr:last-child td:first-child {border-radius: 0;}	
+	.columnTable tbody tr:last-child td:last-child {border-radius: 0 0 4px 4px;}	
+}

@@ -1,0 +1,64 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Notice Bars
+ */
+div.notice, div[class*="Notice"] {
+	border: 0.15em solid;
+	border-radius: 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0 0 1.5em 0;
+	padding: 0.725em 1em;
+	position: relative;
+	width: 100%;
+}
+div.notice p:last-child, div[class*="Notice"] p:last-child {margin-bottom: 0;}
+div.notice {
+	background: #EEE;
+	border-color: #777;
+	color: #777;	
+}
+div.infoNotice {
+	background: #D5F1FF;
+	border-color: #069;
+	color: #069;
+}
+div.successNotice {
+	background: #E2FBCE;
+	border-color: #4D9E0C;
+	color: #4D9E0C;
+}
+div.warningNotice {
+	background: #FEEACB;
+	border-color: #FB9702;
+	color: #FB9702;
+}
+div.errorNotice {
+	background: #FFE6E6;
+	border-color: #FF6A6A;
+	color: #FF6A6A;
+}
+.notice .close, div[class*="Notice"] .close {
+	background: #EEE;
+	border: 0.15em solid #333;
+	border-radius: 0.75em;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #777;	
+	display: block;
+	height: 1.5em;
+	line-height: 1.1em;	
+	position: absolute;
+	right: -0.75em;
+	text-align: center;
+	text-decoration: none;
+	top: -0.75em;
+	width: 1.5em;	
+}
+div.notice .close:hover, div[class*="Notice"] .close:hover {background: #CCC;}

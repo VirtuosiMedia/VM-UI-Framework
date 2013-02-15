@@ -1,0 +1,58 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Utilities
+ */
+.right {float: right !important;}
+.left {float: left !important;}
+body .skipBottom {margin-bottom: 0 !important;}
+.topMargin {margin-top: 1.75em !important;}
+.bottomMargin {margin-bottom: 1.75em !important;}
+.hidden {display: none;}
+.fixed {
+	position: fixed;
+	z-index: 10000;
+}
+.primaryMargin {margin-top: 5.2em !important;}
+.secondaryMargin {margin-top: 6.95em !important;}
+.divider {
+	background: #CCC;
+	clear: both;
+	display: block;
+	height: 1px;
+	margin-bottom: 1.75em;
+	width: 100%;
+}
+
+/**
+ * Smartphones and tablets
+ */
+@media (max-width: 767px) {
+	.hideMobile, .showTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}
+}
+
+/**
+ * Tablets
+ */
+@media (min-width: 768px) and (max-width: 980px) {
+	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}			
+}
+
+/**
+ * Small Desktops
+ */
+@media (min-width: 981px) and (max-width: 1200px) {
+	.showMobile, .showTablet, .hideSmallDesktop, .showLargeDesktop {display: none !important;}		
+}
+
+/**
+ * Large Desktops
+ */
+@media (min-width: 1201px) {
+	.showMobile, .showTablet, .showSmallDesktop, .hideLargeDesktop {display: none !important;}			
+}

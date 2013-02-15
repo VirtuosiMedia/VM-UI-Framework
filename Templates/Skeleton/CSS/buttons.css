@@ -1,0 +1,155 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+ 
+/**
+ * Buttons
+ */
+.button, [class*="Button"] {
+	background: #EEE; 
+	border: none;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #222 !important; 
+	margin-left: 1px;
+	padding: 0.3em 0.5em;
+	text-decoration: none;	
+}
+.button:hover, [class*="Button"]:hover {
+	background: #CCC;
+	color: #222;
+}
+[class*="Button"][data-state=active], [class*="Button"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #999;
+	border-color: #777;
+}
+.button[data-state~=disabled], .button[disabled], [class*="Button"][data-state~=disabled], [class*="Button"][disabled] {
+	background: #BBB;
+	color: #666;
+	pointer: default;
+}
+.infoButton, [class*="InfoButton"] {
+	background: #09C; 
+	color: #FFF !important; 
+}
+.infoButton:hover, [class*="InfoButton"]:hover {background: #0077AA;}
+.infoButton[data-state=active], [class*="InfoButton"][data-state=active]{}
+.infoButton[data-state~=disabled], [class*="InfoButton"][data-state~=disabled], .infoButton[disabled], 
+[class*="InfoButton"][disabled] {
+	background: #07A;
+	color: #0AD;
+	pointer: default;
+}
+.successButton, [class*="SuccessButton"], .primaryButton, [class*="PrimaryButton"] {
+	background: #56AF08; 
+	color: #FFF !important;  
+}
+.successButton:hover, [class*="SuccessButton"]:hover, .primaryButton:hover, [class*="PrimaryButton"]:hover {
+	background: #4D9E0C;
+}
+.successButton[data-state=active], [class*="SuccessButton"][data-state=active], .primaryButton[data-state=active], 
+[class*="buttonPrimary"][data-state=active]{}
+.successButton[data-state~=disabled], [class*="SuccessButton"][data-state~=disabled], .primaryButton[disabled], 
+[class*="PrimaryButton"][disabled] {
+	background: #4D9E0C;
+	color: #67BF17;
+	pointer: default;
+}
+.warningButton, [class*="WarningButton"] {
+	background: #FEC912; 
+	color: #FFF !important; 
+}
+.warningButton:hover, [class*="WarningButton"]:hover {background: #FF9900;}
+.warningButton[data-state=active], [class*="WarningButton"][data-state=active]{}
+.warningButton[data-state~=disabled], [class*="WarningButton"][data-state~=disabled], .warningButton[disabled], 
+[class*="WarningButton"][disabled] {
+	background: #FF9900;
+	color: #FEC912;
+	pointer: default;
+}
+.errorButton, [class*="ErrorButton"] {
+	background: #FB0000; 
+	color: #FFF !important; 
+}
+.errorButton:hover, [class*="ErrorButton"]:hover {
+	background: #D50000;
+	color: #FFF; 
+}
+.errorButton[data-state=active], [class*="ErrorButton"][data-state=active]{}
+.errorButton[data-state~=disabled], [class*="ErrorButton"][data-state~=disabled], .errorButton[disabled], 
+[class*="ErrorButton"][disabled] {
+	background: #E61111;
+	color: #F66;
+	pointer: default;
+}
+.contrastButton, [class*="ContrastButton"] {
+	background: #333; 
+	color: #FFF !important; 
+}
+.contrastButton:hover, [class*="ContrastButton"]:hover {
+	background: #222;
+	color: #FFF; 
+}
+.contrastButton[data-state=active], [class*="ContrastButton"][data-state=active]{}
+.contrastButton[data-state~=disabled], [class*="ContrastButton"][data-state~=disabled], .contrastButton[disabled], 
+[class*="ContrastButton"][disabled] {
+	background: #111;
+	color: #555;
+	pointer: default;
+}
+[class*="medium"][class*="Button"] {
+	display: inline-block;
+	height: 1.75em;
+	margin: 1.75em 0em 1.75em 0.1em;
+}
+[class*="large"][class*="Button"] {
+	display: inline-block;
+	height: 2.25em;
+	line-height: 2.2em;
+	margin: 1.25em 0em 1.75em 0.1em;
+}
+[class*="multi"][class*="Button"] {
+	display: inline-block;
+	height: 4em;
+	line-height: 2.2em;
+	margin: 1.25em 0em 1.75em 0.1em;
+	overflow: hidden;
+	padding: 0em 1em;
+}
+[class*="multi"][class*="Button"] span:first-child {
+	float: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	height: 1em;
+	margin-bottom: 0.3em;
+	text-align: center;
+	width: 100%;	
+}
+[class*="multi"][class*="Button"] span:last-child {
+	clear: left;
+	float: left;
+	height: 1em;
+	text-align: center;
+	width: 100%;
+}
+body .row .multiButton, body .row .multiSecondaryButton {color: #222;}
+body .row ul.buttonGroup {
+	background: none;
+	border: none;
+	box-shadow: none;
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: auto;
+}
+.buttonGroup li {
+	float: left;
+	margin-right: 0px;
+}
+.buttonGroup .button, .buttonGroup [class*="Button"] {border-radius: 0px;}
+.buttonGroup li:first-child .button, .buttonGroup li:first-child [class*="Button"] {border-radius: 2px 0px 0px 2px;}
+.buttonGroup li:last-child .button, .buttonGroup li:last-child [class*="Button"] {border-radius: 0px 2px 2px 0px;}

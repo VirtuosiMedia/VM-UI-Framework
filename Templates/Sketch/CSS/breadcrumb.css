@@ -1,0 +1,30 @@
+/**
+ * VM UI Framework
+ * A modern, grid-based CSS, layout, and UI framwork for HTML5
+ * Copyright Virtuosi Media, Inc. 2012
+ * Released under an MIT-License
+ */
+
+/**
+ * Navigation, Breadcrumbs
+ */
+.breadcrumb {
+	list-style: none;
+	margin: 0px;
+	overflow: auto;
+}
+.breadcrumb li {
+	float:left;
+	margin-right: 2em;
+}
+.breadcrumb a {position: relative;}
+.breadcrumb a:after {
+	color: #000;
+	content: '\25b6';
+	display: inline-block;
+	height: 1.35em;
+	margin: 0 0.75em;
+	overflow: hidden;
+	position: absolute;
+	text-decoration: none;
+}
