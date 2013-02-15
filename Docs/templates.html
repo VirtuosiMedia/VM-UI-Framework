@@ -28,6 +28,18 @@
 			if (currentTemplate){
 				setButton($(currentTemplate));
 			}
+
+			$$('.templateImage').addEvent('click', function(e){
+				e.stop();
+				var templateButton = $(this.get('rel'));
+				if (templateButton.hasClass('button')){
+					setButton(templateButton)
+					
+					Cookie.dispose('vmui-docs-template');
+					Cookie.write('vmui-docs-template', this.get('rel'));
+					new Template('../');
+				}
+			}).addEvent('mouseover', function(){this.setStyle('cursor', 'pointer')});			
 			
 			$$('.templateButton').addEvent('click', function(e){
 				e.stop();
@@ -68,31 +80,54 @@
 			<div class="col12">
 				<h1 class="pageTitle">Templates</h1>
 				<p>Choose one of the templates below. Once you have chosen a template, it will be loaded on every page 
-					in the documentation and demos until you come back and select a different template.</p>
+					in the documentation and demos until you come back and select a different template. The CSS files 
+					for each template can be found in the <code>Templates</code> directory.</p>
+				<p>If you'd like to create your own template, just copy one of the templates below into it's own 
+					subdirectory under the <code>Templates</code> directory and modify it. You can even integrate it 
+					into the template switcher by adding your own row of templates below.</p>
 				<div class="row">
 					<div class="col4">
-						<img class="borderOffsetImg roundedImg" src="Images/Templates/skeleton.png" alt="Skeleton Template" />
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="Skeleton" src="Images/Templates/skeleton.png" alt="Skeleton Template" />
 						<p>Skeleton is a bare-bones template that you can customize to suit your needs.</p>
 						<a href="#" id="Skeleton" class="button templateButton">Start Using Skeleton</a>
 					</div>
 					<div class="col4">
-						<img class="borderOffsetImg roundedImg" src="Images/Templates/sketch.png" alt="Sketch Template" />
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="Sketch" src="Images/Templates/sketch.png" alt="Sketch Template" />
 						<p>Sketch is a template stylized especially for prototypes and wireframes.</p>
 						<a href="#" id="Sketch" class="infoButton templateButton">You Are Using Sketch</a>
 					</div>
 					<div class="col4">
-						<img class="borderOffsetImg roundedImg" src="Images/Templates/polish.png" alt="Polish Template" />
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="Polish" src="Images/Templates/polish.png" alt="Polish Template" />
 						<p>Polish is a refined template for creating production websites and interfaces.</p>
 						<a href="#" id="Polish" class="button templateButton">Start Using Polish</a>
 					</div>					
 				</div>
+				<!-- Put your templates here 
+				<div class="row">
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a>
+					</div>
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a>
+					</div>
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a>
+					</div>										
+				</div>			
+				-->
 				<span class="divider"></span>
 				<p><span class="infoMarker">Tip</span> Even though each template has suggested use cases, feel free to 
 					use them however you'd like.</p>				
 				<p><span class="warningMarker">Warning</span> If you select a template other than the default, each 
-					page will experience a slight flicker. The flicker only occurs because the stylesheet is being 
-					loaded dynamically and will not happen if the stylesheet is statically loaded as in most normal use 
-					cases.</p>								
+					page will experience a slight flicker when the page first loads. The flicker only occurs because the 
+					stylesheet is being	loaded dynamically and will not happen if the stylesheet is statically loaded 
+					as in most normal use cases.</p>								
 			</div>
 		</div>
 		<div class="row">
