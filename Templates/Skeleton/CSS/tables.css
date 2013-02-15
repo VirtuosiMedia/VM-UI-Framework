@@ -9,22 +9,21 @@
  * Tables
  */
 table {
-	border-collapse: separate;
+	border-collapse: collapse;
 	border-spacing: 0;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;	
-	margin-bottom: 1.5em;
-	overflow: auto;
+	box-sizing: border-box;
+	margin-bottom: 1.75em;
+	overflow: auto !important;
 	width: 100%;
 	word-wrap: break-word;
 }
 .columnTable caption, th, tfoot {
-	background: #222;
-	color: #FFF;
+	font-weight: bold;
 	text-align: left;
 }
 .columnTable caption {display: none;}
-thead td {background: #CCC;}
+thead td {font-style: italic;}
 th, td {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -44,91 +43,11 @@ tbody tr {background: #FFF;}
 tbody tr:hover {background: #F2F2F2;}
 .stripedTable tr:nth-child(2n) {background: #F2F2F2;}
 .stripedTable tr:nth-child(2n):hover {background: #CCC;}
-.borderedTable thead td {
-	border-bottom: 1px solid #AAA;
-	border-right: 1px solid #AAA;
+.borderedTable, .borderedTable td, .borderedTable th {
+	border: #CCC 0.1em solid;
+	line-height: 1.7em; 
 }
-.borderedTable tbody td {
-	border-bottom: 1px solid #CCC;
-	border-right: 1px solid #CCC;
-}
-.stripedTable.borderedTable tbody tr:nth-child(2n):hover td {
-	border-bottom: 1px solid #999;
-	border-right: 1px solid #999;
-}
-
-/**
- * Necessary but silly hack for rounded corners - Remove if border-collapse: collapse ever works with rounded corners
- */
-table tr:first-child th:first-child {
-  border-top: #222 0.15em solid;
-  border-left: #222 0.15em solid;
-  border-top-left-radius: 4px;
-}
-table tr:first-child th:last-child {
-  border-top: #222 0.15em solid;
-  border-right: #222 0.15em solid;  
-  border-top-right-radius: 4px;
-}
-table tbody tr:last-child td:first-child, table tfoot tr:last-child td:first-child {
-  border-bottom: #222 0.15em solid;
-  border-left: #222 0.15em solid; 
-  border-bottom-left-radius: 4px;
-}
-table tbody tr:last-child td:last-child, table tfoot tr:last-child td:last-child {
-  border-bottom: #222 0.15em solid;
-  border-right: #222 0.15em solid;   
-  border-bottom-right-radius: 4px;
-}
-table tr:first-child th {
-  border-top: #222 0.15em solid;
-}
-table tbody tr:last-child td {
-  border-bottom: #222 0.15em solid;
-  position: relative;
-}
-table.borderedTable tbody tr:last-child td:after {
-	background: #222;
-	bottom: -0.125em;
-	content: '';
-	display: block;
-	height: 0.15em;
-	position: absolute;
-	right: -0.125em;
-	width: 0.15em;	
-}
-table.borderedTable tbody tr:last-child td:last-child:after {display: none;}
-table tr td:first-child {
-  border-left: #222 0.15em solid;
-  position: relative;
-}
-table.borderedTable tr td:first-child:after {
-	background: #222;
-	content: '';
-	display: block;
-	height: 0.15em;
-	left: -0.125em;
-	top: -0.1em;
-	position: absolute;
-	width: 0.125em;
-}
-table tr td:last-child {
-  border-right: #222 0.15em solid;
-  position: relative;
-}
-table.borderedTable tr td:last-child:after {
-	background: #222;
-	content: '';
-	display: block;
-	height: 0.15em;
-	position: absolute;
-	right: -0.15em;
-	top: -0.1em;
-	width: 0.15em;
-}
-table tfoot+tbody tr td {border-radius: 0 !important;}
-.stripedTable.borderedTable tbody tr:nth-child(2n):hover td:last-child {border-right: #222 0.15em solid;}
-.stripedTable.borderedTable tbody tr:last-child:hover td {border-bottom: #222 0.15em solid;}
+.borderedTable {margin-bottom: 1.625em;}
 
 /**
  * Cell Shading
@@ -167,10 +86,10 @@ table tbody tr td.errorCell:hover {background: #FFCECE;}
 		display: inline-block;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-		border-radius: 4px 4px 0px 0px;
 		padding: 0 0.4em;
 		width: 100%;
 	}
+	.columnTable.borderedTable caption {border: 0.1em #CCC solid;}
 	.columnTable thead {display: none;}
 	.columnTable tbody td {
 		background: #FFF;
@@ -195,15 +114,13 @@ table tbody tr td.errorCell:hover {background: #FFCECE;}
 	.columnTable.stripedTable tbody td:nth-child(2n) {background: #F2F2F2;}
 	.columnTable.stripedTable tbody td:nth-child(2n):hover {background: #CCC;}
 	.columnTable.borderedTable td, .columnTable.borderedTable tbody tr:last-child td, 
-	.columnTable.borderedTable tbody tr:last-child:hover td {border-bottom: 1px solid #999;}
+	.columnTable.borderedTable tbody tr:last-child:hover td {border-bottom: #CCC 0.1em solid;}
 	.columnTable tbody tr td:last-child, .columnTable tbody tr:hover td:last-child, 
 	.columnTable tbody tr td:last-child:hover, .columnTable tbody tr:hover td:last-child:hover {
-		border-bottom: 0.15em solid #222 !important;
+		border-bottom: #CCC 0.1em solid !important;
 	}
 	.columnTable tbody td, .columnTable tbody td:hover {
-		border-left: 0.15em solid #222 !important;
-		border-right: 0.15em solid #222 !important;
+		border-left: #CCC 0.1em solid !important;
+		border-right: #CCC 0.1em solid !important;
 	}
-	.columnTable tbody tr:last-child td:first-child {border-radius: 0;}	
-	.columnTable tbody tr:last-child td:last-child {border-radius: 0 0 4px 4px;}	
 }
