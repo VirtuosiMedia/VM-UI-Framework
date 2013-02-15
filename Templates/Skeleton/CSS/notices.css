@@ -9,12 +9,11 @@
  * Notice Bars
  */
 div.notice, div[class*="Notice"] {
-	border: 0.15em solid;
-	border-radius: 4px;
+	border: 0.1em solid;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0 0 1.5em 0;
-	padding: 0.725em 1em;
+	padding: 0.9375em 1em;
 	position: relative;
 	width: 100%;
 }
