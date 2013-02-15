@@ -15,8 +15,7 @@ label {
 	float: left;
 }
 input[type=text], input[type=password], input[type=file], textarea, select {
-	border: 0.15em solid #222;
-	border-radius: 4px;
+	border: 0.1em solid #CCC;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	clear: both;
@@ -26,18 +25,16 @@ input[type=text], input[type=password], input[type=file], textarea, select {
 }
 input[type=text]::-ms-clear, input[type=password]::-ms-reveal {display: none;}
 input[type=text]:focus, input[type=password]:focus, input[type=file]:focus, textarea:focus, select:focus {
-	border-left-color: #CCC;
+	border-left-color: #999;
 	outline: none;
 }
 input[type=text], input[type=password], input[type=file] {
-	box-shadow: inset 2px 2px 3px #E9E9E9;
 	font-size: 1em;
 	line-height: 2.2em;
 	text-indent: 0.5em; 
 }
 input[type=file] {text-indent: 0em;}
 textarea {
-	box-shadow: inset 2px 2px 3px #E9E9E9;	
 	min-height: 6em;
 	overflow: auto;
 	text-indent: 0.5em; 	
