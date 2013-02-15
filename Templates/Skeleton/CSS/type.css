@@ -73,10 +73,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 code, em, i {font-style: italic;}
 strong, b {font-weight: bold;}
 abbr, acronym {border-bottom: 1px dotted #222;}
-del, ins {
-	border: 1px solid;
-	border-radius: 2px;
-}
+del, ins {border: 1px solid;}
 del {
 	background: #FFE6E6;
 	border-color: #FF6A6A;
