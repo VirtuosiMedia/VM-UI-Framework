@@ -10,8 +10,6 @@
  */
 code {
 	background: #EEE;
-	border: 0.1em solid #CCC;
-	border-radius: 4px;
 	color: #C36;
 	font-family: "Courier New", monospace;
 	font-size: 0.875em;
@@ -20,8 +18,8 @@ code {
 }
 pre {
 	background:#F9F9F9;
-	border: 0.2em solid #222;
-	border-radius: 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	color: #777;
 	font-family: "Courier New", monospace;
 	font-size: 0.875em;
