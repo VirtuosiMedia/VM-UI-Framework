@@ -11,6 +11,8 @@
 .standardLighter {
 	border: 0.15em solid #222;
 	border-radius: 2px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	overflow: hidden;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
@@ -39,7 +41,7 @@ ol.standardLighter {
 	background: #222;
 	color: #FFF;
 	list-style: decimal-leading-zero;
-	margin: 0 0 1.75em 0;
+	margin: 0 0 1.815em 0;
 }
 ol.standardLighter li {margin-left: 40px;}
 ol.standardLighter li:before {content: none;}
