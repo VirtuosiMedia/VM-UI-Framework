@@ -13,9 +13,9 @@
 	border: none;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	color: #222 !important; 
-	margin-left: 1px;
-	padding: 0.3em 0.5em;
+	color: #222 !important;
+	margin-left: 0.1em;
+	padding: 0.15em 0.5em;
 	text-decoration: none;	
 }
 .button:hover, [class*="Button"]:hover {
@@ -107,14 +107,14 @@
 }
 [class*="large"][class*="Button"] {
 	display: inline-block;
-	height: 2.25em;
-	line-height: 2.2em;
-	margin: 1.25em 0em 1.75em 0.1em;
+	height: 2em;
+	line-height: 2em;
+	margin: 1.5em 0em 1.75em 0.1em;
 }
 [class*="multi"][class*="Button"] {
 	display: inline-block;
 	height: 4em;
-	line-height: 2.2em;
+	line-height: 2.5em;
 	margin: 1.25em 0em 1.75em 0.1em;
 	overflow: hidden;
 	padding: 0em 1em;
@@ -150,6 +150,3 @@ body .row ul.buttonGroup {
 	float: left;
 	margin-right: 0px;
 }
-.buttonGroup .button, .buttonGroup [class*="Button"] {border-radius: 0px;}
-.buttonGroup li:first-child .button, .buttonGroup li:first-child [class*="Button"] {border-radius: 2px 0px 0px 2px;}
-.buttonGroup li:last-child .button, .buttonGroup li:last-child [class*="Button"] {border-radius: 0px 2px 2px 0px;}
