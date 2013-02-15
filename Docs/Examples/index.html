@@ -4,13 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Examples - VM UI Framework</title>
 	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../../CSS/vmui.css" />
-	<link rel="stylesheet" type="text/css" href="../CSS/examples.css" />
+	<link rel="stylesheet" type="text/css" href="../../Templates/Sketch/CSS/import.css" />
+	<link rel="stylesheet" type="text/css" href="../CSS/Sketch/docs.css" />
 	<script src="../../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../JavaScript/template.js" type="text/javascript"></script>
 	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			var loader = new VMUI({relativePath:'../../JavaScript'});	
+			new Template('../../');
+			var loader = new VMUI({relativePath:'../JavaScript'});	
 		});
 	</script>	
 </head>
@@ -42,19 +44,19 @@
 					<div class="col4">
 						<h6 class="skipBottom">Dashboard</h6>
 						<a href="dashboard.html" target="_blank">
-							<img class="featuredImage" src="../Images/Examples/dashboard.png" alt="Dashboard"/>
+							<img class="borderImg roundedImg" src="../Images/Examples/dashboard.png" alt="Dashboard"/>
 						</a>
 					</div>
 					<div class="col4">
 						<h6 class="skipBottom">Article</h6>
 						<a href="article.html" target="_blank">
-							<img class="featuredImage" src="../Images/Examples/article.png" alt="Article"/>
+							<img class="borderImg roundedImg" src="../Images/Examples/article.png" alt="Article"/>
 						</a>
 					</div>
 					<div class="col4">
 						<h6 class="skipBottom">Signup</h6>
 						<a href="signup.html" target="_blank">
-							<img class="featuredImage" src="../Images/Examples/signup.png" alt="Signup"/>
+							<img class="borderImg roundedImg" src="../Images/Examples/signup.png" alt="Signup"/>
 						</a>
 					</div>															
 				</div>
@@ -62,7 +64,7 @@
 					<div class="col4">
 						<h6 class="skipBottom">Ecommerce</h6>
 						<a href="ecommerce.html" target="_blank">
-							<img class="featuredImage" src="../Images/Examples/ecommerce.png" alt="Ecommerce"/>
+							<img class="borderImg roundedImg" src="../Images/Examples/ecommerce.png" alt="Ecommerce"/>
 						</a>
 					</div>				
 				</div>

@@ -4,15 +4,17 @@
 	<meta charset="UTF-8">
 	<title>VM UI Framework</title>
 	<link rel="icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
-	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<link rel="stylesheet" type="text/css" href="../Templates/Sketch/CSS/import.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/Sketch/docs.css" />
 	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="JavaScript/template.js" type="text/javascript"></script>
 	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
+			new Template('../');
 			var loader = new VMUI({relativePath:'../JavaScript'});	
 		});
-	</script>		
+	</script>	
 </head>
 <body>
 	<div class="navbarContainer">
@@ -71,19 +73,19 @@
 		<div class="row">
 			<div class="col4">
 				<h6>For Modern Browsers</h6>
-				<img class="featuredImage" src="Images/Features/browsers.png" alt="Modern Browser Support"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/browsers.png" alt="Modern Browser Support"/>
 				<p>The latest verions of all modern browsers are supported, including Chrome, Firefox, Safari, Opera, 
 					and Internet Explorer.</p>
 			</div>
 			<div class="col4">
 				<h6>MooTools-Powered</h6>
-				<img class="featuredImage" src="Images/Features/mootools.png" alt="Powered By MooTools"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/mootools.png" alt="Powered By MooTools"/>
 				<p>All of our JavaScript plugins use <a href="http://mootools.net/">MooTools</a>, a JavaScript framework 
 					that allows for fast, flexible, and clean development.</p>
 			</div>			
 			<div class="col4">
 				<h6>MIT License</h6>
-				<img class="featuredImage" src="Images/Features/open.png" alt="Open Source"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/open.png" alt="Open Source"/>
 				<p>VM UI Framework is licensed as open source under the 
 					<a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>, meaning that you can 
 					use it in whatever projects you need to without a worry.</p>
@@ -92,19 +94,19 @@
 		<div class="row">
 			<div class="col4">
 				<h6>Packed With Features</h6>
-				<img class="featuredImage" src="Images/Features/features.png" alt="Packed full of features"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/features.png" alt="Packed full of features"/>
 				<p>From carefully calculated typography to responsive tables, from easy grid-based layouts to a 326 
 					character custom icon font, you're going to love using VM UI Framework.</p>
 			</div>
 			<div class="col4">
 				<h6>100% Responsive</h6>
-				<img class="featuredImage" src="Images/Features/responsive.png" alt="It's all responsive"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/responsive.png" alt="It's all responsive"/>
 				<p>Every single interface element has been tested extensively so that they scale from large desktop 
 					screens to mobile browsers. It simply just works.</p>
 			</div>			
 			<div class="col4">
 				<h6>Over 20 Plugins</h6>
-				<img class="featuredImage" src="Images/Features/plugins.png" alt="Lots of plugins"/>
+				<img class="borderImg roundedImg bottomMargin" src="Images/Features/plugins.png" alt="Lots of plugins"/>
 				<p>A plugin for every need. They're automatically loaded on the page, but only when you need them. No 
 					JavaScript knowledge required.</p>
 			</div>

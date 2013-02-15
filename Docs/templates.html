@@ -4,13 +4,42 @@
 	<meta charset="UTF-8">
 	<title>Templates - VM UI Framework</title>
 	<link rel="icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../CSS/vmui.css" />
-	<link rel="stylesheet" type="text/css" href="CSS/examples.css" />
+	<link rel="stylesheet" type="text/css" href="../Templates/Sketch/CSS/import.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/Sketch/docs.css" />
 	<script src="../JavaScript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="JavaScript/template.js" type="text/javascript"></script>
 	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			var loader = new VMUI({relativePath:'../JavaScript'});	
+			new Template('../');
+			var loader = new VMUI({relativePath:'../JavaScript'});
+						
+			var setButton = function(button){
+				var oldButton = $$('.templateButton.infoButton')[0].removeClass('infoButton').addClass('button');
+				var newText = oldButton.get('text').replace('You Are', 'Start');
+				oldButton.set('text', newText);
+				
+				button.removeClass('button').addClass('infoButton');
+				newText = button.get('text').replace('Start', 'You Are');
+				button.set('text', newText);				
+			}
+			
+			var currentTemplate = Cookie.read('vmui-docs-template');
+			if (currentTemplate){
+				setButton($(currentTemplate));
+			}
+			
+			$$('.templateButton').addEvent('click', function(e){
+				e.stop();
+				if (this.hasClass('button')){
+					setButton(this)
+					
+					Cookie.dispose('vmui-docs-template');
+					Cookie.write('vmui-docs-template', this.get('id'));
+					new Template('../');
+				}
+			});
+			
 		});
 	</script>	
 </head>
@@ -38,7 +67,32 @@
 		<div class="row">
 			<div class="col12">
 				<h1 class="pageTitle">Templates</h1>
-				<p>This page will contain a stylesheet switcher between 3 templates.</p>
+				<p>Choose one of the templates below. Once you have chosen a template, it will be loaded on every page 
+					in the documentation and demos until you come back and select a different template.</p>
+				<div class="row">
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg" src="Images/Templates/skeleton.png" alt="Skeleton Template" />
+						<p>Skeleton is a bare-bones template that you can customize to suit your needs.</p>
+						<a href="#" id="Skeleton" class="button templateButton">Start Using Skeleton</a>
+					</div>
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg" src="Images/Templates/sketch.png" alt="Sketch Template" />
+						<p>Sketch is a template stylized especially for prototypes and wireframes.</p>
+						<a href="#" id="Sketch" class="infoButton templateButton">You Are Using Sketch</a>
+					</div>
+					<div class="col4">
+						<img class="borderOffsetImg roundedImg" src="Images/Templates/polish.png" alt="Polish Template" />
+						<p>Polish is a refined template for creating production websites and interfaces.</p>
+						<a href="#" id="Polish" class="button templateButton">Start Using Polish</a>
+					</div>					
+				</div>
+				<span class="divider"></span>
+				<p><span class="infoMarker">Tip</span> Even though each template has suggested use cases, feel free to 
+					use them however you'd like.</p>				
+				<p><span class="warningMarker">Warning</span> If you select a template other than the default, each 
+					page will experience a slight flicker. The flicker only occurs because the stylesheet is being 
+					loaded dynamically and will not happen if the stylesheet is statically loaded as in most normal use 
+					cases.</p>								
 			</div>
 		</div>
 		<div class="row">
