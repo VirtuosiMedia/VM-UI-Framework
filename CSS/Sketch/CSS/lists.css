@@ -157,14 +157,20 @@ ol ol ol li:before {
 		background: #FFF;
 		border: 0.2em solid #222;
 		border-radius: 4px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 		list-style: none;
 		margin-left: 0px;
-		padding: 0 0.35em 1.75em;
 		overflow: hidden;
+		padding: 0 0.35em 1.35em;
+		vertical-align: bottom;
 	}
 	.node li {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;	
 		float: left;
-		margin-right: 20px;
+		line-height: 1.75em;		
+		margin-right: 1em;
 		position: relative;
 		text-align: center;
 	}
@@ -196,10 +202,14 @@ ol ol ol li:before {
 		background: #FFF;
 		border: 0.1em solid #222;
 		border-radius: 4px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;		
 		display: inline-block;
+		height: 1.75em;
 		left: 0px;
 		padding: 0 0.5em;
 		position: relative;
+		vertical-align: bottom;
 		z-index: 1000;
 	}
 	.node li span+span {margin-left: 20px;}
@@ -225,10 +235,10 @@ ol ol ol li:before {
 		background: #222;
 		content: '';
 		display: block;
-		height: 3.5em;
+		height: 3.4em;
 		left: 50%;
 		position: absolute;
-		top: -2.65em;
+		top: -2.5em;
 		width: 2px;
 	}
 	.node ul::before {
