@@ -22,7 +22,6 @@ dl {margin-bottom: 1.75em;}
 dt {
 	background: #222;
 	border: 0.2em solid #222;
-	border-radius: 4px 4px 0px 0px;
 	color: #FFF;
 	font-size: 0.875em;
 	font-weight: bold;
@@ -42,7 +41,6 @@ dd:before {content: "- ";}
 dd+dt:before {
 	border-bottom: 0.2em solid #222;
 	border-left: 0.2em solid #222;
-	border-radius: 0px 0px 4px 4px;
 	border-right: 0.2em solid #222;
 	content: "";	
 	display: block;
@@ -54,7 +52,6 @@ dd+dt:before {
 }
 dd:last-child {
 	border-bottom: 0.2em solid #222;
-	border-radius: 0px 0px 4px 4px;
 	margin-bottom: -0.2em;
 }
 
@@ -115,7 +112,6 @@ ol ol ol li:before {
 	.node {
 		background: #FFF;
 		border: 0.2em solid #222;
-		border-radius: 4px;
 		list-style: none;
 		margin-bottom: 0px;
 		margin-left: 0px;
@@ -156,7 +152,6 @@ ol ol ol li:before {
 	.node {
 		background: #FFF;
 		border: 0.2em solid #222;
-		border-radius: 4px;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		list-style: none;
@@ -201,7 +196,6 @@ ol ol ol li:before {
 	.node li span {
 		background: #FFF;
 		border: 0.1em solid #222;
-		border-radius: 4px;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;		
 		display: inline-block;
