@@ -138,7 +138,7 @@ var SelectReplace = new Class({
 		}		
 
 		this.createListOptions(index);
-		this.triggers[index].getElement('.'+this.options.displayClass).setStyle('min-width', this.lists[index].getCoordinates().width);
+		this.triggers[index].getElement('.'+this.options.displayClass).setStyle('min-width', this.lists[index].getSize().x);
 		this.lists[index].setStyle('display', 'none');
 		
 		$(document).addEvent('click', function(e){
@@ -211,7 +211,7 @@ var SelectReplace = new Class({
 
 	expandList: function(index){
 		var dimensions = this.triggers[index].getCoordinates();
-		this.lists[index].setStyles({'display':'block', 'left':dimensions.left, 'min-width':(dimensions.width - 4)});
+		this.lists[index].setStyles({'display':'block', 'left':dimensions.left, 'min-width':(dimensions.width)});
 		var listBottom = dimensions.bottom + this.lists[index].getSize().y;
 		var listTop = dimensions.top - this.lists[index].getSize().y;
 		if ((listBottom > (window.innerHeight + window.getScroll().y))&&(listTop > window.getScroll().y)){
