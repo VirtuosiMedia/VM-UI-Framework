@@ -9,11 +9,8 @@
  * Checkbox, Radio Replace
  */
 .checked, .unchecked {
-	border: #222 solid 0.15em;
-	border-radius: 2px;
+	border: #CCC solid 0.1em;
 	bottom: -0.15em;
-	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
-	box-shadow: inset 2px 2px 3px #E9E9E9;	
 	display: inline-block !important;
 	height: 0.8em;
 	position: relative;
@@ -44,39 +41,40 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	color: #333;
 	cursor: pointer;
 	background: #FFF;
-	border: 0.15em solid #222;
-	border-radius: 2px;
-	float:left;
+	border: 0.1em solid #CCC;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
 	height: 2.2em;
 	line-height: 2.2em;
 	margin-bottom: 1.75em;
 	padding: 0 0.5em 0 0em;
 	text-indent: 0.5em;
-	width:auto; 
+	width: auto; 
 }
 .selectContainer.active {
-	border-color-left: #CCC;
+	border-color-left: #333;
 	outline: none;
 }
 .selectContainer .display, .checkboxGroupContainer .display {float: left;}
 .trigger {
 	clear: none;
+	color: #CCC;
 	display: block;
 	float: left;
 	width: 17px;	
 }
-.selectContainer.expanded.down {border-radius: 2px 2px 0px 0px;}
-.selectContainer.expanded.up {border-radius: 0px 0px 2px 2px;}
 .selectList, .checkSelectList, .content .selectList {
 	background: #FFF;
-	border: 0.15em solid #222;
+	border: 0.1em solid #CCC;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	display: block;
 	list-style: none;
-	margin-left: 0px;
+	margin: 0.05em 0 0 0;
 	max-height: 8em;
 	z-index: 100;
 }
-.selectList.up, .checkSelectList.up {border-radius: 2px 2px 0px 0px;}
-.selectList.down, .checkSelectList.down {border-radius: 0px 0px 2px 2px;}
 .selectList li, .checkSelectList li {
 	cursor: pointer;
 	height: 2.2em;
@@ -84,9 +82,8 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 	text-indent: 0.5em;	
 }
 .selectList li:hover, li.activeLi, .checkSelectList li:hover, .checkSelectList li:hover label {
-	background:#09F;
-	color:#FFF;
-	text-shadow:none;
+	background: #09F;
+	color: #FFF;
 }
 .selectList li.selectOptgroup {height: auto;}
 .selectList li.selectOptgroup:hover {
