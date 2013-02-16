@@ -70,6 +70,8 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 .selectList, .checkSelectList, .content .selectList {
 	background: #FFF;
 	border: 0.15em solid #222;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;		
 	list-style: none;
 	margin-left: 0px;
 	max-height: 8em;
