@@ -93,7 +93,9 @@
 	background: #222;
 	color: #FFF; 
 }
-.contrastButton[data-state=active], [class*="ContrastButton"][data-state=active]{}
+.contrastButton[data-state=active], [class*="ContrastButton"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #222;
+}
 .contrastButton[data-state~=disabled], [class*="ContrastButton"][data-state~=disabled], .contrastButton[disabled], 
 [class*="ContrastButton"][disabled] {
 	background: #111;
