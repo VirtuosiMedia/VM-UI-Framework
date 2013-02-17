@@ -28,7 +28,7 @@ var Baseline = new Class({
 	
 	applyMargin: function(el){
 		var exceptions = $$('.carousel img'); //Add your exceptions here.
-		if (!expections.contains(el)){
+		if (!exceptions.contains(el)){
 			var height = el.getSize().y;
 			var modulus = height % this.emSize;
 			var margin = this.emSize - modulus + el.getStyle('bottom-margin');
