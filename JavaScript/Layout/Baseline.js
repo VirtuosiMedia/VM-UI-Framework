@@ -27,10 +27,13 @@ var Baseline = new Class({
 	},
 	
 	applyMargin: function(el){
-		var height = el.getSize().y;
-		var modulus = height % this.emSize;
-		var margin = this.emSize - modulus + el.getStyle('bottom-margin');
-		//Vertical align is added to fix http://stackoverflow.com/questions/9359121/
-		el.setStyles({'vertical-align': 'bottom', 'margin-bottom': margin}); 
+		var exceptions = $$('.carousel img'); //Add your exceptions here.
+		if (!expections.contains(el)){
+			var height = el.getSize().y;
+			var modulus = height % this.emSize;
+			var margin = this.emSize - modulus + el.getStyle('bottom-margin');
+			//Vertical align is added to fix http://stackoverflow.com/questions/9359121/
+			el.setStyles({'vertical-align': 'bottom', 'margin-bottom': margin});
+		}
 	}
 });
