@@ -36,7 +36,9 @@
 	color: #FFF !important; 
 }
 .infoButton:hover, [class*="InfoButton"]:hover {background: #0077AA;}
-.infoButton[data-state=active], [class*="InfoButton"][data-state=active]{}
+.infoButton[data-state=active], [class*="InfoButton"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #0077AA;
+}
 .infoButton[data-state~=disabled], [class*="InfoButton"][data-state~=disabled], .infoButton[disabled], 
 [class*="InfoButton"][disabled] {
 	background: #07A;
@@ -51,7 +53,9 @@
 	background: #4D9E0C;
 }
 .successButton[data-state=active], [class*="SuccessButton"][data-state=active], .primaryButton[data-state=active], 
-[class*="buttonPrimary"][data-state=active]{}
+[class*="buttonPrimary"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #4D9E0C;
+}
 .successButton[data-state~=disabled], [class*="SuccessButton"][data-state~=disabled], .primaryButton[disabled], 
 [class*="PrimaryButton"][disabled] {
 	background: #4D9E0C;
@@ -63,7 +67,9 @@
 	color: #FFF !important; 
 }
 .warningButton:hover, [class*="WarningButton"]:hover {background: #FF9900;}
-.warningButton[data-state=active], [class*="WarningButton"][data-state=active]{}
+.warningButton[data-state=active], [class*="WarningButton"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #FF9900;
+}
 .warningButton[data-state~=disabled], [class*="WarningButton"][data-state~=disabled], .warningButton[disabled], 
 [class*="WarningButton"][disabled] {
 	background: #FF9900;
@@ -78,7 +84,9 @@
 	background: #D50000;
 	color: #FFF; 
 }
-.errorButton[data-state=active], [class*="ErrorButton"][data-state=active]{}
+.errorButton[data-state=active], [class*="ErrorButton"][data-state=active]{
+	box-shadow: inset 2px 2px 4px 0px #D50000;
+}
 .errorButton[data-state~=disabled], [class*="ErrorButton"][data-state~=disabled], .errorButton[disabled], 
 [class*="ErrorButton"][disabled] {
 	background: #E61111;
