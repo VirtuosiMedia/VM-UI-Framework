@@ -18,16 +18,14 @@
 .sliderContainer li {float: left;}
 .sliderContainer .track {
 	background: #111;
-	border-radius: 2px;
 	display: block;
-	height: 0.2em;
+	height: 0.05em;
 	position: relative;
 	width: 20em;
 }
 .sliderContainer .knob {
 	background: #FFF;
-	border: 0.15em #111 solid;
-	border-radius: 2px;
+	border: 0.1em #111 solid;
 	cursor: ew-resize;
 	display: block;
 	height: 1em;
