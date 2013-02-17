@@ -22,7 +22,12 @@ var Template = new Class({
 		
 		if ((!defaultTemplate.contains(template))||(numDynamicTemplates > 0)){
 			$$('link[rel=stylesheet]').dispose();
-			new Asset.css(relativePath + 'Templates/' + template + '/CSS/import.css', {'class': 'dynamicTemplate'});
+			new Asset.css(relativePath + 'Templates/' + template + '/CSS/import.css', {
+				'class': 'dynamicTemplate',
+				onLoad: function(){ //This is for plugins that execute before the stylesheet it loaded
+					document.fireEvent('templateLoaded');
+				}
+			});
 			new Asset.css(relativePath.substr(3) + 'CSS/' + template + '/docs.css', {'class': 'dynamicTemplate'});
 		}
 	}	
