@@ -21,8 +21,7 @@
 .floatingNavbarContainer .megaDropdown>a:after {color: #999;}
 .dropdown ul {
 	background: #FFF;
-	border: #222 solid 0.15em;
-	border-radius: 0px 0px 4px 4px;
+	border: #222 solid 0.1em;
 	-moz-box-sizing: border-box;	
 	box-sizing: border-box;
 	display: block;
@@ -51,8 +50,10 @@
 }
 .dropdown>.button, .dropdown>[class*=Button] {margin-bottom: 0;}
 .dropdown>.button+ul, .dropdown>[class*=Button]+ul {
-	border: 1px solid #999;
-	margin: 0;
+	border: 0.1em solid #999;
+	-moz-box-sizing: border-box;	
+	box-sizing: border-box;
+	margin: 0 0 0 0.1em;
 }
 .dropdown>.button+ul a, .dropdown>[class*=Button]+ul a {text-decoration: none;}
 span.dropdown {
@@ -63,8 +64,7 @@ span.dropdown {
 	background: #FFF;
 	-moz-box-sizing: border-box;	
 	box-sizing: border-box;
-	border: #222 solid 0.15em;
-	border-radius: 0px 0px 4px 4px;
+	border: #222 solid 0.1em;
 	display: block;
 	left: 50%;
 	line-height: 1.75em;
