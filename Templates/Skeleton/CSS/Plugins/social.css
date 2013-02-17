@@ -21,16 +21,16 @@
 	float: left;
 }
 .socialShare ul li .button {
+	border: 0.075em solid #999;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
-	height: 1.25em;
+	height: 1.5em;
 	line-height: 1.2em;
 	width: 5.5em;
 }
 .socialShare .small .counter {
 	border: 0.075em solid #999;
-	border-radius: 4px;
 	display: inline-block;
 	height: 1.2em;
 	line-height: 1.3em;
@@ -64,22 +64,20 @@
 }
 .socialShare .large li {width: 5.5em;}
 .socialShare .large a.button {
-	border-radius: 0px 0px 4px 4px;
 	position: relative;
-	top: -0.45em;
+	top: -0.2em;
 }
 .socialShare .large .counter {
 	border: 0.075em solid #999;
 	border-bottom-color: transparent;
-	border-radius: 4px 4px 0px 0px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	display: inline-block;
-	height: 1.4em;
+	display: block;
+	height: 1.6em;
 	line-height: 1.3em;
 	padding: 0.05em 0em;
 	text-align: center;
-	width: 5.65em;
+	width: 5.5em;
 }
 .socialShare .count {
 	position: relative;
@@ -88,13 +86,6 @@
 .socialShare .small a.facebookShare, .socialShare .small a.redditShare {
 	position: relative; 
 	top: -0.05em;
-}
-.socialShare .large a.facebookShare, .socialShare .large a.redditShare {
-	position: relative; 
-	top: -0.485em;
-}
-.socialShare .large.horizontal a.linkedinShare, .socialShare .large.horizontal a.redditShare {
-	width: 5.55em;
 }
 .socialShare .facebookShare i {
 	background: #3b5998;
@@ -116,7 +107,6 @@
 .socialShare .pinterestShare i {color: #D5373A;}
 .socialShare .redditShare i {
 	background: #FFF;
-	border-radius: 0.8em;
 	display: inline-block;
 	height: 0.5em;
 	left: -0.1em;
