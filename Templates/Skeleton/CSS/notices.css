@@ -45,7 +45,7 @@ div.errorNotice {
 }
 .notice .close, div[class*="Notice"] .close {
 	background: #EEE;
-	border: 0.15em solid #333;
+	border: 0.1em solid #999;
 	border-radius: 0.75em;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
