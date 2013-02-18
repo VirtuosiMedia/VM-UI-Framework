@@ -12,7 +12,9 @@
 	<script>
 		window.addEvent('domready', function() {
 			new Template('../../');
-			var loader = new VMUI({relativePath:'../../JavaScript'});
+			document.addEvent('templateLoaded', function(){
+				var loader = new VMUI({relativePath:'../../JavaScript'});	
+			});
 			
 			//For the demo
 			$$('.pager').addEvent('change', function(){
