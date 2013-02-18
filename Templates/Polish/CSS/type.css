@@ -4,18 +4,24 @@
  * Copyright Virtuosi Media, Inc. 2012
  * Released under an MIT-License
  */
- 
+
+/**
+ * Import fonts from Google
+ */
+@import url(http://fonts.googleapis.com/css?family=Nunito:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 /**
  * Typography
  */
 body {
-	font-family: Georgia, "Times New Roman", serif;
-	font-size: 16px;
+	font-family: 'Open Sans', Georgia, "Times New Roman", serif;
+	font-size: 16px !important;
 	line-height: 1.75em;
 }
 blockquote, h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.75em;}
 h1, h2, h3, h4, h5, h6 {
-	font-family: Arial Black, Arial, sans-serif;
+	font-family: 'Nunito', Arial Black, Arial, sans-serif;
 	position: relative;
 }
 h1 {
@@ -50,7 +56,7 @@ h6 {
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 	bottom: -0.3em;
 	color: #777;
-	font-family: Georgia, "Times New Roman", serif;
+	font-family: 'Open Sans', Georgia, "Times New Roman", serif;
 	font-size: 0.6em;
 	position: absolute;
 	text-indent: 0.5em
@@ -78,14 +84,14 @@ del, ins {
 	border-radius: 2px;
 }
 del {
-	background: #FFE6E6;
-	border-color: #FF6A6A;
-	color: #FF6A6A;
+	background: #CC6666;
+	border-color: #923030;
+	color: #923030;
 }
 ins {
-	background: #E2FBCE;
-	border-color: #4D9E0C;
-	color: #4D9E0C;
+	background: #669966;
+	border-color: #354F35;
+	color: #354F35;
 	text-decoration: none;
 }
 

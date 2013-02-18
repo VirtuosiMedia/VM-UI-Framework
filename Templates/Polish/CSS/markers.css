@@ -9,14 +9,41 @@
  * Markers
  */
 span.marker, span[class*="Marker"] {
-	background: #999;
+	background: #EEE;
+	border: 1px solid;
+	border-color: #FEFEFE #999 #999 #FEFEFE;	
 	border-radius: 4px;
-	color: #FFF;
-	display: inline;
+	color: #777;
+	display: inline-block;
 	font-size: 0.875em;
-	padding: 0.1em 0.375em 0.1em;
+	height: 1.5em;
+	line-height: 1.5em;
+	padding: 0em 0.375em;
+	position: relative;
+	text-shadow: 1px 1px 1px #FFF;
+	top: -0.1em;
 }
-span.infoMarker {background: #069;}
-span.successMarker {background: #4D9E0C;}
-span.warningMarker {background: #FB9702;}
-span.errorMarker {background: #FF6A6A;}
+span.infoMarker {
+	background: #459EE5;
+	border-color: #88C0EE #3182C0 #3182C0 #88C0EE;
+	color: #FFF;
+	text-shadow: -1px -1px 1px #3182C0;
+}
+span.successMarker {
+	background: #669966;
+	border-color: #8CB38C #496D49 #496D49 #8CB38C;
+	color: #FFF;
+	text-shadow: -1px -1px 1px #496D49;
+}
+span.warningMarker {
+	background: #FFCC66;
+	border-color: #FFDD97 #FFB720 #FFB720 #FFDD97;
+	color: #FFF;
+	text-shadow: -1px -1px 1px #FFB720;
+}
+span.errorMarker {
+	background: #CC6666;
+	border-color: #DF9F9F #AF3A3A #AF3A3A #DF9F9F;
+	color: #FFF;
+	text-shadow: -1px -1px 1px #AF3A3A;
+}

@@ -1,21 +1,75 @@
 /**
+ * Front page
+ */
+#featureContainer {
+	background: url('Images/feature.png') no-repeat fixed center 100%;
+	border-bottom: 0.7em solid #222;
+	border-top: 0.1em solid #222;
+	display: block;
+	height: auto;
+	margin-bottom: 1.75em;
+	text-shadow: 1px 1px 1px #EEE;
+	width: 100%;
+}
+#featureContainer [class*=col] {
+	background: rgba(255, 255, 255, 0.7);
+	border: 0.1em solid;
+	border-color: #EEE #999 #999 #EEE;
+	border-radius: 4px;
+	-mox-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 1em;
+}
+#featureContainer .pageTitle:after {
+	background: #999;
+	border-bottom: 1px solid #EEE;
+	height: 1px;
+	padding: 0;
+}
+#featureContainer .multiInfoButton {margin-bottom: 0;}
+@media (max-width: 768px){
+	#featureContainer [class*=col] {margin-bottom: 1.75em;}
+}
+
+
+/**
  * The logos
  */
 #homeLogo, #homeLogoFloat {
-	color: #09C;
+	background: none;
+	color: #151C20;
 	float: left;
 	font-size: 3em;
-	height: 1.15em !important;
+	height: 1em;
+	margin-top: -0.3em;
 	padding: 0 0.15em 0;
-	width: 1.5em;
+	width: 1.8em;
+}
+#homeLogoFloat {margin-top: 0;}
+#homeLogo:hover, #homeLogoFloat:hover {
+	background: none;
+	border-color: transparent;
+	color: #459EE5;
+	text-shadow: -1px -1px 1px #000;
+	-moz-transition: color 0.5s ease-in;
+	-ms-transition: color 0.5s ease-in;
+	-o-transition: color 0.5s ease-in;
+	-webkit-transition: color 0.5s ease-in;
+	transition: color 0.5s ease-in;	
 }
 #homeLogoFloat {line-height: 1.15em;}
+#homeLogo:active, #homeLogoFloat:active {outline: none;}
 .floatingNavbarContainer #homeLogo {line-height: 1.15em;}
 
 /**
  * Display the grids
  */
 .gridContainer .row div {
+	background: #EEE;
+	border: 0.1em solid;
+	border-color: #999 #FFF #FFF #999;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	color:#555;
 	height:30px;
 	line-height:30px;

@@ -9,17 +9,38 @@
  * Navigation, Breadcrumbs
  */
 .breadcrumb {
+	background: #FFFFFF; 
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+	background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
+	border: 1px solid;
+	border-color: #EEE #999 #999 #EEE;
+	border-radius: 4px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #151C20 !important; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);	
 	list-style: none;
-	margin: 0px;
-	overflow: auto;
+	margin: 0 0 1.75em 0;
+	overflow: hidden;
+	padding: 0.8em;
+	text-shadow: 1px 1px 1px #FFF;
 }
 .breadcrumb li {
 	float:left;
 	margin-right: 2em;
 }
-.breadcrumb a {position: relative;}
+.breadcrumb a {
+	color: #459EE5;
+	position: relative;
+	text-decoration: none;
+}
+.breadcrumb a:hover {color: #266593;}
 .breadcrumb a:after {
-	color: #000;
+	color: #999;
 	content: '\25b6';
 	display: inline-block;
 	height: 1.35em;

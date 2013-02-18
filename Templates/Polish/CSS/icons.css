@@ -20,7 +20,7 @@
 		url('../../../Fonts/VM-UI-Icons.svg#VM-UI-Icons') format('svg');
 	unicode-range: U+E000-U+E145;	
 } 
-body {font-family: Georgia, "Times New Roman", 'VM-UI-Icons', serif;}
+body {font-family: 'Open Sans', Georgia, "Times New Roman", 'VM-UI-Icons', serif;}
 
 /**
  * Icons, Types
