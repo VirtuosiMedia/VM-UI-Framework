@@ -65,13 +65,14 @@ var Modal = new Class({
 			var dimensions = modal.getSize();
 			var topVal = ((size.y - dimensions.y)/2) + 'px';
 			var leftVal = ((size.x - dimensions.x)/2) + 'px';
-			var height = modal.hasClass('iframeModal') ? 500 : 'auto';
+			var height = modal.hasClass('iframeModal') ? size.y/2 : 'auto';
 		}
 		
 		modal.setStyle('height', height);
 		var headerHeight = (modal.getElement('.modal .modalHeader')) ? modal.getElement('.modal .modalHeader').getSize().y : 0;
 		var footerHeight = (modal.getElement('.modal .modalFooter')) ? modal.getElement('.modal .modalFooter').getSize().y : 0;
-		var contentHeight = modal.getSize().y - headerHeight - footerHeight - 22;
+		var contentHeight = (modal.getSize().y > size.y/2) ? modal.getSize().y - headerHeight - footerHeight - 22 : 'auto';
+		
 		if (modal.getElement('.modal .modalContent')){
 			modal.getElement('.modal .modalContent').setStyle('height', contentHeight);
 		}
