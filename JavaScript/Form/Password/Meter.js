@@ -162,8 +162,7 @@ var PasswordMeter = new Class({
 		this.setMeter(meter, entropy, message, meterClass);
 	},
 	
-	setMeter: function(meter, entropy, message, meterClass){
-		
+	setMeter: function(meter, entropy, message, meterClass){		
 		var containerId = meter.get('name') + 'Container';
 		if (!$(containerId)){
 			var msg = new Element('span', {'class': 'message', text: message});
@@ -171,14 +170,14 @@ var PasswordMeter = new Class({
 				id: containerId, 
 				'class': 'passwordMeter'
 			}).inject(meter, 'after');
-			var width = container.getSize().x;
-			var percent = (entropy <= 100) ? (width/100)*entropy : width;
+			var width = container.getComputedSize().width;
+			var percent = (entropy <= 100) ? (width/100)*entropy: width;
 			var progressBar = new Element('span', {'class': 'passwordBar ' + meterClass, styles: {width: percent}});
 			var progressContainer = new Element('span', {'class': 'passwordContainer'}).adopt(progressBar);
 			container.adopt(msg, progressContainer)
 		} else {
 			var meterContainer = $(containerId);
-			var width = meterContainer.getSize().x;
+			var width = meterContainer.getComputedSize().width;
 			var percent = (entropy <= 100) ? (width/100)*entropy : width;
 			meterContainer.getElement('.message').set('text', message);
 			meterContainer.getElement('.passwordBar').set('class', 'passwordBar ' + meterClass).set('morph', {
