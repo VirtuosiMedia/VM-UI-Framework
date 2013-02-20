@@ -83,9 +83,9 @@ var VMUI = new Class({
 	loadLighter: function(selectors){
 		var self = this;
 		var assets = [
-		     'Lighter/Loader.js', 'Lighter/Parser.js', 'Lighter/Parser/Smart.js',
-		     'Lighter/Compiler.js', 'Lighter/Compiler/List.js', 'Lighter/Compiler/Inline.js', 'Lighter/Fuel.js',
-		     'Lighter/Wick.js',
+		     'lighter/loader.js', 'lighter/parser.js', 'lighter/parser/smart.js',
+		     'lighter/compiler.js', 'lighter/compiler/list.js', 'lighter/compiler/inline.js', 'lighter/fuel.js',
+		     'lighter/wick.js',
 		];
 		self.loadLighterAsset(assets, 0, selectors);
 	},	
