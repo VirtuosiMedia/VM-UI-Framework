@@ -19,7 +19,7 @@ var VMUI = new Class({
 		         {name:'SelectReplace', source:'form/replace/select.js', selectors:'select:not([multiple])'},
 		         {name:'Dropdown', source:'navigation/dropdown.js', selectors:'.dropdown, .megaDropdown'},
 		         {name:'Lighter', source:'lighter/lighter.js', selectors:'pre'},
-		         {name:'Modal', source:'layout/lodal.js', selectors:'.modalTrigger'},
+		         {name:'Modal', source:'layout/modal.js', selectors:'.modalTrigger'},
 		         {name:'Notice', source:'layout/notice.js', selectors:'div.notice, div[class*="Notice"]'},
 		         {name:'Carousel', source:'layout/carousel.js', selectors:'.carousel, .carouselClean, .carouselVertical'},
 		         {name:'Social', source:'widgets/social.js', selectors:'.socialShare'},
@@ -39,7 +39,11 @@ var VMUI = new Class({
 		         {name:'Pager', source:'layout/pager.js', selectors:'.pager'},
 		         {name:'MobileMenu', source:'navigation/mobilemenu.js', selectors:'.mobileMenu'},
 		         {name:'Reveal', source:'widgets/reveal.js', selectors:'.revealToggle'},
-		         {name:'Baseline', source:'layout/baseline.js', selectors:'img, svg, canvas, object, video, audio, iframe, [class*=Chart]'} //This should always go last to let everything render
+		         {
+		        	 name:'Baseline', 
+		        	 source:'layout/baseline.js', 
+		        	 selectors:'img:not(.skipBaseline), svg:not(.skipBaseline), canvas:not(.skipBaseline), object:not(.skipBaseline), video:not(.skipBaseline), audio:not(.skipBaseline), iframe:not(.skipBaseline), [class*=Chart]:not(.skipBaseline)'
+		         } //This should always go last to let everything render
 		],
 		relativePath: '../javascript'		
 	},
