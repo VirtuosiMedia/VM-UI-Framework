@@ -29,6 +29,8 @@ var Template = new Class({
 				}
 			});
 			new Asset.css(relativePath.substr(3) + 'css/' + template + '/docs.css', {'class': 'dynamicTemplate'});
+		} else {
+			document.fireEvent('templateLoaded'); //When the default template is The Chosen One
 		}
 	}	
 });
