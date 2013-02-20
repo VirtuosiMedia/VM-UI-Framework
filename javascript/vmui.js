@@ -37,7 +37,7 @@ var VMUI = new Class({
 		         {name:'Sliders', source:'form/widget/sliders.js', selectors:'input.slider'},
 		         {name:'Autocomplete', source:'form/widget/autocomplete.js', selectors:'input.autocomplete'},
 		         {name:'Pager', source:'layout/pager.js', selectors:'.pager'},
-		         {name:'MobileMenu', source:'navigation/mobileMenu.js', selectors:'.mobileMenu'},
+		         {name:'MobileMenu', source:'navigation/mobilemenu.js', selectors:'.mobileMenu'},
 		         {name:'Reveal', source:'widgets/reveal.js', selectors:'.revealToggle'},
 		         {name:'Baseline', source:'layout/baseline.js', selectors:'img, svg, canvas, object, video, audio, iframe, [class*=Chart]'} //This should always go last to let everything render
 		],
