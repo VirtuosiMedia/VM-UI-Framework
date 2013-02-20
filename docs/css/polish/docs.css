@@ -2,7 +2,7 @@
  * Front page
  */
 #featureContainer {
-	background: url('Images/feature.png') no-repeat fixed center 100%;
+	background: url('images/feature.png') no-repeat fixed center 100%;
 	border-bottom: 0.7em solid #222;
 	border-top: 0.1em solid #222;
 	display: block;
