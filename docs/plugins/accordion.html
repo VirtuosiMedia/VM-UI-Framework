@@ -11,8 +11,10 @@
 	<script src="../../javascript/vmui.js" type="text/javascript"></script>
 	<script>
 		window.addEvent('domready', function() {
-			new Template('../../');
-			var loader = new VMUI({relativePath:'../../javascript'});	
+			document.addEvent('templateLoaded', function(){
+				var loader = new VMUI({relativePath:'../../javascript'});	
+			});
+			new Template('../../');pt'});	
 		});
 	</script>	
 </head>
