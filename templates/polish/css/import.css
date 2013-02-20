@@ -44,20 +44,20 @@
 @import url('utilities.css');
 
 /**
- * JavaScript Plugins
+ * JavaScript plugins
  */
-@import url('Plugins/accordion.css');
-@import url('Plugins/autocomplete.css');
-@import url('Plugins/dropdowns.css');
-@import url('Plugins/form-replacements.css');
-@import url('Plugins/form-validation.css');
-@import url('Plugins/password.css');
-@import url('Plugins/tabs.css');
-@import url('Plugins/mobile-menu.css');
-@import url('Plugins/modals.css');
-@import url('Plugins/social.css');
-@import url('Plugins/charts.css');
-@import url('Plugins/highlighter.css');
-@import url('Plugins/carousel.css');
-@import url('Plugins/tooltips.css');
-@import url('Plugins/sliders.css');
+@import url('plugins/accordion.css');
+@import url('plugins/autocomplete.css');
+@import url('plugins/dropdowns.css');
+@import url('plugins/form-replacements.css');
+@import url('plugins/form-validation.css');
+@import url('plugins/password.css');
+@import url('plugins/tabs.css');
+@import url('plugins/mobile-menu.css');
+@import url('plugins/modals.css');
+@import url('plugins/social.css');
+@import url('plugins/charts.css');
+@import url('plugins/highlighter.css');
+@import url('plugins/carousel.css');
+@import url('plugins/tooltips.css');
+@import url('plugins/sliders.css');
