@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard Example - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="../css/sketch/docs.css" />
+	<script src="../../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../javascript/template.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../../');
+			document.addEvent('templateLoaded', function(){
+				var loader = new VMUI({relativePath:'../../JavaScript'});
+			});	
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="#" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu right">
+						<li><a href="#">Marketing</a></li>
+						<li><a href="#">Accounts</a></li>
+						<li><a class="active" href="#">Sales</a></li>
+						<li class="dropdown"><a href="#"><i class="iconUser"></i> Adam Smith</a>
+							<ul>
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">My Settings</a></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col3">
+				<ul class="accordion topMargin">
+					<li class="active"><a href="#">Sales</a>
+						<ul>
+							<li><a href="#">Overview</a></li>
+							<li><a href="#">By Associate</a></li>
+							<li><a href="#">By Campaign</a></li>
+							<li><a href="#">By Product</a></li>
+							<li><a href="#">By Region</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Orders</a>
+						<ul>
+							<li><a href="#">Pending</a></li>
+							<li><a href="#">Fulfilled</a></li>
+							<li><a href="#">Issues</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="col9 topMargin">
+				<div class="areaChart" data-chartData="[
+					{
+						y:[0,1,6,3,17,12,24,38,15,87,75,45,23,12,73,17,45,87,99,34,20,15,30,60,80,40,35,90,87,96,80]
+					}
+				]"
+				data-chartOptions="{
+					showAxisLabels: true, 
+					showAxisLines: true, 
+					showTicksY: true, 
+					showTicksX: true,
+					showIntervalLabels: true,
+					showTitle: true,
+					title: 'Revenue, Last 30 Days',
+					showGridX: true,
+					showGridY: true,
+					showAreaLines: true,
+					showPoints: true,
+					showTips: true,
+					dateFormat: '%b %d',
+					dateEnd: '1/31/2013',
+					dateStart: '1/1/2013',
+					dateIntervalUnit: 'day',
+					dateIntervalValue: 3,
+					xAxisIsDate: true,
+					animate: true,
+					yAxisLabel: 'Revenue (1K)',
+					xAxisLabel: 'Date',
+					tipText: ['{x}: ${y},000'],
+					dataLabels: ['Revenue']					
+				}"></div>
+				<div class="row">
+					<div class="col5">
+						<div class="pieChart" data-chartData="[
+							{
+								x:[50,15,45]
+							}
+						]"
+						data-chartOptions="{
+							showTitle: true,
+							title: 'Sales % By Product',
+							showTips: true,
+							tipText: ['{piePercent}'],
+							dataLabels: ['Widgets', 'Doodads', 'Gizmos'],
+							showKey: true,
+							keyPosition: 'right',
+							keyWidthPercentage: 25,
+							aspectRatio: [4,3]					
+						}"></div>					
+					</div>
+					<div class="col4">
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Top 7 Sales Associates</caption>
+							<thead>
+								<tr>
+									<th colspan="2">Top 7 Sales Associates</th>
+								</tr>
+								<tr>
+									<td>Associate</td>
+									<td>Sales</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="Associate">John Doe</td>
+									<td data-column="Sales">$20.7K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Adam Smith</td>
+									<td data-column="Sales">$20.6K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Jane Johnson</td>
+									<td data-column="Sales">$17.9K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Gordy Pumpkin</td>
+									<td data-column="Sales">$15.3K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Abigail Sanders</td>
+									<td data-column="Sales">$12.5K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Arthur Balboa</td>
+									<td data-column="Sales">$10.8K</td>
+								</tr>
+								<tr>
+									<td data-column="Associate">Sandy Beach</td>
+									<td data-column="Sales">$10.3K</td>
+								</tr>																																									
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

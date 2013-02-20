@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Modal Windows</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="../css/sketch/docs.css" />
+	<script src="../../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../javascript/template.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../../');
+			var loader = new VMUI({relativePath:'../../JavaScript'});
+			
+			$('eventDemo').addEvents({
+				modalOpened: function(){
+					$('demoTarget').empty().appendText('Modal opened...').highlight();
+				},
+				modalSaved: function(){
+					$('demoTarget').appendText('Modal saved...').highlight();
+				},			
+				modalClosed: function(){
+					$('demoTarget').appendText('Modal closed...').highlight();
+				}
+			});
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../examples/">Examples</a></li>
+						<li><a href="../layout.html">Layout</a></li>
+						<li><a href="../core.html">Core</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../extras.html">Extras</a></li>
+						<li><a class="active" href="./">Plugins</a></li>
+						<li><a href="../templates.html">Templates</a></li>
+						<li><a href="../resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="./">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>
+				<h1 class="pageTitle">Modal Windows</h1>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#overview">Overview</a>
+							<li><a href="#usage">Usage</a>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#options">Options</a>
+							<li><a href="#events">Events</a>
+						</ul>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3 id="overview">Overview</h3>
+				<p>A modal window can load content into a popup dialog. The content can be loaded from on the page or 
+					from an external page and it can be either static or dynamic. The modal will automatically be 
+					centered on the page and can be dismissed clicking outside of it or with a close trigger. For 
+					mobile screens, the modal will expand to full-screen size.</p>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="usage">Usage</h3>
+				<p>Each modal window can load content in three ways: from inline content, via AJAX on the same site, or 
+					in an iframe from an external site. Here's how the trigger works:</p>
+<pre class="html">
+&lt;!-- Inline Trigger --&gt;
+&lt;a class="button modalTrigger" href="#exampleModal"&gt;Example Modal&lt;/a&gt;
+
+&lt;!-- Same-site Ajax Trigger --&gt;
+&lt;a class="button modalTrigger" href="index.html"&gt;Example Modal&lt;/a&gt;
+
+&lt;!-- External Site Iframe Trigger --&gt;
+&lt;a class="button modalTrigger" href="http://www.virtuosimedia.com/"&gt;Example Modal&lt;/a&gt;
+</pre>			
+				<h6>Closing Modals</h6>
+				<p>To close a modal, add a link or a button with a class of <code>close</code> somewhere inside of the 
+					modal.</p>
+				<p><span class="warningMarker">Warning</span> A close button must be manually added to every type of 
+					modal, with the exception of iframe modals (they add their own close button). If a close button is 
+					not added, <strong>mobile users will not be able to close the modal</strong>.</p>		
+				<h6>Loading Inline Content</h6>
+				<p>The modal trigger must reference the id of the modal content container in either the 
+					<code>href</code> or <code>data-target</code> attribute.</p>
+				<p>Modal containers must contain the class <code>modal</code> and are hidden by default. 
+					<span class="infoMarker">Note</span> The id <code>modal</code> is reserved for the modal itself, so 
+					don't use it or you will encounter unexpected errors.</p>
+				<h6>Styling Inline Content</h6>
+				<p>The width of a modal window can be determined by adding a <code>col3-12</code> class to the modal 
+					container, as described in the <a href="../layout.html">grid documentation</a>. Though not required,
+					additional styling can be added using additional content containers: <code>modalHeader</code>, 
+					<code>modalContent</code>, and <code>modalFooter</code> as outlined below.</p>
+<pre class="html">
+&lt;div id="exampleModal" class="modal col6"&gt;
+	&lt;div class="modalHeader"&gt;
+		&lt;h6&gt;Example Modal&lt;/h6&gt;
+		&lt;a href="#" class="close"&gt;&lt;span class="iconLargeDelete3"&gt;&lt;/span&gt;&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div class="modalContent"&gt;
+		&lt;p&gt;This is a modal window built with inline content and featuring an overlay. The text below 
+			shows what happens when modal content overflows.&lt;/p&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non magna metus. Vivamus 
+			vitae mi dui, eu accumsan leo. Vestibulum sagittis malesuada varius. Curabitur ultricies, 
+			diam interdum posuere congue, lorem eros facilisis dui, a aliquet quam erat at quam. Nunc 
+			pellentesque consectetur dolor vel venenatis. Nunc libero enim, mollis at fermentum eget, 
+			lobortis non enim. Maecenas justo augue, pharetra ut ullamcorper in, feugiat ac arcu. Duis 
+			quis augue ut libero pharetra ultricies. Vivamus vitae risus nibh. Phasellus eget aliquam 
+			ligula. Praesent malesuada, risus sit amet iaculis pretium, risus erat sagittis magna, in 
+			vestibulum libero velit a odio. Praesent est justo, ultricies id pretium vel, vehicula ut 
+			leo. Nunc et sapien non magna volutpat facilisis.&lt;/p&gt;
+		&lt;p&gt;In placerat mollis lorem sit amet tincidunt. Nulla iaculis, orci et blandit lacinia, purus 
+			eros pellentesque sapien, non ornare erat elit eu risus. Nulla cursus vulputate tempus. Sed 
+			tempor ante adipiscing lorem malesuada non pretium ante malesuada. Nullam dignissim, tortor 
+			sed ornare convallis, est orci scelerisque odio, nec vulputate nibh arcu in velit. Vivamus 
+			in justo quis mauris feugiat sodales quis vel turpis. Donec quis bibendum elit. Suspendisse 
+			dui risus, tempus ac suscipit viverra, convallis adipiscing eros. Quisque velit urna, 
+			suscipit placerat dapibus vel, malesuada in ipsum. Nullam ut felis pulvinar ante 
+			ullamcorper facilisis at tincidunt quam. Donec quis quam et orci ullamcorper pulvinar a 
+			quis eros. Fusce quam dui, ultrices a laoreet quis, vulputate at dolor. Curabitur ac eros 
+			elit, in sagittis justo. Vivamus ullamcorper facilisis massa, vitae porttitor dui suscipit 
+			sed. Fusce tempus imperdiet orci, varius lobortis velit imperdiet sit amet.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="modalFooter"&gt;
+		&lt;a href="#" class="largeInfoButton save"&gt;Got it!&lt;/a&gt;
+		&lt;a href="#" class="largeButton close"&gt;Close&lt;/a&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+				<p>The example above will result in the following modal: 
+					<a class="infoButton modalTrigger" href="#exampleModal">Inline Modal</a></p>
+				<div id="exampleModal" class="modal col6">
+					<div class="modalHeader">
+						<h6>Example Modal</h6>
+						<a href="#" class="close"><span class="iconLargeDelete3"></span></a>
+					</div>
+					<div class="modalContent">
+						<p>This is a modal window built with inline content and featuring an overlay. The text below 
+							shows what happens when modal content overflows.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non magna metus. Vivamus 
+							vitae mi dui, eu accumsan leo. Vestibulum sagittis malesuada varius. Curabitur ultricies, 
+							diam interdum posuere congue, lorem eros facilisis dui, a aliquet quam erat at quam. Nunc 
+							pellentesque consectetur dolor vel venenatis. Nunc libero enim, mollis at fermentum eget, 
+							lobortis non enim. Maecenas justo augue, pharetra ut ullamcorper in, feugiat ac arcu. Duis 
+							quis augue ut libero pharetra ultricies. Vivamus vitae risus nibh. Phasellus eget aliquam 
+							ligula. Praesent malesuada, risus sit amet iaculis pretium, risus erat sagittis magna, in 
+							vestibulum libero velit a odio. Praesent est justo, ultricies id pretium vel, vehicula ut 
+							leo. Nunc et sapien non magna volutpat facilisis.</p>
+						<p>In placerat mollis lorem sit amet tincidunt. Nulla iaculis, orci et blandit lacinia, purus 
+							eros pellentesque sapien, non ornare erat elit eu risus. Nulla cursus vulputate tempus. Sed 
+							tempor ante adipiscing lorem malesuada non pretium ante malesuada. Nullam dignissim, tortor 
+							sed ornare convallis, est orci scelerisque odio, nec vulputate nibh arcu in velit. Vivamus 
+							in justo quis mauris feugiat sodales quis vel turpis. Donec quis bibendum elit. Suspendisse 
+							dui risus, tempus ac suscipit viverra, convallis adipiscing eros. Quisque velit urna, 
+							suscipit placerat dapibus vel, malesuada in ipsum. Nullam ut felis pulvinar ante 
+							ullamcorper facilisis at tincidunt quam. Donec quis quam et orci ullamcorper pulvinar a 
+							quis eros. Fusce quam dui, ultrices a laoreet quis, vulputate at dolor. Curabitur ac eros 
+							elit, in sagittis justo. Vivamus ullamcorper facilisis massa, vitae porttitor dui suscipit 
+							sed. Fusce tempus imperdiet orci, varius lobortis velit imperdiet sit amet.</p>
+					</div>
+					<div class="modalFooter">
+						<a href="#" class="largeInfoButton save">Got it!</a>
+						<a href="#" class="largeButton close">Close</a>
+					</div>
+				</div>
+				<h6>Loading AJAX Content</h6>
+				<p>AJAX content can be loaded simply by pointing the trigger to the file that will produce the content. 
+					<span class="infoMarker">Note</span> The file path must be relative without the preceding 
+					<code>http</code> or else the file will be loaded in an iframe.</p>
+<pre class="html">
+&lt;a class="infoButton modalTrigger" href="../AJAX/content.html"&gt;AJAX Modal&lt;/a&gt;
+</pre>						 								
+				<p>The button above will result in the following modal: 
+					<a class="infoButton modalTrigger" href="../AJAX/content.html">AJAX Modal</a></p>
+				<h6>Styling AJAX Content</h6>
+				<p>Content in an AJAX modal is placed in a container with an id of <code>ajaxModal</code>. By default, 
+					the container has padding of <code>1em</code>, however, that can easily be overridden through CSS. 
+					All other styling is at your discretion.</p>
+				<h6>Loading Iframe Content</h6>
+				<p>To load iframe content, simply point the trigger to an external site, with a URL starting with 
+					<code>http</code>.</p>
+<pre class="html">
+&lt;a class="infoButton modalTrigger" href="http://uiframework.com/"&gt;Example Modal&lt;/a&gt;
+</pre>
+				<p>The above results in the following modal: 
+					<a class="infoButton modalTrigger" href="http://uiframework.com/">Iframe Modal</a></p>
+				<h6>Styling Iframe Content</h6>
+				<p>The iframe modal defaults to a width of 80% of the current window and a height of 500px.</p>
+				<p><a href="#top">Return to top</a></p>						
+				<h3 id="options">Options</h3>
+				<p>Options to customize the modal can be passed through data attributes in the modal trigger.</p>
+				<table class="columnTable borderedTable stripedTable">
+					<caption>Modal Options</caption>
+					<thead>
+						<tr class="row">
+							<th class="col3">Option</th>
+							<th class="col5">Description</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Option"><code>data-target</code></td>
+							<td data-column="Description">The source of the modal content. This will overwrite the <code>href</code> attribute in 
+								links and is mandatory for all triggers that are not a link.</td>
+							<td data-column="Values">A URL or an id of an HTML element, of the format <code>#contentId</code></td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-event</code></td>
+							<td data-column="Description">Defines the trigger event for the modal.</td>
+							<td data-column="Values"><code>click</code>, <code>hover</code>, etc. - defaults to <code>click</code></td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-hideOverlay</code></td>
+							<td data-column="Description">Whether or not an overlay should be hidden.</td>
+							<td data-column="Values"><code>true</code> or <code>false</code> - defaults false</td>
+						</tr>
+						<tr>
+							<td data-column="Option"><code>data-noFx</code></td>
+							<td data-column="Description">Whether or not the modal should be animated when triggered.</td>
+							<td data-column="Values"><code>true</code> or <code>false</code> - defaults false</td>
+						</tr>												
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="events">Events</h3>
+				<div class="row">
+					<div class="col6">
+						<p>In some modal situations, like saving a modal form, you will want to interact with the modal 
+							before it is closed. The Modal class has 3 separate events: <code>modalOpened</code>, 
+							<code>modalSaved</code>, and <code>modalClosed</code>.</p>
+						<h6>Accessing Events</h6>
+						<p>Events are only accessible for inline or AJAX-type modals. To access the event, simply 
+							<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent" rel="nofollow">add the event</a>
+							 to the id of the modal container. In the case of AJAX modals, that id will be 
+							 <code>ajaxModal</code>.</p>
+					</div>
+					<div class="col6">
+						<h6>Event: modalOpened</h6>
+						<p>This event is fired once the modal has been opened and loaded.</p>
+						<h6>Event: modalSaved</h6>
+						<p>This event is fired once the modal has been saved and before it is closed. You must have a 
+							button or element within the modal with a class of <code>save</code>, or 
+							<code>modalSaved</code> will not be	fired.</p>
+						<h6>Event: modalClosed</h6>
+						<p>This event is fired after the modal has been saved and closed. It can be triggered either by 
+							clicking on the overlay or clicking on an element or button within the modal with a class of 
+							<code>close</code>.</p>
+					</div>
+				</div>
+				<h6>Events Example</h6>
+				<p>The following code will catch events from the <code>eventDemo</code> modal. 
+					<a href="#eventDemo" class="infoButton modalTrigger">Event Modal</a></p>
+				<span id="demoTarget"></span>
+				
+				<div id="eventDemo" class="modal col6">
+					<div class="modalHeader">
+						<h6>Event Modal</h6>
+						<a href="#" class="close"><span class="iconLargeDelete3"></span></a>
+					</div>
+					<div class="modalContent">
+						<p>See the events as they happen.</p>
+					</div>
+					<div class="modalFooter">
+						<a href="#" class="largeInfoButton save">Save</a>
+						<a href="#" class="largeButton close">Close</a>
+					</div>
+				</div>						
+<pre class="js">
+$('eventDemo').addEvents({
+	modalOpened: function(){
+		$('demoTarget').empty().appendText('Modal opened...').highlight();
+	},
+	modalSaved: function(){
+		$('demoTarget').appendText('Modal saved...').highlight();
+	},			
+	modalClosed: function(){
+		$('demoTarget').appendText('Modal closed...').highlight();
+	}
+});
+</pre>			
+				<p><a href="#top">Return to top</a></p>												
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="pager.html">Learn How To Use The Pager Plugin</a></li>
+					<li><a href="baseline.html">Back to the Baseline Plugin</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

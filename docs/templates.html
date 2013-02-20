@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Templates - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="css/sketch/docs.css" />
+	<script src="../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="javascript/template.js" type="text/javascript"></script>
+	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../');
+			var loader = new VMUI({relativePath:'../JavaScript'});
+						
+			var setButton = function(button){
+				var oldButton = $$('.templateButton.infoButton')[0].removeClass('infoButton').addClass('button');
+				var newText = oldButton.get('text').replace('You Are', 'Start');
+				oldButton.set('text', newText);
+				
+				button.removeClass('button').addClass('infoButton');
+				newText = button.get('text').replace('Start', 'You Are');
+				button.set('text', newText);				
+			}
+			
+			var currentTemplate = Cookie.read('vmui-docs-template');
+			if (currentTemplate){
+				setButton($(currentTemplate));
+			}
+
+			$$('.templateImage').addEvent('click', function(e){
+				e.stop();
+				var templateButton = $(this.get('rel'));
+				if (templateButton.hasClass('button')){
+					setButton(templateButton)
+					
+					Cookie.dispose('vmui-docs-template');
+					Cookie.write('vmui-docs-template', this.get('rel'));
+					new Template('../');
+				}
+			}).addEvent('mouseover', function(){this.setStyle('cursor', 'pointer')});			
+			
+			$$('.templateButton').addEvent('click', function(e){
+				e.stop();
+				if (this.hasClass('button')){
+					setButton(this)
+					
+					Cookie.dispose('vmui-docs-template');
+					Cookie.write('vmui-docs-template', this.get('id'));
+					new Template('../');
+				}
+			});
+			
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="Examples/">Examples</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a href="core.html">Core</a></li>
+						<li><a href="icons.html">Icons</a></li>
+						<li><a href="extras.html">Extras</a></li>
+						<li><a href="Plugins/">Plugins</a></li>
+						<li><a class="active" href="templates.html">Templates</a></li>
+						<li><a href="resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<h1 class="pageTitle">Templates</h1>
+				<p>Choose one of the templates below. Once you have chosen a template, it will be loaded on every page 
+					in the documentation and demos until you come back and select a different template. The CSS files 
+					for each template can be found in the <code>Templates</code> directory.</p>
+				<p>If you'd like to create your own template, just copy one of the templates below into it's own 
+					subdirectory under the <code>Templates</code> directory and modify it. You can even integrate it 
+					into the template switcher by adding your own row of templates below.</p>
+				<div class="row">
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="Skeleton" src="Images/Templates/skeleton.png" alt="Skeleton Template" />
+						<p>Skeleton is a bare-bones template that you can customize to suit your needs.</p>
+						<p><a href="#" id="Skeleton" class="button templateButton">Start Using Skeleton</a></p>
+					</div>
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="Sketch" src="Images/Templates/sketch.png" alt="Sketch Template" />
+						<p>Sketch is a template stylized especially for prototypes and wireframes.</p>
+						<p><a href="#" id="Sketch" class="infoButton templateButton">You Are Using Sketch</a></p>
+					</div>
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="Polish" src="Images/Templates/polish.png" alt="Polish Template" />
+						<p>Polish is a refined template for creating production websites and interfaces.</p>
+						<p><a href="#" id="Polish" class="button templateButton">Start Using Polish</a></p>
+					</div>					
+				</div>
+				<!-- Put your templates here 
+				<div class="row">
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<p><a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a></p>
+					</div>
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<p><a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a></p>
+					</div>
+					<div class="col4">
+						<img class="borderImg roundedImg bottomMargin templateImage" rel="{templateNameHere}" src="Images/Templates/{templateNameHere}.png" alt="{templateNameHere} Template" />
+						<p>{templateDescriptionHere}</p>
+						<p><a href="#" id="{templateDirectoryHere}" class="button templateButton">Start Using {templateNameHere}</a></p>
+					</div>										
+				</div>			
+				-->
+				<span class="divider"></span>
+				<p><span class="infoMarker">Tip</span> Even though each template has suggested use cases, feel free to 
+					use them however you'd like.</p>				
+				<p><span class="warningMarker">Warning</span> If you select a template other than the default, each 
+					page will experience a slight flicker when the page first loads. The flicker only occurs because the 
+					stylesheet is being	loaded dynamically and will not happen if the stylesheet is statically loaded 
+					as in most normal use cases.</p>								
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="resources.html">Find Resources For VM UI Framework</a></li>
+					<li><a href="Plugins/tooltips.html">Back to the Tooltips</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

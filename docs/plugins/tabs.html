@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tabs - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="../css/sketch/docs.css" />
+	<script src="../../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../javascript/template.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../../');
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../examples/">Examples</a></li>
+						<li><a href="../layout.html">Layout</a></li>
+						<li><a href="../core.html">Core</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../extras.html">Extras</a></li>
+						<li><a class="active" href="./">Plugins</a></li>
+						<li><a href="../templates.html">Templates</a></li>
+						<li><a href="../resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="./">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>
+				<h1 class="pageTitle">Tabs</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h3>Overview</h3>
+				<p>Tabs come in two different styles, regular tabs and pill tabs, each with a horizontal and vertical 
+					option. The tabs can load content from on the page, AJAX content from the same site, or an external 
+					site loaded in an iframe. On mobile-sized screens, all tabs types will seamlessly transform into an 
+					accordion panel interface.</p>
+				<h3>Usage</h3>
+				<p>All of the tab styles are constructed the same way, with the only difference being the classes 
+					assigned to the containers. Each set of tabs has two main containers, a container for the tab menu 
+					and	one for the tab content.</p>
+				<p>Tab menu containers are simple unordered lists of links with a class of <code>tabs</code>, 
+					<code>tabsVertical</code>, <code>pillTabs</code>, or <code>pillTabsVertical</code>. The tab content 
+					containers have classes of either <code>tabContent</code> or <code>pillTabContent</code>.</p>
+				<p>The tab content container should contain <code>div</code> elements as individual tabs, each with a 
+					unique id. The links in the tab menu should link to the tab id. To set a tab as active, give both 
+					the link and the tab <code>div</code> classes of <code>active</code>.</p>
+				<h6>Loading AJAX Content</h6>
+				<p>A tab's content can be loaded completely through AJAX by using the <code>data-targetUrl</code> 
+					attribute in a tab menu link. If the value of <code>data-targetUrl</code> is a relative URL, the 
+					content will be loaded directly into the tab. If it is a full URL beginning with <code>http</code>, 
+					the content will be loaded into an iframe and inserted into the tab. 
+					<span class="infoMarker">Note</span> In both cases, an empty tab placeholder <code>div</code> with 
+					an id is required in the tab content container.</p>	
+				<h3>Tab Layout Considerations</h3>
+				<p>The tab widget will take up 100% of the parent's available horizontal space, so plan accordingly. 
+					Vertical tab menus are 20% wide, with the content area taking up the remaining 80%. The regular 
+					tabs content areas have a padding of <code>1em</code> and a border while pill tabs content areas 
+					have no border.	Horizontal pill tabs content areas have top and bottom padding of 
+					<code>1.75em</code>, while content areas for vertical pill tabs have only a bottom padding of 
+					<code>1.75em</code>.</p> 			
+			</div>
+			<div class="col6">
+				<h6>Inline Tabs</h6>
+<pre class="html">
+&lt;ul class="tabs"&gt;
+	&lt;li&gt;&lt;a href="#tab1" class="active"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab4"&gt;Tab 4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab1" class="active"&gt;Tab Content 1&lt;/div&gt;
+	&lt;div id="tab2"&gt;Tab Content 2&lt;/div&gt;
+	&lt;div id="tab3"&gt;Tab Content 3&lt;/div&gt;
+	&lt;div id="tab4"&gt;Tab Content 4&lt;/div&gt;
+&lt;/div&gt;
+</pre>			
+				<h6>Same-site AJAX Tabs</h6>	
+<pre class="html">
+&lt;ul class="tabs"&gt;
+	&lt;li&gt;&lt;a href="#tab1" class="active"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab2"  data-targetUrl="../AJAX/content.html"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab1" class="active"&gt;Tab Content 1&lt;/div&gt;
+	&lt;div id="tab2"&gt;This will never be shown.&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+				<h6>External Iframe AJAX Tabs</h6>	
+<pre class="html">
+&lt;ul class="tabs"&gt;
+	&lt;li&gt;&lt;a href="#tab1" class="active"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#tab2"  data-targetUrl="http://uiframework.com"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tabContent"&gt;
+	&lt;div id="tab1" class="active"&gt;Tab Content 1&lt;/div&gt;
+	&lt;div id="tab2"&gt;This will never be shown.&lt;/div&gt;
+&lt;/div&gt;
+</pre>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h1>Tabs Demo</h1>
+				<ul class="tabs">
+					<li><a href="#tab1" class="active">Tab 1</a></li>
+					<li><a href="#tab2" data-targetUrl="http://uiframework.com">Tab 2 (iframe)</a></li>
+					<li><a href="#tab3" data-targetUrl="../AJAX/tabs.html">Tab 3 (AJAX)</a></li>
+					<li><a href="#tab4">Tab 4</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="tab1" class="active">
+						<h6>Tab Content 1</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+					<div id="tab2">Tab Content 2</div>
+					<div id="tab3">Tab Content 3</div>
+					<div id="tab4">
+						<h6>Tab Content 4</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+				</div>
+				
+				<ul class="tabsVertical">
+					<li><a href="#tab5" class="active">Tab 5</a></li>
+					<li><a href="#tab6" data-targetUrl="http://uiframework.com">Tab 6 (iframe)</a></li>
+					<li><a href="#tab7" data-targetUrl="../AJAX/tabs.html">Tab 7 (AJAX)</a></li>
+					<li><a href="#tab8">Tab 8</a></li>
+				</ul>
+				<div class="tabContent">
+					<div id="tab5" class="active">
+						<h6>Tab Content 5</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>					
+					</div>
+					<div id="tab6"></div>
+					<div id="tab7"></div>
+					<div id="tab8">
+						<h6>Tab Content 8</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>			
+					</div>
+				</div>				
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col12">	
+				<h1>Pill Tabs Demo</h1>
+				<ul class="pillTabs">
+					<li><a href="#pill1" class="active">Pill Tab 1</a></li>
+					<li><a href="#pill2" data-targetUrl="http://uiframework.com">Pill Tab 2 (iframe)</a></li>
+					<li><a href="#pill3" data-targetUrl="../AJAX/tabs.html">Pill Tab 3 (AJAX)</a></li>
+					<li><a href="#pill4">Pill Tab 4</a></li>
+				</ul>
+				<div class="pillTabContent">
+					<div id="pill1" class="active">
+						<h6>Pill Tab Content 1</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+					<div id="pill2"></div>
+					<div id="pill3"></div>
+					<div id="pill4">
+						<h6>Pill Tab Content 4</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+				</div>
+				<ul class="pillTabsVertical">
+					<li><a href="#pill5" class="active">Tab 5</a></li>
+					<li><a href="#pill6" data-targetUrl="http://uiframework.com">Pill Tab 6 (iframe)</a></li>
+					<li><a href="#pill7" data-targetUrl="../AJAX/tabs.html">Pill Tab 7 (AJAX)</a></li>
+					<li><a href="#pill8">Tab 8</a></li>
+				</ul>
+				<div class="pillTabContent">
+					<div id="pill5" class="active">
+						<h6>Pill Tab Content 5</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+					<div id="pill6"></div>
+					<div id="pill7"></div>
+					<div id="pill8">
+						<h6>Pill Tab Content 8</h6>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae lorem felis. 
+							Maecenas ac ipsum non leo eleifend commodo euismod eget dolor. Nulla vitae lectus odio, eu 
+							pellentesque lorem.</p>
+						<p>Curabitur et nunc et dolor vestibulum vulputate eu id tellus. Donec imperdiet laoreet lectus, 
+							sed elementum sapien lobortis non. Aliquam nec odio id diam varius posuere non vel diam. 
+							Pellentesque quis fringilla est. Ut pretium, libero in condimentum ultrices, nulla nibh 
+							tempus ante, nec sagittis nisi leo eget diam. Etiam nec enim sed eros sollicitudin 
+							fringilla.</p>						
+					</div>
+				</div>							
+			</div>
+		</div>			
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="buttons.html">Learn How To Use Button States</a></li>
+					<li><a href="mobile-menu.html">Back to Mobile Menus</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>

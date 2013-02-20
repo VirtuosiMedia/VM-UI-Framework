@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>UI Extras - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="css/sketch/docs.css" />
+	<script src="../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="javascript/template.js" type="text/javascript"></script>
+	<script src="../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../');
+			var loader = new VMUI({relativePath:'../JavaScript'});	
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="examples/">Examples</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a href="core.html">Core</a></li>
+						<li><a href="icons.html">Icons</a></li>
+						<li><a class="active" href="extras.html">Extras</a></li>
+						<li><a href="plugins/">Plugins</a></li>
+						<li><a href="templates.html">Templates</a></li>
+						<li><a href="resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<h1 class="pageTitle">UI Extras</h1>
+				<h6>Contents</h6>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#navbars">Navbars</a></li>
+							<li><a href="#notices">Notices</a></li>
+							<li><a href="#markers">Markers</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#progress-bars">Progress Bars</a></li>						
+							<li><a href="#breadcrumbs">Breadcrumbs</a></li>
+							<li><a href="#pagination">Pagination</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#thumbs">Thumbnails</a></li>
+							<li><a href="#cards">Cards</a></li>
+							<li><a href="#images">Image Styles</a></li>
+						</ul>
+					</div>										
+				</div>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="navbars">Navbars</h2>
+				<div class="row">
+					<div class="col5">
+						<p>There are three types of navbars: the default navbar, a secondary navbar, and a floating 
+							navbar. The default navbar and secondary navbar are both full-width and attached to the 
+							top of the page, with the secondary navbar meant to be placed below the default navbar. The 
+							floating navbar is <em>not</em> attached to the top of the page, can have content above it, 
+							and is only the width of the grid.</p>
+						<p>Navbars are placed inside of their own special container element, outside of the container 
+							for the rest of the page. To designate a container for use with navbars, apply the class 
+							<code>navbarContainer</code> to the container element for both the default navbar. For 
+							secondary navbars, add the class <code>secondaryNavbarContainer</code> instead. Floating 
+							navbars use the class <code>floatingNavbarContainer</code>. For all types of navbar 
+							containers, you must use the navbar container element, the regular container, and then rows 
+							and columns.</p>
+						<p>When using both the default and secondary navbars, each should have a separate container. 
+							Columns and rows will work within navbars, but in general, no navbar container should have 
+							more than one row.</p>
+						<h6>Fixed &amp; Pinned Navbars</h6>
+						<p>The default behavior for all navbars is to have a static position, meaning that when the 
+							page is scrolled, the navbar will eventually disappear. However, any navbar can be made 
+							persistent so that it will not disappear when scrolled. For the default and secondary 
+							navbars, just add the class <code>fixed</code> to the navbar container.</p>
+						<p>Floating navbars act a little differently, so instead of add the class <code>fixed</code>, 
+							add the class <code>pin</code> to the container instead. Making floating navbars persistent 
+							requires using the <a href="Plugins/pinned-elements.html">Pinned Elements plugin</a>, so 
+							make sure that the plugin is included on the page. When	scrolled, a floating navbar will 
+							automatically expand to the full-width of the page. A pinned floating navbar is used on the 
+							<a href="Examples/ecommerce.html">ecommerce example page</a>.</p>
+						<h6>Mobile Considerations</h6>
+						<p>Including both a default and secondary navbar on a mobile screen will be overkill in most 
+							cases, so it's recommended to hide the secondary navigation for mobile-sized screens using 
+							the <code>hideMobile</code> utility class. If the secondary menu items are still necessary, 
+							considering hiding the secondary menu bar, but adding the items as a submenu beneath the 
+							active menu item in the default menu by applying the class <code>showMobile</code> to the 
+							submenu. A demonstration of this can be found in the 
+							<a href="Examples/article.html">article example page</a>.</p>
+						<p>On mobile-sized screens, the floating navbar will appear full-width and will essentially act 
+							the same as the default navbar.</p>
+						<h6>Navbar Demos</h6>
+						<p>Variations of the navbar in action can be found in the <a href="Examples/">examples</a> 
+							section.</p> 
+					</div>
+					<div class="col7">
+						<h6>Default Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Secondary Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+&lt;div class="secondaryNavbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Floating Navbar</h6>
+<pre class="html">
+&lt;div class="floatingNavbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+						<h6>Mobile Secondary Navbar</h6>
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;
+				&lt;ul class="mobileMenu"&gt;
+					&lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a class="active" href="#"&gt;3&lt;/a&gt;
+						&lt;ul class="showMobile"&gt;
+							&lt;li&gt;&lt;a href="#"&gt;3.1&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;3.2&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a class="active" href="#"&gt;3.3&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;						
+					&lt;/li&gt;
+				&lt;/ul&gt;					
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+&lt;div class="secondaryNavbarContainer hideMobile"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>					
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="notices">Notices</h2>
+				<div class="row">
+					<div class="col7">
+						<div class="notice">This is a generic notice. Class: <code>notice</code></div>
+						<div class="infoNotice">This is an info-based notice. Class: <code>infoNotice</code></div>
+						<div class="successNotice">This is an success-based notice. Class: <code>successNotice</code></div>
+						<div class="warningNotice">This is an warning-based notice. Class: <code>warningNotice</code></div>
+						<div class="errorNotice">This is an error-based notice. Class: <code>errorNotice</code></div>
+						<p><span class="infoMarker">Note</span> The correct semantic container for a notice is a 
+							<code>div</code> element. Multi-line notice bars should use an additional	<code>p</code> tag for 
+							the text for proper	spacing.</p>
+						<div class="infoNotice">
+							<h6>Notice Header</h6>
+							<p>This is a multi-line info-based notice bar. It should extend over multiple lines. Other elements 
+								can be introduced to a notice bar such as a heading or an image.</p>
+						</div>
+					</div>
+					<div class="col5">
+						<p>Notices are for when your application or website has new information to share with the user. You can 
+							use the notices either as a single-line notification bar or as a larger block notification. There 
+							are five kinds of notices:</p>
+						<ol>
+							<li><strong>Generic</strong> - A generic notice container.</li>
+							<li><strong>Info</strong> - For when new information is	available that is helpful, but isn't 
+								necessarily urgent.</li>
+							<li><strong>Success</strong> - For when the user successfully completes an action.</li>
+							<li><strong>Warning</strong> - For when the user needs to be informed about an action that could 
+								have adverse or unexpected consequences.</li>
+							<li><strong>Error</strong> - For when the user has encountered or commited an error.</li>
+						</ol>
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="markers">Markers</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col5">
+				<p>At times, you'll want to have <span class="infoMarker">special markers</span> in the context of your text to draw attention to a 
+					short but significant piece of information. Markers have the same use cases as notices, but instead 
+					of using a <code>notice</code> class prefix, use the class <code>marker</code> instead.</p>
+				<p>When constructing markers, use the <code>&lt;span&gt;</code> tag.</p>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col7">
+				<table class="columnTable">
+					<caption>Marker Classes</caption>
+					<thead>
+						<tr>
+							<th>CSS Class</th>
+							<th>Example</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="CSS Class"><code>marker</code></td>
+							<td data-column="Example"><span class="marker">Generic</span></td>
+							<td data-column="Description">A generic marker.</td>
+						</tr>
+						<tr>
+							<td data-column="CSS Class"><code>infoMarker</code></td>
+							<td data-column="Example"><span class="infoMarker">Info</span></td>
+							<td data-column="Description">An info marker.</td>
+						</tr>
+						<tr>
+							<td data-column="CSS Class"><code>successMarker</code></td>
+							<td data-column="Example"><span class="successMarker">Success</span></td>
+							<td data-column="Description">A success marker.</td>
+						</tr>
+						<tr>
+							<td data-column="CSS Class"><code>warningMarker</code></td>
+							<td data-column="Example"><span class="warningMarker">Warning</span></td>
+							<td data-column="Description">A warning marker.</td>
+						</tr>
+						<tr>
+							<td data-column="CSS Class"><code>errorMarker</code></td>
+							<td data-column="Example"><span class="errorMarker">Error</span></td>
+							<td data-column="Description">An error marker.</td>
+						</tr>																														
+					</tbody>
+				</table>
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="progress-bars">Progress Bars</h2>
+				<div class="row">
+					<div class="col5">
+						<p>Progress bars can be created by adding the class <code>progressBar</code> to a 
+							<code>&lt;span&gt;</code> or <code>&lt;div&gt;</code>element. Then, in a child element, add 
+							the bar's width via the <code>style</code> attribute, as shown below.</p>
+<pre class="html">
+&lt;span class="progressBar"&gt;
+	&lt;span style="width: 33%;"&gt;&lt;/span&gt;
+&lt;/span&gt;
+</pre>						
+						<p><a href="#top">Return to top</a></p>
+					</div>
+					<div class="col7">
+						<table class="columnTable">
+							<caption>Progress Bar Classes</caption>
+							<thead>
+								<tr>
+									<th class="col2">CSS Class</th>
+									<th>Example</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="CSS Class"><code>progressBar</code></td>
+									<td data-column="Example">
+										<span class="progressBar"><span style="width: 15%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>infoProgressBar</code></td>
+									<td data-column="Example">
+										<span class="infoProgressBar"><span style="width: 30%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+								<tr>
+									<td data-column="CSS Class"><code>successProgressBar</code></td>
+									<td data-column="Example">
+										<span class="successProgressBar"><span style="width: 45%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>warningProgressBar</code></td>
+									<td data-column="Example">
+										<span class="warningProgressBar"><span style="width: 60%;"></span></span>
+									</td>
+								</tr>
+								<tr>
+									<td data-column="CSS Class"><code>errorProgressBar</code></td>
+									<td data-column="Example">
+										<span class="errorProgressBar"><span style="width: 75%;"></span></span>
+									</td>
+								</tr>																														
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="breadcrumbs">Breadcrumbs</h2>
+				<p>Breadcrumbs in VM UI Framework are simply lists with a class of <code>breadcrumb</code>. Any links 
+					in the breadcrumb will be followed by the breadcrumb separator.</p>
+				<div class="row">
+					<div class="col6">
+<pre class="html">
+&lt;ul class="breadcrumb"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;Current Item&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+						<p><a href="#top">Return to top</a></p>				
+					</div>
+					<div class="col6">
+						<h6>Breadcrumb Example</h6>
+						<ul class="breadcrumb">
+							<li><a href="#">Link 1</a></li>
+							<li><a href="#">Link 2</a></li>
+							<li><a href="#">Link 3</a></li>
+							<li>Current Item</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="pagination">Pagination</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<p>Pagination is handled with an unordered list of links with a class of <code>pagination</code>. 
+					If there is a current item in the pagination, the <code>li</code> should be give the class of 
+					<code>active</code>.</p>
+				<h4>Pagination Examples</h4>
+				<h6>Numbered Pagination</h6>
+				<ul class="pagination">
+					<li class="active">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+				</ul>
+				<h6>Full Pagination</h6>
+				<ul class="pagination">
+					<li class="disabled">Latest</li>
+					<li class="disabled">Newer</li>
+					<li class="active">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">Older</a></li>
+					<li><a href="#">Oldest</a></li>
+				</ul>
+				<h6>Directional Pagination</h6>
+				<ul class="pagination">
+					<li class="disabled">Newer Posts</li>
+					<li class="right"><a href="#">Older Posts</a></li>
+				</ul>
+				<p><a href="#top">Return to top</a></p>														
+			</div>
+			<div class="col6">
+<pre class="html">
+&lt;!-- Numbered Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="active"&gt;1&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Full Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="disabled"&gt;Latest&lt;/li&gt;
+	&lt;li class="disabled"&gt;Newer&lt;/li&gt;
+	&lt;li class="active"&gt;1&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Older&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Oldest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Directional Pagination --&gt;
+&lt;ul class="pagination"&gt;
+	&lt;li class="disabled"&gt;Newer Posts&lt;/li&gt;
+	&lt;li class="right"&gt;&lt;a href="#"&gt;Older Posts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="thumbs">Thumbnails</h2>
+				<p>Responsive thumbnail galleries are simple to implement. Just create an unordered list and give it a 
+					class of <code>thumbs</code>. Each list element should receive a column class to give it a width: 
+					<code>col1</code>, <code>col2</code>, etc. When a row's widths add up to the grid-width (12), the 
+					next column <code>li</code> should be given a class of <code>firstCol</code> so that it will clear 
+					the the previous row.</p>
+				<p><span class="infoMarker">Note</span> For mobile-sized devices, the thumbnails will automatically 
+					appear in rows of two.</p>
+				<h6>Code</h6>
+<pre class="html">
+&lt;ul class="thumbs"&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-1-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-2-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-3-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-4-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-5-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-6-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2 firstCol"&gt;&lt;img src="Images/Gallery/rome-7-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-8-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-9-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/rome-10-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-1-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-2-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2 firstCol"&gt;&lt;img src="Images/Gallery/thailand-3-thumb.jpg"/&gt;&lt;/li&gt;
+	&lt;li class="col2"&gt;&lt;img src="Images/Gallery/thailand-4-thumb.jpg"/&gt;&lt;/li&gt;					
+&lt;/ul&gt;
+</pre>			
+				<h6>Demo</h6> 
+				<ul class="thumbs">
+					<li class="col2"><img src="Images/Gallery/rome-1-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-2-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-3-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-4-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-5-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-6-thumb.jpg"/></li>
+					<li class="col2 firstCol"><img src="Images/Gallery/rome-7-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-8-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-9-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/rome-10-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/thailand-1-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/thailand-2-thumb.jpg"/></li>
+					<li class="col2 firstCol"><img src="Images/Gallery/thailand-3-thumb.jpg"/></li>
+					<li class="col2"><img src="Images/Gallery/thailand-4-thumb.jpg"/></li>					
+				</ul>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="cards">Cards</h2>
+				<div class="row">
+					<div class="col5">
+						<p>Cards are formatted and styled information blocks that can be used for bios, status 
+							updates, comments, any kind of feed, a summary, or almost anything else. They can exist 
+							with any of the following elements: an image, a title, content, and a list of links.</p>
+						<p>It's possible to use an individual card or a list of cards. Lists of cards can be 
+							nested to form comment threads or similar interfaces.</p>
+						<p>To create an individual card, create a container with a class of <code>card</code>. 
+							Each card can contain either one or two containers, which can be given the classes 
+							<code>cardPic</code> and <code>cardContent</code>. If you want to include a list of links 
+							at the bottom of the card, just add a class of <code>cardLinks</code> to the 
+							<code>ul</code> element.</p>
+						<p>A list of cards functions much the same way as individual cards, but each 
+							<code>li</code> acts as the card container, so you only need to add a 
+							<code>cardList</code> class to the <code>ul</code> element. If you have a child list, it 
+							should not be placed in either the <code>cardPic</code> or the  <code>cardContent</code>
+							containers. Instead, it should be placed after them, but within the <code>li</code> 
+							element.</p>
+						
+					</div>
+					<div class="col7">
+						<h6>Individual Card</h6>
+						<div class="card">
+							<div class="cardPic">
+								<img src="Images/Examples/user3.jpg" alt=""/>
+							</div>		
+							<div class="cardContent">
+								<h1>Luna</h1>
+								<p>Why will you never let me outside? You know how much I love it out there and I 
+									hardly ever run away.</p>
+								<ul class="cardLinks">
+									<li><a href="#">Profile</a></li>
+									<li><a href="#">Website</a></li>
+									<li><a href="#">Twitter</a></li>
+								</ul>
+							</div>						
+						</div>
+						<p><a href="#card" class="revealToggle infoButton" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="card">
+							<h6>Code</h6>
+<pre class="html">
+&lt;div class="card"&gt;
+	&lt;div class="cardPic"&gt;
+		&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+	&lt;/div&gt;		
+	&lt;div class="cardContent"&gt;
+		&lt;h1&gt;Luna&lt;/h1&gt;
+		&lt;p&gt;Why will you never let me outside? You know how much I love it out there and I 
+			hardly ever run away.&lt;/p&gt;
+		&lt;ul class="cardLinks"&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;						
+&lt;/div&gt;
+</pre>					
+						</div>						
+						<h6>Nested Card List</h6>
+						<ul class="cardList">
+							<li>
+								<div class="cardPic">
+									<img src="Images/Examples/user3.jpg" alt=""/>
+								</div>		
+								<div class="cardContent">
+									<h1>Luna</h1>
+									<p>Sometimes I will get hyper and do a 360&deg; spin kick off the wall. I'm a crazy 
+										ninja cat and I <em>will</em> find you. I can open doors.</p>
+									<ul class="cardLinks">
+										<li><a href="#">Profile</a></li>
+										<li><a href="#">Website</a></li>
+										<li><a href="#">Twitter</a></li>
+									</ul>
+								</div>							
+							</li>
+							<li>
+								<div class="cardPic">
+									<img src="Images/Examples/user5.jpg" alt=""/>
+								</div>		
+								<div class="cardContent">
+									<h1>Kole</h1>
+									<p>When we get up in the morning, Luna and I like to do our best impression of a 
+										herd of elephants. We're stealthy like that.</p>
+									<ul class="cardLinks">
+										<li><a href="#">Profile</a></li>
+										<li><a href="#">Website</a></li>
+										<li><a href="#">Twitter</a></li>
+									</ul>
+								</div>
+								<ul>
+									<li>
+										<div class="cardPic">
+											<img src="Images/Examples/user3.jpg" alt=""/>
+										</div>		
+										<div class="cardContent">
+											<h1>Luna</h1>
+											<p>Who are you calling an elephant?</p>
+											<ul class="cardLinks">
+												<li><a href="#">Profile</a></li>
+												<li><a href="#">Website</a></li>
+												<li><a href="#">Twitter</a></li>
+											</ul>
+										</div>
+										<ul>
+											<li>
+												<div class="cardPic">
+													<img src="Images/Examples/user5.jpg" alt=""/>
+												</div>		
+												<div class="cardContent">
+													<h1>Kole</h1>
+													<p>Well, you <em>do</em> keep stealing my food. Just sayin'...</p>
+													<ul class="cardLinks">
+														<li><a href="#">Profile</a></li>
+														<li><a href="#">Website</a></li>
+														<li><a href="#">Twitter</a></li>
+													</ul>
+												</div>									
+											</li>
+										</ul>																			
+									</li>
+								</ul>							
+							</li>							
+						</ul>
+						<p><a href="#cardList" class="revealToggle infoButton" data-transition="slide" 
+							data-toggleText="Hide Code">Show Code</a></p>
+						<div id="cardList">
+							<h6>Code</h6>
+<pre class="html">
+&lt;ul class="cardList"&gt;
+	&lt;li&gt;
+		&lt;div class="cardPic"&gt;
+			&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+		&lt;/div&gt;		
+		&lt;div class="cardContent"&gt;
+			&lt;h1&gt;Luna&lt;/h1&gt;
+			&lt;p&gt;Sometimes I will get hyper and do a 360&deg; spin kick off the wall. I'm a crazy 
+				ninja cat and I &lt;em&gt;will&lt;/em&gt; find you. I can open doors.&lt;/p&gt;
+			&lt;ul class="cardLinks"&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;							
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;div class="cardPic"&gt;
+			&lt;img src="Images/Examples/user5.jpg" alt=""/&gt;
+		&lt;/div&gt;		
+		&lt;div class="cardContent"&gt;
+			&lt;h1&gt;Kole&lt;/h1&gt;
+			&lt;p&gt;When we get up in the morning, Luna and I like to do our best impression of a 
+				herd of elephants. We're stealthy like that.&lt;/p&gt;
+			&lt;ul class="cardLinks"&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+			&lt;li&gt;
+				&lt;div class="cardPic"&gt;
+					&lt;img src="Images/Examples/user3.jpg" alt=""/&gt;
+				&lt;/div&gt;		
+				&lt;div class="cardContent"&gt;
+					&lt;h1&gt;Luna&lt;/h1&gt;
+					&lt;p&gt;Who are you calling an elephant?&lt;/p&gt;
+					&lt;ul class="cardLinks"&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;ul&gt;
+					&lt;li&gt;
+						&lt;div class="cardPic"&gt;
+							&lt;img src="Images/Examples/user5.jpg" alt=""/&gt;
+						&lt;/div&gt;		
+						&lt;div class="cardContent"&gt;
+							&lt;h1&gt;Kole&lt;/h1&gt;
+							&lt;p&gt;Well, you &lt;em&gt;do&lt;/em&gt; keep stealing my food. Just sayin'...&lt;/p&gt;
+							&lt;ul class="cardLinks"&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Website&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/div&gt;									
+					&lt;/li&gt;
+				&lt;/ul&gt;																			
+			&lt;/li&gt;
+		&lt;/ul&gt;							
+	&lt;/li&gt;							
+&lt;/ul&gt;
+</pre>							
+						</div>
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 class="title" id="images">Image Styles</h2>
+				<div class="row">
+					<div class="col6">
+						<p>Unless specifically overridden, all images by default will proportionally expand or contract 
+							to 100% of the width of their container. In addition to that default functionality, you can 
+							add styling to your images by adding one or more of the following classes:</p>
+						<table class="columnTable borderedTable stripedTable">
+							<caption>Image Style Classes</caption>
+							<thead>
+								<tr>
+									<th colspan="2">Image Style Classes</th>
+								</tr>
+								<tr> 
+									<td>Class</td>
+									<td>Description</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr> 
+									<td data-column="Class"><code>roundedImg</code></td>
+									<td data-column="Description">Gives the image a rounded rectangle shape.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>circleImg</code></td>
+									<td data-column="Description">Gives the image a circle shape.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>borderImg</code></td>
+									<td data-column="Description">Adds a border to the image.</td>
+								</tr>
+								<tr> 
+									<td data-column="Class"><code>borderOffsetImg</code></td>
+									<td data-column="Description">Adds a border with padding to the image.</td>
+								</tr>																															
+							</tbody>
+						</table>
+					</div>
+					<div class="col6">
+						<h6>Demo</h6>
+						<p>You can hover over each image to see what classes have been applied.</p>
+						<ul class="thumbs">
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="tip" data-content="Default"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg tip" data-content="Class: roundedImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg tip" data-content="Class: circleImg"/></li>
+							<li class="col2 firstCol"><img src="Images/Examples/user4.jpg" class="borderImg tip" data-content="Class: borderImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg borderImg tip" data-content="Classes: roundedImg, borderImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg borderImg tip" data-content="Classes: circleImg, borderImg"/></li>					
+							<li class="col2 firstCol"><img src="Images/Examples/user4.jpg" class="borderOffsetImg tip" data-content="Class: borderOffsetImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="roundedImg borderOffsetImg tip" data-content="Classes: roundedImg, borderOffsetImg"/></li>
+							<li class="col2"><img src="Images/Examples/user4.jpg" class="circleImg borderOffsetImg tip" data-content="Classes: circleImg, borderOffsetImg"/></li>									
+						</ul>
+					</div>
+				</div>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="plugins/">See The JavaScript Plugins</a></li>
+					<li><a href="icons.html">Back to the Icons</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>													
+	</div>
+</body>
+</html>

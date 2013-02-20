@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Dropdown Menu - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="../css/sketch/docs.css" />
+	<script src="../../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../javascript/template.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../../');
+			document.addEvent('templateLoaded', function(){
+				var loader = new VMUI({relativePath:'../../JavaScript'});	
+			});
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../examples/">Examples</a></li>
+						<li><a href="../layout.html">Layout</a></li>
+						<li><a href="../core.html">Core</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../extras.html">Extras</a></li>
+						<li><a class="active" href="./">Plugins</a></li>
+						<li><a href="../templates.html">Templates</a></li>
+						<li><a href="../resources.html">Resources</a></li>
+						<li class="dropdown"><a href="#">Dropdown</a>
+							<ul>
+								<li><a href="#">Item 1 is really long</a></li>
+								<li><a href="#">Item 2</a></li>
+								<li><a href="#">Item 3</a></li>
+							</ul>
+						</li>
+						<li class="megaDropdown"><a href="#">Mega</a>
+							<div>
+								<div class="col4">
+									<h3>Mega Dropdown</h3>
+									<p>This is a mega dropdown menu. It should only be used within a navigation 
+										block.</p>
+								</div>
+								<div class="col4">
+									<p>It always appears the full width of the grid, but it can utilize columns as 
+										well. The offset of every column within a mega dropdown is cut in half.</p>
+								</div>
+								<div class="col4">
+									<p>The mega dropdown menu can contain any type of content.</p>
+								</div>								
+							</div>
+						</li>												
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="./">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>			
+				<h1 class="pageTitle">Dropdown Menus</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h3>Overview</h3>
+				<p>Dropdown menus are additional menu options that appear when the parent option is hovered over or 
+					clicked. VM UI Framework features two kinds of dropdown menus, the regular list-based dropdown, and
+					a mega dropdown menu, both to be used in the top navigation bar. The list-based dropdown can also 
+					be used in buttons or button groups.</p>
+			</div>
+			<div class="col6">
+				<h3>Usage</h3>
+				<p>For either type of dropdown menu, simply add a class to the parent <code>li</code> element. The 
+					regular dropdown menu will have a class of <code>dropdown</code> and the mega dropdown menu will 
+					have a class of <code>megaDropdown</code>. You can see code examples of each below and demos in the 
+					navbar above.</p> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Examples</h3>
+				<div class="row">
+					<div class="col4">
+						<h6>Navbar Dropdowns</h6>
+						<p>The default dropdown menu is simply an unordered child list following a menu item. You can 
+							see a demo of it in the navbar above by hovering over or clicking on the "Dropdown" menu 
+							item.</p>
+						<h6>Style Notes</h6>
+						<ul>
+							<li>The dropdown will automatically expand to the width of it's longest menu item.</li>
+							<li>A downward pointing triangle is automatically added after the parent menu link.</li>
+						</ul>
+					</div>
+					<div class="col8">
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href="#"&gt;Normal Menu Item&lt;/a&gt;&lt;/li&gt;
+					&lt;li class="dropdown"&gt;
+						&lt;a href="#"&gt;Dropdown&lt;/a&gt;
+						&lt;ul&gt;
+							&lt;li&gt;&lt;a href="#"&gt;Item 1 is really long&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/li&gt;									
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Navbar Mega Dropdown Menus</h6>
+						<p>A mega dropdown menu is a dropdown in the navbar that expands to the full width of the grid. 
+							It's most useful when you have a lot of menu options or would like to include other 
+							elements in the dropdown, such as additional text or images.</p>
+						<h6>Style Notes</h6>
+						<ul>
+							<li>The mega dropdown is the full-width of the grid.</li>
+							<li><code>div</code> columns can be used within the mega dropdown. However, the horizontal 
+								margin between columns is cut in half.</li>
+							<li>The dropdown itself must be wrapped in a <code>div</code> element.</li>
+							<li>A downward pointing triangle is automatically added after the parent menu link.</li>
+						</ul>
+					</div>
+					<div class="col8">
+<pre class="html">
+&lt;div class="navbarContainer"&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col12"&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href="#"&gt;Normal Menu Item&lt;/a&gt;&lt;/li&gt;
+					&lt;li class="megaDropdown"&gt;
+						&lt;a href="#"&gt;Mega Dropdown&lt;/a&gt;
+						&lt;div&gt;
+							&lt;div class="col4"&gt;&lt;/div&gt;
+							&lt;div class="col4"&gt;&lt;/div&gt;
+							&lt;div class="col4"&gt;&lt;/div&gt;								
+						&lt;/div&gt;
+					&lt;/li&gt;									
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Button Dropdowns</h3>
+				<p>Buttons can also have a list-based dropdown menu, used either in a lone button or in a button 
+					group. You can see examples of both below.</p>
+				<div class="row">
+					<div class="col6">
+						<h6>Single-button Dropdown</h6>
+						<p>Because a single button does not naturally have a container element, it should be wrapped in 
+							a <code>span</code> element, which should be given the class <code>dropdown</code>.</p>
+						<span class="dropdown">
+							<a href="#" class="largeInfoButton">Dropdown</a>
+							<ul>
+								<li><a href="#">Item 1 is really long</a></li>
+								<li><a href="#">Item 2</a></li>
+								<li><a href="#">Item 3</a></li>
+							</ul>					
+						</span>
+
+<pre class="html">
+&lt;span class="dropdown"&gt;
+	&lt;a href="#" class="largeInfoButton"&gt;Dropdown&lt;/a&gt;
+	&lt;ul&gt;
+		&lt;li&gt;&lt;a href="#"&gt;Item 1 is really long&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;					
+&lt;/span&gt;
+</pre>
+					</div>
+					<div class="col6">
+						<h6>Button Group Dropdown</h6>
+						<p>Because button groups are already an unordered list, you simply need to apply the class 
+							<code>dropdown</code> to the <code>li</code> element you wish to make a dropdown.</p>
+						<ul class="buttonGroup">
+							<li><a href="#" class="largeButton">Button 1</a></li>
+							<li><a href="#" class="largeButton">Button 2</a></li>
+							<li><a href="#" class="largeButton">Button 3</a></li>
+							<li class="dropdown">
+								<a href="#" class="largeInfoButton">Dropdown</a>
+								<ul>
+									<li><a href="#">Item 1 is really long</a></li>
+									<li><a href="#">Item 2</a></li>
+									<li><a href="#">Item 3</a></li>
+								</ul>					
+							</li>					
+						</ul>
+<pre class="html">
+&lt;ul class="buttonGroup"&gt;
+	&lt;li&gt;&lt;a href="#" class="buttonLarge"&gt;Button 1&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#" class="buttonLarge"&gt;Button 2&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#" class="buttonLarge"&gt;Button 3&lt;/a&gt;&lt;/li&gt;
+	&lt;li class="dropdown"&gt;
+		&lt;a href="#" class="largeInfoButton"&gt;Dropdown&lt;/a&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Item 1 is really long&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;					
+	&lt;/li&gt;					
+&lt;/ul&gt;
+</pre>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="mobile-menu.html">Learn How To Use Mobile Menus</a></li>
+					<li><a href="accordion.html">Back to the Accordion Menu</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>

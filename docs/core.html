@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Core Elements - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="css/sketch/docs.css" />
+	<script src="../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="javascript/template.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../');
+		});
+	</script>		
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="./" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="examples/">Examples</a></li>
+						<li><a href="layout.html">Layout</a></li>
+						<li><a class="active" href="core.html">Core</a></li>
+						<li><a href="icons.html">Icons</a></li>
+						<li><a href="extras.html">Extras</a></li>
+						<li><a href="plugins/">Plugins</a></li>
+						<li><a href="templates.html">Templates</a></li>
+						<li><a href="resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<h1 class="pageTitle">Core Elements</h1>
+				<div class="row">
+					<div class="col3">
+						<ul>
+							<li><a href="#typography">Typography</a></li>
+							<li><a href="#lists">Lists</a></li>
+							<li><a href="#quotes">Quotations</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#code">Code</a></li>
+							<li><a href="#tables">Tables</a></li>
+							<li><a href="#forms">Forms</a></li>
+						</ul>
+					</div>
+					<div class="col3">
+						<ul>
+							<li><a href="#buttons">Buttons</a></li>
+						</ul>
+					</div>										
+				</div>				
+				<h2 id="typography" class="title">Typography</h2>
+				<p>Typography is an often-overlooked but absolutely essential part to your design. Below are the styled 
+					typographic elements that are found in VM UI Framework.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h3>Flexible Font Sizing</h3>
+				<p>The typography and many of the elements in VM UI Framework are em-based, meaning that they will 
+					scale according to the base font size you assign to the <code>&lt;body&gt;</code>. The default base 
+					font size is 16 pixels, but you can change everything with a single CSS declaration.
+				</p>
+				<h3>Typographic Elements</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Example</th>
+							<th>Tags</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>bold</strong> text</td>
+							<td><code>&lt;strong&gt;</code>, <code>&lt;b&gt;</code></td>
+						</tr>
+						<tr>
+							<td><em>italic</em> text</td>
+							<td><code>&lt;em&gt;</code>, <code>&lt;i&gt;</code></td>
+						</tr>
+						<tr>
+							<td><abbr title="abbreviation">abbr.</abbr> text</td>
+							<td><code>&lt;abbr&gt;</code></td>
+						</tr>
+						<tr>
+							<td><acronym title="as soon as possible">ASAP</acronym> (acronym text)</td>
+							<td><code>&lt;acronym&gt;</code></td>
+						</tr>
+						<tr>
+							<td><del>deleted</del> text</td>
+							<td><code>&lt;del&gt;</code></td>
+						</tr>
+						<tr>
+							<td><ins>inserted</ins> text</td>
+							<td><code>&lt;ins&gt;</code></td>
+						</tr>
+						<tr>
+							<td><a href="#">link</a> text</td>
+							<td><code>&lt;a&gt;</code></td>
+						</tr>
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col6">
+				<h3>Headings</h3>
+				<p>Headings can be combined with a byline, which is done simply by inserting the 
+					<code>&lt;small&gt;</code> element into your heading tag. If you'd like to have your heading
+					underlined as a title, just give it the class <code>title</code>. For an extra large page title, 
+					give an	<code>&lt;h1&gt;</code>	tag a class of <code>pageTitle</code>.</p>
+				<h1>Heading 1 <small>This is a byline</small></h1>
+				<h2>Heading 2 <small>This is a byline</small></h2>
+				<h3>Heading 3 <small>This is a byline</small></h3>
+				<h4>Heading 4 <small>This is a byline</small></h4>
+				<h5>Heading 5 <small>This is a byline</small></h5>
+				<h6>Heading 6 <small>This is a byline</small></h6>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col12">
+				<h3 id="lists" class="title">Lists</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col3">
+				<p>Lists come in three varieties, ordered, unordered, and definition or <code>&lt;ol&gt;</code>, 
+					<code>&lt;ul&gt;</code>, and <code>&lt;dl&gt;</code> respectively. Ordered and unordered lists have 
+					an automatic margin-left of 40px and a margin-bottom of 20px, so keep that in mind if you need to 
+					style a list for other purposes.</p>
+				<h6>Unlisted</h6>
+				<p>If you don't want to bullets or numbers on ordered or unordered lists, just add the class
+					<code>unlisted</code> to the <code>&lt;ol&gt;</code> or	<code>&lt;ul&gt;</code> tags.</p>
+			</div>
+			<div class="col3">
+				<h6>Ordered Lists</h6>
+				<p>Use ordered lists for items that can be numbered. No extra markup is needed to make the numbers 
+					bold.</p>
+				<ol>
+					<li>Item One</li>
+					<li>Item Two</li>
+					<li>Item Three
+						<ol>
+							<li>Item 3.1</li>
+							<li>Item 3.2
+								<ol>
+									<li>Item 3.2.1</li>
+									<li>Item 3.2.2</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>Item Four</li>
+				</ol>
+			</div>
+			<div class="col3">
+				<h6>Unordered Lists</h6>
+				<p>Use ordered lists for items that don't need to be numbered or organized in any particular order.</p>
+				<ul>
+					<li>Item One</li>
+					<li>Item Two</li>
+					<li>Item Three
+						<ul>
+							<li>Item 3.1</li>
+							<li>Item 3.2</li>
+						</ul>
+					</li>
+					<li>Item Four</li>
+				</ul>
+			</div>
+			<div class="col3">
+				<h6>Definition Lists</h6>
+				<p>Use definition lists to define terms or associate one or more items that have a direct 
+					relationship.</p>
+				<dl>
+					<dt>HTML</dt>
+					<dd>HyperText Markup Language</dd>
+					<dt>XHTML</dt>
+					<dd>eXtensible HyperText Markup Language</dd>
+					<dd>Second definition would go here</dd>
+					<dt>CSS</dt>
+					<dd>Cascading Style Sheets</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<h6>Tree Lists</h6>
+				<p>Tree lists are a vertical list meant to show a hierarchy. They don't require additional markup, just 
+					add a class of <code>tree</code> to a <code>&lt;ul&gt;</code> element.</p>			
+				<h6>Tree List Example</h6>
+				<ul class="tree">
+					<li>Unrelated</li>
+					<li>Parent
+						<ul>
+							<li>Child</li>
+							<li>Child
+								<ul>
+									<li>Grandchild
+										<ul>
+											<li>Great Grandchild</li>
+											<li>Great Grandchild</li>
+										</ul>									
+									</li>
+									<li>Grandchild</li>
+									<li>Grandchild</li>
+								</ul>							
+							</li>
+							<li>Child</li>
+						</ul>
+					</li>
+					<li>Single Parent
+						<ul>
+							<li>Only Child</li>
+						</ul>					
+					</li>
+				</ul>			
+			</div>
+			<div class="col8">
+				<h6>Flush Lists</h6>
+				<p>Most lists have a default margin-left of <code>2.5em</code> to offset the list from the page 
+					content, but sometimes this is not desired behavior. To make remove the left margin from a list, 
+					just add the class <code>flush</code> to the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>. If 
+					you have a nested list, the child lists will <strong>not</strong> be made flush. You will need to 
+					add <code>flush</code> to each list individually.</p> 
+				<h6>Horizontal Lists</h6>
+				<p>If you want to make a list's items align horizontally, add the class <code>horizontal</code> to the 
+					list element. Each child <code>&lt;li&gt;</code> element will be floated to the left. No padding 
+					will be added, though each <code>&lt;li&gt;</code> element will have a 
+					<code>margin-right: 1em;</code>. Horizontal lists will also have a <code>list-style: none;</code> 
+					and a <code>margin-left: 0;</code>.</p>
+				<p>The horizontal list is perfect for creating simple, text-based menus. For more complex menus, 
+					check out the navigation section.</p>
+				<h6>Horizontal List Example</h6>
+				<ul class="horizontal">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>			
+		</div>						
+		<div class="row">
+			<div class="col12">
+				<h6>Node Lists</h6>
+				<p>If you need to create a node-like structure with a list, just add the class <code>node</code> to 
+					any <code>&lt;ul&gt;</code> element. You will also need to wrap the content of each node, excluding 
+					any child <code>&lt;ul&gt;</code> elements, with a <code>&lt;span&gt;</code> tag and the node list 
+					will be	created automatically.</p>
+				<ul class="node">
+					<li><span>Unrelated</span></li>
+					<li><span>Parent</span><span>Parent</span>
+						<ul>
+							<li><span>Child</span></li>
+							<li><span>Child</span>
+								<ul>
+									<li><span>Grandchild</span>
+										<ul>
+											<li><span>Great Grandchild</span></li>
+											<li><span>Great Grandchild</span></li>
+										</ul>									
+									</li>
+									<li><span>Grandchild</span></li>
+									<li><span>Grandchild</span></li>
+								</ul>							
+							</li>
+							<li><span>Child</span></li>
+						</ul>
+					</li>
+					<li><span>Single Parent</span>
+						<ul>
+							<li><span>Only Child</span></li>
+						</ul>					
+					</li>
+				</ul>
+				<p><span class="warningMarker">Warning</span> Node lists have a few caveats to using them, so they 
+					won't be suitable for all use cases:</p>
+				<ul>
+					<li>The width of the column must be wide enough to properly display the node hierarchy. A node list 
+						is partially responsive, but still requires a proper amount of space otherwise it may 
+						break.</li>
+					<li>Because of the way node lists create the connecting lines between nodes, you'll want to stick 
+						with solid backgrounds. If you want to change background color from white, you'll have to make 
+						a few adjustments to multiple <code>before</code> and <code>after</code> pseudo-elements.</li>
+					<li>Using multiple parents on the top level works, but it may take a little extra work to make them 
+						look right on sub-levels.</li>
+					<li>On smaller screen sizes, a node list will automatically turn into a tree list.</li> 
+				</ul>
+				<p><a href="#top">Return to top</a></p>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<h2 id="quotes" class="title">Quotations</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col6">
+				<p>You can add quotations to your content. Use <code>&lt;q&gt;</code> and <code>&lt;cite&gt;</code>	for 
+					short inline quotations <q>like this text</q> and <code>&lt;blockquote&gt;</code> for longer 
+					quotations.</p>
+				<blockquote class="right">
+					<p>The essence of software development is being able to break any seemingly complex problem into 
+						bite-sized chunks, solving them	one-by-one. The ability to make a profitable piece of software
+						lies in solving the right problem for the right people in such a way that they can quickly see 
+						the benefit.</p>
+				</blockquote>
+				<p>A <code>&lt;blockquote&gt;</code> is 300px by default for column widths of 6 and above. For column
+					widths of 5 and below, the blockquote will be displayed at 100%	width. If you want to float it, 
+					simply add a utility class of either <code>left</code> or <code>right</code>. Keep in mind that 
+					blockquotes that are displayed at 100% width will have their float removed. If you use a
+					<code>&lt;p&gt;</code> tag inside your <code>&lt;blockquote&gt;</code>, the first letter of the 
+					first paragraph will feature a dropcap.</p>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col6">
+				<p>Blockquotes that are floated to the left will have the divider on the right rather than the left.</p>
+				<blockquote class="left">
+					<p>A beginning is a very delicate time. Know then that it is the year 10191. The Known Universe is 
+						ruled by the Padishah Emperor Shaddam IV, my father. In this time, the most precious substance 
+						in the universe is the spice Melange. The spice extends life.</p>
+					<small>- Princess Irulan</small>
+				</blockquote>
+				<p>If you would like to add an author name or credit a source as a visible citation, just include it in 
+					the blockquote, wrapped in the <code>&lt;small&gt;</code> tag. If you have a URL to point to for a 
+					citation, be sure to use the blockquote's <code>cite</code>	attribute.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 id="code" class="title">Code</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col8">
+				<h6>Default Code Block</h6>
+				<pre>
+/**
+ * This is a CSS comment block
+ */
+p {
+	color: red;
+ 	font-weight: bold;
+}			
+</pre>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col4">
+				<p>For small snippets of code, wrap them in the	<code>&lt;code&gt;</code> tag. For longer snippets, 
+					wrap them inside a <code>&lt;pre&gt;</code>	tag.</p>
+				<h6>Syntax Highlighting</h6>
+				<p>Code syntax highlighting can be accomplished by including the 
+					<a href="plugins/code.html">Lighter JavaScript plugin</a>.</p> 					
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 id="tables" class="title">Tables</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>Table styling is handled automatically, no extra markup is needed. Just use semantically-proper 
+					markup for the table, with an optional table header and footer. At no time should a table ever be
+					used to achieve a layout effect.</p>
+			</div>
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Hometown</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="3">Options could go here.</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="4">Users Table</th>
+						</tr>
+						<tr>
+							<td>ID</td>
+							<td>Username</td>
+							<td>Email</td>
+							<td>Hometown</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col4">
+				<p>If you want a table with a title bar and subheadings, simply use a <code>&lt;th&gt;</code> tag for 
+					the title and a	<code>&lt;td&gt;</code>	tag for the column-headings in the 
+					<code>&lt;thead&gt;</code>.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>To add zebra-striping to your table, just add the class <code>stripedTable</code> to the 
+					<code>&lt;table&gt;</code> element.</p>
+			</div>
+			<div class="col8">
+				<table class="stripedTable">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Hometown</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col8">
+				<table class="borderedTable">
+					<thead>
+						<tr>
+							<th colspan="4">Users Table</th>
+						</tr>
+						<tr>
+							<td>ID</td>
+							<td>Username</td>
+							<td>Email</td>
+							<td>Hometown</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Donald Duck</td>
+							<td>donald@duck.com</td>
+							<td>Quackville</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>John Doe</td>
+							<td>john@doe.com</td>
+							<td>Anywhere, USA</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Sally Sometimes</td>
+							<td>saso@gmail.com</td>
+							<td>Washington D.C.</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Jay Leno</td>
+							<td>jay@leno.com</td>
+							<td>LA</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Justin B.</td>
+							<td>j@belieb.com</td>
+							<td>Somewhere in Canada</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col4">
+				<p>Adding a <code>borderedTable</code> class to the <code>&lt;table&gt;</code> element will produce a 
+					table with borders around each cell.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h3>Responsive Tables</h3>
+				<p>Because each table is different, tables can be difficult to make responsive (as demonstrated by the 
+					examples above). There is no "one-size-fits-all" approach because the data that needs to be 
+					displayed from table to table varies so much. In recognition of this design dilemma, VM UI Framework 
+					provides several different approaches to making tables responsive.</p>
+				<div class="row">
+					<div class="col4">
+						<h6>Column Tables</h6>
+						<p>In cases where it's necessary to display all of the data in a wide table, you can add the 
+							class <code>columnTable</code> to the <code>table</code> element. Then, for each 
+							<code>td</code> element in the <code>tbody</code>, add a data-attribute of 
+							<code>data-column</code> with the column's name as the value. For mobile-sized screens, 
+							each row in the table will collapse into a single column, with each cell value preceded by 
+							the column name. (Chris Coyier gets the credit for this 
+							<a href="http://css-tricks.com/responsive-data-tables/">technique</a>).</p>
+					</div>
+					<div class="col8">
+						<table class="borderedTable stripedTable columnTable">
+							<caption>Users Table</caption>
+							<thead>
+								<tr>
+									<th colspan="4">Users Table</th>
+								</tr>							
+								<tr>
+									<td>ID</td>
+									<td>Username</td>
+									<td>Email</td>
+									<td>Hometown</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-column="ID">1</td>
+									<td data-column="Username">Donald Duck</td>
+									<td data-column="Email">donald@duck.com</td>
+									<td data-column="Hometown">Quackville</td>
+								</tr>
+								<tr>
+									<td data-column="ID">2</td>
+									<td data-column="Username">John Doe</td>
+									<td data-column="Email">john@doe.com</td>
+									<td data-column="Hometown">Anywhere, USA</td>
+								</tr>
+								<tr>
+									<td data-column="ID">3</td>
+									<td data-column="Username">Sally Sometimes</td>
+									<td data-column="Email">saso@gmail.com</td>
+									<td data-column="Hometown">Washington D.C.</td>
+								</tr>
+								<tr>
+									<td data-column="ID">4</td>
+									<td data-column="Username">Jay Leno</td>
+									<td data-column="Email">jay@leno.com</td>
+									<td data-column="Hometown">LA</td>
+								</tr>
+								<tr>
+									<td data-column="ID">5</td>
+									<td data-column="Username">Justin B.</td>
+									<td data-column="Email">j@belieb.com</td>
+									<td data-column="Hometown">Somewhere in Canada</td>
+								</tr>
+							</tbody>
+						</table>
+						<p><span class="infoMarker">Note</span> In order to maintain consistent header bars for the 
+							table, you will need to use both the <code>&lt;caption&gt;</code> element and the 
+							<code>&lt;th&gt;</code> element. The <code>&lt;caption&gt;</code> will be shown for mobile 
+							screens, but hidden	for all other sizes. The <code>&lt;th&gt;</code> will display for the 
+							inverse.</p>					
+					</div>
+				</div>
+				<div class="row">
+					<div class="col4">
+						<h6>Hiding Select Columns</h6>
+						<p>For some tables, it may not be necessary to display all columns on smaller screens. In such 
+							cases, you can use the <a href="layout.html#selective-display">selective display classes</a> 
+							on each <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> in the column you wish to hide 
+							or show	at select screen resolutions.</p>	
+					</div>
+					<div class="col8">
+						<table class="borderedTable stripedTable">
+							<thead>
+								<tr>
+									<th colspan="4">Users Table</th>
+								</tr>
+								<tr>
+									<td>ID</td>
+									<td>Username</td>
+									<td class="hideMobile">Email</td>
+									<td class="hideMobile">Hometown</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Donald Duck</td>
+									<td class="hideMobile">donald@duck.com</td>
+									<td class="hideMobile">Quackville</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>John Doe</td>
+									<td class="hideMobile">john@doe.com</td>
+									<td class="hideMobile">Anywhere, USA</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Sally Sometimes</td>
+									<td class="hideMobile">saso@gmail.com</td>
+									<td class="hideMobile">Washington D.C.</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Jay Leno</td>
+									<td class="hideMobile">jay@leno.com</td>
+									<td class="hideMobile">LA</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Justin B.</td>
+									<td class="hideMobile">j@belieb.com</td>
+									<td class="hideMobile">Somewhere in Canada</td>
+								</tr>
+							</tbody>
+						</table>					
+					</div>
+				</div>				
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col4">
+				<h3>Table Cell Shading</h3>
+				<p>Some tables may require shading options per individual cell. Just add the proper cell-shading class 
+					to the <code>td</code> element you wish to shade.</p>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col8">
+				<table class="columnTable borderedTable">
+					<caption>Table Cell Shading Classes</caption>
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Example</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Class"><code>disabledCell</code></td>
+							<td data-column="Example" class="disabledCell">Disabled Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>infoCell</code></td>
+							<td data-column="Example" class="infoCell">Info Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>successCell</code></td>
+							<td data-column="Example" class="successCell">Success Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>warningCell</code></td>
+							<td data-column="Example" class="warningCell">Warning Cell</td>
+						</tr>
+						<tr>
+							<td data-column="Class"><code>errorCell</code></td>
+							<td data-column="Example" class="errorCell">Error Cell</td>
+						</tr>																								
+					</tbody>
+				</table>
+			</div>
+		</div>									
+		<div class="row">
+			<div class="col12">
+				<h2 id="forms" class="title">Forms</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>Creating forms is simple; for most elements, no added classes are necessary for default styling. 
+					However, if you want a form field to be a specific width, give it a class of <code>col1</code>, 
+					<code>col2</code>, etc.</p>
+				<h6>Checkboxes and Radios</h6>
+				<p>Checkboxes and radios are special cases when it comes to styling. They should always be wrapped in a
+					<code>&lt;div&gt;</code> container that has a class of <code>formContainer</code>. This applies 
+					even for checkboxes that appear by themselves.</p>
+				<p>In order to align checkbox and radio labels with the inputs, each checkbox or radio input should be 
+					wrapped with its <code>&lt;label&gt;</code>. The label text should appear either before or after the 
+					<code>&lt;input&gt;</code> element, depending on which side you want it to appear.</p>
+				<h6>Additional Styling</h6>
+				<p>Selects, checkboxes, and radios can be custom-styled using several of our 
+					<a href="plugins.html">JavaScript plugins</a>.</p>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col8">
+				<form>
+					<h6>Sample Form</h6>
+					<label>Text input</label>
+					<input type="text" class="col6" />
+					<label>Password input</label>
+					<input type="password" class="col6" />
+					<label>File input</label>
+					<input type="file" class="col6" />
+					<label>Textarea</label>
+					<textarea class="col6"></textarea>
+					<label>Select box</label>
+					<select class="col6">
+						<option>Option 1</option>
+						<option>Option 2</option>
+						<option>Option 3</option>
+					</select>
+					<div class="formContainer">
+						<label>Checkboxes</label>
+						<label><input type="checkbox" />Option 1</label>
+						<label><input type="checkbox" />Option 2</label>
+						<label><input type="checkbox" />Option 3</label>
+					</div>
+					<div class="formContainer">
+						<label>Radio buttons</label>
+						<label><input type="radio" name="radio" />Option 1</label>
+						<label><input type="radio" name="radio" />Option 2</label>
+						<label><input type="radio" name="radio" />Option 3</label>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<h2 id="buttons" class="title">Buttons</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col4">
+				<p>There are several styles of buttons, each with a specific name designed to be both semantic and easy 
+					to remember. You should endeavor to	make consistent use of the button type throughout your 
+					application or website. To create a button,	simply add the appropriate button class to the 
+					element.</p>
+			</div>
+			<div class="col8">
+				<table>
+					<thead>
+						<tr>
+							<th>Example</th>
+							<th>Classes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="#" class="button">Button</a></td>
+							<td><code>button</code>, <code>secondaryButton</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="infoButton">Button</a></td>
+							<td><code>infoButton</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="successButton">Button</a></td>
+							<td><code>successButton</code>, <code>primaryButton</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="warningButton">Button</a></td>
+							<td><code>warningButton</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="errorButton">Button</a></td>
+							<td><code>errorButton</code></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="contrastButton">Button</a></td>
+							<td><code>contrastButton</code></td>
+						</tr>																													
+					</tbody>
+				</table>
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col6">
+				<h6>Buttons Sizes</h6>
+				<p>There are three button sizes: small, medium, and large. To make your button either medium or large, 
+					prepend the size to your button class. For example, <code>largeInfoButton</code> or 
+					<code>mediumSuccessButton</code>. Small buttons are	the default size, so there is no need to append 
+					anything to the end of the class. The small buttons can also be used inline with text 
+					(<a href="#" class="button">Example</a>), but the medium and large button will push vertical 
+					margins so that they won't disrupt vertical rhythm.</p>
+			</div>
+			<div class="col6">
+				<h6>Buttons Size Examples</h6>
+				<div class="row">
+					<div class="col2">
+						<ul class="unlisted flush">
+							<li><a href="#" class="button">Default</a></li>
+							<li><a href="#" class="mediumButton">Medium</a></li>
+							<li><a href="#" class="largeButton">Large Button</a></li>
+						</ul>
+					</div>
+					<div class="col2">
+						<ul class="unlisted flush">
+							<li><a href="#" class="infoButton">Default</a></li>
+							<li><a href="#" class="mediumInfoButton">Medium</a></li>
+							<li><a href="#" class="largeInfoButton">Large Button</a></li>
+						</ul>
+					</div>					
+					<div class="col2">
+						<ul class="unlisted flush">
+							<li><a href="#" class="successButton">Default</a></li>
+							<li><a href="#" class="mediumSuccessButton">Medium</a></li>
+							<li><a href="#" class="largeSuccessButton">Large Button</a></li>
+						</ul>
+					</div>					
+				</div>							
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col4">
+				<h6>Multi-line Buttons</h6>
+				<p>Multi-line buttons allow you to add subtitle text to larger button text and are meant for important 
+					calls-to-action, like downloads, sign-ups, etc. To create a multi-line button, use any of the 
+					existing button classes (except the sized classes like Medium or Large) and append 
+					<code>Multi</code> to the class name, like <code>multiSuccessButton</code> or 
+					<code>multiInfoButton</code>.</p>
+				<a href="#" class="multiSuccessButton"><span>Free Download</span><span>Version 1.1 Available</span></a> 
+				<a href="#" class="multiButton"><span>Take A Tour</span><span>Over 100 Features</span></a>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+			<div class="col8">
+				<h6>Button Groups</h6>
+				<p>If you want to group buttons together in a tight row, wrap them with a containing 
+					<code>&lt;ul&gt;</code> element with a class of <code>buttonGroup</code>. You can use any size or 
+					color buttons for your button group, but each group should maintain a consistent size (and usually 
+					a consistent color as well, though there may be a few cases where you want to mix and match).</p>
+				<ul class="buttonGroup">
+					<li><a href="#" class="button">Button 1</a></li>
+					<li><a href="#" class="button">Button 2</a></li>
+					<li><a href="#" class="button">Button 3</a></li>
+					<li><a href="#" class="button">Button 4</a></li>
+					<li><a href="#" class="button">Button 5</a></li>
+				</ul>
+				<ul class="buttonGroup">
+					<li><a href="#" class="mediumContrastButton">Button 1</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 2</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 3</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 4</a></li>
+					<li><a href="#" class="mediumContrastButton">Button 5</a></li>
+				</ul>
+				<ul class="buttonGroup">
+					<li><a href="#" class="largeInfoButton">Button 1</a></li>
+					<li><a href="#" class="largeInfoButton">Button 2</a></li>
+					<li><a href="#" class="largeInfoButton">Button 3</a></li>
+					<li><a href="#" class="largeInfoButton">Button 4</a></li>
+					<li><a href="#" class="largeInfoButton">Button 5</a></li>
+				</ul>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="icons.html">See The Icon Font</a></li>
+					<li><a href="layout.html">Back to the Layout Guide</a></li>
+				</ul>
+				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

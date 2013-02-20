@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Pinned Elements - VM UI Framework</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../templates/sketch/css/import.css" />
+	<link rel="stylesheet" type="text/css" href="../css/sketch/docs.css" />
+	<script src="../../javascript/mootools.1-4-5.js" type="text/javascript"></script>
+	<script src="../javascript/template.js" type="text/javascript"></script>
+	<script src="../../JavaScript/vmui.js" type="text/javascript"></script>
+	<script>
+		window.addEvent('domready', function() {
+			new Template('../../');
+			var loader = new VMUI({relativePath:'../../JavaScript'});	
+		});
+	</script>	
+</head>
+<body id="top">
+	<div class="navbarContainer">
+		<div class="container">
+			<div class="row">
+				<div class="col12">
+					<a href="../" id="homeLogo"><i class="iconLargeVirtuosiMedia"></i></a>
+					<ul class="mobileMenu">
+						<li><a href="../examples/">Examples</a></li>
+						<li><a href="../layout.html">Layout</a></li>
+						<li><a href="../core.html">Core</a></li>
+						<li><a href="../icons.html">Icons</a></li>
+						<li><a href="../extras.html">Extras</a></li>
+						<li><a class="active" href="./">Plugins</a></li>
+						<li><a href="../templates.html">Templates</a></li>
+						<li><a href="../resources.html">Resources</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col12">
+				<ul class="breadcrumb topMargin">
+					<li><a href="./">JavaScript Plugins</a></li>
+					<li>Current Plugin</li>
+				</ul>
+				<h1 class="pageTitle">Pinned Elements</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col3 pinContainer showCol">
+				<div class="pin">
+					<h3>Scroll Down</h3>
+					<ul>
+						<li><a href="#overview">Overview</a></li>
+						<li><a href="#usage">Usage</a></li>
+						<li><a href="#demo">Demo</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col9">
+				<h3 id="overview">Overview</h3>
+				<p>Pinned elements will remain in place when the page is scrolled until they reach the bottom boundary 
+					of their parent element.</p>
+				<p><a href="#top">Return to top</a></p>
+				<h3 id="usage">Usage</h3>
+				<p>To create a pin, just add the class <code>pin</code> to any element. The pinned element will respect 
+					any top or bottom margins already applied to it.</p>
+				<p><span class="infoMarker">Note</span> Only one pinned element can exist per container element. If you 
+					have multiple items in the same area that you want pinned, wrap them in a container and pin the 
+					container.</p>
+				<p><span class="warningMarker">Warning</span> Pinned elements are not disabled for mobile screen sizes 
+					where each column in the grid expands to 100% width. Consider either making the pinned element 
+					permanantly fixed or using the <code>hideMobile</code> class for mobile screens.</p>
+				<h6>Events &amp; Style Hooks</h6>
+				<p>Pinned elements have three custom events and three different style hooks that will allow you to 
+					either perform a dynamic action on your page when the pinned element is in a specific state or 
+					custom style your pinned element based on its state.</p>
+				<p>The and the custom events can be	accessed by attaching an 
+					<a href="http://mootools.net/docs/core/Element/Element.Event#Element:addEvent">event listener</a> 
+					to the pinned element.</p>
+				<table class="borderedTable columnTable stripedTable">
+					<caption>JavaScript Events</caption>
+					<thead>
+						<tr>
+							<th colspan="2">JavaScript Events</th>
+						</tr>
+						<tr>
+							<td>Event</td>
+							<td>Description</td>
+						</tr>						
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="Event"><code>pinTop</code></td>
+							<td data-column="Description">Fired whenever the page is scrolled and the pin is in its 
+								topmost position in its container. Also fired on initial page load.</td>
+						</tr>					
+						<tr>
+							<td data-column="Event"><code>pinScroll</code></td>
+							<td data-column="Description">Fired whenever the page is scrolled and the pin is between 
+								the top and bottom boundaries of its container.</td>
+						</tr>					
+						<tr>
+							<td data-column="Event"><code>pinBottom</code></td>
+							<td data-column="Description">Fired when the page is scrolled and the pin has reached the 
+								bottom boundary of its container.</td>
+						</tr>					
+					</tbody>
+				</table>
+				<p>Style hooks are simply CSS classes added to the pinned element. An demo of style hooks in action can 
+					be found in the floating navbar on the 
+					<a href="../Examples/ecommerce.html">Ecommerce example page</a>.</p>
+				<table class="borderedTable columnTable stripedTable">
+					<caption>Style Hooks</caption>
+					<thead>
+						<tr>
+							<th colspan="2">Style Hooks</th>
+						</tr>
+						<tr>
+							<td>CSS Class</td>
+							<td>Description</td>
+						</tr>						
+					</thead>
+					<tbody>
+						<tr>
+							<td data-column="CSS Class"><code>pinTop</code></td>
+							<td data-column="Description">Present whenever the page is scrolled and the pin is in its 
+								topmost position in its container. Also present on initial page load.</td>
+						</tr>					
+						<tr>
+							<td data-column="CSS Class"><code>pinScroll</code></td>
+							<td data-column="Description">Present whenever the page is scrolled and the pin is between 
+								the top and bottom boundaries of its container.</td>
+						</tr>					
+						<tr>
+							<td data-column="CSS Class"><code>pinBottom</code></td>
+							<td data-column="Description">Present when the page is scrolled and the pin has reached the 
+								bottom boundary of its container.</td>
+						</tr>					
+					</tbody>
+				</table>
+				<p><a href="#top">Return to top</a></p>
+				<h6 id="demo">Demo</h6>				
+				<p>Below is the code for the pinned list to the left. The <code>pinContainer</code> and 
+					<code>showCol</code> classes aren't necessary to create a pin, they're just used to create the 
+					demo.</p>
+<pre class="html">
+&lt;div class="col3 pinContainer showCol"&gt;
+	&lt;div class="pin"&gt;
+		&lt;h6&gt;Pinned Example&lt;/h6&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href="#description"&gt;Description&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#code"&gt;Code Example&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+				<p><a href="#top">Return to top</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<h6>Want to continue the tour?</h6>
+				<ul class="horizontal unlisted skipBottom">
+					<li><a class="infoButton" href="slideshow-carousel.html">Learn How To Use The Slideshow Carousel</a></li>
+					<li><a href="pager.html">Back to the Pager Plugin</a></li>
+				</ul>				
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col12">
+				<span class="divider"></span>
+				<ul class="horizontal unlisted skipBottom">
+					<li><strong>Quick Links</strong>:</li>
+					<li><a href="http://uiframework.com">Website</a></li>
+					<li><a href="http://uiframework.com/about/">About</a></li>
+					<li><a href="http://uiframework.com/blog/">Blog</a></li>
+					<li><a href="http://uiframework.com/editor/">Editor</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework">GitHub</a></li>
+					<li><a href="https://github.com/VirtuosiMedia/VM-UI-Framework/issues">Report an issue</a></li>
+					<li><a href="#top">Return to top</a></li>
+				</ul>
+				<p><em>VM UI Framework is created, owned, maintained by 
+					<a href="http://www.virtuosimedia.com">Virtuosi	Media, Inc</a>. &copy; 2012-2013.</em></p>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>
