@@ -16,19 +16,19 @@ var Template = new Class({
 	 */
 	initialize: function(relativePath){
 		var template = Cookie.read('vmui-docs-template');
-		template = (template) ? template : 'Sketch';
+		template = (template) ? template.toLowerCase() : 'sketch';
 		var defaultTemplate = $$('link[rel=stylesheet]')[0].get('href');
 		var numDynamicTemplates = $$('.dynamicTemplate').length
 		
 		if ((!defaultTemplate.contains(template))||(numDynamicTemplates > 0)){
 			$$('link[rel=stylesheet]').dispose();
-			new Asset.css(relativePath + 'Templates/' + template + '/CSS/import.css', {
+			new Asset.css(relativePath + 'templates/' + template + '/css/import.css', {
 				'class': 'dynamicTemplate',
 				onLoad: function(){ //This is for plugins that execute before the stylesheet it loaded
 					document.fireEvent('templateLoaded');
 				}
 			});
-			new Asset.css(relativePath.substr(3) + 'CSS/' + template + '/docs.css', {'class': 'dynamicTemplate'});
+			new Asset.css(relativePath.substr(3) + 'css/' + template + '/docs.css', {'class': 'dynamicTemplate'});
 		}
 	}	
 });
