@@ -13,11 +13,11 @@
 	font-family: 'VM-UI-Icons';
 	font-style: normal;
 	font-weight: normal;
-	src: url('../../../Fonts/VM-UI-Icons.eot');
-	src: url('../../../Fonts/VM-UI-Icons.eot?#iefix') format('embedded-opentype'),
-		url('../../../Fonts/VM-UI-Icons.woff') format('woff'),
-		url('../../../Fonts/VM-UI-Icons.ttf') format('truetype'),
-		url('../../../Fonts/VM-UI-Icons.svg#VM-UI-Icons') format('svg');
+	src: url('../../../fonts/VM-UI-Icons.eot');
+	src: url('../../../fonts/VM-UI-Icons.eot?#iefix') format('embedded-opentype'),
+		url('../../../fonts/VM-UI-Icons.woff') format('woff'),
+		url('../../../fonts/VM-UI-Icons.ttf') format('truetype'),
+		url('../../../fonts/VM-UI-Icons.svg#VM-UI-Icons') format('svg');
 	unicode-range: U+E000-U+E145;	
 } 
 body {font-family: Georgia, "Times New Roman", 'VM-UI-Icons', serif;}
