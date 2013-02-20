@@ -26,7 +26,7 @@
 }
 #modal {
 	background: #FFF;
-	border: 0.3em solid #000;
+	border: 0.1em solid #333;
 	border-radius: 4px;
 	box-shadow: 1px 1px 3px 1px #111;
 	-moz-box-sizing: border-box;
@@ -53,8 +53,20 @@
 	display: block;
 	margin: 0px;
 }
+.modalHeader, .modalFooter {
+	background: #FFFFFF; 
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+	background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
+	box-shadow: inset 1px 1px 1px #FFF;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);	
+}
 .modalHeader {
 	border-bottom: #CCC 1px solid;
+	border-radius: 4px 4px 0 0;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 1em;
@@ -65,6 +77,7 @@
 	position: absolute;
 	right: 1em;
 	text-decoration: none;
+	text-shadow: 1px 1px 1px #FFF, -1px -1px 1px #CCC;
 	top: 1em;
 }
 .modalHeader .close:hover {color: #999;}
@@ -74,7 +87,7 @@
 	padding: 1em 1em 0em;
 }
 .modalFooter {
-	background: #F9F9F9;
+	border-radius: 0 0 4px 4px;
 	border-top: #CCC 1px solid;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;	

@@ -9,13 +9,14 @@
  * Checkbox, Radio Replace
  */
 .checked, .unchecked {
-	border: #222 solid 0.15em;
+	border: #999 solid 0.1em;
 	border-radius: 2px;
 	bottom: -0.15em;
 	-webkit-box-shadow: inset 2px 2px 3px #E9E9E9;
 	box-shadow: inset 2px 2px 3px #E9E9E9;	
 	display: inline-block !important;
 	height: 0.8em;
+	margin-top: -0.1em;
 	position: relative;
 	width: 0.8em;
 }
@@ -24,7 +25,7 @@
 	outline: none;
 }
 .checked::before {
-	color: #4D9E0C;
+	color: #459EE5;
 	content: '\2713';
 	font-size: 1.3em;
 	font-weight: bold;
@@ -39,60 +40,77 @@ input[type=radio] + .checked, input[type=radio] + .unchecked {
 /**
  * Select Replace
  */
-.selectContainer, .checkboxGroupContainer {
+.selectContainer {
+	background: #FFFFFF; 
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+	background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
+	border: 0.1em solid;
+	border-color: #EEE #999 #999 #EEE;
+	border-radius: 2px;
 	clear: left;
 	color: #333;
 	cursor: pointer;
-	background: #FFF;
-	border: 0.15em solid #222;
-	border-radius: 2px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
 	float:left;
 	height: 2.2em;
 	line-height: 2.2em;
 	margin-bottom: 1.75em;
-	padding: 0 0.5em 0 0em;
+	padding: 0 1.5em 0 0em;
+	position: relative;
 	text-indent: 0.5em;
+	text-shadow: 1px 1px 1px #FFF;
 	width:auto; 
 }
 .selectContainer.active {
 	border-color-left: #CCC;
 	outline: none;
 }
-.selectContainer .display, .checkboxGroupContainer .display {float: left;}
+.selectContainer .display {display: inline-block;}
 .trigger {
 	clear: none;
+	color: #999;
 	display: block;
-	float: left;
+	position: absolute;
+	right: 1em;
+	top: 0em;
 	width: 17px;	
 }
+.selectContainer:hover .trigger {color: #333;}
 .selectContainer.expanded.down {border-radius: 2px 2px 0px 0px;}
 .selectContainer.expanded.up {border-radius: 0px 0px 2px 2px;}
-.selectList, .checkSelectList, .content .selectList {
+.selectList {
 	background: #FFF;
-	border: 0.15em solid #222;
+	border: 0.1em solid #999;
+	-mox-box-sizing: border-box;
+	box-sizing: border-box;
 	list-style: none;
 	margin-left: 0px;
 	max-height: 8em;
 	z-index: 100;
 }
-.selectList.up, .checkSelectList.up {border-radius: 2px 2px 0px 0px;}
-.selectList.down, .checkSelectList.down {border-radius: 0px 0px 2px 2px;}
-.selectList li, .checkSelectList li {
+.selectList.up {border-radius: 2px 2px 0px 0px;}
+.selectList.down {border-radius: 0px 0px 2px 2px;}
+.selectList li {
 	cursor: pointer;
 	height: 2.2em;
 	line-height: 2.2em;
 	text-indent: 0.5em;	
 }
-.selectList li:hover, li.activeLi, .checkSelectList li:hover, .checkSelectList li:hover label {
-	background:#09F;
-	color:#FFF;
-	text-shadow:none;
+.selectList li:hover, li.activeLi {
+	background: #459EE5;
+	color: #FFF;
+	text-shadow: -1px -1px 1px #3182C0;
 }
 .selectList li.selectOptgroup {height: auto;}
 .selectList li.selectOptgroup:hover {
 	background: none;
 	color: #000;
 	cursor: default;
+	text-shadow: none;
 }
 .selectOptgroup span {
 	color: #999;

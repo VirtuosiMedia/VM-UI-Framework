@@ -18,9 +18,9 @@
 }
 [class^=carousel] .slides {
 	background: #FFF;
-	border: 0.15em solid #111;
+	border: 0.1em solid;
+	border-color: #999 #222 #222 #999;
 	border-radius: 4px;
-	box-shadow: inset 0px 0px 0px 1px #000, inset -0px -0px 0px 1px #000;
 	list-style: none;
 	margin: 0;
 	overflow: hidden;
@@ -155,7 +155,7 @@
 [class^=carousel]>.next {right: 0.3em;}
 [class^=carousel]>.previous {left: 0.3em;}
 [class^=carousel] .previews.empty a {
-	border: 0.15em solid #FFF;
+	border: 0.1em solid #FFF;
 	background: none;
 	border-radius: 0.8em;
 	display: inline-block;
@@ -172,6 +172,32 @@
 	text-shadow: none;
 }
 .carouselClean .previews a:hover, .carouselClean .controls a:hover {color:#777;}
-.carouselClean .previews.empty a {border: 0.15em solid #000;}
-[class^=carousel] .previews.empty a.active {background: #111;}
-[class^=carousel] .previews.empty a:hover {background: #777;}
+.carouselClean .previews.empty a {
+	background: #FFFFFF; 
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+	background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+	background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);	
+	border: 1px solid;
+	border-color: #DDD #999 #999 #DDD;
+	border-radius: 1em;
+	display: block;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
+	height: 1em;
+	width: 1em;
+}
+[class^=carousel] .previews.empty a.active {
+	background: #459EE5; 
+	background: -moz-linear-gradient(top, #459EE5 0%, #3182C0 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#459EE5), color-stop(100%,#3182C0)); 
+	background: -webkit-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+	background: -o-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+	background: -ms-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+	background: linear-gradient(top, #459EE5 0%,#3182C0 100%);
+	border-color: #88C0EE #266593 #266593 #88C0EE;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#3182C0',GradientType=0);
+}
+[class^=carousel] .previews.empty a:hover {background: #E9E9E9;}
+[class^=carousel] .previews.empty a.active:hover {background: #459EE5;}

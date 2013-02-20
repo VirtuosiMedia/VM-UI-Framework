@@ -228,7 +228,7 @@ body .row ul.buttonGroup {
 }
 .buttonGroup li {
 	float: left;
-	margin-right: 0px;
+	margin-left: 0px;
 }
 .buttonGroup .button, .buttonGroup [class*="Button"] {border-radius: 0px;}
 .buttonGroup li:first-child .button, .buttonGroup li:first-child [class*="Button"] {border-radius: 2px 0px 0px 2px;}

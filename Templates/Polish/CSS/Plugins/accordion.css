@@ -10,22 +10,51 @@
  */
 .accordion {
 	background: #FFF;
-	border: #222 solid 0.15em;
+	border: solid 0.1em;
+	border-color: #EEE #999 #999 #EEE;
 	border-radius: 4px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	list-style: none;
 	margin-left: 0;
-	padding: 0.875em;
 }
-.accordion li a {
+.accordion>li>a {
+	background: #FFFFFF; 
+	background: -moz-linear-gradient(top, #FEFEFE 0%, #E9E9E9 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#E9E9E9)); 
+	background: -webkit-linear-gradient(top, #FEFEFE 0%,#E9E9E9 100%); 
+	background: -o-linear-gradient(top, #FEFEFE 0%,#E9E9E9 100%); 
+	background: -ms-linear-gradient(top, #FEFEFE 0%,#E9E9E9 100%); 
+	background: linear-gradient(top, #FEFEFE 0%,#E9E9E9 100%);	
+	border-bottom: 1px solid #CCC;
+	border-top: 1px solid #FFF;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
 	display: inline-block;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FEFEFE', endColorstr='#E9E9E9',GradientType=0);
+	padding: 0.875em;
+	text-decoration: none;
 	text-indent: 0.5em;
+	text-shadow: 1px 1px 1px #FFF;
 	width: 100%;	
 }
-.accordion li a:hover {
-	background: #222;
-	border-radius: 4px;
-	color: #FFF;
-	text-decoration: none;
+.accordion>li:first-child>a {
+	border-radius: 4px 4px 0 0;
+	border-top: none;
 }
+.accordion>li:last-child>a {
+	border-bottom: none;
+	border-radius: 0 0 4px 4px;
+}
+.accordion li a:hover {
+	background: #E9E9E9;
+	color: #3182C0;
+}
+.accordion>li>a+* {
+	box-shadow: inset 0px -1px 1px #CCC;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	display: block;
+	padding: 0em 1em;
+}
+.accordion>li:last-child>a+* {box-shadow: inset 0px 1px 1px #CCC;}

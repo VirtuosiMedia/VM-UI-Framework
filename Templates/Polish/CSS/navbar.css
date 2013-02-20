@@ -16,7 +16,7 @@
 	background: -o-linear-gradient(top, #414141 0%,#202020 100%); 
 	background: -ms-linear-gradient(top, #414141 0%,#202020 100%); 
 	background: linear-gradient(top, #414141 0%,#202020 100%);
-	border-bottom: 0.1em solid #141414; 
+	border-bottom: 0.1em solid #000; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#202020',GradientType=0);
 	height: 3.45em;
 	line-height: 3.5em;
@@ -29,14 +29,9 @@
 }
 .navbarContainer ul>li, .floatingNavbarContainer ul>li {float: left;}
 .navbarContainer a, .floatingNavbarContainer a {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	border: 1px solid transparent;
-	color: #3182C0;
+	color: #459EE5;
 	display: block;
-	height: 2em;
-	line-height: 1.75em;
-	margin-top: 0.65em;
+	height: 3.45em;
 	padding: 0 0.5em;
 	text-decoration: none;
 	text-shadow: -1px -1px 1px #141414;
@@ -44,9 +39,7 @@
 .navbarContainer a:hover, .navbarContainer a.active, .floatingNavbarContainer a:hover, 
 .floatingNavbarContainer a.active {
 	background: #202020;
-	border: 1px solid;
-	border-color: #202020 #414141 #414141 #202020;
-	border-radius: 4px;		
+	box-shadow: -1px 0px 1px #141414, 1px 0px 1px #414141;
 	color: #FFF;
 }
 
@@ -59,32 +52,32 @@
 }
 .floatingNavbarContainer .row {margin-bottom: 0;}
 .floatingNavbarContainer [class*=col] {
-	background: #333333; 
-	background: -moz-linear-gradient(top, #333333 0%, #222222 100%); 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#222222)); 
-	background: -webkit-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: -o-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: -ms-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: linear-gradient(top, #333333 0%,#222222 100%);
+	background: #414141; 
+	background: -moz-linear-gradient(top, #414141 0%, #202020 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#414141), color-stop(100%,#202020)); 
+	background: -webkit-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: -o-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: -ms-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: linear-gradient(top, #414141 0%,#202020 100%);
 	border: 0.1em solid #000;
 	border-radius: 2px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box; 
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#202020',GradientType=0);
 	overflow: hidden;
 	padding: 0 1em;
 }
 .floatingNavbarContainer.pin.pinScroll, .floatingNavbarContainer.pin.pinBottom {
-	background: #333333; 
-	background: -moz-linear-gradient(top, #333333 0%, #222222 100%); 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#222222)); 
-	background: -webkit-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: -o-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: -ms-linear-gradient(top, #333333 0%,#222222 100%); 
-	background: linear-gradient(top, #333333 0%,#222222 100%);
+	background: #414141; 
+	background: -moz-linear-gradient(top, #414141 0%, #202020 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#414141), color-stop(100%,#202020)); 
+	background: -webkit-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: -o-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: -ms-linear-gradient(top, #414141 0%,#202020 100%); 
+	background: linear-gradient(top, #414141 0%,#202020 100%);
 	-moz-box-sizing: border-box;
 	box-sizing: border-box; 
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222',GradientType=0);	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#202020',GradientType=0);	
 }
 .floatingNavbarContainer.pin.pinScroll [class*=col], .floatingNavbarContainer.pin.pinBottom [class*=col]{
 	background: none;
@@ -100,16 +93,9 @@
 	top: 3.45em;
 }
 .secondaryNavbarContainer {
-	background: #FFFFFF; 
-	background: -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%); 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#FFFFFF)); 
-	background: -webkit-linear-gradient(top, #EEEEEE 0%,#FFFFFF 100%); 
-	background: -o-linear-gradient(top, #EEEEEE 0%,#FFFFFF 100%); 
-	background: -ms-linear-gradient(top, #EEEEEE 0%,#FFFFFF 100%); 
-	background: linear-gradient(top, #EEEEEE 0%,#FFFFFF 100%);
-	border-bottom: 0.1em solid #EEE;
-	box-shadow: inset 0px 1px 1px 1px #FFF;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#FFFFFF',GradientType=0);
+	background: #EEE;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	height: 1.75em;
 	line-height: 1.75em;
 	width: 100%;
@@ -120,26 +106,15 @@
 }
 .secondaryNavbarContainer ul>li {float: left;}
 .secondaryNavbarContainer a {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	border: 0.1em solid transparent;	
 	color: #333;
 	display: block;
 	height: 1.75em;
-	line-height: 1.75em;
 	padding: 0 0.5em;
 	text-decoration: none;
 }
 .secondaryNavbarContainer a:hover, .secondaryNavbarContainer a.active {
-	background: #202020;
-	border-color: #202020 #111 #111 #333; 
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	color: #FFF;
-	position: relative;
-	text-shadow: -1px -1px 1px #000;
-	top: -0.1em;
-	z-index: 100000;
+	background: #CCC;
+	color: #000;
 }
 
 /**
@@ -183,8 +158,11 @@
 		text-shadow: 1px 1px 1px #FFF;
 	}
 	.navbarContainer ul>li>ul>li a:hover, .navbarContainer ul>li>ul>li a.active {
-		background: #CCC;
-		color: #000;
+		background: #459EE5;
+		border-color: transparent;
+		box-shadow: none;
+		color: #FFF;
+		text-shadow: -1px -1px 1px #3182C0;
 	}
 	.navbarContainer input[type="text"] {margin-left: 1em;}	
 	.floatingNavbarContainer.pin.pinTop [class*=col] {padding: 0 !important;}	
