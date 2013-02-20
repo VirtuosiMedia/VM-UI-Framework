@@ -41,7 +41,7 @@ var VMUI = new Class({
 		         {name:'Reveal', source:'widgets/reveal.js', selectors:'.revealToggle'},
 		         {name:'Baseline', source:'layout/baseline.js', selectors:'img, svg, canvas, object, video, audio, iframe, [class*=Chart]'} //This should always go last to let everything render
 		],
-		relativePath: '../JavaScript'		
+		relativePath: '../javascript'		
 	},
 
 	/**
