@@ -165,7 +165,10 @@
 }
 [class^=carousel] .previews.empty a.active {background: #FFF;}
 [class^=carousel] .previews.empty a:hover {background: #777;}
-.carouselClean .slides {border: none;}
+.carouselClean .slides {
+	border: none;
+	box-shadow: none;
+}
 .carouselClean {background: none;}
 .carouselClean .previews a, .carouselClean .controls a {
 	color: #111;
