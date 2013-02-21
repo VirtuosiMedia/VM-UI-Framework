@@ -9,6 +9,9 @@
  * Tabs
  */
 @media (min-width: 769px) {
+	/**
+	 * Tabs and Vertical Tabs
+	 */	
 	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
 		float: left;
 		list-style: none;
@@ -16,34 +19,29 @@
 	}
 	.tabs {
 		border-bottom: 0.1em solid #CCC;
-		padding-bottom: 0.1em;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		display: block;
+		height: 2.5em;
 		width: 100%;
 	}
-	.tabs li, .pillTabs li {
-		float: left; 
-		margin-top: 0.15em;		
-		position: relative;
-	}
-	.pillTabs li {margin-right: 0.5em;}
+	.tabs li, .pillTabs li {float: left;}
 	.tabs a, .tabsVertical a {
-		background: #FFF;
+		background: #FFFFFF; 
+		background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+		background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
 		border-left: 0.1em solid #CCC;
 		border-top: 0.1em solid #CCC;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		padding: 0.3em 1em;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
+		padding: 0.875em 1em;
 		text-decoration: none;
 	}
-	.pillTabs a, .pillTabsVertical a {
-		border: 0.1em solid transparent;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		display: block;		
-		margin-top: 0;
-		padding: 0.3em 1em 0.45em;
-		text-decoration: none;	
-	}
 	.tabs a.active {
+		background: #FFF;
 		color: #666;
 		position: relative;
 	}
@@ -57,12 +55,12 @@
 		position: absolute;
 		width: 100%;	
 	}
-	.pillTabs a.active, .pillTabsVertical a.active {
-		background: #CCC;
-		color: #FFF;
+	.tabs li:first-child a, .tabsVertical li:first-child a {border-radius: 4px 0 0 0;}
+	.tabs li:last-child a {
+		border-radius: 0 4px 0 0;
+		border-right: 0.1em solid #CCC;
 	}
-	.pillTabs a:hover, .pillTabsVertical a:hover {border-color: #CCC;}
-	.tabs li:last-child a {border-right: 0.1em solid #CCC;}
+	.tabsVertical li:last-child a {border-radius: 0 0 0 4px;}
 	.tabs+.tabContent, .tabsVertical+.tabContent {
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -76,12 +74,6 @@
 		border-left: 0.1em solid #CCC;
 		padding-left: 1em;
 	}
-	.pillTabContent {
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		clear: both;
-		padding: 1.75em 0;
-	}
 	.tabContent > div, .pillTabContent > div {display: none;}
 	.tabContent .active, .pillTabContent .active  {display: block;}
 	.tabsVertical, .pillTabsVertical {
@@ -94,17 +86,15 @@
 		box-sizing: border-box;	
 		display: block;
 	}
-	.pillTabsVertical a {
-		margin-right: 10%;
-		width: 90%;
+	.tabsVertical a.active {
+		background: #FFF;
+		position: relative;
 	}
-	.pillTabsVertical a {margin-bottom: 0.5em}
-	.tabsVertical a.active {position: relative;}
 	.tabsVertical a.active:after {
 		background: #FFF;
 		content: '';
 		display: block;
-		height: 2.35em;
+		height: 100%;
 		position: absolute;
 		right: -0.1em;
 		top: 0;
@@ -115,14 +105,80 @@
 		float: left;
 		width: 80%;
 	}
-	.pillTabsVertical + .pillTabContent {padding-top: 0;}
 	.tabsVertical li:last-child a {border-bottom: 0.1em solid #CCC;}
 	.tabsVertical li:last-child a.active {border-bottom: 0.1em solid #CCC;}
 	.tabContent iframe, .pillTabContent iframe {
 		border: none;
 		height: 35em;
 		width: 100%;
+	}		
+	
+	/**
+	 * Pill and Vertical Pill Tabs
+	 */
+	.pillTabs, .pillTabsVertical {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding-left: 0.15em;
 	}
+	.pillTabs li {margin-right: 0.5em;}
+	.pillTabs a, .pillTabsVertical a {
+		background: #FFFFFF; 
+		background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+		background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
+		border: 1px solid #999;
+		border-color: #FFFFFF;
+		border-radius: 2px;
+		box-shadow: 0 0 0 1px #999999, 0 0 0 1px #999999, 1px 1px 2px #999999;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
+		display: block;		
+		margin-top: 0;
+		padding: 0.3em 1em 0.45em;
+		text-decoration: none;	
+	}	
+	.pillTabs a.active, .pillTabsVertical a.active {
+		background: #459EE5; 
+		background: -moz-linear-gradient(top, #459EE5 0%, #3182C0 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#459EE5), color-stop(100%,#3182C0)); 
+		background: -webkit-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: -o-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: -ms-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: linear-gradient(top, #459EE5 0%,#3182C0 100%);
+		border-color: #459EE5;
+		box-shadow: 0 0 0 1px #266593, 0 0 0 1px #266593, 1px 1px 2px #266593;
+		color: #FFF !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#3182C0',GradientType=0);
+		text-shadow: -1px -1px 1px #266593;
+	}
+	.pillTabs a:hover, .pillTabsVertical a:hover {
+		background: #E9E9E9;
+		box-shadow: 0 0 0 1px #999999, 0 0 0 1px #999999;
+	}
+	.pillTabs a.active:hover, .pillTabsVertical a.active:hover {
+		background: #3182C0;
+		box-shadow: 0 0 0 1px #266593, 0 0 0 1px #266593, 1px 1px 2px #266593;
+	}
+	.pillTabContent {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		clear: both;
+		padding: 1.75em 0;
+	}
+
+	.pillTabsVertical a {
+		margin-right: 10%;
+		width: 90%;
+	}
+	.pillTabsVertical a {margin-bottom: 0.5em}
+
+	.pillTabsVertical + .pillTabContent {padding-top: 0;}
+
 }
 @media (min-width: 980px) {
 	.tabs {padding-bottom: 0;}
@@ -144,11 +200,20 @@
 		box-sizing: border-box;
 		width: 100%;}
 	.tabs li>a, .tabsVertical li>a, .pillTabs li>a, .pillTabsVertical li>a {
-		background: #EEE;
+		background: #FFFFFF; 
+		background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E9E9E9)); 
+		background: -webkit-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -o-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: -ms-linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%); 
+		background: linear-gradient(top, #FFFFFF 0%,#E9E9E9 100%);
+		border: 1px solid;
+		border-color: #DDD #999 #999 #DDD;		
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		color: #222;
 		display: block;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
 		width: 100%;
 		text-decoration: none;
 		text-indent: 0.45em;
@@ -164,8 +229,22 @@
 	}	
 	.tabs li>a:hover, .tabsVertical li>a:hover, .pillTabs li>a:hover, .pillTabsVertical li>a:hover, .tabs li>a.active, 
 	.tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
-		background: #999;
-		color: #FFF;
+		background: #459EE5; 
+		background: -moz-linear-gradient(top, #459EE5 0%, #3182C0 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#459EE5), color-stop(100%,#3182C0)); 
+		background: -webkit-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: -o-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: -ms-linear-gradient(top, #459EE5 0%,#3182C0 100%); 
+		background: linear-gradient(top, #459EE5 0%,#3182C0 100%);
+		border: 1px solid;
+		border-color: #459EE5;
+		box-shadow: 0 0 0 1px #266593, 0 0 0 1px #266593, 1px 1px 2px #266593;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;		
+		color: #FFF !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099CC', endColorstr='#3182C0',GradientType=0);
+		text-shadow: -1px -1px 1px #266593;
+		width: 100%;
 	}
 	.tabs li>a.active, .tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
 		margin-bottom: 1.75em;
