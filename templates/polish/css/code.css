@@ -24,6 +24,7 @@ code {
 	font-family: "Courier New", monospace;
 	font-size: 0.875em;
 	line-height: 0.8em;
+	overflow-x: auto;
 	padding: 0.0em 0.375em;
 	text-shadow: 1px 1px 1px #FFF;
 }
@@ -35,6 +36,6 @@ pre {
 	font-family: "Courier New", monospace;
 	font-size: 0.875em;
 	margin-bottom: 1.75em;
+	overflow-x: auto;
 	padding: 0.5em;
-	word-wrap: break-word;
 }

@@ -26,6 +26,6 @@ pre {
 	font-family: "Courier New", monospace;
 	font-size: 0.875em;
 	margin-bottom: 1.75em;
+	overflow-x: auto;
 	padding: 0.5em;
-	word-wrap: break-word;
 }
