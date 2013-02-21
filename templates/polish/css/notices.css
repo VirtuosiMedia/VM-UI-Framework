@@ -59,14 +59,14 @@ div.errorNotice {
 	color: #FFF;	
 	display: block;
 	height: 1.5em;
-	line-height: 1.1em;
+	line-height: 1.3em;
 	opacity: 0.75;	
 	position: absolute;
 	right: -0.75em;
 	text-align: center;
 	text-decoration: none;
 	text-shadow: -1px -1px 1px #000;
-	top: -0.75em;
+	top: -0.65em;
 	width: 1.5em;	
 }
 div.notice .close:hover, div[class*="Notice"] .close:hover {opacity: 1;}
