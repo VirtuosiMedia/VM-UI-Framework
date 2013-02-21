@@ -85,9 +85,16 @@
 		width: 90%;
 	}
 	.pillTabsVertical a {margin-bottom: 0.5em}
-	.tabsVertical a.active {
-		box-sizing: content-box;
-		padding-right: 0.5em;
+	.tabsVertical a {position: relative;}
+	.tabsVertical a.active:after {
+		background: #FFF;
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		right: -0.15em;
+		top: 0;
+		width: 0.2em;
 	}
 	.tabsVertical + .tabContent, .pillTabsVertical + .pillTabContent {
 		clear: none;
