@@ -18,7 +18,7 @@ We're in beta
 
 There are still some bugs to be worked out, so hold off using VM UI Framework in production for a little while longer.
 
-- Want to see it in action? Check out [vm.uiframework.com](vm.uiframework.com)
+- Want to see it in action? Check out [vm.uiframework.com](http://vm.uiframework.com)
 - Want to help beta test? Apply for membership to our [Beta Testing Google Group](https://groups.google.com/forum/?fromgroups=#!forum/vm-ui-framework-beta-testers).
 - Want to get updates when we officially launch? Sign up for the mailing list at http://uiframework.com
 - We're also on [Twitter](https://twitter.com/vmuiframework), [Facebook](https://www.facebook.com/uiframework), and [Google+](https://plus.google.com/b/110721997138358891477/110721997138358891477/posts)   
