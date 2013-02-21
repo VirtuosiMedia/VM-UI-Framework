@@ -33,7 +33,7 @@
 	border-radius: 4px;
 	display: inline-block;
 	height: 1.2em;
-	line-height: 1.3em;
+	line-height: 1.2em;
 	margin-left: 0.5em;
 	padding: 0.05em 0.5em;
 	position: relative;
@@ -81,21 +81,23 @@
 	text-align: center;
 	width: 5.65em;
 }
-.socialShare .count {
-	position: relative;
-	top: -0.15em;
-}
+.socialShare .count {}
 .socialShare .small a.facebookShare, .socialShare .small a.redditShare {
+	height: 1.275em;
 	position: relative; 
 	top: -0.05em;
+}
+.socialShare[data-showcount=false] .small a.facebookShare, .socialShare[data-showcount=false] .small a.redditShare {
+	height: 1.275em;
+	position: relative; 
+	top: -0.1em;
 }
 .socialShare .large a.facebookShare, .socialShare .large a.redditShare {
 	position: relative; 
 	top: -0.485em;
 }
-.socialShare .large.horizontal a.linkedinShare, .socialShare .large.horizontal a.redditShare {
-	width: 5.55em;
-}
+.socialShare .large.horizontal a.linkedinShare {width: 5.55em;}
+.socialShare .large.horizontal a.redditShare {width: 5.5em;}
 .socialShare .facebookShare i {
 	background: #3b5998;
 	color: #FFF;
