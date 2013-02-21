@@ -29,3 +29,4 @@
 	color: #FFF;
 	text-decoration: none;
 }
+.accordion>li>a+* {margin: 0 !important;}

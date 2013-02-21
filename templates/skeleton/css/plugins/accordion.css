@@ -23,3 +23,4 @@
 	list-style: none;
 	padding-left: 1em;
 }
+.accordion>li>a+* {margin: 0 !important;}

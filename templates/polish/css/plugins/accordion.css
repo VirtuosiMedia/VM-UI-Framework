@@ -55,6 +55,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;	
 	display: block;
-	padding: 0em 1em;
+	margin: 0 !important;
+	padding: 0em 1em 0 1.5em;
 }
 .accordion>li:last-child>a+* {box-shadow: inset 0px 1px 1px #CCC;}
