@@ -49,6 +49,7 @@
 #homeLogo:hover, #homeLogoFloat:hover {
 	background: none;
 	border-color: transparent;
+	box-shadow: none;
 	color: #459EE5;
 	text-shadow: -1px -1px 1px #000;
 	-moz-transition: color 0.5s ease-in;
