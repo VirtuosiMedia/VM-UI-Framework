@@ -24,12 +24,21 @@
 }
 
 /**
+ * Up the font-size for retina browsers
+ */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5){
+	html body {font-size: 2em;}
+}
+
+/**
  * Grid-system - 100% columns based on less than 768 pixel width, assuming 20px margins (smartphones and tablets)
  */
-@media (max-width: 768px) {
-	html body {font-size: 14px;}
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.container {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 		margin: 0 auto;
+		padding-right: 20px;
 		width: 96%;
 	}
 	.row {
@@ -37,7 +46,8 @@
 	}
 	.row > [class*="col"] {
 		clear:both;
-		margin-bottom: 0px;		
+		margin-bottom: 0;
+		margin-left: 0;		
 		width: 100%;
 	}
 	body div[class^="notice"] {width: 97.4%;}
@@ -47,8 +57,8 @@
 /**
  * Grid-system - fixed - 12 columns based on a 768 pixel width, assuming 20px margins (tablets)
  */
-@media (min-width: 768px) and (max-width: 980px) {
-	html body {font-size: 15px;}
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	html body {font-size: 16px;}
 	.container {
 		margin: 0 auto;
 		width: 748px;
@@ -157,6 +167,6 @@
 	clear: both;
 	margin-left: 0;
 }
-@media (max-width: 768px) {
+@media all and (max-width: 767px), all and (max-device-width: 767px) {
 	.firstCol {clear: none;}
 }

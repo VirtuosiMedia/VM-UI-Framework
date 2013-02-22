@@ -59,7 +59,7 @@ var Modal = new Class({
 	positionModal: function(){
 		var size = window.getSize();
 		var modal = $('modal');
-		if (size.x <= 768){
+		if (this.isMobile()){
 			var topVal = 0, leftVal = 0, height = size.y + 'px';
 		} else {
 			var dimensions = modal.getSize();
@@ -147,6 +147,14 @@ var Modal = new Class({
 		});
 	},
 
+	isMobile: function(){
+		if (window.matchMedia){
+			return window.matchMedia('(max-device-width: 767px)').matches;
+		} else {
+			return screen.width <= 768;
+		}			
+	},	
+	
 	fireModalEvent: function(event){
 		var modalId = $('modal').getChildren()[0].get('id');
 		if (modalId) { $(modalId.replace('Copy', '')).fireEvent(event); }		

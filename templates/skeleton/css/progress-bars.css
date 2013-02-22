@@ -26,7 +26,7 @@
 	position: absolute;
 	width: 33%;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.progressBar>*, [class*="ProgressBar"]>* {height: 1.1em;}
 }
 .progressBar>* {background: #999;}

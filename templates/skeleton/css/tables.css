@@ -79,9 +79,9 @@ table tbody tr td.errorCell {
 table tbody tr td.errorCell:hover {background: #FFCECE;}
 
 /**
- * Responsive tables for smartphones and tablets
+ * Responsive tables for smartphones 
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.columnTable caption {
 		display: inline-block;
 		-moz-box-sizing: border-box;

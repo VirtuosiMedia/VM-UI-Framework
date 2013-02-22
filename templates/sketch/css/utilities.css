@@ -30,29 +30,29 @@ body .skipBottom {margin-bottom: 0 !important;}
 }
 
 /**
- * Smartphones and tablets
+ * Smartphones
  */
-@media (max-width: 767px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.hideMobile, .showTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}
 }
 
 /**
  * Tablets
  */
-@media (min-width: 768px) and (max-width: 980px) {
-	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}			
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	.showMobile, .hideTablet, .showSmallDesktop, .showLargeDesktop {display: none !important;}
 }
 
 /**
  * Small Desktops
  */
-@media (min-width: 981px) and (max-width: 1200px) {
+@media screen and (min-width: 980px) and (max-width: 1199px) and (min-device-width: 980px) {
 	.showMobile, .showTablet, .hideSmallDesktop, .showLargeDesktop {display: none !important;}		
 }
 
 /**
  * Large Desktops
  */
-@media (min-width: 1201px) {
+@media screen and (min-width: 1200px) {
 	.showMobile, .showTablet, .showSmallDesktop, .hideLargeDesktop {display: none !important;}			
 }

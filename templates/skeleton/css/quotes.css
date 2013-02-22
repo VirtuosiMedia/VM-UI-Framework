@@ -45,9 +45,9 @@ q, cite {
 }
 
 /**
- * Blockquote - (smartphones and tablets)
+ * Blockquote - (smartphones)
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	body blockquote.left, body blockquote.right {
 		border-right: none;
 		border-left: solid #222;

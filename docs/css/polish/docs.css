@@ -27,7 +27,7 @@
 	padding: 0;
 }
 #featureContainer .multiInfoButton {margin-bottom: 0;}
-@media (max-width: 768px){
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	#featureContainer [class*=col] {margin-bottom: 1.75em;}
 }
 

@@ -122,7 +122,7 @@ ol ol ol li:before {
 /**
  * Node lists will become tree lists at the mobile size
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.node {
 		background: #FFF;
 		border: 0.1em solid #999;
@@ -163,7 +163,7 @@ ol ol ol li:before {
 /**
  * Node lists for anything larger than mobile
  */
-@media (min-width: 768px) {
+@media screen (min-width: 768px) {
 	.node {
 		background: #FFF;
 		border: 0.1em solid #999;

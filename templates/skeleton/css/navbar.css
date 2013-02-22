@@ -84,7 +84,6 @@
 	padding: 0 !important;
 }
 
-
 /**
  * Navigation, Secondary Navbar
  */
@@ -134,7 +133,7 @@
 /**
  * Hide the menus by default for smartphones and tablets
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.navbarContainer, .secondaryNavbarContainer, .floatingNavbarContainer {height: auto;}
 	.navbarContainer .container, .secondaryNavbarContainer .container, .floatingNavbarContainer .container {width: 100%;}
 	.navbarContainer ul, .secondaryNavbarContainer ul, .floatingNavbarContainer ul {width: 100%;}

@@ -8,7 +8,7 @@
 /**
  * Tabs
  */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
 	/**
 	 * Tabs and Vertical Tabs
 	 */	
@@ -187,7 +187,7 @@
 /**
  * Tabs become accordions for smartphones and tablets
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;

@@ -100,7 +100,7 @@
 /**
  * Modals are full-screen size on mobile
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	#modal, #modal.iframeModal {
 		max-height: 100% !important;
 		max-width: 100% !important;

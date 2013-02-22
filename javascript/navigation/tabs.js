@@ -27,13 +27,12 @@ var Tabs = new Class({
 	
 	createTabMenu: function(tabMenu, selectors){
 		var trigger = (tabMenu.hasData('trigger')) ? tabMenu.getData('trigger') : 'click';
-		var history = (tabMenu.hasData('history')) ? tabMenu.getData('history') : false;
 		var delegators = [];
 		selectors.each(function(item){ delegators.push('.' + item.get('class') + '>li>a');});
 		var self = this;
 
 		tabMenu.addEvent(trigger+':relay(' + delegators.join(', ') + ')', function(e){
-			if (!history) { e.stop(); }
+			e.stop();
 			this.getParent('ul').getChildren('li a').removeClass('active');
 			this.set('class', 'active');
 			self.loadTab(this);
@@ -48,12 +47,12 @@ var Tabs = new Class({
 		});
 	},
 	
-	isMobile: function(){ //Necessary because IE, Firefox, and Opera calculate width with the scrollbar
-		if (Browser.ie||Browser.firefox||Browser.opera){
-			return (window.innerWidth <= 768);
+	isMobile: function(){
+		if (window.matchMedia){
+			return window.matchMedia('(max-device-width: 767px)').matches;
 		} else {
-			return (window.getCoordinates().width <= 768);
-		}
+			return screen.width <= 768;
+		}			
 	},
 	
 	loadTab: function(tab){

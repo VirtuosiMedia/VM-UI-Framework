@@ -43,7 +43,7 @@
 	border: 0.1em solid #CCC;
 	margin-top: 0.05em;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.pagination .active, .pagination .disabled {margin-top: 0;}
 }	
 .pagination .active a, .pagination .disabled a {

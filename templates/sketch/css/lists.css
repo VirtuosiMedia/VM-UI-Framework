@@ -109,50 +109,9 @@ ol ol ol li:before {
 .tree ul li:last-child::after {height: 1em;}
 
 /**
- * Node lists will become tree lists at the mobile size
- */
-@media (max-width: 768px) {
-	.node {
-		background: #FFF;
-		border: 0.2em solid #222;
-		border-radius: 4px;
-		list-style: none;
-		margin-bottom: 0px;
-		margin-left: 0px;
-		padding: 0 0.35em 1.75em;
-		overflow: hidden;
-	}
-	.node, .node ul {list-style: none;}
-	.node ul li {position: relative;}
-	.node ul li::before {
-		background: #222;
-		content: '';
-		height: 0.2em;
-		left: -1.5em;
-		position: absolute;
-		top: 0.9em;
-		width: 1em;
-	}
-	.node ul li::after {
-		background: #222;
-		content: '';
-		height: 100%;
-		left: -1.5em;
-		position: absolute;
-		top: 0;
-		width: 0.2em;
-	}
-	.node ul li:last-child::after {height: 1em;}
-	.node li span+span::before {
-		content: ', ';
-		display: block;
-	}	
-}
-
-/**
  * Node lists for anything larger than mobile
  */
-@media (min-width: 768px) {
+@media (min-width: 768px){
 	.node {
 		background: #FFF;
 		border: 0.2em solid #222;
@@ -252,4 +211,47 @@ ol ol ol li:before {
 		width: 100%;
 	}
 	.node li span:hover, .node li span:hover ~ ul li span {background: #EEE;}
+}
+
+/**
+ * Node lists will become tree lists at the mobile size
+ */
+@media screen and (max-width: 767px), screen and (max-device-width: 767px), 
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+	.node {
+		background: #FFF;
+		border: 0.2em solid #222;
+		border-radius: 4px;
+		list-style: none;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		padding: 0 0.35em 1.75em;
+		overflow: hidden;
+	}
+	.node, .node ul {list-style: none;}
+	.node ul li {position: relative;}
+	.node ul li::before {
+		background: #222;
+		content: '';
+		height: 0.2em;
+		left: -1.5em;
+		position: absolute;
+		top: 0.9em;
+		width: 1em;
+	}
+	.node ul li::after {
+		background: #222;
+		content: '';
+		height: 100%;
+		left: -1.5em;
+		position: absolute;
+		top: 0;
+		width: 0.2em;
+	}
+	.node ul li:last-child::after {height: 1em;}
+	.node li span+span::before {
+		content: ', ';
+		display: block;
+	}	
 }

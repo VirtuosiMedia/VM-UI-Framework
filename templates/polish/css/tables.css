@@ -158,7 +158,7 @@ table tbody tr td.errorCell:hover {
 /**
  * Responsive tables for smartphones and tablets
  */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.columnTable caption {
 		display: inline-block;
 		-moz-box-sizing: border-box;
