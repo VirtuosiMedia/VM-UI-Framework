@@ -44,7 +44,7 @@ var Dropdown = new Class({
 				mouseenter: function(){self.show(index);},
 				mouseleave: function(e){self.hide.delay(500, self, [index, e.target])},
 				click: function(e){
-					e.stop();
+					if (e.target.getParent().hasClass('dropdown')){e.stop();}
 					self.toggle(index, e);
 				}
 			});
