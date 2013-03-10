@@ -52,6 +52,7 @@ var Autocomplete = new Class({
 					input.focus();
 					input.fireEvent('completed');
 				});
+				$(document.body).fireEvent('ajaxUpdate', list);
 			} else {
 				var noResults = (input.hasData('empty')) ? input.getData('empty') : 'No results found';
 				this.createPrompt(input, noResults);				
@@ -188,7 +189,7 @@ var Autocomplete = new Class({
 		} else {
 			this.removeList(input);
 			this.createDropdown(input);
-		}
+		}		
 	},
 
 	getCurrentOption: function(input){
