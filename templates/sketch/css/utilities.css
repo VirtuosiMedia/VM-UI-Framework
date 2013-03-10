@@ -10,6 +10,9 @@
  */
 .right {float: right !important;}
 .left {float: left !important;}
+.alignLeft {text-align: left;}
+.alignCenter {text-align: center;}
+.alignRight {text-align: right;}
 body .skipBottom {margin-bottom: 0 !important;}
 .topMargin {margin-top: 1.75em !important;}
 .bottomMargin {margin-bottom: 1.75em !important;}
