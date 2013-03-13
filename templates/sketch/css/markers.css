@@ -12,7 +12,7 @@ span.marker, span[class*="Marker"] {
 	background: #999;
 	border-radius: 4px;
 	color: #FFF;
-	display: inline;
+	display: inline-block;
 	font-size: 0.875em;
 	padding: 0.1em 0.375em 0.1em;
 }

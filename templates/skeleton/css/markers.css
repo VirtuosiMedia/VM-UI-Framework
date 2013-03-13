@@ -11,7 +11,7 @@
 span.marker, span[class*="Marker"] {
 	border: #999 0.1em solid;
 	color: #999;
-	display: inline;
+	display: inline-block;
 	font-size: 0.875em;
 	padding: 0.1em 0.375em 0.1em;
 }
