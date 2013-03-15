@@ -2,7 +2,7 @@
 * @author Virtuosi Media
 * @link http://www.virtuosimedia.com
 * @version 1.0
-* @copyright Copyright (c) 2012, Virtuosi Media
+* @copyright Copyright (c) 2012-2013, Virtuosi Media
 * @license: MIT License
 * @description: Validates forms
 * Requirements: MooTools 1.4 Core - See http://mootools.net
@@ -126,8 +126,9 @@ var Validate = new Class({
 			var label = $$('label[for=' + name + ']');
 			var location = (label.length > 0) ? label[0] : input;
 			var error = new Element('span', {id: name + 'Error', html: error, 'class':'errorMessage'}).inject(location, 'after');
+			var tagName = (typeof input.tagName === 'string') ? input.tagName.toLowerCase() : input[0].tagName.toLowerCase();
 			
-			input = (input.tagName.toLowerCase() == 'select') ? $(name + 'Replace') : input;
+			input = (tagName == 'select') ? $(name + 'Replace') : input;
 			input.removeClass('success').addClass('error');
 			label.removeClass('success').addClass('error');
 			
@@ -154,15 +155,16 @@ var Validate = new Class({
 			var location = (label.length > 0) ? label[0] : input;
 			var successMessage = (input.hasData('success')) ? input.getData('success') : new Element('i', {'class': 'iconCheck1'});
 			var success = new Element('span', {id: name + 'Success', 'class':'successMessage'}).adopt(successMessage).inject(location, 'after');
+			var tagName = (typeof input.tagName === 'string') ? input.tagName.toLowerCase() : input[0].tagName.toLowerCase();
 			
 			input = ($$('[name=' + name +']')[0].get('type') == 'radio') ? $$('[name=' + name +']') : input;
-			input = (input.tagName.toLowerCase() == 'select') ? $(name + 'Replace') : input;
+			input = (tagName == 'select') ? $(name + 'Replace') : input;
 			input.removeClass('error').addClass('success');
 			label.removeClass('error').addClass('success');
 			
 			if ($(name + 'Error')){
 				$(name + 'Error').dispose(); 
-			}
+			} 
 		}
 	},
 	
