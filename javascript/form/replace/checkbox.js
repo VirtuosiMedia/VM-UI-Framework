@@ -41,14 +41,12 @@ var CheckboxReplace = new Class({
 				'name': box.get('name'),
 				'tabindex': box.get('tabindex'),
 				events: {
-					'click': function(){ 
+					'click': function(e){
 						if (box.getParent('label')){
 							$$('.'+replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
-						} else {
-							box.checked = (!box.checked);
-						}
-						box.fireEvent('change');
-						this.fireEvent('focus');
+						} 
+						box.checked = (!box.checked);
+						this.focus();
 					},
 					'focus': function(){
 						this.toggleClass(self.options.activeClass);
@@ -71,6 +69,7 @@ var CheckboxReplace = new Class({
 			} 			
 			box.addEvent('change', function(e){
 				$$('.'+replaceId).toggleClass(self.options.checkedClass).toggleClass(self.options.uncheckedClass);
+				console.log($$('.'+replaceId))
 			}).setStyle('display', 'none');
 			$$('label[for=' + box.get('name') + ']').addEvent('click', function(){replacement.fireEvent('click');});
 		});
