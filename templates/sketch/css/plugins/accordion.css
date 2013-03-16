@@ -29,4 +29,4 @@
 	color: #FFF;
 	text-decoration: none;
 }
-.accordion>li>a+* {margin: 0 !important;}
+.accordion>li>a+* {margin: 0 0 0 1.5em !important;}
