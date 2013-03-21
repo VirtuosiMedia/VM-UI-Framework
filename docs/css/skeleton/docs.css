@@ -3,13 +3,15 @@
  */
 #homeLogo, #homeLogoFloat {
 	color: #09C;
+	display: inline-block;
 	float: left;
-	font-size: 3em;
-	padding: 0 0.15em 0;
-	width: 1.5em;
+	overflow: hidden;
+	padding: 0 0 0 0.5em;
+	width: 5em;
 }
 #homeLogoFloat {line-height: 1.15em;}
 .floatingNavbarContainer #homeLogo {line-height: 1.15em;}
+#homeLogo i, #homeLogoFloat i {font-size: 3em;}
 
 /**
  * Display the grids

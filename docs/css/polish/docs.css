@@ -38,11 +38,11 @@
 #homeLogo, #homeLogoFloat {
 	background: none;
 	color: #151C20;
+	display: inline-block;
 	float: left;
-	font-size: 3em;
-	line-height: 1em;
-	padding: 0 0.15em 0;
-	width: 1.8em;
+	overflow: hidden;
+	padding: 0 0 0 0.5em;
+	width: 5em;
 }
 #homeLogoFloat {margin-top: 0;}
 #homeLogo:hover, #homeLogoFloat:hover {
@@ -60,6 +60,7 @@
 #homeLogoFloat {line-height: 1.15em;}
 #homeLogo:active, #homeLogoFloat:active {outline: none;}
 .floatingNavbarContainer #homeLogo {line-height: 1.15em;}
+#homeLogo i, #homeLogoFloat i {font-size: 3em;}
 
 /**
  * Display the grids
