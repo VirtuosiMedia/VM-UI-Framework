@@ -14,13 +14,15 @@
 	display: block;
 }
 .row {
-	overflow: hidden;
+	clear: both;
+	overflow: auto;	
 	width: 100%;
 }
 .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11 {float: left;}
 [class*="col"] .row [class*="col"]:first-child, [class*="col"] .row {
+	clear: both;
 	margin-left: 0;
-	overflow: hidden;
+	overflow: auto;	
 }
 
 /**
@@ -50,7 +52,6 @@
 		margin-left: 0;		
 		width: 100%;
 	}
-	body div[class^="notice"] {width: 97.4%;}
 	[class*="offset"] {margin: 0;}
 }
 
