@@ -19,11 +19,11 @@
 	border-bottom: 0.1em solid #000; 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#202020',GradientType=0);
 	height: 3.45em;
-	line-height: 3.5em;
+	line-height: 3.3em;
 	width: 100%;
 }
 .navbarContainer ul, .floatingNavbarContainer ul {
-	line-height: 3.5em;
+	line-height: 3.3em;
 	list-style: none;
 	margin: 0;
 }
