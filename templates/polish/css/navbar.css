@@ -20,6 +20,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#202020',GradientType=0);
 	height: 3.45em;
 	line-height: 3.3em;
+	overflow: auto;	
 	width: 100%;
 }
 .navbarContainer ul, .floatingNavbarContainer ul {
@@ -137,7 +138,10 @@
  */
 @media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.navbarContainer, .secondaryNavbarContainer, .floatingNavbarContainer {height: auto;}
-	.navbarContainer .container, .secondaryNavbarContainer .container, .floatingNavbarContainer .container {width: 100%;}
+	.navbarContainer .container, .secondaryNavbarContainer .container, .floatingNavbarContainer .container {
+		padding: 0;
+		width: 100%;
+	}
 	.navbarContainer ul, .secondaryNavbarContainer ul, .floatingNavbarContainer ul {width: 100%;}
 	.navbarContainer ul:not(#mobileButtonContainer)>li, 
 	.secondaryNavbarContainer ul:not(#mobileButtonContainer)>li, 
