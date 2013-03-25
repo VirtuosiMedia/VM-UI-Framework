@@ -103,7 +103,10 @@ span.dropdown {
 		margin-left: -470px;
 		width: 940px;
 	}
-	.megaDropdown>div>[class*="col"] {margin-left: 10px;}
+	.megaDropdown>div>[class*="col"] {
+		margin: 0px 10px;
+		width: 100%;
+	}
 }
 @media (min-width: 1200px) {
 	.megaDropdown>div {
