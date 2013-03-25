@@ -49,7 +49,7 @@ var Tabs = new Class({
 	
 	isMobile: function(){
 		if (window.matchMedia){
-			return window.matchMedia('(max-device-width: 767px)').matches;
+			return window.matchMedia('screen and (max-width: 767px), screen and (max-device-width: 767px)').matches;
 		} else {
 			return screen.width <= 768;
 		}			
