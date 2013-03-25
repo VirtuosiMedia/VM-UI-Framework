@@ -36,7 +36,7 @@ var MobileMenu = new Class({
 		if (window.matchMedia){
 			return window.matchMedia('screen and (max-width: 767px), screen and (max-device-width: 767px)').matches;
 		} else {
-			return screen.width <= 960;
+			return screen.width <= 767;
 		}			
 	},
 	
