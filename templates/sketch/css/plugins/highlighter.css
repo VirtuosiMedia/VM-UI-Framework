@@ -30,9 +30,7 @@
 .standardLighter .standardline {
 	background-color: #fff;
 	border-left: 0.2em solid #222;
-	padding: 0 3px 0 10px;
-	padding-left: 15px;
-	padding-right: 5px;
+	padding: 0 5px 0 15px;
 }
 .standardLighter .standardline:hover {background: #F9F9F9;}
 .standardLighter .standardfirst {margin-top: -0.15em;}
@@ -56,3 +54,7 @@ ol.standardLighter li:before {content: none;}
 .standardLighter .me0, .standardLighter .me1 {color: #666666;}
 .standardLighter .br0, .standardLighter .sy0, .standardLighter .es0 { color: #444444;}
 .standardLighter .re0 { color: #784e0c;}
+
+@media screen and (max-width: 767px), screen and (max-device-width: 767px){
+	.standardLighter .standardline {margin-bottom: -1px;}
+}
