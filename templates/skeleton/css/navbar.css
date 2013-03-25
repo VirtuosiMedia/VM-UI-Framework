@@ -23,6 +23,7 @@
 	overflow: auto;
 	width: 100%;
 }
+.navbarContainer>.container>.row {margin-bottom: 0;}
 .navbarContainer ul, .floatingNavbarContainer ul {
 	line-height: 3.3em;
 	list-style: none;
