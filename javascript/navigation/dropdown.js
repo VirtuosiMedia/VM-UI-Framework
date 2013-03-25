@@ -50,10 +50,18 @@ var Dropdown = new Class({
 			});
 		});	
 	},
+
+	isMobile: function(){
+		if (window.matchMedia){
+			return window.matchMedia('screen and (max-width: 767px), screen and (max-device-width: 767px)').matches;
+		} else {
+			return screen.width <= 767;
+		}			
+	},	
 	
 	show: function(index){//Most of these calculations are to prevent the dropdown from causing a horizontal scrollbar
 		var dropdown = this.dropdowns[index];
-		var position = ((window.getSize().x < 768) && (!dropdown.getPrevious('[class*=button]'))) ? 'relative' : 'absolute';
+		var position = ((this.isMobile()) && (!dropdown.getPrevious('[class*=button]'))) ? 'relative' : 'absolute';
 		if (dropdown.getParent().get('class') != 'megaDropdown'){
 			var padding = parseInt(dropdown.getFirst('li a').getStyle('padding-right')) - parseInt(dropdown.getStyle('border-right-width'));
 			var overlap = window.getSize().x - dropdown.getCoordinates().right - padding;
