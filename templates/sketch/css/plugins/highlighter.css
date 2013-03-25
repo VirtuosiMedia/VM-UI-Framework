@@ -42,8 +42,8 @@ ol.standardLighter {
 	color: #FFF;
 	list-style: decimal-leading-zero;
 	margin: 0 0 1.815em 0;
+	padding-left: 2.5em;
 }
-ol.standardLighter li {margin-left: 40px;}
 ol.standardLighter li:before {content: none;}
 .standardLighter .de1, .standardLighter .de2 {color: #F00;}
 .standardLighter .kw1 {color: #1b609a;}
