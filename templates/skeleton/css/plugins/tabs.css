@@ -133,9 +133,11 @@
  */
 @media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
+		border: none;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		list-style: none;
+		margin-bottom: 1.75em;
 		margin-left: 0;
 		width: 100%;
 	}
@@ -145,13 +147,15 @@
 		width: 100%;}
 	.tabs li>a, .tabsVertical li>a, .pillTabs li>a, .pillTabsVertical li>a {
 		background: #EEE;
+		border: none !important;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		color: #222;
 		display: block;
-		width: 100%;
+		margin-bottom: 0.15em;
 		text-decoration: none;
-		text-indent: 0.45em;
+		text-indent: 0.45em;		
+		width: 100%;
 	}
 	.tabs li>a:before, .tabsVertical li>a:before, .pillTabs li>a:before, .pillTabsVertical li>a:before {
 		content: '\25B6';
@@ -170,7 +174,7 @@
 	.tabs li>a.active, .tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
 		margin-bottom: 1.75em;
 	}
-	.tabContent > div, .pillTabContent > div {display: none;}
+	.tabContent, .tabContent > div, .pillTabContent, .pillTabContent > div {display: none;}
 	.tabs iframe, .tabsVertical iframe, .pillTabs iframe, .pillTabsVertical iframe {width: 98.5%;}
 	.mobileTabContent {display: none;}
 	.mobileTabContent.active {display: block;}

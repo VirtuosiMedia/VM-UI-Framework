@@ -189,9 +189,13 @@
  */
 @media screen and (max-width: 767px), screen and (max-device-width: 767px){
 	.tabs, .tabsVertical, .pillTabs, .pillTabsVertical {
+		border: none;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+		display: block;
+		height: 100%;
 		list-style: none;
+		margin-bottom: 1.75em;
 		margin-left: 0;
 		width: 100%;
 	}
@@ -214,9 +218,10 @@
 		color: #222;
 		display: block;
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E9E9E9',GradientType=0);
-		width: 100%;
+		margin-bottom: 0.15em;
 		text-decoration: none;
-		text-indent: 0.45em;
+		text-indent: 0.45em;		
+		width: 100%;
 	}
 	.tabs li>a:before, .tabsVertical li>a:before, .pillTabs li>a:before, .pillTabsVertical li>a:before {
 		content: '\25B6';
@@ -246,10 +251,11 @@
 		text-shadow: -1px -1px 1px #266593;
 		width: 100%;
 	}
+	.tabs a.active:after {display: none;}
 	.tabs li>a.active, .tabsVertical li>a.active, .pillTabs li>a.active, .pillTabsVertical li>a.active {
 		margin-bottom: 1.75em;
 	}
-	.tabContent > div, .pillTabContent > div {display: none;}
+	.tabContent, .tabContent > div, .pillTabContent, .pillTabContent > div {display: none;}
 	.tabs iframe, .tabsVertical iframe, .pillTabs iframe, .pillTabsVertical iframe {width: 98.5%;}
 	.mobileTabContent {display: none;}
 	.mobileTabContent.active {display: block;}
