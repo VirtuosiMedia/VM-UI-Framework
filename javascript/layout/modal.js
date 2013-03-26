@@ -60,7 +60,7 @@ var Modal = new Class({
 		var size = window.getSize();
 		var modal = $('modal');
 		if (this.isMobile()){
-			var topVal = 0, leftVal = 0, height = size.y + 'px';
+			var topVal = 0, leftVal = 0, height = window.innerHeight + 'px';
 		} else {
 			var dimensions = modal.getSize();
 			var topVal = ((size.y - dimensions.y)/2) + 'px';
@@ -149,7 +149,7 @@ var Modal = new Class({
 
 	isMobile: function(){
 		if (window.matchMedia){
-			return window.matchMedia('(max-device-width: 767px)').matches;
+			return window.matchMedia('screen and (max-width: 767px), screen and (max-device-width: 767px)').matches;
 		} else {
 			return screen.width <= 768;
 		}			
