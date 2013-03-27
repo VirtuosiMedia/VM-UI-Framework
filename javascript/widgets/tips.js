@@ -32,12 +32,12 @@ var Tips = new Class({
 		tip.addEvents({
 			mouseover: function(e){
 				e.stop();
-				self.addTip(tip);
+//				self.addTip(tip);
 			}, 
-			mouseout: function(e){self.removeTip(tip);},
+//			mouseout: function(e){self.removeTip(tip);},
 			click: function(e){
 				e.stop();
-				if (e.target.hasClass('tipContainer')){
+				if (!e.target.hasClass('openTip')){
 					self.addTip(tip);	
 				} else {
 					self.removeTip(tip);
@@ -47,6 +47,7 @@ var Tips = new Class({
 	},
 	
 	addTip: function(tip){
+		var self = this;
 		var title = (tip.hasData('title')) ? tip.getData('title') : null;
 		var content = (tip.hasData('content')) ? tip.getData('content') : null;
 		content = (content) ? content : this.getContent(tip);
@@ -54,9 +55,15 @@ var Tips = new Class({
 		
 		var titleEl = (title) ? new Element('h6', {'class':'title', html: title}) : '';
 		var contentEl = (content) ? new Element('div', {'class':'content', html: content}) : '';
-		var container = new Element('div', {'class': tip.get('class')+'Container',});
+		var container = new Element('div', {'class': tip.get('class')+'Container', styles: {
+			'z-index': 100000
+		}}).addEvent('click', function(e){
+			e.stop();
+			self.removeTip(this)
+		});
 		container.adopt(titleEl, contentEl).inject(document.body);
 		this.setPosition(container, tip).fade(transition);
+		tip.addClass('openTip');
 	},
 	
 	removeTip: function(tip){
@@ -65,6 +72,7 @@ var Tips = new Class({
 			var transition = (tip.getData('transition') == 'fade') ? 'out' : 'hide';
 			tooltip.fade(transition).dispose.delay(500, tooltip);
 		}
+		tip.removeClass('openTip');
 	},
 
 	getContent: function(tip){
@@ -80,10 +88,12 @@ var Tips = new Class({
 		var offset = (tip.hasData('offset')) ? tip.getData('offset').toInt() + 10 : 10;
 		var location = tip.get('class').hyphenate().split('-').getLast();
 		location = (['top', 'bottom', 'left', 'right'].contains(location)) ? location : 'top';
-
-		if (win.x <= 420){
-			var x = (win.x - tipSize.x)/2;
-			var y = (pos.top - tipSize.y - offset > scroll.y) ? pos.top - tipSize.y - offset : pos.bottom + offset; 
+		
+		if ((window.matchMedia) && (window.matchMedia('screen and (max-width: 767px), screen and (max-device-width: 767px)').matches)){
+			var x = 2.5;
+			var y = pos.top - tipSize.y - 30;
+			var width = window.width - 20;
+			return container.setStyles({top: y, left: x, width: width});
 		} else if (['bottom', 'top'].contains(location)){
 			var x = pos.left - ((tipSize.x - pos.width)/2); //Centers the tip
 			var y = (location == 'top') ? pos.top - tipSize.y - offset : pos.bottom + offset;
